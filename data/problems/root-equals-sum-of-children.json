@@ -1,0 +1,24 @@
+{
+  "id": 2236,
+  "title": "Root Equals Sum of Children",
+  "slug": "root-equals-sum-of-children",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given the root of a binary tree that consists of exactly 3 nodes: the root, its left child, and its right child.\n\nReturn true _if the value of the root is equal to the sum of the values of its two children, or_ false _otherwise_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_twin_sum(head):\n    sum = 0\n    max_sum = 0\n    i = 0\n    slow = head\n    fast = head\n\n    while fast and fast.next:\n        fast = fast.next.next\n        i += 1\n\n    for j in range(i):\n        sum = slow.val + fast.val\n        max_sum = max(max_sum, sum)\n        slow = slow.next\n        fast = fast.prev\n\n    return max_sum\n```\n    \n    The algorithm uses two pointers (slow and fast) to simultaneously traverse the linked list. The slow pointer moves forward one step at a time, while the fast pointer moves two steps at a time. This allows the fast_pointer to reach the end of the list when the slow_pointer is exactly halfway through the list.\n\nAfter reaching the middle, the function iterates through the first half of the list, calculating the twin sum of each node with its twin (which is being referenced by the fast pointer) and storing the maximum value. To do this, it advances the slow pointer one step at a time, while the fast pointer moves one step back. At each step, it calculates the sum of the values at the current positions of the slow and fast pointers, updating the maximum twin sum if a higher sum is found.\n\nFinally, after traversing half of the linked list, the function returns the maximum twin sum. \n    ",
+    "javascript": "\n    ```javascript\nfunction maxTwinSum(head) {\n    let sum = 0, max_sum = 0, i = 0;\n    let slow = head, fast = head;\n    \n    while (fast && fast.next) {\n        fast = fast.next.next;\n        i++;\n    }\n\n    for (let j = 0; j < i; j++) {\n        sum = slow.val + fast.val;\n        max_sum = Math.max(max_sum, sum);\n        slow = slow.next;\n        fast = fast.prev;\n    }\n    \n    return max_sum;\n}\n```\n    \n    The algorithm uses two pointers (slow and fast) to simultaneously traverse the linked list. The slow pointer moves forward one step at a time, while the fast pointer moves two steps at a time. This allows the fast_pointer to reach the end of the list when the slow_pointer is exactly halfway through the list.\n\nAfter reaching the middle, the function iterates through the first half of the list, calculating the twin sum of each node with its twin (which is being referenced by the fast pointer) and storing the maximum value. To do this, it advances the slow pointer one step at a time, while the fast pointer moves one step back. At each step, it calculates the sum of the values at the current positions of the slow and fast pointers, updating the maximum twin sum if a higher sum is found.\n\nFinally, after traversing half of the linked list, the function returns the maximum twin sum. \n    ",
+    "java": "\n    ```java\npublic int maxTwinSum(ListNode head) {\n    int sum = 0, max_sum = 0, i = 0;\n    ListNode slow = head, fast = head;\n\n    while (fast != null && fast.next != null) {\n        fast = fast.next.next;\n        i++;\n    }\n\n    for (int j = 0; j < i; j++) {\n        sum = slow.val + fast.val;\n        max_sum = Math.max(max_sum, sum);\n        slow = slow.next;\n        fast = fast.prev;\n    }\n\n    return max_sum;\n}\n```\n    \n    The algorithm uses two pointers (slow and fast) to simultaneously traverse the linked list. The slow pointer moves forward one step at a time, while the fast pointer moves two steps at a time. This allows the fast_pointer to reach the end of the list when the slow_pointer is exactly halfway through the list.\n\nAfter reaching the middle, the function iterates through the first half of the list, calculating the twin sum of each node with its twin (which is being referenced by the fast pointer) and storing the maximum value. To do this, it advances the slow pointer one step at a time, while the fast pointer moves one step back. At each step, it calculates the sum of the values at the current positions of the slow and fast pointers, updating the maximum twin sum if a higher sum is found.\n\nFinally, after traversing half of the linked list, the function returns the maximum twin sum. \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

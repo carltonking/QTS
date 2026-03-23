@@ -1,0 +1,24 @@
+{
+  "id": 1337,
+  "title": "The K Weakest Rows in a Matrix",
+  "slug": "the-k-weakest-rows-in-a-matrix",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an m x n binary matrix mat of 1's (representing soldiers) and 0's (representing civilians). The soldiers are positioned in front of the civilians. That is, all the 1's will appear to the left of all the 0's in each row.\n\nA row i is weaker than a row j if one of the following is true:\n\n*   The number of soldiers in row i is less than the number of soldiers in row j.\n*   Both rows have the same number of soldiers and i < j.\n\nReturn _the indices of the_ k _weakest rows in the matrix ordered from weakest to strongest_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom typing import List\n\ndef kWeakestRows(mat: List[List[int]], k: int) -> List[int]:\n    soldiers_count = [(sum(row), idx) for idx, row in enumerate(mat)]\n    soldiers_count.sort()\n    return [x[1] for x in soldiers_count[:k]]\n```\n    \n    1. Count the number of soldiers in each row, and store the count along with the index of the row in a list.\n2. Sort the list of pairs by the count of soldiers, and if there is a tie, use the index in ascending order.\n3. Return the indices of the first k elements of the sorted list.\n    ",
+    "javascript": "\n    ```javascript\nvar kWeakestRows = function(mat, k) {\n    const soldiersCount = mat.map((row, idx) => [row.filter(x => x === 1).length, idx]);\n    soldiersCount.sort((a, b) => a[0] - b[0] || a[1] - b[1]);\n    return soldiersCount.slice(0, k).map(x => x[1]);\n};\n```\n    \n    1. Count the number of soldiers in each row, and store the count along with the index of the row in a list.\n2. Sort the list of pairs by the count of soldiers, and if there is a tie, use the index in ascending order.\n3. Return the indices of the first k elements of the sorted list.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\nclass Solution {\n    public int[] kWeakestRows(int[][] mat, int k) {\n        int[] result = new int[k];\n        List<Integer> tmp = new ArrayList<Integer>();\n        for (int i = 0; i < mat.length; i++) {\n            tmp.add(i, mat[i].length - Arrays.binarySearch(mat[i], 0) - 1);\n        }\n        PriorityQueue<Integer> pq = new PriorityQueue<Integer>((a, b) -> a - b);\n        pq.addAll(tmp);\n        for (int i = 0; i < k; i++) {\n            result[i] = tmp.indexOf(pq.poll());\n            tmp.set(result[i], -1);\n        }\n        return result;\n    }\n}\n```\n    \n    1. Count the number of soldiers in each row, and store the count along with the index of the row in a list.\n2. Sort the list of pairs by the count of soldiers, and if there is a tie, use the index in ascending order.\n3. Return the indices of the first k elements of the sorted list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

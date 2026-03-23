@@ -1,0 +1,40 @@
+{
+  "id": 32,
+  "title": "Coin Change",
+  "slug": "coin-change",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Breadth-First Search"
+  ],
+  "description": "You are given an integer array coins representing coins of different denominations and an integer amount. Return the fewest number of coins needed to make up that amount.",
+  "examples": [
+    {
+      "input": "coins = [1,2,5], amount = 11",
+      "output": "3"
+    }
+  ],
+  "constraints": [
+    "1 <= coins.length <= 12"
+  ],
+  "starterCode": {
+    "python": "from typing import List\nclass Solution:\n    def coinChange(self, coins: List[int], amount: int) -> int:\n        pass",
+    "javascript": "var coinChange = function(coins, amount) {\n    \n};",
+    "java": "class Solution {\n    public int coinChange(int[] coins, int amount) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    int coinChange(vector<int>& coins, int amount) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Coin Change\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "[1,2,5]\n11",
+      "expectedOutput": "3"
+    },
+    {
+      "input": "[2]\n3",
+      "expectedOutput": "-1"
+    }
+  ]
+}

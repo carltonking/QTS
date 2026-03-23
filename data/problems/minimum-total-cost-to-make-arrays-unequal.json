@@ -1,0 +1,24 @@
+{
+  "id": 2499,
+  "title": "Minimum Total Cost to Make Arrays Unequal",
+  "slug": "minimum-total-cost-to-make-arrays-unequal",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given two 0-indexed integer arrays nums1 and nums2, of equal length n.\n\nIn one operation, you can swap the values of any two indices of nums1. The cost of this operation is the sum of the indices.\n\nFind the minimum total cost of performing the given operation any number of times such that nums1[i] != nums2[i] for all 0 <= i <= n - 1 after performing all the operations.\n\nReturn _the minimum total cost such that_ nums1 and nums2 _satisfy the above condition_. In case it is not possible, return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_cost(nums1: List[int], nums2: List[int]) -> int:\n    value_to_indices = {}\n    for i, val in enumerate(nums1):\n        value_to_indices.setdefault(val, []).append(i)\n\n    result = 0\n    for val in nums2:\n        if not value_to_indices[val]:\n            return -1\n        result += value_to_indices[val].pop()\n\n    return result\n```\n\n    \n    We make a mapping (`value_to_indices`) from each value in `nums1` to its indices in `nums1`. \n\nThen, for each value `val` in `nums2`, we get the last index from `value_to_indices[val]` vector, add it to the result, and remove it from the vector. If at any point the vector is empty, it means we can't satisfy the conditions and we return -1.\n    ",
+    "javascript": "\n    ```javascript\nfunction minCost(nums1, nums2) {\n    const valueToIndices = new Map();\n    for (let i = 0; i < nums1.length; ++i) {\n        if (!valueToIndices.has(nums1[i])) {\n            valueToIndices.set(nums1[i], []);\n        }\n        valueToIndices.get(nums1[i]).push(i);\n    }\n\n    let result = 0;\n    for (const val of nums2) {\n        const indices = valueToIndices.get(val);\n        if (!indices || indices.length === 0) return -1;\n        result += indices.pop();\n    }\n\n    return result;\n}\n```\n\n    \n    We make a mapping (`value_to_indices`) from each value in `nums1` to its indices in `nums1`. \n\nThen, for each value `val` in `nums2`, we get the last index from `value_to_indices[val]` vector, add it to the result, and remove it from the vector. If at any point the vector is empty, it means we can't satisfy the conditions and we return -1.\n    ",
+    "java": "\n    ```java\npublic int minCost(int[] nums1, int[] nums2) {\n    Map<Integer, List<Integer>> valueToIndices = new HashMap<>();\n    for (int i = 0; i < nums1.length; ++i) {\n        valueToIndices.putIfAbsent(nums1[i], new ArrayList<>());\n        valueToIndices.get(nums1[i]).add(i);\n    }\n\n    int result = 0;\n    for (int val : nums2) {\n        List<Integer> indices = valueToIndices.get(val);\n        if (indices == null || indices.isEmpty()) return -1;\n        result += indices.get(indices.size() - 1);\n        indices.remove(indices.size() - 1);\n    }\n\n    return result;\n}\n```\n\n    \n    We make a mapping (`value_to_indices`) from each value in `nums1` to its indices in `nums1`. \n\nThen, for each value `val` in `nums2`, we get the last index from `value_to_indices[val]` vector, add it to the result, and remove it from the vector. If at any point the vector is empty, it means we can't satisfy the conditions and we return -1.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

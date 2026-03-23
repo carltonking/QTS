@@ -1,0 +1,24 @@
+{
+  "id": 1829,
+  "title": "Maximum XOR for Each Query",
+  "slug": "maximum-xor-for-each-query",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a sorted array nums of n non-negative integers and an integer maximumBit. You want to perform the following query n times:\n\n1.  Find a non-negative integer k < 2maximumBit such that nums[0] XOR nums[1] XOR ... XOR nums[nums.length-1] XOR k is maximized. k is the answer to the ith query.\n2.  Remove the last element from the current array nums.\n\nReturn _an array_ answer_, where_ answer[i] _is the answer to the_ ith _query_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maximumUnits(boxTypes, truckSize):\n    boxTypes.sort(key=lambda x: x[1], reverse=True)\n    \n    totalUnits = 0\n    for box in boxTypes:\n        boxCount = min(truckSize, box[0])\n        totalUnits += boxCount * box[1]\n        truckSize -= boxCount\n        if truckSize == 0:\n            break\n    \n    return totalUnits\n```\n    \n    1. Sort the boxTypes array in descending order based on the numberOfUnitsPerBox.\n2. Initialize a variable totalUnits to keep track of the total number of units we have added so far.\n3. Iterate through the sorted boxTypes array.\n4. For each box, find the minimum of truckSize and numberOfBoxes (taking as many boxes as possible without exceeding truckSize).\n5. Add the product of the minimum value and numberOfUnitsPerBox to the totalUnits.\n6. Decrease truckSize by the number of boxes we have taken.\n7. If truckSize becomes 0, break the loop as we can't add any more boxes.\n8. Return the totalUnits value, which is the maximum total number of units that can be put on the truck.\n    ",
+    "javascript": "\n    ```javascript\nfunction maximumUnits(boxTypes, truckSize) {\n    boxTypes.sort((a, b) => b[1] - a[1]);\n\n    let totalUnits = 0;\n    for (const box of boxTypes) {\n        const boxCount = Math.min(truckSize, box[0]);\n        totalUnits += boxCount * box[1];\n        truckSize -= boxCount;\n        if (truckSize === 0) {\n            break;\n        }\n    }\n\n    return totalUnits;\n}\n```\n    \n    1. Sort the boxTypes array in descending order based on the numberOfUnitsPerBox.\n2. Initialize a variable totalUnits to keep track of the total number of units we have added so far.\n3. Iterate through the sorted boxTypes array.\n4. For each box, find the minimum of truckSize and numberOfBoxes (taking as many boxes as possible without exceeding truckSize).\n5. Add the product of the minimum value and numberOfUnitsPerBox to the totalUnits.\n6. Decrease truckSize by the number of boxes we have taken.\n7. If truckSize becomes 0, break the loop as we can't add any more boxes.\n8. Return the totalUnits value, which is the maximum total number of units that can be put on the truck.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int maximumUnits(int[][] boxTypes, int truckSize) {\n    Arrays.sort(boxTypes, (a, b) -> b[1] - a[1]);\n    \n    int totalUnits = 0;\n    for (int[] box : boxTypes) {\n        int boxCount = Math.min(truckSize, box[0]);\n        totalUnits += boxCount * box[1];\n        truckSize -= boxCount;\n        if (truckSize == 0) {\n            break;\n        }\n    }\n    \n    return totalUnits;\n}\n```\n    \n    1. Sort the boxTypes array in descending order based on the numberOfUnitsPerBox.\n2. Initialize a variable totalUnits to keep track of the total number of units we have added so far.\n3. Iterate through the sorted boxTypes array.\n4. For each box, find the minimum of truckSize and numberOfBoxes (taking as many boxes as possible without exceeding truckSize).\n5. Add the product of the minimum value and numberOfUnitsPerBox to the totalUnits.\n6. Decrease truckSize by the number of boxes we have taken.\n7. If truckSize becomes 0, break the loop as we can't add any more boxes.\n8. Return the totalUnits value, which is the maximum total number of units that can be put on the truck.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

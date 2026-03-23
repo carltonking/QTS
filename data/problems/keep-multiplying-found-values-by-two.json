@@ -1,0 +1,24 @@
+{
+  "id": 2154,
+  "title": "Keep Multiplying Found Values by Two",
+  "slug": "keep-multiplying-found-values-by-two",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an array of integers nums. You are also given an integer original which is the first number that needs to be searched for in nums.\n\nYou then do the following steps:\n\n1.  If original is found in nums, multiply it by two (i.e., set original = 2 * original).\n2.  Otherwise, stop the process.\n3.  Repeat this process with the new number as long as you keep finding the number.\n\nReturn _the final value of_ original.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_moves_to_convert(s):\n    count = 0\n    i = 0\n    while i < len(s) - 2:\n        if s[i] == \"X\" and s[i + 1] == \"X\" and s[i + 2] == \"X\":\n            count += 1\n            i += 3\n        else:\n            i += 1\n    return count\n```\n    \n    The algorithm iterates over the given string s. For each character, if it finds a sequence of 3 consecutive 'X', it increases the 'count' and moves the iterator 3 positions forward. If it doesn't find the sequence, it moves the iterator 1 position forward. The algorithm ultimately returns the 'count', which is the minimum number of moves required to convert all characters in the string to 'O'.\n    ",
+    "javascript": "\n    ```javascript\nfunction minimumMovesToConvert(s) {\n    let count = 0;\n    for (let i = 0; i < s.length - 2; i++) {\n        if (s[i] === 'X' && s[i + 1] === 'X' && s[i + 2] === 'X') {\n            count++;\n            i += 2; // move by 3\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm iterates over the given string s. For each character, if it finds a sequence of 3 consecutive 'X', it increases the 'count' and moves the iterator 3 positions forward. If it doesn't find the sequence, it moves the iterator 1 position forward. The algorithm ultimately returns the 'count', which is the minimum number of moves required to convert all characters in the string to 'O'.\n    ",
+    "java": "\n    ```java\npublic int minMovesToConvert(String s) {\n    int count = 0;\n    for (int i = 0; i < s.length() - 2; i++) {\n        if (s.charAt(i) == 'X' && s.charAt(i + 1) == 'X' && s.charAt(i + 2) == 'X') {\n            count++;\n            i += 2; // move by 3\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm iterates over the given string s. For each character, if it finds a sequence of 3 consecutive 'X', it increases the 'count' and moves the iterator 3 positions forward. If it doesn't find the sequence, it moves the iterator 1 position forward. The algorithm ultimately returns the 'count', which is the minimum number of moves required to convert all characters in the string to 'O'.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

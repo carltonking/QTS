@@ -1,0 +1,24 @@
+{
+  "id": 1547,
+  "title": "Minimum Cost to Cut a Stick",
+  "slug": "minimum-cost-to-cut-a-stick",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given a wooden stick of length n units. The stick is labelled from 0 to n. For example, a stick of length 6 is labelled as follows:\n\nGiven an integer array cuts where cuts[i] denotes a position you should perform a cut at.\n\nYou should perform the cuts in order, you can change the order of the cuts as you wish.\n\nThe cost of one cut is the length of the stick to be cut, the total cost is the sum of costs of all cuts. When you cut a stick, it will be split into two smaller sticks (i.e. the sum of their lengths is the length of the stick before the cut). Please refer to the first example for a better explanation.\n\nReturn _the minimum total cost_ of the cuts.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef destCity(paths):\n    starting_cities = set()\n    \n    for path in paths:\n        starting_cities.add(path[0])\n\n    for path in paths:\n        if path[1] not in starting_cities:\n            return path[1]\n\n    return \"\"\n```\n    \n    We start by creating a set `starting_cities` that will contain all the cities that have a direct path _outgoing_ from them. Then, for each path, we add the city where the path starts to our set.\n\nOnce we have the set, we iterate through the given paths again, checking if the destination city of each path (cityBi) is present in the set `starting_cities`. If a city is not present in the set, that means it doesn't have any outgoing path, and we return that city as the destination city.\n\nThe algorithm has a time complexity of O(n), where n is the number of paths, since we iterate through the paths twice. \n    ",
+    "javascript": "\n    ```javascript\nfunction destCity(paths) {\n    const startingCities = new Set();\n\n    for (const path of paths)\n        startingCities.add(path[0]);\n\n    for (const path of paths) {\n        if (!startingCities.has(path[1]))\n            return path[1];\n    }\n\n    return \"\";\n}\n```\n    \n    We start by creating a set `starting_cities` that will contain all the cities that have a direct path _outgoing_ from them. Then, for each path, we add the city where the path starts to our set.\n\nOnce we have the set, we iterate through the given paths again, checking if the destination city of each path (cityBi) is present in the set `starting_cities`. If a city is not present in the set, that means it doesn't have any outgoing path, and we return that city as the destination city.\n\nThe algorithm has a time complexity of O(n), where n is the number of paths, since we iterate through the paths twice. \n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic String destCity(List<List<String>> paths) {\n    Set<String> startingCities = new HashSet<>();\n    for (List<String> path : paths)\n        startingCities.add(path.get(0));\n\n    for (List<String> path : paths) {\n        if (!startingCities.contains(path.get(1)))\n            return path.get(1);\n    }\n\n    return \"\";\n}\n```\n    \n    We start by creating a set `starting_cities` that will contain all the cities that have a direct path _outgoing_ from them. Then, for each path, we add the city where the path starts to our set.\n\nOnce we have the set, we iterate through the given paths again, checking if the destination city of each path (cityBi) is present in the set `starting_cities`. If a city is not present in the set, that means it doesn't have any outgoing path, and we return that city as the destination city.\n\nThe algorithm has a time complexity of O(n), where n is the number of paths, since we iterate through the paths twice. \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

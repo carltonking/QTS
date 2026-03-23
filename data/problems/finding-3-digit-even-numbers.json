@@ -1,0 +1,24 @@
+{
+  "id": 2094,
+  "title": "Finding 3-Digit Even Numbers",
+  "slug": "finding-3-digit-even-numbers",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an integer array digits, where each element is a digit. The array may contain duplicates.\n\nYou need to find all the unique integers that follow the given requirements:\n\n*   The integer consists of the concatenation of three elements from digits in any arbitrary order.\n*   The integer does not have leading zeros.\n*   The integer is even.\n\nFor example, if the given digits were [1, 2, 3], integers 132 and 312 follow the requirements.\n\nReturn _a sorted array of the unique integers._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_stones_remaining(piles, k):\n    for _ in range(k):\n        max_pile_index = piles.index(max(piles))\n        piles[max_pile_index] -= piles[max_pile_index] // 2\n\n    return sum(piles)\n```\n\n    \n    The algorithm follows these steps:\n1. Iterate `k` times.\n2. For each iteration, find the index of the largest pile.\n3. Reduce the largest pile by half, rounding down, and update the value in the piles array.\n4. After all iterations, compute the sum of the remaining piles and return it.\n    ",
+    "javascript": "\n    ```javascript\nfunction minStonesRemaining(piles, k) {\n    for (let i = 0; i < k; i++) {\n        let max_pile_index = 0;\n        for (let j = 1; j < piles.length; j++) {\n            if (piles[j] > piles[max_pile_index]) {\n                max_pile_index = j;\n            }\n        }\n        piles[max_pile_index] -= Math.floor(piles[max_pile_index] / 2);\n    }\n\n    return piles.reduce((total, pile) => total + pile, 0);\n}\n```\n\n    \n    The algorithm follows these steps:\n1. Iterate `k` times.\n2. For each iteration, find the index of the largest pile.\n3. Reduce the largest pile by half, rounding down, and update the value in the piles array.\n4. After all iterations, compute the sum of the remaining piles and return it.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int minStonesRemaining(int[] piles, int k) {\n    for (int i = 0; i < k; i++) {\n        int max_pile_index = 0;\n        for (int j = 1; j < piles.length; j++) {\n            if (piles[j] > piles[max_pile_index]) {\n                max_pile_index = j;\n            }\n        }\n        piles[max_pile_index] -= piles[max_pile_index] / 2;\n    }\n\n    int total_stones = 0;\n    for (int pile : piles) {\n        total_stones += pile;\n    }\n    return total_stones;\n}\n```\n\n    \n    The algorithm follows these steps:\n1. Iterate `k` times.\n2. For each iteration, find the index of the largest pile.\n3. Reduce the largest pile by half, rounding down, and update the value in the piles array.\n4. After all iterations, compute the sum of the remaining piles and return it.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

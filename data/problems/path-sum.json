@@ -1,0 +1,24 @@
+{
+  "id": 112,
+  "title": "Path Sum",
+  "slug": "path-sum",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given the root of a binary tree and an integer targetSum, return true if the tree has a root-to-leaf path such that adding up all the values along the path equals targetSum.\n\nA leaf is a node with no children.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef hasPathSum(root, targetSum):\n    if root is None:\n        return False\n    if root.left is None and root.right is None:\n        return targetSum - root.val == 0\n    return hasPathSum(root.left, targetSum - root.val) or hasPathSum(root.right, targetSum - root.val)\n```\n    \n    The algorithm starts at the root of the tree and performs a depth-first search. If the root is null, the function returns false as there is no path for the empty tree. If the root is a leaf node, the function checks if the targetSum is equal to the value of the root node.\n\nThen for non-leaf nodes, it checks if there exists a root-to-leaf path in the left or right subtree by recursively calling the function on the child nodes. The targetSum is updated by subtracting the value of the current node i.e., `targetSum - root.val`.\n\nThis process continues until a leaf node satisfying the targetSum is found, or all the paths have been explored and there's no match.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(val, left = null, right = null) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\nfunction hasPathSum(root, targetSum) {\n    if (!root) return false;\n    if (!root.left && !root.right) return targetSum - root.val === 0;\n    return hasPathSum(root.left, targetSum - root.val) || hasPathSum(root.right, targetSum - root.val);\n}\n```\n    \n    The algorithm starts at the root of the tree and performs a depth-first search. If the root is null, the function returns false as there is no path for the empty tree. If the root is a leaf node, the function checks if the targetSum is equal to the value of the root node.\n\nThen for non-leaf nodes, it checks if there exists a root-to-leaf path in the left or right subtree by recursively calling the function on the child nodes. The targetSum is updated by subtracting the value of the current node i.e., `targetSum - root.val`.\n\nThis process continues until a leaf node satisfying the targetSum is found, or all the paths have been explored and there's no match.\n    ",
+    "java": "\n    ```java\npublic class TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n}\n\npublic boolean hasPathSum(TreeNode root, int targetSum) {\n    if (root == null) return false;\n    if (root.left == null && root.right == null) return targetSum - root.val == 0;\n    return hasPathSum(root.left, targetSum - root.val) || hasPathSum(root.right, targetSum - root.val);\n}\n```\n    \n    The algorithm starts at the root of the tree and performs a depth-first search. If the root is null, the function returns false as there is no path for the empty tree. If the root is a leaf node, the function checks if the targetSum is equal to the value of the root node.\n\nThen for non-leaf nodes, it checks if there exists a root-to-leaf path in the left or right subtree by recursively calling the function on the child nodes. The targetSum is updated by subtracting the value of the current node i.e., `targetSum - root.val`.\n\nThis process continues until a leaf node satisfying the targetSum is found, or all the paths have been explored and there's no match.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 799,
+  "title": "Champagne Tower",
+  "slug": "champagne-tower",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "We stack glasses in a pyramid, where the first row has 1 glass, the second row has 2 glasses, and so on until the 100th row. Each glass holds one cup of champagne.\n\nThen, some champagne is poured into the first glass at the top. When the topmost glass is full, any excess liquid poured will fall equally to the glass immediately to the left and right of it. When those glasses become full, any excess champagne will fall equally to the left and right of those glasses, and so on. (A glass at the bottom row has its excess champagne fall on the floor.)\n\nFor example, after one cup of champagne is poured, the top most glass is full. After two cups of champagne are poured, the two glasses on the second row are half full. After three cups of champagne are poured, those two cups become full - there are 3 full glasses total now. After four cups of champagne are poured, the third row has the middle glass half full, and the two outside glasses are a quarter full, as pictured below.\n\nNow after pouring some non-negative integer cups of champagne, return how full the jth glass in the ith row is (both i and j are 0-indexed.)",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def __init__(self):\n        self.min_diff = float(\"inf\")\n        self.prev = None\n\n    def minDiffInBST(self, root: TreeNode) -> int:\n        self.in_order_traversal(root)\n        return self.min_diff\n\n    def in_order_traversal(self, node: TreeNode) -> None:\n        if not node: return\n        self.in_order_traversal(node.left)\n        if self.prev:\n            self.min_diff = min(self.min_diff, node.val - self.prev.val)\n        self.prev = node\n        self.in_order_traversal(node.right)\n```\n\n    \n    The key to solving this problem is to realize that an inorder traversal of a Binary Search Tree would give a sorted list of values. We can perform an inorder traversal of the BST, updating the minimum difference as we traverse. We only need to consider adjacent nodes in-order, so we just need a `prev` variable to track the previous node visited. This way, we'll have an O(n) time and O(1) space complexity.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(val, left = null, right = null) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\nclass Solution {\n    constructor() {\n        this.minDiff = Infinity;\n        this.prev = null;\n    }\n\n    minDiffInBST(root) {\n        this.inOrderTraversal(root);\n        return this.minDiff;\n    }\n\n    inOrderTraversal(node) {\n        if (!node) return;\n        this.inOrderTraversal(node.left);\n        if (this.prev) {\n            this.minDiff = Math.min(this.minDiff, node.val - this.prev.val);\n        }\n        this.prev = node;\n        this.inOrderTraversal(node.right);\n    }\n}\n```\n\n    \n    The key to solving this problem is to realize that an inorder traversal of a Binary Search Tree would give a sorted list of values. We can perform an inorder traversal of the BST, updating the minimum difference as we traverse. We only need to consider adjacent nodes in-order, so we just need a `prev` variable to track the previous node visited. This way, we'll have an O(n) time and O(1) space complexity.\n    ",
+    "java": "\n    ```java\nclass TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n    TreeNode(int x) { val = x; }\n}\n\nclass Solution {\n    Integer minDiff = Integer.MAX_VALUE;\n    TreeNode prev = null;\n\n    public int minDiffInBST(TreeNode root) {\n        inOrderTraversal(root);\n        return minDiff;\n    }\n\n    private void inOrderTraversal(TreeNode node) {\n        if (node == null) return;\n        inOrderTraversal(node.left);\n        if (prev != null) {\n            minDiff = Math.min(minDiff, node.val - prev.val);\n        }\n        prev = node;\n        inOrderTraversal(node.right);\n    }\n}\n```\n\n    \n    The key to solving this problem is to realize that an inorder traversal of a Binary Search Tree would give a sorted list of values. We can perform an inorder traversal of the BST, updating the minimum difference as we traverse. We only need to consider adjacent nodes in-order, so we just need a `prev` variable to track the previous node visited. This way, we'll have an O(n) time and O(1) space complexity.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2368,
+  "title": "Reachable Nodes With Restrictions",
+  "slug": "reachable-nodes-with-restrictions",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There is an undirected tree with n nodes labeled from 0 to n - 1 and n - 1 edges.\n\nYou are given a 2D integer array edges of length n - 1 where edges[i] = [ai, bi] indicates that there is an edge between nodes ai and bi in the tree. You are also given an integer array restricted which represents restricted nodes.\n\nReturn _the maximum number of nodes you can reach from node_ 0 _without visiting a restricted node._\n\nNote that node 0 will not be a restricted node.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import defaultdict\n\ndef max_nodes_without_restricted(n, edges, restricted):\n    tree = defaultdict(list)\n    blocked_nodes = set(restricted)\n\n    for a, b in edges:\n        tree[a].append(b)\n        tree[b].append(a)\n\n    max_nodes = [0]\n\n    def dfs(node, depth, parent):\n        if node in blocked_nodes:\n            return\n        max_nodes[0] = max(max_nodes[0], depth)\n        for child in tree[node]:\n            if child != parent:\n                dfs(child, depth + 1, node)\n\n    dfs(0, 1, -1)\n    return max_nodes[0]\n```    \n    1. Create an adjacency list (i.e., a data structure representing the tree) from the edges.\n2. Convert the list of restricted nodes to a set to efficiently check if a node is restricted.\n3. Use depth-first search (DFS) to traverse the tree from the starting node (0) while avoiding restricted nodes.\n   - If a node is restricted, immediately return and stop traversing that branch.\n   - Keep track of the maximum depth reached.\n4. Return the maximum depth found in the DFS traversal as the answer.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxNodesWithoutRestricted(n, edges, restricted) {\n    const tree = new Map();\n    const blockedNodes = new Set(restricted);\n\n    for (const [a, b] of edges) {\n        if (!tree.has(a)) tree.set(a, []);\n        if (!tree.has(b)) tree.set(b, []);\n        tree.get(a).push(b);\n        tree.get(b).push(a);\n    }\n\n    let maxNodes = 0;\n\n    function dfs(node, depth, parent) {\n        if (blockedNodes.has(node)) return;\n        maxNodes = Math.max(maxNodes, depth);\n        for (const child of tree.get(node)) {\n            if (child !== parent) dfs(child, depth + 1, node);\n        }\n    }\n\n    dfs(0, 1, -1);\n    return maxNodes;\n}\n```    \n    1. Create an adjacency list (i.e., a data structure representing the tree) from the edges.\n2. Convert the list of restricted nodes to a set to efficiently check if a node is restricted.\n3. Use depth-first search (DFS) to traverse the tree from the starting node (0) while avoiding restricted nodes.\n   - If a node is restricted, immediately return and stop traversing that branch.\n   - Keep track of the maximum depth reached.\n4. Return the maximum depth found in the DFS traversal as the answer.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic int maxNodesWithoutRestricted(int n, int[][] edges, int[] restricted) {\n    Map<Integer, List<Integer>> tree = new HashMap<>();\n    Set<Integer> blockedNodes = new HashSet<>();\n    for (int r : restricted) blockedNodes.add(r);\n\n    for (int[] edge : edges) {\n        tree.putIfAbsent(edge[0], new ArrayList<>());\n        tree.putIfAbsent(edge[1], new ArrayList<>());\n        tree.get(edge[0]).add(edge[1]);\n        tree.get(edge[1]).add(edge[0]);\n    }\n\n    int[] maxNodes = new int[1];\n\n    dfs(0, 1, -1, tree, blockedNodes, maxNodes);\n    return maxNodes[0];\n}\n\nprivate void dfs(int node, int depth, int parent, Map<Integer, List<Integer>> tree, Set<Integer> blockedNodes, int[] maxNodes) {\n    if (blockedNodes.contains(node)) return;\n    maxNodes[0] = Math.max(maxNodes[0], depth);\n    for (int child : tree.get(node)) {\n        if (child != parent) dfs(child, depth + 1, node, tree, blockedNodes, maxNodes);\n    }\n}\n```    \n    1. Create an adjacency list (i.e., a data structure representing the tree) from the edges.\n2. Convert the list of restricted nodes to a set to efficiently check if a node is restricted.\n3. Use depth-first search (DFS) to traverse the tree from the starting node (0) while avoiding restricted nodes.\n   - If a node is restricted, immediately return and stop traversing that branch.\n   - Keep track of the maximum depth reached.\n4. Return the maximum depth found in the DFS traversal as the answer.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

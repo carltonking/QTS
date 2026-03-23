@@ -1,0 +1,24 @@
+{
+  "id": 2179,
+  "title": "Count Good Triplets in an Array",
+  "slug": "count-good-triplets-in-an-array",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given two 0-indexed arrays nums1 and nums2 of length n, both of which are permutations of [0, 1, ..., n - 1].\n\nA good triplet is a set of 3 distinct values which are present in increasing order by position both in nums1 and nums2. In other words, if we consider pos1v as the index of the value v in nums1 and pos2v as the index of the value v in nums2, then a good triplet will be a set (x, y, z) where 0 <= x, y, z <= n - 1, such that pos1x < pos1y < pos1z and pos2x < pos2y < pos2z.\n\nReturn _the total number of good triplets_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_beauty(items, queries):\n    sorted_items = [0] * 10001\n    for price, beauty in items:\n        sorted_items[price] = max(sorted_items[price], beauty)\n\n    for i in range(1, len(sorted_items)):\n        sorted_items[i] = max(sorted_items[i], sorted_items[i - 1])\n\n    return [sorted_items[query] for query in queries]\n```\n\n    \n    The algorithm consists of first sorting the items by their price, while picking the maximum beauty for each price. An array of size 10001 is created to store the maximum beauty for each price, since the price range is [0, 10000]. \n\nAfter sorting the items, we iterate through the sorted array to find the maximum beauty for a range of prices up to the specific index. This allows us to easily answer the queries, since now we can directly look up the maximum beauty for items up to a specific price.\n\nFinally, we iterate through the queries, and for each query, we find the maximum beauty for the given price by accessing the result from the previously computed sorted array. This gives us the answer for each query, which we return as an array of answers in the same order as the queries were given.  \n    ",
+    "javascript": "\n    ```javascript\nfunction maxBeauty(items, queries) {\n    let sortedItems = new Array(10001).fill(0);\n    for (let item of items) {\n        sortedItems[item[0]] = Math.max(sortedItems[item[0]], item[1]);\n    }\n\n    for (let i = 1; i < sortedItems.length; i++) {\n        sortedItems[i] = Math.max(sortedItems[i], sortedItems[i - 1]);\n    }\n\n    return queries.map(query => sortedItems[query]);\n}\n```\n\n    \n    The algorithm consists of first sorting the items by their price, while picking the maximum beauty for each price. An array of size 10001 is created to store the maximum beauty for each price, since the price range is [0, 10000]. \n\nAfter sorting the items, we iterate through the sorted array to find the maximum beauty for a range of prices up to the specific index. This allows us to easily answer the queries, since now we can directly look up the maximum beauty for items up to a specific price.\n\nFinally, we iterate through the queries, and for each query, we find the maximum beauty for the given price by accessing the result from the previously computed sorted array. This gives us the answer for each query, which we return as an array of answers in the same order as the queries were given.  \n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic class Solution {\n    public int[] maxBeauty(int[][] items, int[] queries) {\n        int[] sortedItems = new int[10001];\n        for (int[] item : items) {\n            sortedItems[item[0]] = Math.max(sortedItems[item[0]], item[1]);\n        }\n        \n        for (int i = 1; i < sortedItems.length; i++) {\n            sortedItems[i] = Math.max(sortedItems[i], sortedItems[i - 1]);\n        }\n        \n        int[] result = new int[queries.length];\n        for (int i = 0; i < queries.length; i++) {\n            result[i] = sortedItems[queries[i]];\n        }\n        return result;\n    }\n}\n```\n\n    \n    The algorithm consists of first sorting the items by their price, while picking the maximum beauty for each price. An array of size 10001 is created to store the maximum beauty for each price, since the price range is [0, 10000]. \n\nAfter sorting the items, we iterate through the sorted array to find the maximum beauty for a range of prices up to the specific index. This allows us to easily answer the queries, since now we can directly look up the maximum beauty for items up to a specific price.\n\nFinally, we iterate through the queries, and for each query, we find the maximum beauty for the given price by accessing the result from the previously computed sorted array. This gives us the answer for each query, which we return as an array of answers in the same order as the queries were given.  \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

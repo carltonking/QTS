@@ -1,0 +1,24 @@
+{
+  "id": 171,
+  "title": "Excel Sheet Column Number",
+  "slug": "excel-sheet-column-number",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a string columnTitle that represents the column title as appears in an Excel sheet, return _its corresponding column number_.\n\nFor example:\n\nA -> 1\nB -> 2\nC -> 3\n...\nZ -> 26\nAA -> 27\nAB -> 28\n...",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef title_to_number(column_title: str) -> int:\n    result = 0\n    for c in column_title:\n        result = result * 26 + (ord(c) - ord('A') + 1)\n    return result\n```\n    \n    The algorithm iterates through the given `columnTitle` string and computes the corresponding column number by treating the string like a base-26 number representation, where 'A' represents the digit 1 and 'Z' represents the digit 26. To convert each character to its corresponding numeric value, we subtract the ASCII value of 'A' and add 1. In each iteration, the current result is multiplied by 26 and the numeric value of the current character is added to the result. Finally, the accumulated result is returned as the column number.\n    ",
+    "javascript": "\n    ```javascript\nfunction titleToNumber(columnTitle) {\n    let result = 0;\n    for (let c of columnTitle) {\n        result = result * 26 + (c.charCodeAt(0) - 'A'.charCodeAt(0) + 1);\n    }\n    return result;\n}\n```\n    \n    The algorithm iterates through the given `columnTitle` string and computes the corresponding column number by treating the string like a base-26 number representation, where 'A' represents the digit 1 and 'Z' represents the digit 26. To convert each character to its corresponding numeric value, we subtract the ASCII value of 'A' and add 1. In each iteration, the current result is multiplied by 26 and the numeric value of the current character is added to the result. Finally, the accumulated result is returned as the column number.\n    ",
+    "java": "\n    ```java\npublic int titleToNumber(String columnTitle) {\n    int result = 0;\n    for (char c : columnTitle.toCharArray()) {\n        result = result * 26 + (c - 'A' + 1);\n    }\n    return result;\n}\n```\n    \n    The algorithm iterates through the given `columnTitle` string and computes the corresponding column number by treating the string like a base-26 number representation, where 'A' represents the digit 1 and 'Z' represents the digit 26. To convert each character to its corresponding numeric value, we subtract the ASCII value of 'A' and add 1. In each iteration, the current result is multiplied by 26 and the numeric value of the current character is added to the result. Finally, the accumulated result is returned as the column number.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

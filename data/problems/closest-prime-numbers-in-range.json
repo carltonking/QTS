@@ -1,0 +1,24 @@
+{
+  "id": 2523,
+  "title": "Closest Prime Numbers in Range",
+  "slug": "closest-prime-numbers-in-range",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given two positive integers left and right, find the two integers num1 and num2 such that:\n\n*   left <= nums1 < nums2 <= right .\n*   nums1 and nums2 are both prime numbers.\n*   nums2 - nums1 is the minimum amongst all other pairs satisfying the above conditions.\n\nReturn _the positive integer array_ ans = [nums1, nums2]. _If there are multiple pairs satisfying these conditions, return the one with the minimum_ nums1 _value or_ [-1, -1] _if such numbers do not exist._\n\nA number greater than 1 is called prime if it is only divisible by 1 and itself.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_prime(n):\n    if n <= 1:\n        return False\n    i = 2\n    while i * i <= n:\n        if n % i == 0:\n            return False\n        i += 1\n    return True\n\ndef closest_prime_pair(left, right):\n    min_dist = right - left + 1\n    ans = [-1, -1]\n    for i in range(left, right + 1):\n        if is_prime(i):\n            for j in range(i + 1, right + 1):\n                if is_prime(j) and j - i < min_dist:\n                    min_dist = j - i\n                    ans = [i, j]\n    return ans\n```\n    \n    The algorithm iterates through all integers in the given range and checks if they are prime using the `is_prime` or `isPrime` function. The function checks for prime numbers by testing whether a number is divisible by any integer from 2 to the square root of the number. If a number is found to be prime, it then iterates through the remaining numbers in the range and checks if they are prime. If the second number is also prime and the distance between the two numbers is less than the minimum distance found so far, the algorithm updates the minimum distance and the answer array. The answer array is returned at the end.\n    ",
+    "javascript": "\n    ```javascript\nfunction isPrime(n) {\n    if (n <= 1) return false;\n    for (let i = 2; i * i <= n; ++i) {\n        if (n % i === 0) return false;\n    }\n    return true;\n}\n\nfunction closestPrimePair(left, right) {\n    let minDist = right - left + 1;\n    let ans = [-1, -1];\n    for (let i = left; i <= right; ++i) {\n        if (isPrime(i)) {\n            for (let j = i + 1; j <= right; ++j) {\n                if (isPrime(j) && j - i < minDist) {\n                    minDist = j - i;\n                    ans = [i, j];\n                }\n            }\n        }\n    }\n    return ans;\n}\n```\n    \n    The algorithm iterates through all integers in the given range and checks if they are prime using the `is_prime` or `isPrime` function. The function checks for prime numbers by testing whether a number is divisible by any integer from 2 to the square root of the number. If a number is found to be prime, it then iterates through the remaining numbers in the range and checks if they are prime. If the second number is also prime and the distance between the two numbers is less than the minimum distance found so far, the algorithm updates the minimum distance and the answer array. The answer array is returned at the end.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic class PrimePair {\n    public static boolean isPrime(int n) {\n        if (n <= 1) return false;\n        for (int i = 2; i * i <= n; ++i) {\n            if (n % i == 0) return false;\n        }\n        return true;\n    }\n\n    public static int[] closestPrimePair(int left, int right) {\n        int minDist = right - left + 1;\n        int[] ans = {-1, -1};\n        for (int i = left; i <= right; ++i) {\n            if (isPrime(i)) {\n                for (int j = i + 1; j <= right; ++j) {\n                    if (isPrime(j) && j - i < minDist) {\n                        minDist = j - i;\n                        ans = new int[]{i, j};\n                    }\n                }\n            }\n        }\n        return ans;\n    }\n}\n```\n    \n    The algorithm iterates through all integers in the given range and checks if they are prime using the `is_prime` or `isPrime` function. The function checks for prime numbers by testing whether a number is divisible by any integer from 2 to the square root of the number. If a number is found to be prime, it then iterates through the remaining numbers in the range and checks if they are prime. If the second number is also prime and the distance between the two numbers is less than the minimum distance found so far, the algorithm updates the minimum distance and the answer array. The answer array is returned at the end.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

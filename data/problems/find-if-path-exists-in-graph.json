@@ -1,0 +1,24 @@
+{
+  "id": 1971,
+  "title": "Find if Path Exists in Graph",
+  "slug": "find-if-path-exists-in-graph",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "There is a bi-directional graph with n vertices, where each vertex is labeled from 0 to n - 1 (inclusive). The edges in the graph are represented as a 2D integer array edges, where each edges[i] = [ui, vi] denotes a bi-directional edge between vertex ui and vertex vi. Every vertex pair is connected by at most one edge, and no vertex has an edge to itself.\n\nYou want to determine if there is a valid path that exists from vertex source to vertex destination.\n\nGiven edges and the integers n, source, and destination, return true _if there is a valid path from_ source _to_ destination_, or_ false _otherwise._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef mem_sticks_crash(memory1, memory2):\n    crash_time = 1\n    while True:\n        if memory1 >= memory2:\n            if memory1 >= crash_time:\n                memory1 -= crash_time\n            else:\n                break\n        else:\n            if memory2 >= crash_time:\n                memory2 -= crash_time\n            else:\n                break\n        crash_time += 1\n    return [crash_time, memory1, memory2]\n```\n    \n    The algorithm starts with a crashTime counter initialized to 1. Then we enter an infinite loop where we compare the available memory on both sticks. If the memory of stick 1 is greater or equal to stick 2, we try to allocate crashTime bits to it, but only if it has enough bits. If it doesn't have enough bits, we break the loop; otherwise, we subtract the bits used from it. We do the same for the memory stick with the lesser memory. Finally, we increment the crashTime counter by 1 at each iteration. When the loop breaks, the function returns an array containing crashTime, and the memory states of both memory sticks at the time of the crash. The algorithm is the same for all languages, with only minimal syntax adjustments.\n    ",
+    "javascript": "\n    ```javascript\nfunction memSticksCrash(memory1, memory2) {\n    let crashTime = 1;\n    while (true) {\n        if (memory1 >= memory2) {\n            if (memory1 >= crashTime) {\n                memory1 -= crashTime;\n            } else {\n                break;\n            }\n        } else {\n            if (memory2 >= crashTime) {\n                memory2 -= crashTime;\n            } else {\n                break;\n            }\n        }\n        crashTime++;\n    }\n    return [crashTime, memory1, memory2];\n}\n```\n    \n    The algorithm starts with a crashTime counter initialized to 1. Then we enter an infinite loop where we compare the available memory on both sticks. If the memory of stick 1 is greater or equal to stick 2, we try to allocate crashTime bits to it, but only if it has enough bits. If it doesn't have enough bits, we break the loop; otherwise, we subtract the bits used from it. We do the same for the memory stick with the lesser memory. Finally, we increment the crashTime counter by 1 at each iteration. When the loop breaks, the function returns an array containing crashTime, and the memory states of both memory sticks at the time of the crash. The algorithm is the same for all languages, with only minimal syntax adjustments.\n    ",
+    "java": "\n    ```java\npublic int[] memSticksCrash(int memory1, int memory2) {\n    int crashTime = 1;\n    while (true) {\n        if (memory1 >= memory2) {\n            if (memory1 >= crashTime) {\n                memory1 -= crashTime;\n            } else {\n                break;\n            }\n        } else {\n            if (memory2 >= crashTime) {\n                memory2 -= crashTime;\n            } else {\n                break;\n            }\n        }\n        crashTime++;\n    }\n    return new int[]{crashTime, memory1, memory2};\n}\n```\n    \n    The algorithm starts with a crashTime counter initialized to 1. Then we enter an infinite loop where we compare the available memory on both sticks. If the memory of stick 1 is greater or equal to stick 2, we try to allocate crashTime bits to it, but only if it has enough bits. If it doesn't have enough bits, we break the loop; otherwise, we subtract the bits used from it. We do the same for the memory stick with the lesser memory. Finally, we increment the crashTime counter by 1 at each iteration. When the loop breaks, the function returns an array containing crashTime, and the memory states of both memory sticks at the time of the crash. The algorithm is the same for all languages, with only minimal syntax adjustments.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

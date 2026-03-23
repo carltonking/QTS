@@ -1,0 +1,24 @@
+{
+  "id": 1518,
+  "title": "Water Bottles",
+  "slug": "water-bottles",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "There are numBottles water bottles that are initially full of water. You can exchange numExchange empty water bottles from the market with one full water bottle.\n\nThe operation of drinking a full water bottle turns it into an empty bottle.\n\nGiven the two integers numBottles and numExchange, return _the maximum number of water bottles you can drink_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef numWaterBottles(numBottles: int, numExchange: int) -> int:\n    totalBottles = numBottles\n    while numBottles >= numExchange:\n        newBottles = numBottles // numExchange\n        totalBottles += newBottles\n        numBottles = newBottles + numBottles % numExchange\n    return totalBottles\n```\n    \n    The algorithm initializes the totalBottles variable with the value of numBottles. It then uses a while loop to repeatedly calculate the number of new full bottles the person can get by exchanging the current number of empty bottles.\n\nIn each iteration, the loop calculates the new number of full bottles by dividing numBottles by numExchange and flooring the result. It then adds these new bottles to the totalBottles variable. The loop also updates the number of empty bottles by adding the new full bottles and the remainder of numBottles divided by numExchange.\n\nOnce the number of empty bottles is less than the required numExchange, the loop terminates, and the function returns the value of totalBottles as the maximum number of water bottles the person can drink.\n    ",
+    "javascript": "\n    ```javascript\nfunction numWaterBottles(numBottles, numExchange) {\n    let totalBottles = numBottles;\n    while (numBottles >= numExchange) {\n        let newBottles = Math.floor(numBottles / numExchange);\n        totalBottles += newBottles;\n        numBottles = newBottles + numBottles % numExchange;\n    }\n    return totalBottles;\n}\n```\n    \n    The algorithm initializes the totalBottles variable with the value of numBottles. It then uses a while loop to repeatedly calculate the number of new full bottles the person can get by exchanging the current number of empty bottles.\n\nIn each iteration, the loop calculates the new number of full bottles by dividing numBottles by numExchange and flooring the result. It then adds these new bottles to the totalBottles variable. The loop also updates the number of empty bottles by adding the new full bottles and the remainder of numBottles divided by numExchange.\n\nOnce the number of empty bottles is less than the required numExchange, the loop terminates, and the function returns the value of totalBottles as the maximum number of water bottles the person can drink.\n    ",
+    "java": "\n    ```java\npublic int numWaterBottles(int numBottles, int numExchange) {\n    int totalBottles = numBottles;\n    while (numBottles >= numExchange) {\n        int newBottles = numBottles / numExchange;\n        totalBottles += newBottles;\n        numBottles = newBottles + numBottles % numExchange;\n    }\n    return totalBottles;\n}\n```\n    \n    The algorithm initializes the totalBottles variable with the value of numBottles. It then uses a while loop to repeatedly calculate the number of new full bottles the person can get by exchanging the current number of empty bottles.\n\nIn each iteration, the loop calculates the new number of full bottles by dividing numBottles by numExchange and flooring the result. It then adds these new bottles to the totalBottles variable. The loop also updates the number of empty bottles by adding the new full bottles and the remainder of numBottles divided by numExchange.\n\nOnce the number of empty bottles is less than the required numExchange, the loop terminates, and the function returns the value of totalBottles as the maximum number of water bottles the person can drink.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

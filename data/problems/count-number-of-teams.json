@@ -1,0 +1,24 @@
+{
+  "id": 1395,
+  "title": "Count Number of Teams",
+  "slug": "count-number-of-teams",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There are n soldiers standing in a line. Each soldier is assigned a unique rating value.\n\nYou have to form a team of 3 soldiers amongst them under the following rules:\n\n*   Choose 3 soldiers with index (i, j, k) with rating (rating[i], rating[j], rating[k]).\n*   A team is valid if: (rating[i] < rating[j] < rating[k]) or (rating[i] > rating[j] > rating[k]) where (0 <= i < j < k < n).\n\nReturn the number of teams you can form given the conditions. (soldiers can be part of multiple teams).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minTimeToVisitAllPoints(points: List[List[int]]) -> int:\n    time = 0\n    for i in range(1, len(points)):\n        dx = abs(points[i][0] - points[i-1][0])\n        dy = abs(points[i][1] - points[i-1][1])\n        time += max(dx, dy)\n    return time\n```\n\n    \n    The algorithm calculates the minimum time to visit all the points by iterating through the given points, and for each pair of consecutive points, finding the difference in their x and y coordinates (dx and dy). Since moving diagonally is the fastest way to cover a unit of distance vertically and horizontally, the time needed to move between two points is the maximum of dx and dy.\n\nIn each language, the code follows the same logic: iterate through the points, calculate the difference in x and y coordinates, and add the maximum of those differences to the total time. The primary differences are in syntax and the specific functions used to calculate the absolute value and maximum value.\n    ",
+    "javascript": "\n    ```javascript\nfunction minTimeToVisitAllPoints(points) {\n    let time = 0;\n    for(let i = 1; i < points.length; ++i) {\n        let dx = Math.abs(points[i][0] - points[i-1][0]);\n        let dy = Math.abs(points[i][1] - points[i-1][1]);\n        time += Math.max(dx, dy);\n    }\n    return time;\n}\n```\n\n    \n    The algorithm calculates the minimum time to visit all the points by iterating through the given points, and for each pair of consecutive points, finding the difference in their x and y coordinates (dx and dy). Since moving diagonally is the fastest way to cover a unit of distance vertically and horizontally, the time needed to move between two points is the maximum of dx and dy.\n\nIn each language, the code follows the same logic: iterate through the points, calculate the difference in x and y coordinates, and add the maximum of those differences to the total time. The primary differences are in syntax and the specific functions used to calculate the absolute value and maximum value.\n    ",
+    "java": "\n    ```java\npublic int minTimeToVisitAllPoints(int[][] points) {\n    int time = 0;\n    for(int i = 1; i < points.length; ++i) {\n        int dx = Math.abs(points[i][0] - points[i-1][0]);\n        int dy = Math.abs(points[i][1] - points[i-1][1]);\n        time += Math.max(dx, dy);\n    }\n    return time;\n}\n```\n\n    \n    The algorithm calculates the minimum time to visit all the points by iterating through the given points, and for each pair of consecutive points, finding the difference in their x and y coordinates (dx and dy). Since moving diagonally is the fastest way to cover a unit of distance vertically and horizontally, the time needed to move between two points is the maximum of dx and dy.\n\nIn each language, the code follows the same logic: iterate through the points, calculate the difference in x and y coordinates, and add the maximum of those differences to the total time. The primary differences are in syntax and the specific functions used to calculate the absolute value and maximum value.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2433,
+  "title": "Find The Original Array of Prefix Xor",
+  "slug": "find-the-original-array-of-prefix-xor",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array pref of size n. Find and return _the array_ arr _of size_ n _that satisfies_:\n\n*   pref[i] = arr[0] ^ arr[1] ^ ... ^ arr[i].\n\nNote that ^ denotes the bitwise-xor operation.\n\nIt can be proven that the answer is unique.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findArray(pref):\n    arr = [pref[0]]\n    for i in range(1, len(pref)):\n        arr.append(pref[i] ^ pref[i - 1])\n    return arr\n```\n    \n    The function first initializes the first element of the `arr` array to the first element of the input `pref` array. Then, for each remaining element in the `pref` array, the function calculates the corresponding `arr` element by XORing the current `pref` element with the previous `pref` element. This is based on the property of XOR, where `(a ^ b) ^ b == a`. After all elements in the `arr` array are calculated, the function returns the `arr` array.\n    ",
+    "javascript": "\n    ```javascript\nfunction findArray(pref) {\n    const arr = new Array(pref.length);\n    arr[0] = pref[0];\n    for (let i = 1; i < pref.length; ++i) {\n        arr[i] = pref[i] ^ pref[i - 1];\n    }\n    return arr;\n}\n```\n    \n    The function first initializes the first element of the `arr` array to the first element of the input `pref` array. Then, for each remaining element in the `pref` array, the function calculates the corresponding `arr` element by XORing the current `pref` element with the previous `pref` element. This is based on the property of XOR, where `(a ^ b) ^ b == a`. After all elements in the `arr` array are calculated, the function returns the `arr` array.\n    ",
+    "java": "\n    ```java\npublic int[] findArray(int[] pref) {\n    int[] arr = new int[pref.length];\n    arr[0] = pref[0];\n    for (int i = 1; i < pref.length; ++i) {\n        arr[i] = pref[i] ^ pref[i - 1];\n    }\n    return arr;\n}\n```\n    \n    The function first initializes the first element of the `arr` array to the first element of the input `pref` array. Then, for each remaining element in the `pref` array, the function calculates the corresponding `arr` element by XORing the current `pref` element with the previous `pref` element. This is based on the property of XOR, where `(a ^ b) ^ b == a`. After all elements in the `arr` array are calculated, the function returns the `arr` array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

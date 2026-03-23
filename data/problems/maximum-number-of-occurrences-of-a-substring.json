@@ -1,0 +1,24 @@
+{
+  "id": 1297,
+  "title": "Maximum Number of Occurrences of a Substring",
+  "slug": "maximum-number-of-occurrences-of-a-substring",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string s, return the maximum number of ocurrences of any substring under the following rules:\n\n*   The number of unique characters in the substring must be less than or equal to maxLetters.\n*   The substring size must be between minSize and maxSize inclusive.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxNumberOfBalloons(text):\n    freqs = [0] * 26\n    for c in text:\n        freqs[ord(c) - ord('a')] += 1\n    subs = [freqs[ord('b') - ord('a')], freqs[ord('a') - ord('a')], freqs[ord('l') - ord('a')] // 2, freqs[ord('o') - ord('a')] // 2, freqs[ord('n') - ord('a')]]\n    return min(subs)\n```\n\n    \n    1. Create a frequency array `freqs` that counts the occurrences of each lowercase character in the given text.\n2. Prepare another array `subs` containing the number of occurrences of 'b', 'a', number of occurrences of 'l' divided by 2, number of occurrences of 'o' divided by 2, and number of occurrences of 'n'. This is because there are 2 'l's and 2 'o's in the word \"balloon\".\n3. Return the minimum value among the elements in the `subs` array as this represents the bottleneck in forming the maximum number of occurrences of the word \"balloon\".\n    ",
+    "javascript": "\n    ```javascript\nfunction maxNumberOfBalloons(text) {\n    let freqs = Array(26).fill(0);\n    for (let c of text) {\n        freqs[c.charCodeAt(0) - 'a'.charCodeAt(0)]++;\n    }\n    let subs = [freqs['b'.charCodeAt(0) - 'a'.charCodeAt(0)], freqs['a'.charCodeAt(0) - 'a'.charCodeAt(0)], Math.floor(freqs['l'.charCodeAt(0) - 'a'.charCodeAt(0)] / 2), Math.floor(freqs['o'.charCodeAt(0) - 'a'.charCodeAt(0)] / 2), freqs['n'.charCodeAt(0) - 'a'.charCodeAt(0)]];\n    return Math.min(...subs);\n}\n```\n\n    \n    1. Create a frequency array `freqs` that counts the occurrences of each lowercase character in the given text.\n2. Prepare another array `subs` containing the number of occurrences of 'b', 'a', number of occurrences of 'l' divided by 2, number of occurrences of 'o' divided by 2, and number of occurrences of 'n'. This is because there are 2 'l's and 2 'o's in the word \"balloon\".\n3. Return the minimum value among the elements in the `subs` array as this represents the bottleneck in forming the maximum number of occurrences of the word \"balloon\".\n    ",
+    "java": "\n    ```java\npublic int maxNumberOfBalloons(String text) {\n    int[] freqs = new int[26];\n    for (char c : text.toCharArray()) {\n        freqs[c - 'a']++;\n    }\n    int[] subs = {freqs['b' - 'a'], freqs['a' - 'a'], freqs['l' - 'a'] / 2, freqs['o' - 'a'] / 2, freqs['n' - 'a']};\n    return Arrays.stream(subs).min().getAsInt();\n}\n```\n\n    \n    1. Create a frequency array `freqs` that counts the occurrences of each lowercase character in the given text.\n2. Prepare another array `subs` containing the number of occurrences of 'b', 'a', number of occurrences of 'l' divided by 2, number of occurrences of 'o' divided by 2, and number of occurrences of 'n'. This is because there are 2 'l's and 2 'o's in the word \"balloon\".\n3. Return the minimum value among the elements in the `subs` array as this represents the bottleneck in forming the maximum number of occurrences of the word \"balloon\".\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

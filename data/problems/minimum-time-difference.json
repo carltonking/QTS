@@ -1,0 +1,24 @@
+{
+  "id": 539,
+  "title": "Minimum Time Difference",
+  "slug": "minimum-time-difference",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a list of 24-hour clock time points in \"HH:MM \" format, return _the minimum minutes difference between any two time-points in the list_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findMinDifference(timePoints):\n    timePoints.sort()\n    min_difference = float('inf')\n\n    for i in range(len(timePoints)):\n        h1, m1 = map(int, timePoints[i].split(':'))\n        h2, m2 = map(int, timePoints[(i+1)%len(timePoints)].split(':'))\n        cur_difference = abs((h1 * 60 + m1) - (h2 * 60 + m2))\n        min_difference = min(min_difference, 1440 - cur_difference if cur_difference > 720 else cur_difference)\n\n    return min_difference\n```\n    \n    1. Sort the given timePoints list.\n2. Initialize variable minDifference with the maximum value possible to keep track of the minimum difference.\n3. Loop through the timePoints list and for each pair of consecutive times (including the last time and the first time in the list):\n    - Calculate the absolute difference between the time in minutes.\n    - If the difference is greater than 720 (half of 1440 minutes in a day), take the complementary difference (i.e., 1440 - curDifference).\n    - Update the minDifference variable with the minimum of the previous minDifference and the calculated difference.\n4. After the loop, the minDifference variable will hold the minimum minutes difference between any two time-points in the list. Return it.\n    ",
+    "javascript": "\n    ```javascript\nfunction findMinDifference(timePoints) {\n    timePoints.sort();\n    let minDifference = Infinity;\n\n    for (let i = 0; i < timePoints.length; ++i) {\n        const [h1, m1] = timePoints[i].split(':').map(Number);\n        const [h2, m2] = timePoints[(i + 1) % timePoints.length].split(':').map(Number);\n        const curDifference = Math.abs((h1 * 60 + m1) - (h2 * 60 + m2));\n        minDifference = Math.min(minDifference, curDifference > 720 ? 1440 - curDifference : curDifference);\n    }\n\n    return minDifference;\n}\n```\n    \n    1. Sort the given timePoints list.\n2. Initialize variable minDifference with the maximum value possible to keep track of the minimum difference.\n3. Loop through the timePoints list and for each pair of consecutive times (including the last time and the first time in the list):\n    - Calculate the absolute difference between the time in minutes.\n    - If the difference is greater than 720 (half of 1440 minutes in a day), take the complementary difference (i.e., 1440 - curDifference).\n    - Update the minDifference variable with the minimum of the previous minDifference and the calculated difference.\n4. After the loop, the minDifference variable will hold the minimum minutes difference between any two time-points in the list. Return it.\n    ",
+    "java": "\n    ```java\nimport java.util.Collections;\nimport java.util.List;\nimport java.util.ArrayList;\n\npublic int findMinDifference(List<String> timePoints) {\n    Collections.sort(timePoints);\n    int minDifference = Integer.MAX_VALUE;\n\n    for (int i = 0; i < timePoints.size(); ++i) {\n        int curDifference = Math.abs((Integer.parseInt(timePoints.get(i).substring(0, 2)) * 60 + Integer.parseInt(timePoints.get(i).substring(3, 5))) - (Integer.parseInt(timePoints.get((i + 1) % timePoints.size()).substring(0, 2)) * 60 + Integer.parseInt(timePoints.get((i + 1) % timePoints.size()).substring(3, 5))));\n        minDifference = Math.min(minDifference, curDifference > 720 ? 1440 - curDifference : curDifference);\n    }\n\n    return minDifference;\n}\n```\n    \n    1. Sort the given timePoints list.\n2. Initialize variable minDifference with the maximum value possible to keep track of the minimum difference.\n3. Loop through the timePoints list and for each pair of consecutive times (including the last time and the first time in the list):\n    - Calculate the absolute difference between the time in minutes.\n    - If the difference is greater than 720 (half of 1440 minutes in a day), take the complementary difference (i.e., 1440 - curDifference).\n    - Update the minDifference variable with the minimum of the previous minDifference and the calculated difference.\n4. After the loop, the minDifference variable will hold the minimum minutes difference between any two time-points in the list. Return it.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

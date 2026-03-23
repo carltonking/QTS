@@ -1,0 +1,24 @@
+{
+  "id": 661,
+  "title": "Image Smoother",
+  "slug": "image-smoother",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "An image smoother is a filter of the size 3 x 3 that can be applied to each cell of an image by rounding down the average of the cell and the eight surrounding cells (i.e., the average of the nine cells in the blue smoother). If one or more of the surrounding cells of a cell is not present, we do not consider it in the average (i.e., the average of the four cells in the red smoother).\n\nGiven an m x n integer matrix img representing the grayscale of an image, return _the image after applying the smoother on each cell of it_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef imageSmoother(img):\n    m, n = len(img), len(img[0])\n    result = [[0] * n for _ in range(m)]\n\n    for i in range(m):\n        for j in range(n):\n            count, total = 0, 0\n            for x in range(i - 1, i + 2):\n                for y in range(j - 1, j + 2):\n                    if 0 <= x < m and 0 <= y < n:\n                        total += img[x][y]\n                        count += 1\n            result[i][j] = total // count\n\n    return result\n```\n    \n    1. Find the dimensions (m, n) of the input img array.\n2. Initialize the result array with the same dimensions as img.\n3. Iterate through each cell (i, j) of the img array.\n4. Iterate through 8 neighboring cells with corresponding coordinates (x, y) within a 3x3 grid centered at (i, j).\n5. Check if the neighboring cell (x, y) is within the boundaries of img. If so, add the value of img[x][y] to the sum, and increment the count.\n6. Calculate the average by dividing the sum by count and round down the result.\n7. Set the value of the result[i][j] to the calculated average.\n8. Return the result array.\n    ",
+    "javascript": "\n    ```javascript\nfunction imageSmoother(img) {\n    const m = img.length, n = img[0].length;\n    const result = new Array(m).fill(0).map(() => new Array(n).fill(0));\n\n    for (let i = 0; i < m; i++) {\n        for (let j = 0; j < n; j++) {\n            let count = 0, sum = 0;\n\n            for (let x = i - 1; x <= i + 1; x++) {\n                for (let y = j - 1; y <= j + 1; y++) {\n                    if (x >= 0 && x < m && y >= 0 && y < n) {\n                        sum += img[x][y];\n                        count++;\n                    }\n                }\n            }\n            result[i][j] = Math.floor(sum / count);\n        }\n    }\n\n    return result;\n}\n```\n    \n    1. Find the dimensions (m, n) of the input img array.\n2. Initialize the result array with the same dimensions as img.\n3. Iterate through each cell (i, j) of the img array.\n4. Iterate through 8 neighboring cells with corresponding coordinates (x, y) within a 3x3 grid centered at (i, j).\n5. Check if the neighboring cell (x, y) is within the boundaries of img. If so, add the value of img[x][y] to the sum, and increment the count.\n6. Calculate the average by dividing the sum by count and round down the result.\n7. Set the value of the result[i][j] to the calculated average.\n8. Return the result array.\n    ",
+    "java": "\n    ```java\npublic int[][] imageSmoother(int[][] img) {\n    int m = img.length, n = img[0].length;\n    int[][] result = new int[m][n];\n\n    for (int i = 0; i < m; i++) {\n        for (int j = 0; j < n; j++) {\n            int count = 0, sum = 0;\n            for (int x = i - 1; x <= i + 1; x++) {\n                for (int y = j - 1; y <= j + 1; y++) {\n                    if (x >= 0 && x < m && y >= 0 && y < n) {\n                        sum += img[x][y];\n                        count++;\n                    }\n                }\n            }\n            result[i][j] = sum / count;\n        }\n    }\n\n    return result;\n}\n```\n    \n    1. Find the dimensions (m, n) of the input img array.\n2. Initialize the result array with the same dimensions as img.\n3. Iterate through each cell (i, j) of the img array.\n4. Iterate through 8 neighboring cells with corresponding coordinates (x, y) within a 3x3 grid centered at (i, j).\n5. Check if the neighboring cell (x, y) is within the boundaries of img. If so, add the value of img[x][y] to the sum, and increment the count.\n6. Calculate the average by dividing the sum by count and round down the result.\n7. Set the value of the result[i][j] to the calculated average.\n8. Return the result array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

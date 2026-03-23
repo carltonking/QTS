@@ -1,0 +1,24 @@
+{
+  "id": 1714,
+  "title": "Sum Of Special Evenly-Spaced Elements In Array",
+  "slug": "sum-of-special-evenly-spaced-elements-in-array",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums consisting of n non-negative integers.\n\nYou are also given an array queries, where queries[i] = [xi, yi]. The answer to the ith query is the sum of all nums[j] where xi <= j < n and (j - xi) is divisible by yi.\n\nReturn _an array_ answer _where_ answer.length == queries.length _and_ answer[i] _is the answer to the_ ith _query modulo_ 109 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef reorder_spaces(text: str) -> str:\n    spaces = text.count(' ')\n    words = text.split()\n    \n    if len(words) == 1:\n        return words[0] + ' ' * spaces\n\n    space_between_words = spaces // (len(words) - 1)\n    extra_spaces = spaces % (len(words) - 1)\n    result = ''\n    \n    for i, word in enumerate(words):\n        result += word\n        if i < len(words) - 1:\n            result += ' ' * space_between_words\n    \n    result += ' ' * extra_spaces\n\n    return result\n```\n    \n    1. Count the number of spaces and split the text into a list/vector of words.\n2. If there's only one word, return the word followed by all spaces.\n3. Calculate the number of spaces to be distributed between words, as well as the extra spaces that remain.\n4. Iterate through the words, and for each word, append it to the result variable. If the current word is not the last one, append the appropriate number of spaces.\n5. After the loop, append any extra spaces to the result variable.\n6. Return the result variable.\n    ",
+    "javascript": "\n    ```javascript\nfunction reorderSpaces(text) {\n    const spaces = text.split('').filter(char => char === ' ').length;\n    const words = text.trim().split(/\\s+/);\n    \n    if (words.length === 1) {\n        return words[0] + ' '.repeat(spaces);\n    }\n\n    const spaceBetweenWords = Math.floor(spaces / (words.length - 1));\n    const extraSpaces = spaces % (words.length - 1);\n    let result = '';\n    \n    for (let i = 0; i < words.length; i++) {\n        result += words[i];\n        if (i < words.length - 1) {\n            result += ' '.repeat(spaceBetweenWords);\n        }\n    }\n    \n    result += ' '.repeat(extraSpaces);\n\n    return result;\n}\n```\n    \n    1. Count the number of spaces and split the text into a list/vector of words.\n2. If there's only one word, return the word followed by all spaces.\n3. Calculate the number of spaces to be distributed between words, as well as the extra spaces that remain.\n4. Iterate through the words, and for each word, append it to the result variable. If the current word is not the last one, append the appropriate number of spaces.\n5. After the loop, append any extra spaces to the result variable.\n6. Return the result variable.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic String reorderSpaces(String text) {\n    int spaces = 0;\n    List<String> words = new ArrayList<>();\n    \n    String[] splitText = text.split(\"\\\\s+\");\n    for (String word : splitText) {\n        words.add(word);\n        spaces += word.length() - word.trim().length();\n    }\n    \n    if (words.size() == 1) {\n        return words.get(0) + \" \".repeat(spaces);\n    }\n\n    int spaceBetweenWords = spaces / (words.size() - 1);\n    int extraSpaces = spaces % (words.size() - 1);\n    StringBuilder result = new StringBuilder();\n    \n    for (int i = 0; i < words.size(); i++) {\n        result.append(words.get(i));\n        if (i < words.size() - 1) {\n            result.append(\" \".repeat(spaceBetweenWords));\n        }\n    }\n    \n    result.append(\" \".repeat(extraSpaces));\n\n    return result.toString();\n}\n```\n    \n    1. Count the number of spaces and split the text into a list/vector of words.\n2. If there's only one word, return the word followed by all spaces.\n3. Calculate the number of spaces to be distributed between words, as well as the extra spaces that remain.\n4. Iterate through the words, and for each word, append it to the result variable. If the current word is not the last one, append the appropriate number of spaces.\n5. After the loop, append any extra spaces to the result variable.\n6. Return the result variable.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

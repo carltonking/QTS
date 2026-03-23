@@ -1,0 +1,24 @@
+{
+  "id": 1908,
+  "title": "Game of Nim",
+  "slug": "game-of-nim",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Alice and Bob take turns playing a game with Alice starting first.\n\nIn this game, there are n piles of stones. On each player's turn, the player should remove any positive number of stones from a non-empty pile of his or her choice. The first player who cannot make a move loses, and the other player wins.\n\nGiven an integer array piles, where piles[i] is the number of stones in the ith pile, return true _if Alice wins, or_ false _if Bob wins_.\n\nBoth Alice and Bob play optimally.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef alice_wins(piles):\n    xor_sum = 0\n    for pile in piles:\n        xor_sum ^= pile\n    return xor_sum != 0\n```\n\n    \n    The game is actually a variant of Nim game. The optimal strategy is that both players keep reducing piles to ensure that the bitwise XOR of all piles remains 0. After each player's turn, if the bitwise XOR of all piles is 0, the player wins if there are no piles with stones left; otherwise, the player loses.\n\nTo determine if Alice wins, we first calculate the bitwise XOR of all the piles' sizes. If the bitwise XOR is not 0, Alice can win by making a move that changes the XOR to 0. Otherwise, Alice will lose since any move she makes will give Bob a chance to make XOR 0 afterward.\n\nSo the algorithm is simply to calculate the XOR of all piles and compare the final result to 0.\n    ",
+    "javascript": "\n    ```javascript\nfunction aliceWins(piles) {\n    let xorSum = 0;\n    for (let pile of piles) {\n        xorSum ^= pile;\n    }\n    return xorSum !== 0;\n}\n```\n\n    \n    The game is actually a variant of Nim game. The optimal strategy is that both players keep reducing piles to ensure that the bitwise XOR of all piles remains 0. After each player's turn, if the bitwise XOR of all piles is 0, the player wins if there are no piles with stones left; otherwise, the player loses.\n\nTo determine if Alice wins, we first calculate the bitwise XOR of all the piles' sizes. If the bitwise XOR is not 0, Alice can win by making a move that changes the XOR to 0. Otherwise, Alice will lose since any move she makes will give Bob a chance to make XOR 0 afterward.\n\nSo the algorithm is simply to calculate the XOR of all piles and compare the final result to 0.\n    ",
+    "java": "\n    ```java\npublic boolean aliceWins(int[] piles) {\n    int xorSum = 0;\n    for (int pile : piles) {\n        xorSum ^= pile;\n    }\n    return xorSum != 0;\n}\n```\n\n    \n    The game is actually a variant of Nim game. The optimal strategy is that both players keep reducing piles to ensure that the bitwise XOR of all piles remains 0. After each player's turn, if the bitwise XOR of all piles is 0, the player wins if there are no piles with stones left; otherwise, the player loses.\n\nTo determine if Alice wins, we first calculate the bitwise XOR of all the piles' sizes. If the bitwise XOR is not 0, Alice can win by making a move that changes the XOR to 0. Otherwise, Alice will lose since any move she makes will give Bob a chance to make XOR 0 afterward.\n\nSo the algorithm is simply to calculate the XOR of all piles and compare the final result to 0.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

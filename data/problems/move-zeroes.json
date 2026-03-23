@@ -1,0 +1,24 @@
+{
+  "id": 283,
+  "title": "Move Zeroes",
+  "slug": "move-zeroes",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.\n\nNote that you must do this in-place without making a copy of the array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef moveZeroes(nums):\n    index = 0\n    for i in range(len(nums)):\n        if nums[i] != 0:\n            nums[index] = nums[i]\n            index += 1\n    for i in range(index, len(nums)):\n        nums[i] = 0\n```\n    \n    In each language, the algorithm starts by initializing an `index` variable with the value of 0. Next, it loops through the input array `nums`. If the current element is not zero, it assigns the value of the current element to the position indicated by the `index` and then increments the `index`. After the first loop, all non-zero elements are placed before the zero elements in the array.\n\nFinally, in the second loop, it assigns the value of 0 to all remaining positions in the array from the current `index` to the end of the array.\n\nThis algorithm maintains the relative order of non-zero elements as they are moved to the left at the beginning of the array, and ensures that zeros are moved to the end of the array. The algorithm also modifies the given array in-place as required.\n    ",
+    "javascript": "\n    ```javascript\nfunction moveZeroes(nums) {\n    let index = 0;\n    for (let i = 0; i < nums.length; i++) {\n        if (nums[i] !== 0) {\n            nums[index++] = nums[i];\n        }\n    }\n    for (let i = index; i < nums.length; i++) {\n        nums[i] = 0;\n    }\n}\n```\n    \n    In each language, the algorithm starts by initializing an `index` variable with the value of 0. Next, it loops through the input array `nums`. If the current element is not zero, it assigns the value of the current element to the position indicated by the `index` and then increments the `index`. After the first loop, all non-zero elements are placed before the zero elements in the array.\n\nFinally, in the second loop, it assigns the value of 0 to all remaining positions in the array from the current `index` to the end of the array.\n\nThis algorithm maintains the relative order of non-zero elements as they are moved to the left at the beginning of the array, and ensures that zeros are moved to the end of the array. The algorithm also modifies the given array in-place as required.\n    ",
+    "java": "\n    ```java\npublic void moveZeroes(int[] nums) {\n    int index = 0;\n    for (int i = 0; i < nums.length; i++) {\n        if (nums[i] != 0) {\n            nums[index++] = nums[i];\n        }\n    }\n    for (int i = index; i < nums.length; i++) {\n        nums[i] = 0;\n    }\n}\n```\n    \n    In each language, the algorithm starts by initializing an `index` variable with the value of 0. Next, it loops through the input array `nums`. If the current element is not zero, it assigns the value of the current element to the position indicated by the `index` and then increments the `index`. After the first loop, all non-zero elements are placed before the zero elements in the array.\n\nFinally, in the second loop, it assigns the value of 0 to all remaining positions in the array from the current `index` to the end of the array.\n\nThis algorithm maintains the relative order of non-zero elements as they are moved to the left at the beginning of the array, and ensures that zeros are moved to the end of the array. The algorithm also modifies the given array in-place as required.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

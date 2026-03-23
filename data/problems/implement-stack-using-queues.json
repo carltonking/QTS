@@ -1,0 +1,24 @@
+{
+  "id": 225,
+  "title": "Implement Stack using Queues",
+  "slug": "implement-stack-using-queues",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Implement a last-in-first-out (LIFO) stack using only two queues. The implemented stack should support all the functions of a normal stack (push, top, pop, and empty).\n\nImplement the MyStack class:\n\n*   void push(int x) Pushes element x to the top of the stack.\n*   int pop() Removes the element on the top of the stack and returns it.\n*   int top() Returns the element on the top of the stack.\n*   boolean empty() Returns true if the stack is empty, false otherwise.\n\nNotes:\n\n*   You must use only standard operations of a queue, which means that only push to back, peek/pop from front, size and is empty operations are valid.\n*   Depending on your language, the queue may not be supported natively. You may simulate a queue using a list or deque (double-ended queue) as long as you use only a queue's standard operations.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import deque\n\nclass MyStack:\n\n    def __init__(self):\n        self.q1 = deque()\n        self.q2 = deque()\n\n    def push(self, x: int) -> None:\n        self.q2.append(x)\n        while self.q1:\n            self.q2.append(self.q1.popleft())\n        self.q1, self.q2 = self.q2, self.q1\n\n    def pop(self) -> int:\n        return self.q1.popleft()\n\n    def top(self) -> int:\n        return self.q1[0]\n\n    def empty(self) -> bool:\n        return not self.q1\n```\n    \n    We have two queues q1 and q2, where we will store the elements. For every push operation, we first push the new element into q2, then move all the elements in the q1 to q2, and then swap both queues. The pop and top operations will always operate on q1, which maintains the elements in the reverse order, simulating the LIFO order of a stack. The empty operation simply checks if q1 is empty.\n\nThe time complexity for push is O(n), while the time complexities for top, pop, and empty are O(1).\n    ",
+    "javascript": "\n    ```javascript\nclass MyStack {\n    constructor() {\n        this.q1 = [];\n        this.q2 = [];\n    }\n\n    push(x) {\n        this.q2.push(x);\n        while (this.q1.length > 0) {\n            this.q2.push(this.q1.shift());\n        }\n        [this.q1, this.q2] = [this.q2, this.q1];\n    }\n\n    pop() {\n        return this.q1.shift();\n    }\n\n    top() {\n        return this.q1[0];\n    }\n\n    empty() {\n        return this.q1.length === 0;\n    }\n}\n```\n    \n    We have two queues q1 and q2, where we will store the elements. For every push operation, we first push the new element into q2, then move all the elements in the q1 to q2, and then swap both queues. The pop and top operations will always operate on q1, which maintains the elements in the reverse order, simulating the LIFO order of a stack. The empty operation simply checks if q1 is empty.\n\nThe time complexity for push is O(n), while the time complexities for top, pop, and empty are O(1).\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\nclass MyStack {\n    Queue<Integer> q1 = new LinkedList<>();\n    Queue<Integer> q2 = new LinkedList<>();\n\n    public void push(int x) {\n        q2.add(x);\n        while (!q1.isEmpty()) {\n            q2.add(q1.remove());\n        }\n        Queue<Integer> temp = q1;\n        q1 = q2;\n        q2 = temp;\n    }\n\n    public int pop() {\n        return q1.remove();\n    }\n\n    public int top() {\n        return q1.peek();\n    }\n\n    public boolean empty() {\n        return q1.isEmpty();\n    }\n}\n```\n    \n    We have two queues q1 and q2, where we will store the elements. For every push operation, we first push the new element into q2, then move all the elements in the q1 to q2, and then swap both queues. The pop and top operations will always operate on q1, which maintains the elements in the reverse order, simulating the LIFO order of a stack. The empty operation simply checks if q1 is empty.\n\nThe time complexity for push is O(n), while the time complexities for top, pop, and empty are O(1).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

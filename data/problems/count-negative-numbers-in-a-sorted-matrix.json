@@ -1,0 +1,24 @@
+{
+  "id": 1351,
+  "title": "Count Negative Numbers in a Sorted Matrix",
+  "slug": "count-negative-numbers-in-a-sorted-matrix",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a m x n matrix grid which is sorted in non-increasing order both row-wise and column-wise, return _the number of negative numbers in_ grid.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef balanced_string(s):\n    n = len(s)\n    freq_map = {}\n    for c in s:\n        freq_map[c] = freq_map.get(c, 0) + 1\n    \n    i = 0\n    result = n\n    for j in range(n):\n        freq_map[s[j]] -= 1\n        while i < n and all(freq_map.get(c, 0) <= n // 4 for c in \"QWER\"):\n            result = min(result, j - i + 1)\n            freq_map[s[i]] += 1\n            i += 1\n    \n    return result\n```\n    \n    1. Create a frequency map of characters in the given string.\n2. Initialize two pointers, i and j, to traverse the string.\n3. Traverse the string with pointer j and decrease the frequency of the current character.\n4. Check if the frequency of all characters is less than or equal to n/4. If so, update the minimum length of substring.\n5. Increment pointer i while maintaining the frequency map until the frequency of any character becomes more than n/4.\n6. Return the minimum length of substring found.\n    ",
+    "javascript": "\n    ```javascript\nfunction balancedString(s) {\n    const n = s.length;\n    const freq_map = {};\n    for (const c of s)\n        freq_map[c] = (freq_map[c] || 0) + 1;\n    \n    let i = 0, result = n;\n    for (let j = 0; j < n; j++) {\n        freq_map[s[j]]--;\n        while (i < n && ['Q', 'W', 'E', 'R'].every(c => (freq_map[c] || 0) <= n / 4)) {\n            result = Math.min(result, j - i + 1);\n            freq_map[s[i]]++;\n            i++;\n        }\n    }\n    return result;\n}\n```\n    \n    1. Create a frequency map of characters in the given string.\n2. Initialize two pointers, i and j, to traverse the string.\n3. Traverse the string with pointer j and decrease the frequency of the current character.\n4. Check if the frequency of all characters is less than or equal to n/4. If so, update the minimum length of substring.\n5. Increment pointer i while maintaining the frequency map until the frequency of any character becomes more than n/4.\n6. Return the minimum length of substring found.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\n\npublic int balancedString(String s) {\n    int n = s.length();\n    HashMap<Character, Integer> freq_map = new HashMap<>();\n    for (char c : s.toCharArray())\n        freq_map.put(c, freq_map.getOrDefault(c, 0) + 1);\n    \n    int i = 0, result = n;\n    for (int j = 0; j < n; j++) {\n        freq_map.put(s.charAt(j), freq_map.get(s.charAt(j)) - 1);\n        while (i < n && freq_map.getOrDefault('Q', 0) <= n / 4 && freq_map.getOrDefault('W', 0) <= n / 4 && freq_map.getOrDefault('E', 0) <= n / 4 && freq_map.getOrDefault('R', 0) <= n / 4) {\n            result = Math.min(result, j - i + 1);\n            freq_map.put(s.charAt(i), freq_map.get(s.charAt(i)) + 1);\n            i++;\n        }\n    }\n    return result;\n}\n```\n    \n    1. Create a frequency map of characters in the given string.\n2. Initialize two pointers, i and j, to traverse the string.\n3. Traverse the string with pointer j and decrease the frequency of the current character.\n4. Check if the frequency of all characters is less than or equal to n/4. If so, update the minimum length of substring.\n5. Increment pointer i while maintaining the frequency map until the frequency of any character becomes more than n/4.\n6. Return the minimum length of substring found.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

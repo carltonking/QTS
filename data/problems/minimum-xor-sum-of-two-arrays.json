@@ -1,0 +1,24 @@
+{
+  "id": 1879,
+  "title": "Minimum XOR Sum of Two Arrays",
+  "slug": "minimum-xor-sum-of-two-arrays",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given two integer arrays nums1 and nums2 of length n.\n\nThe XOR sum of the two integer arrays is (nums1[0] XOR nums2[0]) + (nums1[1] XOR nums2[1]) + ... + (nums1[n - 1] XOR nums2[n - 1]) (0-indexed).\n\n*   For example, the XOR sum of [1,2,3] and [3,2,1] is equal to (1 XOR 3) + (2 XOR 2) + (3 XOR 1) = 2 + 0 + 2 = 4.\n\nRearrange the elements of nums2 such that the resulting XOR sum is minimized.\n\nReturn _the XOR sum after the rearrangement_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_score(a: int, b: int, c: int) -> int:\n    return (a + b + c - max(a, b, c)) // 2\n```\n\n    \n    The algorithm works by calculating the sum of all three piles `a`, `b`, and `c` and subtracting the size of the largest pile. Since we can only take stones from two different piles at a time, we cannot take stones from the largest pile after we've equalized the stones in the other two piles. So, by subtracting the size of the largest pile, we're essentially finding out the sum of the stones in the other two piles that can be used for scoring points. Finally, we divide our result by 2 since we need two stones to score a point. In Python, we use integer division `//` to get the result as an integer.\n\nThe key insight is that the optimal strategy is to always take stones from the two largest piles in every turn. This way, the pile sizes remain as matched as possible, ensuring we maximize the number of moves available to us. Since each move reduces the sum of the two largest piles by one, we can simplify the calculation as described above without enumerating each move explicitly. \n    ",
+    "javascript": "\n    ```javascript\nfunction maxScore(a, b, c) {\n    return (a + b + c - Math.max(a, Math.max(b, c))) / 2;\n}\n```\n\n    \n    The algorithm works by calculating the sum of all three piles `a`, `b`, and `c` and subtracting the size of the largest pile. Since we can only take stones from two different piles at a time, we cannot take stones from the largest pile after we've equalized the stones in the other two piles. So, by subtracting the size of the largest pile, we're essentially finding out the sum of the stones in the other two piles that can be used for scoring points. Finally, we divide our result by 2 since we need two stones to score a point. In Python, we use integer division `//` to get the result as an integer.\n\nThe key insight is that the optimal strategy is to always take stones from the two largest piles in every turn. This way, the pile sizes remain as matched as possible, ensuring we maximize the number of moves available to us. Since each move reduces the sum of the two largest piles by one, we can simplify the calculation as described above without enumerating each move explicitly. \n    ",
+    "java": "\n    ```java\npublic int maxScore(int a, int b, int c) {\n    return (a + b + c - Math.max(a, Math.max(b, c))) / 2;\n}\n```\n\n    \n    The algorithm works by calculating the sum of all three piles `a`, `b`, and `c` and subtracting the size of the largest pile. Since we can only take stones from two different piles at a time, we cannot take stones from the largest pile after we've equalized the stones in the other two piles. So, by subtracting the size of the largest pile, we're essentially finding out the sum of the stones in the other two piles that can be used for scoring points. Finally, we divide our result by 2 since we need two stones to score a point. In Python, we use integer division `//` to get the result as an integer.\n\nThe key insight is that the optimal strategy is to always take stones from the two largest piles in every turn. This way, the pile sizes remain as matched as possible, ensuring we maximize the number of moves available to us. Since each move reduces the sum of the two largest piles by one, we can simplify the calculation as described above without enumerating each move explicitly. \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

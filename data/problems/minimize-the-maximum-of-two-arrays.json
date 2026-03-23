@@ -1,0 +1,24 @@
+{
+  "id": 2513,
+  "title": "Minimize the Maximum of Two Arrays",
+  "slug": "minimize-the-maximum-of-two-arrays",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "We have two arrays arr1 and arr2 which are initially empty. You need to add positive integers to them such that they satisfy all the following conditions:\n\n*   arr1 contains uniqueCnt1 distinct positive integers, each of which is not divisible by divisor1.\n*   arr2 contains uniqueCnt2 distinct positive integers, each of which is not divisible by divisor2.\n*   No integer is present in both arr1 and arr2.\n\nGiven divisor1, divisor2, uniqueCnt1, and uniqueCnt2, return _the minimum possible maximum integer that can be present in either array_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minimum_possible_max(divisor1, divisor2, unique_cnt1, unique_cnt2):\n    return (divisor1 - 1) * unique_cnt1 + (divisor2 - 1) * unique_cnt2 + 1\n```\n    \n    To find the minimum possible maximum integer, we distribute numbers to both arrays while avoiding overlap between the two arrays and numbers that are divisible by the respective divisors. The maximum element in arr1 can be found by selecting uniqueCnt1 numbers not divisible by divisor1, and similarly for arr2.\n\nIn general, the formula for the minimum possible maximum integer can be determined by the following expression: \n```\n(divisor1 - 1) * uniqueCnt1 + (divisor2 - 1) * uniqueCnt2 + 1\n```\nThis formula results from choosing the first uniqueCnt1 numbers not divisible by divisor1 and the first uniqueCnt2 numbers not divisible by divisor2, with differing increments ensuring no overlap between the two arrays.\n\nBy applying this formula in the given function, we can simply return the minimum possible maximum integer satisfying all the given conditions.\n    ",
+    "javascript": "\n    ```javascript\nfunction minimumPossibleMax(divisor1, divisor2, uniqueCnt1, uniqueCnt2) {\n    return (divisor1 - 1) * uniqueCnt1 + (divisor2 - 1) * uniqueCnt2 + 1;\n}\n```\n    \n    To find the minimum possible maximum integer, we distribute numbers to both arrays while avoiding overlap between the two arrays and numbers that are divisible by the respective divisors. The maximum element in arr1 can be found by selecting uniqueCnt1 numbers not divisible by divisor1, and similarly for arr2.\n\nIn general, the formula for the minimum possible maximum integer can be determined by the following expression: \n```\n(divisor1 - 1) * uniqueCnt1 + (divisor2 - 1) * uniqueCnt2 + 1\n```\nThis formula results from choosing the first uniqueCnt1 numbers not divisible by divisor1 and the first uniqueCnt2 numbers not divisible by divisor2, with differing increments ensuring no overlap between the two arrays.\n\nBy applying this formula in the given function, we can simply return the minimum possible maximum integer satisfying all the given conditions.\n    ",
+    "java": "\n    ```java\npublic int minimumPossibleMax(int divisor1, int divisor2, int uniqueCnt1, int uniqueCnt2) {\n    return (divisor1 - 1) * uniqueCnt1 + (divisor2 - 1) * uniqueCnt2 + 1;\n}\n```\n    \n    To find the minimum possible maximum integer, we distribute numbers to both arrays while avoiding overlap between the two arrays and numbers that are divisible by the respective divisors. The maximum element in arr1 can be found by selecting uniqueCnt1 numbers not divisible by divisor1, and similarly for arr2.\n\nIn general, the formula for the minimum possible maximum integer can be determined by the following expression: \n```\n(divisor1 - 1) * uniqueCnt1 + (divisor2 - 1) * uniqueCnt2 + 1\n```\nThis formula results from choosing the first uniqueCnt1 numbers not divisible by divisor1 and the first uniqueCnt2 numbers not divisible by divisor2, with differing increments ensuring no overlap between the two arrays.\n\nBy applying this formula in the given function, we can simply return the minimum possible maximum integer satisfying all the given conditions.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

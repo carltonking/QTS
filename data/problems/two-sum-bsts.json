@@ -1,0 +1,24 @@
+{
+  "id": 1214,
+  "title": "Two Sum BSTs",
+  "slug": "two-sum-bsts",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the roots of two binary search trees, root1 and root2, return true if and only if there is a node in the first tree and a node in the second tree whose values sum up to a given integer target.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef twoSumBSTs(root1, root2, target):\n    def build_set(node, s):\n        if node:\n            s.add(node.val)\n            build_set(node.left, s)\n            build_set(node.right, s)\n\n    def find_pair(node, target, s):\n        if node:\n            if target - node.val in s:\n                return True\n            return find_pair(node.left, target, s) or find_pair(node.right, target, s)\n        return False\n\n    s = set()\n    build_set(root1, s)\n    return find_pair(root2, target, s)\n```\n    \n    The algorithm consists of the following steps:\n\n1. Traverse the first binary search tree `root1` and store all its values in a set `s`.\n2. Traverse the second binary search tree `root2`, and for each node, check if `target - node.val` is present in set `s`.\n3. Return true if a pair of nodes from both trees sum up to `target` exists, otherwise, return false.\n\nThe time complexity is O(n1 + n2) where n1 and n2 are the number of nodes in each tree, and the space complexity is O(n1).\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(val, left = null, right = null) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\nfunction twoSumBSTs(root1, root2, target) {\n    const set = new Set();\n\n    const buildSet = (node, set) => {\n        if (node) {\n            set.add(node.val);\n            buildSet(node.left, set);\n            buildSet(node.right, set);\n        }\n    };\n\n    const findPair = (node, target, set) => {\n        if (node) {\n            if (set.has(target - node.val)) {\n                return true;\n            }\n            return findPair(node.left, target, set) || findPair(node.right, target, set);\n        }\n        return false;\n    };\n\n    buildSet(root1, set);\n    return findPair(root2, target, set);\n}\n```\n\n    \n    The algorithm consists of the following steps:\n\n1. Traverse the first binary search tree `root1` and store all its values in a set `s`.\n2. Traverse the second binary search tree `root2`, and for each node, check if `target - node.val` is present in set `s`.\n3. Return true if a pair of nodes from both trees sum up to `target` exists, otherwise, return false.\n\nThe time complexity is O(n1 + n2) where n1 and n2 are the number of nodes in each tree, and the space complexity is O(n1).\n    ",
+    "java": "\n    ```java\npublic class TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n    TreeNode() {}\n    TreeNode(int val) { this.val = val; }\n    TreeNode(int val, TreeNode left, TreeNode right) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\npublic boolean twoSumBSTs(TreeNode root1, TreeNode root2, int target) {\n    Set<Integer> set = new HashSet<>();\n    buildSet(root1, set);\n    return findPair(root2, target, set);\n}\n\nprivate void buildSet(TreeNode root, Set<Integer> set) {\n    if (root == null) return;\n    set.add(root.val);\n    buildSet(root.left, set);\n    buildSet(root.right, set);\n}\n\nprivate boolean findPair(TreeNode root, int target, Set<Integer> set) {\n    if (root == null) return false;\n    if (set.contains(target - root.val)) return true;\n    return findPair(root.left, target, set) || findPair(root.right, target, set);\n}\n```\n    \n    The algorithm consists of the following steps:\n\n1. Traverse the first binary search tree `root1` and store all its values in a set `s`.\n2. Traverse the second binary search tree `root2`, and for each node, check if `target - node.val` is present in set `s`.\n3. Return true if a pair of nodes from both trees sum up to `target` exists, otherwise, return false.\n\nThe time complexity is O(n1 + n2) where n1 and n2 are the number of nodes in each tree, and the space complexity is O(n1).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

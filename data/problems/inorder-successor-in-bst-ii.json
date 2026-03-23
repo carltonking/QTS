@@ -1,0 +1,24 @@
+{
+  "id": 510,
+  "title": "Inorder Successor in BST II",
+  "slug": "inorder-successor-in-bst-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a node in a binary search tree, return _the in-order successor of that node in the BST_. If that node has no in-order successor, return null.\n\nThe successor of a node is the node with the smallest key greater than node.val.\n\nYou will have direct access to the node but not to the root of the tree. Each node will have a reference to its parent node. Below is the definition for Node:\n\nclass Node {\n    public int val;\n    public Node left;\n    public Node right;\n    public Node parent;\n}",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass Node:\n    def __init__(self, val, left=None, right=None, parent=None):\n        self.val = val\n        self.left = left\n        self.right = right\n        self.parent = parent\n\ndef inorder_successor(node: Node) -> Node:\n    if node.right:\n        node = node.right\n        while node.left:\n            node = node.left\n        return node\n\n    while node.parent and node == node.parent.right:\n        node = node.parent\n\n    return node.parent\n```\n    \n    Algorithm:\n\n1. If the node has a right child, then the in-order successor of the node is the leftmost node in its right sub-tree.\n2. If the node doesn't have a right child, follow the parent pointers until we either find a node that is a left child or we reach the root:\n    - If we find a node that is a left child, then the in-order successor is its parent.\n    - If we reach the root, then the current node is the last node in in-order traversal, so its in-order successor is `null`.\n    ",
+    "javascript": "\n    ```javascript\nclass Node {\n    constructor(val, left = null, right = null, parent = null) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n        this.parent = parent;\n    }\n}\n\nfunction inorderSuccessor(node) {\n    if (node.right) {\n        node = node.right;\n        while (node.left) {\n            node = node.left;\n        }\n        return node;\n    }\n    while (node.parent && node === node.parent.right) {\n        node = node.parent;\n    }\n    return node.parent;\n}\n```\n    \n    Algorithm:\n\n1. If the node has a right child, then the in-order successor of the node is the leftmost node in its right sub-tree.\n2. If the node doesn't have a right child, follow the parent pointers until we either find a node that is a left child or we reach the root:\n    - If we find a node that is a left child, then the in-order successor is its parent.\n    - If we reach the root, then the current node is the last node in in-order traversal, so its in-order successor is `null`.\n    ",
+    "java": "\n    ```java\nclass Node {\n    public int val;\n    public Node left;\n    public Node right;\n    public Node parent;\n}\n\npublic Node inorderSuccessor(Node node) {\n    if (node.right != null) {\n        node = node.right;\n        while (node.left != null) {\n            node = node.left;\n        }\n        return node;\n    }\n    while (node.parent != null && node == node.parent.right) {\n        node = node.parent;\n    }\n    return node.parent;\n}\n```\n    \n    Algorithm:\n\n1. If the node has a right child, then the in-order successor of the node is the leftmost node in its right sub-tree.\n2. If the node doesn't have a right child, follow the parent pointers until we either find a node that is a left child or we reach the root:\n    - If we find a node that is a left child, then the in-order successor is its parent.\n    - If we reach the root, then the current node is the last node in in-order traversal, so its in-order successor is `null`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

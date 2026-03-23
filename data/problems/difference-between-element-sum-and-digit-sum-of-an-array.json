@@ -1,0 +1,24 @@
+{
+  "id": 2535,
+  "title": "Difference Between Element Sum and Digit Sum of an Array",
+  "slug": "difference-between-element-sum-and-digit-sum-of-an-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a positive integer array nums.\n\n*   The element sum is the sum of all the elements in nums.\n*   The digit sum is the sum of all the digits (not necessarily distinct) that appear in nums.\n\nReturn _the absolute difference between the element sum and digit sum of_ nums.\n\nNote that the absolute difference between two integers x and y is defined as |x - y|.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef difference_between_element_and_digit_sum(nums):\n    element_sum = sum(nums)\n    digit_sum = sum(sum(int(digit) for digit in str(num)) for num in nums)\n    return abs(element_sum - digit_sum)\n```\n    \n    The idea here is to calculate the element sum and digit sum in one pass of the input list. We iterate through the input list, adding each number to the element sum. To get the digit sum, we keep dividing the number by 10 and adding the remainder to the digit sum until the number becomes 0. Once we have the element sum and digit sum, we can return the absolute difference between them. The specific implementation will vary slightly between different languages, but the overall algorithm should be the same.\n    ",
+    "javascript": "\n    ```javascript\nfunction differenceBetweenElementAndDigitSum(nums) {\n    let element_sum = 0, digit_sum = 0;\n    for (let num of nums) {\n        element_sum += num;\n        while (num > 0) {\n            digit_sum += num % 10;\n            num = Math.floor(num / 10);\n        }\n    }\n    return Math.abs(element_sum - digit_sum);\n}\n```\n    \n    The idea here is to calculate the element sum and digit sum in one pass of the input list. We iterate through the input list, adding each number to the element sum. To get the digit sum, we keep dividing the number by 10 and adding the remainder to the digit sum until the number becomes 0. Once we have the element sum and digit sum, we can return the absolute difference between them. The specific implementation will vary slightly between different languages, but the overall algorithm should be the same.\n    ",
+    "java": "\n    ```java\npublic int differenceBetweenElementAndDigitSum(int[] nums) {\n    int element_sum = 0, digit_sum = 0;\n    for (int num : nums) {\n        element_sum += num;\n        while (num > 0) {\n            digit_sum += num % 10;\n            num /= 10;\n        }\n    }\n    return Math.abs(element_sum - digit_sum);\n}\n```\n    \n    The idea here is to calculate the element sum and digit sum in one pass of the input list. We iterate through the input list, adding each number to the element sum. To get the digit sum, we keep dividing the number by 10 and adding the remainder to the digit sum until the number becomes 0. Once we have the element sum and digit sum, we can return the absolute difference between them. The specific implementation will vary slightly between different languages, but the overall algorithm should be the same.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

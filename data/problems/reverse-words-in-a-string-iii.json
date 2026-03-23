@@ -1,0 +1,24 @@
+{
+  "id": 557,
+  "title": "Reverse Words in a String III",
+  "slug": "reverse-words-in-a-string-iii",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a string s, reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef reverse_words_in_string(s: str) -> str:\n    return \" \".join(word[::-1] for word in s.split(\" \"))\n```\n    \n    The algorithm first splits the input string `s` into words based on whitespace. Then, for each word, it reverses the order of characters and appends it to the output. Finally, the reversed words are joined with whitespace and returned as the result.\n\nIn each language implementation:\n- C++: The algorithm uses `istringstream` to split the string into words and `ostringstream` to create the output string.\n- Java: The algorithm splits the string using `split`, reverses each word using `StringBuilder` and then `String.join` to join the words with a space delimiter.\n- Python: The algorithm uses a list comprehension to reverse the words in the input string and `join` to concatenate them.\n- JavaScript: The algorithm uses `split`, `map`, and `join` operations on the input string to reverse each word and concatenate them.\n    ",
+    "javascript": "\n    ```javascript\nfunction reverseWordsInString(s) {\n    return s.split(' ').map(word => word.split('').reverse().join('')).join(' ');\n}\n```\n    \n    The algorithm first splits the input string `s` into words based on whitespace. Then, for each word, it reverses the order of characters and appends it to the output. Finally, the reversed words are joined with whitespace and returned as the result.\n\nIn each language implementation:\n- C++: The algorithm uses `istringstream` to split the string into words and `ostringstream` to create the output string.\n- Java: The algorithm splits the string using `split`, reverses each word using `StringBuilder` and then `String.join` to join the words with a space delimiter.\n- Python: The algorithm uses a list comprehension to reverse the words in the input string and `join` to concatenate them.\n- JavaScript: The algorithm uses `split`, `map`, and `join` operations on the input string to reverse each word and concatenate them.\n    ",
+    "java": "\n    ```java\nimport java.util.StringJoiner;\n\npublic String reverseWordsInString(String s) {\n    String[] words = s.split(\" \");\n    for (int i = 0; i < words.length; i++) {\n        words[i] = new StringBuilder(words[i]).reverse().toString();\n    }\n    return String.join(\" \", words);\n}\n```\n    \n    The algorithm first splits the input string `s` into words based on whitespace. Then, for each word, it reverses the order of characters and appends it to the output. Finally, the reversed words are joined with whitespace and returned as the result.\n\nIn each language implementation:\n- C++: The algorithm uses `istringstream` to split the string into words and `ostringstream` to create the output string.\n- Java: The algorithm splits the string using `split`, reverses each word using `StringBuilder` and then `String.join` to join the words with a space delimiter.\n- Python: The algorithm uses a list comprehension to reverse the words in the input string and `join` to concatenate them.\n- JavaScript: The algorithm uses `split`, `map`, and `join` operations on the input string to reverse each word and concatenate them.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

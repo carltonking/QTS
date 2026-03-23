@@ -1,0 +1,24 @@
+{
+  "id": 229,
+  "title": "Majority Element II",
+  "slug": "majority-element-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef majorityElement(nums):\n    n = len(nums)\n    count = {}\n    result = []\n\n    for num in nums:\n        if num not in count:\n            count[num] = 1\n        else:\n            count[num] += 1\n        if count[num] > n / 3 and num not in result:\n            result.append(num)\n\n    return result\n```\n    \n    The algorithm maintains a count of occurrences of each element in the given array using a hash table. For each element, it increments its count in the hash table. If the count for the current element exceeds `n/3`, and the element is not already in the result array, it adds the element to the result array. The result array will contain all elements that appear more than `n/3` times.\n\nThis solution has linear time complexity, but requires additional space for the hashmap. A truly optimal solution in `O(1)` space can be found using the Boyer-Moore Majority Vote Algorithm. However, this algorithm may be more challenging to understand and implement.\n    ",
+    "javascript": "\n    ```javascript\nfunction majorityElement(nums) {\n    const n = nums.length;\n    const count = {};\n    const result = [];\n\n    for (const num of nums) {\n        if (count.hasOwnProperty(num)) {\n            count[num]++;\n        } else {\n            count[num] = 1;\n        }\n        if (count[num] > n / 3 && !result.includes(num)) {\n            result.push(num);\n        }\n    }\n    return result;\n}\n```\n    \n    The algorithm maintains a count of occurrences of each element in the given array using a hash table. For each element, it increments its count in the hash table. If the count for the current element exceeds `n/3`, and the element is not already in the result array, it adds the element to the result array. The result array will contain all elements that appear more than `n/3` times.\n\nThis solution has linear time complexity, but requires additional space for the hashmap. A truly optimal solution in `O(1)` space can be found using the Boyer-Moore Majority Vote Algorithm. However, this algorithm may be more challenging to understand and implement.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.HashMap;\nimport java.util.List;\n\npublic List<Integer> majorityElement(int[] nums) {\n    int n = nums.length;\n    HashMap<Integer, Integer> count = new HashMap<>();\n    ArrayList<Integer> result = new ArrayList<>();\n\n    for (int num : nums) {\n        count.put(num, count.getOrDefault(num, 0) + 1);\n        if (count.get(num) > n / 3 && !result.contains(num)) {\n            result.add(num);\n        }\n    }\n    return result;\n}\n```\n    \n    The algorithm maintains a count of occurrences of each element in the given array using a hash table. For each element, it increments its count in the hash table. If the count for the current element exceeds `n/3`, and the element is not already in the result array, it adds the element to the result array. The result array will contain all elements that appear more than `n/3` times.\n\nThis solution has linear time complexity, but requires additional space for the hashmap. A truly optimal solution in `O(1)` space can be found using the Boyer-Moore Majority Vote Algorithm. However, this algorithm may be more challenging to understand and implement.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

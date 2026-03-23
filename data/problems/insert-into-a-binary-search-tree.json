@@ -1,0 +1,24 @@
+{
+  "id": 701,
+  "title": "Insert into a Binary Search Tree",
+  "slug": "insert-into-a-binary-search-tree",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given the root node of a binary search tree (BST) and a value to insert into the tree. Return _the root node of the BST after the insertion_. It is guaranteed that the new value does not exist in the original BST.\n\nNotice that there may exist multiple valid ways for the insertion, as long as the tree remains a BST after insertion. You can return any of them.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef insertIntoBST(root, val):\n    if root is None:\n        return TreeNode(val)\n\n    if val < root.val:\n        root.left = insertIntoBST(root.left, val)\n    else:\n        root.right = insertIntoBST(root.right, val)\n\n    return root\n```\n    \n    The algorithm is a recursive algorithm that traverses the BST while looking for the correct position to insert the new value. From the root node, we compare the new value with the current node's value. If the new value is less than the current node's value, we move to the left child, and if the new value is greater, we move to the right child. We repeat this process until we reach a null child, in which case, we insert the new value as the child at that position. The base case is when the given root is null, in which case we simply return a new node with the value to insert. This guarantees that the resulting tree remains a valid BST after the insertion.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(val, left = null, right = null) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\nfunction insertIntoBST(root, val) {\n    if (!root) {\n        return new TreeNode(val);\n    }\n\n    if (val < root.val) {\n        root.left = insertIntoBST(root.left, val);\n    } else {\n        root.right = insertIntoBST(root.right, val);\n    }\n\n    return root;\n}\n```\n\n    \n    The algorithm is a recursive algorithm that traverses the BST while looking for the correct position to insert the new value. From the root node, we compare the new value with the current node's value. If the new value is less than the current node's value, we move to the left child, and if the new value is greater, we move to the right child. We repeat this process until we reach a null child, in which case, we insert the new value as the child at that position. The base case is when the given root is null, in which case we simply return a new node with the value to insert. This guarantees that the resulting tree remains a valid BST after the insertion.\n    ",
+    "java": "\n    ```java\npublic class TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n\n    TreeNode() {}\n    TreeNode(int val) { this.val = val; }\n    TreeNode(int val, TreeNode left, TreeNode right) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\npublic TreeNode insertIntoBST(TreeNode root, int val) {\n    if (root == null) {\n        return new TreeNode(val);\n    }\n\n    if (val < root.val) {\n        root.left = insertIntoBST(root.left, val);\n    } else {\n        root.right = insertIntoBST(root.right, val);\n    }\n\n    return root;\n}\n```\n    \n    The algorithm is a recursive algorithm that traverses the BST while looking for the correct position to insert the new value. From the root node, we compare the new value with the current node's value. If the new value is less than the current node's value, we move to the left child, and if the new value is greater, we move to the right child. We repeat this process until we reach a null child, in which case, we insert the new value as the child at that position. The base case is when the given root is null, in which case we simply return a new node with the value to insert. This guarantees that the resulting tree remains a valid BST after the insertion.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

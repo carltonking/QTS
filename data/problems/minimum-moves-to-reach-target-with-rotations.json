@@ -1,0 +1,24 @@
+{
+  "id": 1210,
+  "title": "Minimum Moves to Reach Target with Rotations",
+  "slug": "minimum-moves-to-reach-target-with-rotations",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "In an n*n grid, there is a snake that spans 2 cells and starts moving from the top left corner at (0, 0) and (0, 1). The grid has empty cells represented by zeros and blocked cells represented by ones. The snake wants to reach the lower right corner at (n-1, n-2) and (n-1, n-1).\n\nIn one move the snake can:\n\n*   Move one cell to the right if there are no blocked cells there. This move keeps the horizontal/vertical position of the snake as it is.\n*   Move down one cell if there are no blocked cells there. This move keeps the horizontal/vertical position of the snake as it is.\n*   Rotate clockwise if it's in a horizontal position and the two cells under it are both empty. In that case the snake moves from (r, c) and (r, c+1) to (r, c) and (r+1, c).\n\n*   Rotate counterclockwise if it's in a vertical position and the two cells to its right are both empty. In that case the snake moves from (r, c) and (r+1, c) to (r, c) and (r, c+1).\n\nReturn the minimum number of moves to reach the target.\n\nIf there is no way to reach the target, return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef trimmed_mean(arr):\n    n = len(arr)\n    remove = int(n * 0.05)\n    arr.sort()\n    return sum(arr[remove:n - remove]) / (n - 2 * remove)\n```\n    \n    1. Calculate the number of elements to remove from each side which is equal to 5% of the array length.\n2. Sort the input array in ascending order.\n3. Calculate the sum of the remaining elements after removing the smallest 5% and largest 5% of the sorted array.\n4. Return the mean for the remaining elements by dividing the sum by `(n - 2 * remove)`.\n    ",
+    "javascript": "\n    ```javascript\nfunction trimmedMean(arr) {\n    const n = arr.length;\n    const remove = Math.floor(n * 0.05);\n    arr.sort((a, b) => a - b);\n    let sum = 0.0;\n    for (let i = remove; i < n - remove; i++) {\n        sum += arr[i];\n    }\n    return sum / (n - 2 * remove);\n}\n```\n\n    \n    1. Calculate the number of elements to remove from each side which is equal to 5% of the array length.\n2. Sort the input array in ascending order.\n3. Calculate the sum of the remaining elements after removing the smallest 5% and largest 5% of the sorted array.\n4. Return the mean for the remaining elements by dividing the sum by `(n - 2 * remove)`.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic double trimmedMean(int[] arr) {\n    int n = arr.length;\n    int remove = (int) (n * 0.05);\n    Arrays.sort(arr);\n    double sum = 0.0;\n    for (int i = remove; i < n - remove; i++) {\n        sum += arr[i];\n    }\n    return sum / (n - 2 * remove);\n}\n```\n    \n    1. Calculate the number of elements to remove from each side which is equal to 5% of the array length.\n2. Sort the input array in ascending order.\n3. Calculate the sum of the remaining elements after removing the smallest 5% and largest 5% of the sorted array.\n4. Return the mean for the remaining elements by dividing the sum by `(n - 2 * remove)`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

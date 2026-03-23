@@ -1,0 +1,24 @@
+{
+  "id": 977,
+  "title": "Squares of a Sorted Array",
+  "slug": "squares-of-a-sorted-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer array nums sorted in non-decreasing order, return _an array of the squares of each number sorted in non-decreasing order_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef distinctSubseqII(s):\n    mod = 10**9 + 7\n    n = len(s)\n    dp = [0] * (n + 1)\n    dp[0] = 1\n    last = [-1] * 26\n\n    for i in range(1, n + 1):\n        dp[i] = (dp[i - 1] * 2) % mod\n        if last[ord(s[i - 1]) - ord('a')] != -1:\n            dp[i] = (dp[i] - dp[last[ord(s[i - 1]) - ord('a')]] + mod) % mod\n        last[ord(s[i - 1]) - ord('a')] = i - 1\n\n    dp[n] = (dp[n] - 1 + mod) % mod\n    return dp[n]\n```\n    \n    1. Initialize a dynamic programming array `dp` with length `n+1` to store the number of distinct subsequences.\n2. Initialize an array `last`, with length 26, to store the last occurrences of each letter 'a'-'z'.\n3. Iterate through the string using the index `i` ranging from `1` to `n`.\n   1. Calculate the number of distinct subsequences of length i by doubling the number of distinct subsequences of length i-1.\n   2. If the last occurrence of the current letter is not `-1`, subtract the number of distinct subsequences at the index of the last occurrence from the current dp[i] value.\n   3. Update the last occurrence array index of the current letter in the string.\n4. Subtract 1 from the number of subsequences of length `n` (removes the empty subsequence) and return the result modulo 1e9+7.\n    ",
+    "javascript": "\n    ```javascript\nfunction distinctSubseqII(s) {\n    const mod = 1e9 + 7;\n    const n = s.length;\n    const dp = new Array(n + 1).fill(0);\n    dp[0] = 1;\n    const last = new Array(26).fill(-1);\n\n    for (let i = 1; i <= n; ++i) {\n        dp[i] = (dp[i - 1] * 2) % mod;\n        if (last[s.charCodeAt(i - 1) - 'a'.charCodeAt()] !== -1) {\n            dp[i] = (dp[i] - dp[last[s.charCodeAt(i - 1) - 'a'.charCodeAt()]] + mod) % mod;\n        }\n        last[s.charCodeAt(i - 1) - 'a'.charCodeAt()] = i - 1;\n    }\n\n    dp[n] = (dp[n] - 1 + mod) % mod;\n    return dp[n];\n}\n```\n\n    \n    1. Initialize a dynamic programming array `dp` with length `n+1` to store the number of distinct subsequences.\n2. Initialize an array `last`, with length 26, to store the last occurrences of each letter 'a'-'z'.\n3. Iterate through the string using the index `i` ranging from `1` to `n`.\n   1. Calculate the number of distinct subsequences of length i by doubling the number of distinct subsequences of length i-1.\n   2. If the last occurrence of the current letter is not `-1`, subtract the number of distinct subsequences at the index of the last occurrence from the current dp[i] value.\n   3. Update the last occurrence array index of the current letter in the string.\n4. Subtract 1 from the number of subsequences of length `n` (removes the empty subsequence) and return the result modulo 1e9+7.\n    ",
+    "java": "\n    ```java\npublic int distinctSubseqII(String s) {\n    int mod = (int) (1e9 + 7);\n    int n = s.length();\n    int[] dp = new int[n + 1];\n    dp[0] = 1;\n    int[] last = new int[26];\n    Arrays.fill(last, -1);\n\n    for (int i = 1; i <= n; ++i) {\n        dp[i] = (dp[i - 1] * 2) % mod;\n        if (last[s.charAt(i - 1) - 'a'] != -1) {\n            dp[i] = (dp[i] - dp[last[s.charAt(i - 1) - 'a']] + mod) % mod;\n        }\n        last[s.charAt(i - 1) - 'a'] = i - 1;\n    }\n\n    dp[n] = (dp[n] - 1 + mod) % mod;\n    return dp[n];\n}\n```\n    \n    1. Initialize a dynamic programming array `dp` with length `n+1` to store the number of distinct subsequences.\n2. Initialize an array `last`, with length 26, to store the last occurrences of each letter 'a'-'z'.\n3. Iterate through the string using the index `i` ranging from `1` to `n`.\n   1. Calculate the number of distinct subsequences of length i by doubling the number of distinct subsequences of length i-1.\n   2. If the last occurrence of the current letter is not `-1`, subtract the number of distinct subsequences at the index of the last occurrence from the current dp[i] value.\n   3. Update the last occurrence array index of the current letter in the string.\n4. Subtract 1 from the number of subsequences of length `n` (removes the empty subsequence) and return the result modulo 1e9+7.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

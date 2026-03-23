@@ -1,0 +1,24 @@
+{
+  "id": 142,
+  "title": "Linked List Cycle II",
+  "slug": "linked-list-cycle-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the head of a linked list, return _the node where the cycle begins. If there is no cycle, return_ null.\n\nThere is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the next pointer. Internally, pos is used to denote the index of the node that tail's next pointer is connected to (0-indexed). It is -1 if there is no cycle. Note that pos is not passed as a parameter.\n\nDo not modify the linked list.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef detectCycle(head):\n    slow, fast = head, head\n    \n    while fast and fast.next:\n        slow = slow.next\n        fast = fast.next.next\n        \n        if slow == fast:\n            start = head\n            while start != slow:\n                start = start.next\n                slow = slow.next\n            return start\n    \n    return None\n```\n    \n    1. Create two pointers, `slow` and `fast`, initially pointing to the head of the linked list.\n2. Iterate the `slow` pointer one step at a time, and the `fast` pointer two steps at a time.\n3. If there's a cycle in the linked list, the two pointers will eventually meet at some point.\n4. When the two pointers meet, initialize a third pointer, `start`, to the head of the linked list.\n5. Move `slow` and `start` one step at a time, while they are not equal.\n6. When `slow` and `start` are equal, return the node where they meet, which is the start of the cycle.\n7. If the loop ends without any encounter between slow and fast pointers, return null, indicating there's no cycle in the list.\n    ",
+    "javascript": "\n    ```javascript\nclass ListNode {\n    constructor(val, next = null) {\n        this.val = val;\n        this.next = next;\n    }\n}\n\nfunction detectCycle(head) {\n    let slow = head, fast = head;\n    \n    while (fast && fast.next) {\n        slow = slow.next;\n        fast = fast.next.next;\n        \n        if (slow === fast) {\n            let start = head;\n            while (start !== slow) {\n                start = start.next;\n                slow = slow.next;\n            }\n            return start;\n        }\n    }\n    \n    return null;\n}\n```\n    \n    1. Create two pointers, `slow` and `fast`, initially pointing to the head of the linked list.\n2. Iterate the `slow` pointer one step at a time, and the `fast` pointer two steps at a time.\n3. If there's a cycle in the linked list, the two pointers will eventually meet at some point.\n4. When the two pointers meet, initialize a third pointer, `start`, to the head of the linked list.\n5. Move `slow` and `start` one step at a time, while they are not equal.\n6. When `slow` and `start` are equal, return the node where they meet, which is the start of the cycle.\n7. If the loop ends without any encounter between slow and fast pointers, return null, indicating there's no cycle in the list.\n    ",
+    "java": "\n    ```java\npublic class ListNode {\n    int val;\n    ListNode next;\n}\n\npublic ListNode detectCycle(ListNode head) {\n    ListNode slow = head, fast = head;\n    \n    while (fast != null && fast.next != null) {\n        slow = slow.next;\n        fast = fast.next.next;\n        \n        if (slow == fast) {\n            ListNode start = head;\n            while (start != slow) {\n                start = start.next;\n                slow = slow.next;\n            }\n            return start;\n        }\n    }\n    \n    return null;\n}\n```\n    \n    1. Create two pointers, `slow` and `fast`, initially pointing to the head of the linked list.\n2. Iterate the `slow` pointer one step at a time, and the `fast` pointer two steps at a time.\n3. If there's a cycle in the linked list, the two pointers will eventually meet at some point.\n4. When the two pointers meet, initialize a third pointer, `start`, to the head of the linked list.\n5. Move `slow` and `start` one step at a time, while they are not equal.\n6. When `slow` and `start` are equal, return the node where they meet, which is the start of the cycle.\n7. If the loop ends without any encounter between slow and fast pointers, return null, indicating there's no cycle in the list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

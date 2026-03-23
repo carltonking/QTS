@@ -1,0 +1,24 @@
+{
+  "id": 2320,
+  "title": "Count Number of Ways to Place Houses",
+  "slug": "count-number-of-ways-to-place-houses",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There is a street with n * 2 plots, where there are n plots on each side of the street. The plots on each side are numbered from 1 to n. On each plot, a house can be placed.\n\nReturn _the number of ways houses can be placed such that no two houses are adjacent to each other on the same side of the street_. Since the answer may be very large, return it modulo 109 + 7.\n\nNote that if a house is placed on the ith plot on one side of the street, a house can also be placed on the ith plot on the other side of the street.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef k_distant_indices(nums, key, k):\n    result = []\n    for i in range(len(nums)):\n        for j in range(max(0, i - k), min(i + k + 1, len(nums))):\n            if nums[j] == key:\n                result.append(i)\n                break\n    return result\n```\n    \n    The algorithm iterates through the nums array using a nested loop. The outer loop iterates through each index i in the nums array. The inner loop iterates through the indices j in the range [i - k, i + k]. The inner loop checks whether the value in nums[j] is equal to the key. If so, it adds i to the result list and breaks the inner loop to move on to the next index i in the outer loop. This ensures that each valid k-distant index is added to the results list only once. After completing the iteration through the nums array, the algorithm returns the result list containing all k-distant indices sorted in increasing order.\n    ",
+    "javascript": "\n    ```javascript\nfunction kDistantIndices(nums, key, k) {\n  const result = [];\n  for (let i = 0; i < nums.length; i++) {\n    for (let j = Math.max(0, i - k); j <= Math.min(i + k, nums.length - 1); j++) {\n      if (nums[j] === key) {\n        result.push(i);\n        break;\n      }\n    }\n  }\n  return result;\n}\n```\n    \n    The algorithm iterates through the nums array using a nested loop. The outer loop iterates through each index i in the nums array. The inner loop iterates through the indices j in the range [i - k, i + k]. The inner loop checks whether the value in nums[j] is equal to the key. If so, it adds i to the result list and breaks the inner loop to move on to the next index i in the outer loop. This ensures that each valid k-distant index is added to the results list only once. After completing the iteration through the nums array, the algorithm returns the result list containing all k-distant indices sorted in increasing order.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<Integer> kDistantIndices(int[] nums, int key, int k) {\n  List<Integer> result = new ArrayList<>();\n  for (int i = 0; i < nums.length; i++) {\n    for (int j = Math.max(0, i - k); j <= Math.min(i + k, nums.length - 1); j++) {\n      if (nums[j] == key) {\n        result.add(i);\n        break;\n      }\n    }\n  }\n  return result;\n}\n```\n    \n    The algorithm iterates through the nums array using a nested loop. The outer loop iterates through each index i in the nums array. The inner loop iterates through the indices j in the range [i - k, i + k]. The inner loop checks whether the value in nums[j] is equal to the key. If so, it adds i to the result list and breaks the inner loop to move on to the next index i in the outer loop. This ensures that each valid k-distant index is added to the results list only once. After completing the iteration through the nums array, the algorithm returns the result list containing all k-distant indices sorted in increasing order.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

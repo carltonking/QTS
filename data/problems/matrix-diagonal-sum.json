@@ -1,0 +1,24 @@
+{
+  "id": 1572,
+  "title": "Matrix Diagonal Sum",
+  "slug": "matrix-diagonal-sum",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a square matrix mat, return the sum of the matrix diagonals.\n\nOnly include the sum of all the elements on the primary diagonal and all the elements on the secondary diagonal that are not part of the primary diagonal.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass SubrectangleQueries:\n    def __init__(self, rectangle: List[List[int]]):\n        self.rectangle = rectangle\n\n    def updateSubrectangle(self, row1: int, col1: int, row2: int, col2: int, newValue: int) -> None:\n        for i in range(row1, row2 + 1):\n            for j in range(col1, col2 + 1):\n                self.rectangle[i][j] = newValue\n\n    def getValue(self, row: int, col: int) -> int:\n        return self.rectangle[row][col]\n```\n    \n    The algorithm creates a class `SubrectangleQueries` that takes a 2D matrix called `rectangle` as input. It has two methods: `updateSubrectangle` and `getValue`. \n\n`updateSubrectangle()` takes five parameters: row1, col1, row2, col2, and newValue. It iterates over the subrectangle with top-left corner (row1, col1) and bottom-right corner (row2, col2) and updates all the values inside it to newValue.\n\n`getValue()` is a simple getter function that takes row and col as parameters and returns the value located at rectangle[row][col].\n    ",
+    "javascript": "\n    ```javascript\nclass SubrectangleQueries {\n    constructor(rectangle) {\n        this.rectangle = rectangle;\n    }\n    \n    updateSubrectangle(row1, col1, row2, col2, newValue) {\n        for(let i = row1; i <= row2; i++) {\n            for(let j = col1; j <= col2; j++) {\n                this.rectangle[i][j] = newValue;\n            }\n        }\n    }\n    \n    getValue(row, col) {\n        return this.rectangle[row][col];\n    }\n}\n```\n\n    \n    The algorithm creates a class `SubrectangleQueries` that takes a 2D matrix called `rectangle` as input. It has two methods: `updateSubrectangle` and `getValue`. \n\n`updateSubrectangle()` takes five parameters: row1, col1, row2, col2, and newValue. It iterates over the subrectangle with top-left corner (row1, col1) and bottom-right corner (row2, col2) and updates all the values inside it to newValue.\n\n`getValue()` is a simple getter function that takes row and col as parameters and returns the value located at rectangle[row][col].\n    ",
+    "java": "\n    ```java\nclass SubrectangleQueries {\n    int[][] rectangle;\n\n    public SubrectangleQueries(int[][] rectangle) {\n        this.rectangle = rectangle;\n    }\n    \n    public void updateSubrectangle(int row1, int col1, int row2, int col2, int newValue) {\n        for(int i = row1; i <= row2; i++) {\n            for(int j = col1; j <= col2; j++) {\n                rectangle[i][j] = newValue;\n            }\n        }\n    }\n    \n    public int getValue(int row, int col) {\n        return rectangle[row][col];\n    }\n}\n```\n    \n    The algorithm creates a class `SubrectangleQueries` that takes a 2D matrix called `rectangle` as input. It has two methods: `updateSubrectangle` and `getValue`. \n\n`updateSubrectangle()` takes five parameters: row1, col1, row2, col2, and newValue. It iterates over the subrectangle with top-left corner (row1, col1) and bottom-right corner (row2, col2) and updates all the values inside it to newValue.\n\n`getValue()` is a simple getter function that takes row and col as parameters and returns the value located at rectangle[row][col].\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

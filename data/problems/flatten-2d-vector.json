@@ -1,0 +1,24 @@
+{
+  "id": 251,
+  "title": "Flatten 2D Vector",
+  "slug": "flatten-2d-vector",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Design an iterator to flatten a 2D vector. It should support the next and hasNext operations.\n\nImplement the Vector2D class:\n\n*   Vector2D(int[][] vec) initializes the object with the 2D vector vec.\n*   next() returns the next element from the 2D vector and moves the pointer one step forward. You may assume that all the calls to next are valid.\n*   hasNext() returns true if there are still some elements in the vector, and false otherwise.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass Vector2D:\n    def __init__(self, vec):\n        self.vec = vec\n        self.row = 0\n        self.col = 0\n\n    def next(self):\n        val = self.vec[self.row][self.col]\n        self.col += 1\n        return val\n\n    def hasNext(self):\n        while self.row < len(self.vec):\n            if self.col < len(self.vec[self.row]):\n                return True\n            self.row += 1\n            self.col = 0\n        return False\n```\n\n    \n    The algorithm is quite straightforward. We track the indices `row` and `col` for traversal. In C++ and Java implementations, iterators are used for the same purpose.\n\n1. In the constructor, we initialize the 2D vector and set the initial row and columns to zero.\n\n2. In the `next()` function, we return the value corresponding to the indices (or iterators) and increment the column (or iterator) by 1.\n\n3. In the `hasNext()` function, we check if we have a valid element and if not, we try to move forward to the next row (or iterator) and reset the column (or iterator) to 0. This process continues until we find a valid element, or we reach the end of the 2D vector. If a valid element is found, it returns true. Otherwise, it returns false.\n    ",
+    "javascript": "\n    ```javascript\nclass Vector2D {\n    constructor(vec) {\n        this.vec = vec;\n        this.row = 0;\n        this.col = 0;\n    }\n\n    next() {\n        const val = this.vec[this.row][this.col];\n        this.col++;\n        return val;\n    }\n\n    hasNext() {\n        while (this.row < this.vec.length) {\n            if (this.col < this.vec[this.row].length) {\n                return true;\n            }\n            this.row++;\n            this.col = 0;\n        }\n        return false;\n    }\n}\n```\n\n    \n    The algorithm is quite straightforward. We track the indices `row` and `col` for traversal. In C++ and Java implementations, iterators are used for the same purpose.\n\n1. In the constructor, we initialize the 2D vector and set the initial row and columns to zero.\n\n2. In the `next()` function, we return the value corresponding to the indices (or iterators) and increment the column (or iterator) by 1.\n\n3. In the `hasNext()` function, we check if we have a valid element and if not, we try to move forward to the next row (or iterator) and reset the column (or iterator) to 0. This process continues until we find a valid element, or we reach the end of the 2D vector. If a valid element is found, it returns true. Otherwise, it returns false.\n    ",
+    "java": "\n    ```java\nimport java.util.Iterator;\nimport java.util.List;\n\npublic class Vector2D implements Iterator<Integer> {\n    private Iterator<List<Integer>> i;\n    private Iterator<Integer> j;\n\n    public Vector2D(List<List<Integer>> vec) {\n        i = vec.iterator();\n        if (i.hasNext()) {\n            j = i.next().iterator();\n        }\n    }\n\n    @Override\n    public Integer next() {\n        if (!hasNext()) {\n            return null;\n        }\n        return j.next();\n    }\n\n    @Override\n    public boolean hasNext() {\n        if (j == null) {\n            return false;\n        }\n\n        while (!j.hasNext() && i.hasNext()) {\n            j = i.next().iterator();\n        }\n\n        return j.hasNext();\n    }\n}\n```\n\n    \n    The algorithm is quite straightforward. We track the indices `row` and `col` for traversal. In C++ and Java implementations, iterators are used for the same purpose.\n\n1. In the constructor, we initialize the 2D vector and set the initial row and columns to zero.\n\n2. In the `next()` function, we return the value corresponding to the indices (or iterators) and increment the column (or iterator) by 1.\n\n3. In the `hasNext()` function, we check if we have a valid element and if not, we try to move forward to the next row (or iterator) and reset the column (or iterator) to 0. This process continues until we find a valid element, or we reach the end of the 2D vector. If a valid element is found, it returns true. Otherwise, it returns false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

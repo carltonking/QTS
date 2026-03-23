@@ -1,0 +1,24 @@
+{
+  "id": 2100,
+  "title": "Find Good Days to Rob the Bank",
+  "slug": "find-good-days-to-rob-the-bank",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You and a gang of thieves are planning on robbing a bank. You are given a 0-indexed integer array security, where security[i] is the number of guards on duty on the ith day. The days are numbered starting from 0. You are also given an integer time.\n\nThe ith day is a good day to rob the bank if:\n\n*   There are at least time days before and after the ith day,\n*   The number of guards at the bank for the time days before i are non-increasing, and\n*   The number of guards at the bank for the time days after i are non-decreasing.\n\nMore formally, this means day i is a good day to rob the bank if and only if security[i - time] >= security[i - time + 1] >= ... >= security[i] <= ... <= security[i + time - 1] <= security[i + time].\n\nReturn _a list of all days (0-indexed) that are good days to rob the bank_. _The order that the days are returned in does not matter._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minNonZeroProduct(p):\n    MOD = 10**9 + 7\n    prod = 1\n    a = (1 << p) - 2\n    b = ((1 << p) - 1) % MOD\n       \n    while a > 0:\n        if a % 2:\n            prod = (prod * b) % MOD\n        b = (b * b) % MOD\n        a //= 2\n    return prod\n```\n\n    \n    The given problem can be solved using the properties of binary numbers and modulo exponentiation.\n\n1. Initialize a variable a with the value 2^p - 2 and b with the value (2^p - 1) % MOD, where p is the given integer and MOD is 10^9 + 7.\n2. Initialize a variable prod with value 1 to store the product result.\n3. Use a while loop to continue until the variable a becomes 0.\n4. Inside the loop, check if a is an odd number. If it's odd, multiply prod by b, and take the result modulo MOD.\n5. Update the value of b as (b * b) % MOD.\n6. Divide the value of a by 2 for the next iteration.\n7. After the loop, return the final value of the prod variable.\n\nThis algorithm optimizes the problem by leveraging modulo exponentiation for efficient computations. The time complexity is O(log(p)).\n    ",
+    "javascript": "\n    ```javascript\nfunction minNonZeroProduct(p) {\n    const MOD = 1e9 + 7;\n    let prod = 1;\n    let a = (1n << BigInt(p)) - 2n;\n    let b = ((1n << BigInt(p)) - 1n) % MOD;\n    \n    while (a > 0) {\n        if (a % 2n == 1n) {\n            prod = (prod * b) % MOD;\n        }\n        b = (b * b) % MOD;\n        a /= 2n;\n    }\n    return prod;\n}\n```\n\n    \n    The given problem can be solved using the properties of binary numbers and modulo exponentiation.\n\n1. Initialize a variable a with the value 2^p - 2 and b with the value (2^p - 1) % MOD, where p is the given integer and MOD is 10^9 + 7.\n2. Initialize a variable prod with value 1 to store the product result.\n3. Use a while loop to continue until the variable a becomes 0.\n4. Inside the loop, check if a is an odd number. If it's odd, multiply prod by b, and take the result modulo MOD.\n5. Update the value of b as (b * b) % MOD.\n6. Divide the value of a by 2 for the next iteration.\n7. After the loop, return the final value of the prod variable.\n\nThis algorithm optimizes the problem by leveraging modulo exponentiation for efficient computations. The time complexity is O(log(p)).\n    ",
+    "java": "\n    ```java\nlong minNonZeroProduct(int p) {\n    final long MOD = 1000000007;\n    long prod = 1;\n    long a = (1L << p) - 2;\n    long b = ((1L << p) - 1) % MOD;\n    \n    while (a > 0) {\n        if (a % 2 == 1) {\n            prod = (prod * b) % MOD;\n        }\n        b = (b * b) % MOD;\n        a /= 2;\n    }\n    return prod;\n}\n```\n\n    \n    The given problem can be solved using the properties of binary numbers and modulo exponentiation.\n\n1. Initialize a variable a with the value 2^p - 2 and b with the value (2^p - 1) % MOD, where p is the given integer and MOD is 10^9 + 7.\n2. Initialize a variable prod with value 1 to store the product result.\n3. Use a while loop to continue until the variable a becomes 0.\n4. Inside the loop, check if a is an odd number. If it's odd, multiply prod by b, and take the result modulo MOD.\n5. Update the value of b as (b * b) % MOD.\n6. Divide the value of a by 2 for the next iteration.\n7. After the loop, return the final value of the prod variable.\n\nThis algorithm optimizes the problem by leveraging modulo exponentiation for efficient computations. The time complexity is O(log(p)).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

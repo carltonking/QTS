@@ -1,0 +1,24 @@
+{
+  "id": 644,
+  "title": "Maximum Average Subarray II",
+  "slug": "maximum-average-subarray-ii",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an integer array nums consisting of n elements, and an integer k.\n\nFind a contiguous subarray whose length is greater than or equal to k that has the maximum average value and return _this value_. Any answer with a calculation error less than 10-5 will be accepted.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findMaxAverage(nums, k):\n    total = sum(nums[:k])\n    max_avg = total / k\n    for i in range(k, len(nums)):\n        total += nums[i] - nums[i - k]\n        max_avg = max(max_avg, total / k)\n    return max_avg\n```\n    \n    The algorithm calculates the initial total of the first `k` elements, and the initial average is the total divided by `k`. Then, it iterates through the rest of the array (from the `k`-th index to the end), updating the total by removing the (i-k)-th element and adding the i-th element. At each step, it compares the new average (total/k) with the previous maximum average and updates accordingly. Finally, it returns the maximum average found.\n    ",
+    "javascript": "\n    ```javascript\nfunction findMaxAverage(nums, k) {\n    let sum = 0;\n    for(let i = 0; i < k; i++) {\n        sum += nums[i];\n    }\n\n    let max_avg = sum / k;\n    \n    for(let i = k; i < nums.length; i++) {\n        sum += nums[i] - nums[i - k];\n        max_avg = Math.max(max_avg, sum / k);\n    }\n    \n    return max_avg;\n}\n```\n    \n    The algorithm calculates the initial total of the first `k` elements, and the initial average is the total divided by `k`. Then, it iterates through the rest of the array (from the `k`-th index to the end), updating the total by removing the (i-k)-th element and adding the i-th element. At each step, it compares the new average (total/k) with the previous maximum average and updates accordingly. Finally, it returns the maximum average found.\n    ",
+    "java": "\n    ```java\npublic double findMaxAverage(int[] nums, int k) {\n    long sum = 0;\n    for(int i = 0; i < k; i++) {\n        sum += nums[i];\n    }\n\n    double max_avg = (double) sum / k;\n    \n    for(int i = k; i < nums.length; i++) {\n        sum += nums[i] - nums[i - k];\n        max_avg = Math.max(max_avg, (double) sum / k);\n    }\n    \n    return max_avg;\n}\n```\n    \n    The algorithm calculates the initial total of the first `k` elements, and the initial average is the total divided by `k`. Then, it iterates through the rest of the array (from the `k`-th index to the end), updating the total by removing the (i-k)-th element and adding the i-th element. At each step, it compares the new average (total/k) with the previous maximum average and updates accordingly. Finally, it returns the maximum average found.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

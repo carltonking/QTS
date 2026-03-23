@@ -1,0 +1,24 @@
+{
+  "id": 1356,
+  "title": "Sort Integers by The Number of 1 Bits",
+  "slug": "sort-integers-by-the-number-of-1-bits",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an integer array arr. Sort the integers in the array in ascending order by the number of 1's in their binary representation and in case of two or more integers have the same number of 1's you have to sort them in ascending order.\n\nReturn _the array after sorting it_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_moves_to_palindrome(s: str) -> int:\n    moves = 0\n    s = list(s)\n    left, right = 0, len(s) - 1\n\n    while left < right:\n        if s[left] != s[right]:\n            temp_right = right\n\n            while s[left] != s[temp_right]:\n                temp_right -= 1\n            s.insert(right, s.pop(temp_right))\n            moves += right - temp_right\n        left += 1\n        right -= 1\n\n    return moves\n```\n    \n    1. Initialize variables `moves` to store the total number of moves, and `left` and `right` pointers for both ends of string s.\n2. Iterate until the `left` pointer is less than `right`.\n   a. If the characters at the left and right pointers are not equal, find the position of the left pointer character in the remaining right section of the string.\n   b. Swap the characters found in the right section with the character at 'right' position.\n   c. Increment the number of moves by the distance between the `right` and the swap position.\n3. Increment the `left` pointer and decrement the `right` pointer after each iteration.\n4. Finally, return the total number of moves.\n    ",
+    "javascript": "\n    ```javascript\nfunction minMovesToPalindrome(s) {\n    let moves = 0;\n    s = s.split('');\n    let left = 0, right = s.length - 1;\n\n    while (left < right) {\n        if (s[left] !== s[right]) {\n            let temp_right = right;\n\n            while (s[left] !== s[temp_right]) {\n                temp_right--;\n            }\n            s.splice(right, 0, s.splice(temp_right, 1)[0]);\n            moves += right - temp_right;\n        }\n        left++;\n        right--;\n    }\n\n    return moves;\n}\n```\n    \n    1. Initialize variables `moves` to store the total number of moves, and `left` and `right` pointers for both ends of string s.\n2. Iterate until the `left` pointer is less than `right`.\n   a. If the characters at the left and right pointers are not equal, find the position of the left pointer character in the remaining right section of the string.\n   b. Swap the characters found in the right section with the character at 'right' position.\n   c. Increment the number of moves by the distance between the `right` and the swap position.\n3. Increment the `left` pointer and decrement the `right` pointer after each iteration.\n4. Finally, return the total number of moves.\n    ",
+    "java": "\n    ```java\npublic int minMovesToPalindrome(String s) {\n    char[] chars = s.toCharArray();\n    int moves = 0;\n    int left = 0, right = s.length() - 1;\n\n    while (left < right) {\n        if (chars[left] != chars[right]) {\n            int temp_right = right;\n\n            while (chars[left] != chars[temp_right]) {\n                temp_right--;\n            }\n            char temp = chars[temp_right];\n            System.arraycopy(chars, temp_right + 1, chars, temp_right, right - temp_right);\n            chars[right] = temp;\n            moves += right - temp_right;\n        }\n        left++;\n        right--;\n    }\n\n    return moves;\n}\n```\n    \n    1. Initialize variables `moves` to store the total number of moves, and `left` and `right` pointers for both ends of string s.\n2. Iterate until the `left` pointer is less than `right`.\n   a. If the characters at the left and right pointers are not equal, find the position of the left pointer character in the remaining right section of the string.\n   b. Swap the characters found in the right section with the character at 'right' position.\n   c. Increment the number of moves by the distance between the `right` and the swap position.\n3. Increment the `left` pointer and decrement the `right` pointer after each iteration.\n4. Finally, return the total number of moves.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

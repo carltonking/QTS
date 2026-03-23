@@ -1,0 +1,24 @@
+{
+  "id": 866,
+  "title": "Prime Palindrome",
+  "slug": "prime-palindrome",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer n, return _the smallest prime palindrome greater than or equal to_ n.\n\nAn integer is prime if it has exactly two divisors: 1 and itself. Note that 1 is not a prime number.\n\n*   For example, 2, 3, 5, 7, 11, and 13 are all primes.\n\nAn integer is a palindrome if it reads the same from left to right as it does from right to left.\n\n*   For example, 101 and 12321 are palindromes.\n\nThe test cases are generated so that the answer always exists and is in the range [2, 2 * 108].",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef isRectangleOverlap(rec1, rec2):\n    return rec1[2] > rec2[0] and rec1[3] > rec2[1] and rec1[0] < rec2[2] and rec1[1] < rec2[3]\n```\n    \n    The algorithm checks if the rectangles overlap by verifying that the `x` coordinate of the top-right corner of `rec1` is greater than the `x` coordinate of the bottom-left corner of `rec2`, the `y` coordinate of the top-right corner of `rec1` is greater than the `y` coordinate of the bottom-left corner of `rec2`, the `x` coordinate of the bottom-left corner of `rec1` is less than the `x` coordinate of the top-right corner of `rec2`, and the `y` coordinate of the bottom-left corner of `rec1` is less than the `y` coordinate of the top-right corner of `rec2`. If all these conditions hold, it means that the rectangles overlap, otherwise they do not.\n    ",
+    "javascript": "\n    ```javascript\nfunction isRectangleOverlap(rec1, rec2) {\n    return rec1[2] > rec2[0] && rec1[3] > rec2[1] && rec1[0] < rec2[2] && rec1[1] < rec2[3];\n}\n```\n    \n    The algorithm checks if the rectangles overlap by verifying that the `x` coordinate of the top-right corner of `rec1` is greater than the `x` coordinate of the bottom-left corner of `rec2`, the `y` coordinate of the top-right corner of `rec1` is greater than the `y` coordinate of the bottom-left corner of `rec2`, the `x` coordinate of the bottom-left corner of `rec1` is less than the `x` coordinate of the top-right corner of `rec2`, and the `y` coordinate of the bottom-left corner of `rec1` is less than the `y` coordinate of the top-right corner of `rec2`. If all these conditions hold, it means that the rectangles overlap, otherwise they do not.\n    ",
+    "java": "\n    ```java\npublic boolean isRectangleOverlap(int[] rec1, int[] rec2) {\n    return rec1[2] > rec2[0] && rec1[3] > rec2[1] && rec1[0] < rec2[2] && rec1[1] < rec2[3];\n}\n```\n    \n    The algorithm checks if the rectangles overlap by verifying that the `x` coordinate of the top-right corner of `rec1` is greater than the `x` coordinate of the bottom-left corner of `rec2`, the `y` coordinate of the top-right corner of `rec1` is greater than the `y` coordinate of the bottom-left corner of `rec2`, the `x` coordinate of the bottom-left corner of `rec1` is less than the `x` coordinate of the top-right corner of `rec2`, and the `y` coordinate of the bottom-left corner of `rec1` is less than the `y` coordinate of the top-right corner of `rec2`. If all these conditions hold, it means that the rectangles overlap, otherwise they do not.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

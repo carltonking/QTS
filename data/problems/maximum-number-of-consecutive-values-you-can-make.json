@@ -1,0 +1,24 @@
+{
+  "id": 1798,
+  "title": "Maximum Number of Consecutive Values You Can Make",
+  "slug": "maximum-number-of-consecutive-values-you-can-make",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array coins of length n which represents the n coins that you own. The value of the ith coin is coins[i]. You can make some value x if you can choose some of your n coins such that their values sum up to x.\n\nReturn the _maximum number of consecutive integer values that you can make with your coins starting from and including_ 0.\n\nNote that you may have multiple coins of the same value.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxOperations(nums, k):\n    count = {}\n    operations = 0\n\n    for num in nums:\n        if count.get(k - num, 0) > 0:\n            count[k - num] -= 1\n            operations += 1\n        else:\n            count[num] = count.get(num, 0) + 1\n\n    return operations\n```\n\n    \n    The algorithm uses a hashmap (called \"count\") to store the count of each number in the array. For each number in the array, it checks if there is a complementary number, i.e., if the difference, `k - number`, is present in the hashmap with count greater than 0.\n\nIf found, it decrements the count and increments the operations performed. If not, it increments the count of the number in the hashmap. This process is performed for each number, and finally, the number of operations is returned. \n\nThis algorithm effectively iterates and counts the complement pairs in linear time (O(n)), where n is the length of the input array.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxOperations(nums, k) {\n    let count = {};\n    let operations = 0;\n\n    for (let num of nums) {\n        if (count[k - num] > 0) {\n            count[k - num]--;\n            operations++;\n        }\n        else {\n            count[num] = (count[num] || 0) + 1;\n        }\n    }\n\n    return operations;\n}\n```\n\n    \n    The algorithm uses a hashmap (called \"count\") to store the count of each number in the array. For each number in the array, it checks if there is a complementary number, i.e., if the difference, `k - number`, is present in the hashmap with count greater than 0.\n\nIf found, it decrements the count and increments the operations performed. If not, it increments the count of the number in the hashmap. This process is performed for each number, and finally, the number of operations is returned. \n\nThis algorithm effectively iterates and counts the complement pairs in linear time (O(n)), where n is the length of the input array.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\nimport java.util.Map;\n\npublic int maxOperations(int[] nums, int k) {\n    Map<Integer, Integer> count = new HashMap<>();\n    int operations = 0;\n\n    for (int num : nums) {\n        if (count.getOrDefault(k - num, 0) > 0) {\n            count.put(k - num, count.get(k - num) - 1);\n            operations++;\n        }\n        else {\n            count.put(num, count.getOrDefault(num, 0) + 1);\n        }\n    }\n\n    return operations;\n}\n```\n\n    \n    The algorithm uses a hashmap (called \"count\") to store the count of each number in the array. For each number in the array, it checks if there is a complementary number, i.e., if the difference, `k - number`, is present in the hashmap with count greater than 0.\n\nIf found, it decrements the count and increments the operations performed. If not, it increments the count of the number in the hashmap. This process is performed for each number, and finally, the number of operations is returned. \n\nThis algorithm effectively iterates and counts the complement pairs in linear time (O(n)), where n is the length of the input array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

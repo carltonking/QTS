@@ -1,0 +1,24 @@
+{
+  "id": 523,
+  "title": "Continuous Subarray Sum",
+  "slug": "continuous-subarray-sum",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums and an integer k, return true _if_ nums _has a good subarray or_ false _otherwise_.\n\nA good subarray is a subarray where:\n\n*   its length is at least two, and\n*   the sum of the elements of the subarray is a multiple of k.\n\nNote that:\n\n*   A subarray is a contiguous part of the array.\n*   An integer x is a multiple of k if there exists an integer n such that x = n * k. 0 is always a multiple of k.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef checkSubarraySum(nums, k):\n    n, sum_ = len(nums), 0\n    mp = {0: -1}\n    for i, num in enumerate(nums):\n        sum_ += num\n        if k != 0:\n            sum_ %= k\n        if sum_ in mp:\n            if i - mp[sum_] > 1:\n                return True\n        else:\n            mp[sum_] = i\n    return False\n```\n    \n    The algorithm uses a hashmap to store the running sum from the beginning of the array to the current index while iterating through the array. Each iteration, it updates the sum by adding the current number and calculates the modulus of the updated sum with k. If the resultant remainder is already in hashmap and the distance between the current index and the index in hashmap is greater than 1, then it returns true. If the modulus isn't in the hashmap, then it adds the sum and current index to the hashmap. After iterating through the entire array if no subarray with sum multiple of k is found, then it returns false.\n    ",
+    "javascript": "\n    ```javascript\nfunction checkSubarraySum(nums, k) {\n    let n = nums.length, sum = 0, mp = new Map();\n    mp.set(0, -1);\n    for (let i = 0; i < n; i++) {\n        sum += nums[i];\n        if (k !== 0) sum %= k;\n        if (mp.has(sum)) {\n            if (i - mp.get(sum) > 1) return true;\n        } else {\n            mp.set(sum, i);\n        }\n    }\n    return false;\n}\n```\n    \n    The algorithm uses a hashmap to store the running sum from the beginning of the array to the current index while iterating through the array. Each iteration, it updates the sum by adding the current number and calculates the modulus of the updated sum with k. If the resultant remainder is already in hashmap and the distance between the current index and the index in hashmap is greater than 1, then it returns true. If the modulus isn't in the hashmap, then it adds the sum and current index to the hashmap. After iterating through the entire array if no subarray with sum multiple of k is found, then it returns false.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\n\npublic boolean checkSubarraySum(int[] nums, int k) {\n    int n = nums.length, sum = 0;\n    HashMap<Integer, Integer> map = new HashMap<>();\n    map.put(0, -1);\n    for (int i = 0; i < n; i++) {\n        sum += nums[i];\n        if (k != 0) sum %= k;\n        if (map.containsKey(sum)) {\n            if (i - map.get(sum) > 1) return true;\n        } else {\n            map.put(sum, i);\n        }\n    }\n    return false;\n}\n```\n    \n    The algorithm uses a hashmap to store the running sum from the beginning of the array to the current index while iterating through the array. Each iteration, it updates the sum by adding the current number and calculates the modulus of the updated sum with k. If the resultant remainder is already in hashmap and the distance between the current index and the index in hashmap is greater than 1, then it returns true. If the modulus isn't in the hashmap, then it adds the sum and current index to the hashmap. After iterating through the entire array if no subarray with sum multiple of k is found, then it returns false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

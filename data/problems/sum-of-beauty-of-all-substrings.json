@@ -1,0 +1,24 @@
+{
+  "id": 1781,
+  "title": "Sum of Beauty of All Substrings",
+  "slug": "sum-of-beauty-of-all-substrings",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "The beauty of a string is the difference in frequencies between the most frequent and least frequent characters.\n\n*   For example, the beauty of \"abaacc \" is 3 - 1 = 2.\n\nGiven a string s, return _the sum of beauty of all of its substrings._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef arrayStringsAreEqual(word1, word2):\n    return \"\".join(word1) == \"\".join(word2)\n```\n    \n    The algorithm first concatenates the elements of the input arrays, `word1` and `word2`, to form the resulting strings. In C++ and Java, we use loops and the respective concatenation methods for the strings. In Python and JavaScript, we use the `join` method to concatenate the elements.\n\nAfter the concatenation, the algorithm compares the resulting strings. If they are equal, the function returns `true`, indicating that the two arrays represent the same string. If they are not equal, the function returns `false`.\n    ",
+    "javascript": "\n    ```javascript\nfunction arrayStringsAreEqual(word1, word2) {\n    return word1.join(\"\") === word2.join(\"\");\n}\n```\n    \n    The algorithm first concatenates the elements of the input arrays, `word1` and `word2`, to form the resulting strings. In C++ and Java, we use loops and the respective concatenation methods for the strings. In Python and JavaScript, we use the `join` method to concatenate the elements.\n\nAfter the concatenation, the algorithm compares the resulting strings. If they are equal, the function returns `true`, indicating that the two arrays represent the same string. If they are not equal, the function returns `false`.\n    ",
+    "java": "\n    ```java\npublic boolean arrayStringsAreEqual(String[] word1, String[] word2) {\n    StringBuilder s1 = new StringBuilder();\n    StringBuilder s2 = new StringBuilder();\n    for (String w : word1) s1.append(w);\n    for (String w : word2) s2.append(w);\n    return s1.toString().equals(s2.toString());\n}\n```\n    \n    The algorithm first concatenates the elements of the input arrays, `word1` and `word2`, to form the resulting strings. In C++ and Java, we use loops and the respective concatenation methods for the strings. In Python and JavaScript, we use the `join` method to concatenate the elements.\n\nAfter the concatenation, the algorithm compares the resulting strings. If they are equal, the function returns `true`, indicating that the two arrays represent the same string. If they are not equal, the function returns `false`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 444,
+  "title": "Sequence Reconstruction",
+  "slug": "sequence-reconstruction",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array nums of length n where nums is a permutation of the integers in the range [1, n]. You are also given a 2D integer array sequences where sequences[i] is a subsequence of nums.\n\nCheck if nums is the shortest possible and the only supersequence. The shortest supersequence is a sequence with the shortest length and has all sequences[i] as subsequences. There could be multiple valid supersequences for the given array sequences.\n\n*   For example, for sequences = [[1,2],[1,3]], there are two shortest supersequences, [1,2,3] and [1,3,2].\n*   While for sequences = [[1,2],[1,3],[1,2,3]], the only shortest supersequence possible is [1,2,3]. [1,2,3,4] is a possible supersequence but not the shortest.\n\nReturn true _if_ nums _is the only shortest supersequence for_ sequences_, or_ false _otherwise_.\n\nA subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_shortest_and_unique_supersequence(nums, sequences):\n    pos = {val: idx for idx, val in enumerate(nums)}\n\n    for seq in sequences:\n        if pos[seq[0]] > pos[seq[-1]]:\n            return False\n    return True\n```\n    \n    We start by creating a hashmap (or dictionary in Python and Map in JavaScript) to store the position of each element in the given `nums` array for efficient lookup. The map is filled with each value of the `nums` array as the key and its index as the value.\n\nWe then iterate through each sequence in `sequences` and check if the position of the first element in the sequence is greater than the position of the last element in the same sequence. If so, it means the given sequence is not a valid subsequence of the given `nums`, and we return `false`.\n\nIf we passed all sequences in the iteration without returning `false`, it means that the given `nums` array is the shortest possible and the only supersequence of the input sequences. Thus, we return `true`.\n    ",
+    "javascript": "\n    ```javascript\nfunction isShortestAndUniqueSupersequence(nums, sequences) {\n    const pos = new Map();\n    for (let i = 0; i < nums.length; i++) {\n        pos.set(nums[i], i);\n    }\n\n    for (const seq of sequences) {\n        if (pos.get(seq[0]) > pos.get(seq[seq.length - 1])) {\n            return false;\n        }\n    }\n    return true;\n}\n```\n    \n    We start by creating a hashmap (or dictionary in Python and Map in JavaScript) to store the position of each element in the given `nums` array for efficient lookup. The map is filled with each value of the `nums` array as the key and its index as the value.\n\nWe then iterate through each sequence in `sequences` and check if the position of the first element in the sequence is greater than the position of the last element in the same sequence. If so, it means the given sequence is not a valid subsequence of the given `nums`, and we return `false`.\n\nIf we passed all sequences in the iteration without returning `false`, it means that the given `nums` array is the shortest possible and the only supersequence of the input sequences. Thus, we return `true`.\n    ",
+    "java": "\n    ```java\npublic boolean isShortestAndUniqueSupersequence(int[] nums, int[][] sequences) {\n    Map<Integer, Integer> pos = new HashMap<>();\n    for (int i = 0; i < nums.length; i++) {\n        pos.put(nums[i], i);\n    }\n\n    for (int[] seq : sequences) {\n        if (pos.get(seq[0]) > pos.get(seq[seq.length - 1])) {\n            return false;\n        }\n    }\n    return true;\n}\n```\n    \n    We start by creating a hashmap (or dictionary in Python and Map in JavaScript) to store the position of each element in the given `nums` array for efficient lookup. The map is filled with each value of the `nums` array as the key and its index as the value.\n\nWe then iterate through each sequence in `sequences` and check if the position of the first element in the sequence is greater than the position of the last element in the same sequence. If so, it means the given sequence is not a valid subsequence of the given `nums`, and we return `false`.\n\nIf we passed all sequences in the iteration without returning `false`, it means that the given `nums` array is the shortest possible and the only supersequence of the input sequences. Thus, we return `true`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

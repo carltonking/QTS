@@ -1,0 +1,24 @@
+{
+  "id": 1500,
+  "title": "Design a File Sharing System",
+  "slug": "design-a-file-sharing-system",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "We will use a file-sharing system to share a very large file which consists of m small chunks with IDs from 1 to m.\n\nWhen users join the system, the system should assign a unique ID to them. The unique ID should be used once for each user, but when a user leaves the system, the ID can be reused again.\n\nUsers can request a certain chunk of the file, the system should return a list of IDs of all the users who own this chunk. If the user receives a non-empty list of IDs, they receive the requested chunk successfully.\n\nImplement the FileSharing class:\n\n*   FileSharing(int m) Initializes the object with a file of m chunks.\n*   int join(int[] ownedChunks): A new user joined the system owning some chunks of the file, the system should assign an id to the user which is the smallest positive integer not taken by any other user. Return the assigned id.\n*   void leave(int userID): The user with userID will leave the system, you cannot take file chunks from them anymore.\n*   int[] request(int userID, int chunkID): The user userID requested the file chunk with chunkID. Return a list of the IDs of all users that own this chunk sorted in ascending order.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef countLargestGroup(n: int) -> int:\n    freq = [0] * 37\n    max_group_size = 0\n    max_group_count = 0\n    \n    for i in range(1, n + 1):\n        _sum = sum(map(int, str(i)))\n        freq[_sum] += 1\n        max_group_size = max(max_group_size, freq[_sum])\n    \n    for count in freq:\n        if count == max_group_size:\n            max_group_count += 1\n\n    return max_group_count\n```\n\n    \n    We create an array `freq` to store the frequency of the sizes of the groups. Iterate through numbers 1 to `n` and calculate the sum of the digits of each number. Use this sum as an index to increment the frequency count in the array. At each step, we also update the maximum group size.\n\nAfter that, we iterate through the frequency array and count the number of groups that have the maximum group size.\n\nFinally, return the count of the largest groups.\n    ",
+    "javascript": "\n    ```javascript\nfunction countLargestGroup(n) {\n    let freq = new Array(37).fill(0);\n    let maxGroupSize = 0, maxGroupCount = 0;\n    \n    for (let i = 1; i <= n; i++) {\n        let sum = 0, num = i;\n        while (num !== 0) {\n            sum += num % 10;\n            num = Math.floor(num / 10);\n        }\n        freq[sum]++;\n        maxGroupSize = Math.max(maxGroupSize, freq[sum]);\n    }\n\n    for (let i = 0; i < 37; i++) {\n        if (freq[i] === maxGroupSize) {\n            maxGroupCount++;\n        }\n    }\n    \n    return maxGroupCount;\n}\n```\n\n    \n    We create an array `freq` to store the frequency of the sizes of the groups. Iterate through numbers 1 to `n` and calculate the sum of the digits of each number. Use this sum as an index to increment the frequency count in the array. At each step, we also update the maximum group size.\n\nAfter that, we iterate through the frequency array and count the number of groups that have the maximum group size.\n\nFinally, return the count of the largest groups.\n    ",
+    "java": "\n    ```java\npublic int countLargestGroup(int n) {\n    int[] freq = new int[37];\n    int maxGroupSize = 0, maxGroupCount = 0;\n\n    for (int i = 1; i <= n; i++) {\n        int sum = 0, num = i;\n        while (num != 0) {\n            sum += num % 10;\n            num = num / 10;\n        }\n        freq[sum]++;\n        maxGroupSize = Math.max(maxGroupSize, freq[sum]);\n    }\n\n    for (int i = 0; i < 37; i++) {\n        if (freq[i] == maxGroupSize) {\n            maxGroupCount++;\n        }\n    }\n\n    return maxGroupCount;\n}\n```\n\n    \n    We create an array `freq` to store the frequency of the sizes of the groups. Iterate through numbers 1 to `n` and calculate the sum of the digits of each number. Use this sum as an index to increment the frequency count in the array. At each step, we also update the maximum group size.\n\nAfter that, we iterate through the frequency array and count the number of groups that have the maximum group size.\n\nFinally, return the count of the largest groups.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

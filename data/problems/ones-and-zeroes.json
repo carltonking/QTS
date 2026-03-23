@@ -1,0 +1,24 @@
+{
+  "id": 474,
+  "title": "Ones and Zeroes",
+  "slug": "ones-and-zeroes",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array of binary strings strs and two integers m and n.\n\nReturn _the size of the largest subset of strs such that there are at most_ m 0_'s and_ n 1_'s in the subset_.\n\nA set x is a subset of a set y if all elements of x are also elements of y.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findMaxForm(strs, m, n):\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n    \n    for s in strs:\n        ones = s.count('1')\n        zeros = len(s) - ones\n        \n        for i in range(m, zeros - 1, -1):\n            for j in range(n, ones - 1, -1):\n                dp[i][j] = max(dp[i][j], dp[i - zeros][j - ones] + 1)\n    \n    return dp[m][n]\n```\n    \n    1. Initialize a 2-dimensional DP table dp, where dp[i][j] represents the maximum size of a subset with i 0's and j 1's.\n2. Loop through each string in strs.\n3. Count the number of 0's (zeros) and 1's (ones) in each string.\n4. Iterate backward through the DP table, updating dp[i][j] to the maximum of its current value and dp[i - zeros][j - ones] + 1. This is because a string with zeros 0's and ones 1's will be included in the subset if i 0's and j 1's are available.\n5. After processing all the strings, return dp[m][n], which represents the size of the largest subset with at most m 0's and n 1's.\n    ",
+    "javascript": "\n    ```javascript\nfunction findMaxForm(strs, m, n) {\n    const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));\n    \n    for (const str of strs) {\n        const ones = str.split('').filter(ch => ch === '1').length;\n        const zeros = str.length - ones;\n        \n        for (let i = m; i >= zeros; --i) {\n            for (let j = n; j >= ones; --j) {\n                dp[i][j] = Math.max(dp[i][j], dp[i - zeros][j - ones] + 1);\n            }\n        }\n    }\n    return dp[m][n];\n}\n```\n    \n    1. Initialize a 2-dimensional DP table dp, where dp[i][j] represents the maximum size of a subset with i 0's and j 1's.\n2. Loop through each string in strs.\n3. Count the number of 0's (zeros) and 1's (ones) in each string.\n4. Iterate backward through the DP table, updating dp[i][j] to the maximum of its current value and dp[i - zeros][j - ones] + 1. This is because a string with zeros 0's and ones 1's will be included in the subset if i 0's and j 1's are available.\n5. After processing all the strings, return dp[m][n], which represents the size of the largest subset with at most m 0's and n 1's.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int findMaxForm(String[] strs, int m, int n) {\n    int[][] dp = new int[m + 1][n + 1];\n    \n    for (String str: strs) {\n        int ones = (int) str.chars().filter(ch -> ch == '1').count();\n        int zeros = str.length() - ones;\n        \n        for (int i = m; i >= zeros; --i) {\n            for (int j = n; j >= ones; --j) {\n                dp[i][j] = Math.max(dp[i][j], dp[i - zeros][j - ones] + 1);\n            }\n        }\n    }\n    return dp[m][n];\n}\n```\n    \n    1. Initialize a 2-dimensional DP table dp, where dp[i][j] represents the maximum size of a subset with i 0's and j 1's.\n2. Loop through each string in strs.\n3. Count the number of 0's (zeros) and 1's (ones) in each string.\n4. Iterate backward through the DP table, updating dp[i][j] to the maximum of its current value and dp[i - zeros][j - ones] + 1. This is because a string with zeros 0's and ones 1's will be included in the subset if i 0's and j 1's are available.\n5. After processing all the strings, return dp[m][n], which represents the size of the largest subset with at most m 0's and n 1's.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

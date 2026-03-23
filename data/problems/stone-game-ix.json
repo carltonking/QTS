@@ -1,0 +1,24 @@
+{
+  "id": 2029,
+  "title": "Stone Game IX",
+  "slug": "stone-game-ix",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Alice and Bob continue their games with stones. There is a row of n stones, and each stone has an associated value. You are given an integer array stones, where stones[i] is the value of the ith stone.\n\nAlice and Bob take turns, with Alice starting first. On each turn, the player may remove any stone from stones. The player who removes a stone loses if the sum of the values of all removed stones is divisible by 3. Bob will win automatically if there are no remaining stones (even if it is Alice's turn).\n\nAssuming both players play optimally, return true _if Alice wins and_ false _if Bob wins_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef stoneGameIX(stones: List[int]) -> bool:\n    cnt = [0, 0, 0]\n    for s in stones:\n        cnt[s % 3] += 1\n    return (cnt[1] and cnt[2]) or (cnt[1] > cnt[2] if cnt[1] > cnt[2] + 2 else cnt[2] > cnt[1] + 1)\n```\n\n    \n    To solve this problem, we need to count the occurrences of the remainder when dividing each element in the `stones` array by 3. We store them in an array `cnt`, where `cnt[i]` has the count of occurrences of the remainder `i`. \n\nThen, we check if both `cnt[1]` and `cnt[2]` are non-zero or if there is a difference of at least 2 between `cnt[1]` and `cnt[2]`. If either of these conditions are true, Alice wins, otherwise, Bob wins.\n\n- If both `cnt[1]` and `cnt[2]` are non-zero, players always have the chance to take an optimal step so that the sum is not divisible by 3.\n- If the difference between `cnt[1]` and `cnt[2]` is at least 2, Alice can win by choosing the correct first step. This ensures either of the players has to take a step which results in the final sum being divisible by 3.\n    ",
+    "javascript": "\n    ```javascript\nfunction stoneGameIX(stones) {\n    const cnt = [0, 0, 0];\n    for (const s of stones) {\n        cnt[s % 3]++;\n    }\n    return (cnt[1] && cnt[2]) || (cnt[1] > cnt[2] ? cnt[1] > cnt[2] + 2 : cnt[2] > cnt[1] + 1);\n}\n```\n\n    \n    To solve this problem, we need to count the occurrences of the remainder when dividing each element in the `stones` array by 3. We store them in an array `cnt`, where `cnt[i]` has the count of occurrences of the remainder `i`. \n\nThen, we check if both `cnt[1]` and `cnt[2]` are non-zero or if there is a difference of at least 2 between `cnt[1]` and `cnt[2]`. If either of these conditions are true, Alice wins, otherwise, Bob wins.\n\n- If both `cnt[1]` and `cnt[2]` are non-zero, players always have the chance to take an optimal step so that the sum is not divisible by 3.\n- If the difference between `cnt[1]` and `cnt[2]` is at least 2, Alice can win by choosing the correct first step. This ensures either of the players has to take a step which results in the final sum being divisible by 3.\n    ",
+    "java": "\n    ```java\npublic boolean stoneGameIX(int[] stones) {\n    int[] cnt = new int[3];\n    for (int s : stones) {\n        cnt[s % 3]++;\n    }\n    return (cnt[1] != 0 && cnt[2] != 0) || (cnt[1] > cnt[2] ? cnt[1] > cnt[2] + 2 : cnt[2] > cnt[1] + 1);\n}\n```\n\n    \n    To solve this problem, we need to count the occurrences of the remainder when dividing each element in the `stones` array by 3. We store them in an array `cnt`, where `cnt[i]` has the count of occurrences of the remainder `i`. \n\nThen, we check if both `cnt[1]` and `cnt[2]` are non-zero or if there is a difference of at least 2 between `cnt[1]` and `cnt[2]`. If either of these conditions are true, Alice wins, otherwise, Bob wins.\n\n- If both `cnt[1]` and `cnt[2]` are non-zero, players always have the chance to take an optimal step so that the sum is not divisible by 3.\n- If the difference between `cnt[1]` and `cnt[2]` is at least 2, Alice can win by choosing the correct first step. This ensures either of the players has to take a step which results in the final sum being divisible by 3.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

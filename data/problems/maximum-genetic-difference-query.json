@@ -1,0 +1,24 @@
+{
+  "id": 1938,
+  "title": "Maximum Genetic Difference Query",
+  "slug": "maximum-genetic-difference-query",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "There is a rooted tree consisting of n nodes numbered 0 to n - 1. Each node's number denotes its unique genetic value (i.e. the genetic value of node x is x). The genetic difference between two genetic values is defined as the bitwise-XOR of their values. You are given the integer array parents, where parents[i] is the parent for node i. If node x is the root of the tree, then parents[x] == -1.\n\nYou are also given the array queries where queries[i] = [nodei, vali]. For each query i, find the maximum genetic difference between vali and pi, where pi is the genetic value of any node that is on the path between nodei and the root (including nodei and the root). More formally, you want to maximize vali XOR pi.\n\nReturn _an array_ ans _where_ ans[i] _is the answer to the_ ith _query_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_operations(nums):\n    operations = 0\n    for i in range(1, len(nums)):\n        if nums[i] <= nums[i - 1]:\n            operations += nums[i - 1] - nums[i] + 1\n            nums[i] = nums[i - 1] + 1\n    return operations\n```\n    \n    We iterate through the array starting from the second element. For each element, we check if it's smaller or equal to the previous one. If it is, we calculate the difference in value between the current and previous elements, add 1 to this difference, and accumulate it into a variable that keeps track of the operations needed to make the array strictly increasing. After that, we update the current element by adding 1 to the previous element, making them strictly increasing. We do this for all elements in the array, and finally return the accumulated operations needed. This approach has a time complexity of O(n) where n is the length of the array.\n    ",
+    "javascript": "\n    ```javascript\nfunction minOperations(nums) {\n    let operations = 0;\n    for (let i = 1; i < nums.length; ++i) {\n        if (nums[i] <= nums[i - 1]) {\n            operations += nums[i - 1] - nums[i] + 1;\n            nums[i] = nums[i - 1] + 1;\n        }\n    }\n    return operations;\n}\n```\n    \n    We iterate through the array starting from the second element. For each element, we check if it's smaller or equal to the previous one. If it is, we calculate the difference in value between the current and previous elements, add 1 to this difference, and accumulate it into a variable that keeps track of the operations needed to make the array strictly increasing. After that, we update the current element by adding 1 to the previous element, making them strictly increasing. We do this for all elements in the array, and finally return the accumulated operations needed. This approach has a time complexity of O(n) where n is the length of the array.\n    ",
+    "java": "\n    ```java\npublic int minOperations(int[] nums) {\n    int operations = 0;\n    for (int i = 1; i < nums.length; ++i) {\n        if (nums[i] <= nums[i - 1]) {\n            operations += nums[i - 1] - nums[i] + 1;\n            nums[i] = nums[i - 1] + 1;\n        }\n    }\n    return operations;\n}\n```\n    \n    We iterate through the array starting from the second element. For each element, we check if it's smaller or equal to the previous one. If it is, we calculate the difference in value between the current and previous elements, add 1 to this difference, and accumulate it into a variable that keeps track of the operations needed to make the array strictly increasing. After that, we update the current element by adding 1 to the previous element, making them strictly increasing. We do this for all elements in the array, and finally return the accumulated operations needed. This approach has a time complexity of O(n) where n is the length of the array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

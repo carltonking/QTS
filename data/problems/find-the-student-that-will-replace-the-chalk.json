@@ -1,0 +1,24 @@
+{
+  "id": 1894,
+  "title": "Find the Student that Will Replace the Chalk",
+  "slug": "find-the-student-that-will-replace-the-chalk",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There are n students in a class numbered from 0 to n - 1. The teacher will give each student a problem starting with the student number 0, then the student number 1, and so on until the teacher reaches the student number n - 1. After that, the teacher will restart the process, starting with the student number 0 again.\n\nYou are given a 0-indexed integer array chalk and an integer k. There are initially k pieces of chalk. When the student number i is given a problem to solve, they will use chalk[i] pieces of chalk to solve that problem. However, if the current number of chalk pieces is strictly less than chalk[i], then the student number i will be asked to replace the chalk.\n\nReturn _the index of the student that will replace the chalk pieces_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef merge_alternately(word1, word2):\n    merged = []\n    i, j = 0, 0\n    while i < len(word1) or j < len(word2):\n        if i < len(word1):\n            merged.append(word1[i])\n            i += 1\n        if j < len(word2):\n            merged.append(word2[j])\n            j += 1\n    return \"\".join(merged)\n```\n    \n    The algorithm initializes two pointers, i and j, starting from 0. We will move through word1 with i and word2 with j. The merged string is initialized as an empty string or a list of characters, depending on the language.\n\nIn a while loop, we check if either i or j is still within its respective string length. Inside the loop, we first check if i is within the length of word1. If so, we append the character at position i in word1 to the merged string and increment i. Similarly, we check if j is within the length of word2. If so, we append the character at position j in word2 to the merged string and increment j.\n\nAfter both i and j have reached the end of their respective strings, we return the merged string.\n    ",
+    "javascript": "\n    ```javascript\nfunction mergeAlternately(word1, word2) {\n    let merged = \"\";\n    let i = 0, j = 0;\n    while (i < word1.length || j < word2.length) {\n        if (i < word1.length) merged += word1[i++];\n        if (j < word2.length) merged += word2[j++];\n    }\n    return merged;\n}\n```\n    \n    The algorithm initializes two pointers, i and j, starting from 0. We will move through word1 with i and word2 with j. The merged string is initialized as an empty string or a list of characters, depending on the language.\n\nIn a while loop, we check if either i or j is still within its respective string length. Inside the loop, we first check if i is within the length of word1. If so, we append the character at position i in word1 to the merged string and increment i. Similarly, we check if j is within the length of word2. If so, we append the character at position j in word2 to the merged string and increment j.\n\nAfter both i and j have reached the end of their respective strings, we return the merged string.\n    ",
+    "java": "\n    ```java\npublic String mergeAlternately(String word1, String word2) {\n    StringBuilder merged = new StringBuilder();\n    int i = 0, j = 0;\n    while (i < word1.length() || j < word2.length()) {\n        if (i < word1.length()) merged.append(word1.charAt(i++));\n        if (j < word2.length()) merged.append(word2.charAt(j++));\n    }\n    return merged.toString();\n}\n```\n    \n    The algorithm initializes two pointers, i and j, starting from 0. We will move through word1 with i and word2 with j. The merged string is initialized as an empty string or a list of characters, depending on the language.\n\nIn a while loop, we check if either i or j is still within its respective string length. Inside the loop, we first check if i is within the length of word1. If so, we append the character at position i in word1 to the merged string and increment i. Similarly, we check if j is within the length of word2. If so, we append the character at position j in word2 to the merged string and increment j.\n\nAfter both i and j have reached the end of their respective strings, we return the merged string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 436,
+  "title": "Find Right Interval",
+  "slug": "find-right-interval",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array of intervals, where intervals[i] = [starti, endi] and each starti is unique.\n\nThe right interval for an interval i is an interval j such that startj >= endi and startj is minimized. Note that i may equal j.\n\nReturn _an array of right interval indices for each interval i_. If no right interval exists for interval i, then put -1 at index i.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findRightInterval(intervals):\n    starts = {interval[0]: index for index, interval in enumerate(intervals)}\n    res = []\n\n    for interval in intervals:\n        right = min(filter(lambda x: x >= interval[1], starts.keys()), default=-1)\n        res.append(starts[right] if right != -1 else -1)\n\n    return res\n```\n    \n    The algorithm first creates a map, `starts`, to store the start times of each interval with their corresponding index in the original array. Then, we iterate through each interval, finding the minimum interval start time greater than or equal to the interval's end time using either lower_bound (C++) or ceilingEntry (Java) or filter (Python, JavaScript). If we find a valid start time, we get the corresponding index from the `starts` map and store it in the result array, otherwise we store -1.\n    ",
+    "javascript": "\n    ```javascript\nfunction findRightInterval(intervals) {\n    const starts = new Map();\n    const res = [];\n\n    intervals.forEach((interval, index) => {\n        starts.set(interval[0], index);\n    });\n\n    for (const interval of intervals) {\n        const rightKeys = [...starts.keys()].filter(x => x >= interval[1]);\n        const right = Math.min(...rightKeys);\n        res.push(right === Infinity ? -1 : starts.get(right));\n    }\n\n    return res;\n}\n```\n    \n    The algorithm first creates a map, `starts`, to store the start times of each interval with their corresponding index in the original array. Then, we iterate through each interval, finding the minimum interval start time greater than or equal to the interval's end time using either lower_bound (C++) or ceilingEntry (Java) or filter (Python, JavaScript). If we find a valid start time, we get the corresponding index from the `starts` map and store it in the result array, otherwise we store -1.\n    ",
+    "java": "\n    ```java\nimport java.util.TreeMap;\nimport java.util.Map;\n\npublic int[] findRightInterval(int[][] intervals) {\n    int[] res = new int[intervals.length];\n    TreeMap<Integer, Integer> starts = new TreeMap<>();\n\n    for(int i = 0; i < intervals.length; i++) {\n        starts.put(intervals[i][0], i);\n    }\n\n    for(int i = 0; i < intervals.length; i++) {\n        Map.Entry<Integer, Integer> right = starts.ceilingEntry(intervals[i][1]);\n        res[i] = right == null ? -1 : right.getValue();\n    }\n\n    return res;\n}\n```\n    \n    The algorithm first creates a map, `starts`, to store the start times of each interval with their corresponding index in the original array. Then, we iterate through each interval, finding the minimum interval start time greater than or equal to the interval's end time using either lower_bound (C++) or ceilingEntry (Java) or filter (Python, JavaScript). If we find a valid start time, we get the corresponding index from the `starts` map and store it in the result array, otherwise we store -1.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

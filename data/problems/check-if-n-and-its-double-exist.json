@@ -1,0 +1,24 @@
+{
+  "id": 1346,
+  "title": "Check If N and Its Double Exist",
+  "slug": "check-if-n-and-its-double-exist",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array arr of integers, check if there exist two indices i and j such that :\n\n*   i != j\n*   0 <= i, j < arr.length\n*   arr[i] == 2 * arr[j]",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxValueInStack(nums, k):\n    n = len(nums)\n    if k >= n:\n        return -1\n\n    max_val = float('-inf')\n    for i in range(k+1):\n        max_val = max(max_val, nums[i])\n    return max_val\n```\n    \n    We are looking for the maximum `nums[i]` such that `0 <= i <= k`. Iterate through the first `k+1` elements in the array and keep track of the maximum value encountered. If `k >= n`, then it's not possible to have a non-empty pile after k moves, so return `-1` in that case. Otherwise, return the maximum value found. \n    ",
+    "javascript": "\n    ```javascript\nfunction maxValueInStack(nums, k) {\n    let n = nums.length;\n    if (k >= n) return -1;\n\n    let max_val = Number.MIN_SAFE_INTEGER;\n    for (let i = 0; i <= k; ++i) {\n        max_val = Math.max(max_val, nums[i]);\n    }\n    return max_val;\n}\n```\n    \n    We are looking for the maximum `nums[i]` such that `0 <= i <= k`. Iterate through the first `k+1` elements in the array and keep track of the maximum value encountered. If `k >= n`, then it's not possible to have a non-empty pile after k moves, so return `-1` in that case. Otherwise, return the maximum value found. \n    ",
+    "java": "\n    ```java\npublic int maxValueInStack(int[] nums, int k) {\n    int n = nums.length;\n    if (k >= n) return -1;\n\n    int max_val = Integer.MIN_VALUE;\n    for (int i = 0; i <= k; ++i) {\n        max_val = Math.max(max_val, nums[i]);\n    }\n    return max_val;\n}\n```\n    \n    We are looking for the maximum `nums[i]` such that `0 <= i <= k`. Iterate through the first `k+1` elements in the array and keep track of the maximum value encountered. If `k >= n`, then it's not possible to have a non-empty pile after k moves, so return `-1` in that case. Otherwise, return the maximum value found. \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

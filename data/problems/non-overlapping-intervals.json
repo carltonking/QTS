@@ -1,0 +1,24 @@
+{
+  "id": 435,
+  "title": "Non-overlapping Intervals",
+  "slug": "non-overlapping-intervals",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of intervals intervals where intervals[i] = [starti, endi], return _the minimum number of intervals you need to remove to make the rest of the intervals non-overlapping_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef eraseOverlapIntervals(intervals):\n    if not intervals:\n        return 0\n    \n    intervals.sort(key=lambda x: x[1])\n    \n    count = 0\n    prev_end = intervals[0][1]\n    \n    for i in range(1, len(intervals)):\n        if intervals[i][0] < prev_end:\n            count += 1\n        else:\n            prev_end = intervals[i][1]\n    \n    return count\n```\n    \n    The algorithm starts by sorting the input intervals by their ending times. This is because we want to select a minimum number of intervals with the smallest end time to make the rest of the intervals non-overlapping. Then, the algorithm initializes the count of overlapping intervals to 0 and the previous ending value with the first interval's end time.\n\nWe loop through the intervals starting from the second interval. In each iteration, if the current interval's start time is less than the previous end time, it means the current interval overlaps with the previous one. We increment the count in this case. If there's no overlap, we update the previous end time with the current interval's end time. After looping through all the intervals, the count is returned as the minimum number of intervals to remove for non-overlapping intervals.\n    ",
+    "javascript": "\n    ```javascript\nfunction eraseOverlapIntervals(intervals) {\n    if (intervals.length === 0) return 0;\n\n    intervals.sort((a, b) => a[1] - b[1]);\n\n    let count = 0;\n    let prev_end = intervals[0][1];\n\n    for (let i = 1; i < intervals.length; i++) {\n        if (intervals[i][0] < prev_end) {\n            count++;\n        } else {\n            prev_end = intervals[i][1];\n        }\n    }\n\n    return count;\n}\n```\n    \n    The algorithm starts by sorting the input intervals by their ending times. This is because we want to select a minimum number of intervals with the smallest end time to make the rest of the intervals non-overlapping. Then, the algorithm initializes the count of overlapping intervals to 0 and the previous ending value with the first interval's end time.\n\nWe loop through the intervals starting from the second interval. In each iteration, if the current interval's start time is less than the previous end time, it means the current interval overlaps with the previous one. We increment the count in this case. If there's no overlap, we update the previous end time with the current interval's end time. After looping through all the intervals, the count is returned as the minimum number of intervals to remove for non-overlapping intervals.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int eraseOverlapIntervals(int[][] intervals) {\n    if (intervals.length == 0) return 0;\n\n    Arrays.sort(intervals, (a, b) -> a[1] - b[1]);\n\n    int count = 0;\n    int prev_end = intervals[0][1];\n\n    for (int i = 1; i < intervals.length; i++) {\n        if (intervals[i][0] < prev_end) {\n            count++;\n        } else {\n            prev_end = intervals[i][1];\n        }\n    }\n\n    return count;\n}\n```\n    \n    The algorithm starts by sorting the input intervals by their ending times. This is because we want to select a minimum number of intervals with the smallest end time to make the rest of the intervals non-overlapping. Then, the algorithm initializes the count of overlapping intervals to 0 and the previous ending value with the first interval's end time.\n\nWe loop through the intervals starting from the second interval. In each iteration, if the current interval's start time is less than the previous end time, it means the current interval overlaps with the previous one. We increment the count in this case. If there's no overlap, we update the previous end time with the current interval's end time. After looping through all the intervals, the count is returned as the minimum number of intervals to remove for non-overlapping intervals.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

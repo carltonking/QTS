@@ -1,0 +1,24 @@
+{
+  "id": 560,
+  "title": "Subarray Sum Equals K",
+  "slug": "subarray-sum-equals-k",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of integers nums and an integer k, return _the total number of subarrays whose sum equals to_ k.\n\nA subarray is a contiguous non-empty sequence of elements within an array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef subarraySum(nums, k):\n    prefix_sum_frequency = {0: 1}\n    prefix_sum, result = 0, 0\n    \n    for num in nums:\n        prefix_sum += num\n        result += prefix_sum_frequency.get(prefix_sum - k, 0)\n        prefix_sum_frequency[prefix_sum] = prefix_sum_frequency.get(prefix_sum, 0) + 1\n\n    return result\n```\n    \n    The algorithm utilizes a hash map to store the frequency of the prefix sum up to the current element in the array. We start by initializing the hash map with a key-value pair (0, 1), which represents the empty subarray sum. Then we iterate through the input array, updating the prefix sum and result.\n\nFor each element in the array, we increment the prefix sum by the value of the element. We then increment the result by the value of the key (prefix sum - k) in the hash map, using a default value of 0 if the key is not found. This represents the number of subarrays ending at the current index with the sum equal to k. Finally, we increment the value of the prefix sum key in the hash map.\n\nThe time complexity of the algorithm is O(n), where n is the length of the input array. This is because we iterate through the array once and perform constant time operations for each element. The space complexity is O(n), which comes from using the hash map to store frequency of prefix sums.\n    ",
+    "javascript": "\n    ```javascript\nfunction subarraySum(nums, k) {\n    const prefixSumFrequency = {0: 1};\n    let prefixSum = 0, result = 0;\n    \n    for (const num of nums) {\n        prefixSum += num;\n        result += (prefixSumFrequency[prefixSum - k] || 0);\n        prefixSumFrequency[prefixSum] = (prefixSumFrequency[prefixSum] || 0) + 1;\n    }\n    \n    return result;\n}\n```\n    \n    The algorithm utilizes a hash map to store the frequency of the prefix sum up to the current element in the array. We start by initializing the hash map with a key-value pair (0, 1), which represents the empty subarray sum. Then we iterate through the input array, updating the prefix sum and result.\n\nFor each element in the array, we increment the prefix sum by the value of the element. We then increment the result by the value of the key (prefix sum - k) in the hash map, using a default value of 0 if the key is not found. This represents the number of subarrays ending at the current index with the sum equal to k. Finally, we increment the value of the prefix sum key in the hash map.\n\nThe time complexity of the algorithm is O(n), where n is the length of the input array. This is because we iterate through the array once and perform constant time operations for each element. The space complexity is O(n), which comes from using the hash map to store frequency of prefix sums.\n    ",
+    "java": "\n    ```java\npublic int subarraySum(int[] nums, int k) {\n    Map<Integer, Integer> prefixSumFrequency = new HashMap<>();\n    prefixSumFrequency.put(0, 1);\n    int prefixSum = 0, result = 0;\n    \n    for (int num : nums) {\n        prefixSum += num;\n        result += prefixSumFrequency.getOrDefault(prefixSum - k, 0);\n        prefixSumFrequency.put(prefixSum, prefixSumFrequency.getOrDefault(prefixSum, 0) + 1);\n    }\n    \n    return result;\n}\n```\n    \n    The algorithm utilizes a hash map to store the frequency of the prefix sum up to the current element in the array. We start by initializing the hash map with a key-value pair (0, 1), which represents the empty subarray sum. Then we iterate through the input array, updating the prefix sum and result.\n\nFor each element in the array, we increment the prefix sum by the value of the element. We then increment the result by the value of the key (prefix sum - k) in the hash map, using a default value of 0 if the key is not found. This represents the number of subarrays ending at the current index with the sum equal to k. Finally, we increment the value of the prefix sum key in the hash map.\n\nThe time complexity of the algorithm is O(n), where n is the length of the input array. This is because we iterate through the array once and perform constant time operations for each element. The space complexity is O(n), which comes from using the hash map to store frequency of prefix sums.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

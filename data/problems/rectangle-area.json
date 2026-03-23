@@ -1,0 +1,24 @@
+{
+  "id": 223,
+  "title": "Rectangle Area",
+  "slug": "rectangle-area",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the coordinates of two rectilinear rectangles in a 2D plane, return _the total area covered by the two rectangles_.\n\nThe first rectangle is defined by its bottom-left corner (ax1, ay1) and its top-right corner (ax2, ay2).\n\nThe second rectangle is defined by its bottom-left corner (bx1, by1) and its top-right corner (bx2, by2).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef total_area(ax1, ay1, ax2, ay2, bx1, by1, bx2, by2):\n    area1 = (ax2 - ax1) * (ay2 - ay1)\n    area2 = (bx2 - bx1) * (by2 - by1)\n\n    overlap_width = min(ax2, bx2) - max(ax1, bx1)\n    overlap_height = min(ay2, by2) - max(ay1, by1)\n\n    overlap_area = max(overlap_width, 0) * max(overlap_height, 0)\n\n    return area1 + area2 - overlap_area\n```\n\n    \n    1. Calculate the area of the first rectangle (area1) by subtracting the x coordinates (ax2 - ax1) and y coordinates (ay2 - ay1) and multiplying them together.\n2. Calculate the area of the second rectangle (area2) by subtracting the x coordinates (bx2 - bx1) and y coordinates (by2 - by1) and multiplying them together.\n3. Calculate the overlapping width by subtracting the larger bottom left x-coordinate (max(ax1, bx1)) from the smaller top-right x-coordinate (min(ax2, bx2)).\n4. Calculate the overlapping height by subtracting the larger bottom left y-coordinate (max(ay1, by1)) from the smaller top-right y-coordinate (min(ay2, by2)).\n5. Calculate the overlapping area by multiplying the overlapping width and height together. If either width or height is negative (rectangles do not overlap in that dimension), set the value to zero.\n6. Return the total area covered by the two rectangles (area1 + area2 - overlapArea).\n    ",
+    "javascript": "\n    ```javascript\nfunction totalArea(ax1, ay1, ax2, ay2, bx1, by1, bx2, by2) {\n    const area1 = (ax2 - ax1) * (ay2 - ay1);\n    const area2 = (bx2 - bx1) * (by2 - by1);\n\n    const overlapWidth = Math.min(ax2, bx2) - Math.max(ax1, bx1);\n    const overlapHeight = Math.min(ay2, by2) - Math.max(ay1, by1);\n\n    const overlapArea = Math.max(overlapWidth, 0) * Math.max(overlapHeight, 0);\n\n    return area1 + area2 - overlapArea;\n}\n```\n\n    \n    1. Calculate the area of the first rectangle (area1) by subtracting the x coordinates (ax2 - ax1) and y coordinates (ay2 - ay1) and multiplying them together.\n2. Calculate the area of the second rectangle (area2) by subtracting the x coordinates (bx2 - bx1) and y coordinates (by2 - by1) and multiplying them together.\n3. Calculate the overlapping width by subtracting the larger bottom left x-coordinate (max(ax1, bx1)) from the smaller top-right x-coordinate (min(ax2, bx2)).\n4. Calculate the overlapping height by subtracting the larger bottom left y-coordinate (max(ay1, by1)) from the smaller top-right y-coordinate (min(ay2, by2)).\n5. Calculate the overlapping area by multiplying the overlapping width and height together. If either width or height is negative (rectangles do not overlap in that dimension), set the value to zero.\n6. Return the total area covered by the two rectangles (area1 + area2 - overlapArea).\n    ",
+    "java": "\n    ```java\npublic int totalArea(int ax1, int ay1, int ax2, int ay2, int bx1, int by1, int bx2, int by2) {\n    int area1 = (ax2 - ax1) * (ay2 - ay1);\n    int area2 = (bx2 - bx1) * (by2 - by1);\n\n    int overlapWidth = Math.min(ax2, bx2) - Math.max(ax1, bx1);\n    int overlapHeight = Math.min(ay2, by2) - Math.max(ay1, by1);\n\n    int overlapArea = Math.max(overlapWidth, 0) * Math.max(overlapHeight, 0);\n\n    return area1 + area2 - overlapArea;\n}\n```\n\n    \n    1. Calculate the area of the first rectangle (area1) by subtracting the x coordinates (ax2 - ax1) and y coordinates (ay2 - ay1) and multiplying them together.\n2. Calculate the area of the second rectangle (area2) by subtracting the x coordinates (bx2 - bx1) and y coordinates (by2 - by1) and multiplying them together.\n3. Calculate the overlapping width by subtracting the larger bottom left x-coordinate (max(ax1, bx1)) from the smaller top-right x-coordinate (min(ax2, bx2)).\n4. Calculate the overlapping height by subtracting the larger bottom left y-coordinate (max(ay1, by1)) from the smaller top-right y-coordinate (min(ay2, by2)).\n5. Calculate the overlapping area by multiplying the overlapping width and height together. If either width or height is negative (rectangles do not overlap in that dimension), set the value to zero.\n6. Return the total area covered by the two rectangles (area1 + area2 - overlapArea).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

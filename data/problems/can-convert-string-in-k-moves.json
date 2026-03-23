@@ -1,0 +1,24 @@
+{
+  "id": 1540,
+  "title": "Can Convert String in K Moves",
+  "slug": "can-convert-string-in-k-moves",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given two strings s and t, your goal is to convert s into t in k moves or less.\n\nDuring the ith (1 <= i <= k) move you can:\n\n*   Choose any index j (1-indexed) from s, such that 1 <= j <= s.length and j has not been chosen in any previous move, and shift the character at that index i times.\n*   Do nothing.\n\nShifting a character means replacing it by the next letter in the alphabet (wrapping around so that 'z' becomes 'a'). Shifting a character by i means applying the shift operations i times.\n\nRemember that any index j can be picked at most once.\n\nReturn true if it's possible to convert s into t in no more than k moves, otherwise return false.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef canConvertString(s: str, t: str, k: int) -> bool:\n    if len(s) != len(t):\n        return False\n    count = [0] * 26\n    for i in range(len(s)):\n        diff = (ord(t[i]) - ord(s[i]) + 26) % 26\n        if diff > 0:\n            count[diff] += 1\n    for i in range(1, 26):\n        if count[i] > 0:\n            if count[i] * 26 - 26 + i > k:\n                return False\n    return True\n```\n    \n    First, we check if the lengths of s and t are equal, if not then we return false. Then, we create an array named count with a size of 26 (the number of lowercase English letters) and initialize all its elements to 0. We iterate through the characters of both s and t and calculate the difference between the corresponding characters that need shifting to be equal. We increment the count of that difference by 1. Finally, we iterate through the count array, and for every element with a count greater than 0, we check if it's possible to make the needed shifts with the given number k. If it's not possible, we return false. If we pass through all the elements, then we return true as it's possible to convert s to t with the given number of moves k.\n    ",
+    "javascript": "\n    ```javascript\nfunction canConvertString(s, t, k) {\n    if (s.length !== t.length) return false;\n    const count = new Array(26).fill(0);\n    for (let i = 0; i < s.length; i++) {\n        const diff = (t.charCodeAt(i) - s.charCodeAt(i) + 26) % 26;\n        if (diff > 0) {\n            count[diff]++;\n        }\n    }\n    for (let i = 1; i < 26; i++) {\n        if (count[i] > 0) {\n            if (count[i] * 26 - 26 + i > k) {\n                return false;\n            }\n        }\n    }\n    return true;\n}\n```\n    \n    First, we check if the lengths of s and t are equal, if not then we return false. Then, we create an array named count with a size of 26 (the number of lowercase English letters) and initialize all its elements to 0. We iterate through the characters of both s and t and calculate the difference between the corresponding characters that need shifting to be equal. We increment the count of that difference by 1. Finally, we iterate through the count array, and for every element with a count greater than 0, we check if it's possible to make the needed shifts with the given number k. If it's not possible, we return false. If we pass through all the elements, then we return true as it's possible to convert s to t with the given number of moves k.\n    ",
+    "java": "\n    ```java\npublic boolean canConvertString(String s, String t, int k) {\n    if (s.length() != t.length()) return false;\n    int[] count = new int[26];\n    for (int i = 0; i < s.length(); i++) {\n        int diff = (t.charAt(i) - s.charAt(i) + 26) % 26;\n        if (diff > 0) {\n            count[diff]++;\n        }\n    }\n    for (int i = 1; i < 26; i++) {\n        if (count[i] > 0) {\n            if (count[i] * 26 - 26 + i > k) {\n                return false;\n            }\n        }\n    }\n    return true;\n}\n```\n    \n    First, we check if the lengths of s and t are equal, if not then we return false. Then, we create an array named count with a size of 26 (the number of lowercase English letters) and initialize all its elements to 0. We iterate through the characters of both s and t and calculate the difference between the corresponding characters that need shifting to be equal. We increment the count of that difference by 1. Finally, we iterate through the count array, and for every element with a count greater than 0, we check if it's possible to make the needed shifts with the given number k. If it's not possible, we return false. If we pass through all the elements, then we return true as it's possible to convert s to t with the given number of moves k.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

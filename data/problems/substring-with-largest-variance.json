@@ -1,0 +1,24 @@
+{
+  "id": 2272,
+  "title": "Substring With Largest Variance",
+  "slug": "substring-with-largest-variance",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "The variance of a string is defined as the largest difference between the number of occurrences of any 2 characters present in the string. Note the two characters may or may not be the same.\n\nGiven a string s consisting of lowercase English letters only, return _the largest variance possible among all substrings of_ s.\n\nA substring is a contiguous sequence of characters within a string.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maximum_good_people(statements):\n    n = len(statements)\n    count_good = 0\n    for i in range(n):\n        is_good = True\n        for j in range(n):\n            if statements[j][i] == 1 and statements[i][j] == 0:\n                is_good = False\n                break\n        if is_good:\n            count_good += 1\n    return count_good\n```\n    \n    We iterate through each person, then we iterate through each statement made by other people about that person. If there are no contradicting statements (someone claims the person is good but the person claims that someone is not good), we consider the person to be good and increment the count. Finally, we return the total count of good people.\n    ",
+    "javascript": "\n    ```javascript\nfunction maximumGoodPeople(statements) {\n    const n = statements.length;\n    let count_good = 0;\n    for(let i = 0; i < n; i++) {\n        let is_good = true;\n        for(let j = 0; j < n; j++) {\n            if(statements[j][i] === 1 && statements[i][j] === 0) {\n                is_good = false;\n                break;\n            }\n        }\n        if(is_good) count_good++;\n    }\n    return count_good;\n}\n```\n\n    \n    We iterate through each person, then we iterate through each statement made by other people about that person. If there are no contradicting statements (someone claims the person is good but the person claims that someone is not good), we consider the person to be good and increment the count. Finally, we return the total count of good people.\n    ",
+    "java": "\n    ```java\npublic int maximumGoodPeople(int[][] statements) {\n    int n = statements.length;\n    int count_good = 0;\n    for(int i = 0; i < n; i++) {\n        boolean is_good = true;\n        for(int j = 0; j < n; j++) {\n            if(statements[j][i] == 1 && statements[i][j] == 0) {\n                is_good = false;\n                break;\n            }\n        }\n        if(is_good) count_good++;\n    }\n    return count_good;\n}\n```\n    \n    We iterate through each person, then we iterate through each statement made by other people about that person. If there are no contradicting statements (someone claims the person is good but the person claims that someone is not good), we consider the person to be good and increment the count. Finally, we return the total count of good people.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

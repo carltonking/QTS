@@ -1,0 +1,24 @@
+{
+  "id": 944,
+  "title": "Delete Columns to Make Sorted",
+  "slug": "delete-columns-to-make-sorted",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an array of n strings strs, all of the same length.\n\nThe strings can be arranged such that there is one on each line, making a grid.\n\n*   For example, strs = [ \"abc \", \"bce \", \"cae \"] can be arranged as follows:\n\nabc\nbce\ncae\n\nYou want to delete the columns that are not sorted lexicographically. In the above example (0-indexed), columns 0 ('a', 'b', 'c') and 2 ('c', 'e', 'e') are sorted, while column 1 ('b', 'c', 'a') is not, so you would delete column 1.\n\nReturn _the number of columns that you will delete_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minDifference(nums, k):\n    if len(nums) <= 1: return 0\n    nums.sort()\n    min_diff = nums[-1] - nums[0]\n    for i in range(1, len(nums)):\n        high = max(nums[i-1] + k, nums[-1] - k)\n        low = min(nums[i] - k, nums[0] + k)\n        min_diff = min(min_diff, high - low)\n    return min_diff\n```\n    \n    The algorithm first sorts the input array nums. If there is only 1 element or no element in the array, then the minimum difference becomes 0. Otherwise, the algorithm initializes the minimum difference as the difference between the maximum and minimum elements. Then, it iterates through the nums array and for each element, selects the highest and lowest values after applying the operation with k. Update the minimum difference as necessary by comparing the current high-low value difference with the minimum difference calculated so far. The algorithm does not modify the original nums array but rather focuses on updating the minimum difference variable. After finishing the iteration, the minimum difference is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction minDifference(nums, k) {\n    if(nums.length <= 1) return 0;\n    nums.sort((a, b) => a - b);\n    let min_diff = nums[nums.length - 1] - nums[0];\n    for(let i = 1; i < nums.length; i++) {\n        let high = Math.max(nums[i - 1] + k, nums[nums.length - 1] - k);\n        let low = Math.min(nums[i] - k, nums[0] + k);\n        min_diff = Math.min(min_diff, high - low);\n    }\n    return min_diff;\n}\n```\n    \n    The algorithm first sorts the input array nums. If there is only 1 element or no element in the array, then the minimum difference becomes 0. Otherwise, the algorithm initializes the minimum difference as the difference between the maximum and minimum elements. Then, it iterates through the nums array and for each element, selects the highest and lowest values after applying the operation with k. Update the minimum difference as necessary by comparing the current high-low value difference with the minimum difference calculated so far. The algorithm does not modify the original nums array but rather focuses on updating the minimum difference variable. After finishing the iteration, the minimum difference is returned.\n    ",
+    "java": "\n    ```java\npublic int minDifference(int[] nums, int k) {\n    if(nums.length <= 1) return 0;\n    Arrays.sort(nums);\n    int min_diff = nums[nums.length - 1] - nums[0];\n    for(int i = 1; i < nums.length; i++) {\n        int high = Math.max(nums[i - 1] + k, nums[nums.length - 1] - k);\n        int low = Math.min(nums[i] - k, nums[0] + k);\n        min_diff = Math.min(min_diff, high - low);\n    }\n    return min_diff;\n}\n```\n    \n    The algorithm first sorts the input array nums. If there is only 1 element or no element in the array, then the minimum difference becomes 0. Otherwise, the algorithm initializes the minimum difference as the difference between the maximum and minimum elements. Then, it iterates through the nums array and for each element, selects the highest and lowest values after applying the operation with k. Update the minimum difference as necessary by comparing the current high-low value difference with the minimum difference calculated so far. The algorithm does not modify the original nums array but rather focuses on updating the minimum difference variable. After finishing the iteration, the minimum difference is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

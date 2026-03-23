@@ -1,0 +1,24 @@
+{
+  "id": 938,
+  "title": "Range Sum of BST",
+  "slug": "range-sum-of-bst",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given the root node of a binary search tree and two integers low and high, return _the sum of values of all nodes with a value in the inclusive range_ [low, high].",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom bisect import bisect_right\n\ndef num_digits_less_than_n(digits: List[int], n: int) -> int:\n    ans = 0\n    factor = 1\n    n_str = str(n)\n    for i in range(len(n_str) - 1, -1, -1):\n        ans += bisect_right(digits, int(n_str[i])) * factor\n        factor *= len(digits)\n    return ans\n```\n    \n    1. Initialize the answer as 0 and a factor as 1.\n2. Convert n into a string so that we can traverse each digit easily.\n3. Iterate over the digits of n from right to left.\n4. For each digit, find the number of digits less than or equal to the current digit of n using binary search, and add this number multiplied by the current factor to the answer.\n5. Multiply the factor by the number of given digits for every iteration to account for the combinations of smaller digits.\n6. Return the answer after all iterations.\n    ",
+    "javascript": "\n    ```javascript\nfunction numDigitsLessThanN(digits, n) {\n    let ans = 0, factor = 1;\n    let nStr = String(n);\n    for (let i = nStr.length - 1; i >= 0; --i) {\n        ans += (upperBound(digits, nStr.charCodeAt(i) - 48)) * factor;\n        factor *= digits.length;\n    }\n    return ans;\n}\n\nfunction upperBound(arr, target) {\n    let low = 0, high = arr.length;\n    while (low < high) {\n        let mid = Math.floor((low + high) / 2);\n        if (arr[mid] > target) high = mid;\n        else low = mid + 1;\n    }\n    return low;\n}\n```\n    \n    1. Initialize the answer as 0 and a factor as 1.\n2. Convert n into a string so that we can traverse each digit easily.\n3. Iterate over the digits of n from right to left.\n4. For each digit, find the number of digits less than or equal to the current digit of n using binary search, and add this number multiplied by the current factor to the answer.\n5. Multiply the factor by the number of given digits for every iteration to account for the combinations of smaller digits.\n6. Return the answer after all iterations.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int numDigitsLessThanN(int[] digits, int n) {\n    int ans = 0, factor = 1;\n    String nStr = Integer.toString(n);\n    for (int i = nStr.length() - 1; i >= 0; --i) {\n        ans += (Arrays.binarySearch(digits, nStr.charAt(i) - '0') + 1) * factor;\n        factor *= digits.length;\n    }\n    return ans;\n}\n```\n    \n    1. Initialize the answer as 0 and a factor as 1.\n2. Convert n into a string so that we can traverse each digit easily.\n3. Iterate over the digits of n from right to left.\n4. For each digit, find the number of digits less than or equal to the current digit of n using binary search, and add this number multiplied by the current factor to the answer.\n5. Multiply the factor by the number of given digits for every iteration to account for the combinations of smaller digits.\n6. Return the answer after all iterations.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 326,
+  "title": "Power of Three",
+  "slug": "power-of-three",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer n, return _true if it is a power of three. Otherwise, return false_.\n\nAn integer n is a power of three, if there exists an integer x such that n == 3x.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_power_of_three(n: int) -> bool:\n    if n < 1:\n        return False\n    \n    while n % 3 == 0:\n        n //= 3\n    \n    return n == 1\n```\n    \n    The solution checks if the given number, n, is a power of three as follows:\n\n1. If n is less than 1, return false because powers of 3 are positive integers.\n2. Use a while loop, and keep dividing n by 3 while n is divisible by 3 without a remainder.\n3. After the loop, check if n is equal to 1. If n is 1, it means the original n was a power of 3; otherwise, it was not a power of 3. Return the result accordingly.\n    ",
+    "javascript": "\n    ```javascript\nfunction isPowerOfThree(n) {\n    if (n < 1) {\n        return false;\n    }\n    \n    while (n % 3 === 0) {\n        n /= 3;\n    }\n    \n    return n === 1;\n}\n```\n    \n    The solution checks if the given number, n, is a power of three as follows:\n\n1. If n is less than 1, return false because powers of 3 are positive integers.\n2. Use a while loop, and keep dividing n by 3 while n is divisible by 3 without a remainder.\n3. After the loop, check if n is equal to 1. If n is 1, it means the original n was a power of 3; otherwise, it was not a power of 3. Return the result accordingly.\n    ",
+    "java": "\n    ```java\npublic boolean isPowerOfThree(int n) {\n    if (n < 1) {\n        return false;\n    }\n    \n    while (n % 3 == 0) {\n        n /= 3;\n    }\n    \n    return n == 1;\n}\n```\n    \n    The solution checks if the given number, n, is a power of three as follows:\n\n1. If n is less than 1, return false because powers of 3 are positive integers.\n2. Use a while loop, and keep dividing n by 3 while n is divisible by 3 without a remainder.\n3. After the loop, check if n is equal to 1. If n is 1, it means the original n was a power of 3; otherwise, it was not a power of 3. Return the result accordingly.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

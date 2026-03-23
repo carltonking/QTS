@@ -1,0 +1,24 @@
+{
+  "id": 1585,
+  "title": "Check If String Is Transformable With Substring Sort Operations",
+  "slug": "check-if-string-is-transformable-with-substring-sort-operations",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given two strings s and t, transform string s into string t using the following operation any number of times:\n\n*   Choose a non-empty substring in s and sort it in place so the characters are in ascending order.\n    *   For example, applying the operation on the underlined substring in \"14234 \" results in \"12344 \".\n\nReturn true if _it is possible to transform s into t_. Otherwise, return false.\n\nA substring is a contiguous sequence of characters within a string.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef kth_factor(n: int, k: int) -> int:\n    for i in range(1, n+1):\n        if n % i == 0:\n            k -= 1\n            if k == 0:\n                return i\n    return -1\n```\n\n    \n    The algorithm starts with the smallest possible factor `i=1` and iterates through all numbers up to `n`. For each iteration, the algorithm checks if `n % i` is equal to 0, which means the current `i` is a factor of `n`. If so, it decrements the value of `k`. When `k` becomes zero, return the current `i`, as it is the kth factor. If the loop ends without finding the kth factor, return -1, since there are no k factors for given `n`.\n    ",
+    "javascript": "\n    ```javascript\nfunction kthFactor(n, k) {\n    for (let i = 1; i <= n; ++i) {\n        if (n % i === 0) {\n            --k;\n            if (k === 0) return i;\n        }\n    }\n    return -1;\n}\n```\n\n    \n    The algorithm starts with the smallest possible factor `i=1` and iterates through all numbers up to `n`. For each iteration, the algorithm checks if `n % i` is equal to 0, which means the current `i` is a factor of `n`. If so, it decrements the value of `k`. When `k` becomes zero, return the current `i`, as it is the kth factor. If the loop ends without finding the kth factor, return -1, since there are no k factors for given `n`.\n    ",
+    "java": "\n    ```java\npublic int kthFactor(int n, int k) {\n    for (int i = 1; i <= n; ++i) {\n        if (n % i == 0) {\n            --k;\n            if (k == 0) return i;\n        }\n    }\n    return -1;\n}\n```\n\n    \n    The algorithm starts with the smallest possible factor `i=1` and iterates through all numbers up to `n`. For each iteration, the algorithm checks if `n % i` is equal to 0, which means the current `i` is a factor of `n`. If so, it decrements the value of `k`. When `k` becomes zero, return the current `i`, as it is the kth factor. If the loop ends without finding the kth factor, return -1, since there are no k factors for given `n`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

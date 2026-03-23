@@ -1,0 +1,24 @@
+{
+  "id": 652,
+  "title": "Find Duplicate Subtrees",
+  "slug": "find-duplicate-subtrees",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the root of a binary tree, return all duplicate subtrees.\n\nFor each kind of duplicate subtrees, you only need to return the root node of any one of them.\n\nTwo trees are duplicate if they have the same structure with the same node values.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef findDuplicateSubtrees(root):\n    tree_count = {}\n    result = []\n    findDuplicateSubtreesHelper(root, tree_count, result)\n    return result\n\ndef findDuplicateSubtreesHelper(root, tree_count, result):\n    if root is None:\n        return \"\"\n    subtree = \"{},{},{}\".format(root.val, findDuplicateSubtreesHelper(root.left, tree_count, result), findDuplicateSubtreesHelper(root.right, tree_count, result))\n    tree_count[subtree] = tree_count.get(subtree, 0) + 1\n    if tree_count[subtree] == 2:\n        result.append(root)\n    return subtree\n```\n\n    \n    1. We create a helper function that traverses the binary tree in a \"postorder\" manner.\n2. We convert the subtree rooted at each node into a string using in-order traversal.\n3. While traversing, we maintain a dictionary (HashMap or Map, depending on the language) to keep track of the frequency of each subtree string.\n4. When encountering a subtree string for the second time, we add its root node to the result list.\n5. Return the result list.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(val, left = null, right = null) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\nfunction findDuplicateSubtrees(root) {\n    const treeCount = new Map();\n    const result = [];\n    findDuplicateSubtreesHelper(root, treeCount, result);\n    return result;\n}\n\nfunction findDuplicateSubtreesHelper(root, treeCount, result) {\n    if (root === null) return \"\";\n    const subtree = `${root.val},${findDuplicateSubtreesHelper(root.left, treeCount, result)},${findDuplicateSubtreesHelper(root.right, treeCount, result)}`;\n    treeCount.set(subtree, (treeCount.get(subtree) || 0) + 1);\n    if (treeCount.get(subtree) === 2) {\n        result.push(root);\n    }\n    return subtree;\n}\n```\n\n    \n    1. We create a helper function that traverses the binary tree in a \"postorder\" manner.\n2. We convert the subtree rooted at each node into a string using in-order traversal.\n3. While traversing, we maintain a dictionary (HashMap or Map, depending on the language) to keep track of the frequency of each subtree string.\n4. When encountering a subtree string for the second time, we add its root node to the result list.\n5. Return the result list.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.HashMap;\nimport java.util.List;\nimport java.util.Map;\n\npublic class TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n    TreeNode(int x) { val = x; }\n}\n\npublic List<TreeNode> findDuplicateSubtrees(TreeNode root) {\n    Map<String, Integer> treeCount = new HashMap<>();\n    List<TreeNode> result = new ArrayList<>();\n    findDuplicateSubtreesHelper(root, treeCount, result);\n    return result;\n}\n\nprivate String findDuplicateSubtreesHelper(TreeNode root, Map<String, Integer> treeCount, List<TreeNode> result) {\n    if (root == null) return \"\";\n    String subtree = root.val + \",\" + findDuplicateSubtreesHelper(root.left, treeCount, result) + \",\" + findDuplicateSubtreesHelper(root.right, treeCount, result);\n    treeCount.put(subtree, treeCount.getOrDefault(subtree, 0) + 1);\n    if (treeCount.get(subtree) == 2) {\n        result.add(root);\n    }\n    return subtree;\n}\n```\n\n    \n    1. We create a helper function that traverses the binary tree in a \"postorder\" manner.\n2. We convert the subtree rooted at each node into a string using in-order traversal.\n3. While traversing, we maintain a dictionary (HashMap or Map, depending on the language) to keep track of the frequency of each subtree string.\n4. When encountering a subtree string for the second time, we add its root node to the result list.\n5. Return the result list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

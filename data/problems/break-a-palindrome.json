@@ -1,0 +1,24 @@
+{
+  "id": 1328,
+  "title": "Break a Palindrome",
+  "slug": "break-a-palindrome",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a palindromic string of lowercase English letters palindrome, replace exactly one character with any lowercase English letter so that the resulting string is not a palindrome and that it is the lexicographically smallest one possible.\n\nReturn _the resulting string. If there is no way to replace a character to make it not a palindrome, return an empty string._\n\nA string a is lexicographically smaller than a string b (of the same length) if in the first position where a and b differ, a has a character strictly smaller than the corresponding character in b. For example, \"abcc \" is lexicographically smaller than \"abcd \" because the first position they differ is at the fourth character, and 'c' is smaller than 'd'.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef breakPalindrome(palindrome: str) -> str:\n    length = len(palindrome)\n    if length == 1:\n        return \"\"\n    \n    chars = list(palindrome)\n    for i in range(length // 2):\n        if chars[i] != 'a':\n            chars[i] = 'a'\n            return \"\".join(chars)\n    \n    chars[length - 1] = 'b'\n    return \"\".join(chars)\n```\n    \n    To find the lexicographically smallest non-palindromic string, we first check if the length of the input string is 1. If it is, we return an empty string since we can't change a single character to make it a non-palindrome. Otherwise, we iterate through the first half of the string and look for any character not equal to `'a'`. If we find one, we change it to `'a'` and return the new string.\n\nIf we reach the end of the loop without finding a non-`'a'` character, it means that the string is composed of only `'a'` characters. In this case, we can change the last character to `'b'` to create a non-palindrome, and return the result. This ensures the lexicographically smallest string since it only changes one character and does so as early in the string as possible.\n    ",
+    "javascript": "\n    ```javascript\nfunction breakPalindrome(palindrome) {\n    const length = palindrome.length;\n    if (length === 1) return \"\";\n    \n    let chars = palindrome.split(\"\");\n    for (let i = 0; i < Math.floor(length / 2); i++) {\n        if (chars[i] !== 'a') {\n            chars[i] = 'a';\n            return chars.join(\"\");\n        }\n    }\n    \n    chars[length - 1] = 'b';\n    return chars.join(\"\");\n}\n```\n    \n    To find the lexicographically smallest non-palindromic string, we first check if the length of the input string is 1. If it is, we return an empty string since we can't change a single character to make it a non-palindrome. Otherwise, we iterate through the first half of the string and look for any character not equal to `'a'`. If we find one, we change it to `'a'` and return the new string.\n\nIf we reach the end of the loop without finding a non-`'a'` character, it means that the string is composed of only `'a'` characters. In this case, we can change the last character to `'b'` to create a non-palindrome, and return the result. This ensures the lexicographically smallest string since it only changes one character and does so as early in the string as possible.\n    ",
+    "java": "\n    ```java\npublic String breakPalindrome(String palindrome) {\n    int length = palindrome.length();\n    if (length == 1) return \"\";\n    \n    char[] chars = palindrome.toCharArray();\n    for (int i = 0; i < length / 2; i++) {\n        if (chars[i] != 'a') {\n            chars[i] = 'a';\n            return String.valueOf(chars);\n        }\n    }\n    \n    chars[length - 1] = 'b';\n    return String.valueOf(chars);\n}\n```\n    \n    To find the lexicographically smallest non-palindromic string, we first check if the length of the input string is 1. If it is, we return an empty string since we can't change a single character to make it a non-palindrome. Otherwise, we iterate through the first half of the string and look for any character not equal to `'a'`. If we find one, we change it to `'a'` and return the new string.\n\nIf we reach the end of the loop without finding a non-`'a'` character, it means that the string is composed of only `'a'` characters. In this case, we can change the last character to `'b'` to create a non-palindrome, and return the result. This ensures the lexicographically smallest string since it only changes one character and does so as early in the string as possible.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

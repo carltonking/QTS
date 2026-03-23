@@ -1,0 +1,24 @@
+{
+  "id": 838,
+  "title": "Push Dominoes",
+  "slug": "push-dominoes",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There are n dominoes in a line, and we place each domino vertically upright. In the beginning, we simultaneously push some of the dominoes either to the left or to the right.\n\nAfter each second, each domino that is falling to the left pushes the adjacent domino on the left. Similarly, the dominoes falling to the right push their adjacent dominoes standing on the right.\n\nWhen a vertical domino has dominoes falling on it from both sides, it stays still due to the balance of the forces.\n\nFor the purposes of this question, we will consider that a falling domino expends no additional force to a falling or already fallen domino.\n\nYou are given a string dominoes representing the initial state where:\n\n*   dominoes[i] = 'L', if the ith domino has been pushed to the left,\n*   dominoes[i] = 'R', if the ith domino has been pushed to the right, and\n*   dominoes[i] = '.', if the ith domino has not been pushed.\n\nReturn _a string representing the final state_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef pushDominoes(dominoes: str) -> str:\n    n = len(dominoes)\n    forces = [0] * n\n    \n    force = 0\n    for i in range(n):\n        if dominoes[i] == 'R':\n            force = n\n        elif dominoes[i] == 'L':\n            force = 0\n        else:\n            force = max(force - 1, 0)\n        forces[i] += force\n    \n    force = 0\n    for i in range(n - 1, -1, -1):\n        if dominoes[i] == 'L':\n            force = n\n        elif dominoes[i] == 'R':\n            force = 0\n        else:\n            force = max(force - 1, 0)\n        forces[i] -= force\n    \n    return \"\".join(['R' if f > 0 else 'L' if f < 0 else '.' for f in forces])\n```\n\n    \n    We will use two-pass mechanism:\n1. Pass from left to right - calculate the force exerted by 'R' dominoes to 'L' dominoes.\n2. Pass from right to left - calculate the force exerted by 'L' dominoes to 'R' dominoes and subtract it from the previous force (from pass 1)\n3. Use the final force information to output the final state of dominoes:\n    - if force > 0, it's 'R'\n    - if force < 0, it's 'L'\n    - if force == 0, it's '.'\n    ",
+    "javascript": "\n    ```javascript\nfunction pushDominoes(dominoes) {\n    const n = dominoes.length;\n    const forces = new Array(n).fill(0);\n\n    let force = 0;\n    for (let i = 0; i < n; ++i) {\n        if (dominoes[i] === 'R') force = n;\n        else if (dominoes[i] === 'L') force = 0;\n        else force = Math.max(force - 1, 0);\n        forces[i] += force;\n    }\n\n    force = 0;\n    for (let i = n - 1; i >= 0; --i) {\n        if (dominoes[i] === 'L') force = n;\n        else if (dominoes[i] === 'R') force = 0;\n        else force = Math.max(force - 1, 0);\n        forces[i] -= force;\n    }\n\n    return forces.map(f => f > 0 ? 'R' : f < 0 ? 'L' : '.').join('');\n}\n```\n\n    \n    We will use two-pass mechanism:\n1. Pass from left to right - calculate the force exerted by 'R' dominoes to 'L' dominoes.\n2. Pass from right to left - calculate the force exerted by 'L' dominoes to 'R' dominoes and subtract it from the previous force (from pass 1)\n3. Use the final force information to output the final state of dominoes:\n    - if force > 0, it's 'R'\n    - if force < 0, it's 'L'\n    - if force == 0, it's '.'\n    ",
+    "java": "\n    ```java\npublic String pushDominoes(String dominoes) {\n    int n = dominoes.length();\n    int[] forces = new int[n];\n\n    int force = 0;\n    for (int i = 0; i < n; ++i) {\n        if (dominoes.charAt(i) == 'R') force = n;\n        else if (dominoes.charAt(i) == 'L') force = 0;\n        else force = Math.max(force - 1, 0);\n        forces[i] += force;\n    }\n\n    force = 0;\n    for (int i = n - 1; i >= 0; --i) {\n        if (dominoes.charAt(i) == 'L') force = n;\n        else if (dominoes.charAt(i) == 'R') force = 0;\n        else force = Math.max(force - 1, 0);\n        forces[i] -= force;\n    }\n\n    StringBuilder result = new StringBuilder();\n    for (int f : forces) {\n        if (f > 0) result.append('R');\n        else if (f < 0) result.append('L');\n        else result.append('.');\n    }\n\n    return result.toString();\n}\n```\n\n    \n    We will use two-pass mechanism:\n1. Pass from left to right - calculate the force exerted by 'R' dominoes to 'L' dominoes.\n2. Pass from right to left - calculate the force exerted by 'L' dominoes to 'R' dominoes and subtract it from the previous force (from pass 1)\n3. Use the final force information to output the final state of dominoes:\n    - if force > 0, it's 'R'\n    - if force < 0, it's 'L'\n    - if force == 0, it's '.'\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2288,
+  "title": "Apply Discount to Prices",
+  "slug": "apply-discount-to-prices",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A sentence is a string of single-space separated words where each word can contain digits, lowercase letters, and the dollar sign '$'. A word represents a price if it is a sequence of digits preceded by a dollar sign.\n\n*   For example, \"$100 \", \"$23 \", and \"$6 \" represent prices while \"100 \", \"$ \", and \"$1e5 \" do not.\n\nYou are given a string sentence representing a sentence and an integer discount. For each word representing a price, apply a discount of discount% on the price and update the word in the sentence. All updated prices should be represented with exactly two decimal places.\n\nReturn _a string representing the modified sentence_.\n\nNote that all prices will contain at most 10 digits.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef operations(num1, num2):\n    count = 0\n    while num1 != 0 and num2 != 0:\n        if num1 >= num2:\n            num1 -= num2\n        else:\n            num2 -= num1\n        count += 1\n    return count\n```\n    \n    The algorithm involves a loop that continues to execute as long as both `num1` and `num2` are not zero. Inside the loop, we check if `num1` is greater than or equal to `num2`; if it is, we subtract `num2` from `num1`, otherwise, we subtract `num1` from `num2`. After performing the subtraction, we increment the `count` variable.\n\nThe loop continues until either `num1` or `num2` becomes zero, and at that point, the value of `count` represents the number of operations required to reach this state. Finally, we return the count value as the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction operations(num1, num2) {\n    let count = 0;\n    while (num1 !== 0 && num2 !== 0) {\n        if (num1 >= num2) {\n            num1 -= num2;\n        } else {\n            num2 -= num1;\n        }\n        count++;\n    }\n    return count;\n}\n```\n    \n    The algorithm involves a loop that continues to execute as long as both `num1` and `num2` are not zero. Inside the loop, we check if `num1` is greater than or equal to `num2`; if it is, we subtract `num2` from `num1`, otherwise, we subtract `num1` from `num2`. After performing the subtraction, we increment the `count` variable.\n\nThe loop continues until either `num1` or `num2` becomes zero, and at that point, the value of `count` represents the number of operations required to reach this state. Finally, we return the count value as the result.\n    ",
+    "java": "\n    ```java\npublic int operations(int num1, int num2) {\n    int count = 0;\n    while (num1 != 0 && num2 != 0) {\n        if (num1 >= num2) {\n            num1 -= num2;\n        } else {\n            num2 -= num1;\n        }\n        count++;\n    }\n    return count;\n}\n```\n    \n    The algorithm involves a loop that continues to execute as long as both `num1` and `num2` are not zero. Inside the loop, we check if `num1` is greater than or equal to `num2`; if it is, we subtract `num2` from `num1`, otherwise, we subtract `num1` from `num2`. After performing the subtraction, we increment the `count` variable.\n\nThe loop continues until either `num1` or `num2` becomes zero, and at that point, the value of `count` represents the number of operations required to reach this state. Finally, we return the count value as the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

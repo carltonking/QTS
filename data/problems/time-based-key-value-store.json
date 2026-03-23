@@ -1,0 +1,24 @@
+{
+  "id": 981,
+  "title": "Time Based Key-Value Store",
+  "slug": "time-based-key-value-store",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Design a time-based key-value data structure that can store multiple values for the same key at different time stamps and retrieve the key's value at a certain timestamp.\n\nImplement the TimeMap class:\n\n*   TimeMap() Initializes the object of the data structure.\n*   void set(String key, String value, int timestamp) Stores the key key with the value value at the given time timestamp.\n*   String get(String key, int timestamp) Returns a value such that set was called previously, with timestamp_prev <= timestamp. If there are multiple such values, it returns the value associated with the largest timestamp_prev. If there are no values, it returns \" \".",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_deletion_size(strs):\n    num_deleted = 0\n    for col in range(len(strs[0])):\n        for row in range(1, len(strs)):\n            if strs[row][col] < strs[row - 1][col]:\n                num_deleted += 1\n                break\n    return num_deleted\n```\n\n    \n    1. Initialize a variable `num_deleted` to store the number of columns that will be deleted.\n2. Iterate through the columns of the grid (`col` from 0 to the length of the first string).\n3. For each column, iterate through the rows (`row` from 1 to the number of strings). Check if the character at position `col` of the current string `strs[row]` is lexicographically smaller than the character at the same `col` position of the previous string `strs[row - 1]`.\n4. If the current column is not sorted lexicographically, increment `num_deleted` and break the inner loop.\n5. After iterating through all columns, return `num_deleted` as the result.\n\nThis algorithm has time complexity O(n * m), where n is the number of strings and m is the length of each string.\n    ",
+    "javascript": "\n    ```javascript\nfunction minDeletionSize(strs) {\n    let numDeleted = 0;\n    for (let col = 0; col < strs[0].length; col++) {\n        for (let row = 1; row < strs.length; row++) {\n            if (strs[row][col] < strs[row - 1][col]) {\n                numDeleted++;\n                break;\n            }\n        }\n    }\n    return numDeleted;\n}\n```\n\n    \n    1. Initialize a variable `num_deleted` to store the number of columns that will be deleted.\n2. Iterate through the columns of the grid (`col` from 0 to the length of the first string).\n3. For each column, iterate through the rows (`row` from 1 to the number of strings). Check if the character at position `col` of the current string `strs[row]` is lexicographically smaller than the character at the same `col` position of the previous string `strs[row - 1]`.\n4. If the current column is not sorted lexicographically, increment `num_deleted` and break the inner loop.\n5. After iterating through all columns, return `num_deleted` as the result.\n\nThis algorithm has time complexity O(n * m), where n is the number of strings and m is the length of each string.\n    ",
+    "java": "\n    ```java\npublic int minDeletionSize(String[] strs) {\n    int numDeleted = 0;\n    for (int col = 0; col < strs[0].length(); col++) {\n        for (int row = 1; row < strs.length; row++) {\n            if (strs[row].charAt(col) < strs[row - 1].charAt(col)) {\n                numDeleted++;\n                break;\n            }\n        }\n    }\n    return numDeleted;\n}\n```\n\n    \n    1. Initialize a variable `num_deleted` to store the number of columns that will be deleted.\n2. Iterate through the columns of the grid (`col` from 0 to the length of the first string).\n3. For each column, iterate through the rows (`row` from 1 to the number of strings). Check if the character at position `col` of the current string `strs[row]` is lexicographically smaller than the character at the same `col` position of the previous string `strs[row - 1]`.\n4. If the current column is not sorted lexicographically, increment `num_deleted` and break the inner loop.\n5. After iterating through all columns, return `num_deleted` as the result.\n\nThis algorithm has time complexity O(n * m), where n is the number of strings and m is the length of each string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

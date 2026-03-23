@@ -1,0 +1,24 @@
+{
+  "id": 2540,
+  "title": "Minimum Common Value",
+  "slug": "minimum-common-value",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given two integer arrays nums1 and nums2, sorted in non-decreasing order, return _the minimum integer common to both arrays_. If there is no common integer amongst nums1 and nums2, return -1.\n\nNote that an integer is said to be common to nums1 and nums2 if both arrays have at least one occurrence of that integer.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_common_number(nums1, nums2):\n    i, j = 0, 0\n    while i < len(nums1) and j < len(nums2):\n        if nums1[i] == nums2[j]:\n            return nums1[i]\n        elif nums1[i] < nums2[j]:\n            i += 1\n        else:\n            j += 1\n    return -1\n```\n    \n    The algorithm is pretty simple. We use two pointers i and j to iterate through nums1 and nums2. As they are sorted in non-decreasing order, we can simply compare the elements at i and j. If nums1[i] is equal to nums2[j], we return the current element as it is the minimum common integer. If nums1[i] is less than nums2[j], we increment i. Otherwise, we increment j. If we reach the end of any array, we break the loop and return -1 as no common integer was found.\n    ",
+    "javascript": "\n    ```javascript\nfunction minCommonNumber(nums1, nums2) {\n    let i = 0, j = 0;\n    while (i < nums1.length && j < nums2.length) {\n        if (nums1[i] === nums2[j]) {\n            return nums1[i];\n        } else if (nums1[i] < nums2[j]) {\n            i++;\n        } else {\n            j++;\n        }\n    }\n    return -1;\n}\n```\n    \n    The algorithm is pretty simple. We use two pointers i and j to iterate through nums1 and nums2. As they are sorted in non-decreasing order, we can simply compare the elements at i and j. If nums1[i] is equal to nums2[j], we return the current element as it is the minimum common integer. If nums1[i] is less than nums2[j], we increment i. Otherwise, we increment j. If we reach the end of any array, we break the loop and return -1 as no common integer was found.\n    ",
+    "java": "\n    ```java\npublic int minCommonNumber(int[] nums1, int[] nums2) {\n    int i = 0, j = 0;\n    while (i < nums1.length && j < nums2.length) {\n        if (nums1[i] == nums2[j]) {\n            return nums1[i];\n        } else if (nums1[i] < nums2[j]) {\n            i++;\n        } else {\n            j++;\n        }\n    }\n    return -1;\n}\n```\n    \n    The algorithm is pretty simple. We use two pointers i and j to iterate through nums1 and nums2. As they are sorted in non-decreasing order, we can simply compare the elements at i and j. If nums1[i] is equal to nums2[j], we return the current element as it is the minimum common integer. If nums1[i] is less than nums2[j], we increment i. Otherwise, we increment j. If we reach the end of any array, we break the loop and return -1 as no common integer was found.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

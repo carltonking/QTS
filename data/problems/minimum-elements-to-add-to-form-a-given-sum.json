@@ -1,0 +1,24 @@
+{
+  "id": 1785,
+  "title": "Minimum Elements to Add to Form a Given Sum",
+  "slug": "minimum-elements-to-add-to-form-a-given-sum",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array nums and two integers limit and goal. The array nums has an interesting property that abs(nums[i]) <= limit.\n\nReturn _the minimum number of elements you need to add to make the sum of the array equal to_ goal. The array must maintain its property that abs(nums[i]) <= limit.\n\nNote that abs(x) equals x if x >= 0, and -x otherwise.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minElements(nums, limit, goal):\n    sum_nums = sum(nums)\n    diff = abs(goal - sum_nums)\n    \n    return (diff + limit - 1) // limit\n```\n\n    \n    1. Calculate the sum of the elements in the input array `nums`. \n2. Calculate the absolute difference between the `goal` and the sum of `nums`. \n3. Divide the absolute difference by the `limit`, rounding up to the nearest integer. This gives the minimum number of elements needed to add to make the sum of the array `nums` equal to `goal` while maintaining the property that `abs(nums[i]) <= limit`.\n    ",
+    "javascript": "\n    ```javascript\nfunction minElements(nums, limit, goal) {\n    let sum = nums.reduce((a, b) => a + b, 0);\n    let diff = Math.abs(goal - sum);\n    \n    return Math.ceil(diff / limit);\n}\n```\n\n    \n    1. Calculate the sum of the elements in the input array `nums`. \n2. Calculate the absolute difference between the `goal` and the sum of `nums`. \n3. Divide the absolute difference by the `limit`, rounding up to the nearest integer. This gives the minimum number of elements needed to add to make the sum of the array `nums` equal to `goal` while maintaining the property that `abs(nums[i]) <= limit`.\n    ",
+    "java": "\n    ```java\npublic int minElements(int[] nums, int limit, int goal) {\n    long sum = 0;\n    for (int num : nums) sum += num;\n    long diff = Math.abs(goal - sum);\n    \n    return (int)((diff + limit - 1) / limit);\n}\n```\n\n    \n    1. Calculate the sum of the elements in the input array `nums`. \n2. Calculate the absolute difference between the `goal` and the sum of `nums`. \n3. Divide the absolute difference by the `limit`, rounding up to the nearest integer. This gives the minimum number of elements needed to add to make the sum of the array `nums` equal to `goal` while maintaining the property that `abs(nums[i]) <= limit`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

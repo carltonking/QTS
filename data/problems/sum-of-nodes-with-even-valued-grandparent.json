@@ -1,0 +1,24 @@
+{
+  "id": 1315,
+  "title": "Sum of Nodes with Even-Valued Grandparent",
+  "slug": "sum-of-nodes-with-even-valued-grandparent",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the root of a binary tree, return _the sum of values of nodes with an even-valued grandparent_. If there are no nodes with an even-valued grandparent, return 0.\n\nA grandparent of a node is the parent of its parent if it exists.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, x):\n        self.val = x\n        self.left = None\n        self.right = None\n\ndef sumEvenGrandparent(root, parent=None, grandparent=None):\n    if root is None:\n        return 0\n    sum = root.val if grandparent and grandparent.val % 2 == 0 else 0\n    return sum + sumEvenGrandparent(root.left, root, parent) + sumEvenGrandparent(root.right, root, parent)\n```\n    \n    We use a recursive tree traversal with an additional two parameters, one to keep track of the parent node and another to keep track of the grandparent node. During the traversal, we check if the current node's grandparent has an even value.\n\nIn each function, we start by checking if the root is null (or if there is no node), and if so, we return 0. Then we calculate the sum of the current node. If the grandparent exists and has an even-valued integer, we add the current node's value to the sum. Otherwise, the sum remains 0.\n\nNext, we update the sum by recursively calling the function for the left and right children of the current node, updating the parent and grandparent with the current node as the new parent and the old parent as the new grandparent. This is conducted in a depth-first search manner.\n\nFinally, we return the total sum. All four-function implementations follow the same logic.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n  constructor(val, left, right) {\n    this.val = (val === undefined ? 0 : val)\n    this.left = (left === undefined ? null : left)\n    this.right = (right === undefined ? null : right)\n  }\n}\n\nfunction sumEvenGrandparent(root, parent = null, grandparent = null) {\n  if (root === null) return 0;\n  let sum = (grandparent !== null && grandparent.val % 2 === 0) ? root.val : 0;\n  return sum + sumEvenGrandparent(root.left, root, parent) + sumEvenGrandparent(root.right, root, parent);\n}\n```\n    \n    We use a recursive tree traversal with an additional two parameters, one to keep track of the parent node and another to keep track of the grandparent node. During the traversal, we check if the current node's grandparent has an even value.\n\nIn each function, we start by checking if the root is null (or if there is no node), and if so, we return 0. Then we calculate the sum of the current node. If the grandparent exists and has an even-valued integer, we add the current node's value to the sum. Otherwise, the sum remains 0.\n\nNext, we update the sum by recursively calling the function for the left and right children of the current node, updating the parent and grandparent with the current node as the new parent and the old parent as the new grandparent. This is conducted in a depth-first search manner.\n\nFinally, we return the total sum. All four-function implementations follow the same logic.\n    ",
+    "java": "\n    ```java\npublic class TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n    TreeNode(int x) { val = x; }\n}\n\npublic int sumEvenGrandparent(TreeNode root, TreeNode parent, TreeNode grandparent) {\n    if (root == null) return 0;\n    int sum = (grandparent != null && grandparent.val % 2 == 0) ? root.val : 0;\n    return sum + sumEvenGrandparent(root.left, root, parent) + sumEvenGrandparent(root.right, root, parent);\n}\n```\n    \n    We use a recursive tree traversal with an additional two parameters, one to keep track of the parent node and another to keep track of the grandparent node. During the traversal, we check if the current node's grandparent has an even value.\n\nIn each function, we start by checking if the root is null (or if there is no node), and if so, we return 0. Then we calculate the sum of the current node. If the grandparent exists and has an even-valued integer, we add the current node's value to the sum. Otherwise, the sum remains 0.\n\nNext, we update the sum by recursively calling the function for the left and right children of the current node, updating the parent and grandparent with the current node as the new parent and the old parent as the new grandparent. This is conducted in a depth-first search manner.\n\nFinally, we return the total sum. All four-function implementations follow the same logic.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

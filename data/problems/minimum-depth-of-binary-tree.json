@@ -1,0 +1,24 @@
+{
+  "id": 111,
+  "title": "Minimum Depth of Binary Tree",
+  "slug": "minimum-depth-of-binary-tree",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a binary tree, find its minimum depth.\n\nThe minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.\n\nNote: A leaf is a node with no children.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minDepth(root):\n    if not root:\n        return 0\n    left = minDepth(root.left)\n    right = minDepth(root.right)\n    return (left == 0 or right == 0) and left + right + 1 or min(left, right) + 1\n```\n    \n    We perform a depth-first search on the tree. The base case would be an empty tree with a depth of 0.\n\nFor each non-null subtree, we recursively find the minimum depth of the left and right children. Then, we have three cases:\n1. If both left and right children are null, then the current node is a leaf node, and the minimum depth is 1.\n2. If either left or right child is null, we return the depth of the other child + 1.\n3. If both children are non-null, we take the minimum depth of both children and add 1.\n\nTo handle all the cases in a single line, we use a ternary conditional expression in C++, Java, and JavaScript, and use the `and`-`or` short-circuit syntax in Python. We check if either left or right is 0, and in that case return left + right + 1 which handles cases 1 and 2; otherwise, we return the minimum depth of both children + 1, which handles case 3.\n    ",
+    "javascript": "\n    ```javascript\nfunction minDepth(root) {\n    if (!root) return 0;\n    let left = minDepth(root.left);\n    let right = minDepth(root.right);\n    return (left === 0 || right === 0) ? left + right + 1 : Math.min(left, right) + 1;\n}\n```\n    \n    We perform a depth-first search on the tree. The base case would be an empty tree with a depth of 0.\n\nFor each non-null subtree, we recursively find the minimum depth of the left and right children. Then, we have three cases:\n1. If both left and right children are null, then the current node is a leaf node, and the minimum depth is 1.\n2. If either left or right child is null, we return the depth of the other child + 1.\n3. If both children are non-null, we take the minimum depth of both children and add 1.\n\nTo handle all the cases in a single line, we use a ternary conditional expression in C++, Java, and JavaScript, and use the `and`-`or` short-circuit syntax in Python. We check if either left or right is 0, and in that case return left + right + 1 which handles cases 1 and 2; otherwise, we return the minimum depth of both children + 1, which handles case 3.\n    ",
+    "java": "\n    ```java\npublic int minDepth(TreeNode root) {\n    if (root == null) return 0;\n    int left = minDepth(root.left);\n    int right = minDepth(root.right);\n    return (left == 0 || right == 0) ? left + right + 1 : Math.min(left, right) + 1;\n}\n```\n    \n    We perform a depth-first search on the tree. The base case would be an empty tree with a depth of 0.\n\nFor each non-null subtree, we recursively find the minimum depth of the left and right children. Then, we have three cases:\n1. If both left and right children are null, then the current node is a leaf node, and the minimum depth is 1.\n2. If either left or right child is null, we return the depth of the other child + 1.\n3. If both children are non-null, we take the minimum depth of both children and add 1.\n\nTo handle all the cases in a single line, we use a ternary conditional expression in C++, Java, and JavaScript, and use the `and`-`or` short-circuit syntax in Python. We check if either left or right is 0, and in that case return left + right + 1 which handles cases 1 and 2; otherwise, we return the minimum depth of both children + 1, which handles case 3.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2441,
+  "title": "Largest Positive Integer That Exists With Its Negative",
+  "slug": "largest-positive-integer-that-exists-with-its-negative",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer array nums that does not contain any zeros, find the largest positive integer k such that -k also exists in the array.\n\nReturn _the positive integer_ k. If there is no such integer, return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_K(nums):\n    s = set(nums)\n    k = -1\n    for num in nums:\n        if -num in s:\n            k = max(k, abs(num))\n    return k\n```\n\n    \n    The algorithm puts all numbers in `nums` into a set `s` and then iterates through the numbers in the array. For each of the numbers, it checks whether `-k` is present in the set. If it is, it updates `k` to be the maximum of the absolute values of `k` and the current element (`num`). The maximum positive integer `k` is returned if it exists, otherwise `-1` is returned. This way, it finds the largest positive `k` such that both `k` and `-k` exist in the input array `nums`.\n    ",
+    "javascript": "\n    ```javascript\nfunction findK(nums) {\n    const s = new Set(nums);\n    let k = -1;\n    for (const num of nums) {\n        if (s.has(-num)) {\n            k = Math.max(k, Math.abs(num));\n        }\n    }\n    return k;\n}\n```\n\n    \n    The algorithm puts all numbers in `nums` into a set `s` and then iterates through the numbers in the array. For each of the numbers, it checks whether `-k` is present in the set. If it is, it updates `k` to be the maximum of the absolute values of `k` and the current element (`num`). The maximum positive integer `k` is returned if it exists, otherwise `-1` is returned. This way, it finds the largest positive `k` such that both `k` and `-k` exist in the input array `nums`.\n    ",
+    "java": "\n    ```java\npublic int findK(int[] nums) {\n    Set<Integer> set = new HashSet<>();\n    for (int num : nums) {\n        set.add(num);\n    }\n    int k = -1;\n    for (int num : nums) {\n        if (set.contains(-num)) {\n            k = Math.max(k, Math.abs(num));\n        }\n    }\n    return k;\n}\n```\n\n    \n    The algorithm puts all numbers in `nums` into a set `s` and then iterates through the numbers in the array. For each of the numbers, it checks whether `-k` is present in the set. If it is, it updates `k` to be the maximum of the absolute values of `k` and the current element (`num`). The maximum positive integer `k` is returned if it exists, otherwise `-1` is returned. This way, it finds the largest positive `k` such that both `k` and `-k` exist in the input array `nums`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

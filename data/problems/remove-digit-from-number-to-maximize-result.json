@@ -1,0 +1,24 @@
+{
+  "id": 2259,
+  "title": "Remove Digit From Number to Maximize Result",
+  "slug": "remove-digit-from-number-to-maximize-result",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a string number representing a positive integer and a character digit.\n\nReturn _the resulting string after removing exactly one occurrence of_ digit _from_ number _such that the value of the resulting string in decimal form is maximized_. The test cases are generated such that digit occurs at least once in number.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_number_after_remove_digit(number: str, digit: str) -> str:\n    index = number.find(digit)\n    return number[:index] + number[index + 1:]\n```\n    \n    The algorithm for all the implementations is as follows:\n\n1. Find the index of the first occurrence of the `digit` in the `number` string.\n2. Make a copy of the `number` string (this is done implicitly for Java, Python, and JavaScript when manipulating strings), removing the digit at the found index.\n3. Return the new string as the result.\n\nIn all language implementations, we first use string methods like `find`, `indexOf`, or `search` to find the index of the first occurrence of the digit in the number string. After that, we create a new string by removing the digit at that index using different string methods like `erase` (in C++), `substring` (in Java), string slicing (in Python), or `slice` method (in JavaScript).\n\nThe time complexity for this algorithm is O(n) where n is the length of the number string. This is because finding the index of the digit and removing the digit from the string takes linear time.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxNumberAfterRemoveDigit(number, digit) {\n    const index = number.indexOf(digit);\n    return number.slice(0, index) + number.slice(index + 1);\n}\n```\n    \n    The algorithm for all the implementations is as follows:\n\n1. Find the index of the first occurrence of the `digit` in the `number` string.\n2. Make a copy of the `number` string (this is done implicitly for Java, Python, and JavaScript when manipulating strings), removing the digit at the found index.\n3. Return the new string as the result.\n\nIn all language implementations, we first use string methods like `find`, `indexOf`, or `search` to find the index of the first occurrence of the digit in the number string. After that, we create a new string by removing the digit at that index using different string methods like `erase` (in C++), `substring` (in Java), string slicing (in Python), or `slice` method (in JavaScript).\n\nThe time complexity for this algorithm is O(n) where n is the length of the number string. This is because finding the index of the digit and removing the digit from the string takes linear time.\n    ",
+    "java": "\n    ```java\npublic String maxNumberAfterRemoveDigit(String number, char digit) {\n    int index = number.indexOf(digit);\n    return number.substring(0, index) + number.substring(index + 1);\n}\n```\n    \n    The algorithm for all the implementations is as follows:\n\n1. Find the index of the first occurrence of the `digit` in the `number` string.\n2. Make a copy of the `number` string (this is done implicitly for Java, Python, and JavaScript when manipulating strings), removing the digit at the found index.\n3. Return the new string as the result.\n\nIn all language implementations, we first use string methods like `find`, `indexOf`, or `search` to find the index of the first occurrence of the digit in the number string. After that, we create a new string by removing the digit at that index using different string methods like `erase` (in C++), `substring` (in Java), string slicing (in Python), or `slice` method (in JavaScript).\n\nThe time complexity for this algorithm is O(n) where n is the length of the number string. This is because finding the index of the digit and removing the digit from the string takes linear time.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

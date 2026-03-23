@@ -1,0 +1,24 @@
+{
+  "id": 1081,
+  "title": "Smallest Subsequence of Distinct Characters",
+  "slug": "smallest-subsequence-of-distinct-characters",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string s, return _the_ _lexicographically smallest_ _subsequence_ _of_ s _that contains all the distinct characters of_ s _exactly once_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef videoStitching(clips, time):\n    dp = [float('inf')] * (time + 1)\n    dp[0] = 0\n    for i in range(1, time + 1):\n        for clip in clips:\n            if clip[0] < i and i <= clip[1]:\n                dp[i] = min(dp[i], dp[clip[0]] + 1)\n    return -1 if dp[time] == float('inf') else dp[time]\n```\n    \n    We use dynamic programming to solve this problem. We create an array `dp` of length `time + 1` and initialize it with infinity, except for `dp[0]`, which we set to 0. To find the minimum number of clips needed to cover the entire sporting event, we iterate through the range from 1 to `time` (inclusive). For each value `i`, we loop through all the clips, and if we found a clip that can contribute to the current value of 'i', we update the `dp[i]` value with the minimum of itself and the value of `dp[clip[0]] + 1`. This ensures that we take the minimum possible number of clips to reach the current segment. Finally, we return the value of `dp[time]`, or `-1` if it is still infinity, which indicates that the task is impossible.\n    ",
+    "javascript": "\n    ```javascript\nfunction videoStitching(clips, time) {\n    let dp = new Array(time + 1).fill(Number.MAX_SAFE_INTEGER);\n    dp[0] = 0;\n    for (let i = 1; i <= time; ++i) {\n        for (const clip of clips) {\n            if (clip[0] < i && i <= clip[1]) {\n                dp[i] = Math.min(dp[i], dp[clip[0]] + 1);\n            }\n        }\n    }\n    return dp[time] === Number.MAX_SAFE_INTEGER ? -1 : dp[time];\n}\n```\n    \n    We use dynamic programming to solve this problem. We create an array `dp` of length `time + 1` and initialize it with infinity, except for `dp[0]`, which we set to 0. To find the minimum number of clips needed to cover the entire sporting event, we iterate through the range from 1 to `time` (inclusive). For each value `i`, we loop through all the clips, and if we found a clip that can contribute to the current value of 'i', we update the `dp[i]` value with the minimum of itself and the value of `dp[clip[0]] + 1`. This ensures that we take the minimum possible number of clips to reach the current segment. Finally, we return the value of `dp[time]`, or `-1` if it is still infinity, which indicates that the task is impossible.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int videoStitching(int[][] clips, int time) {\n    int[] dp = new int[time + 1];\n    Arrays.fill(dp, Integer.MAX_VALUE);\n    dp[0] = 0;\n    for (int i = 1; i <= time; ++i) {\n        for (int[] clip : clips) {\n            if (clip[0] < i && i <= clip[1]) {\n                dp[i] = Math.min(dp[i], dp[clip[0]] + 1);\n            }\n        }\n    }\n    return dp[time] == Integer.MAX_VALUE ? -1 : dp[time];\n}\n```\n    \n    We use dynamic programming to solve this problem. We create an array `dp` of length `time + 1` and initialize it with infinity, except for `dp[0]`, which we set to 0. To find the minimum number of clips needed to cover the entire sporting event, we iterate through the range from 1 to `time` (inclusive). For each value `i`, we loop through all the clips, and if we found a clip that can contribute to the current value of 'i', we update the `dp[i]` value with the minimum of itself and the value of `dp[clip[0]] + 1`. This ensures that we take the minimum possible number of clips to reach the current segment. Finally, we return the value of `dp[time]`, or `-1` if it is still infinity, which indicates that the task is impossible.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

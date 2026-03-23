@@ -1,0 +1,24 @@
+{
+  "id": 270,
+  "title": "Closest Binary Search Tree Value",
+  "slug": "closest-binary-search-tree-value",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given the root of a binary search tree and a target value, return _the value in the BST that is closest to the_ target. If there are multiple answers, print the smallest.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass Solution:\n    def closestValue(self, root: TreeNode, target: float) -> int:\n        closest = root.val\n        while root:\n            if abs(target - closest) > abs(target - root.val):\n                closest = root.val\n            root = root.left if target < root.val else root.right\n        return closest\n```\n    \n    The algorithm uses a while loop to traverse the binary search tree. During the iteration, we continuously update the closest variable with the current node's value if the current node's value is closer to the target than the previous closest value. The algorithm follows the binary search tree's property, taking the left branch if the target is less than the current node's value and the right branch if the target is greater than the current node's value. On reaching a null node, the algorithm terminates and returns the closest value found.\n    ",
+    "javascript": "\n    ```javascript\nvar closestValue = function(root, target) {\n    let closest = root.val;\n    while (root !== null) {\n        if (Math.abs(target - closest) > Math.abs(target - root.val)) {\n            closest = root.val;\n        }\n        root = target < root.val ? root.left : root.right;\n    }\n    return closest;\n};\n```\n\n    \n    The algorithm uses a while loop to traverse the binary search tree. During the iteration, we continuously update the closest variable with the current node's value if the current node's value is closer to the target than the previous closest value. The algorithm follows the binary search tree's property, taking the left branch if the target is less than the current node's value and the right branch if the target is greater than the current node's value. On reaching a null node, the algorithm terminates and returns the closest value found.\n    ",
+    "java": "\n    ```java\nclass Solution {\n    public int closestValue(TreeNode root, double target) {\n        int closest = root.val;\n        while (root != null) {\n            if (Math.abs(target - closest) > Math.abs(target - root.val)) {\n                closest = root.val;\n            }\n            root = target < root.val ? root.left : root.right;\n        }\n        return closest;\n    }\n}\n```\n    \n    The algorithm uses a while loop to traverse the binary search tree. During the iteration, we continuously update the closest variable with the current node's value if the current node's value is closer to the target than the previous closest value. The algorithm follows the binary search tree's property, taking the left branch if the target is less than the current node's value and the right branch if the target is greater than the current node's value. On reaching a null node, the algorithm terminates and returns the closest value found.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

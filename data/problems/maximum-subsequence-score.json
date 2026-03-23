@@ -1,0 +1,24 @@
+{
+  "id": 2542,
+  "title": "Maximum Subsequence Score",
+  "slug": "maximum-subsequence-score",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two 0-indexed integer arrays nums1 and nums2 of equal length n and a positive integer k. You must choose a subsequence of indices from nums1 of length k.\n\nFor chosen indices i0, i1, ..., ik - 1, your score is defined as:\n\n*   The sum of the selected elements from nums1 multiplied with the minimum of the selected elements from nums2.\n*   It can defined simply as: (nums1[i0] + nums1[i1] +...+ nums1[ik - 1]) * min(nums2[i0] , nums2[i1], ... ,nums2[ik - 1]).\n\nReturn _the maximum possible score._\n\nA subsequence of indices of an array is a set that can be derived from the set {0, 1, ..., n-1} by deleting some or no elements.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxScore(nums1, nums2, k):\n    n = len(nums1)\n    res = 0\n    sum_n1 = 0\n    min_n2 = nums2[0]\n    i, j = 0, 0\n    while j < n:\n        sum_n1 += nums1[j]\n        min_n2 = min(min_n2, nums2[j])\n        if j - i + 1 > k:\n            sum_n1 -= nums1[i]\n            i += 1\n        if j + 1 >= k:\n            res = max(res, sum_n1 * min_n2)\n        j += 1\n    return res\n```\n\n    \n    For this problem, we can use the sliding window technique. Keeping two pointers `i` and `j`, we can iterate through the two input arrays `nums1` and `nums2` simultaneously. The length of the current subsequence is `j - i + 1`. If the length of the subsequence is greater than `k`, remove `nums1[i]` from the sum, and increment `i`. Calculate the minimum `nums2` value within the window during the process. For any subsequence of length `k`, compare the current score with the previous max score, and update the result if needed. At the end, return the maximum score.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxScore(nums1, nums2, k) {\n    const n = nums1.length;\n    let res = 0;\n    let sum_n1 = 0, min_n2 = nums2[0];\n    for (let i = 0, j = 0; j < n; j++) {\n        sum_n1 += nums1[j];\n        min_n2 = Math.min(min_n2, nums2[j]);\n        if (j - i + 1 > k) sum_n1 -= nums1[i++];\n        if (j + 1 >= k) res = Math.max(res, sum_n1 * min_n2);\n    }\n    return res;\n}\n```\n\n    \n    For this problem, we can use the sliding window technique. Keeping two pointers `i` and `j`, we can iterate through the two input arrays `nums1` and `nums2` simultaneously. The length of the current subsequence is `j - i + 1`. If the length of the subsequence is greater than `k`, remove `nums1[i]` from the sum, and increment `i`. Calculate the minimum `nums2` value within the window during the process. For any subsequence of length `k`, compare the current score with the previous max score, and update the result if needed. At the end, return the maximum score.\n    ",
+    "java": "\n    ```java\npublic int maxScore(int[] nums1, int[] nums2, int k) {\n    int n = nums1.length;\n    int res = 0;\n    int sum_n1 = 0, min_n2 = nums2[0];\n    for (int i = 0, j = 0; j < n; j++) {\n        sum_n1 += nums1[j];\n        min_n2 = Math.min(min_n2, nums2[j]);\n        if (j - i + 1 > k) sum_n1 -= nums1[i++];\n        if (j + 1 >= k) res = Math.max(res, sum_n1 * min_n2);\n    }\n    return res;\n}\n```\n\n    \n    For this problem, we can use the sliding window technique. Keeping two pointers `i` and `j`, we can iterate through the two input arrays `nums1` and `nums2` simultaneously. The length of the current subsequence is `j - i + 1`. If the length of the subsequence is greater than `k`, remove `nums1[i]` from the sum, and increment `i`. Calculate the minimum `nums2` value within the window during the process. For any subsequence of length `k`, compare the current score with the previous max score, and update the result if needed. At the end, return the maximum score.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1678,
+  "title": "Goal Parser Interpretation",
+  "slug": "goal-parser-interpretation",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You own a Goal Parser that can interpret a string command. The command consists of an alphabet of \"G \", \"() \" and/or \"(al) \" in some order. The Goal Parser will interpret \"G \" as the string \"G \", \"() \" as the string \"o \", and \"(al) \" as the string \"al \". The interpreted strings are then concatenated in the original order.\n\nGiven the string command, return _the Goal Parser's interpretation of_ command.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef num_ways(s: str) -> int:\n    number_of_ones = s.count('1')\n    if number_of_ones % 3 != 0:\n        return 0\n\n    target = number_of_ones // 3\n    if target == 0:\n        n = len(s)\n        return ((n - 1) * (n - 2) // 2) % 1000000007\n\n    ones_so_far1, ones_so_far2 = 0, 0\n    way1, way2 = 0, 0\n    for c in s:\n        if c == '1':\n            ones_so_far1 += 1\n            if ones_so_far1 == target:\n                way1 += 1\n                ones_so_far1 = 0\n\n            ones_so_far2 += 1\n            if ones_so_far2 == target * 2:\n                way2 += 1\n                ones_so_far2 = 0\n\n    return (way1 * way2) % 1000000007\n```\n\n    \n    First, count the number of ones in the binary string s. If the number of ones is not divisible by three, there is no valid way to split s. If the number of ones is zero, calculate the result as the number of ways to pick two positions out of (s.length() - 1) positions to insert separator. In other cases, we iterate through the string and count ones. If the count reaches target ones, we accumulate the result for s1 and clear the count. Similarly for s2, we accumulate the result based on the count reaching target * 2. Finally, we calculate the result as (way1 * way2) % 1000000007.\n    ",
+    "javascript": "\n    ```javascript\nfunction numWays(s) {\n  let numberOfOnes = s.split('').filter(c => c === '1').length;\n  if (numberOfOnes % 3 !== 0) return 0;\n\n  let target = numberOfOnes / 3;\n  if (target === 0) {\n    let n = s.length;\n    return ((n - 1) * (n - 2) / 2) % 1000000007;\n  }\n\n  let onesSoFar1 = 0, onesSoFar2 = 0;\n  let way1 = 0, way2 = 0;\n  for (let c of s) {\n    if (c === '1') {\n      onesSoFar1++;\n      if (onesSoFar1 === target) {\n        way1++;\n        onesSoFar1 = 0;\n      }\n\n      onesSoFar2++;\n      if (onesSoFar2 === target * 2) {\n        way2++;\n        onesSoFar2 = 0;\n      }\n    }\n  }\n\n  return (way1 * way2) % 1000000007;\n}\n```\n\n    \n    First, count the number of ones in the binary string s. If the number of ones is not divisible by three, there is no valid way to split s. If the number of ones is zero, calculate the result as the number of ways to pick two positions out of (s.length() - 1) positions to insert separator. In other cases, we iterate through the string and count ones. If the count reaches target ones, we accumulate the result for s1 and clear the count. Similarly for s2, we accumulate the result based on the count reaching target * 2. Finally, we calculate the result as (way1 * way2) % 1000000007.\n    ",
+    "java": "\n    ```java\npublic int numWays(String s) {\n    int numberOfOnes = 0;\n    for (char c : s.toCharArray()) {\n        if (c == '1') numberOfOnes++;\n    }\n    if (numberOfOnes % 3 != 0) return 0;\n\n    int target = numberOfOnes / 3;\n    if (target == 0) {\n        long n = s.length();\n        return (int) ((n - 1) * (n - 2) / 2 % 1000000007);\n    }\n\n    int onesSoFar1 = 0, onesSoFar2 = 0;\n    long way1 = 0, way2 = 0;\n    for (char c : s.toCharArray()) {\n        if (c == '1') {\n            onesSoFar1++;\n            if (onesSoFar1 == target) {\n                way1++;\n                onesSoFar1 = 0;\n            }\n\n            onesSoFar2++;\n            if (onesSoFar2 == target * 2) {\n                way2++;\n                onesSoFar2 = 0;\n            }\n        }\n    }\n\n    return (int) (way1 * way2 % 1000000007);\n}\n```\n\n    \n    First, count the number of ones in the binary string s. If the number of ones is not divisible by three, there is no valid way to split s. If the number of ones is zero, calculate the result as the number of ways to pick two positions out of (s.length() - 1) positions to insert separator. In other cases, we iterate through the string and count ones. If the count reaches target ones, we accumulate the result for s1 and clear the count. Similarly for s2, we accumulate the result based on the count reaching target * 2. Finally, we calculate the result as (way1 * way2) % 1000000007.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

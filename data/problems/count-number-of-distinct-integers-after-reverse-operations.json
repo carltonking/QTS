@@ -1,0 +1,24 @@
+{
+  "id": 2442,
+  "title": "Count Number of Distinct Integers After Reverse Operations",
+  "slug": "count-number-of-distinct-integers-after-reverse-operations",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array nums consisting of positive integers.\n\nYou have to take each integer in the array, reverse its digits, and add it to the end of the array. You should apply this operation to the original integers in nums.\n\nReturn _the number of distinct integers in the final array_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef distinct_integers_after_reversing_and_adding(nums):\n    distinct = set(nums)\n    for num in nums:\n        reversed_num = int(str(num)[::-1])\n        distinct.add(reversed_num)\n    return len(distinct)\n```\n    \n    The algorithm first initializes a set `distinct` to keep track of distinct integers in the final array. It then iterates through each integer `num` in the `nums` array, adds the integer `num` to the `distinct` set, and calculates the reversed integer by reversing the digits of `num`. The reversed integer is also added to the `distinct` set. Finally, the algorithm returns the size of the `distinct` set, which represents the number of distinct integers in the final array. The time complexity is O(n) where n is the size of the `nums` array.\n    ",
+    "javascript": "\n    ```javascript\nfunction distinctIntegersAfterReversingAndAdding(nums) {\n    let distinct = new Set(nums);\n    nums.forEach(num => {\n        let reversed = parseInt(num.toString().split('').reverse().join(''));\n        distinct.add(reversed);\n    });\n    return distinct.size;\n}\n```\n    \n    The algorithm first initializes a set `distinct` to keep track of distinct integers in the final array. It then iterates through each integer `num` in the `nums` array, adds the integer `num` to the `distinct` set, and calculates the reversed integer by reversing the digits of `num`. The reversed integer is also added to the `distinct` set. Finally, the algorithm returns the size of the `distinct` set, which represents the number of distinct integers in the final array. The time complexity is O(n) where n is the size of the `nums` array.\n    ",
+    "java": "\n    ```java\nimport java.util.HashSet;\nimport java.util.Set;\n\npublic int distinctIntegersAfterReversingAndAdding(int[] nums) {\n    Set<Integer> distinct = new HashSet<>();\n    for (int num : nums) {\n        distinct.add(num);\n        int reversed = 0;\n        while (num > 0) {\n            reversed = reversed * 10 + num % 10;\n            num /= 10;\n        }\n        distinct.add(reversed);\n    }\n    return distinct.size();\n}\n```\n    \n    The algorithm first initializes a set `distinct` to keep track of distinct integers in the final array. It then iterates through each integer `num` in the `nums` array, adds the integer `num` to the `distinct` set, and calculates the reversed integer by reversing the digits of `num`. The reversed integer is also added to the `distinct` set. Finally, the algorithm returns the size of the `distinct` set, which represents the number of distinct integers in the final array. The time complexity is O(n) where n is the size of the `nums` array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

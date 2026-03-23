@@ -1,0 +1,24 @@
+{
+  "id": 2270,
+  "title": "Number of Ways to Split Array",
+  "slug": "number-of-ways-to-split-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums of length n.\n\nnums contains a valid split at index i if the following are true:\n\n*   The sum of the first i + 1 elements is greater than or equal to the sum of the last n - i - 1 elements.\n*   There is at least one element to the right of i. That is, 0 <= i < n - 1.\n\nReturn _the number of valid splits in_ nums.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef lonely_numbers(nums):\n    num_set = set(nums)\n    lonely = []\n    for num in nums:\n        if num - 1 not in num_set and num + 1 not in num_set:\n            lonely.append(num)\n    return lonely\n```\n\n    \n    1. Create a set `num_set` containing all the unique numbers in the given array `nums`.\n2. Create an empty list or vector `lonely` to store the lonely numbers.\n3. Iterate through the numbers in `nums`.\n4. For each number `num`, check if `num - 1` and `num + 1` do not exist in the set `num_set`.\n5. If both conditions are satisfied, the number is lonely, and we append it to our `lonely` list or vector.\n6. Return the `lonely` list or vector containing all the lonely numbers.\n    ",
+    "javascript": "\n    ```javascript\nfunction lonelyNumbers(nums) {\n    let numSet = new Set(nums);\n    let lonely = [];\n    for (let num of nums) {\n        if (!numSet.has(num - 1) && !numSet.has(num + 1)) {\n            lonely.push(num);\n        }\n    }\n    return lonely;\n}\n```\n\n    \n    1. Create a set `num_set` containing all the unique numbers in the given array `nums`.\n2. Create an empty list or vector `lonely` to store the lonely numbers.\n3. Iterate through the numbers in `nums`.\n4. For each number `num`, check if `num - 1` and `num + 1` do not exist in the set `num_set`.\n5. If both conditions are satisfied, the number is lonely, and we append it to our `lonely` list or vector.\n6. Return the `lonely` list or vector containing all the lonely numbers.\n    ",
+    "java": "\n    ```java\nimport java.util.HashSet;\nimport java.util.ArrayList;\n\npublic ArrayList<Integer> lonelyNumbers(int[] nums) {\n    HashSet<Integer> num_set = new HashSet<>();\n    for (int num : nums) {\n        num_set.add(num);\n    }\n    ArrayList<Integer> lonely = new ArrayList<>();\n    for (int num : nums) {\n        if (!num_set.contains(num - 1) && !num_set.contains(num + 1)) {\n            lonely.add(num);\n        }\n    }\n    return lonely;\n}\n```\n\n    \n    1. Create a set `num_set` containing all the unique numbers in the given array `nums`.\n2. Create an empty list or vector `lonely` to store the lonely numbers.\n3. Iterate through the numbers in `nums`.\n4. For each number `num`, check if `num - 1` and `num + 1` do not exist in the set `num_set`.\n5. If both conditions are satisfied, the number is lonely, and we append it to our `lonely` list or vector.\n6. Return the `lonely` list or vector containing all the lonely numbers.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

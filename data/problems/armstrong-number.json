@@ -1,0 +1,24 @@
+{
+  "id": 1134,
+  "title": "Armstrong Number",
+  "slug": "armstrong-number",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer n, return true _if and only if it is an Armstrong number_.\n\nThe k\\-digit number n is an Armstrong number if and only if the kth power of each digit sums to n.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_armstrong(n: int) -> bool:\n    power_sum = 0\n    original = n\n    k = len(str(n))\n    while n > 0:\n        digit = n % 10\n        power_sum += digit ** k\n        n //= 10\n    return power_sum == original\n```\n    \n    1. Initialize `power_sum` to 0 and store the input number into a variable called `original`.\n2. Calculate the length of the number (number of digits) and store it in variable `k`.\n3. Use a while loop to iterate through each digit of the number.\n   - In each iteration, extract the last digit of the number.\n   - Add the `k`th power of the digit to `power_sum`.\n   - Remove the last digit from the number.\n4. After the loop, check if `power_sum` is equal to the original number. If it is, then the number is an Armstrong number, so return `true`, otherwise return `false`.\n    ",
+    "javascript": "\n    ```javascript\nfunction isArmstrong(n) {\n    let power_sum = 0;\n    let original = n;\n    let k = n.toString().length;\n    while (n > 0) {\n        let digit = n % 10;\n        power_sum += Math.pow(digit, k);\n        n = Math.floor(n / 10);\n    }\n    return power_sum === original;\n}\n```\n    \n    1. Initialize `power_sum` to 0 and store the input number into a variable called `original`.\n2. Calculate the length of the number (number of digits) and store it in variable `k`.\n3. Use a while loop to iterate through each digit of the number.\n   - In each iteration, extract the last digit of the number.\n   - Add the `k`th power of the digit to `power_sum`.\n   - Remove the last digit from the number.\n4. After the loop, check if `power_sum` is equal to the original number. If it is, then the number is an Armstrong number, so return `true`, otherwise return `false`.\n    ",
+    "java": "\n    ```java\npublic boolean isArmstrong(int n) {\n    int power_sum = 0;\n    int original = n;\n    int k = String.valueOf(n).length();\n    while (n > 0) {\n        int digit = n % 10;\n        power_sum += Math.pow(digit, k);\n        n /= 10;\n    }\n    return power_sum == original;\n}\n```\n    \n    1. Initialize `power_sum` to 0 and store the input number into a variable called `original`.\n2. Calculate the length of the number (number of digits) and store it in variable `k`.\n3. Use a while loop to iterate through each digit of the number.\n   - In each iteration, extract the last digit of the number.\n   - Add the `k`th power of the digit to `power_sum`.\n   - Remove the last digit from the number.\n4. After the loop, check if `power_sum` is equal to the original number. If it is, then the number is an Armstrong number, so return `true`, otherwise return `false`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

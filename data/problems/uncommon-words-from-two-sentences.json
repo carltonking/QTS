@@ -1,0 +1,24 @@
+{
+  "id": 884,
+  "title": "Uncommon Words from Two Sentences",
+  "slug": "uncommon-words-from-two-sentences",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "A sentence is a string of single-space separated words where each word consists only of lowercase letters.\n\nA word is uncommon if it appears exactly once in one of the sentences, and does not appear in the other sentence.\n\nGiven two sentences s1 and s2, return _a list of all the uncommon words_. You may return the answer in any order.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef k_similarity(s1, s2):\n    k = 0\n    a, b = list(s1), list(s2)\n    for i in range(len(a)):\n        if a[i] != b[i]:\n            for j in range(i + 1, len(b)):\n                if a[i] == b[j] and a[j] != b[j]:\n                    a[i], a[j] = a[j], a[i]\n                    k += 1\n                    break\n    return k\n```\n    \n    The algorithm begins by initializing the counter `k` to 0. We then create two mutable copies of the inputs: `a` and `b`. We loop through each character in `a` and compare it to its corresponding position in `b`. If they don't match, we look for matching characters in both `b` and the later part of `a`, ensuring that the swap candidate is not 'correct' (i.e., needs to be swapped itself). If we find a good swap candidate, we swap the characters in `a` and increment the `k`. We continue this process until reaching the end of the strings, and return `k` as the final result.\n    ",
+    "javascript": "\n    ```javascript\nfunction kSimilarity(s1, s2) {\n    let k = 0;\n    let a = Array.from(s1);\n    let b = Array.from(s2);\n    for (let i = 0; i < a.length; ++i) {\n        if (a[i] !== b[i]) {\n            for (let j = i + 1; j < b.length; ++j) {\n                if (a[i] === b[j] && a[j] !== b[j]) {\n                    [a[i], a[j]] = [a[j], a[i]];\n                    k++;\n                    break;\n                }\n            }\n        }\n    }\n    return k;\n}\n```\n    \n    The algorithm begins by initializing the counter `k` to 0. We then create two mutable copies of the inputs: `a` and `b`. We loop through each character in `a` and compare it to its corresponding position in `b`. If they don't match, we look for matching characters in both `b` and the later part of `a`, ensuring that the swap candidate is not 'correct' (i.e., needs to be swapped itself). If we find a good swap candidate, we swap the characters in `a` and increment the `k`. We continue this process until reaching the end of the strings, and return `k` as the final result.\n    ",
+    "java": "\n    ```java\npublic int kSimilarity(String s1, String s2) {\n    int k = 0;\n    StringBuilder a = new StringBuilder(s1);\n    StringBuilder b = new StringBuilder(s2);\n    for (int i = 0; i < a.length(); ++i) {\n        if (a.charAt(i) != b.charAt(i)) {\n            for (int j = i + 1; j < b.length(); ++j) {\n                if (a.charAt(i) == b.charAt(j) && a.charAt(j) != b.charAt(j)) {\n                    a.setCharAt(i, a.charAt(j));\n                    a.setCharAt(j, b.charAt(j));\n                    k++;\n                    break;\n                }\n            }\n        }\n    }\n    return k;\n}\n```\n    \n    The algorithm begins by initializing the counter `k` to 0. We then create two mutable copies of the inputs: `a` and `b`. We loop through each character in `a` and compare it to its corresponding position in `b`. If they don't match, we look for matching characters in both `b` and the later part of `a`, ensuring that the swap candidate is not 'correct' (i.e., needs to be swapped itself). If we find a good swap candidate, we swap the characters in `a` and increment the `k`. We continue this process until reaching the end of the strings, and return `k` as the final result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1909,
+  "title": "Remove One Element to Make the Array Strictly Increasing",
+  "slug": "remove-one-element-to-make-the-array-strictly-increasing",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a 0-indexed integer array nums, return true _if it can be made strictly increasing after removing exactly one element, or_ false _otherwise. If the array is already strictly increasing, return_ true.\n\nThe array nums is strictly increasing if nums[i - 1] < nums[i] for each index (1 <= i < nums.length).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef canBeIncreasing(nums):\n    count = 0\n    for i in range(1, len(nums)):\n        if nums[i - 1] >= nums[i]:\n            count += 1\n            if count > 1: return False\n            if i > 1 and nums[i - 2] >= nums[i] and i < len(nums) - 1 and nums[i - 1] >= nums[i + 1]: return False\n    return True\n```\n    \n    We start by initializing a counter variable `count` to keep track of the number of non-increasing sequences we find in the array `nums`. We iterate through the array starting from index 1 till the end of the array, and at each index, we check if the current element is greater than or equal to the previous element. If we find such elements, we increment the `count` by 1. We return `false` if `count` is greater than 1, as we can only remove exactly one element.\n\nWe also need to handle a special case: if removing the current element doesn't make the subarray strictly increasing, we return `false`. This happens if the element before the previous element is greater than or equal to the current element and the previous element is greater than or equal to the next element.\n\nIf we pass through the array without finding either of these conditions, we return `true`.\n    ",
+    "javascript": "\n    ```javascript\nfunction canBeIncreasing(nums) {\n    let count = 0;\n    for (let i = 1; i < nums.length; ++i) {\n        if (nums[i - 1] >= nums[i]) {\n            count++;\n            if (count > 1) return false;\n            if (i > 1 && nums[i - 2] >= nums[i] && i < nums.length - 1 && nums[i - 1] >= nums[i + 1]) return false;\n        }\n    }\n    return true;\n}\n```\n    \n    We start by initializing a counter variable `count` to keep track of the number of non-increasing sequences we find in the array `nums`. We iterate through the array starting from index 1 till the end of the array, and at each index, we check if the current element is greater than or equal to the previous element. If we find such elements, we increment the `count` by 1. We return `false` if `count` is greater than 1, as we can only remove exactly one element.\n\nWe also need to handle a special case: if removing the current element doesn't make the subarray strictly increasing, we return `false`. This happens if the element before the previous element is greater than or equal to the current element and the previous element is greater than or equal to the next element.\n\nIf we pass through the array without finding either of these conditions, we return `true`.\n    ",
+    "java": "\n    ```java\npublic boolean canBeIncreasing(int[] nums) {\n    int count = 0;\n    for (int i = 1; i < nums.length; ++i) {\n        if (nums[i - 1] >= nums[i]) {\n            count++;\n            if (count > 1) return false;\n            if (i > 1 && nums[i - 2] >= nums[i] && i < nums.length - 1 && nums[i - 1] >= nums[i + 1]) return false;\n        }\n    }\n    return true;\n}\n```\n    \n    We start by initializing a counter variable `count` to keep track of the number of non-increasing sequences we find in the array `nums`. We iterate through the array starting from index 1 till the end of the array, and at each index, we check if the current element is greater than or equal to the previous element. If we find such elements, we increment the `count` by 1. We return `false` if `count` is greater than 1, as we can only remove exactly one element.\n\nWe also need to handle a special case: if removing the current element doesn't make the subarray strictly increasing, we return `false`. This happens if the element before the previous element is greater than or equal to the current element and the previous element is greater than or equal to the next element.\n\nIf we pass through the array without finding either of these conditions, we return `true`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

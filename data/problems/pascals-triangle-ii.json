@@ -1,0 +1,24 @@
+{
+  "id": 119,
+  "title": "Pascal's Triangle II",
+  "slug": "pascals-triangle-ii",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer rowIndex, return the rowIndexth (0-indexed) row of the Pascal's triangle.\n\nIn Pascal's triangle, each number is the sum of the two numbers directly above it as shown:",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef get_row(rowIndex):\n    row = [1] * (rowIndex + 1)\n    for i in range(1, rowIndex + 1):\n        for j in range(i - 1, 0, -1):\n            row[j] += row[j - 1]\n    return row\n```\n    \n    The algorithm initializes the row with the given rowIndex size and fills it with 1s. Then, we iterate through the rowIndex and update each entry of the row using the sum of the two numbers directly above it (based on Pascal's triangle property), i.e., row[j] = row[j] + row[j-1]. We get the rowIndexth row of Pascal's triangle once the iterations are completed.\n    ",
+    "javascript": "\n    ```javascript\nfunction getRow(rowIndex) {\n    const row = new Array(rowIndex + 1).fill(1);\n    for (let i = 1; i <= rowIndex; i++) {\n        for (let j = i - 1; j > 0; j--) {\n            row[j] += row[j - 1];\n        }\n    }\n    return row;\n}\n```\n    \n    The algorithm initializes the row with the given rowIndex size and fills it with 1s. Then, we iterate through the rowIndex and update each entry of the row using the sum of the two numbers directly above it (based on Pascal's triangle property), i.e., row[j] = row[j] + row[j-1]. We get the rowIndexth row of Pascal's triangle once the iterations are completed.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<Integer> getRow(int rowIndex) {\n    List<Integer> row = new ArrayList<>();\n    for (int i = 0; i <= rowIndex; i++) {\n        row.add(1);\n        for (int j = i - 1; j > 0; j--) {\n            row.set(j, row.get(j) + row.get(j - 1));\n        }\n    }\n    return row;\n}\n```\n    \n    The algorithm initializes the row with the given rowIndex size and fills it with 1s. Then, we iterate through the rowIndex and update each entry of the row using the sum of the two numbers directly above it (based on Pascal's triangle property), i.e., row[j] = row[j] + row[j-1]. We get the rowIndexth row of Pascal's triangle once the iterations are completed.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

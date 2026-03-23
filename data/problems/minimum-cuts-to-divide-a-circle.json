@@ -1,0 +1,24 @@
+{
+  "id": 2481,
+  "title": "Minimum Cuts to Divide a Circle",
+  "slug": "minimum-cuts-to-divide-a-circle",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "A valid cut in a circle can be:\n\n*   A cut that is represented by a straight line that touches two points on the edge of the circle and passes through its center, or\n*   A cut that is represented by a straight line that touches one point on the edge of the circle and its center.\n\nSome valid and invalid cuts are shown in the figures below.\n\nGiven the integer n, return _the minimum number of cuts needed to divide a circle into_ n _equal slices_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_cuts(n):\n    if n % 2 == 0:\n        return n // 2\n    else:\n        return n\n```\n\n    \n    If `n` is an even number, then each cut divides the circle into two equal slices, and thus the minimum number of cuts required is `n / 2`. If `n` is an odd number, then each cut divides the circle into one equal slice, and thus the minimum number of cuts required is `n`.\n    ",
+    "javascript": "\n    ```javascript\nfunction minCuts(n) {\n    if (n % 2 === 0)\n        return n / 2;\n    else\n        return n;\n}\n```\n\n    \n    If `n` is an even number, then each cut divides the circle into two equal slices, and thus the minimum number of cuts required is `n / 2`. If `n` is an odd number, then each cut divides the circle into one equal slice, and thus the minimum number of cuts required is `n`.\n    ",
+    "java": "\n    ```java\nint minCuts(int n) {\n    if (n % 2 == 0)\n        return n / 2;\n    else\n        return n;\n}\n```\n\n    \n    If `n` is an even number, then each cut divides the circle into two equal slices, and thus the minimum number of cuts required is `n / 2`. If `n` is an odd number, then each cut divides the circle into one equal slice, and thus the minimum number of cuts required is `n`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1108,
+  "title": "Defanging an IP Address",
+  "slug": "defanging-an-ip-address",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a valid (IPv4) IP address, return a defanged version of that IP address.\n\nA _defanged IP address_ replaces every period \". \" with \"[.] \".",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef defangIPaddr(address: str) -> str:\n    return address.replace('.', '[.]')\n```\n    \n    The function for each language takes an input address, which is a valid IPv4 address. It iterates through each character of the string, checking for a period ('.'). If a period is found, we replace it with \"[.]\" in the resulting string. For other characters, we just add them to the resulting string.\n\nIn C++, Java, and JavaScript, we iterate over each character using a for loop, appending the processed character to a string object or a StringBuilder object. Java uses a StringBuilder object for more efficient string concatenation.\n\nIn Python, we can directly use the string method `replace()` to replace all occurrences of the period with \"[.]\" in a more concise way.\n\nAt the end of the function, we return the defanged IP address as string.\n    ",
+    "javascript": "\n    ```javascript\nfunction defangIPaddr(address) {\n    return address.split('.').join('[.]');\n}\n```\n    \n    The function for each language takes an input address, which is a valid IPv4 address. It iterates through each character of the string, checking for a period ('.'). If a period is found, we replace it with \"[.]\" in the resulting string. For other characters, we just add them to the resulting string.\n\nIn C++, Java, and JavaScript, we iterate over each character using a for loop, appending the processed character to a string object or a StringBuilder object. Java uses a StringBuilder object for more efficient string concatenation.\n\nIn Python, we can directly use the string method `replace()` to replace all occurrences of the period with \"[.]\" in a more concise way.\n\nAt the end of the function, we return the defanged IP address as string.\n    ",
+    "java": "\n    ```java\npublic String defangIPaddr(String address) {\n    StringBuilder defanged = new StringBuilder();\n    for (char c : address.toCharArray()) {\n        if (c == '.')\n            defanged.append(\"[.]\");\n        else\n            defanged.append(c);\n    }\n    return defanged.toString();\n}\n```\n    \n    The function for each language takes an input address, which is a valid IPv4 address. It iterates through each character of the string, checking for a period ('.'). If a period is found, we replace it with \"[.]\" in the resulting string. For other characters, we just add them to the resulting string.\n\nIn C++, Java, and JavaScript, we iterate over each character using a for loop, appending the processed character to a string object or a StringBuilder object. Java uses a StringBuilder object for more efficient string concatenation.\n\nIn Python, we can directly use the string method `replace()` to replace all occurrences of the period with \"[.]\" in a more concise way.\n\nAt the end of the function, we return the defanged IP address as string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

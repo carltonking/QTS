@@ -1,0 +1,24 @@
+{
+  "id": 1185,
+  "title": "Day of the Week",
+  "slug": "day-of-the-week",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a date, return the corresponding day of the week for that date.\n\nThe input is given as three integers representing the day, month and year respectively.\n\nReturn the answer as one of the following values { \"Sunday \", \"Monday \", \"Tuesday \", \"Wednesday \", \"Thursday \", \"Friday \", \"Saturday \"}.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef day_of_the_week(day, month, year):\n    from datetime import date\n    days = [\"Sunday \", \"Monday \", \"Tuesday \", \"Wednesday \", \"Thursday \", \"Friday \", \"Saturday \"]\n    return days[date(year, month, day).weekday()]\n```\n    \n    The algorithm calculates the day of the week based on the given day, month, and year. For the C++ implementation, we implement the calculation of days since the year 1971 and then use the modulus operator to determine the day of the week. For Java, Python, and JavaScript implementations, we take advantage of built-in date libraries (LocalDate, datetime, and Date respectively) to calculate the day of the week. All implementations use a string array `days[]` to get the correct day of the week as the output.\n    ",
+    "javascript": "\n    ```javascript\nfunction dayOfTheWeek(day, month, year) {\n    let days = [\"Sunday \", \"Monday \", \"Tuesday \", \"Wednesday \", \"Thursday \", \"Friday \", \"Saturday \"];\n    let date = new Date(year, month - 1, day);\n    return days[date.getDay()];\n}\n```\n    \n    The algorithm calculates the day of the week based on the given day, month, and year. For the C++ implementation, we implement the calculation of days since the year 1971 and then use the modulus operator to determine the day of the week. For Java, Python, and JavaScript implementations, we take advantage of built-in date libraries (LocalDate, datetime, and Date respectively) to calculate the day of the week. All implementations use a string array `days[]` to get the correct day of the week as the output.\n    ",
+    "java": "\n    ```java\nimport java.time.LocalDate;\n\npublic String dayOfTheWeek(int day, int month, int year) {\n    LocalDate date = LocalDate.of(year, month, day);\n    int dayOfWeekIndex = date.getDayOfWeek().getValue() % 7;\n    String[] days = {\"Sunday \", \"Monday \", \"Tuesday \", \"Wednesday \", \"Thursday \", \"Friday \", \"Saturday \"};\n    return days[dayOfWeekIndex];\n}\n```\n    \n    The algorithm calculates the day of the week based on the given day, month, and year. For the C++ implementation, we implement the calculation of days since the year 1971 and then use the modulus operator to determine the day of the week. For Java, Python, and JavaScript implementations, we take advantage of built-in date libraries (LocalDate, datetime, and Date respectively) to calculate the day of the week. All implementations use a string array `days[]` to get the correct day of the week as the output.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2059,
+  "title": "Minimum Operations to Convert Number",
+  "slug": "minimum-operations-to-convert-number",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums containing distinct numbers, an integer start, and an integer goal. There is an integer x that is initially set to start, and you want to perform operations on x such that it is converted to goal. You can perform the following operation repeatedly on the number x:\n\nIf 0 <= x <= 1000, then for any index i in the array (0 <= i < nums.length), you can set x to any of the following:\n\n*   x + nums[i]\n*   x - nums[i]\n*   x ^ nums[i] (bitwise-XOR)\n\nNote that you can use each nums[i] any number of times in any order. Operations that set x to be out of the range 0 <= x <= 1000 are valid, but no more operations can be done afterward.\n\nReturn _the minimum number of operations needed to convert_ x = start _into_ goal_, and_ -1 _if it is not possible_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_three_char_palindromes(s):\n    count = 0\n    freq = {}\n    for ch in s:\n        if ch in freq:\n            freq[ch] += 1\n        else:\n            freq[ch] = 1\n    for value in freq.values():\n        count += value * (value - 1) // 2\n    return count\n```\n\n    \n    1. Create a hashmap to store the frequency of each character in the given string.\n2. Iterate through the string and populate the frequency hashmap.\n3. Iterate through the frequency hashmap.\n4. For each character found in the hashmap, calculate the number of ways to create a palindrome of length 3 using the formula `n * (n - 1) / 2`, where `n` is the frequency of the character, and add this value to the counter.\n5. Return the counter, which represents the number of unique palindromes of length 3 that are a subsequence of the input string.\n    ",
+    "javascript": "\n    ```javascript\nfunction countThreeCharPalindromes(s) {\n    let count = 0;\n    let freq = {};\n    for (let ch of s) {\n        if (ch in freq) {\n            freq[ch]++;\n        } else {\n            freq[ch] = 1;\n        }\n    }\n    for (let value of Object.values(freq)) {\n        count += value * (value - 1) / 2;\n    }\n    return count;\n}\n```\n\n    \n    1. Create a hashmap to store the frequency of each character in the given string.\n2. Iterate through the string and populate the frequency hashmap.\n3. Iterate through the frequency hashmap.\n4. For each character found in the hashmap, calculate the number of ways to create a palindrome of length 3 using the formula `n * (n - 1) / 2`, where `n` is the frequency of the character, and add this value to the counter.\n5. Return the counter, which represents the number of unique palindromes of length 3 that are a subsequence of the input string.\n    ",
+    "java": "\n    ```java\npublic int countThreeCharPalindromes(String s) {\n    int count = 0;\n    HashMap<Character, Integer> freq = new HashMap<>();\n    for (char ch : s.toCharArray()) {\n        freq.put(ch, freq.getOrDefault(ch, 0) + 1);\n    }\n    for (int value : freq.values()) {\n        count += value * (value - 1) / 2;\n    }\n    return count;\n}\n```\n\n    \n    1. Create a hashmap to store the frequency of each character in the given string.\n2. Iterate through the string and populate the frequency hashmap.\n3. Iterate through the frequency hashmap.\n4. For each character found in the hashmap, calculate the number of ways to create a palindrome of length 3 using the formula `n * (n - 1) / 2`, where `n` is the frequency of the character, and add this value to the counter.\n5. Return the counter, which represents the number of unique palindromes of length 3 that are a subsequence of the input string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

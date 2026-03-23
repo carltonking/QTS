@@ -1,0 +1,24 @@
+{
+  "id": 458,
+  "title": "Poor Pigs",
+  "slug": "poor-pigs",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "There are buckets buckets of liquid, where exactly one of the buckets is poisonous. To figure out which one is poisonous, you feed some number of (poor) pigs the liquid to see whether they will die or not. Unfortunately, you only have minutesToTest minutes to determine which bucket is poisonous.\n\nYou can feed the pigs according to these steps:\n\n1.  Choose some live pigs to feed.\n2.  For each pig, choose which buckets to feed it. The pig will consume all the chosen buckets simultaneously and will take no time. Each pig can feed from any number of buckets, and each bucket can be fed from by any number of pigs.\n3.  Wait for minutesToDie minutes. You may not feed any other pigs during this time.\n4.  After minutesToDie minutes have passed, any pigs that have been fed the poisonous bucket will die, and all others will survive.\n5.  Repeat this process until you run out of time.\n\nGiven buckets, minutesToDie, and minutesToTest, return _the minimum number of pigs needed to figure out which bucket is poisonous within the allotted time_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef poor_pigs(buckets, minutes_to_die, minutes_to_test):\n    pigs = 0\n    while (minutes_to_test // minutes_to_die + 1) ** pigs < buckets:\n        pigs += 1\n    return pigs\n```\n\n    \n    The algorithm calculates the minimum number of pigs required to test all the buckets within the given time constraint. It is based on the fact that each pig can be used to test multiple buckets (in a binary search manner) within the time constraint, as it is repeatedly fed different buckets.\n\n1. Initialize the number of pigs to 0.\n2. Calculate the maximum number of tests each pig can make within the given time constraint (`minutesToTest / minutesToDie + 1`).\n3. Iterate and increment the number of pigs until the total number of buckets is less than the power of the number of tests each pig can make to the number of pigs.\n4. Return the minimum number of pigs required.\n\nThe algorithm leverages the multi-level testing capacity of the pigs within the given time frame to minimize the number of pigs needed. Each pig represents an additional level of testing capacity, reducing the total number of tests needed.\n    ",
+    "javascript": "\n    ```javascript\nfunction poorPigs(buckets, minutesToDie, minutesToTest) {\n    let pigs = 0;\n    while (Math.pow(Math.floor(minutesToTest / minutesToDie) + 1, pigs) < buckets) {\n        pigs++;\n    }\n    return pigs;\n}\n```\n\n    \n    The algorithm calculates the minimum number of pigs required to test all the buckets within the given time constraint. It is based on the fact that each pig can be used to test multiple buckets (in a binary search manner) within the time constraint, as it is repeatedly fed different buckets.\n\n1. Initialize the number of pigs to 0.\n2. Calculate the maximum number of tests each pig can make within the given time constraint (`minutesToTest / minutesToDie + 1`).\n3. Iterate and increment the number of pigs until the total number of buckets is less than the power of the number of tests each pig can make to the number of pigs.\n4. Return the minimum number of pigs required.\n\nThe algorithm leverages the multi-level testing capacity of the pigs within the given time frame to minimize the number of pigs needed. Each pig represents an additional level of testing capacity, reducing the total number of tests needed.\n    ",
+    "java": "\n    ```java\npublic int poorPigs(int buckets, int minutesToDie, int minutesToTest) {\n    int pigs = 0;\n    while (Math.pow((minutesToTest / minutesToDie) + 1, pigs) < buckets) {\n        pigs++;\n    }\n    return pigs;\n}\n```\n\n    \n    The algorithm calculates the minimum number of pigs required to test all the buckets within the given time constraint. It is based on the fact that each pig can be used to test multiple buckets (in a binary search manner) within the time constraint, as it is repeatedly fed different buckets.\n\n1. Initialize the number of pigs to 0.\n2. Calculate the maximum number of tests each pig can make within the given time constraint (`minutesToTest / minutesToDie + 1`).\n3. Iterate and increment the number of pigs until the total number of buckets is less than the power of the number of tests each pig can make to the number of pigs.\n4. Return the minimum number of pigs required.\n\nThe algorithm leverages the multi-level testing capacity of the pigs within the given time frame to minimize the number of pigs needed. Each pig represents an additional level of testing capacity, reducing the total number of tests needed.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

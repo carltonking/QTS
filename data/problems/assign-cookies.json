@@ -1,0 +1,24 @@
+{
+  "id": 455,
+  "title": "Assign Cookies",
+  "slug": "assign-cookies",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Assume you are an awesome parent and want to give your children some cookies. But, you should give each child at most one cookie.\n\nEach child i has a greed factor g[i], which is the minimum size of a cookie that the child will be content with; and each cookie j has a size s[j]. If s[j] >= g[i], we can assign the cookie j to the child i, and the child i will be content. Your goal is to maximize the number of your content children and output the maximum number.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_content_children(g, s):\n    g.sort()\n    s.sort()\n    i = j = 0\n\n    while i < len(g) and j < len(s):\n        if s[j] >= g[i]:\n            i += 1\n\n        j += 1\n\n    return i\n```\n\n    \n    The algorithm first sorts both the greed factors of children `g` and the sizes of cookies `s`. Next, two pointers are declared, `i` for the greed factors and `j` for the cookies. \nThe algorithm then iterates through the sorted lists in parallel using a while loop until either the greed factors or the cookies run out. Inside the loop, we check if the current cookie `s[j]` is greater than or equal to the current greed factor `g[i]`. If it is, that means the child is content and we increment the `i` pointer to the next child. In both cases (whether the child is content or not), we move on to the next cookie by incrementing the `j` pointer.\nThe algorithm returns the number of content children (`i`) once the loop is done.\n    ",
+    "javascript": "\n    ```javascript\nfunction findContentChildren(g, s) {\n    g.sort((a, b) => a - b);\n    s.sort((a, b) => a - b);\n    let i = 0, j = 0;\n\n    while (i < g.length && j < s.length) {\n        if (s[j] >= g[i]) {\n            i++;\n        }\n\n        j++;\n    }\n\n    return i;\n}\n```\n\n    \n    The algorithm first sorts both the greed factors of children `g` and the sizes of cookies `s`. Next, two pointers are declared, `i` for the greed factors and `j` for the cookies. \nThe algorithm then iterates through the sorted lists in parallel using a while loop until either the greed factors or the cookies run out. Inside the loop, we check if the current cookie `s[j]` is greater than or equal to the current greed factor `g[i]`. If it is, that means the child is content and we increment the `i` pointer to the next child. In both cases (whether the child is content or not), we move on to the next cookie by incrementing the `j` pointer.\nThe algorithm returns the number of content children (`i`) once the loop is done.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int findContentChildren(int[] g, int[] s) {\n    Arrays.sort(g);\n    Arrays.sort(s);\n    int i = 0, j = 0;\n\n    while (i < g.length && j < s.length) {\n        if (s[j] >= g[i]) {\n            i++;\n        }\n\n        j++;\n    }\n\n    return i;\n}\n```\n\n    \n    The algorithm first sorts both the greed factors of children `g` and the sizes of cookies `s`. Next, two pointers are declared, `i` for the greed factors and `j` for the cookies. \nThe algorithm then iterates through the sorted lists in parallel using a while loop until either the greed factors or the cookies run out. Inside the loop, we check if the current cookie `s[j]` is greater than or equal to the current greed factor `g[i]`. If it is, that means the child is content and we increment the `i` pointer to the next child. In both cases (whether the child is content or not), we move on to the next cookie by incrementing the `j` pointer.\nThe algorithm returns the number of content children (`i`) once the loop is done.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

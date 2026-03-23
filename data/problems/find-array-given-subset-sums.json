@@ -1,0 +1,24 @@
+{
+  "id": 1982,
+  "title": "Find Array Given Subset Sums",
+  "slug": "find-array-given-subset-sums",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an integer n representing the length of an unknown array that you are trying to recover. You are also given an array sums containing the values of all 2n subset sums of the unknown array (in no particular order).\n\nReturn _the array_ ans _of length_ n _representing the unknown array. If multiple answers exist, return any of them_.\n\nAn array sub is a subset of an array arr if sub can be obtained from arr by deleting some (possibly zero or all) elements of arr. The sum of the elements in sub is one possible subset sum of arr. The sum of an empty array is considered to be 0.\n\nNote: Test cases are generated such that there will always be at least one correct answer.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import Counter\n\ndef recoverArray(n, sums):\n    sums = Counter(sums)\n    ans = []\n\n    while len(ans) < n:\n        # remove the 0 sum\n        sums[0] -= 1\n        if sums[0] == 0: del sums[0]\n\n        # selected next value\n        cur = next(iter(sums))\n        sums[cur] -= 1\n        if sums[cur] == 0: del sums[cur]\n\n        # update sums\n        tmp = Counter()\n        for k, v in sums.items():\n            cnt = v - Ans.count(k - cur)\n            if cnt > 0:\n                tmp[k] = cnt\n        sums = tmp\n        ans.append(cur)\n    return ans\n```\n    \n    Inside the algorithm, we start by creating a multiset with sums. For each iteration (up to `n`), we do the following steps:\n\n1. Delete the smallest element of `sums`, which is always zero.\n2. Get the next smallest element and append it to our result array `ans`.\n3. Remove the sums obtained by adding this element to the previous elements of the array `ans`.\n4. Update our `sums` with the removed sums.\n\nIn the end, we'll have the array `ans` with the desired result.\n    ",
+    "javascript": "\n    ```javascript\nfunction recoverArray(n, sums) {\n    let ms = new Set(sums.sort((a, b) => a - b));\n    let ans = [];\n\n    while (ans.length < n) {\n        ms.delete(ms.values().next().value);\n        let cur = ms.values().next().value;\n\n        let tmp = new Set(ms);\n        for (let i of ans) {\n            tmp.delete(cur - i);\n        }\n\n        ans.push(cur);\n        ms = tmp;\n    }\n\n    return ans;\n}\n```\n    \n    Inside the algorithm, we start by creating a multiset with sums. For each iteration (up to `n`), we do the following steps:\n\n1. Delete the smallest element of `sums`, which is always zero.\n2. Get the next smallest element and append it to our result array `ans`.\n3. Remove the sums obtained by adding this element to the previous elements of the array `ans`.\n4. Update our `sums` with the removed sums.\n\nIn the end, we'll have the array `ans` with the desired result.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\nclass Solution {\n    public int[] recoverArray(int n, int[] sums) {\n        TreeSet<Integer> ms = new TreeSet<>();\n        for (int sum : sums) {\n            ms.add(sum);\n        }\n\n        ArrayList<Integer> ans = new ArrayList<>();\n        while (ans.size() < n) {\n            ms.pollFirst();\n            int cur = ms.first();\n            TreeSet<Integer> tmp = new TreeSet<>(ms);\n            for (int i : ans) {\n                tmp.remove(cur - i);\n            }\n            ans.add(cur);\n            ms = tmp;\n        }\n\n        return ans.stream().mapToInt(i -> i).toArray();\n    }\n}\n```\n    \n    Inside the algorithm, we start by creating a multiset with sums. For each iteration (up to `n`), we do the following steps:\n\n1. Delete the smallest element of `sums`, which is always zero.\n2. Get the next smallest element and append it to our result array `ans`.\n3. Remove the sums obtained by adding this element to the previous elements of the array `ans`.\n4. Update our `sums` with the removed sums.\n\nIn the end, we'll have the array `ans` with the desired result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

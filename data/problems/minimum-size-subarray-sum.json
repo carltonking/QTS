@@ -1,0 +1,24 @@
+{
+  "id": 209,
+  "title": "Minimum Size Subarray Sum",
+  "slug": "minimum-size-subarray-sum",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of positive integers nums and a positive integer target, return _the minimal length of a_ _subarray_ _whose sum is greater than or equal to_ target. If there is no such subarray, return 0 instead.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minSubArrayLen(target: int, nums: List[int]) -> int:\n    left, cur_sum, min_len = 0, 0, float('inf')\n    for right in range(len(nums)):\n        cur_sum += nums[right]\n        while cur_sum >= target:\n            min_len = min(min_len, right - left + 1)\n            cur_sum -= nums[left]\n            left += 1\n    return min_len if min_len != float('inf') else 0\n```\n    \n    The algorithm initializes pointers left and right, sum cur_sum, and minimum length min_len. The right pointer traverses nums. During traversal, update cur_sum by adding nums[right]. Then check if cur_sum is greater than or equal to target. If so, update min_len by comparing min_len and the length of the current subarray (right - left + 1). Then update cur_sum by subtracting nums[left] and increment the left pointer. Continue this process until the end of nums is reached. If min_len is still at its max value at the end, return 0. Otherwise, return min_len.\n\nThis algorithm uses a sliding window technique to iterate through the array while maintaining subarray sums greater than or equal to the target.\n    ",
+    "javascript": "\n    ```javascript\nfunction minSubArrayLen(target, nums) {\n    let left = 0, cur_sum = 0, min_len = Number.MAX_VALUE;\n    for (let right = 0; right < nums.length; right++) {\n        cur_sum += nums[right];\n        while (cur_sum >= target) {\n            min_len = Math.min(min_len, right - left + 1);\n            cur_sum -= nums[left++];\n        }\n    }\n    return min_len === Number.MAX_VALUE ? 0 : min_len;\n}\n```\n\n    \n    The algorithm initializes pointers left and right, sum cur_sum, and minimum length min_len. The right pointer traverses nums. During traversal, update cur_sum by adding nums[right]. Then check if cur_sum is greater than or equal to target. If so, update min_len by comparing min_len and the length of the current subarray (right - left + 1). Then update cur_sum by subtracting nums[left] and increment the left pointer. Continue this process until the end of nums is reached. If min_len is still at its max value at the end, return 0. Otherwise, return min_len.\n\nThis algorithm uses a sliding window technique to iterate through the array while maintaining subarray sums greater than or equal to the target.\n    ",
+    "java": "\n    ```java\npublic int minSubArrayLen(int target, int[] nums) {\n    int left = 0, cur_sum = 0, min_len = Integer.MAX_VALUE;\n    for (int right = 0; right < nums.length; right++) {\n        cur_sum += nums[right];\n        while (cur_sum >= target) {\n            min_len = Math.min(min_len, right - left + 1);\n            cur_sum -= nums[left++];\n        }\n    }\n    return min_len == Integer.MAX_VALUE ? 0 : min_len;\n}\n```\n    \n    The algorithm initializes pointers left and right, sum cur_sum, and minimum length min_len. The right pointer traverses nums. During traversal, update cur_sum by adding nums[right]. Then check if cur_sum is greater than or equal to target. If so, update min_len by comparing min_len and the length of the current subarray (right - left + 1). Then update cur_sum by subtracting nums[left] and increment the left pointer. Continue this process until the end of nums is reached. If min_len is still at its max value at the end, return 0. Otherwise, return min_len.\n\nThis algorithm uses a sliding window technique to iterate through the array while maintaining subarray sums greater than or equal to the target.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

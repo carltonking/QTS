@@ -1,0 +1,24 @@
+{
+  "id": 1588,
+  "title": "Sum of All Odd Length Subarrays",
+  "slug": "sum-of-all-odd-length-subarrays",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array of positive integers arr, return _the sum of all possible odd-length subarrays of_ arr.\n\nA subarray is a contiguous subsequence of the array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sumOddLengthSubarrays(arr):\n    sum = 0\n    n = len(arr)\n    for i in range(n):\n        oddSubarrays = ((i + 1) * (n - i) + 1) // 2\n        sum += arr[i] * oddSubarrays\n    return sum\n```\n    \n    First, we loop through the input array with index `i`. For each element `arr[i]`, calculate how many odd-length subarrays it appears in by using the formula `((i + 1) * (n - i) + 1) / 2`, where `n` is the length of the array. This gives us the number of odd-length subarrays that have `arr[i]` in them.\n\nThen, add the product of `arr[i]` and the number of odd-length subarrays it appears in to the total sum. Finally, return the total sum.\n\nThis algorithm runs in O(n) time complexity, where n is the length of the input array.\n    ",
+    "javascript": "\n    ```javascript\nfunction sumOddLengthSubarrays(arr) {\n    let sum = 0, n = arr.length;\n    for (let i = 0; i < n; i++) {\n        let oddSubarrays = Math.floor(((i + 1) * (n - i) + 1) / 2);\n        sum += arr[i] * oddSubarrays;\n    }\n    return sum;\n}\n```\n    \n    First, we loop through the input array with index `i`. For each element `arr[i]`, calculate how many odd-length subarrays it appears in by using the formula `((i + 1) * (n - i) + 1) / 2`, where `n` is the length of the array. This gives us the number of odd-length subarrays that have `arr[i]` in them.\n\nThen, add the product of `arr[i]` and the number of odd-length subarrays it appears in to the total sum. Finally, return the total sum.\n\nThis algorithm runs in O(n) time complexity, where n is the length of the input array.\n    ",
+    "java": "\n    ```java\npublic int sumOddLengthSubarrays(int[] arr) {\n    int sum = 0, n = arr.length;\n    for (int i = 0; i < n; i++) {\n        int oddSubarrays = ((i + 1) * (n - i) + 1) / 2;\n        sum += arr[i] * oddSubarrays;\n    }\n    return sum;\n}\n```\n    \n    First, we loop through the input array with index `i`. For each element `arr[i]`, calculate how many odd-length subarrays it appears in by using the formula `((i + 1) * (n - i) + 1) / 2`, where `n` is the length of the array. This gives us the number of odd-length subarrays that have `arr[i]` in them.\n\nThen, add the product of `arr[i]` and the number of odd-length subarrays it appears in to the total sum. Finally, return the total sum.\n\nThis algorithm runs in O(n) time complexity, where n is the length of the input array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

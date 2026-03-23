@@ -1,0 +1,24 @@
+{
+  "id": 1836,
+  "title": "Remove Duplicates From an Unsorted Linked List",
+  "slug": "remove-duplicates-from-an-unsorted-linked-list",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the head of a linked list, find all the values that appear more than once in the list and delete the nodes that have any of those values.\n\nReturn _the linked list after the deletions._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import defaultdict\nfrom typing import List\n\nMOD = 10**9 + 7\n\ndef product_ways(queries: List[List[int]]) -> List[int]:\n    res = []\n    for n, k in queries:\n        pf = []\n        pm = defaultdict(int)\n\n        i = 2\n        while i * i <= k:\n            cnt = 0\n            while k % i == 0:\n                cnt += 1\n                k //= i\n            if cnt:\n                pf.append(cnt)\n                pm[cnt] += 1\n            i += 1\n\n        if k > 1:\n            pm[k] += 1\n            pf.append(1)\n\n        ans = 1\n        for p in pf:\n            ans = (ans * (p * (n - 1) + 1)) % MOD\n\n        res.append(ans)\n    return res\n```\n    \n    1. For each query, find the prime factors of number k.\n2. Store the counts of each prime factor in an array and a map.\n3. Initialize the answer for the current query to 1.\n4. Iterate through the array of prime factor counts and multiply the answer with the result of each count multiplied by n-1 and added 1. Take the modulo (1e9 + 7) in each step.\n5. Append the answer for the current query to the result list and return the result list.\n    ",
+    "javascript": "\n    ```javascript\nconst MOD = 1e9 + 7;\n\nfunction productWays(queries) {\n    const res = [];\n    for (const [n, k] of queries) {\n        const pf = [];\n        const pm = {};\n\n        for (let i = 2; i * i <= k; i++) {\n            let cnt = 0;\n            let kMutable = k;\n            while (kMutable % i === 0) {\n                cnt++;\n                kMutable /= i;\n            }\n            if (cnt !== 0) {\n                pf.push(cnt);\n                if (!pm[cnt]) pm[cnt] = 0;\n                pm[cnt]++;\n            }\n        }\n\n        if (k > 1) {\n            if (!pm[k]) pm[k] = 0;\n            pm[k]++;\n            pf.push(1);\n        }\n\n        let ans = 1;\n        for (const p of pf) {\n            ans = (ans * (p * (n - 1) + 1)) % MOD;\n        }\n\n        res.push(ans);\n    }\n    return res;\n}\n```\n    \n    1. For each query, find the prime factors of number k.\n2. Store the counts of each prime factor in an array and a map.\n3. Initialize the answer for the current query to 1.\n4. Iterate through the array of prime factor counts and multiply the answer with the result of each count multiplied by n-1 and added 1. Take the modulo (1e9 + 7) in each step.\n5. Append the answer for the current query to the result list and return the result list.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.HashMap;\nimport java.util.List;\nimport java.util.Map;\nimport java.util.Vector;\n\npublic class Solution {\n    static final int MOD = 1000000007;\n\n    public static ArrayList<Integer> productWays(int[][] queries) {\n        ArrayList<Integer> res = new ArrayList<>();\n        for (int[] q : queries) {\n            int n = q[0], k = q[1];\n\n            List<Integer> pf = new ArrayList<>();\n            Map<Integer, Integer> pm = new HashMap<>();\n            for (int i = 2; i * i <= k; ++i) {\n                int cnt = 0;\n                while (k % i == 0) {\n                    cnt++;\n                    k /= i;\n                }\n                if (cnt != 0) {\n                    pf.add(cnt);\n                    pm.put(cnt, pm.getOrDefault(cnt, 0) + 1);\n                }\n            }\n\n            if (k > 1) {\n                pm.put(k, pm.getOrDefault(k, 0) + 1);\n                pf.add(1);\n            }\n\n            long ans = 1;\n            for (int p : pf) {\n                ans = (ans * (p * (n - 1) + 1)) % MOD;\n            }\n\n            res.add((int) ans);\n        }\n        return res;\n    }\n}\n```\n    \n    1. For each query, find the prime factors of number k.\n2. Store the counts of each prime factor in an array and a map.\n3. Initialize the answer for the current query to 1.\n4. Iterate through the array of prime factor counts and multiply the answer with the result of each count multiplied by n-1 and added 1. Take the modulo (1e9 + 7) in each step.\n5. Append the answer for the current query to the result list and return the result list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

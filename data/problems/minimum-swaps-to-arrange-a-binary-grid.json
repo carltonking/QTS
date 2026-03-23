@@ -1,0 +1,24 @@
+{
+  "id": 1536,
+  "title": "Minimum Swaps to Arrange a Binary Grid",
+  "slug": "minimum-swaps-to-arrange-a-binary-grid",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an n x n binary grid, in one step you can choose two adjacent rows of the grid and swap them.\n\nA grid is said to be valid if all the cells above the main diagonal are zeros.\n\nReturn _the minimum number of steps_ needed to make the grid valid, or \\-1 if the grid cannot be valid.\n\nThe main diagonal of a grid is the diagonal that starts at cell (1, 1) and ends at cell (n, n).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minSwaps(grid):\n    n = len(grid)\n    steps = 0\n\n    for i in range(n):\n        row = -1\n        for j in range(i, n):\n            if grid[j][i] == 0:\n                row = j\n                break\n        if row == -1:\n            return -1\n\n        while row > i:\n            grid[row], grid[row - 1] = grid[row - 1], grid[row]\n            steps += 1\n            row -= 1\n\n    return steps\n```\n\n    \n    The algorithm first initializes steps to 0. Then, for each column i from 0 to n-1, it tries to find a row in which the cell in the current column is 0. If a row is found, it swaps this row with the previous row to move the 0 value up until the required position is reached. While doing the swaps, it increments the steps counter. If the row is not found for any column, the algorithm returns -1 as the grid cannot be valid.\n    ",
+    "javascript": "\n    ```javascript\nfunction minSwaps(grid) {\n    const n = grid.length;\n    let steps = 0;\n\n    for (let i = 0; i < n; ++i) {\n        let row = -1;\n        for (let j = i; j < n; ++j) {\n            if (grid[j][i] === 0) {\n                row = j;\n                break;\n            }\n        }\n        if (row === -1) {\n            return -1;\n        }\n\n        while (row > i) {\n            [grid[row], grid[row - 1]] = [grid[row - 1], grid[row]];\n            steps++;\n            row--;\n        }\n    }\n    return steps;\n}\n```\n\n    \n    The algorithm first initializes steps to 0. Then, for each column i from 0 to n-1, it tries to find a row in which the cell in the current column is 0. If a row is found, it swaps this row with the previous row to move the 0 value up until the required position is reached. While doing the swaps, it increments the steps counter. If the row is not found for any column, the algorithm returns -1 as the grid cannot be valid.\n    ",
+    "java": "\n    ```java\npublic int minSwaps(int[][] grid) {\n    int n = grid.length;\n    int steps = 0;\n\n    for (int i = 0; i < n; ++i) {\n        int row = -1;\n        for (int j = i; j < n; ++j) {\n            if (grid[j][i] == 0) {\n                row = j;\n                break;\n            }\n        }\n        if (row == -1) {\n            return -1;\n        }\n\n        while (row > i) {\n            int[] temp = grid[row];\n            grid[row] = grid[row - 1];\n            grid[row - 1] = temp;\n            steps++;\n            row--;\n        }\n    }\n    return steps;\n}\n```\n\n    \n    The algorithm first initializes steps to 0. Then, for each column i from 0 to n-1, it tries to find a row in which the cell in the current column is 0. If a row is found, it swaps this row with the previous row to move the 0 value up until the required position is reached. While doing the swaps, it increments the steps counter. If the row is not found for any column, the algorithm returns -1 as the grid cannot be valid.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

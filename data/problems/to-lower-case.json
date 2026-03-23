@@ -1,0 +1,24 @@
+{
+  "id": 709,
+  "title": "To Lower Case",
+  "slug": "to-lower-case",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a string s, return _the string after replacing every uppercase letter with the same lowercase letter_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef toLowerCase(s: str) -> str:\n    return s.lower()\n```\n    \n    The algorithm goes through each character in the input string and checks if the character is an uppercase letter. If it is, it converts the letter to lowercase, otherwise it keeps the character unchanged. In C++ and Java, we use a loop to go through each character and update it in-place. In Python, the built-in `str.lower()` function is used. In JavaScript, we need to create a new string by concatenating the resulting characters. For each language, the modified string is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction toLowerCase(s) {\n    let result = '';\n    for (let i = 0; i < s.length; i++) {\n        let charCode = s.charCodeAt(i);\n        if (charCode >= 65 && charCode <= 90) {\n            charCode += 32;\n        }\n        result += String.fromCharCode(charCode);\n    }\n    return result;\n}\n```\n    \n    The algorithm goes through each character in the input string and checks if the character is an uppercase letter. If it is, it converts the letter to lowercase, otherwise it keeps the character unchanged. In C++ and Java, we use a loop to go through each character and update it in-place. In Python, the built-in `str.lower()` function is used. In JavaScript, we need to create a new string by concatenating the resulting characters. For each language, the modified string is returned.\n    ",
+    "java": "\n    ```java\npublic String toLowerCase(String s) {\n    char[] chars = s.toCharArray();\n    for (int i = 0; i < chars.length; i++) {\n        if (chars[i] >= 'A' && chars[i] <= 'Z') {\n            chars[i] = (char)(chars[i] - 'A' + 'a');\n        }\n    }\n    return new String(chars);\n}\n```\n    \n    The algorithm goes through each character in the input string and checks if the character is an uppercase letter. If it is, it converts the letter to lowercase, otherwise it keeps the character unchanged. In C++ and Java, we use a loop to go through each character and update it in-place. In Python, the built-in `str.lower()` function is used. In JavaScript, we need to create a new string by concatenating the resulting characters. For each language, the modified string is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

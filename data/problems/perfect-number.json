@@ -1,0 +1,24 @@
+{
+  "id": 507,
+  "title": "Perfect Number",
+  "slug": "perfect-number",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "A [perfect number](https://en.wikipedia.org/wiki/Perfect_number) is a positive integer that is equal to the sum of its positive divisors, excluding the number itself. A divisor of an integer x is an integer that can divide x evenly.\n\nGiven an integer n, return true _if_ n _is a perfect number, otherwise return_ false.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef checkPerfectNumber(num: int) -> bool:\n    if num <= 1:\n        return False\n    sum = 1\n    i = 2\n    while i * i <= num:\n        if num % i == 0:\n            sum += i\n            if i * i != num:\n                sum += num // i\n        i += 1\n    return sum == num\n```\n    \n    The algorithm checks if a given number `num` is a perfect number by iterating through the positive divisors of the number and adding them to a sum. If the number is less than or equal to 1, it returns false as these are not perfect numbers. The loop starts from 2 and goes until the square root of the number. If `i` is divisible by `num`, it's added to the sum. Also, check if `i * i` is not equal to `num`, we add `num / i` to the sum, this is because we don't want to add the same divisor twice. In the end, it checks if the calculated sum is equal to the given number. If it is, return true, else return false.\n    ",
+    "javascript": "\n    ```javascript\nfunction checkPerfectNumber(num) {\n    if (num <= 1) return false;\n    let sum = 1;\n    for (let i = 2; i * i <= num; i++) {\n        if (num % i === 0) {\n            sum += i;\n            if (i * i !== num) sum += num / i;\n        }\n    }\n    return sum === num;\n}\n```\n    \n    The algorithm checks if a given number `num` is a perfect number by iterating through the positive divisors of the number and adding them to a sum. If the number is less than or equal to 1, it returns false as these are not perfect numbers. The loop starts from 2 and goes until the square root of the number. If `i` is divisible by `num`, it's added to the sum. Also, check if `i * i` is not equal to `num`, we add `num / i` to the sum, this is because we don't want to add the same divisor twice. In the end, it checks if the calculated sum is equal to the given number. If it is, return true, else return false.\n    ",
+    "java": "\n    ```java\nboolean checkPerfectNumber(int num) {\n    if (num <= 1) return false;\n    int sum = 1;\n    for (int i = 2; i * i <= num; i++) {\n        if (num % i == 0) {\n            sum += i;\n            if (i * i != num) sum += num / i;\n        }\n    }\n    return sum == num;\n}\n```\n    \n    The algorithm checks if a given number `num` is a perfect number by iterating through the positive divisors of the number and adding them to a sum. If the number is less than or equal to 1, it returns false as these are not perfect numbers. The loop starts from 2 and goes until the square root of the number. If `i` is divisible by `num`, it's added to the sum. Also, check if `i * i` is not equal to `num`, we add `num / i` to the sum, this is because we don't want to add the same divisor twice. In the end, it checks if the calculated sum is equal to the given number. If it is, return true, else return false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

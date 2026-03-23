@@ -1,0 +1,24 @@
+{
+  "id": 438,
+  "title": "Find All Anagrams in a String",
+  "slug": "find-all-anagrams-in-a-string",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given two strings s and p, return _an array of all the start indices of_ p_'s anagrams in_ s. You may return the answer in any order.\n\nAn Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_anagrams(s, p):\n    if len(s) < len(p):\n        return []\n\n    s_count = [0] * 26\n    p_count = [0] * 26\n    for c in p:\n        p_count[ord(c) - ord('a')] += 1\n\n    result = []\n    for i in range(len(s)):\n        s_count[ord(s[i]) - ord('a')] += 1\n        if i >= len(p):\n            s_count[ord(s[i - len(p)]) - ord('a')] -= 1\n        if s_count == p_count:\n            result.append(i - len(p) + 1)\n\n    return result\n```\n    \n    1. Create an empty result list.\n2. If the given string `s` is shorter than the pattern string `p`, return the empty result list as there cannot be any anagram of `p` in `s`.\n3. Create 2 arrays, `s_count` and `p_count`, with a fixed size of 26, to keep count of characters in the sliding window of `s` and characters in `p`.\n4. Fill `p_count` using the characters count in `p`.\n5. Iterate over the string `s`, updating the count of the characters in `s_count`.\n6. If the iteration index `i` is greater than or equal to the length of `p`, reduce the count of the character that is now out of the sliding window.\n7. If the `s_count` and `p_count` have the same counts, it means that a valid anagram has been found. Add the starting index of the anagram in the result list.\n8. Return the result list.\n    ",
+    "javascript": "\n    ```javascript\nfunction findAnagrams(s, p) {\n    if (s.length < p.length) return [];\n\n    const s_count = new Array(26).fill(0);\n    const p_count = new Array(26).fill(0);\n    for (const c of p) p_count[c.charCodeAt(0) - 'a'.charCodeAt(0)]++;\n\n    const result = [];\n    for (let i = 0; i < s.length; i++) {\n        s_count[s.charCodeAt(i) - 'a'.charCodeAt(0)]++;\n        if (i >= p.length) s_count[s.charCodeAt(i - p.length) - 'a'.charCodeAt(0)]--;\n        if (s_count.join(',') === p_count.join(',')) result.push(i - p.length + 1);\n    }\n\n    return result;\n}\n```\n    \n    1. Create an empty result list.\n2. If the given string `s` is shorter than the pattern string `p`, return the empty result list as there cannot be any anagram of `p` in `s`.\n3. Create 2 arrays, `s_count` and `p_count`, with a fixed size of 26, to keep count of characters in the sliding window of `s` and characters in `p`.\n4. Fill `p_count` using the characters count in `p`.\n5. Iterate over the string `s`, updating the count of the characters in `s_count`.\n6. If the iteration index `i` is greater than or equal to the length of `p`, reduce the count of the character that is now out of the sliding window.\n7. If the `s_count` and `p_count` have the same counts, it means that a valid anagram has been found. Add the starting index of the anagram in the result list.\n8. Return the result list.\n    ",
+    "java": "\n    ```java\nimport java.util.List;\nimport java.util.ArrayList;\n\npublic List<Integer> findAnagrams(String s, String p) {\n    List<Integer> result = new ArrayList<>();\n    if (s.length() < p.length()) return result;\n\n    int[] s_count = new int[26];\n    int[] p_count = new int[26];\n    for (char c : p.toCharArray()) p_count[c - 'a']++;\n\n    for (int i = 0; i < s.length(); i++) {\n        s_count[s.charAt(i) - 'a']++;\n        if (i >= p.length()) s_count[s.charAt(i - p.length()) - 'a']--;\n        if (java.util.Arrays.equals(s_count, p_count)) result.add(i - p.length() + 1);\n    }\n\n    return result;\n}\n```\n    \n    1. Create an empty result list.\n2. If the given string `s` is shorter than the pattern string `p`, return the empty result list as there cannot be any anagram of `p` in `s`.\n3. Create 2 arrays, `s_count` and `p_count`, with a fixed size of 26, to keep count of characters in the sliding window of `s` and characters in `p`.\n4. Fill `p_count` using the characters count in `p`.\n5. Iterate over the string `s`, updating the count of the characters in `s_count`.\n6. If the iteration index `i` is greater than or equal to the length of `p`, reduce the count of the character that is now out of the sliding window.\n7. If the `s_count` and `p_count` have the same counts, it means that a valid anagram has been found. Add the starting index of the anagram in the result list.\n8. Return the result list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

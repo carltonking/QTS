@@ -1,0 +1,24 @@
+{
+  "id": 1441,
+  "title": "Build an Array With Stack Operations",
+  "slug": "build-an-array-with-stack-operations",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array target and an integer n.\n\nYou have an empty stack with the two following operations:\n\n*   \"Push \": pushes an integer to the top of the stack.\n*   \"Pop \": removes the integer on the top of the stack.\n\nYou also have a stream of the integers in the range [1, n].\n\nUse the two stack operations to make the numbers in the stack (from the bottom to the top) equal to target. You should follow the following rules:\n\n*   If the stream of the integers is not empty, pick the next integer from the stream and push it to the top of the stack.\n*   If the stack is not empty, pop the integer at the top of the stack.\n*   If, at any moment, the elements in the stack (from the bottom to the top) are equal to target, do not read new integers from the stream and do not do more operations on the stack.\n\nReturn _the stack operations needed to build_ target following the mentioned rules. If there are multiple valid answers, return any of them.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef build_array(target, n):\n    result = []\n    current = 1\n    for num in target:\n        while current < num:\n            result.append(\"Push \")\n            result.append(\"Pop \")\n            current += 1\n        result.append(\"Push \")\n        current += 1\n    return result\n```\n    \n    The algorithm loops through each number in the `target` array. For each number, it loops from the current number in the stream, up to one less than the current number in `target`. In this loop, it appends \"Push \" and \"Pop \" to the `result` array, essentially skipping over the numbers we don't want to keep in the stack. It then appends another \"Push \" to the `result` array for the current number in `target`, as we want to keep it in the stack.\n\nFinally, it increments the current number in the stream and moves on to the next number in `target`. The resulting `result` array will have the operations needed to build the stack.\n    ",
+    "javascript": "\n    ```javascript\nfunction buildArray(target, n) {\n    let result = [];\n    let current = 1;\n    for (let num of target) {\n        while (current < num) {\n            result.push(\"Push \");\n            result.push(\"Pop \");\n            current++;\n        }\n        result.push(\"Push \");\n        current++;\n    }\n    return result;\n}\n```\n    \n    The algorithm loops through each number in the `target` array. For each number, it loops from the current number in the stream, up to one less than the current number in `target`. In this loop, it appends \"Push \" and \"Pop \" to the `result` array, essentially skipping over the numbers we don't want to keep in the stack. It then appends another \"Push \" to the `result` array for the current number in `target`, as we want to keep it in the stack.\n\nFinally, it increments the current number in the stream and moves on to the next number in `target`. The resulting `result` array will have the operations needed to build the stack.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<String> buildArray(int[] target, int n) {\n    List<String> result = new ArrayList<>();\n    int current = 1;\n    for (int num : target) {\n        while (current < num) {\n            result.add(\"Push \");\n            result.add(\"Pop \");\n            current++;\n        }\n        result.add(\"Push \");\n        current++;\n    }\n    return result;\n}\n```\n    \n    The algorithm loops through each number in the `target` array. For each number, it loops from the current number in the stream, up to one less than the current number in `target`. In this loop, it appends \"Push \" and \"Pop \" to the `result` array, essentially skipping over the numbers we don't want to keep in the stack. It then appends another \"Push \" to the `result` array for the current number in `target`, as we want to keep it in the stack.\n\nFinally, it increments the current number in the stream and moves on to the next number in `target`. The resulting `result` array will have the operations needed to build the stack.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

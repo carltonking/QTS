@@ -1,0 +1,24 @@
+{
+  "id": 274,
+  "title": "H-Index",
+  "slug": "h-index",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of integers citations where citations[i] is the number of citations a researcher received for their ith paper, return _the researcher's h-index_.\n\nAccording to the [definition of h-index on Wikipedia](https://en.wikipedia.org/wiki/H-index): The h-index is defined as the maximum value of h such that the given researcher has published at least h papers that have each been cited at least h times.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef hIndex(citations: List[int]) -> int:\n    citations.sort(reverse=True)\n    h = 0\n    for i, citation in enumerate(citations):\n        if citation >= i + 1:\n            h = i + 1\n        else:\n            break\n    return h\n```\n    \n    1. First, we sort the citations array in descending order.\n2. Then, we iterate through the sorted array and compare each value with its index + 1 (zero-based index). If citations[i] is greater or equal to (i + 1), we update the h-index with the new value (i + 1). Otherwise, we break the loop since the maximum h-index is achieved.\n3. Finally, we return the h-index.\n    ",
+    "javascript": "\n    ```javascript\nfunction hIndex(citations) {\n    citations.sort((a, b) => b - a);\n    let h = 0;\n    for (let i = 0; i < citations.length; i++) {\n        if (citations[i] >= i + 1) {\n            h = i + 1;\n        } else {\n            break;\n        }\n    }\n    return h;\n}\n```\n    \n    1. First, we sort the citations array in descending order.\n2. Then, we iterate through the sorted array and compare each value with its index + 1 (zero-based index). If citations[i] is greater or equal to (i + 1), we update the h-index with the new value (i + 1). Otherwise, we break the loop since the maximum h-index is achieved.\n3. Finally, we return the h-index.\n    ",
+    "java": "\n    ```java\npublic int hIndex(int[] citations) {\n    Arrays.sort(citations);\n    int h = 0;\n    for (int i = citations.length - 1; i >= 0; i--) {\n        int rank = citations.length - i;\n        if (citations[i] >= rank) {\n            h = rank;\n        } else {\n            break;\n        }\n    }\n    return h;\n}\n```\n    \n    1. First, we sort the citations array in descending order.\n2. Then, we iterate through the sorted array and compare each value with its index + 1 (zero-based index). If citations[i] is greater or equal to (i + 1), we update the h-index with the new value (i + 1). Otherwise, we break the loop since the maximum h-index is achieved.\n3. Finally, we return the h-index.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

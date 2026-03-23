@@ -1,0 +1,24 @@
+{
+  "id": 2220,
+  "title": "Minimum Bit Flips to Convert Number",
+  "slug": "minimum-bit-flips-to-convert-number",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "A bit flip of a number x is choosing a bit in the binary representation of x and flipping it from either 0 to 1 or 1 to 0.\n\n*   For example, for x = 7, the binary representation is 111 and we may choose any bit (including any leading zeros not shown) and flip it. We can flip the first bit from the right to get 110, flip the second bit from the right to get 101, flip the fifth bit from the right (a leading zero) to get 10111, etc.\n\nGiven two integers start and goal, return _the minimum number of bit flips to convert_ start _to_ goal.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    None    \n    None\n    ",
+    "javascript": "\n    None    \n    None\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\nclass Solution {\n    public List<String> makeableRecipes(String[] recipes, String[][] ingredients, String[] supplies) {\n        Map<String, Set<String>> dependentRecipes = new HashMap<>();\n        Set<String> availableSupplies = new HashSet<>(Arrays.asList(supplies));\n        for (int i = 0; i < recipes.length; i++) {\n            dependentRecipes.put(recipes[i], new HashSet<>(Arrays.asList(ingredients[i])));\n        }\n\n        Queue<String> q = new LinkedList<>();\n        for (String supply : availableSupplies) {\n            q.offer(supply);\n        }\n\n        while (!q.isEmpty()) {\n            String currentItem = q.poll();\n            for (Map.Entry<String, Set<String>> recipe : dependentRecipes.entrySet()) {\n                if (recipe.getValue().contains(currentItem)) {\n                    recipe.getValue().remove(currentItem);\n                    if (recipe.getValue().isEmpty()) {\n                        availableSupplies.add(recipe.getKey());\n                        q.offer(recipe.getKey());\n                    }\n                }\n            }\n        }\n\n        List<String> result = new ArrayList<>();\n        for (String recipe : recipes) {\n            if (availableSupplies.contains(recipe)) {\n                result.add(recipe);\n            }\n```    \n    None\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

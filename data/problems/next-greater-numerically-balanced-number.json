@@ -1,0 +1,24 @@
+{
+  "id": 2048,
+  "title": "Next Greater Numerically Balanced Number",
+  "slug": "next-greater-numerically-balanced-number",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "An integer x is numerically balanced if for every digit d in the number x, there are exactly d occurrences of that digit in x.\n\nGiven an integer n, return _the smallest numerically balanced number strictly greater than_ n_._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef build_array(nums):\n    ans = []\n    for i in range(len(nums)):\n        ans.append(nums[nums[i]])\n    return ans\n```\n    \n    We initialize a new array `ans` with the same length as the input numbers array `nums`. Then, we iterate through each element `i` in the `nums` array. For each `i`, we use the index value stored in `nums[i]` to access the value at that index in `nums`. We then add this value to the `ans` array at the corresponding index `i`. Finally, we return the `ans` array containing the values determined by the permutation.\n    ",
+    "javascript": "\n    ```javascript\nfunction buildArray(nums) {\n    let ans = [];\n    for(let i = 0; i < nums.length; i++) {\n        ans.push(nums[nums[i]]);\n    }\n    return ans;\n}\n```\n    \n    We initialize a new array `ans` with the same length as the input numbers array `nums`. Then, we iterate through each element `i` in the `nums` array. For each `i`, we use the index value stored in `nums[i]` to access the value at that index in `nums`. We then add this value to the `ans` array at the corresponding index `i`. Finally, we return the `ans` array containing the values determined by the permutation.\n    ",
+    "java": "\n    ```java\npublic int[] buildArray(int[] nums) {\n    int[] ans = new int[nums.length];\n    for(int i = 0; i < nums.length; i++) {\n        ans[i] = nums[nums[i]];\n    }\n    return ans;\n}\n```\n    \n    We initialize a new array `ans` with the same length as the input numbers array `nums`. Then, we iterate through each element `i` in the `nums` array. For each `i`, we use the index value stored in `nums[i]` to access the value at that index in `nums`. We then add this value to the `ans` array at the corresponding index `i`. Finally, we return the `ans` array containing the values determined by the permutation.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

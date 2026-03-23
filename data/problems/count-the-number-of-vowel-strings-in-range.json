@@ -1,0 +1,24 @@
+{
+  "id": 2586,
+  "title": "Count the Number of Vowel Strings in Range",
+  "slug": "count-the-number-of-vowel-strings-in-range",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a 0-indexed array of string words and two integers left and right.\n\nA string is called a vowel string if it starts with a vowel character and ends with a vowel character where vowel characters are 'a', 'e', 'i', 'o', and 'u'.\n\nReturn _the number of vowel strings_ words[i] _where_ i _belongs to the inclusive range_ [left, right].",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_vowel(c):\n  return c in 'aeiou'\n\ndef count_vowel_strings(words, left, right):\n  count = 0\n  for i in range(left, right + 1):\n    if is_vowel(words[i][0]) and is_vowel(words[i][-1]):\n      count += 1\n  return count\n```\n    \n    We define `is_vowel` function that checks whether a given character is a vowel or not. In our `count_vowel_strings` function, we iterate over the range `[left, right]` and check if the first and last characters of the word at position `i` are vowels. If both are vowels, we increment the `count`. Finally, we return `count` as the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction isVowel(c) {\n  return ['a', 'e', 'i', 'o', 'u'].includes(c);\n}\n\nfunction countVowelStrings(words, left, right) {\n  let count = 0;\n  for (let i = left; i <= right; i++) {\n    if (isVowel(words[i][0]) && isVowel(words[i][words[i].length - 1])) {\n      count++;\n    }\n  }\n  return count;\n}\n```\n    \n    We define `is_vowel` function that checks whether a given character is a vowel or not. In our `count_vowel_strings` function, we iterate over the range `[left, right]` and check if the first and last characters of the word at position `i` are vowels. If both are vowels, we increment the `count`. Finally, we return `count` as the result.\n    ",
+    "java": "\n    ```java\npublic boolean isVowel(char c) {\n  return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';\n}\n\npublic int countVowelStrings(String[] words, int left, int right) {\n  int count = 0;\n  for (int i = left; i <= right; i++) {\n    if (isVowel(words[i].charAt(0)) && isVowel(words[i].charAt(words[i].length() - 1))) {\n      count++;\n    }\n  }\n  return count;\n}\n```\n    \n    We define `is_vowel` function that checks whether a given character is a vowel or not. In our `count_vowel_strings` function, we iterate over the range `[left, right]` and check if the first and last characters of the word at position `i` are vowels. If both are vowels, we increment the `count`. Finally, we return `count` as the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1947,
+  "title": "Maximum Compatibility Score Sum",
+  "slug": "maximum-compatibility-score-sum",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There is a survey that consists of n questions where each question's answer is either 0 (no) or 1 (yes).\n\nThe survey was given to m students numbered from 0 to m - 1 and m mentors numbered from 0 to m - 1. The answers of the students are represented by a 2D integer array students where students[i] is an integer array that contains the answers of the ith student (0-indexed). The answers of the mentors are represented by a 2D integer array mentors where mentors[j] is an integer array that contains the answers of the jth mentor (0-indexed).\n\nEach student will be assigned to one mentor, and each mentor will have one student assigned to them. The compatibility score of a student-mentor pair is the number of answers that are the same for both the student and the mentor.\n\n*   For example, if the student's answers were [1, 0, 1] and the mentor's answers were [0, 0, 1], then their compatibility score is 2 because only the second and the third answers are the same.\n\nYou are tasked with finding the optimal student-mentor pairings to maximize the sum of the compatibility scores.\n\nGiven students and mentors, return _the maximum compatibility score sum that can be achieved._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_different_subsequence_GCDs(nums):\n    maximum = max(nums)\n    gcd_count = [0] * (maximum + 1)\n    \n    for num in nums:\n        for i in range(1, int(num**0.5) + 1):\n            if num % i == 0:\n                gcd_count[i] += 1\n                if i * i != num:\n                    gcd_count[num // i] += 1\n                    \n    different_GCDs = sum(1 for count in gcd_count if count > 0)\n    \n    return different_GCDs\n```\n    \n    1. First, find the maximum number of the given array.\n2. Create an array `gcdCount` with the length of (maximum + 1), initializing all the values to 0.\n3. Iterate through `nums`. For each number, find its divisors and increment the count of the divisors in the `gcdCount` array.\n4. Iterate through the `gcdCount` array starting from index 1 to `maximum`, and count the number of non-zero values.\n5. Return the count of non-zero values as the number of different GCDs.\n    ",
+    "javascript": "\n    ```javascript\nfunction countDifferentSubsequenceGCDs(nums) {\n    let maximum = Math.max(...nums);\n    let gcdCount = new Array(maximum + 1).fill(0);\n    \n    for (const num of nums) {\n        for (let i = 1; i * i <= num; i++) {\n            if (num % i === 0) {\n                gcdCount[i]++;\n                if (i * i !== num) {\n                    gcdCount[num / i]++;\n                }\n            }\n        }\n    }\n    \n    let differentGCDs = 0;\n    for (let i = 1; i <= maximum; i++) {\n        if (gcdCount[i] > 0) {\n            differentGCDs++;\n        }\n    }\n    \n    return differentGCDs;\n}\n```\n    \n    1. First, find the maximum number of the given array.\n2. Create an array `gcdCount` with the length of (maximum + 1), initializing all the values to 0.\n3. Iterate through `nums`. For each number, find its divisors and increment the count of the divisors in the `gcdCount` array.\n4. Iterate through the `gcdCount` array starting from index 1 to `maximum`, and count the number of non-zero values.\n5. Return the count of non-zero values as the number of different GCDs.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic int countDifferentSubsequenceGCDs(int[] nums) {\n    int maximum = Arrays.stream(nums).max().getAsInt();\n    int[] gcdCount = new int[maximum + 1];\n    \n    for (int num : nums) {\n        for (int i = 1; i * i <= num; i++) {\n            if (num % i == 0) {\n                gcdCount[i]++;\n                if (i * i != num) {\n                    gcdCount[num / i]++;\n                }\n            }\n        }\n    }\n    \n    int differentGCDs = 0;\n    for (int i = 1; i <= maximum; i++) {\n        if (gcdCount[i] > 0) {\n            differentGCDs++;\n        }\n    }\n    \n    return differentGCDs;\n}\n```\n    \n    1. First, find the maximum number of the given array.\n2. Create an array `gcdCount` with the length of (maximum + 1), initializing all the values to 0.\n3. Iterate through `nums`. For each number, find its divisors and increment the count of the divisors in the `gcdCount` array.\n4. Iterate through the `gcdCount` array starting from index 1 to `maximum`, and count the number of non-zero values.\n5. Return the count of non-zero values as the number of different GCDs.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

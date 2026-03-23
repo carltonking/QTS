@@ -1,0 +1,24 @@
+{
+  "id": 830,
+  "title": "Positions of Large Groups",
+  "slug": "positions-of-large-groups",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "In a string s of lowercase letters, these letters form consecutive groups of the same character.\n\nFor example, a string like s = \"abbxxxxzyy \" has the groups \"a \", \"bb \", \"xxxx \", \"z \", and \"yy \".\n\nA group is identified by an interval [start, end], where start and end denote the start and end indices (inclusive) of the group. In the above example, \"xxxx \" has the interval [3,6].\n\nA group is considered large if it has 3 or more characters.\n\nReturn _the intervals of every large group sorted in increasing order by start index_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom itertools import combinations\n\ndef largestTriangleArea(points):\n    return max(0.5 * abs(x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) for (x1, y1), (x2, y2), (x3, y3) in combinations(points, 3))\n```\n    \n    The algorithm computes the area of the triangle formed by any three different points in the input array. To do this, the algorithm performs the following steps:\n\n1. Iterate through all possible unique combinations of three points (i, j, k) in the input array, with i < j < k.\n2. Compute and store the area of the triangle formed by the three points using the shoelace formula: area = 0.5 * |x1(y2 - y3) + x2(y3 - y1) + x3(y1 - y2)|. The formula is derived from the determinant of a matrix.\n3. Keep track of the maximum area found so far and return it after iterating through all combinations of points.\n\nThe algorithm has a time complexity of O(n^3), where n is the number of points in the input array.\n    ",
+    "javascript": "\n    ```javascript\nfunction largestTriangleArea(points) {\n    let max_area = 0.0;\n    for (let i = 0; i < points.length; ++i) {\n        for (let j = i + 1; j < points.length; ++j) {\n            for (let k = j + 1; k < points.length; ++k) {\n                max_area = Math.max(max_area, 0.5 * Math.abs(points[i][0] * (points[j][1] - points[k][1])\n                                                      + points[j][0] * (points[k][1] - points[i][1])\n                                                      + points[k][0] * (points[i][1] - points[j][1])));\n            }\n        }\n    }\n    return max_area;\n}\n```\n    \n    The algorithm computes the area of the triangle formed by any three different points in the input array. To do this, the algorithm performs the following steps:\n\n1. Iterate through all possible unique combinations of three points (i, j, k) in the input array, with i < j < k.\n2. Compute and store the area of the triangle formed by the three points using the shoelace formula: area = 0.5 * |x1(y2 - y3) + x2(y3 - y1) + x3(y1 - y2)|. The formula is derived from the determinant of a matrix.\n3. Keep track of the maximum area found so far and return it after iterating through all combinations of points.\n\nThe algorithm has a time complexity of O(n^3), where n is the number of points in the input array.\n    ",
+    "java": "\n    ```java\nclass Solution {\n    public double largestTriangleArea(int[][] points) {\n        double max_area = 0.0;\n        for (int i = 0; i < points.length; ++i) {\n            for (int j = i + 1; j < points.length; ++j) {\n                for (int k = j + 1; k < points.length; ++k) {\n                    max_area = Math.max(max_area, 0.5 * Math.abs(points[i][0] * (points[j][1] - points[k][1])\n                                                              + points[j][0] * (points[k][1] - points[i][1])\n                                                              + points[k][0] * (points[i][1] - points[j][1])));\n                }\n            }\n        }\n        return max_area;\n    }\n}\n```\n    \n    The algorithm computes the area of the triangle formed by any three different points in the input array. To do this, the algorithm performs the following steps:\n\n1. Iterate through all possible unique combinations of three points (i, j, k) in the input array, with i < j < k.\n2. Compute and store the area of the triangle formed by the three points using the shoelace formula: area = 0.5 * |x1(y2 - y3) + x2(y3 - y1) + x3(y1 - y2)|. The formula is derived from the determinant of a matrix.\n3. Keep track of the maximum area found so far and return it after iterating through all combinations of points.\n\nThe algorithm has a time complexity of O(n^3), where n is the number of points in the input array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

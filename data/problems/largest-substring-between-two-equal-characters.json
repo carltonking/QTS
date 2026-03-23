@@ -1,0 +1,24 @@
+{
+  "id": 1624,
+  "title": "Largest Substring Between Two Equal Characters",
+  "slug": "largest-substring-between-two-equal-characters",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a string s, return _the length of the longest substring between two equal characters, excluding the two characters._ If there is no such substring return -1.\n\nA substring is a contiguous sequence of characters within a string.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxLengthBetweenEqualCharacters(s: str) -> int:\n    result = -1\n    char_map = {}\n\n    for i, c in enumerate(s):\n        if c not in char_map:\n            char_map[c] = i\n        else:\n            result = max(result, i - char_map[c] - 1)\n\n    return result\n```\n    \n    The algorithm uses a hash map to store the index of the first occurrence of each character in the string. It then iterates through the string, and for each character, checks if it's present in the hash map. If it's not, the character is added to the hash map with its index. If it is present, the length of the substring between the two occurrences of the character is calculated as (current index - stored index - 1). The result is updated as the maximum length between equal characters found so far.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxLengthBetweenEqualCharacters(s) {\n    let result = -1;\n    let char_map = {};\n\n    for (let i = 0; i < s.length; ++i) {\n        let c = s.charAt(i);\n        if (!char_map.hasOwnProperty(c)) {\n            char_map[c] = i;\n        } else {\n            result = Math.max(result, i - char_map[c] - 1);\n        }\n    }\n    return result;\n}\n```\n    \n    The algorithm uses a hash map to store the index of the first occurrence of each character in the string. It then iterates through the string, and for each character, checks if it's present in the hash map. If it's not, the character is added to the hash map with its index. If it is present, the length of the substring between the two occurrences of the character is calculated as (current index - stored index - 1). The result is updated as the maximum length between equal characters found so far.\n    ",
+    "java": "\n    ```java\npublic int maxLengthBetweenEqualCharacters(String s) {\n    int result = -1;\n    HashMap<Character, Integer> char_map = new HashMap<>();\n\n    for (int i = 0; i < s.length(); ++i) {\n        if (!char_map.containsKey(s.charAt(i))) {\n            char_map.put(s.charAt(i), i);\n        } else {\n            result = Math.max(result, i - char_map.get(s.charAt(i)) - 1);\n        }\n    }\n    return result;\n}\n```\n    \n    The algorithm uses a hash map to store the index of the first occurrence of each character in the string. It then iterates through the string, and for each character, checks if it's present in the hash map. If it's not, the character is added to the hash map with its index. If it is present, the length of the substring between the two occurrences of the character is calculated as (current index - stored index - 1). The result is updated as the maximum length between equal characters found so far.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

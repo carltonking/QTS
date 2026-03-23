@@ -1,0 +1,24 @@
+{
+  "id": 1897,
+  "title": "Redistribute Characters to Make All Strings Equal",
+  "slug": "redistribute-characters-to-make-all-strings-equal",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an array of strings words (0-indexed).\n\nIn one operation, pick two distinct indices i and j, where words[i] is a non-empty string, and move any character from words[i] to any position in words[j].\n\nReturn true _if you can make every string in_ words _equal using any number of operations_, _and_ false _otherwise_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef longestPalindromeSubseq(word1, word2):\n    n, m = len(word1), len(word2)\n    dp = [[0] * (m + 1) for _ in range(n + 1)]\n\n    for i in range(n):\n        for j in range(m):\n            if word1[i] == word2[j]:\n                dp[i + 1][j + 1] = dp[i][j] + 1\n            else:\n                dp[i + 1][j + 1] = max(dp[i][j + 1], dp[i + 1][j])\n\n    return dp[n][m]\n```\n    \n    1. Create a 2D array `dp` of size (word1.length + 1) x (word2.length + 1) to store the longest common subsequence for each prefix of word1 and word2.\n2. Initialize all elements of `dp` to 0.\n3. Iterate through each character in word1 and word2.\n4. If the characters at position `i` in word1 and `j` in word2 are equal, update `dp[i + 1][j + 1]` to `dp[i][j] + 1`.\n5. If the characters are not equal, update `dp[i + 1][j + 1]` to the maximum of `dp[i][j + 1]` and `dp[i + 1][j]`.\n6. Return the value at `dp[word1.length][word2.length]`, which is the length of the longest palindrome subsequence between word1 and word2.\n    ",
+    "javascript": "\n    ```javascript\nfunction longestPalindromeSubseq(word1, word2) {\n    const n = word1.length;\n    const m = word2.length;\n\n    const dp = Array.from({ length: n + 1 }, () => new Array(m + 1).fill(0));\n\n    for (let i = 0; i < n; i++) {\n        for (let j = 0; j < m; j++) {\n            if (word1[i] === word2[j]) {\n                dp[i + 1][j + 1] = dp[i][j] + 1;\n            } else {\n                dp[i + 1][j + 1] = Math.max(dp[i][j + 1], dp[i + 1][j]);\n            }\n        }\n    }\n\n    return dp[n][m];\n}\n```\n    \n    1. Create a 2D array `dp` of size (word1.length + 1) x (word2.length + 1) to store the longest common subsequence for each prefix of word1 and word2.\n2. Initialize all elements of `dp` to 0.\n3. Iterate through each character in word1 and word2.\n4. If the characters at position `i` in word1 and `j` in word2 are equal, update `dp[i + 1][j + 1]` to `dp[i][j] + 1`.\n5. If the characters are not equal, update `dp[i + 1][j + 1]` to the maximum of `dp[i][j + 1]` and `dp[i + 1][j]`.\n6. Return the value at `dp[word1.length][word2.length]`, which is the length of the longest palindrome subsequence between word1 and word2.\n    ",
+    "java": "\n    ```java\npublic int longestPalindromeSubseq(String word1, String word2) {\n    int n = word1.length();\n    int m = word2.length();\n\n    int[][] dp = new int[1001][1001];\n\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < m; j++) {\n            if (word1.charAt(i) == word2.charAt(j)) {\n                dp[i + 1][j + 1] = dp[i][j] + 1;\n            } else {\n                dp[i + 1][j + 1] = Math.max(dp[i][j + 1], dp[i + 1][j]);\n            }\n        }\n    }\n\n    return dp[n][m];\n}\n```\n    \n    1. Create a 2D array `dp` of size (word1.length + 1) x (word2.length + 1) to store the longest common subsequence for each prefix of word1 and word2.\n2. Initialize all elements of `dp` to 0.\n3. Iterate through each character in word1 and word2.\n4. If the characters at position `i` in word1 and `j` in word2 are equal, update `dp[i + 1][j + 1]` to `dp[i][j] + 1`.\n5. If the characters are not equal, update `dp[i + 1][j + 1]` to the maximum of `dp[i][j + 1]` and `dp[i + 1][j]`.\n6. Return the value at `dp[word1.length][word2.length]`, which is the length of the longest palindrome subsequence between word1 and word2.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

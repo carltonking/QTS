@@ -1,0 +1,24 @@
+{
+  "id": 372,
+  "title": "Super Pow",
+  "slug": "super-pow",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Your task is to calculate ab mod 1337 where a is a positive integer and b is an extremely large positive integer given in the form of an array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef powmod(a, b):\n    if b == 0:\n        return 1\n    res = powmod(a, b // 2)\n    return res * res % 1337 * a % 1337 if b % 2 else res * res % 1337\n\ndef superPow(a, b):\n    n = 0\n    for bi in b:\n        n = (n * 10 + bi) % 1140\n    return powmod(a % 1337, n + 1140)\n```\n    \n    - First, we create a utility `powmod` function to compute `a^b % 1337`. We can do this using the fast exponentiation technique, where for an even power, we recursively compute the square, and for an odd power, we additionally multiply by `a`.\n- For the main `superPow` function, we first convert the given array into a single integer `n`. Since, the power could be very large, we can instead calculate `(n % 1140) + 1140`, due to Fermat's Little Theorem and Euler's Theorem: `(a^(λ(n)) ≡ 1 (mod n))` so `a^(1140) % 1337 = 1` where λ is Carmichael function.\n- Finally, we call our `powmod` function with `a % 1337` and `(n % 1140) + 1140` as the power.\n    ",
+    "javascript": "\n    ```javascript\nfunction powmod(a, b) {\n    if (b === 0) return 1;\n    const res = powmod(a, Math.floor(b / 2));\n    return b % 2 ? res * res % 1337 * a % 1337 : res * res % 1337;\n}\n\nfunction superPow(a, b) {\n    let n = 0;\n    for (const bi of b) n = (n * 10 + bi) % 1140;\n    return powmod(a % 1337, n + 1140);\n}\n```\n    \n    - First, we create a utility `powmod` function to compute `a^b % 1337`. We can do this using the fast exponentiation technique, where for an even power, we recursively compute the square, and for an odd power, we additionally multiply by `a`.\n- For the main `superPow` function, we first convert the given array into a single integer `n`. Since, the power could be very large, we can instead calculate `(n % 1140) + 1140`, due to Fermat's Little Theorem and Euler's Theorem: `(a^(λ(n)) ≡ 1 (mod n))` so `a^(1140) % 1337 = 1` where λ is Carmichael function.\n- Finally, we call our `powmod` function with `a % 1337` and `(n % 1140) + 1140` as the power.\n    ",
+    "java": "\n    ```java\npublic int powmod(int a, int b) {\n    if (b == 0) return 1;\n    int res = powmod(a, b / 2);\n    if (b % 2 == 0) return res * res % 1337;\n    return res * res % 1337 * a % 1337;\n}\n\npublic int superPow(int a, int[] b) {\n    int n = 0;\n    for (int bi : b) n = (n * 10 + bi) % 1140;\n    return powmod(a % 1337, n + 1140);\n}\n```\n    \n    - First, we create a utility `powmod` function to compute `a^b % 1337`. We can do this using the fast exponentiation technique, where for an even power, we recursively compute the square, and for an odd power, we additionally multiply by `a`.\n- For the main `superPow` function, we first convert the given array into a single integer `n`. Since, the power could be very large, we can instead calculate `(n % 1140) + 1140`, due to Fermat's Little Theorem and Euler's Theorem: `(a^(λ(n)) ≡ 1 (mod n))` so `a^(1140) % 1337 = 1` where λ is Carmichael function.\n- Finally, we call our `powmod` function with `a % 1337` and `(n % 1140) + 1140` as the power.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

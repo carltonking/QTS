@@ -1,0 +1,24 @@
+{
+  "id": 414,
+  "title": "Third Maximum Number",
+  "slug": "third-maximum-number",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer array nums, return _the third distinct maximum number in this array. If the third maximum does not exist, return the maximum number_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef third_max(nums):\n    top3 = set()\n    for num in nums:\n        top3.add(num)\n        if len(top3) > 3:\n            top3.remove(min(top3))\n    return min(top3) if len(top3) == 3 else max(top3)\n```\n    \n    The algorithm to solve the problem is as follows:\n1. Initialize an empty set called `top3` to keep track of the top 3 distinct maximum numbers in the array.\n2. Iterate through the input array, `nums`.\n3. For each number in `nums`, insert it into `top3`.\n4. If the size of `top3` becomes greater than 3, remove the smallest number in `top3`.\n5. If the size of `top3` is 3, which means there are three distinct maximum numbers, return the smallest number in `top3`. Otherwise, return the largest number in `top3`.\n    ",
+    "javascript": "\n    ```javascript\nfunction thirdMax(nums) {\n    const top3 = new Set();\n    for (const num of nums) {\n        top3.add(num);\n        if (top3.size > 3) {\n            top3.delete(Math.min(...top3));\n        }\n    }\n    return top3.size === 3 ? Math.min(...top3) : Math.max(...top3);\n}\n```\n    \n    The algorithm to solve the problem is as follows:\n1. Initialize an empty set called `top3` to keep track of the top 3 distinct maximum numbers in the array.\n2. Iterate through the input array, `nums`.\n3. For each number in `nums`, insert it into `top3`.\n4. If the size of `top3` becomes greater than 3, remove the smallest number in `top3`.\n5. If the size of `top3` is 3, which means there are three distinct maximum numbers, return the smallest number in `top3`. Otherwise, return the largest number in `top3`.\n    ",
+    "java": "\n    ```java\nimport java.util.TreeSet;\n\npublic int thirdMax(int[] nums) {\n    TreeSet<Integer> top3 = new TreeSet<>();\n    for (int num : nums) {\n        top3.add(num);\n        if (top3.size() > 3) {\n            top3.remove(top3.first());\n        }\n    }\n    return top3.size() == 3 ? top3.first() : top3.last();\n}\n```\n    \n    The algorithm to solve the problem is as follows:\n1. Initialize an empty set called `top3` to keep track of the top 3 distinct maximum numbers in the array.\n2. Iterate through the input array, `nums`.\n3. For each number in `nums`, insert it into `top3`.\n4. If the size of `top3` becomes greater than 3, remove the smallest number in `top3`.\n5. If the size of `top3` is 3, which means there are three distinct maximum numbers, return the smallest number in `top3`. Otherwise, return the largest number in `top3`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

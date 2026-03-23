@@ -1,0 +1,24 @@
+{
+  "id": 976,
+  "title": "Largest Perimeter Triangle",
+  "slug": "largest-perimeter-triangle",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer array nums, return _the largest perimeter of a triangle with a non-zero area, formed from three of these lengths_. If it is impossible to form any triangle of a non-zero area, return 0.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_area_rect(points):\n    point_set = {(x, y) for x, y in points}\n    min_area = float('inf')\n\n    for p1 in point_set:\n        for p2 in point_set:\n            if p1[0] != p2[0] and p1[1] != p2[1]:\n                if (p1[0], p2[1]) in point_set and (p2[0], p1[1]) in point_set:\n                    min_area = min(min_area, abs((p1[0] - p2[0]) * (p1[1] - p2[1])))\n\n    return min_area if min_area != float('inf') else 0\n```\n\n    \n    1. Convert the given points into a set for efficient lookups.\n2. Initialize `min_area` to an infinitely large value initially.\n3. Iterate through each pair of distinct points `p1` and `p2` in the set, and check if two other points `p3` and `p4` exist such that p3.x = p1.x, p3.y = p2.y, p4.x = p2.x, p4.y = p1.y.\n4. If such points exist, calculate the area between `p1` and `p2` and update `min_area` with the minimum value between current `min_area` and calculated area.\n5. After the iteration, if `min_area` still holds the initial value (indicating no rectangles were found), return 0; otherwise, return the `min_area`.\n    ",
+    "javascript": "\n    ```javascript\nfunction minAreaRect(points) {\n  const pointSet = new Set(points.map(point => point.join(',')));\n  let minArea = Infinity;\n\n  for (const p1 of points) {\n    for (const p2 of points) {\n      if (p1[0] !== p2[0] && p1[1] !== p2[1]) {\n        if (pointSet.has([p1[0], p2[1]].join(',')) && pointSet.has([p2[0], p1[1]].join(','))) {\n          minArea = Math.min(minArea, Math.abs((p1[0] - p2[0]) * (p1[1] - p2[1])));\n        }\n      }\n    }\n  }\n\n  return minArea === Infinity ? 0 : minArea;\n}\n```\n\n    \n    1. Convert the given points into a set for efficient lookups.\n2. Initialize `min_area` to an infinitely large value initially.\n3. Iterate through each pair of distinct points `p1` and `p2` in the set, and check if two other points `p3` and `p4` exist such that p3.x = p1.x, p3.y = p2.y, p4.x = p2.x, p4.y = p1.y.\n4. If such points exist, calculate the area between `p1` and `p2` and update `min_area` with the minimum value between current `min_area` and calculated area.\n5. After the iteration, if `min_area` still holds the initial value (indicating no rectangles were found), return 0; otherwise, return the `min_area`.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\nclass Solution {\n    public int minAreaRect(int[][] points) {\n        Set<Pair<Integer, Integer>> pointSet = new HashSet<>();\n        for (int[] point : points) {\n            pointSet.add(new Pair<>(point[0], point[1]));\n        }\n\n        int minArea = Integer.MAX_VALUE;\n        for (int[] p1 : points) {\n            for (int[] p2 : points) {\n                if (p1[0] != p2[0] && p1[1] != p2[1]) {\n                    if (pointSet.contains(new Pair<>(p1[0], p2[1])) && pointSet.contains(new Pair<>(p2[0], p1[1]))) {\n                        minArea = Math.min(minArea, Math.abs((p1[0] - p2[0]) * (p1[1] - p2[1])));\n                    }\n                }\n            }\n        }\n\n        return minArea == Integer.MAX_VALUE ? 0 : minArea;\n    }\n}\n```\n\n    \n    1. Convert the given points into a set for efficient lookups.\n2. Initialize `min_area` to an infinitely large value initially.\n3. Iterate through each pair of distinct points `p1` and `p2` in the set, and check if two other points `p3` and `p4` exist such that p3.x = p1.x, p3.y = p2.y, p4.x = p2.x, p4.y = p1.y.\n4. If such points exist, calculate the area between `p1` and `p2` and update `min_area` with the minimum value between current `min_area` and calculated area.\n5. After the iteration, if `min_area` still holds the initial value (indicating no rectangles were found), return 0; otherwise, return the `min_area`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

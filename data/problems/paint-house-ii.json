@@ -1,0 +1,24 @@
+{
+  "id": 265,
+  "title": "Paint House II",
+  "slug": "paint-house-ii",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "There are a row of n houses, each house can be painted with one of the k colors. The cost of painting each house with a certain color is different. You have to paint all the houses such that no two adjacent houses have the same color.\n\nThe cost of painting each house with a certain color is represented by an n x k cost matrix costs.\n\n*   For example, costs[0][0] is the cost of painting house 0 with color 0; costs[1][2] is the cost of painting house 1 with color 2, and so on...\n\nReturn _the minimum cost to paint all houses_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_cost(costs: List[List[int]]) -> int:\n    if not costs:\n        return 0\n\n    n, k = len(costs), len(costs[0])\n\n    for i in range(1, n):\n        for j in range(k):\n            min_cost = float(\"inf\")\n            for l in range(k):\n                if l == j:\n                    continue\n                min_cost = min(min_cost, costs[i - 1][l])\n            costs[i][j] += min_cost\n\n    return min(costs[n - 1])\n```\n\n    \n    The algorithm stores the minimum cost to paint each house up to the current house with each color. Then for each house, it iterates through all the colors and calculates the minimum cost for painting that house with each color. It skips the same color as the previous house because no two adjacent houses can have the same color. After processing all the houses, the minimum of the last row in `costs` is the minimum cost to paint all the houses.\n    ",
+    "javascript": "\n    ```javascript\nfunction minCost(costs) {\n    if (!costs || costs.length === 0) return 0;\n\n    const n = costs.length;\n    const k = costs[0].length;\n\n    for (let i = 1; i < n; i++) {\n        for (let j = 0; j < k; j++) {\n            let minCost = Number.MAX_VALUE;\n            for (let l = 0; l < k; l++) {\n                if (l === j) continue;\n                minCost = Math.min(minCost, costs[i - 1][l]);\n            }\n            costs[i][j] += minCost;\n        }\n    }\n    return Math.min(...costs[n - 1]);\n}\n```\n\n    \n    The algorithm stores the minimum cost to paint each house up to the current house with each color. Then for each house, it iterates through all the colors and calculates the minimum cost for painting that house with each color. It skips the same color as the previous house because no two adjacent houses can have the same color. After processing all the houses, the minimum of the last row in `costs` is the minimum cost to paint all the houses.\n    ",
+    "java": "\n    ```java\npublic int minCost(int[][] costs) {\n    if (costs == null || costs.length == 0) return 0;\n\n    int n = costs.length;\n    int k = costs[0].length;\n\n    for (int i = 1; i < n; i++) {\n        for (int j = 0; j < k; j++) {\n            int minCost = Integer.MAX_VALUE;\n            for (int l = 0; l < k; l++) {\n                if (l == j) continue;\n                minCost = Math.min(minCost, costs[i - 1][l]);\n            }\n            costs[i][j] += minCost;\n        }\n    }\n    return Arrays.stream(costs[n - 1]).min().getAsInt();\n}\n```\n\n    \n    The algorithm stores the minimum cost to paint each house up to the current house with each color. Then for each house, it iterates through all the colors and calculates the minimum cost for painting that house with each color. It skips the same color as the previous house because no two adjacent houses can have the same color. After processing all the houses, the minimum of the last row in `costs` is the minimum cost to paint all the houses.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 349,
+  "title": "Intersection of Two Arrays",
+  "slug": "intersection-of-two-arrays",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given two integer arrays nums1 and nums2, return _an array of their intersection_. Each element in the result must be unique and you may return the result in any order.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef intersection(nums1, nums2):\n    set1 = set(nums1)\n    result = set1.intersection(nums2)\n    return list(result)\n```\n    \n    The function first creates a set `set1` from the first array `nums1`, which eliminates duplicate elements in it. Then, the function iterates through the second array `nums2`. For each element in `nums2`, it checks whether it exists in the `set1`. If so, this element is added to the result set `resultSet`. Finally, the result set is converted to an array and returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction intersection(nums1, nums2) {\n    const set1 = new Set(nums1);\n    const resultSet = new Set();\n\n    for (const num of nums2) {\n        if (set1.has(num)) {\n            resultSet.add(num);\n        }\n    }\n\n    return Array.from(resultSet);\n}\n```\n\n    \n    The function first creates a set `set1` from the first array `nums1`, which eliminates duplicate elements in it. Then, the function iterates through the second array `nums2`. For each element in `nums2`, it checks whether it exists in the `set1`. If so, this element is added to the result set `resultSet`. Finally, the result set is converted to an array and returned.\n    ",
+    "java": "\n    ```java\nimport java.util.HashSet;\nimport java.util.Set;\n\npublic int[] intersection(int[] nums1, int[] nums2) {\n    Set<Integer> set1 = new HashSet<>();\n    for (int num : nums1) {\n        set1.add(num);\n    }\n    \n    Set<Integer> resultSet = new HashSet<>();\n    for (int num : nums2) {\n        if (set1.contains(num)) {\n            resultSet.add(num);\n        }\n    }\n    \n    int[] result = new int[resultSet.size()];\n    int i = 0;\n    for (int num : resultSet) {\n        result[i++] = num;\n    }\n    return result;\n}\n```\n    \n    The function first creates a set `set1` from the first array `nums1`, which eliminates duplicate elements in it. Then, the function iterates through the second array `nums2`. For each element in `nums2`, it checks whether it exists in the `set1`. If so, this element is added to the result set `resultSet`. Finally, the result set is converted to an array and returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

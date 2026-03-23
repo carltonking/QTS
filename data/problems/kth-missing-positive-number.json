@@ -1,0 +1,24 @@
+{
+  "id": 1539,
+  "title": "Kth Missing Positive Number",
+  "slug": "kth-missing-positive-number",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array arr of positive integers sorted in a strictly increasing order, and an integer k.\n\nReturn _the_ kth _positive integer that is missing from this array._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_diagonal_order(nums):\n    diagonals = {}\n    for i in range(len(nums)):\n        for j in range(len(nums[i])):\n            if i + j not in diagonals:\n                diagonals[i + j] = []\n            diagonals[i + j].append(nums[i][j])\n\n    res = []\n    for key in diagonals:\n        res.extend(reversed(diagonals[key]))\n\n    return res\n```\n    \n    First, we iterate through the 2D array nums using nested loops over `i` and `j`. At each loop iteration, we insert the current element nums[i][j] into diagonals[i + j] list for a specific diagonal associated with (i + j). If the list doesn't exist, we create it.\n\nThen, we iterate through the diagonals and reverse the order of each diagonal list because elements with larger row index should come first in the result. We use `std::reverse()` in C++, `Collections.reverse()` in Java, `reversed()` in Python, and `Array.prototype.reverse()` in JavaScript.\n\nFinally, we concatenate the reversed diagonal lists to form the result array using `std::vector::insert()` in C++, `List.addAll()` in Java, `list.extend()` in Python, and by using the spread operator (`...`) in JavaScript.\n    ",
+    "javascript": "\n    ```javascript\nfunction findDiagonalOrder(nums) {\n    const diagonals = {};\n    const m = nums.length;\n    const res = [];\n\n    for (let i = 0; i < m; i++) {\n        for (let j = 0; j < nums[i].length; j++) {\n            if (!diagonals[i + j]) {\n                diagonals[i + j] = [];\n            }\n            diagonals[i + j].push(nums[i][j]);\n        }\n    }\n\n    for (const key in diagonals) {\n        res.push(...diagonals[key].reverse());\n    }\n\n    return res;\n}\n```\n    \n    First, we iterate through the 2D array nums using nested loops over `i` and `j`. At each loop iteration, we insert the current element nums[i][j] into diagonals[i + j] list for a specific diagonal associated with (i + j). If the list doesn't exist, we create it.\n\nThen, we iterate through the diagonals and reverse the order of each diagonal list because elements with larger row index should come first in the result. We use `std::reverse()` in C++, `Collections.reverse()` in Java, `reversed()` in Python, and `Array.prototype.reverse()` in JavaScript.\n\nFinally, we concatenate the reversed diagonal lists to form the result array using `std::vector::insert()` in C++, `List.addAll()` in Java, `list.extend()` in Python, and by using the spread operator (`...`) in JavaScript.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.Collections;\nimport java.util.HashMap;\nimport java.util.List;\n\npublic List<Integer> findDiagonalOrder(List<List<Integer>> nums) {\n    List<Integer> res = new ArrayList<>();\n    int m = nums.size();\n    HashMap<Integer, List<Integer>> diagonals = new HashMap<>();\n\n    for (int i = 0; i < m; i++) {\n        for (int j = 0; j < nums.get(i).size(); j++) {\n            int key = i + j;\n            if (!diagonals.containsKey(key)) {\n                diagonals.put(key, new ArrayList<>());\n            }\n            diagonals.get(key).add(nums.get(i).get(j));\n        }\n    }\n\n    for (int key : diagonals.keySet()) {\n        List<Integer> diag = diagonals.get(key);\n        Collections.reverse(diag);\n        res.addAll(diag);\n    }\n\n    return res;\n}\n```\n    \n    First, we iterate through the 2D array nums using nested loops over `i` and `j`. At each loop iteration, we insert the current element nums[i][j] into diagonals[i + j] list for a specific diagonal associated with (i + j). If the list doesn't exist, we create it.\n\nThen, we iterate through the diagonals and reverse the order of each diagonal list because elements with larger row index should come first in the result. We use `std::reverse()` in C++, `Collections.reverse()` in Java, `reversed()` in Python, and `Array.prototype.reverse()` in JavaScript.\n\nFinally, we concatenate the reversed diagonal lists to form the result array using `std::vector::insert()` in C++, `List.addAll()` in Java, `list.extend()` in Python, and by using the spread operator (`...`) in JavaScript.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

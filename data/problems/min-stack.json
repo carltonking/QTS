@@ -1,0 +1,35 @@
+{
+  "id": 12,
+  "title": "Min Stack",
+  "slug": "min-stack",
+  "difficulty": "Medium",
+  "tags": [
+    "Stack",
+    "Design"
+  ],
+  "description": "Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.",
+  "examples": [
+    {
+      "input": "push,push,push,getMin,pop,top,getMin with values -2,0,-3",
+      "output": "-3,0,-2"
+    }
+  ],
+  "constraints": [
+    "Methods should run in O(1) time"
+  ],
+  "starterCode": {
+    "python": "class MinStack:\n    def __init__(self):\n\n    def push(self, val: int) -> None:\n\n    def pop(self) -> None:\n\n    def top(self) -> int:\n\n    def getMin(self) -> int:",
+    "javascript": "var MinStack = function() {\n\n};\nMinStack.prototype.push = function(val) {\n\n};\nMinStack.prototype.pop = function() {\n\n};\nMinStack.prototype.top = function() {\n\n};\nMinStack.prototype.getMin = function() {\n\n};",
+    "java": "class MinStack {\n    public MinStack() {\n\n    }\n    public void push(int val) {\n\n    }\n    public void pop() {\n\n    }\n    public int top() {\n\n    }\n    public int getMin() {\n\n    }\n}",
+    "cpp": "class MinStack {\npublic:\n    MinStack() {\n\n    }\n    void push(int val) {\n\n    }\n    void pop() {\n\n    }\n    int top() {\n\n    }\n    int getMin() {\n\n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Min Stack\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "push -2\npush 0\npush -3\ngetMin\npop\ntop\ngetMin",
+      "expectedOutput": "-3\n0\n-2"
+    }
+  ]
+}

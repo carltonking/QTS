@@ -1,0 +1,24 @@
+{
+  "id": 1620,
+  "title": "Coordinate With Maximum Network Quality",
+  "slug": "coordinate-with-maximum-network-quality",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array of network towers towers, where towers[i] = [xi, yi, qi] denotes the ith network tower with location (xi, yi) and quality factor qi. All the coordinates are integral coordinates on the X-Y plane, and the distance between the two coordinates is the Euclidean distance.\n\nYou are also given an integer radius where a tower is reachable if the distance is less than or equal to radius. Outside that distance, the signal becomes garbled, and the tower is not reachable.\n\nThe signal quality of the ith tower at a coordinate (x, y) is calculated with the formula ⌊qi / (1 + d)⌋, where d is the distance between the tower and the coordinate. The network quality at a coordinate is the sum of the signal qualities from all the reachable towers.\n\nReturn _the array_ [cx, cy] _representing the integral coordinate_ (cx, cy) _where the network quality is maximum. If there are multiple coordinates with the same network quality, return the lexicographically minimum non-negative coordinate._\n\nNote:\n\n*   A coordinate (x1, y1) is lexicographically smaller than (x2, y2) if either:\n    *   x1 < x2, or\n    *   x1 == x2 and y1 < y2.\n*   ⌊val⌋ is the greatest integer less than or equal to val (the floor function).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef canArrange(arr, k):\n    counts = [0] * k\n    for num in arr:\n        counts[(num % k + k) % k] += 1\n    if counts[0] % 2 != 0:\n        return False\n    for i in range(1, k // 2 + 1):\n        if counts[i] != counts[k - i]:\n            return False\n    return True\n```\n    \n    1. Create a counts array of size k, initializing all elements to 0.\n2. Iterate through the input array and increment the count of (num % k + k) % k (to handle negative numbers as well) for each element in the array.\n3. After counting, if the count at index 0 (sums that are multiples of k) is not even, return false, since we cannot create n / 2 pairs.\n4. Iterate through the counts array from index 1 to k / 2 (inclusive) and check if the counts at index i and (k - i) are equal, if not then return false, since pairs cannot be formed that sum up to a multiple of k.\n5. If no issues are found, return true as the pairs can be formed.\n    ",
+    "javascript": "\n    ```javascript\nfunction canArrange(arr, k) {\n    let counts = new Array(k).fill(0);\n    for (let num of arr) {\n        counts[(num % k + k) % k]++;\n    }\n    if (counts[0] % 2 != 0) {\n        return false;\n    }\n    for (let i = 1; i <= k / 2; i++) {\n        if (counts[i] !== counts[k - i]) {\n            return false;\n        }\n    }\n    return true;\n}\n```\n    \n    1. Create a counts array of size k, initializing all elements to 0.\n2. Iterate through the input array and increment the count of (num % k + k) % k (to handle negative numbers as well) for each element in the array.\n3. After counting, if the count at index 0 (sums that are multiples of k) is not even, return false, since we cannot create n / 2 pairs.\n4. Iterate through the counts array from index 1 to k / 2 (inclusive) and check if the counts at index i and (k - i) are equal, if not then return false, since pairs cannot be formed that sum up to a multiple of k.\n5. If no issues are found, return true as the pairs can be formed.\n    ",
+    "java": "\n    ```java\npublic boolean canArrange(int[] arr, int k) {\n    int[] counts = new int[k];\n    for (int num : arr) {\n        counts[(num % k + k) % k]++;\n    }\n    if (counts[0] % 2 != 0) {\n        return false;\n    }\n    for (int i = 1; i <= k / 2; i++) {\n        if (counts[i] != counts[k - i]) {\n            return false;\n        }\n    }\n    return true;\n}\n```\n    \n    1. Create a counts array of size k, initializing all elements to 0.\n2. Iterate through the input array and increment the count of (num % k + k) % k (to handle negative numbers as well) for each element in the array.\n3. After counting, if the count at index 0 (sums that are multiples of k) is not even, return false, since we cannot create n / 2 pairs.\n4. Iterate through the counts array from index 1 to k / 2 (inclusive) and check if the counts at index i and (k - i) are equal, if not then return false, since pairs cannot be formed that sum up to a multiple of k.\n5. If no issues are found, return true as the pairs can be formed.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

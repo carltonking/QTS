@@ -1,0 +1,24 @@
+{
+  "id": 664,
+  "title": "Strange Printer",
+  "slug": "strange-printer",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "There is a strange printer with the following two special properties:\n\n*   The printer can only print a sequence of the same character each time.\n*   At each turn, the printer can print new characters starting from and ending at any place and will cover the original existing characters.\n\nGiven a string s, return _the minimum number of turns the printer needed to print it_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef strange_printer(s: str) -> int:\n    n = len(s)\n    if n == 0: return 0\n    dp = [[0] * n for _ in range(n)]\n    for i in range(n):\n        dp[i][i] = 1\n    for len in range(1, n):\n        for i in range(n - len):\n            j = i + len\n            dp[i][j] = dp[i+1][j] + 1\n            for k in range(i + 1, j + 1):\n                if s[i] == s[k]:\n                    dp[i][j] = min(dp[i][j], dp[i+1][k-1] + dp[k][j])\n    return dp[0][n-1]\n```\n    \n    1. Initialize a DP table `dp` of size `n x n` where `n` is the length of the input string `s`.\n2. Fill the diagonal of the DP table with 1 since it takes one turn to print a single character.\n3. Iterate through subproblems of increasing length using a nested loop.\n4. For each subproblem, initialize `dp[i][j]` as `dp[i+1][j] + 1` assuming it takes one more turn to print the character at the current `i`.\n5. Loop through `k` from `i + 1` to `j`. If the character at `i` matches the character at `k`, update `dp[i][j]` by taking the minimum of its current value and the sum of turns for two non-overlapping subproblems `dp[i+1][k-1]` and `dp[k][j]`.\n6. The answer is stored at `dp[0][n-1]`.\n    ",
+    "javascript": "\n    ```javascript\nfunction strangePrinter(s) {\n    let n = s.length;\n    if(n === 0) return 0;\n    const dp = Array.from({ length: n }, () => Array(n).fill(0));\n    for(let i = 0; i < n; i++) dp[i][i] = 1;\n    for(let len = 1; len < n; len++) {\n        for(let i = 0; i < n - len; i++) {\n            let j = i + len;\n            dp[i][j] = dp[i+1][j] + 1;\n            for(let k = i + 1; k <= j; k++) {\n                if(s.charAt(i) === s.charAt(k)) {\n                    dp[i][j] = Math.min(dp[i][j], dp[i+1][k-1] + dp[k][j]);\n                }\n            }\n        }\n    }\n    return dp[0][n-1];\n}\n```\n    \n    1. Initialize a DP table `dp` of size `n x n` where `n` is the length of the input string `s`.\n2. Fill the diagonal of the DP table with 1 since it takes one turn to print a single character.\n3. Iterate through subproblems of increasing length using a nested loop.\n4. For each subproblem, initialize `dp[i][j]` as `dp[i+1][j] + 1` assuming it takes one more turn to print the character at the current `i`.\n5. Loop through `k` from `i + 1` to `j`. If the character at `i` matches the character at `k`, update `dp[i][j]` by taking the minimum of its current value and the sum of turns for two non-overlapping subproblems `dp[i+1][k-1]` and `dp[k][j]`.\n6. The answer is stored at `dp[0][n-1]`.\n    ",
+    "java": "\n    ```java\nint strangePrinter(String s) {\n    int n = s.length();\n    if(n == 0) return 0;\n    int[][] dp = new int[n][n];\n    for(int i = 0; i < n; i++) dp[i][i] = 1;\n    for(int len = 1; len < n; len++) {\n        for(int i = 0; i < n - len; i++) {\n            int j = i + len;\n            dp[i][j] = dp[i+1][j] + 1;\n            for(int k = i + 1; k <= j; k++) {\n                if(s.charAt(i) == s.charAt(k)) {\n                    dp[i][j] = Math.min(dp[i][j], dp[i+1][k-1] + dp[k][j]);\n                }\n            }\n        }\n    }\n    return dp[0][n-1];\n}\n```\n    \n    1. Initialize a DP table `dp` of size `n x n` where `n` is the length of the input string `s`.\n2. Fill the diagonal of the DP table with 1 since it takes one turn to print a single character.\n3. Iterate through subproblems of increasing length using a nested loop.\n4. For each subproblem, initialize `dp[i][j]` as `dp[i+1][j] + 1` assuming it takes one more turn to print the character at the current `i`.\n5. Loop through `k` from `i + 1` to `j`. If the character at `i` matches the character at `k`, update `dp[i][j]` by taking the minimum of its current value and the sum of turns for two non-overlapping subproblems `dp[i+1][k-1]` and `dp[k][j]`.\n6. The answer is stored at `dp[0][n-1]`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

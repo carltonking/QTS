@@ -1,0 +1,24 @@
+{
+  "id": 832,
+  "title": "Flipping an Image",
+  "slug": "flipping-an-image",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an n x n binary matrix image, flip the image horizontally, then invert it, and return _the resulting image_.\n\nTo flip an image horizontally means that each row of the image is reversed.\n\n*   For example, flipping [1,1,0] horizontally results in [0,1,1].\n\nTo invert an image means that each 0 is replaced by 1, and each 1 is replaced by 0.\n\n*   For example, inverting [0,1,1] results in [1,0,0].",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef pruneTree(root: TreeNode) -> TreeNode:\n    if not root:\n        return None\n    root.left = pruneTree(root.left)\n    root.right = pruneTree(root.right)\n    if root.val == 0 and not root.left and not root.right:\n        return None\n    return root\n```\n    \n    The algorithm uses a depth first search approach to traverse the given binary tree recursively. When traversing the tree, the function checks if a node has a value of 1 or has any child nodes with a value of 1.\n\nIn the base case, if the current node is null, return null.\n\nFor each node, the algorithm first checks its left and right subtrees using height-depth traversal through recursion. After checking its left and right subtrees, if the current node has a value of 0 and has no left or right child nodes, the function returns null, effectively pruning the subtree. If any part of the subtree has a value of 1, then the recursion returns the root of that subtree.\n\nIn the end, the algorithm returns the root of the pruned binary tree.\n    ",
+    "javascript": "\n    ```javascript\nfunction pruneTree(root) {\n    if (!root) return null;\n    root.left = pruneTree(root.left);\n    root.right = pruneTree(root.right);\n    if (root.val === 0 && !root.left && !root.right) return null;\n    return root;\n}\n```\n    \n    The algorithm uses a depth first search approach to traverse the given binary tree recursively. When traversing the tree, the function checks if a node has a value of 1 or has any child nodes with a value of 1.\n\nIn the base case, if the current node is null, return null.\n\nFor each node, the algorithm first checks its left and right subtrees using height-depth traversal through recursion. After checking its left and right subtrees, if the current node has a value of 0 and has no left or right child nodes, the function returns null, effectively pruning the subtree. If any part of the subtree has a value of 1, then the recursion returns the root of that subtree.\n\nIn the end, the algorithm returns the root of the pruned binary tree.\n    ",
+    "java": "\n    ```java\npublic TreeNode pruneTree(TreeNode root) {\n    if (root == null) return null;\n    root.left = pruneTree(root.left);\n    root.right = pruneTree(root.right);\n    if (root.val == 0 && root.left == null && root.right == null) return null;\n    return root;\n}\n```\n    \n    The algorithm uses a depth first search approach to traverse the given binary tree recursively. When traversing the tree, the function checks if a node has a value of 1 or has any child nodes with a value of 1.\n\nIn the base case, if the current node is null, return null.\n\nFor each node, the algorithm first checks its left and right subtrees using height-depth traversal through recursion. After checking its left and right subtrees, if the current node has a value of 0 and has no left or right child nodes, the function returns null, effectively pruning the subtree. If any part of the subtree has a value of 1, then the recursion returns the root of that subtree.\n\nIn the end, the algorithm returns the root of the pruned binary tree.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

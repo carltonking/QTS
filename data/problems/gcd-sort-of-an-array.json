@@ -1,0 +1,24 @@
+{
+  "id": 1998,
+  "title": "GCD Sort of an Array",
+  "slug": "gcd-sort-of-an-array",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an integer array nums, and you can perform the following operation any number of times on nums:\n\n*   Swap the positions of two elements nums[i] and nums[j] if gcd(nums[i], nums[j]) > 1 where gcd(nums[i], nums[j]) is the greatest common divisor of nums[i] and nums[j].\n\nReturn true _if it is possible to sort_ nums _in non-decreasing order using the above swap method, or_ false _otherwise._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom math import gcd\n\ndef can_be_sorted(nums):\n    sorted_nums = sorted(nums)\n    for i in range(len(nums)):\n        if nums[i] != sorted_nums[i] and gcd(nums[i], sorted_nums[i]) == 1:\n            return False\n    return True\n```\n    \n    The first step is to create a sorted copy of the input array `nums`. Then, iterate through the input array and check if each element matches the corresponding element in the sorted copy. If an element in both arrays is different, calculate the gcd of these elements. If the gcd is 1, return false because the two elements cannot be swapped. Otherwise, move on to the next element. If the loop finishes without finding a pair of numbers with a gcd of 1, return true.\n    ",
+    "javascript": "\n    ```javascript\nfunction canBeSorted(nums) {\n    const sorted_nums = nums.slice().sort((a, b) => a - b);\n    for (let i = 0; i < nums.length; i++) {\n        if (nums[i] !== sorted_nums[i] && gcd(nums[i], sorted_nums[i]) === 1) {\n            return false;\n        }\n    }\n    return true;\n}\n\nfunction gcd(a, b) {\n    let temp;\n    while (b !== 0) {\n        temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}\n```\n    \n    The first step is to create a sorted copy of the input array `nums`. Then, iterate through the input array and check if each element matches the corresponding element in the sorted copy. If an element in both arrays is different, calculate the gcd of these elements. If the gcd is 1, return false because the two elements cannot be swapped. Otherwise, move on to the next element. If the loop finishes without finding a pair of numbers with a gcd of 1, return true.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic boolean canBeSorted(int[] nums) {\n    int[] sorted_nums = Arrays.copyOf(nums, nums.length);\n    Arrays.sort(sorted_nums);\n    for (int i = 0; i < nums.length; i++) {\n        if (nums[i] != sorted_nums[i] && gcd(nums[i], sorted_nums[i]) == 1) {\n            return false;\n        }\n    }\n    return true;\n}\n\nprivate int gcd(int a, int b) {\n    while (b != 0) {\n        int temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}\n```\n    \n    The first step is to create a sorted copy of the input array `nums`. Then, iterate through the input array and check if each element matches the corresponding element in the sorted copy. If an element in both arrays is different, calculate the gcd of these elements. If the gcd is 1, return false because the two elements cannot be swapped. Otherwise, move on to the next element. If the loop finishes without finding a pair of numbers with a gcd of 1, return true.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

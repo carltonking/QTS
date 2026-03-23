@@ -1,0 +1,24 @@
+{
+  "id": 1218,
+  "title": "Longest Arithmetic Subsequence of Given Difference",
+  "slug": "longest-arithmetic-subsequence-of-given-difference",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array arr and an integer difference, return the length of the longest subsequence in arr which is an arithmetic sequence such that the difference between adjacent elements in the subsequence equals difference.\n\nA subsequence is a sequence that can be derived from arr by deleting some or no elements without changing the order of the remaining elements.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def lcaDeepestLeaves(self, root: TreeNode) -> TreeNode:\n        def dfs(node):\n            if not node:\n                return (None, 0)\n            left, right = dfs(node.left), dfs(node.right)\n            if left[1] > right[1]:\n                return (left[0], left[1] + 1)\n            elif left[1] < right[1]:\n                return (right[0], right[1] + 1)\n            else:\n                return (node, left[1] + 1)\n        \n        return dfs(root)[0]\n```\n\n    \n    We use Depth-First Search for traversing the binary tree. In the DFS algorithm, we go deep into the tree before backtracking. While traversing, we calculate the depth of each node as we go along. If one of the child nodes has a greater depth than the other, we return that child node with an incremented depth. If both child nodes have the same depth, we return the current node along with the incremented depth. We continue this process and finally return the lowest common ancestor of the deepest leaves.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(val, left=null, right=null) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\nfunction lcaDeepestLeaves(root) {\n    function dfs(node) {\n        if (!node) return {node: null, depth: 0};\n        const left = dfs(node.left);\n        const right = dfs(node.right);\n        if (left.depth > right.depth) {\n            return {node: left.node, depth: left.depth + 1};\n        } else if (left.depth < right.depth) {\n            return {node: right.node, depth: right.depth + 1};\n        } else {\n            return {node, depth: left.depth + 1};\n        }\n    }\n\n    return dfs(root).node;\n}\n```\n\n    \n    We use Depth-First Search for traversing the binary tree. In the DFS algorithm, we go deep into the tree before backtracking. While traversing, we calculate the depth of each node as we go along. If one of the child nodes has a greater depth than the other, we return that child node with an incremented depth. If both child nodes have the same depth, we return the current node along with the incremented depth. We continue this process and finally return the lowest common ancestor of the deepest leaves.\n    ",
+    "java": "\n    ```java\npublic class TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n    TreeNode(int x) { val = x; }\n}\n\nclass Solution {\n    public class Pair {\n        TreeNode node;\n        int depth;\n\n        public Pair(TreeNode node, int depth) {\n            this.node = node;\n            this.depth = depth;\n        }\n    }\n\n    public Pair dfs(TreeNode node) {\n        if (node == null) return new Pair(null, 0);\n        Pair left = dfs(node.left);\n        Pair right = dfs(node.right);\n        if (left.depth > right.depth) {\n            return new Pair(left.node, left.depth + 1);\n        } else if (left.depth < right.depth) {\n            return new Pair(right.node, right.depth + 1);\n        } else {\n            return new Pair(node, left.depth + 1);\n        }\n    }\n\n    public TreeNode lcaDeepestLeaves(TreeNode root) {\n        return dfs(root).node;\n    }\n}\n```\n\n    \n    We use Depth-First Search for traversing the binary tree. In the DFS algorithm, we go deep into the tree before backtracking. While traversing, we calculate the depth of each node as we go along. If one of the child nodes has a greater depth than the other, we return that child node with an incremented depth. If both child nodes have the same depth, we return the current node along with the incremented depth. We continue this process and finally return the lowest common ancestor of the deepest leaves.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2460,
+  "title": "Apply Operations to an Array",
+  "slug": "apply-operations-to-an-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a 0-indexed array nums of size n consisting of non-negative integers.\n\nYou need to apply n - 1 operations to this array where, in the ith operation (0-indexed), you will apply the following on the ith element of nums:\n\n*   If nums[i] == nums[i + 1], then multiply nums[i] by 2 and set nums[i + 1] to 0. Otherwise, you skip this operation.\n\nAfter performing all the operations, shift all the 0's to the end of the array.\n\n*   For example, the array [1,0,2,0,0,1] after shifting all its 0's to the end, is [1,2,1,0,0,0].\n\nReturn _the resulting array_.\n\nNote that the operations are applied sequentially, not all at once.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef performOps(nums):\n    n = len(nums)\n    for i in range(n - 1):\n        if nums[i] == nums[i + 1]:\n            nums[i] *= 2\n            nums[i + 1] = 0\n    nonZeroIndex = 0\n    for i in range(n):\n        if nums[i] != 0:\n            nums[nonZeroIndex] = nums[i]\n            nonZeroIndex += 1\n    while(nonZeroIndex < n):\n        nums[nonZeroIndex] = 0\n        nonZeroIndex += 1\n    return nums\n```\n    \n    Iterate through the `nums` array from index `0` to `n - 2`.\nFor each index `i`, check if `nums[i]` equals `nums[i + 1]`. If equal, multiply `nums[i]` by `2` and set `nums[i + 1]` to `0`.\nAfter the operations, shift all `0`'s to the end of the array. To do this, keep track of a `nonZeroIndex` and copy only non-zero elements to that index. Increment the `nonZeroIndex` for every non-zero element copied. Finally, fill the rest of the array with `0`'s starting from the `nonZeroIndex`.\n    ",
+    "javascript": "\n    ```javascript\nfunction performOps(nums) {\n    const n = nums.length;\n    for (let i = 0; i < n - 1; ++i) {\n        if (nums[i] === nums[i + 1]) {\n            nums[i] *= 2;\n            nums[i + 1] = 0;\n        }\n    }\n    let nonZeroIndex = 0;\n    for (let i = 0; i < n; ++i) {\n        if (nums[i] !== 0) {\n            nums[nonZeroIndex++] = nums[i];\n        }\n    }\n    while(nonZeroIndex < n) {\n        nums[nonZeroIndex++] = 0;\n    }\n    return nums;\n}\n```\n    \n    Iterate through the `nums` array from index `0` to `n - 2`.\nFor each index `i`, check if `nums[i]` equals `nums[i + 1]`. If equal, multiply `nums[i]` by `2` and set `nums[i + 1]` to `0`.\nAfter the operations, shift all `0`'s to the end of the array. To do this, keep track of a `nonZeroIndex` and copy only non-zero elements to that index. Increment the `nonZeroIndex` for every non-zero element copied. Finally, fill the rest of the array with `0`'s starting from the `nonZeroIndex`.\n    ",
+    "java": "\n    ```java\npublic int[] performOps(int[] nums) {\n    int n = nums.length;\n    for (int i = 0; i < n - 1; ++i) {\n        if (nums[i] == nums[i + 1]) {\n            nums[i] *= 2;\n            nums[i + 1] = 0;\n        }\n    }\n    int nonZeroIndex = 0;\n    for (int i = 0; i < n; ++i) {\n        if (nums[i] != 0) {\n            nums[nonZeroIndex++] = nums[i];\n        }\n    }\n    while (nonZeroIndex < n) {\n        nums[nonZeroIndex++] = 0;\n    }\n    return nums;\n}\n```\n    \n    Iterate through the `nums` array from index `0` to `n - 2`.\nFor each index `i`, check if `nums[i]` equals `nums[i + 1]`. If equal, multiply `nums[i]` by `2` and set `nums[i + 1]` to `0`.\nAfter the operations, shift all `0`'s to the end of the array. To do this, keep track of a `nonZeroIndex` and copy only non-zero elements to that index. Increment the `nonZeroIndex` for every non-zero element copied. Finally, fill the rest of the array with `0`'s starting from the `nonZeroIndex`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2386,
+  "title": "Find the K-Sum of an Array",
+  "slug": "find-the-k-sum-of-an-array",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an integer array nums and a positive integer k. You can choose any subsequence of the array and sum all of its elements together.\n\nWe define the K-Sum of the array as the kth largest subsequence sum that can be obtained (not necessarily distinct).\n\nReturn _the K-Sum of the array_.\n\nA subsequence is an array that can be derived from another array by deleting some or no elements without changing the order of the remaining elements.\n\nNote that the empty subsequence is considered to have a sum of 0.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef kSum(nums, k):\n    sums = [0]\n    for num in nums:\n        if num > 0:\n            sums.extend([s + num for s in sums])\n            sums.sort(reverse=True)\n        else:\n            sums.append(num)\n\n    return sums[k - 1]\n```\n    \n    To calculate the K-Sum, we need a list of all the sums of max subsequences that can be obtained. The code creates a list `sums` initialized with only one element (0). We iterate over the input `nums`. For each positive number `num`, we add another sum by summing up `num` with every sum that's already in the list `sums`. If the input number is non-positive, we simply append it to the list `sums`. After each iteartion, the list `sums` is sorted in decreasing order to keep track of the largest sum(s) possible. After the process is done, the result is the `k-th` element in the list of `sums` (1-indexed).\n    ",
+    "javascript": "\n    ```javascript\nfunction kSum(nums, k) {\n    const sums = [0];\n    for (const num of nums) {\n        if (num > 0) {\n            for (let i = sums.length - 1; i >= 0; i--) {\n                sums.push(sums[i] + num);\n            }\n            sums.sort((a, b) => b - a);\n        } else {\n            sums.push(num);\n        }\n    }\n\n    return sums[k - 1];\n}\n```\n    \n    To calculate the K-Sum, we need a list of all the sums of max subsequences that can be obtained. The code creates a list `sums` initialized with only one element (0). We iterate over the input `nums`. For each positive number `num`, we add another sum by summing up `num` with every sum that's already in the list `sums`. If the input number is non-positive, we simply append it to the list `sums`. After each iteartion, the list `sums` is sorted in decreasing order to keep track of the largest sum(s) possible. After the process is done, the result is the `k-th` element in the list of `sums` (1-indexed).\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.Collections;\n\npublic class Solution {\n    public int kSum(int[] nums, int k) {\n        ArrayList<Integer> sums = new ArrayList<>();\n        sums.add(0);\n        for (int num : nums) {\n            if (num > 0) {\n                for (int i = sums.size() - 1; i >= 0; i--) {\n                    sums.add(sums.get(i) + num);\n                }\n                sums.sort(Collections.reverseOrder());\n            } else {\n                sums.add(num);\n            }\n        }\n\n        return sums.get(k - 1);\n    }\n}\n```\n    \n    To calculate the K-Sum, we need a list of all the sums of max subsequences that can be obtained. The code creates a list `sums` initialized with only one element (0). We iterate over the input `nums`. For each positive number `num`, we add another sum by summing up `num` with every sum that's already in the list `sums`. If the input number is non-positive, we simply append it to the list `sums`. After each iteartion, the list `sums` is sorted in decreasing order to keep track of the largest sum(s) possible. After the process is done, the result is the `k-th` element in the list of `sums` (1-indexed).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

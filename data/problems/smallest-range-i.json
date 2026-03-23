@@ -1,0 +1,24 @@
+{
+  "id": 908,
+  "title": "Smallest Range I",
+  "slug": "smallest-range-i",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an integer array nums and an integer k.\n\nIn one operation, you can choose any index i where 0 <= i < nums.length and change nums[i] to nums[i] + x where x is an integer from the range [-k, k]. You can apply this operation at most once for each index i.\n\nThe score of nums is the difference between the maximum and minimum elements in nums.\n\nReturn _the minimum score of_ nums _after applying the mentioned operation at most once for each index in it_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef middleNode(head):\n    slow = head\n    fast = head\n\n    while fast and fast.next:\n        slow = slow.next\n        fast = fast.next.next\n\n    return slow\n```\n    \n    The algorithm uses the tortoise and hare algorithm (slow and fast pointers). The slow pointer moves one step at a time, while the fast pointer moves two steps at a time. Since the fast pointer is moving twice as fast as the slow pointer, when the fast pointer reaches the end of the list, the slow pointer will be in the middle. Thus, we can just return the slow pointer as the middle node. If there are two middle nodes, the slow pointer will be on the second middle node, as specified in the problem statement.\n    ",
+    "javascript": "\n    ```javascript\nclass ListNode {\n    constructor(val, next = null) {\n        this.val = val;\n        this.next = next;\n    }\n}\n\nfunction middleNode(head) {\n    let slow = head;\n    let fast = head;\n\n    while (fast && fast.next) {\n        slow = slow.next;\n        fast = fast.next.next;\n    }\n\n    return slow;\n}\n```\n    \n    The algorithm uses the tortoise and hare algorithm (slow and fast pointers). The slow pointer moves one step at a time, while the fast pointer moves two steps at a time. Since the fast pointer is moving twice as fast as the slow pointer, when the fast pointer reaches the end of the list, the slow pointer will be in the middle. Thus, we can just return the slow pointer as the middle node. If there are two middle nodes, the slow pointer will be on the second middle node, as specified in the problem statement.\n    ",
+    "java": "\n    ```java\npublic class ListNode {\n    int val;\n    ListNode next;\n    ListNode(int x) { val = x; }\n}\n\npublic ListNode middleNode(ListNode head) {\n    ListNode slow = head;\n    ListNode fast = head;\n    \n    while (fast != null && fast.next != null) {\n        slow = slow.next;\n        fast = fast.next.next;\n    }\n    \n    return slow;\n}\n```\n    \n    The algorithm uses the tortoise and hare algorithm (slow and fast pointers). The slow pointer moves one step at a time, while the fast pointer moves two steps at a time. Since the fast pointer is moving twice as fast as the slow pointer, when the fast pointer reaches the end of the list, the slow pointer will be in the middle. Thus, we can just return the slow pointer as the middle node. If there are two middle nodes, the slow pointer will be on the second middle node, as specified in the problem statement.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2575,
+  "title": "Find the Divisibility Array of a String",
+  "slug": "find-the-divisibility-array-of-a-string",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed string word of length n consisting of digits, and a positive integer m.\n\nThe divisibility array div of word is an integer array of length n such that:\n\n*   div[i] = 1 if the numeric value of word[0,...,i] is divisible by m, or\n*   div[i] = 0 otherwise.\n\nReturn _the divisibility array of_ word.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef divisibility_array(word: str, m: int) -> list[int]:\n    div = []\n    value = 0\n    for c in word:\n        value = (value * 10 + int(c)) % m\n        div.append(1 if value == 0 else 0)\n    return div\n```\n    \n    We initialize an empty divisibility array and a variable value to store the current numeric value. We iterate through the characters in the input string word. For each character, we multiply the value variable by 10 and add the numeric value of the character by subtracting the ASCII value of '0' from the ASCII value of the character, then taking the remainder with m. If the value is equal to 0, we push 1 in our array, and otherwise, we push 0. Finally, we return the divisibility array.\n    ",
+    "javascript": "\n    ```javascript\nfunction divisibilityArray(word, m) {\n    let div = [];\n    let value = 0;\n    for (let i = 0; i < word.length; ++i) {\n        value = (value * 10 + (word.charCodeAt(i) - '0'.charCodeAt(0))) % m;\n        div.push((value === 0) ? 1 : 0);\n    }\n    return div;\n}\n```\n    \n    We initialize an empty divisibility array and a variable value to store the current numeric value. We iterate through the characters in the input string word. For each character, we multiply the value variable by 10 and add the numeric value of the character by subtracting the ASCII value of '0' from the ASCII value of the character, then taking the remainder with m. If the value is equal to 0, we push 1 in our array, and otherwise, we push 0. Finally, we return the divisibility array.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\n\npublic ArrayList<Integer> divisibilityArray(String word, int m) {\n    ArrayList<Integer> div = new ArrayList<>(word.length());\n    int value = 0;\n    for(int i = 0; i < word.length(); ++i) {\n        value = (value * 10 + (word.charAt(i) - '0')) % m;\n        div.add((value == 0) ? 1 : 0);\n    }\n    return div;\n}\n```\n    \n    We initialize an empty divisibility array and a variable value to store the current numeric value. We iterate through the characters in the input string word. For each character, we multiply the value variable by 10 and add the numeric value of the character by subtracting the ASCII value of '0' from the ASCII value of the character, then taking the remainder with m. If the value is equal to 0, we push 1 in our array, and otherwise, we push 0. Finally, we return the divisibility array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

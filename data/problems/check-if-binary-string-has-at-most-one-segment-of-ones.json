@@ -1,0 +1,24 @@
+{
+  "id": 1784,
+  "title": "Check if Binary String Has at Most One Segment of Ones",
+  "slug": "check-if-binary-string-has-at-most-one-segment-of-ones",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a binary string s ​​​​​without leading zeros, return true​​​ _if_ s _contains at most one contiguous segment of ones_. Otherwise, return false.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minimum_energy(tasks):\n    tasks.sort(key=lambda task: task[1] - task[0], reverse=True)\n\n    energy = 0\n    for task in tasks:\n        energy = max(energy + task[0], task[1])\n    return energy\n```\n    \n    1. Sort the tasks in descending order based on the difference between the minimum energy required to start the task and the actual energy cost to complete the task `(minimum[i] - actual[i])`.\n2. Initialize the current energy to 0.\n3. Iterate through the sorted list of tasks, for each task:\n   - Calculate the maximum of the current energy plus the actual energy cost to complete the task, or the minimum energy required to start the task, and set it as the current energy.\n4. Return the current energy after processing all tasks. This will be the minimum initial amount of energy required to finish all tasks.\n    ",
+    "javascript": "\n    ```javascript\nfunction minimumEnergy(tasks) {\n    tasks.sort((a, b) => (b[1] - b[0]) - (a[1] - a[0]));\n\n    let energy = 0;\n    for (let task of tasks) {\n        energy = Math.max(energy + task[0], task[1]);\n    }\n    return energy;\n}\n```\n    \n    1. Sort the tasks in descending order based on the difference between the minimum energy required to start the task and the actual energy cost to complete the task `(minimum[i] - actual[i])`.\n2. Initialize the current energy to 0.\n3. Iterate through the sorted list of tasks, for each task:\n   - Calculate the maximum of the current energy plus the actual energy cost to complete the task, or the minimum energy required to start the task, and set it as the current energy.\n4. Return the current energy after processing all tasks. This will be the minimum initial amount of energy required to finish all tasks.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int minimumEnergy(int[][] tasks) {\n    Arrays.sort(tasks, (a, b) -> (b[1] - b[0]) - (a[1] - a[0]));\n\n    int energy = 0;\n    for (int[] task : tasks) {\n        energy = Math.max(energy + task[0], task[1]);\n    }\n    return energy;\n}\n```\n    \n    1. Sort the tasks in descending order based on the difference between the minimum energy required to start the task and the actual energy cost to complete the task `(minimum[i] - actual[i])`.\n2. Initialize the current energy to 0.\n3. Iterate through the sorted list of tasks, for each task:\n   - Calculate the maximum of the current energy plus the actual energy cost to complete the task, or the minimum energy required to start the task, and set it as the current energy.\n4. Return the current energy after processing all tasks. This will be the minimum initial amount of energy required to finish all tasks.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

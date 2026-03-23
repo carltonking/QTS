@@ -1,0 +1,24 @@
+{
+  "id": 1217,
+  "title": "Minimum Cost to Move Chips to The Same Position",
+  "slug": "minimum-cost-to-move-chips-to-the-same-position",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "We have n chips, where the position of the ith chip is position[i].\n\nWe need to move all the chips to the same position. In one step, we can change the position of the ith chip from position[i] to:\n\n*   position[i] + 2 or position[i] - 2 with cost = 0.\n*   position[i] + 1 or position[i] - 1 with cost = 1.\n\nReturn _the minimum cost_ needed to move all the chips to the same position.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sort_array(arr1, arr2):\n    counts = {}\n    result = []\n\n    for num in arr1:\n        counts[num] = counts.get(num, 0) + 1\n\n    for num in arr2:\n        if num in counts:\n            result.extend([num] * counts[num])\n            del counts[num]\n\n    for num in sorted(counts.keys()):\n        result.extend([num] * counts[num])\n\n    return result\n```\n    \n    1. Create a dictionary `counts` to store the count of each number in `arr1`.\n2. Iterate through the elements of `arr2`. For each element, add that element to the result `n` times where `n` is the count of that element in `arr1`. Remove the element from the `counts` dictionary.\n3. Iterate through the sorted keys of the remaining elements in `counts`. For each key, append the key to the result `n` times where `n` is the count of that element in `arr1`.\n4. Return the resulting sorted array.\n    ",
+    "javascript": "\n    ```javascript\nfunction sortArray(arr1, arr2) {\n    const counts = new Map();\n\n    for (const num of arr1) {\n        counts.set(num, (counts.get(num) || 0) + 1);\n    }\n\n    const result = [];\n\n    for (const num of arr2) {\n        while (counts.get(num) > 0) {\n            result.push(num);\n            counts.set(num, counts.get(num) - 1);\n        }\n    }\n\n    Array.from(counts.entries())\n        .sort(([a], [b]) => a - b)\n        .forEach(([num, count]) => {\n            while (count--) {\n                result.push(num);\n            }\n        });\n\n    return result;\n}\n```\n    \n    1. Create a dictionary `counts` to store the count of each number in `arr1`.\n2. Iterate through the elements of `arr2`. For each element, add that element to the result `n` times where `n` is the count of that element in `arr1`. Remove the element from the `counts` dictionary.\n3. Iterate through the sorted keys of the remaining elements in `counts`. For each key, append the key to the result `n` times where `n` is the count of that element in `arr1`.\n4. Return the resulting sorted array.\n    ",
+    "java": "\n    ```java\npublic void sortArray(int[] arr1, int[] arr2) {\n    HashMap<Integer, Integer> counts = new HashMap<>();\n\n    for (int num : arr1) {\n        counts.put(num, counts.getOrDefault(num, 0) + 1);\n    }\n\n    int index = 0;\n    for (int num : arr2) {\n        while (counts.get(num) > 0) {\n            arr1[index++] = num;\n            counts.put(num, counts.get(num) - 1);\n        }\n    }\n\n    Arrays.sort(arr1, index, arr1.length);\n}\n```\n    \n    1. Create a dictionary `counts` to store the count of each number in `arr1`.\n2. Iterate through the elements of `arr2`. For each element, add that element to the result `n` times where `n` is the count of that element in `arr1`. Remove the element from the `counts` dictionary.\n3. Iterate through the sorted keys of the remaining elements in `counts`. For each key, append the key to the result `n` times where `n` is the count of that element in `arr1`.\n4. Return the resulting sorted array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

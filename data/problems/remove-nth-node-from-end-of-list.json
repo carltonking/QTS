@@ -1,0 +1,24 @@
+{
+  "id": 19,
+  "title": "Remove Nth Node From End of List",
+  "slug": "remove-nth-node-from-end-of-list",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the head of a linked list, remove the nth node from the end of the list and return its head.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef removeNthFromEnd(head, n):\n    first = head\n    second = head\n    \n    for i in range(n):\n        first = first.next\n    \n    if not first:\n        head = head.next\n        return head\n    \n    while first.next:\n        first = first.next\n        second = second.next\n    \n    second.next = second.next.next\n    \n    return head\n```\n    \n    The algorithm uses two pointers, first and second. The first pointer traverses the list, moving n steps ahead of the second pointer. If the first pointer reaches the end of the list, then the head is updated, and the second pointer becomes the new head. Otherwise, the second pointer is moved along with the first pointer until the first pointer is one position before the last item. Then, the nth node from the end of the list is skipped by updating the next pointer of the second pointer. Finally, the head of the updated list is returned.\n    ",
+    "javascript": "\n    ```javascript\nclass ListNode {\n    constructor(val = 0, next = null) {\n        this.val = val;\n        this.next = next;\n    }\n}\n\nfunction removeNthFromEnd(head, n) {\n    let first = head;\n    let second = head;\n    \n    for (let i = 0; i < n; i++) {\n        first = first.next;\n    }\n    \n    if (first === null) {\n        head = head.next;\n        return head;\n    }\n    \n    while (first.next !== null) {\n        first = first.next;\n        second = second.next;\n    }\n\n    second.next = second.next.next;\n    \n    return head;\n}\n```\n    \n    The algorithm uses two pointers, first and second. The first pointer traverses the list, moving n steps ahead of the second pointer. If the first pointer reaches the end of the list, then the head is updated, and the second pointer becomes the new head. Otherwise, the second pointer is moved along with the first pointer until the first pointer is one position before the last item. Then, the nth node from the end of the list is skipped by updating the next pointer of the second pointer. Finally, the head of the updated list is returned.\n    ",
+    "java": "\n    ```java\npublic class ListNode {\n    int val;\n    ListNode next;\n    ListNode(int x) { val = x; }\n}\n\npublic ListNode removeNthFromEnd(ListNode head, int n) {\n    ListNode first = head;\n    ListNode second = head;\n    \n    for (int i = 0; i < n; i++) {\n        first = first.next;\n    }\n    \n    if (first == null) {\n        head = head.next;\n        return head;\n    }\n    \n    while (first.next != null) {\n        first = first.next;\n        second = second.next;\n    }\n\n    second.next = second.next.next;\n    \n    return head;\n}\n```\n    \n    The algorithm uses two pointers, first and second. The first pointer traverses the list, moving n steps ahead of the second pointer. If the first pointer reaches the end of the list, then the head is updated, and the second pointer becomes the new head. Otherwise, the second pointer is moved along with the first pointer until the first pointer is one position before the last item. Then, the nth node from the end of the list is skipped by updating the next pointer of the second pointer. Finally, the head of the updated list is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

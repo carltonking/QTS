@@ -1,0 +1,24 @@
+{
+  "id": 2269,
+  "title": "Find the K-Beauty of a Number",
+  "slug": "find-the-k-beauty-of-a-number",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "The k-beauty of an integer num is defined as the number of substrings of num when it is read as a string that meet the following conditions:\n\n*   It has a length of k.\n*   It is a divisor of num.\n\nGiven integers num and k, return _the k-beauty of_ num.\n\nNote:\n\n*   Leading zeros are allowed.\n*   0 is not a divisor of any value.\n\nA substring is a contiguous sequence of characters in a string.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef num_elements_with_smaller_and_greater(nums):\n    n = len(nums)\n    res = 0\n    for i in range(n):\n        has_smaller = has_greater = False\n        for j in range(n):\n            if i == j:\n                continue\n            if nums[j] > nums[i]:\n                has_greater = True\n            if nums[j] < nums[i]:\n                has_smaller = True\n            if has_smaller and has_greater:\n                res += 1\n                break\n    return res\n```\n    \n    The algorithm iterates through the input array `nums`. For each element, it checks if there are both smaller and greater elements in the array. To do this, it uses two boolean variables (`hasSmaller` and `hasGreater`). The inner loop iterates through the array again to compare each pair of distinct elements.\n\nIf a pair of elements that satisfies the condition (one is smaller and the other is greater) is found, the result is incremented by 1, and the inner loop is broken to avoid redundant checks for the current element.\n\nAfter iterating through the entire array, the final result is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction numElementsWithSmallerAndGreater(nums) {\n    let n = nums.length;\n    let res = 0;\n    for (let i = 0; i < n; i++) {\n        let hasSmaller = false, hasGreater = false;\n        for (let j = 0; j < n; j++) {\n            if (i === j) continue;\n            if (nums[j] > nums[i]) hasGreater = true;\n            if (nums[j] < nums[i]) hasSmaller = true;\n            if (hasSmaller && hasGreater) {\n                res++;\n                break;\n            }\n        }\n    }\n    return res;\n}\n```\n    \n    The algorithm iterates through the input array `nums`. For each element, it checks if there are both smaller and greater elements in the array. To do this, it uses two boolean variables (`hasSmaller` and `hasGreater`). The inner loop iterates through the array again to compare each pair of distinct elements.\n\nIf a pair of elements that satisfies the condition (one is smaller and the other is greater) is found, the result is incremented by 1, and the inner loop is broken to avoid redundant checks for the current element.\n\nAfter iterating through the entire array, the final result is returned.\n    ",
+    "java": "\n    ```java\npublic int numElementsWithSmallerAndGreater(int[] nums) {\n    int n = nums.length;\n    int res = 0;\n    for (int i = 0; i < n; i++) {\n        boolean hasSmaller = false, hasGreater = false;\n        for (int j = 0; j < n; j++) {\n            if (i == j) continue;\n            if (nums[j] > nums[i]) hasGreater = true;\n            if (nums[j] < nums[i]) hasSmaller = true;\n            if (hasSmaller && hasGreater) {\n                res++;\n                break;\n            }\n        }\n    }\n    return res;\n}\n```\n    \n    The algorithm iterates through the input array `nums`. For each element, it checks if there are both smaller and greater elements in the array. To do this, it uses two boolean variables (`hasSmaller` and `hasGreater`). The inner loop iterates through the array again to compare each pair of distinct elements.\n\nIf a pair of elements that satisfies the condition (one is smaller and the other is greater) is found, the result is incremented by 1, and the inner loop is broken to avoid redundant checks for the current element.\n\nAfter iterating through the entire array, the final result is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

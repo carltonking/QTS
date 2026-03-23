@@ -1,0 +1,24 @@
+{
+  "id": 1329,
+  "title": "Sort the Matrix Diagonally",
+  "slug": "sort-the-matrix-diagonally",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A matrix diagonal is a diagonal line of cells starting from some cell in either the topmost row or leftmost column and going in the bottom-right direction until reaching the matrix's end. For example, the matrix diagonal starting from mat[2][0], where mat is a 6 x 3 matrix, includes cells mat[2][0], mat[3][1], and mat[4][2].\n\nGiven an m x n matrix mat of integers, sort each matrix diagonal in ascending order and return _the resulting matrix_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minCostToMoveChips(position):\n    evenCount, oddCount = 0, 0\n    for i in position:\n        if i % 2 == 0:\n            evenCount += 1\n        else:\n            oddCount += 1\n    return min(evenCount, oddCount)\n```\n    \n    The strategy to minimize the cost is to move all the chips to the position where most chips are already placed, either in an even or odd position. In each step, we can move a chip by 2 positions at no cost. So we count the number of chips on even positions and the number of chips on odd positions. The minimum cost is the minimum between the counts of even and odd positioned chips, as we can move the smaller set of chips to the bigger set with minimum operations.\n    ",
+    "javascript": "\n    ```javascript\nfunction minCostToMoveChips(position) {\n    let evenCount = 0, oddCount = 0;\n    for (let i of position) {\n        if (i % 2 === 0)\n            evenCount++;\n        else\n            oddCount++;\n    }\n    return Math.min(evenCount, oddCount);\n}\n```\n    \n    The strategy to minimize the cost is to move all the chips to the position where most chips are already placed, either in an even or odd position. In each step, we can move a chip by 2 positions at no cost. So we count the number of chips on even positions and the number of chips on odd positions. The minimum cost is the minimum between the counts of even and odd positioned chips, as we can move the smaller set of chips to the bigger set with minimum operations.\n    ",
+    "java": "\n    ```java\npublic int minCostToMoveChips(int[] position) {\n    int evenCount = 0, oddCount = 0;\n    for (int i : position) {\n        if (i % 2 == 0)\n            evenCount++;\n        else\n            oddCount++;\n    }\n    return Math.min(evenCount, oddCount);\n}\n```\n    \n    The strategy to minimize the cost is to move all the chips to the position where most chips are already placed, either in an even or odd position. In each step, we can move a chip by 2 positions at no cost. So we count the number of chips on even positions and the number of chips on odd positions. The minimum cost is the minimum between the counts of even and odd positioned chips, as we can move the smaller set of chips to the bigger set with minimum operations.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

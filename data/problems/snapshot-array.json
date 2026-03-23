@@ -1,0 +1,24 @@
+{
+  "id": 1146,
+  "title": "Snapshot Array",
+  "slug": "snapshot-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Implement a SnapshotArray that supports the following interface:\n\n*   SnapshotArray(int length) initializes an array-like data structure with the given length. Initially, each element equals 0.\n*   void set(index, val) sets the element at the given index to be equal to val.\n*   int snap() takes a snapshot of the array and returns the snap_id: the total number of times we called snap() minus 1.\n*   int get(index, snap_id) returns the value at the given index, at the time we took the snapshot with the given snap_id",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef gcd_of_strings(str1: str, str2: str) -> str:\n    if str1 + str2 != str2 + str1:\n        return ''\n    gcd = lambda a, b: a if not b else gcd(b, a % b)\n    return str1[:gcd(len(str1), len(str2))]\n```\n\n    \n    The algorithm first checks if the concatenation of the strings is equal in both the orders (str1 + str2  and  str2 + str1). If they are not equal, that means there is no common substring that divides both str1 and str2, so an empty string is returned.\n\nIf the concatenation is equal, the algorithm computes the greatest common divisor (GCD) of the length of both strings using the Euclidean algorithm. The common substring is a prefix of length GCD, so the function returns the substring from starting index (0) to the GCD value.\n    ",
+    "javascript": "\n    ```javascript\nfunction gcdOfStrings(str1, str2) {\n    if (str1 + str2 !== str2 + str1) {\n        return \"\";\n    }\n    const gcd = (a, b) => b === 0 ? a : gcd(b, a % b);\n    return str1.substring(0, gcd(str1.length, str2.length));\n}\n```\n\n    \n    The algorithm first checks if the concatenation of the strings is equal in both the orders (str1 + str2  and  str2 + str1). If they are not equal, that means there is no common substring that divides both str1 and str2, so an empty string is returned.\n\nIf the concatenation is equal, the algorithm computes the greatest common divisor (GCD) of the length of both strings using the Euclidean algorithm. The common substring is a prefix of length GCD, so the function returns the substring from starting index (0) to the GCD value.\n    ",
+    "java": "\n    ```java\npublic String gcdOfStrings(String str1, String str2) {\n    if (!(str1 + str2).equals(str2 + str1)) {\n        return \"\";\n    }\n    int gcd = gcd(str1.length(), str2.length());\n    return str1.substring(0, gcd);\n}\n\nprivate int gcd(int a, int b) {\n    return b == 0 ? a : gcd(b, a % b);\n}\n```\n\n    \n    The algorithm first checks if the concatenation of the strings is equal in both the orders (str1 + str2  and  str2 + str1). If they are not equal, that means there is no common substring that divides both str1 and str2, so an empty string is returned.\n\nIf the concatenation is equal, the algorithm computes the greatest common divisor (GCD) of the length of both strings using the Euclidean algorithm. The common substring is a prefix of length GCD, so the function returns the substring from starting index (0) to the GCD value.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

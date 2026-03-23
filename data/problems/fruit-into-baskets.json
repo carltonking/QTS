@@ -1,0 +1,24 @@
+{
+  "id": 904,
+  "title": "Fruit Into Baskets",
+  "slug": "fruit-into-baskets",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are visiting a farm that has a single row of fruit trees arranged from left to right. The trees are represented by an integer array fruits where fruits[i] is the type of fruit the ith tree produces.\n\nYou want to collect as much fruit as possible. However, the owner has some strict rules that you must follow:\n\n*   You only have two baskets, and each basket can only hold a single type of fruit. There is no limit on the amount of fruit each basket can hold.\n*   Starting from any tree of your choice, you must pick exactly one fruit from every tree (including the start tree) while moving to the right. The picked fruits must fit in one of your baskets.\n*   Once you reach a tree with fruit that cannot fit in your baskets, you must stop.\n\nGiven the integer array fruits, return _the maximum number of fruits you can pick_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef leafSimilar(root1, root2):\n    def getLeaves(node):\n        if not node:\n            return []\n        if not node.left and not node.right:\n            return [node.val]\n        return getLeaves(node.left) + getLeaves(node.right)\n\n    return getLeaves(root1) == getLeaves(root2)\n```\n    \n    The algorithm performs a depth-first search on both trees, collecting the leaf nodes' values and appending them into two arrays (leaves1 and leaves2). Once the values are collected, the arrays are compared to check if they are equal. If the arrays are equal, it returns true, meaning the trees are leaf-similar. Otherwise, it returns false. The getLeaves function is a recursive function that traverses the tree depth-wise and appends the leaf nodes' values to the array.\n    ",
+    "javascript": "\n    ```javascript\nfunction leafSimilar(root1, root2) {\n    let leaves1 = [];\n    let leaves2 = [];\n    getLeaves(root1, leaves1);\n    getLeaves(root2, leaves2);\n    return JSON.stringify(leaves1) === JSON.stringify(leaves2);\n}\n\nfunction getLeaves(node, leaves) {\n    if (!node) return;\n    if (!node.left && !node.right) leaves.push(node.val);\n    getLeaves(node.left, leaves);\n    getLeaves(node.right, leaves);\n}\n```\n    \n    The algorithm performs a depth-first search on both trees, collecting the leaf nodes' values and appending them into two arrays (leaves1 and leaves2). Once the values are collected, the arrays are compared to check if they are equal. If the arrays are equal, it returns true, meaning the trees are leaf-similar. Otherwise, it returns false. The getLeaves function is a recursive function that traverses the tree depth-wise and appends the leaf nodes' values to the array.\n    ",
+    "java": "\n    ```java\npublic boolean leafSimilar(TreeNode root1, TreeNode root2) {\n    List<Integer> leaves1 = new ArrayList<>();\n    List<Integer> leaves2 = new ArrayList<>();\n    getLeaves(root1, leaves1);\n    getLeaves(root2, leaves2);\n    return leaves1.equals(leaves2);\n}\n\nprivate void getLeaves(TreeNode node, List<Integer> leaves) {\n    if (node == null) return;\n    if (node.left == null && node.right == null) leaves.add(node.val);\n    getLeaves(node.left, leaves);\n    getLeaves(node.right, leaves);\n}\n```\n    \n    The algorithm performs a depth-first search on both trees, collecting the leaf nodes' values and appending them into two arrays (leaves1 and leaves2). Once the values are collected, the arrays are compared to check if they are equal. If the arrays are equal, it returns true, meaning the trees are leaf-similar. Otherwise, it returns false. The getLeaves function is a recursive function that traverses the tree depth-wise and appends the leaf nodes' values to the array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

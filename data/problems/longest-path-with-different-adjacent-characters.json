@@ -1,0 +1,24 @@
+{
+  "id": 2246,
+  "title": "Longest Path With Different Adjacent Characters",
+  "slug": "longest-path-with-different-adjacent-characters",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a tree (i.e. a connected, undirected graph that has no cycles) rooted at node 0 consisting of n nodes numbered from 0 to n - 1. The tree is represented by a 0-indexed array parent of size n, where parent[i] is the parent of node i. Since node 0 is the root, parent[0] == -1.\n\nYou are also given a string s of length n, where s[i] is the character assigned to node i.\n\nReturn _the length of the longest path in the tree such that no pair of adjacent nodes on the path have the same character assigned to them._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_invites(favorite):\n    n = len(favorite)\n    dp = [0] * n\n    max_invites = 0\n\n    for i in range(n):\n        dp[i] = 2 if i == favorite[favorite[i]] else 1\n        max_invites = max(max_invites, dp[i])\n\n    return max_invites\n```\n\n    \n    The algorithm consists of iterating through the list of favorite employees and checking if the favorite person of the current employee also has the current employee as their favorite. In that case, both can be invited to the meeting, as they can sit next to each other. For simplicity, use an array `dp` to store the number of invitees for each employee. If they can be invited together with their favorite person, set `dp[i] = 2`. Otherwise, set `dp[i] = 1`, as they can't be invited with their favorite person.\n\nFinally, iterate through the `dp` array and find the maximum number of employees that can be invited to the meeting. Return this value. \n    ",
+    "javascript": "\n    ```javascript\nfunction maxInvites(favorite) {\n    const n = favorite.length;\n    const dp = new Array(n).fill(0);\n    let maxInvites = 0;\n\n    for (let i = 0; i < n; i++) {\n        dp[i] = (i === favorite[favorite[i]]) ? 2 : 1;\n        maxInvites = Math.max(maxInvites, dp[i]);\n    }\n\n    return maxInvites;\n}\n```\n\n    \n    The algorithm consists of iterating through the list of favorite employees and checking if the favorite person of the current employee also has the current employee as their favorite. In that case, both can be invited to the meeting, as they can sit next to each other. For simplicity, use an array `dp` to store the number of invitees for each employee. If they can be invited together with their favorite person, set `dp[i] = 2`. Otherwise, set `dp[i] = 1`, as they can't be invited with their favorite person.\n\nFinally, iterate through the `dp` array and find the maximum number of employees that can be invited to the meeting. Return this value. \n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic int maxInvites(int[] favorite) {\n    int n = favorite.length;\n    int[] dp = new int[n];\n    int maxInvites = 0;\n\n    for (int i = 0; i < n; i++) {\n        dp[i] = (i == favorite[favorite[i]]) ? 2 : 1;\n        maxInvites = Math.max(maxInvites, dp[i]);\n    }\n\n    return maxInvites;\n}\n```\n\n    \n    The algorithm consists of iterating through the list of favorite employees and checking if the favorite person of the current employee also has the current employee as their favorite. In that case, both can be invited to the meeting, as they can sit next to each other. For simplicity, use an array `dp` to store the number of invitees for each employee. If they can be invited together with their favorite person, set `dp[i] = 2`. Otherwise, set `dp[i] = 1`, as they can't be invited with their favorite person.\n\nFinally, iterate through the `dp` array and find the maximum number of employees that can be invited to the meeting. Return this value. \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

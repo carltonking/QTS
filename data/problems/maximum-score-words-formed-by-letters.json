@@ -1,0 +1,24 @@
+{
+  "id": 1255,
+  "title": "Maximum Score Words Formed by Letters",
+  "slug": "maximum-score-words-formed-by-letters",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given a list of words, list of single letters (might be repeating) and score of every character.\n\nReturn the maximum score of any valid set of words formed by using the given letters (words[i] cannot be used two or more times).\n\nIt is not necessary to use all characters in letters and each letter can only be used once. Score of letters 'a', 'b', 'c', ... ,'z' is given by score[0], score[1], ... , score[25] respectively.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxValueAfterReverse(nums):\n    total, diff = 0, 0\n    min2, max2 = float('inf'), float('-inf')\n    for i in range(len(nums) - 1):\n        total += abs(nums[i] - nums[i + 1])\n        min2 = min(min2, max(nums[i], nums[i + 1]))\n        max2 = max(max2, min(nums[i], nums[i + 1]))\n        diff = max(diff, abs(nums[i + 1] - nums[0]) - abs(nums[i + 1] - nums[i]))\n        diff = max(diff, abs(nums[i] - nums[-1]) - abs(nums[i] - nums[i + 1]))\n    return total + max(diff, 2 * (max2 - min2))\n```\n    \n    1. Initialize the required variables for total sum, difference, and minimum and maximum values for further calculations.\n2. Iterate through the given array from index 0 to nums.length - 2.\n3. Calculate the total sum by adding the absolute difference between nums[i] and nums[i+1].\n4. Update the min2 and max2 with the required calculations.\n5. Find the maximum possible difference by considering swapping a subarray (0...i+1) or (i...nums.length-1).\n6. Return the sum of the total and the maximum value of the calculated difference and 2 times (max2 - min2).\n    ",
+    "javascript": "\n    ```javascript\nfunction maxValueAfterReverse(nums) {\n    let total = 0, diff = 0;\n    let min2 = Infinity, max2 = -Infinity;\n    for (let i = 0; i < nums.length - 1; ++i) {\n        total += Math.abs(nums[i] - nums[i + 1]);\n        min2 = Math.min(min2, Math.max(nums[i], nums[i + 1]));\n        max2 = Math.max(max2, Math.min(nums[i], nums[i + 1]));\n        diff = Math.max(diff, Math.abs(nums[i + 1] - nums[0]) - Math.abs(nums[i + 1] - nums[i]));\n        diff = Math.max(diff, Math.abs(nums[i] - nums[nums.length - 1]) - Math.abs(nums[i] - nums[i + 1]));\n    }\n    return total + Math.max(diff, 2 * (max2 - min2));\n}\n```\n    \n    1. Initialize the required variables for total sum, difference, and minimum and maximum values for further calculations.\n2. Iterate through the given array from index 0 to nums.length - 2.\n3. Calculate the total sum by adding the absolute difference between nums[i] and nums[i+1].\n4. Update the min2 and max2 with the required calculations.\n5. Find the maximum possible difference by considering swapping a subarray (0...i+1) or (i...nums.length-1).\n6. Return the sum of the total and the maximum value of the calculated difference and 2 times (max2 - min2).\n    ",
+    "java": "\n    ```java\npublic int maxValueAfterReverse(int[] nums) {\n    int total = 0, diff = 0;\n    int min2 = Integer.MAX_VALUE, max2 = Integer.MIN_VALUE;\n    for (int i = 0; i < nums.length - 1; ++i) {\n        total += Math.abs(nums[i] - nums[i + 1]);\n        min2 = Math.min(min2, Math.max(nums[i], nums[i + 1]));\n        max2 = Math.max(max2, Math.min(nums[i], nums[i + 1]));\n        diff = Math.max(diff, Math.abs(nums[i + 1] - nums[0]) - Math.abs(nums[i + 1] - nums[i]));\n        diff = Math.max(diff, Math.abs(nums[i] - nums[nums.length - 1]) - Math.abs(nums[i] - nums[i + 1]));\n    }\n    return total + Math.max(diff, 2 * (max2 - min2));\n}\n```\n    \n    1. Initialize the required variables for total sum, difference, and minimum and maximum values for further calculations.\n2. Iterate through the given array from index 0 to nums.length - 2.\n3. Calculate the total sum by adding the absolute difference between nums[i] and nums[i+1].\n4. Update the min2 and max2 with the required calculations.\n5. Find the maximum possible difference by considering swapping a subarray (0...i+1) or (i...nums.length-1).\n6. Return the sum of the total and the maximum value of the calculated difference and 2 times (max2 - min2).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

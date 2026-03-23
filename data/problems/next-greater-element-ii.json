@@ -1,0 +1,24 @@
+{
+  "id": 503,
+  "title": "Next Greater Element II",
+  "slug": "next-greater-element-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a circular integer array nums (i.e., the next element of nums[nums.length - 1] is nums[0]), return _the next greater number for every element in_ nums.\n\nThe next greater number of a number x is the first greater number to its traversing-order next in the array, which means you could search circularly to find its next greater number. If it doesn't exist, return -1 for this number.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef nextGreaterElements(nums):\n    result = [-1] * len(nums)\n    stack = []\n\n    for i in range(len(nums) * 2):\n        index = i % len(nums)\n        while stack and nums[stack[-1]] < nums[index]:\n            result[stack.pop()] = nums[index]\n        if i < len(nums):\n            stack.append(index)\n\n    return result\n```\n    \n    The algorithm uses a stack to keep track of the indices of the elements in the `nums` array. We traverse the array twice (using modulo operator) since it's circular. For each element, we check if it's greater than the top element (index) of the stack. If it is, we update the corresponding result for that index with the current element and pop the index from the stack. We push the current index onto the stack if we are still in the first traversal.\n\nFinally, we return `result` list which holds the next greater element for all elements in the input list. If a greater element is not found for an element, its value in the result list will remain `-1`. \n    ",
+    "javascript": "\n    ```javascript\nfunction nextGreaterElements(nums) {\n  const result = new Array(nums.length).fill(-1);\n  const stack = [];\n\n  for (let i = 0; i < nums.length * 2; i++) {\n    const index = i % nums.length;\n    while (stack.length > 0 && nums[stack[stack.length - 1]] < nums[index]) {\n      result[stack.pop()] = nums[index];\n    }\n    if (i < nums.length) {\n      stack.push(index);\n    }\n  }\n  return result;\n}\n```\n    \n    The algorithm uses a stack to keep track of the indices of the elements in the `nums` array. We traverse the array twice (using modulo operator) since it's circular. For each element, we check if it's greater than the top element (index) of the stack. If it is, we update the corresponding result for that index with the current element and pop the index from the stack. We push the current index onto the stack if we are still in the first traversal.\n\nFinally, we return `result` list which holds the next greater element for all elements in the input list. If a greater element is not found for an element, its value in the result list will remain `-1`. \n    ",
+    "java": "\n    ```java\nimport java.util.Stack;\n\npublic int[] nextGreaterElements(int[] nums) {\n    int n = nums.length;\n    int[] result = new int[n];\n    Stack<Integer> stack = new Stack<>();\n    \n    for (int i = 0; i < n * 2; i++) {\n        int index = i % n;\n        while (!stack.isEmpty() && nums[stack.peek()] < nums[index]) {\n            result[stack.pop()] = nums[index];\n        }\n        if (i < n) {\n            stack.push(index);\n        }\n    }\n    return result;\n}\n```\n    \n    The algorithm uses a stack to keep track of the indices of the elements in the `nums` array. We traverse the array twice (using modulo operator) since it's circular. For each element, we check if it's greater than the top element (index) of the stack. If it is, we update the corresponding result for that index with the current element and pop the index from the stack. We push the current index onto the stack if we are still in the first traversal.\n\nFinally, we return `result` list which holds the next greater element for all elements in the input list. If a greater element is not found for an element, its value in the result list will remain `-1`. \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

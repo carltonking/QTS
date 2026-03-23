@@ -1,0 +1,24 @@
+{
+  "id": 2310,
+  "title": "Sum of Numbers With Units Digit K",
+  "slug": "sum-of-numbers-with-units-digit-k",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given two integers num and k, consider a set of positive integers with the following properties:\n\n*   The units digit of each integer is k.\n*   The sum of the integers is num.\n\nReturn _the minimum possible size of such a set, or_ -1 _if no such set exists._\n\nNote:\n\n*   The set can contain multiple instances of the same integer, and the sum of an empty set is considered 0.\n*   The units digit of a number is the rightmost digit of the number.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_operations(nums):\n    nums.sort(reverse=True)\n    total_sum = sum(nums)\n    half_sum, operations = 0, 0\n    for num in nums:\n        half_sum += num\n        operations += 1\n        if half_sum >= (total_sum + 1) // 2:\n            break\n    return operations\n```\n    \n    The algorithm first sorts the input array nums in decreasing order. Then, it calculates the total sum of elements in the array. It initializes two variables, half_sum, and operations, to 0.\n\nThe algorithm iterates through the sorted array, adding each element to the half_sum, and incrementing the operations count. It checks whether half_sum is greater than or equal to half of the total sum at each step, and if true, it breaks out of the loop.\n\nFinally, the algorithm returns the value of operations, which is the minimum number of operations required to reduce the sum of nums by at least half.\n    ",
+    "javascript": "\n    ```javascript\nfunction minOperations(nums) {\n    nums.sort((a, b) => b - a);\n    const sum = nums.reduce((a, b) => a + b, 0);\n    let halfSum = 0, operations = 0;\n    for (const num of nums) {\n        halfSum += num;\n        operations++;\n        if (halfSum >= Math.floor((sum + 1) / 2)) break;\n    }\n    return operations;\n}\n```\n    \n    The algorithm first sorts the input array nums in decreasing order. Then, it calculates the total sum of elements in the array. It initializes two variables, half_sum, and operations, to 0.\n\nThe algorithm iterates through the sorted array, adding each element to the half_sum, and incrementing the operations count. It checks whether half_sum is greater than or equal to half of the total sum at each step, and if true, it breaks out of the loop.\n\nFinally, the algorithm returns the value of operations, which is the minimum number of operations required to reduce the sum of nums by at least half.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\nimport java.util.Collections;\n\npublic int minOperations(Integer[] nums) {\n    Arrays.sort(nums, Collections.reverseOrder());\n    int sum = 0, half_sum = 0, operations = 0;\n    for (int num : nums) sum += num;\n    for (int num : nums) {\n        half_sum += num;\n        operations++;\n        if (half_sum >= (sum + 1) / 2) break;\n    }\n    return operations;\n}\n```\n    \n    The algorithm first sorts the input array nums in decreasing order. Then, it calculates the total sum of elements in the array. It initializes two variables, half_sum, and operations, to 0.\n\nThe algorithm iterates through the sorted array, adding each element to the half_sum, and incrementing the operations count. It checks whether half_sum is greater than or equal to half of the total sum at each step, and if true, it breaks out of the loop.\n\nFinally, the algorithm returns the value of operations, which is the minimum number of operations required to reduce the sum of nums by at least half.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

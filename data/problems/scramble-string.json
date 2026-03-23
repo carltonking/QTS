@@ -1,0 +1,24 @@
+{
+  "id": 87,
+  "title": "Scramble String",
+  "slug": "scramble-string",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "We can scramble a string s to get a string t using the following algorithm:\n\n1.  If the length of the string is 1, stop.\n2.  If the length of the string is > 1, do the following:\n    *   Split the string into two non-empty substrings at a random index, i.e., if the string is s, divide it to x and y where s = x + y.\n    *   Randomly decide to swap the two substrings or to keep them in the same order. i.e., after this step, s may become s = x + y or s = y + x.\n    *   Apply step 1 recursively on each of the two substrings x and y.\n\nGiven two strings s1 and s2 of the same length, return true if s2 is a scrambled string of s1, otherwise, return false.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef isScramble(s1: str, s2: str) -> bool:\n    if s1 == s2:\n        return True\n    if len(s1) != len(s2) or sorted(s1) != sorted(s2):\n        return False\n\n    for i in range(1, len(s1)):\n        if (isScramble(s1[:i], s2[:i]) and isScramble(s1[i:], s2[i:])) or \\\n           (isScramble(s1[:i], s2[-i:]) and isScramble(s1[i:], s2[:-i])):\n            return True\n    return False\n```\n    \n    The algorithm works by recursively dividing the strings into smaller substrings and checking if the substrings from s1 can be rearranged into the corresponding substrings of s2. The base case is when both strings (s1, and s2) are equal. If the lengths of the strings are different or the characters are different, then the function returns false. Then, we iterate through the length of strings, dividing the strings into smaller substrings and checking if these substrings can be rearranged to form the scrambled string. We check for both possible arrangements of the substrings, i.e., same order and reverse order, invoking the same function recursively for each combination.\n    ",
+    "javascript": "\n    ```javascript\nfunction isScramble(s1, s2) {\n    if (s1 === s2) return true;\n    if (s1.length !== s2.length || sorted(s1) !== sorted(s2)) return false;\n\n    for (let i = 1; i < s1.length; i++) {\n        if ((isScramble(s1.slice(0, i), s2.slice(0, i)) && isScramble(s1.slice(i), s2.slice(i))) || \n            (isScramble(s1.slice(0, i), s2.slice(s2.length - i)) && isScramble(s1.slice(i), s2.slice(0, s2.length - i))))\n            return true;\n    }\n    return false;\n}\n\nfunction sorted(s) {\n    return s.split('').sort().join('');\n}\n```\n    \n    The algorithm works by recursively dividing the strings into smaller substrings and checking if the substrings from s1 can be rearranged into the corresponding substrings of s2. The base case is when both strings (s1, and s2) are equal. If the lengths of the strings are different or the characters are different, then the function returns false. Then, we iterate through the length of strings, dividing the strings into smaller substrings and checking if these substrings can be rearranged to form the scrambled string. We check for both possible arrangements of the substrings, i.e., same order and reverse order, invoking the same function recursively for each combination.\n    ",
+    "java": "\n    ```java\npublic boolean isScramble(String s1, String s2) {\n    if (s1.equals(s2)) return true;\n    if (sorted(s1).equals(sorted(s2)) == false) return false;\n\n    for (int i = 1; i < s1.length(); i++) {\n        if (isScramble(s1.substring(0, i), s2.substring(0, i)) && isScramble(s1.substring(i), s2.substring(i)))\n            return true;\n        if (isScramble(s1.substring(0, i), s2.substring(s2.length() - i)) && isScramble(s1.substring(i), s2.substring(0, s2.length() - i)))\n            return true;\n    }\n    return false;\n}\n\nprivate String sorted(String s) {\n    char[] chars = s.toCharArray();\n    Arrays.sort(chars);\n    return new String(chars);\n}\n```\n    \n    The algorithm works by recursively dividing the strings into smaller substrings and checking if the substrings from s1 can be rearranged into the corresponding substrings of s2. The base case is when both strings (s1, and s2) are equal. If the lengths of the strings are different or the characters are different, then the function returns false. Then, we iterate through the length of strings, dividing the strings into smaller substrings and checking if these substrings can be rearranged to form the scrambled string. We check for both possible arrangements of the substrings, i.e., same order and reverse order, invoking the same function recursively for each combination.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

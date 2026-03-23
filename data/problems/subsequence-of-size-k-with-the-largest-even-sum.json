@@ -1,0 +1,24 @@
+{
+  "id": 2098,
+  "title": "Subsequence of Size K With the Largest Even Sum",
+  "slug": "subsequence-of-size-k-with-the-largest-even-sum",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array nums and an integer k. Find the largest even sum of any subsequence of nums that has a length of k.\n\nReturn _this sum, or_ -1 _if such a sum does not exist_.\n\nA subsequence is an array that can be derived from another array by deleting some or no elements without changing the order of the remaining elements.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef largest_even_sum(nums, k):\n    evens = sorted([num for num in nums if num % 2 == 0], reverse=True)\n    odds = sorted([num for num in nums if num % 2 != 0], reverse=True)\n\n    sum = 0\n    for _ in range(k):\n        if evens:\n            sum += evens.pop()\n\n    for _ in range(0, k - 1, 2):\n        if odds:\n            first = odds.pop()\n            if odds:\n                second = odds.pop()\n                sum += first + second\n\n    return sum if sum % 2 == 0 else -1\n```\n\n    \n    The algorithm first splits the input numbers into two separate arrays, one for even numbers and one for odd numbers, and then sorts both arrays in decreasing order.\n\nWe take all even numbers until we reach the specified length `k`.\n\nThen, we take pairs of odd numbers from the sorted odd numbers array and add their sums to the total sum. We take pairs of odd numbers because the sum of two odd numbers is always even.\n\nFinally, we check if the sum is even, and if so, we return the sum. If not, we return -1 since no such sum exists for the given constraint.\n    ",
+    "javascript": "\n    ```javascript\nfunction largestEvenSum(nums, k) {\n  const evens = nums.filter(num => num % 2 === 0).sort((a, b) => b - a);\n  const odds = nums.filter(num => num % 2 !== 0).sort((a, b) => b - a);\n\n  let sum = 0;\n  for (let i = 0; i < k && evens.length > 0; i++) {\n    sum += evens.pop();\n  }\n\n  for (let i = 0; i < k - 1 && odds.length > 0; i += 2) {\n    let first = odds.pop();\n    if (odds.length > 0) {\n      let second = odds.pop();\n      sum += first + second;\n    }\n  }\n\n  return sum % 2 === 0 ? sum : -1;\n}\n```\n\n    \n    The algorithm first splits the input numbers into two separate arrays, one for even numbers and one for odd numbers, and then sorts both arrays in decreasing order.\n\nWe take all even numbers until we reach the specified length `k`.\n\nThen, we take pairs of odd numbers from the sorted odd numbers array and add their sums to the total sum. We take pairs of odd numbers because the sum of two odd numbers is always even.\n\nFinally, we check if the sum is even, and if so, we return the sum. If not, we return -1 since no such sum exists for the given constraint.\n    ",
+    "java": "\n    ```java\npublic int largestEvenSum(int[] nums, int k) {\n    List<Integer> evens = new ArrayList<>();\n    List<Integer> odds = new ArrayList<>();\n    for (int num : nums) {\n        if (num % 2 == 0) {\n            evens.add(num);\n        } else {\n            odds.add(num);\n        }\n    }\n    evens.sort(Collections.reverseOrder());\n    odds.sort(Collections.reverseOrder());\n\n    int sum = 0;\n    for (int i = 0; i < k && !evens.isEmpty(); i++) {\n        sum += evens.remove(evens.size() - 1);\n    }\n\n    for (int i = 0; i < k - 1 && !odds.isEmpty(); i += 2) {\n        int first = odds.remove(odds.size() - 1);\n        if (!odds.isEmpty()) {\n            int second = odds.remove(odds.size() - 1);\n            sum += first + second;\n        }\n    }\n\n    if (sum % 2 == 0) {\n        return sum;\n    } else {\n        return -1;\n    }\n}\n```\n\n    \n    The algorithm first splits the input numbers into two separate arrays, one for even numbers and one for odd numbers, and then sorts both arrays in decreasing order.\n\nWe take all even numbers until we reach the specified length `k`.\n\nThen, we take pairs of odd numbers from the sorted odd numbers array and add their sums to the total sum. We take pairs of odd numbers because the sum of two odd numbers is always even.\n\nFinally, we check if the sum is even, and if so, we return the sum. If not, we return -1 since no such sum exists for the given constraint.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

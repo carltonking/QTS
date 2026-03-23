@@ -1,0 +1,41 @@
+{
+  "id": 2,
+  "title": "Valid Anagram",
+  "slug": "valid-anagram",
+  "difficulty": "Easy",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Sorting"
+  ],
+  "description": "Given two strings s and t, return true if t is an anagram of s and false otherwise.",
+  "examples": [
+    {
+      "input": "s = \"anagram\", t = \"nagaram\"",
+      "output": "true"
+    }
+  ],
+  "constraints": [
+    "1 <= s.length, t.length <= 5 * 10^4",
+    "s and t consist of lowercase English letters"
+  ],
+  "starterCode": {
+    "python": "class Solution:\n    def isAnagram(self, s: str, t: str) -> bool:\n        pass",
+    "javascript": "var isAnagram = function(s, t) {\n    \n};",
+    "java": "class Solution {\n    public boolean isAnagram(String s, String t) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    bool isAnagram(string s, string t) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Valid Anagram\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "anagram\nnagaram",
+      "expectedOutput": "true"
+    },
+    {
+      "input": "rat\ncar",
+      "expectedOutput": "false"
+    }
+  ]
+}

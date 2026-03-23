@@ -1,0 +1,24 @@
+{
+  "id": 2281,
+  "title": "Sum of Total Strength of Wizards",
+  "slug": "sum-of-total-strength-of-wizards",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "As the ruler of a kingdom, you have an army of wizards at your command.\n\nYou are given a 0-indexed integer array strength, where strength[i] denotes the strength of the ith wizard. For a contiguous group of wizards (i.e. the wizards' strengths form a subarray of strength), the total strength is defined as the product of the following two values:\n\n*   The strength of the weakest wizard in the group.\n*   The total of all the individual strengths of the wizards in the group.\n\nReturn _the sum of the total strengths of all contiguous groups of wizards_. Since the answer may be very large, return it modulo 109 + 7.\n\nA subarray is a contiguous non-empty sequence of elements within an array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nmod = 1000000007\ndef sum_of_strength(strength):\n    res, strength_len = 0, len(strength)\n    for i in range(strength_len):\n        minimum = total = strength[i]\n        for j in range(i, strength_len):\n            minimum = min(minimum, strength[j])\n            total += strength[j]\n            res = (res + minimum * total % mod) % mod\n    return res\n```\n    \n    The given problem can be solved by iterating over each wizard in the array. For each wizard, we will find the contiguous subarrays that end at that wizard (the wizard is the last element in the subarray). For this, we will iterate from the current wizard to the end of the array, calculating the minimum strength and total strength of the subarray in each step. We then update the result by adding the product of the current subarray's minimum strength and total strength, and take the result modulo `10^9 + 7` to handle large numbers. At the end, we return the result after checking all the wizards and their respective contiguous subarrays.\n    ",
+    "javascript": "\n    ```javascript\nconst mod = 1000000007;\nfunction sum_of_strength(strength) {\n    let res = 0, total = 0, minimum = 0;\n    for (let i = 0; i < strength.length; ++i) {\n        minimum = total = strength[i];\n        for (let j = i; j < strength.length; ++j) {\n            minimum = Math.min(minimum, strength[j]);\n            total += strength[j];\n            res = (res + minimum * total % mod) % mod;\n        }\n    }\n    return res;\n}\n```\n    \n    The given problem can be solved by iterating over each wizard in the array. For each wizard, we will find the contiguous subarrays that end at that wizard (the wizard is the last element in the subarray). For this, we will iterate from the current wizard to the end of the array, calculating the minimum strength and total strength of the subarray in each step. We then update the result by adding the product of the current subarray's minimum strength and total strength, and take the result modulo `10^9 + 7` to handle large numbers. At the end, we return the result after checking all the wizards and their respective contiguous subarrays.\n    ",
+    "java": "\n    ```java\nint mod = 1000000007;\npublic int sum_of_strength(int[] strength) {\n    int res = 0, total = 0, minimum = 0;\n    for (int i = 0; i < strength.length; ++i) {\n        minimum = total = strength[i];\n        for (int j = i; j < strength.length; ++j) {\n            minimum = Math.min(minimum, strength[j]);\n            total += strength[j];\n            res = (res + minimum * total % mod) % mod;\n        }\n    }\n    return res;\n}\n```\n    \n    The given problem can be solved by iterating over each wizard in the array. For each wizard, we will find the contiguous subarrays that end at that wizard (the wizard is the last element in the subarray). For this, we will iterate from the current wizard to the end of the array, calculating the minimum strength and total strength of the subarray in each step. We then update the result by adding the product of the current subarray's minimum strength and total strength, and take the result modulo `10^9 + 7` to handle large numbers. At the end, we return the result after checking all the wizards and their respective contiguous subarrays.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

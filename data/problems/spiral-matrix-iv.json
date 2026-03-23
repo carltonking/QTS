@@ -1,0 +1,24 @@
+{
+  "id": 2326,
+  "title": "Spiral Matrix IV",
+  "slug": "spiral-matrix-iv",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two integers m and n, which represent the dimensions of a matrix.\n\nYou are also given the head of a linked list of integers.\n\nGenerate an m x n matrix that contains the integers in the linked list presented in spiral order (clockwise), starting from the top-left of the matrix. If there are remaining empty spaces, fill them with -1.\n\nReturn _the generated matrix_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sum_prefix_scores(s: str) -> int:\n    n = len(s)\n    sum_scores = 0\n    longest_common_prefix = 0\n    for i in range(n - 1, -1, -1):\n        if s[i] == s[n - 1 - longest_common_prefix]:\n            longest_common_prefix += 1\n        else:\n            longest_common_prefix = 0\n        sum_scores += longest_common_prefix\n    return sum_scores\n```\n    \n    We iterate through the input string in reverse order. For each character, we check if it is equal to the corresponding character in the longest common prefix (LCP) of s[i] and s[n]. If they are equal, we increment the LCP, otherwise, we set the LCP to zero. The sum of the scores is updated by adding the current value of LCP to the running sum. Finally, the sum of all LCP scores is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction sumPrefixScores(s) {\n    let n = s.length;\n    let sumScores = 0;\n    let longestCommonPrefix = 0;\n    for (let i = n - 1; i >= 0; i--) {\n        if (s[i] === s[n - 1 - longestCommonPrefix]) {\n            longestCommonPrefix++;\n        } else {\n            longestCommonPrefix = 0;\n        }\n        sumScores += longestCommonPrefix;\n    }\n    return sumScores;\n}\n```\n    \n    We iterate through the input string in reverse order. For each character, we check if it is equal to the corresponding character in the longest common prefix (LCP) of s[i] and s[n]. If they are equal, we increment the LCP, otherwise, we set the LCP to zero. The sum of the scores is updated by adding the current value of LCP to the running sum. Finally, the sum of all LCP scores is returned.\n    ",
+    "java": "\n    ```java\npublic int sumPrefixScores(String s) {\n    int n = s.length();\n    int sumScores = 0;\n    int longestCommonPrefix = 0;\n    for (int i = n - 1; i >= 0; i--) {\n        if (s.charAt(i) == s.charAt(n - 1 - longestCommonPrefix)) {\n            longestCommonPrefix++;\n        } else {\n            longestCommonPrefix = 0;\n        }\n        sumScores += longestCommonPrefix;\n    }\n    return sumScores;\n}\n```\n    \n    We iterate through the input string in reverse order. For each character, we check if it is equal to the corresponding character in the longest common prefix (LCP) of s[i] and s[n]. If they are equal, we increment the LCP, otherwise, we set the LCP to zero. The sum of the scores is updated by adding the current value of LCP to the running sum. Finally, the sum of all LCP scores is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

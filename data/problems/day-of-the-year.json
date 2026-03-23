@@ -1,0 +1,24 @@
+{
+  "id": 1154,
+  "title": "Day of the Year",
+  "slug": "day-of-the-year",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a string date representing a [Gregorian calendar](https://en.wikipedia.org/wiki/Gregorian_calendar) date formatted as YYYY-MM-DD, return _the day number of the year_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_leap_year(year: int) -> bool:\n    return (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)\n\ndef day_of_year(date: str) -> int:\n    days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]\n    year, month, day = int(date[:4]), int(date[5:7]), int(date[8:])\n\n    if is_leap_year(year):\n        days_in_month[1] = 29\n\n    return sum(days_in_month[:month-1]) + day\n```\n\n    \n    The algorithm is straightforward. First, we extract the `year`, `month`, and `day` from the input date string. Then, we determine if the year is a leap year by checking if it's evenly divisible by 4 and not evenly divisible by 100, or evenly divisible by 400.\n\nIf the year is a leap year, we update the number of days in February (the second month) to be 29 days. Finally, we iterate over the months that have already passed, summing the number of days in each and add the `day` of the input month. The result is the day number of the year.\n    ",
+    "javascript": "\n    ```javascript\nfunction isLeapYear(year) {\n    return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);\n}\n\nfunction dayOfYear(date) {\n    var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];\n    var year = parseInt(date.substr(0, 4));\n    var month = parseInt(date.substr(5, 2));\n    var day = parseInt(date.substr(8, 2));\n    \n    if (isLeapYear(year)) {\n        daysInMonth[1] = 29;\n    }\n\n    var result = 0;\n    for (var i = 0; i < month - 1; ++i) {\n        result += daysInMonth[i];\n    }\n    \n    return result + day;\n}\n```\n\n    \n    The algorithm is straightforward. First, we extract the `year`, `month`, and `day` from the input date string. Then, we determine if the year is a leap year by checking if it's evenly divisible by 4 and not evenly divisible by 100, or evenly divisible by 400.\n\nIf the year is a leap year, we update the number of days in February (the second month) to be 29 days. Finally, we iterate over the months that have already passed, summing the number of days in each and add the `day` of the input month. The result is the day number of the year.\n    ",
+    "java": "\n    ```java\npublic int dayOfYear(String date) {\n    int[] daysInMonth = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };\n    int year = Integer.parseInt(date.substring(0, 4));\n    int month = Integer.parseInt(date.substring(5, 7));\n    int day = Integer.parseInt(date.substring(8, 10));\n\n    if (isLeapYear(year)) {\n        daysInMonth[1] = 29;\n    }\n\n    int result = 0;\n    for (int i = 0; i < month - 1; ++i) {\n        result += daysInMonth[i];\n    }\n\n    return result + day;\n}\n\npublic boolean isLeapYear(int year) {\n    return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);\n}\n```\n\n    \n    The algorithm is straightforward. First, we extract the `year`, `month`, and `day` from the input date string. Then, we determine if the year is a leap year by checking if it's evenly divisible by 4 and not evenly divisible by 100, or evenly divisible by 400.\n\nIf the year is a leap year, we update the number of days in February (the second month) to be 29 days. Finally, we iterate over the months that have already passed, summing the number of days in each and add the `day` of the input month. The result is the day number of the year.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

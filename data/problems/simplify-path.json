@@ -1,0 +1,24 @@
+{
+  "id": 71,
+  "title": "Simplify Path",
+  "slug": "simplify-path",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string path, which is an absolute path (starting with a slash '/') to a file or directory in a Unix-style file system, convert it to the simplified canonical path.\n\nIn a Unix-style file system, a period '.' refers to the current directory, a double period '..' refers to the directory up a level, and any multiple consecutive slashes (i.e. '//') are treated as a single slash '/'. For this problem, any other format of periods such as '...' are treated as file/directory names.\n\nThe canonical path should have the following format:\n\n*   The path starts with a single slash '/'.\n*   Any two directories are separated by a single slash '/'.\n*   The path does not end with a trailing '/'.\n*   The path only contains the directories on the path from the root directory to the target file or directory (i.e., no period '.' or double period '..')\n\nReturn _the simplified canonical path_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef simplifyPath(path: str) -> str:\n    stack = []\n    parts = path.split(\"/\")\n\n    for part in parts:\n        if not part or part == \".\":\n            continue\n        if part == \"..\":\n            if stack:\n                stack.pop()\n        else:\n            stack.append(part)\n\n    return \"/\" + \"/\".join(stack)\n```\n    \n    The algorithm uses a stack to keep track of the directory hierarchy. It starts by splitting the input string by '/', iterating over each part, and processing them according to the following rules:\n1. If the part is empty or \".\", skip it.\n2. If the part is \"..\", pop off the top element of the stack (if it's non-empty).\n3. Otherwise, push the part onto the stack.\n\nAfter processing all parts, concatenate the elements in the stack separated by '/' and return the canonical path.\n\nThe implementations are very similar across the four languages, with differences stemming primarily from the syntax and conventions of each language.\n    ",
+    "javascript": "\n    ```javascript\nfunction simplifyPath(path) {\n    let stack = [];\n    let parts = path.split(\"/\");\n\n    for (let part of parts) {\n        if (!part || part === \".\") continue;\n        if (part === \"..\") {\n            if (stack.length) stack.pop();\n        } else {\n            stack.push(part);\n        }\n    }\n\n    return \"/\" + stack.join(\"/\");\n}\n```\n    \n    The algorithm uses a stack to keep track of the directory hierarchy. It starts by splitting the input string by '/', iterating over each part, and processing them according to the following rules:\n1. If the part is empty or \".\", skip it.\n2. If the part is \"..\", pop off the top element of the stack (if it's non-empty).\n3. Otherwise, push the part onto the stack.\n\nAfter processing all parts, concatenate the elements in the stack separated by '/' and return the canonical path.\n\nThe implementations are very similar across the four languages, with differences stemming primarily from the syntax and conventions of each language.\n    ",
+    "java": "\n    ```java\nimport java.util.LinkedList;\n\npublic String simplifyPath(String path) {\n    String[] parts = path.split(\"/\");\n    LinkedList<String> stack = new LinkedList<>();\n\n    for (String part : parts) {\n        if (part.isEmpty() || part.equals(\".\")) continue;\n        if (part.equals(\"..\")) {\n            if (!stack.isEmpty()) stack.removeLast();\n        } else {\n            stack.addLast(part);\n        }\n    }\n\n    StringBuilder canonicalPath = new StringBuilder();\n    for (String piece : stack) {\n        canonicalPath.append('/').append(piece);\n    }\n    return stack.isEmpty() ? \"/\" : canonicalPath.toString();\n}\n```\n    \n    The algorithm uses a stack to keep track of the directory hierarchy. It starts by splitting the input string by '/', iterating over each part, and processing them according to the following rules:\n1. If the part is empty or \".\", skip it.\n2. If the part is \"..\", pop off the top element of the stack (if it's non-empty).\n3. Otherwise, push the part onto the stack.\n\nAfter processing all parts, concatenate the elements in the stack separated by '/' and return the canonical path.\n\nThe implementations are very similar across the four languages, with differences stemming primarily from the syntax and conventions of each language.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

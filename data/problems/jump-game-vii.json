@@ -1,0 +1,24 @@
+{
+  "id": 1871,
+  "title": "Jump Game VII",
+  "slug": "jump-game-vii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed binary string s and two integers minJump and maxJump. In the beginning, you are standing at index 0, which is equal to '0'. You can move from index i to index j if the following conditions are fulfilled:\n\n*   i + minJump <= j <= min(i + maxJump, s.length - 1), and\n*   s[j] == '0'.\n\nReturn true _if you can reach index_ s.length - 1 _in_ s_, or_ false _otherwise._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_palindrome(s, l, r):\n    while l < r:\n        if s[l] != s[r]:\n            return False\n        l += 1\n        r -= 1\n    return True\n\ndef check_partitioning(s):\n    n = len(s)\n    for i in range(n - 2):\n        if is_palindrome(s, 0, i):\n            for j in range(i + 1, n - 1):\n                if is_palindrome(s, i + 1, j) and is_palindrome(s, j + 1, n - 1):\n                    return True\n    return False\n```\n\n    \n    The algorithm uses a nested loop to iterate through all pairs of partitions of the string `s`. For each partition, we check if the substrings created by the partition are palindromes using the `isPalindrome` function. If all three partitions form palindromic substrings, we return `true`. If the loops complete without finding a valid partition, we return `false`.\n\nThe `isPalindrome` function accepts a string, and two indices `l` and `r`. It checks whether the substring created by those indices is a palindrome or not by comparing characters from the start and the end of the substring. If all character pairs match, the function returns `true` otherwise it returns `false`.\n    ",
+    "javascript": "\n    ```javascript\nfunction isPalindrome(s, l, r) {\n    while (l < r) {\n        if (s[l++] !== s[r--]) return false;\n    }\n    return true;\n}\n\nfunction checkPartitioning(s) {\n    const n = s.length;\n    for (let i = 0; i < n - 2; i++) {\n        if (isPalindrome(s, 0, i)) {\n            for (let j = i + 1; j < n - 1; j++) {\n                if (isPalindrome(s, i + 1, j) && isPalindrome(s, j + 1, n - 1)) {\n                    return true;\n                }\n            }\n        }\n    }\n    return false;\n}\n```\n\n    \n    The algorithm uses a nested loop to iterate through all pairs of partitions of the string `s`. For each partition, we check if the substrings created by the partition are palindromes using the `isPalindrome` function. If all three partitions form palindromic substrings, we return `true`. If the loops complete without finding a valid partition, we return `false`.\n\nThe `isPalindrome` function accepts a string, and two indices `l` and `r`. It checks whether the substring created by those indices is a palindrome or not by comparing characters from the start and the end of the substring. If all character pairs match, the function returns `true` otherwise it returns `false`.\n    ",
+    "java": "\n    ```java\npublic boolean isPalindrome(String s, int l, int r) {\n    while (l < r) {\n        if (s.charAt(l++) != s.charAt(r--)) return false;\n    }\n    return true;\n}\n\npublic boolean checkPartitioning(String s) {\n    int n = s.length();\n    for (int i = 0; i < n - 2; i++) {\n        if (isPalindrome(s, 0, i)) {\n            for (int j = i + 1; j < n - 1; j++) {\n                if (isPalindrome(s, i + 1, j) && isPalindrome(s, j + 1, n - 1)) {\n                    return true;\n                }\n            }\n        }\n    }\n    return false;\n}\n```\n\n    \n    The algorithm uses a nested loop to iterate through all pairs of partitions of the string `s`. For each partition, we check if the substrings created by the partition are palindromes using the `isPalindrome` function. If all three partitions form palindromic substrings, we return `true`. If the loops complete without finding a valid partition, we return `false`.\n\nThe `isPalindrome` function accepts a string, and two indices `l` and `r`. It checks whether the substring created by those indices is a palindrome or not by comparing characters from the start and the end of the substring. If all character pairs match, the function returns `true` otherwise it returns `false`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,39 @@
+{
+  "id": 6,
+  "title": "Valid Palindrome",
+  "slug": "valid-palindrome",
+  "difficulty": "Easy",
+  "tags": [
+    "Two Pointers",
+    "String"
+  ],
+  "description": "Given a string s, return true if it is a palindrome after converting all uppercase letters to lowercase and removing non-alphanumeric characters.",
+  "examples": [
+    {
+      "input": "s = \"A man, a plan, a canal: Panama\"",
+      "output": "true"
+    }
+  ],
+  "constraints": [
+    "1 <= s.length <= 2 * 10^5"
+  ],
+  "starterCode": {
+    "python": "class Solution:\n    def isPalindrome(self, s: str) -> bool:\n        pass",
+    "javascript": "var isPalindrome = function(s) {\n    \n};",
+    "java": "class Solution {\n    public boolean isPalindrome(String s) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    bool isPalindrome(string s) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Valid Palindrome\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "A man, a plan, a canal: Panama",
+      "expectedOutput": "true"
+    },
+    {
+      "input": "race a car",
+      "expectedOutput": "false"
+    }
+  ]
+}

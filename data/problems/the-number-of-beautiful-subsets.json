@@ -1,0 +1,24 @@
+{
+  "id": 2597,
+  "title": "The Number of Beautiful Subsets",
+  "slug": "the-number-of-beautiful-subsets",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array nums of positive integers and a positive integer k.\n\nA subset of nums is beautiful if it does not contain two integers with an absolute difference equal to k.\n\nReturn _the number of non-empty beautiful subsets of the array_ nums.\n\nA subset of nums is an array that can be obtained by deleting some (possibly none) elements from nums. Two subsets are different if and only if the chosen indices to delete are different.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef countBeautifulSubsets(nums, k):\n    nums.sort()\n    ans = 0\n    dp = [1] * len(nums)\n    for i in range(len(nums)):\n        l = r = 0\n        for j in range(i):\n            while l < j and nums[j] - nums[l] >= k:\n                l += 1\n            while r + 1 < j and nums[r + 1] - nums[j] < k:\n                r += 1\n            dp[j] -= dp[l - 1] if l <= r else 0\n            dp[j] += dp[j - 1] + 1\n            ans += dp[j]\n    return ans\n```\n    \n    The algorithm first sorts the array `nums` in non-descending order. Then, we use dynamic programming to keep track of the number of non-empty beautiful subsets. For each index `i`, we iterate from index `0` to `i - 1`, maintaining pointers `l` and `r`. We move the pointers such that:\n\n1. The difference between `nums[j]` and `nums[l]` is at least `k`.\n2. The difference between `nums[r + 1]` and `nums[j]` is less than `k`.\n\nWe update the `dp[j]` by subtracting the value in the `dp[l - 1]` if `l <= r` (there is at least one subset satisfying the condition), then adding the value in the `dp[j - 1]`. Finally, we add the current value of `dp[j]` to the answer.\n\nThis approach has time complexity of O(n^2) with n being the length of the input array `nums`.\n    ",
+    "javascript": "\n    ```javascript\nfunction countBeautifulSubsets(nums, k) {\n    nums.sort((a, b) => a - b);\n    let ans = 0;\n    const dp = new Array(nums.length).fill(1);\n    for (let i = 0; i < nums.length; i++) {\n        for (let j = 0, l = 0, r = -1; j < i; j++) {\n            while (l < j && nums[j] - nums[l] >= k) l++;\n            while (r + 1 < j && nums[r + 1] - nums[j] < k) r++;\n            if (l <= r) dp[j] -= dp[l - 1];\n            dp[j] += dp[j - 1] + 1;\n            ans += dp[j];\n        }\n    }\n    return ans;\n}\n```\n    \n    The algorithm first sorts the array `nums` in non-descending order. Then, we use dynamic programming to keep track of the number of non-empty beautiful subsets. For each index `i`, we iterate from index `0` to `i - 1`, maintaining pointers `l` and `r`. We move the pointers such that:\n\n1. The difference between `nums[j]` and `nums[l]` is at least `k`.\n2. The difference between `nums[r + 1]` and `nums[j]` is less than `k`.\n\nWe update the `dp[j]` by subtracting the value in the `dp[l - 1]` if `l <= r` (there is at least one subset satisfying the condition), then adding the value in the `dp[j - 1]`. Finally, we add the current value of `dp[j]` to the answer.\n\nThis approach has time complexity of O(n^2) with n being the length of the input array `nums`.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int countBeautifulSubsets(int[] nums, int k) {\n    Arrays.sort(nums);\n    int ans = 0;\n    int[] dp = new int[nums.length];\n    Arrays.fill(dp, 1);\n    for (int i = 0; i < nums.length; i++) {\n        for (int j = 0, l = 0, r = -1; j < i; j++) {\n            while (l < j && nums[j] - nums[l] >= k) l++;\n            while (r + 1 < j && nums[r + 1] - nums[j] < k) r++;\n            if (l <= r) dp[j] -= dp[l - 1];\n            dp[j] += dp[j - 1] + 1;\n            ans += dp[j];\n        }\n    }\n    return ans;\n}\n```\n    \n    The algorithm first sorts the array `nums` in non-descending order. Then, we use dynamic programming to keep track of the number of non-empty beautiful subsets. For each index `i`, we iterate from index `0` to `i - 1`, maintaining pointers `l` and `r`. We move the pointers such that:\n\n1. The difference between `nums[j]` and `nums[l]` is at least `k`.\n2. The difference between `nums[r + 1]` and `nums[j]` is less than `k`.\n\nWe update the `dp[j]` by subtracting the value in the `dp[l - 1]` if `l <= r` (there is at least one subset satisfying the condition), then adding the value in the `dp[j - 1]`. Finally, we add the current value of `dp[j]` to the answer.\n\nThis approach has time complexity of O(n^2) with n being the length of the input array `nums`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

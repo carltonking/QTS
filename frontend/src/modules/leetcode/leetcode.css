@@ -1,0 +1,382 @@
+.lc-page {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.lc-card {
+  width: 100%;
+}
+
+.lc-heading {
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.lc-subheading {
+  color: var(--text-2);
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+}
+
+.lc-nav-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
+.lc-filter-bar {
+  display: grid;
+  grid-template-columns: minmax(200px, 1.5fr) repeat(3, minmax(150px, 0.7fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.lc-select,
+.lc-tag-toggle {
+  width: 100%;
+  border: 1px solid var(--text-1);
+  background: var(--bg);
+  color: var(--text-1);
+  padding: 0.75rem 0.9rem;
+  font-family: var(--font-mono);
+}
+
+.lc-tag-filter {
+  position: relative;
+}
+
+.lc-tag-dropdown {
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  left: 0;
+  right: 0;
+  border: 1px solid var(--border);
+  background: var(--surface-1);
+  padding: 0.75rem;
+  display: grid;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.lc-tag-option {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.lc-table-shell {
+  display: grid;
+  gap: 1rem;
+}
+
+.lc-table-summary {
+  color: var(--text-2);
+  letter-spacing: 0.08em;
+}
+
+.lc-problem-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.lc-problem-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--surface-1);
+  border-bottom: 1px solid var(--border);
+  padding: 0.9rem 0.6rem;
+  text-align: left;
+}
+
+.lc-problem-table td {
+  padding: 0.9rem 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.lc-problem-row {
+  transition: var(--transition);
+}
+
+.lc-problem-row:hover {
+  background: var(--text-1);
+  color: var(--bg);
+}
+
+.lc-problem-row:hover a {
+  color: var(--bg);
+}
+
+.lc-problem-link {
+  display: inline-flex;
+  gap: 0.6rem;
+  align-items: center;
+  color: var(--text-1);
+  text-decoration: none;
+  text-underline-offset: 0.18em;
+  cursor: pointer;
+}
+
+.lc-problem-link:hover,
+.lc-problem-link:focus-visible {
+  text-decoration: underline;
+}
+
+.lc-status {
+  display: inline-block;
+  width: 1rem;
+}
+
+.lc-difficulty {
+  letter-spacing: 0.08em;
+}
+
+.lc-easy {
+  font-weight: 400;
+}
+
+.lc-medium {
+  font-weight: 600;
+}
+
+.lc-hard {
+  font-weight: 800;
+}
+
+.lc-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lc-page-btn {
+  border: 1px solid var(--text-1);
+  background: var(--bg);
+  color: var(--text-1);
+}
+
+.lc-workspace {
+  height: calc(100vh - 7rem);
+}
+
+.lc-workspace-panel {
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+
+.lc-workspace-left,
+.lc-results-panel {
+  overflow: auto;
+}
+
+.lc-resize-handle {
+  width: 8px;
+  background: var(--bg);
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+
+.lc-description-shell,
+.lc-editor-shell,
+.lc-results-shell {
+  height: 100%;
+}
+
+.lc-description-shell {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.lc-problem-title {
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+}
+
+.lc-problem-badges,
+.lc-editor-actions,
+.lc-result-tabs,
+.lc-tab-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.lc-tag-badge {
+  font-size: 0.82rem;
+  color: var(--text-2);
+}
+
+.lc-tab,
+.lc-result-tab {
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-1);
+  padding: 0.65rem 0.85rem;
+  font-family: var(--font-mono);
+}
+
+.lc-tab-active,
+.lc-result-tab-active {
+  border-color: var(--text-1);
+}
+
+.lc-description-content {
+  display: grid;
+  gap: 1rem;
+}
+
+.lc-example-box,
+.lc-verdict-box,
+.lc-error-box {
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  padding: 1rem;
+}
+
+.lc-error-box {
+  border-style: dashed;
+  margin-top: 0.75rem;
+}
+
+.lc-example-title,
+.lc-verdict-title {
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.08em;
+}
+
+.lc-constraints {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.lc-submissions-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.lc-submissions-table th,
+.lc-submissions-table td {
+  text-align: left;
+  padding: 0.75rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.lc-editor-shell {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+}
+
+.lc-editor-toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.lc-results-shell {
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.lc-result-case {
+  display: grid;
+  gap: 0.5rem;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  padding: 1rem;
+}
+
+.lc-results-loading {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+}
+
+.lc-blink {
+  animation: lc-blink 1s steps(1) infinite;
+}
+
+.lc-roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.lc-roadmap-card {
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  padding: 1rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.lc-roadmap-title {
+  letter-spacing: 0.08em;
+}
+
+.lc-roadmap-count {
+  color: var(--text-2);
+}
+
+.lc-roadmap-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.lc-roadmap-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.lc-auth-page {
+  min-height: calc(100vh - 8rem);
+  display: grid;
+  place-items: center;
+}
+
+.lc-auth-card {
+  width: min(400px, 100%);
+}
+
+.lc-auth-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+@keyframes lc-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .lc-filter-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .lc-workspace {
+    height: auto;
+  }
+
+  .lc-editor-toolbar,
+  .lc-pagination {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

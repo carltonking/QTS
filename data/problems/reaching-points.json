@@ -1,0 +1,24 @@
+{
+  "id": 780,
+  "title": "Reaching Points",
+  "slug": "reaching-points",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given four integers sx, sy, tx, and ty, return true _if it is possible to convert the point_ (sx, sy) _to the point_ (tx, ty) _through some operations, or_ false _otherwise_.\n\nThe allowed operation on some point (x, y) is to convert it to either (x, x + y) or (x + y, y).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_chunks_to_sorted(arr):\n    max_so_far, count = 0, 0\n    for i, val in enumerate(arr):\n        max_so_far = max(max_so_far, val)\n        if max_so_far == i:\n            count += 1\n    return count\n```\n\n    \n    Iterate through the array and track the maximum value found so far (max_so_far), as well as the number of chunks (count). For each element in the array, update the max_so_far to the maximum of its current value and the current element. If the max_so_far is equal to the current index, it means that it is possible to create a sorted chunk from the starting index to the current index. Increase the count and continue iterating through the array until the end. Finally, return the count.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxChunksToSorted(arr) {\n    let max_so_far = 0, count = 0;\n    for (let i = 0; i < arr.length; i++) {\n        max_so_far = Math.max(max_so_far, arr[i]);\n        if (max_so_far === i) {\n            count++;\n        }\n    }\n    return count;\n}\n```\n\n    \n    Iterate through the array and track the maximum value found so far (max_so_far), as well as the number of chunks (count). For each element in the array, update the max_so_far to the maximum of its current value and the current element. If the max_so_far is equal to the current index, it means that it is possible to create a sorted chunk from the starting index to the current index. Increase the count and continue iterating through the array until the end. Finally, return the count.\n    ",
+    "java": "\n    ```java\npublic int maxChunksToSorted(int[] arr) {\n    int max_so_far = 0, count = 0;\n    for (int i = 0; i < arr.length; i++) {\n        max_so_far = Math.max(max_so_far, arr[i]);\n        if (max_so_far == i) {\n            count++;\n        }\n    }\n    return count;\n}\n```\n\n    \n    Iterate through the array and track the maximum value found so far (max_so_far), as well as the number of chunks (count). For each element in the array, update the max_so_far to the maximum of its current value and the current element. If the max_so_far is equal to the current index, it means that it is possible to create a sorted chunk from the starting index to the current index. Increase the count and continue iterating through the array until the end. Finally, return the count.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

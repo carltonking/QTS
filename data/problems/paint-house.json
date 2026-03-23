@@ -1,0 +1,24 @@
+{
+  "id": 256,
+  "title": "Paint House",
+  "slug": "paint-house",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There is a row of n houses, where each house can be painted one of three colors: red, blue, or green. The cost of painting each house with a certain color is different. You have to paint all the houses such that no two adjacent houses have the same color.\n\nThe cost of painting each house with a certain color is represented by an n x 3 cost matrix costs.\n\n*   For example, costs[0][0] is the cost of painting house 0 with the color red; costs[1][2] is the cost of painting house 1 with color green, and so on...\n\nReturn _the minimum cost to paint all houses_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minCost(costs: List[List[int]]) -> int:\n    if not costs:\n        return 0\n    for i in range(1, len(costs)):\n        costs[i][0] += min(costs[i - 1][1], costs[i - 1][2])\n        costs[i][1] += min(costs[i - 1][0], costs[i - 1][2])\n        costs[i][2] += min(costs[i - 1][0], costs[i - 1][1])\n    return min(costs[-1][0], costs[-1][1], costs[-1][2])\n```\n    \n    We use a dynamic programming approach to solve this problem. Initially, if there are no houses to paint, we return 0.\nFor the rest of the houses, we iterate through the array starting from the second house. For each house i, we calculate the cost of painting it with each color considering the last colored house.\n\n1. costs[i][0] += min(costs[i - 1][1], costs[i - 1][2]);\n2. costs[i][1] += min(costs[i - 1][0], costs[i - 1][2]);\n3. costs[i][2] += min(costs[i - 1][0], costs[i - 1][1]);\n\nAfter iterating through all houses, we return the minimum cost of the possible color configurations for the last house.\n    ",
+    "javascript": "\n    ```javascript\nfunction minCost(costs) {\n    if (costs.length === 0) return 0;\n    for (let i = 1; i < costs.length; i++) {\n        costs[i][0] += Math.min(costs[i - 1][1], costs[i - 1][2]);\n        costs[i][1] += Math.min(costs[i - 1][0], costs[i - 1][2]);\n        costs[i][2] += Math.min(costs[i - 1][0], costs[i - 1][1]);\n    }\n    return Math.min(costs[costs.length - 1][0], costs[costs.length - 1][1], costs[costs.length - 1][2]);\n}\n```\n    \n    We use a dynamic programming approach to solve this problem. Initially, if there are no houses to paint, we return 0.\nFor the rest of the houses, we iterate through the array starting from the second house. For each house i, we calculate the cost of painting it with each color considering the last colored house.\n\n1. costs[i][0] += min(costs[i - 1][1], costs[i - 1][2]);\n2. costs[i][1] += min(costs[i - 1][0], costs[i - 1][2]);\n3. costs[i][2] += min(costs[i - 1][0], costs[i - 1][1]);\n\nAfter iterating through all houses, we return the minimum cost of the possible color configurations for the last house.\n    ",
+    "java": "\n    ```java\npublic int minCost(int[][] costs) {\n    if (costs.length == 0) return 0;\n    for (int i = 1; i < costs.length; i++) {\n        costs[i][0] += Math.min(costs[i - 1][1], costs[i - 1][2]);\n        costs[i][1] += Math.min(costs[i - 1][0], costs[i - 1][2]);\n        costs[i][2] += Math.min(costs[i - 1][0], costs[i - 1][1]);\n    }\n    return Math.min(costs[costs.length - 1][0], Math.min(costs[costs.length - 1][1], costs[costs.length - 1][2]));\n}\n```\n    \n    We use a dynamic programming approach to solve this problem. Initially, if there are no houses to paint, we return 0.\nFor the rest of the houses, we iterate through the array starting from the second house. For each house i, we calculate the cost of painting it with each color considering the last colored house.\n\n1. costs[i][0] += min(costs[i - 1][1], costs[i - 1][2]);\n2. costs[i][1] += min(costs[i - 1][0], costs[i - 1][2]);\n3. costs[i][2] += min(costs[i - 1][0], costs[i - 1][1]);\n\nAfter iterating through all houses, we return the minimum cost of the possible color configurations for the last house.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

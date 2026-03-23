@@ -1,0 +1,24 @@
+{
+  "id": 538,
+  "title": "Convert BST to Greater Tree",
+  "slug": "convert-bst-to-greater-tree",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the root of a Binary Search Tree (BST), convert it to a Greater Tree such that every key of the original BST is changed to the original key plus the sum of all keys greater than the original key in BST.\n\nAs a reminder, a _binary search tree_ is a tree that satisfies these constraints:\n\n*   The left subtree of a node contains only nodes with keys less than the node's key.\n*   The right subtree of a node contains only nodes with keys greater than the node's key.\n*   Both the left and right subtrees must also be binary search trees.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def __init__(self):\n        self.sum = 0\n\n    def convertBST(self, root: TreeNode) -> TreeNode:\n        if root:\n            self.convertBST(root.right)\n            self.sum += root.val\n            root.val = self.sum\n            self.convertBST(root.left)\n        \n        return root\n```\n    \n    We traverse the tree in a right-to-left inorder traversal using a recursive algorithm. This traversal ensures we visit the nodes with the greater keys first. During this traversal, we maintain a running sum of the values of the nodes we've visited so far. When we visit a new node, we add the running sum to it and update the running sum with the new node's value. This effectively converts the tree into a Greater Tree, as the nodes' values are replaced with the sum of all the values greater than their initial values. This solution has a time complexity of O(n), where n is the number of nodes in the tree. \n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(val, left = null, right = null) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\nclass Solution {\n    constructor() {\n        this.sum = 0;\n    }\n\n    convertBST(root) {\n        if (root) {\n            this.convertBST(root.right);\n            this.sum += root.val;\n            root.val = this.sum;\n            this.convertBST(root.left);\n        }\n\n        return root;\n    }\n}\n```\n    \n    We traverse the tree in a right-to-left inorder traversal using a recursive algorithm. This traversal ensures we visit the nodes with the greater keys first. During this traversal, we maintain a running sum of the values of the nodes we've visited so far. When we visit a new node, we add the running sum to it and update the running sum with the new node's value. This effectively converts the tree into a Greater Tree, as the nodes' values are replaced with the sum of all the values greater than their initial values. This solution has a time complexity of O(n), where n is the number of nodes in the tree. \n    ",
+    "java": "\n    ```java\npublic class TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n    TreeNode(int x) { val = x; }\n}\n\nclass Solution {\n    int sum = 0;\n\n    public TreeNode convertBST(TreeNode root) {\n        if (root != null) {\n            convertBST(root.right);\n            sum += root.val;\n            root.val = sum;\n            convertBST(root.left);\n        }\n\n        return root;\n    }\n}\n```\n    \n    We traverse the tree in a right-to-left inorder traversal using a recursive algorithm. This traversal ensures we visit the nodes with the greater keys first. During this traversal, we maintain a running sum of the values of the nodes we've visited so far. When we visit a new node, we add the running sum to it and update the running sum with the new node's value. This effectively converts the tree into a Greater Tree, as the nodes' values are replaced with the sum of all the values greater than their initial values. This solution has a time complexity of O(n), where n is the number of nodes in the tree. \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

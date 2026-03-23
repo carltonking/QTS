@@ -1,0 +1,24 @@
+{
+  "id": 1100,
+  "title": "Find K-Length Substrings With No Repeated Characters",
+  "slug": "find-k-length-substrings-with-no-repeated-characters",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string s and an integer k, return _the number of substrings in_ s _of length_ k _with no repeated characters_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef num_k_len_substr_no_repeats(s: str, k: int) -> int:\n    n = len(s)\n    if k > n:\n        return 0\n\n    result = 0\n    window = set()\n\n    i = 0\n    for j in range(n):\n        while s[j] in window:\n            window.remove(s[i])\n            i += 1\n        window.add(s[j])\n        if j - i + 1 == k:\n            result += 1\n            window.remove(s[i])\n            i += 1\n\n    return result\n```\n    \n    The algorithm uses a sliding window approach. Initialize an empty set `window` to store unique characters in a substring. We use two pointers `i` and `j` for each end of the window. The outer loop iterates `j` through the string. If the current character `s[j]` is in `window`, remove the first element of the window by deleting `s[i++]`. Then, insert `s[j]` into the `window`.\nIf the current window size is equal to k (i.e., `j - i + 1 == k`), increment the count of unique substrings `result` by 1, and remove the first element of the window by deleting `s[i++]`.\n\nOnce the outer loop finishes, return the result variable, which contains the count of unique length-k substrings.\n    ",
+    "javascript": "\n    ```javascript\nfunction numKLenSubstrNoRepeats(s, k) {\n    const n = s.length;\n    if (k > n) return 0;\n    \n    let result = 0;\n    const window = new Set();\n    \n    for (let i = 0, j = 0; j < n; ++j) {\n        while (window.has(s[j])) {\n            window.delete(s[i++]);\n        }\n        window.add(s[j]);\n        if (j - i + 1 === k) {\n            ++result;\n            window.delete(s[i++]);\n        }\n    }\n    return result;\n}\n```\n    \n    The algorithm uses a sliding window approach. Initialize an empty set `window` to store unique characters in a substring. We use two pointers `i` and `j` for each end of the window. The outer loop iterates `j` through the string. If the current character `s[j]` is in `window`, remove the first element of the window by deleting `s[i++]`. Then, insert `s[j]` into the `window`.\nIf the current window size is equal to k (i.e., `j - i + 1 == k`), increment the count of unique substrings `result` by 1, and remove the first element of the window by deleting `s[i++]`.\n\nOnce the outer loop finishes, return the result variable, which contains the count of unique length-k substrings.\n    ",
+    "java": "\n    ```java\npublic int numKLenSubstrNoRepeats(String s, int k) {\n    int n = s.length();\n    if (k > n) return 0;\n    \n    int result = 0;\n    HashSet<Character> window = new HashSet<>();\n    \n    for (int i = 0, j = 0; j < n; ++j) {\n        while (window.contains(s.charAt(j))) {\n            window.remove(s.charAt(i++));\n        }\n        window.add(s.charAt(j));\n        if (j - i + 1 == k) {\n            ++result;\n            window.remove(s.charAt(i++));\n        }\n    }\n    return result;\n}\n```\n    \n    The algorithm uses a sliding window approach. Initialize an empty set `window` to store unique characters in a substring. We use two pointers `i` and `j` for each end of the window. The outer loop iterates `j` through the string. If the current character `s[j]` is in `window`, remove the first element of the window by deleting `s[i++]`. Then, insert `s[j]` into the `window`.\nIf the current window size is equal to k (i.e., `j - i + 1 == k`), increment the count of unique substrings `result` by 1, and remove the first element of the window by deleting `s[i++]`.\n\nOnce the outer loop finishes, return the result variable, which contains the count of unique length-k substrings.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

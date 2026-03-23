@@ -1,0 +1,24 @@
+{
+  "id": 1644,
+  "title": "Lowest Common Ancestor of a Binary Tree II",
+  "slug": "lowest-common-ancestor-of-a-binary-tree-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the root of a binary tree, return _the lowest common ancestor (LCA) of two given nodes,_ p _and_ q. If either node p or q does not exist in the tree, return null. All values of the nodes in the tree are unique.\n\nAccording to the [definition of LCA on Wikipedia](https://en.wikipedia.org/wiki/Lowest_common_ancestor): \"The lowest common ancestor of two nodes p and q in a binary tree T is the lowest node that has both p and q as descendants (where we allow a node to be a descendant of itself) \". A descendant of a node x is a node y that is on the path from node x to some leaf node.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_num_of_substrings(s: str) -> List[str]:\n    last = [-1] * 26\n    for i, ch in enumerate(s):\n        last[ord(ch) - ord('a')] = i\n    \n    res = []\n    pre, max_right = -1, -1\n    for i, ch in enumerate(s):\n        max_right = max(max_right, last[ord(ch) - ord('a')])\n        if max_right == i:\n            res.append(s[pre + 1:max_right + 1])\n            pre = i\n    \n    return res\n```\n    \n    1. We initialize an array `last` to store the last position of each character in string `s`.\n2. We fill the array `last` by iterating over the string and updating the last index for each character.\n3. We initialize an empty result array `res`, a variable `pre` to -1, and a variable `maxRight` to -1.\n4. We iterate over the string, updating `maxRight` to the maximum of its current value and the last position of the current character in `s`. \n5. If `maxRight` equals the current index, we add the substring from `pre + 1` to `maxRight + 1` to the result array and set `pre` to the current index.\n6. After the iteration, the result array `res` contains the maximum number of non-empty substrings that meet the given conditions.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxNumOfSubstrings(s) {\n    const last = new Array(26).fill(-1);\n    for (let i = 0; i < s.length; ++i) {\n        last[s.charCodeAt(i) - 'a'.charCodeAt(0)] = i;\n    }\n    \n    let res = [];\n    let pre = -1;\n    let maxRight = -1;\n    for (let i = 0; i < s.length; ++i) {\n        maxRight = Math.max(maxRight, last[s.charCodeAt(i) - 'a'.charCodeAt(0)]);\n        if (maxRight === i) {\n            res.push(s.substring(pre + 1, maxRight + 1));\n            pre = i;\n        }\n    }\n    \n    return res;\n}\n```\n    \n    1. We initialize an array `last` to store the last position of each character in string `s`.\n2. We fill the array `last` by iterating over the string and updating the last index for each character.\n3. We initialize an empty result array `res`, a variable `pre` to -1, and a variable `maxRight` to -1.\n4. We iterate over the string, updating `maxRight` to the maximum of its current value and the last position of the current character in `s`. \n5. If `maxRight` equals the current index, we add the substring from `pre + 1` to `maxRight + 1` to the result array and set `pre` to the current index.\n6. After the iteration, the result array `res` contains the maximum number of non-empty substrings that meet the given conditions.\n    ",
+    "java": "\n    ```java\npublic List<String> maxNumOfSubstrings(String s) {\n    int[] last = new int[26];\n    Arrays.fill(last, -1);\n    for (int i = 0; i < s.length(); ++i) {\n        last[s.charAt(i) - 'a'] = i;\n    }\n    \n    List<String> res = new ArrayList<>();\n    int pre = -1, maxRight = -1;\n    for (int i = 0; i < s.length(); ++i) {\n        maxRight = Math.max(maxRight, last[s.charAt(i) - 'a']);\n        if (maxRight == i) {\n            res.add(s.substring(pre + 1, maxRight + 1));\n            pre = i;\n        }\n    }\n    \n    return res;\n}\n```\n    \n    1. We initialize an array `last` to store the last position of each character in string `s`.\n2. We fill the array `last` by iterating over the string and updating the last index for each character.\n3. We initialize an empty result array `res`, a variable `pre` to -1, and a variable `maxRight` to -1.\n4. We iterate over the string, updating `maxRight` to the maximum of its current value and the last position of the current character in `s`. \n5. If `maxRight` equals the current index, we add the substring from `pre + 1` to `maxRight + 1` to the result array and set `pre` to the current index.\n6. After the iteration, the result array `res` contains the maximum number of non-empty substrings that meet the given conditions.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

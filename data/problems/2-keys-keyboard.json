@@ -1,0 +1,24 @@
+{
+  "id": 650,
+  "title": "2 Keys Keyboard",
+  "slug": "2-keys-keyboard",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There is only one character 'A' on the screen of a notepad. You can perform one of two operations on this notepad for each step:\n\n*   Copy All: You can copy all the characters present on the screen (a partial copy is not allowed).\n*   Paste: You can paste the characters which are copied last time.\n\nGiven an integer n, return _the minimum number of operations to get the character_ 'A' _exactly_ n _times on the screen_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_steps(n):\n    result = 0\n    i = 2\n    while i <= n:\n        while n % i == 0:\n            result += i\n            n //= i\n        i += 1\n    return result\n```\n    \n    We need to find the minimum number of operations to get the character 'A' exactly n times on the screen. The operations are copying all (useful when having a large number of 'A's) and pasting.\n\nWe can think about this problem in terms of prime factorization. We are trying to break down n into the sum of various prime factors. The prime factors represent the number of operations needed at each step. \n\nIn our algorithm, we initialize the variable `result` to 0, which will store the minimum number of operations. We then start with i = 2 (smallest prime number) and iterate through all values less than or equal to n. Inside the loop, we check if n is divisible by i (i.e., n % i == 0). If yes, we add i to `result` and divide n by i. We keep doing this while n is divisible by i. Once n is no longer divisible by i, move on to the next value of i.\n\nAt the end of the algorithm, the `result` variable will contain the minimum number of operations to get n 'A's on the screen.\n    ",
+    "javascript": "\n    ```javascript\nfunction minSteps(n) {\n    let result = 0;\n    for (let i = 2; i <= n; i++) {\n        while (n % i === 0) {\n            result += i;\n            n /= i;\n        }\n    }\n    return result;\n}\n```\n    \n    We need to find the minimum number of operations to get the character 'A' exactly n times on the screen. The operations are copying all (useful when having a large number of 'A's) and pasting.\n\nWe can think about this problem in terms of prime factorization. We are trying to break down n into the sum of various prime factors. The prime factors represent the number of operations needed at each step. \n\nIn our algorithm, we initialize the variable `result` to 0, which will store the minimum number of operations. We then start with i = 2 (smallest prime number) and iterate through all values less than or equal to n. Inside the loop, we check if n is divisible by i (i.e., n % i == 0). If yes, we add i to `result` and divide n by i. We keep doing this while n is divisible by i. Once n is no longer divisible by i, move on to the next value of i.\n\nAt the end of the algorithm, the `result` variable will contain the minimum number of operations to get n 'A's on the screen.\n    ",
+    "java": "\n    ```java\npublic int minSteps(int n) {\n    int result = 0;\n    for (int i = 2; i <= n; i++) {\n        while (n % i == 0) {\n            result += i;\n            n /= i;\n        }\n    }\n    return result;\n}\n```\n    \n    We need to find the minimum number of operations to get the character 'A' exactly n times on the screen. The operations are copying all (useful when having a large number of 'A's) and pasting.\n\nWe can think about this problem in terms of prime factorization. We are trying to break down n into the sum of various prime factors. The prime factors represent the number of operations needed at each step. \n\nIn our algorithm, we initialize the variable `result` to 0, which will store the minimum number of operations. We then start with i = 2 (smallest prime number) and iterate through all values less than or equal to n. Inside the loop, we check if n is divisible by i (i.e., n % i == 0). If yes, we add i to `result` and divide n by i. We keep doing this while n is divisible by i. Once n is no longer divisible by i, move on to the next value of i.\n\nAt the end of the algorithm, the `result` variable will contain the minimum number of operations to get n 'A's on the screen.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

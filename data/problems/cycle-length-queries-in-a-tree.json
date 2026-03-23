@@ -1,0 +1,24 @@
+{
+  "id": 2509,
+  "title": "Cycle Length Queries in a Tree",
+  "slug": "cycle-length-queries-in-a-tree",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an integer n. There is a complete binary tree with 2n - 1 nodes. The root of that tree is the node with the value 1, and every node with a value val in the range [1, 2n - 1 - 1] has two children where:\n\n*   The left node has the value 2 * val, and\n*   The right node has the value 2 * val + 1.\n\nYou are also given a 2D integer array queries of length m, where queries[i] = [ai, bi]. For each query, solve the following problem:\n\n1.  Add an edge between the nodes with values ai and bi.\n2.  Find the length of the cycle in the graph.\n3.  Remove the added edge between nodes with values ai and bi.\n\nNote that:\n\n*   A cycle is a path that starts and ends at the same node, and each edge in the path is visited only once.\n*   The length of a cycle is the number of edges visited in the cycle.\n*   There could be multiple edges between two nodes in the tree after adding the edge of the query.\n\nReturn _an array_ answer _of length_ m _where_ answer[i] _is the answer to the_ ith _query._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef length_of_cycle(n, queries):\n    result = []\n    for A, B in queries:\n        depth_A, depth_B = 0, 0\n        while A != B:\n            if A < B:\n                A, B = B, A\n            A >>= 1\n            depth_A += 1\n        result.append(depth_A + depth_B)\n    return result\n```\n    \n    The algorithm is based on tree traversal. For each query `[A, B]`, we keep track of the depth of nodes `A` and `B`. We traverse the tree by moving both nodes up (dividing by 2) until they become equal.\n\nIn each iteration, if `A < B`, we swap `A` and `B`. Then, we divide `A` by 2 and increment the depth of node `A`. This continues until nodes `A` and `B` become the same.\n\nAfter the loop, the length of the cycle is the sum of the depths of both nodes.\n\nThis algorithm doesn't need to add and remove edges, as finding the nodes' depths gives us the cycle length directly.\n    ",
+    "javascript": "\n    ```javascript\nfunction length_of_cycle(n, queries) {\n    const result = [];\n    for (const query of queries) {\n        let depth_A = 0, depth_B = 0, A = query[0], B = query[1];\n        while (A !== B) {\n            if (A < B) [A, B] = [B, A];\n            A >>= 1;\n            depth_A++;\n        }\n        result.push(depth_A + depth_B);\n    }\n    return result;\n}\n```\n    \n    The algorithm is based on tree traversal. For each query `[A, B]`, we keep track of the depth of nodes `A` and `B`. We traverse the tree by moving both nodes up (dividing by 2) until they become equal.\n\nIn each iteration, if `A < B`, we swap `A` and `B`. Then, we divide `A` by 2 and increment the depth of node `A`. This continues until nodes `A` and `B` become the same.\n\nAfter the loop, the length of the cycle is the sum of the depths of both nodes.\n\nThis algorithm doesn't need to add and remove edges, as finding the nodes' depths gives us the cycle length directly.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.List;\n\npublic class Solution {\n    public List<Integer> length_of_cycle(int n, int[][] queries) {\n        List<Integer> result = new ArrayList();\n        for (int[] query : queries) {\n            int depth_A = 0, depth_B = 0, A = query[0], B = query[1];\n            while (A != B) {\n                if (A < B) {\n                    int tmp = A;\n                    A = B;\n                    B = tmp;\n                }\n                A >>= 1;\n                depth_A++;\n            }\n            result.add(depth_A + depth_B);\n        }\n        return result;\n    }\n} \n```\n    \n    The algorithm is based on tree traversal. For each query `[A, B]`, we keep track of the depth of nodes `A` and `B`. We traverse the tree by moving both nodes up (dividing by 2) until they become equal.\n\nIn each iteration, if `A < B`, we swap `A` and `B`. Then, we divide `A` by 2 and increment the depth of node `A`. This continues until nodes `A` and `B` become the same.\n\nAfter the loop, the length of the cycle is the sum of the depths of both nodes.\n\nThis algorithm doesn't need to add and remove edges, as finding the nodes' depths gives us the cycle length directly.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1023,
+  "title": "Camelcase Matching",
+  "slug": "camelcase-matching",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of strings queries and a string pattern, return a boolean array answer where answer[i] is true if queries[i] matches pattern, and false otherwise.\n\nA query word queries[i] matches pattern if you can insert lowercase English letters pattern so that it equals the query. You may insert each character at any position and you may not insert any characters.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import defaultdict\nimport bisect\n\nclass TimeMap:\n\n    def __init__(self):\n        self.data = defaultdict(list)\n\n    def set(self, key, value, timestamp):\n        self.data[key].append((timestamp, value))\n\n    def get(self, key, timestamp):\n        if key not in self.data: return \"\"\n        index = bisect.bisect(self.data[key], (timestamp + 1,))\n        return self.data[key][index-1][1] if index else \"\"\n```\n    \n    The algorithm for each language is essentially the same. We use a nested data structure to maintain key-value pairs along with their corresponding timestamp. For C++ and Java, we use a map of maps, as the inner map sorts the keys, in Python, we use a defaultdict of lists, and for JS, we use a Map of arrays.\n\nThe `set` function simply inserts the given key-value pair along with its timestamp into the data structure.\n\nThe `get` function searches for the value with the largest timestamp less than or equal to the requested timestamp. Binary search or TreeMap (in Java) can be used to find the closest timestamp efficiently.\n    ",
+    "javascript": "\n    ```javascript\nclass TimeMap {\n    constructor() {\n        this.data = new Map();\n    }\n\n    set(key, value, timestamp) {\n        if (!this.data.has(key)) {\n            this.data.set(key, []);\n        }\n        this.data.get(key).push({ timestamp, value });\n    }\n\n    get(key, timestamp) {\n        if (!this.data.has(key)) return \"\";\n        const values = this.data.get(key);\n        let left = 0, right = values.length - 1;\n        while (left < right) {\n            let mid = Math.floor((left + right + 1) / 2);\n            if (values[mid].timestamp > timestamp) {\n                right = mid - 1;\n            } else {\n                left = mid;\n            }\n        }\n        return values[left].timestamp <= timestamp ? values[left].value : \"\";\n    }\n}\n```\n    \n    The algorithm for each language is essentially the same. We use a nested data structure to maintain key-value pairs along with their corresponding timestamp. For C++ and Java, we use a map of maps, as the inner map sorts the keys, in Python, we use a defaultdict of lists, and for JS, we use a Map of arrays.\n\nThe `set` function simply inserts the given key-value pair along with its timestamp into the data structure.\n\nThe `get` function searches for the value with the largest timestamp less than or equal to the requested timestamp. Binary search or TreeMap (in Java) can be used to find the closest timestamp efficiently.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\nclass TimeMap {\n    private Map<String, TreeMap<Integer, String>> data;\n\n    public TimeMap() {\n        data = new HashMap();\n    }\n\n    public void set(String key, String value, int timestamp) {\n        data.putIfAbsent(key, new TreeMap<>());\n        data.get(key).put(timestamp, value);\n    }\n\n    public String get(String key, int timestamp) {\n        if (!data.containsKey(key)) return \"\";\n        Integer prevTimeStamp = data.get(key).floorKey(timestamp);\n        return prevTimeStamp == null ? \"\" : data.get(key).get(prevTimeStamp);\n    }\n}\n```\n    \n    The algorithm for each language is essentially the same. We use a nested data structure to maintain key-value pairs along with their corresponding timestamp. For C++ and Java, we use a map of maps, as the inner map sorts the keys, in Python, we use a defaultdict of lists, and for JS, we use a Map of arrays.\n\nThe `set` function simply inserts the given key-value pair along with its timestamp into the data structure.\n\nThe `get` function searches for the value with the largest timestamp less than or equal to the requested timestamp. Binary search or TreeMap (in Java) can be used to find the closest timestamp efficiently.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

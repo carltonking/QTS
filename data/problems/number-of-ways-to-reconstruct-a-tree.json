@@ -1,0 +1,24 @@
+{
+  "id": 1719,
+  "title": "Number Of Ways To Reconstruct A Tree",
+  "slug": "number-of-ways-to-reconstruct-a-tree",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an array pairs, where pairs[i] = [xi, yi], and:\n\n*   There are no duplicates.\n*   xi < yi\n\nLet ways be the number of rooted trees that satisfy the following conditions:\n\n*   The tree consists of nodes whose values appeared in pairs.\n*   A pair [xi, yi] exists in pairs if and only if xi is an ancestor of yi or yi is an ancestor of xi.\n*   Note: the tree does not have to be a binary tree.\n\nTwo ways are considered to be different if there is at least one node that has different parents in both ways.\n\nReturn:\n\n*   0 if ways == 0\n*   1 if ways == 1\n*   2 if ways > 1\n\nA rooted tree is a tree that has a single root node, and all edges are oriented to be outgoing from the root.\n\nAn ancestor of a node is any node on the path from the root to that node (excluding the node itself). The root has no ancestors.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef check_ways(pairs):\n    candidates = {}\n    for x, y in pairs:\n        candidates[x] = candidates.get(x, 0) + 1\n        candidates[y] = candidates.get(y, 0) + 1\n\n    root_count = sum(1 for v in candidates.values() if v == 1)\n    return min(root_count, 2)\n```\n    \n    The algorithm uses a hash map to count the occurrences of each node in the `pairs` array. After counting the occurrences, it iterates through the hash map and counts how many nodes have only a single occurrence, which implies that they could be the root of a tree. If there is more than one node with a single occurrence, it means that there are multiple ways to create trees; therefore, the function returns 2. If there is only one node with a single occurrence, there is only one way to create a tree; hence, the function returns 1. If there are no nodes with a single occurrence, the function returns 0, since we cannot create a tree. All implementations follow this algorithm for each language.\n    ",
+    "javascript": "\n    ```javascript\nfunction checkWays(pairs) {\n    const candidates = {};\n    for (const [x, y] of pairs) {\n        candidates[x] = (candidates[x] || 0) + 1;\n        candidates[y] = (candidates[y] || 0) + 1;\n    }\n\n    let rootCount = 0;\n    for (const candidate in candidates) {\n        if (candidates[candidate] == 1) {\n            rootCount++;\n            if (rootCount > 1) {\n                return 2;\n            }\n        }\n    }\n\n    return rootCount;\n}\n```\n    \n    The algorithm uses a hash map to count the occurrences of each node in the `pairs` array. After counting the occurrences, it iterates through the hash map and counts how many nodes have only a single occurrence, which implies that they could be the root of a tree. If there is more than one node with a single occurrence, it means that there are multiple ways to create trees; therefore, the function returns 2. If there is only one node with a single occurrence, there is only one way to create a tree; hence, the function returns 1. If there are no nodes with a single occurrence, the function returns 0, since we cannot create a tree. All implementations follow this algorithm for each language.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\nimport java.util.Map;\nimport java.util.List;\n\npublic int checkWays(List<List<Integer>> pairs) {\n    Map<Integer, Integer> candidates = new HashMap<>();\n    for (List<Integer> pair : pairs) {\n        candidates.put(pair.get(0),\n                candidates.getOrDefault(pair.get(0), 0) + 1);\n        candidates.put(pair.get(1),\n                candidates.getOrDefault(pair.get(1), 0) + 1);\n    }\n\n    int rootCount = 0;\n    for (int candidate : candidates.values()) {\n        if (candidate == 1) {\n            rootCount++;\n            if (rootCount > 1) {\n                return 2;\n            }\n        }\n    }\n\n    return rootCount;\n}\n```\n    \n    The algorithm uses a hash map to count the occurrences of each node in the `pairs` array. After counting the occurrences, it iterates through the hash map and counts how many nodes have only a single occurrence, which implies that they could be the root of a tree. If there is more than one node with a single occurrence, it means that there are multiple ways to create trees; therefore, the function returns 2. If there is only one node with a single occurrence, there is only one way to create a tree; hence, the function returns 1. If there are no nodes with a single occurrence, the function returns 0, since we cannot create a tree. All implementations follow this algorithm for each language.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2595,
+  "title": "Number of Even and Odd Bits",
+  "slug": "number-of-even-and-odd-bits",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a positive integer n.\n\nLet even denote the number of even indices in the binary representation of n (0-indexed) with value 1.\n\nLet odd denote the number of odd indices in the binary representation of n (0-indexed) with value 1.\n\nReturn _an integer array_ answer _where_ answer = [even, odd].",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef even_odd_indices(n: int) -> List[int]:\n    answer = [0, 0]\n    index = 0\n    while n > 0:\n        if n % 2:\n            answer[index % 2] += 1\n        n //= 2\n        index += 1\n    return answer\n```\n    \n    The algorithm iterates through the bits of the input number `n` one by one. For each bit, it checks whether the bit is set (1) or not. If the bit is set and its index (0-indexed) is even, it increments the `even` count in `answer`. If the bit is set and its index is odd, it increments the `odd` count in `answer`. The algorithm continues until all bits of the number have been processed. Finally, it returns the `answer` array containing the counts of even and odd indices with the value of 1 in the binary representation of `n`.\n    ",
+    "javascript": "\n    ```javascript\nfunction evenOddIndices(n) {\n    let answer = [0, 0];\n    let index = 0;\n    while (n > 0) {\n        if (n % 2)\n            answer[index % 2] += 1;\n        n = Math.floor(n / 2);\n        index += 1;\n    }\n    return answer;\n}\n```\n    \n    The algorithm iterates through the bits of the input number `n` one by one. For each bit, it checks whether the bit is set (1) or not. If the bit is set and its index (0-indexed) is even, it increments the `even` count in `answer`. If the bit is set and its index is odd, it increments the `odd` count in `answer`. The algorithm continues until all bits of the number have been processed. Finally, it returns the `answer` array containing the counts of even and odd indices with the value of 1 in the binary representation of `n`.\n    ",
+    "java": "\n    ```java\npublic int[] evenOddIndices(int n) {\n    int[] answer = new int[2];\n    int index = 0;\n    while (n > 0) {\n        if (n % 2 == 1)\n            answer[index % 2] += 1;\n        n /= 2;\n        index += 1;\n    }\n    return answer;\n}\n```\n    \n    The algorithm iterates through the bits of the input number `n` one by one. For each bit, it checks whether the bit is set (1) or not. If the bit is set and its index (0-indexed) is even, it increments the `even` count in `answer`. If the bit is set and its index is odd, it increments the `odd` count in `answer`. The algorithm continues until all bits of the number have been processed. Finally, it returns the `answer` array containing the counts of even and odd indices with the value of 1 in the binary representation of `n`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

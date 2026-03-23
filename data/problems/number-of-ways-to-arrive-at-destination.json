@@ -1,0 +1,24 @@
+{
+  "id": 1976,
+  "title": "Number of Ways to Arrive at Destination",
+  "slug": "number-of-ways-to-arrive-at-destination",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are in a city that consists of n intersections numbered from 0 to n - 1 with bi-directional roads between some intersections. The inputs are generated such that you can reach any intersection from any other intersection and that there is at most one road between any two intersections.\n\nYou are given an integer n and a 2D integer array roads where roads[i] = [ui, vi, timei] means that there is a road between intersections ui and vi that takes timei minutes to travel. You want to know in how many ways you can travel from intersection 0 to intersection n - 1 in the shortest amount of time.\n\nReturn _the number of ways you can arrive at your destination in the shortest amount of time_. Since the answer may be large, return it modulo 109 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef can_split_string(s: str) -> bool:\n    count = [0] * 10\n\n    for c in s:\n        count[int(c)] += 1\n\n    for i in range(1, 10):\n        if count[i] > 0 and count[i] == count[i - 1]:\n            return True\n\n    return False\n```\n    \n    Initialize a `count` array to store frequency of digits in the input string `s`. Iterate through the characters of the string and increment the frequency of each digit using its numerical value. After completion, the `count` array holds the frequency of each digit in the input string.\n\nIterate through the frequency count array from index 1 to 9. If the counts of the current digit `i` and the previous digit `i-1` are equal and greater than 0, it's possible to split the string as described. In this case, return `true`. If the loop completes, return `false`, as the string cannot be split as described above.\n    ",
+    "javascript": "\n    ```javascript\nfunction canSplitString(s) {\n    const count = new Array(10).fill(0);\n\n    for (const c of s) {\n        count[Number(c)] += 1;\n    }\n\n    for (let i = 1; i <= 9; i++) {\n        if (count[i] > 0 && count[i] === count[i - 1]) {\n            return true;\n        }\n    }\n    return false;\n}\n```\n    \n    Initialize a `count` array to store frequency of digits in the input string `s`. Iterate through the characters of the string and increment the frequency of each digit using its numerical value. After completion, the `count` array holds the frequency of each digit in the input string.\n\nIterate through the frequency count array from index 1 to 9. If the counts of the current digit `i` and the previous digit `i-1` are equal and greater than 0, it's possible to split the string as described. In this case, return `true`. If the loop completes, return `false`, as the string cannot be split as described above.\n    ",
+    "java": "\n    ```java\npublic boolean canSplitString(String s) {\n    int[] count = new int[10];\n    for (char c : s.toCharArray()) {\n        count[c - '0']++;\n    }\n\n    for (int i = 1; i <= 9; i++) {\n        if (count[i] > 0 && count[i] == count[i - 1]) {\n            return true;\n        }\n    }\n    return false;\n}\n```\n    \n    Initialize a `count` array to store frequency of digits in the input string `s`. Iterate through the characters of the string and increment the frequency of each digit using its numerical value. After completion, the `count` array holds the frequency of each digit in the input string.\n\nIterate through the frequency count array from index 1 to 9. If the counts of the current digit `i` and the previous digit `i-1` are equal and greater than 0, it's possible to split the string as described. In this case, return `true`. If the loop completes, return `false`, as the string cannot be split as described above.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

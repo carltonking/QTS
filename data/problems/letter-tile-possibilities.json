@@ -1,0 +1,24 @@
+{
+  "id": 1079,
+  "title": "Letter Tile Possibilities",
+  "slug": "letter-tile-possibilities",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You have n tiles, where each tile has one letter tiles[i] printed on it.\n\nReturn _the number of possible non-empty sequences of letters_ you can make using the letters printed on those tiles.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sumRootToLeaf(root, path_value=0):\n    if not root:\n        return 0\n    path_value = path_value * 2 + root.val\n    if not root.left and not root.right:\n        return path_value\n    return sumRootToLeaf(root.left, path_value) + sumRootToLeaf(root.right, path_value)\n```\n    \n    The algorithm uses a Depth-First-Search approach. Starting from the root node, it recursively traverses the tree in a depth-first manner. The running path value is computed by shifting the current path value left (multiply by 2) and adding the value of the current node. If the current node is a leaf node (both left and right children are null), return the current path value. Otherwise, return the sum of the subtrees rooted at the left and right children. The recursion function has an optional argument, `path_value`, which helps to carry the running path value during the traversal.\n    ",
+    "javascript": "\n    ```javascript\nfunction sumRootToLeaf(root, pathValue = 0) {\n    if (!root) return 0;\n    pathValue = pathValue * 2 + root.val;\n    if (!root.left && !root.right) return pathValue;\n    return sumRootToLeaf(root.left, pathValue) + sumRootToLeaf(root.right, pathValue);\n}\n```\n    \n    The algorithm uses a Depth-First-Search approach. Starting from the root node, it recursively traverses the tree in a depth-first manner. The running path value is computed by shifting the current path value left (multiply by 2) and adding the value of the current node. If the current node is a leaf node (both left and right children are null), return the current path value. Otherwise, return the sum of the subtrees rooted at the left and right children. The recursion function has an optional argument, `path_value`, which helps to carry the running path value during the traversal.\n    ",
+    "java": "\n    ```java\npublic int sumRootToLeaf(TreeNode root) {\n    return sumHelper(root, 0);\n}\n\nprivate int sumHelper(TreeNode node, int value) {\n    if (node == null) return 0;\n    value = value * 2 + node.val;\n    if (node.left == null && node.right == null) return value;\n    return sumHelper(node.left, value) + sumHelper(node.right, value);\n}\n```\n    \n    The algorithm uses a Depth-First-Search approach. Starting from the root node, it recursively traverses the tree in a depth-first manner. The running path value is computed by shifting the current path value left (multiply by 2) and adding the value of the current node. If the current node is a leaf node (both left and right children are null), return the current path value. Otherwise, return the sum of the subtrees rooted at the left and right children. The recursion function has an optional argument, `path_value`, which helps to carry the running path value during the traversal.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

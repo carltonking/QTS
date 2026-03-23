@@ -1,0 +1,24 @@
+{
+  "id": 677,
+  "title": "Map Sum Pairs",
+  "slug": "map-sum-pairs",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Design a map that allows you to do the following:\n\n*   Maps a string key to a given value.\n*   Returns the sum of the values that have a key with a prefix equal to a given string.\n\nImplement the MapSum class:\n\n*   MapSum() Initializes the MapSum object.\n*   void insert(String key, int val) Inserts the key-val pair into the map. If the key already existed, the original key-value pair will be overridden to the new one.\n*   int sum(string prefix) Returns the sum of all the pairs' value whose key starts with the prefix.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass MapSum:\n    def __init__(self):\n        self.map = {}\n\n    def insert(self, key: str, val: int) -> None:\n        self.map[key] = val\n\n    def sum(self, prefix: str) -> int:\n        total = 0\n        for key, value in self.map.items():\n            if key.startswith(prefix):\n                total += value\n        return total\n```\n    \n    We create a map in the constructor. Each entry in the map consists of a key-value pair. The `insert` function inserts/updates the key-value pair in the map. The `sum` function iterates through each entry in the map, checking if the key starts with the given prefix. If it does, we sum up the value of that entry. Finally, we return the total sum of the values that have a key with a prefix equal to a given string. This algorithm has an O(n) complexity for the `sum` operation since it iterates through each key-value pair in the map. There are more optimized algorithms that use Trie data structures to improve the complexity to O(m), where m is the prefix length. However, this simple implementation works within the limitations of the constraints mentioned in the problem statement.\n    ",
+    "javascript": "\n    ```javascript\nclass MapSum {\n    constructor() {\n        this.map = new Map();\n    }\n\n    insert(key, val) {\n        this.map.set(key, val);\n    }\n\n    sum(prefix) {\n        let total = 0;\n        for (let [key, val] of this.map.entries()) {\n            if (key.startsWith(prefix)) {\n                total += val;\n            }\n        }\n        return total;\n    }\n}\n```\n    \n    We create a map in the constructor. Each entry in the map consists of a key-value pair. The `insert` function inserts/updates the key-value pair in the map. The `sum` function iterates through each entry in the map, checking if the key starts with the given prefix. If it does, we sum up the value of that entry. Finally, we return the total sum of the values that have a key with a prefix equal to a given string. This algorithm has an O(n) complexity for the `sum` operation since it iterates through each key-value pair in the map. There are more optimized algorithms that use Trie data structures to improve the complexity to O(m), where m is the prefix length. However, this simple implementation works within the limitations of the constraints mentioned in the problem statement.\n    ",
+    "java": "\n    ```java\nclass MapSum {\n    private HashMap<String, Integer> map;\n\n    public MapSum() {\n        map = new HashMap<>();\n    }\n\n    public void insert(String key, int val) {\n        map.put(key, val);\n    }\n\n    public int sum(String prefix) {\n        int total = 0;\n        for (String key : map.keySet())\n            if (key.startsWith(prefix))\n                total += map.get(key);\n        return total;\n    }\n}\n```\n    \n    We create a map in the constructor. Each entry in the map consists of a key-value pair. The `insert` function inserts/updates the key-value pair in the map. The `sum` function iterates through each entry in the map, checking if the key starts with the given prefix. If it does, we sum up the value of that entry. Finally, we return the total sum of the values that have a key with a prefix equal to a given string. This algorithm has an O(n) complexity for the `sum` operation since it iterates through each key-value pair in the map. There are more optimized algorithms that use Trie data structures to improve the complexity to O(m), where m is the prefix length. However, this simple implementation works within the limitations of the constraints mentioned in the problem statement.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

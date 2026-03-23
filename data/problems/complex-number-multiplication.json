@@ -1,0 +1,24 @@
+{
+  "id": 537,
+  "title": "Complex Number Multiplication",
+  "slug": "complex-number-multiplication",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A [complex number](https://en.wikipedia.org/wiki/Complex_number) can be represented as a string on the form \"real+imaginaryi \" where:\n\n*   real is the real part and is an integer in the range [-100, 100].\n*   imaginary is the imaginary part and is an integer in the range [-100, 100].\n*   i2 == -1.\n\nGiven two complex numbers num1 and num2 as strings, return _a string of the complex number that represents their multiplications_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef complexNumberMultiply(num1: str, num2: str) -> str:\n    real1, imag1 = map(int, num1[:-1].split('+'))\n    real2, imag2 = map(int, num2[:-1].split('+'))\n\n    real = real1 * real2 - imag1 * imag2\n    imag = real1 * imag2 + real2 * imag1\n\n    return f\"{real}+{imag}i\"\n```\n    \n    The algorithm first extracts the real and imaginary parts of the input complex numbers. In C++, sscanf is used to read formatted data from a string. In Java, we use split with a regex that matches both \"+\" and \"i\". In Python and JavaScript, we use split and map for the conversions.\n\nOnce we have real and imaginary parts of both numbers, we multiply the complex numbers using the formula:\n(real1 * real2 - imag1 * imag2) + (real1 * imag2 + real2 * imag1)i\n\nFinally, we convert the result into a string in the required format and return it.\n    ",
+    "javascript": "\n    ```javascript\nfunction complexNumberMultiply(num1, num2) {\n    const [real1, imag1] = num1.slice(0, -1).split('+').map(Number);\n    const [real2, imag2] = num2.slice(0, -1).split('+').map(Number);\n\n    const real = real1 * real2 - imag1 * imag2;\n    const imag = real1 * imag2 + real2 * imag1;\n\n    return `${real}+${imag}i`;\n}\n```\n    \n    The algorithm first extracts the real and imaginary parts of the input complex numbers. In C++, sscanf is used to read formatted data from a string. In Java, we use split with a regex that matches both \"+\" and \"i\". In Python and JavaScript, we use split and map for the conversions.\n\nOnce we have real and imaginary parts of both numbers, we multiply the complex numbers using the formula:\n(real1 * real2 - imag1 * imag2) + (real1 * imag2 + real2 * imag1)i\n\nFinally, we convert the result into a string in the required format and return it.\n    ",
+    "java": "\n    ```java\npublic String complexNumberMultiply(String num1, String num2) {\n    String[] tokens1 = num1.split(\"\\\\+|i\");\n    String[] tokens2 = num2.split(\"\\\\+|i\");\n    int real1 = Integer.parseInt(tokens1[0]);\n    int imag1 = Integer.parseInt(tokens1[1]);\n    int real2 = Integer.parseInt(tokens2[0]);\n    int imag2 = Integer.parseInt(tokens2[1]);\n\n    int real = real1 * real2 - imag1 * imag2;\n    int imag = real1 * imag2 + real2 * imag1;\n\n    return real + \"+\" + imag + \"i\";\n}\n```\n    \n    The algorithm first extracts the real and imaginary parts of the input complex numbers. In C++, sscanf is used to read formatted data from a string. In Java, we use split with a regex that matches both \"+\" and \"i\". In Python and JavaScript, we use split and map for the conversions.\n\nOnce we have real and imaginary parts of both numbers, we multiply the complex numbers using the formula:\n(real1 * real2 - imag1 * imag2) + (real1 * imag2 + real2 * imag1)i\n\nFinally, we convert the result into a string in the required format and return it.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

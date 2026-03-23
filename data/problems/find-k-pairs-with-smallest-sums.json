@@ -1,0 +1,24 @@
+{
+  "id": 373,
+  "title": "Find K Pairs with Smallest Sums",
+  "slug": "find-k-pairs-with-smallest-sums",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two integer arrays nums1 and nums2 sorted in ascending order and an integer k.\n\nDefine a pair (u, v) which consists of one element from the first array and one element from the second array.\n\nReturn _the_ k _pairs_ (u1, v1), (u2, v2), ..., (uk, vk) _with the smallest sums_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nimport heapq\n\ndef kSmallestPairs(nums1, nums2, k):\n    if not nums1 or not nums2:\n        return []\n    \n    heap = [(nums1[i] + nums2[0], i, 0) for i in range(min(k, len(nums1)))]\n    heapq.heapify(heap)\n    result = []\n\n    while k > 0 and heap:\n        s, i, j = heapq.heappop(heap)\n        result.append([nums1[i], nums2[j]])\n        if j + 1 < len(nums2):\n            heapq.heappush(heap, (nums1[i] + nums2[j + 1], i, j + 1))\n        k -= 1\n\n    return result\n```\n    \n    The idea is to take advantage of the fact that the input arrays are sorted. We start by adding the first element of nums2 with each element of nums1 into a min heap. In each iteration, we pop the smallest sum from the heap, add it to the result, and then replace this sum with the sum of the same element from nums1 but with the next element from nums2, if there is a next element in nums2.\n\nThe comparison function used for the min heap is based on the actual sum of pairs of elements from the given arrays.\n\nAll solutions have O(k * log(min(k, m))) time complexity, where m is the length of the first array. This is because there will be at most min(k, m) elements in the min heap, and at most k iterations.\n    ",
+    "javascript": "\n    ```javascript\nfunction kSmallestPairs(nums1, nums2, k) {\n    const minHeap = new PriorityQueue(k, (a, b) => a[0] + a[1] - (b[0] + b[1]));\n    const result = [];\n\n    if (nums1.length === 0 || nums2.length === 0 || k === 0) {\n        return result;\n    }\n\n    for (let i = 0; i < nums1.length && i < k; i++) {\n        minHeap.offer([nums1[i], nums2[0], 0]);\n    }\n\n    while (k-- > 0 && !minHeap.isEmpty()) {\n        const curr = minHeap.poll();\n        result.push([curr[0], curr[1]]);\n        if (curr[2] === nums2.length - 1) {\n            continue;\n        }\n        minHeap.offer([curr[0], nums2[curr[2] + 1], curr[2] + 1]);\n    }\n\n    return result;\n}\n```\n    \n    The idea is to take advantage of the fact that the input arrays are sorted. We start by adding the first element of nums2 with each element of nums1 into a min heap. In each iteration, we pop the smallest sum from the heap, add it to the result, and then replace this sum with the sum of the same element from nums1 but with the next element from nums2, if there is a next element in nums2.\n\nThe comparison function used for the min heap is based on the actual sum of pairs of elements from the given arrays.\n\nAll solutions have O(k * log(min(k, m))) time complexity, where m is the length of the first array. This is because there will be at most min(k, m) elements in the min heap, and at most k iterations.\n    ",
+    "java": "\n    ```java\npublic List<int[]> kSmallestPairs(int[] nums1, int[] nums2, int k) {\n    PriorityQueue<int[]> minHeap = new PriorityQueue<>((a, b) -> (a[0] + a[1]) - (b[0] + b[1]));\n    List<int[]> result = new ArrayList<>();\n\n    if (nums1.length == 0 || nums2.length == 0 || k == 0) {\n        return result;\n    }\n\n    for (int i = 0; i < nums1.length && i < k; i++) {\n        minHeap.offer(new int[]{nums1[i], nums2[0], 0});\n    }\n\n    while (k-- > 0 && !minHeap.isEmpty()) {\n        int[] curr = minHeap.poll();\n        result.add(new int[]{curr[0], curr[1]});\n        if (curr[2] == nums2.length - 1) {\n            continue;\n        }\n        minHeap.offer(new int[]{curr[0], nums2[curr[2] + 1], curr[2] + 1});\n    }\n\n    return result;\n}\n```\n    \n    The idea is to take advantage of the fact that the input arrays are sorted. We start by adding the first element of nums2 with each element of nums1 into a min heap. In each iteration, we pop the smallest sum from the heap, add it to the result, and then replace this sum with the sum of the same element from nums1 but with the next element from nums2, if there is a next element in nums2.\n\nThe comparison function used for the min heap is based on the actual sum of pairs of elements from the given arrays.\n\nAll solutions have O(k * log(min(k, m))) time complexity, where m is the length of the first array. This is because there will be at most min(k, m) elements in the min heap, and at most k iterations.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

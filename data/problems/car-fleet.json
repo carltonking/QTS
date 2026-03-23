@@ -1,0 +1,24 @@
+{
+  "id": 853,
+  "title": "Car Fleet",
+  "slug": "car-fleet",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There are n cars going to the same destination along a one-lane road. The destination is target miles away.\n\nYou are given two integer array position and speed, both of length n, where position[i] is the position of the ith car and speed[i] is the speed of the ith car (in miles per hour).\n\nA car can never pass another car ahead of it, but it can catch up to it and drive bumper to bumper at the same speed. The faster car will slow down to match the slower car's speed. The distance between these two cars is ignored (i.e., they are assumed to have the same position).\n\nA car fleet is some non-empty set of cars driving at the same position and same speed. Note that a single car is also a car fleet.\n\nIf a car catches up to a car fleet right at the destination point, it will still be considered as one car fleet.\n\nReturn _the number of car fleets that will arrive at the destination_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_profit_assignment(difficulty, profit, worker):\n    jobs = sorted(zip(difficulty, profit))\n    worker.sort()\n\n    i, max_profit, total_profit = 0, 0, 0\n    for ability in worker:\n        while i < len(difficulty) and ability >= jobs[i][0]:\n            max_profit = max(max_profit, jobs[i][1])\n            i += 1\n        total_profit += max_profit\n    return total_profit\n```\n    \n    1. We create a jobs array by combining the difficulty and profit arrays, and then sort it based on difficulty. We also sort the worker array.\n2. Initialize the indices `i`, maximum profit `max_profit`, and total profit `total_profit` to 0.\n3. Loop through each worker's ability.\n4. In a nested loop, check if the worker's ability is greater or equal to the current difficulty. If yes, update the maximum profit with the current profit value and increment the index `i`.\n5. After the nested loop, add the maximum profit to the total profit for this worker.\n6. Return the total profit after processing all workers.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxProfitAssignment(difficulty, profit, worker) {\n    const jobs = difficulty.map((d, i) => [d, profit[i]]).sort((a, b) => a[0] - b[0]);\n    worker.sort((a, b) => a - b);\n\n    let i = 0, maxProfit = 0, totalProfit = 0;\n    for (const ability of worker) {\n        while (i < difficulty.length && ability >= jobs[i][0]) {\n            maxProfit = Math.max(maxProfit, jobs[i][1]);\n            i++;\n        }\n        totalProfit += maxProfit;\n    }\n    return totalProfit;\n}\n```\n    \n    1. We create a jobs array by combining the difficulty and profit arrays, and then sort it based on difficulty. We also sort the worker array.\n2. Initialize the indices `i`, maximum profit `max_profit`, and total profit `total_profit` to 0.\n3. Loop through each worker's ability.\n4. In a nested loop, check if the worker's ability is greater or equal to the current difficulty. If yes, update the maximum profit with the current profit value and increment the index `i`.\n5. After the nested loop, add the maximum profit to the total profit for this worker.\n6. Return the total profit after processing all workers.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\nimport java.util.Comparator;\n\npublic int maxProfitAssignment(int[] difficulty, int[] profit, int[] worker) {\n    Integer[] jobIdx = new Integer[difficulty.length];\n    for (int i = 0; i < difficulty.length; i++) {\n        jobIdx[i] = i;\n    }\n    Arrays.sort(jobIdx, Comparator.comparingInt(i -> difficulty[i]));\n    Arrays.sort(worker);\n\n    int i = 0, maxProfit = 0, totalProfit = 0;\n    for (int ability : worker) {\n        while (i < difficulty.length && ability >= difficulty[jobIdx[i]]) {\n            maxProfit = Math.max(maxProfit, profit[jobIdx[i]]);\n            i++;\n        }\n        totalProfit += maxProfit;\n    }\n    return totalProfit;\n}\n```\n    \n    1. We create a jobs array by combining the difficulty and profit arrays, and then sort it based on difficulty. We also sort the worker array.\n2. Initialize the indices `i`, maximum profit `max_profit`, and total profit `total_profit` to 0.\n3. Loop through each worker's ability.\n4. In a nested loop, check if the worker's ability is greater or equal to the current difficulty. If yes, update the maximum profit with the current profit value and increment the index `i`.\n5. After the nested loop, add the maximum profit to the total profit for this worker.\n6. Return the total profit after processing all workers.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

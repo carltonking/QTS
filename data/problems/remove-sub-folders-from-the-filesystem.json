@@ -1,0 +1,24 @@
+{
+  "id": 1233,
+  "title": "Remove Sub-Folders from the Filesystem",
+  "slug": "remove-sub-folders-from-the-filesystem",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a list of folders folder, return _the folders after removing all sub-folders in those folders_. You may return the answer in any order.\n\nIf a folder[i] is located within another folder[j], it is called a sub-folder of it.\n\nThe format of a path is one or more concatenated strings of the form: '/' followed by one or more lowercase English letters.\n\n*   For example, \"/leetcode \" and \"/leetcode/problems \" are valid paths while an empty string and \"/ \" are not.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom typing import List\n\ndef removeSubfolders(folder: List[str]) -> List[str]:\n    result = []\n    folder.sort()\n    prefix = \"/\"\n    \n    for path in folder:\n        if not path.startswith(prefix):\n            result.append(path)\n            prefix = path + \"/\"\n    return result\n```\n    \n    First, sort the list of folders lexicographically. This guarantees that if a folder is a subfolder of another folder, the parent folder will always come before the subfolder in the sorted list.\n\nNext, initialize an empty result list and a prefix variable with the value '/'.\n\nIterate over the sorted folder list. Check if the current folder starts with the current prefix value. If it doesn't, it means that the current folder is not a subfolder of the previously checked folder, so add it to the result list and update the prefix value to the current folder concatenated with a '/' character.\n\nFinally, return the result list after processing all the folders. This eliminates any redundant subfolders in the list.\n    ",
+    "javascript": "\n    ```javascript\nfunction removeSubfolders(folder) {\n    let result = [];\n    folder.sort();\n    let prefix = \"/\";\n    \n    for (let path of folder) {\n        if (!path.startsWith(prefix)) {\n            result.push(path);\n            prefix = path + \"/\";\n        }\n    }\n    return result;\n}\n```\n    \n    First, sort the list of folders lexicographically. This guarantees that if a folder is a subfolder of another folder, the parent folder will always come before the subfolder in the sorted list.\n\nNext, initialize an empty result list and a prefix variable with the value '/'.\n\nIterate over the sorted folder list. Check if the current folder starts with the current prefix value. If it doesn't, it means that the current folder is not a subfolder of the previously checked folder, so add it to the result list and update the prefix value to the current folder concatenated with a '/' character.\n\nFinally, return the result list after processing all the folders. This eliminates any redundant subfolders in the list.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.List;\n\npublic List<String> removeSubfolders(String[] folder) {\n    List<String> result = new ArrayList<>();\n    Arrays.sort(folder);\n    String prefix = \"/\";\n    \n    for (String path : folder) {\n        if (!path.startsWith(prefix)) {\n            result.add(path);\n            prefix = path + \"/\";\n        }\n    }\n    return result;\n}\n```\n    \n    First, sort the list of folders lexicographically. This guarantees that if a folder is a subfolder of another folder, the parent folder will always come before the subfolder in the sorted list.\n\nNext, initialize an empty result list and a prefix variable with the value '/'.\n\nIterate over the sorted folder list. Check if the current folder starts with the current prefix value. If it doesn't, it means that the current folder is not a subfolder of the previously checked folder, so add it to the result list and update the prefix value to the current folder concatenated with a '/' character.\n\nFinally, return the result list after processing all the folders. This eliminates any redundant subfolders in the list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

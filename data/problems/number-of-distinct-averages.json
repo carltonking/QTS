@@ -1,0 +1,24 @@
+{
+  "id": 2465,
+  "title": "Number of Distinct Averages",
+  "slug": "number-of-distinct-averages",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums of even length.\n\nAs long as nums is not empty, you must repetitively:\n\n*   Find the minimum number in nums and remove it.\n*   Find the maximum number in nums and remove it.\n*   Calculate the average of the two removed numbers.\n\nThe average of two numbers a and b is (a + b) / 2.\n\n*   For example, the average of 2 and 3 is (2 + 3) / 2 = 2.5.\n\nReturn _the number of distinct averages calculated using the above process_.\n\nNote that when there is a tie for a minimum or maximum number, any can be removed.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef distinctAverages(nums):\n    averages = set()\n    nums.sort()\n    n = len(nums)\n    for i in range(n // 2):\n        averages.add((nums[i] + nums[n - 1 - i]) / 2.0)\n    return len(averages)\n```\n    \n    1. Initialize an empty sets called 'averages' to store the distinct averages.\n2. Sort the input array 'nums'.\n3. Iterate through the first half of the sorted array and calculate the average of the current number and its counterpart from the other end, then add this average to the 'averages' set.\n4. Return the size of the 'averages' set which represents the distinct averages calculated using the given process.\n    ",
+    "javascript": "\n    ```javascript\nfunction distinctAverages(nums) {\n    let averages = new Set();\n    nums.sort((a, b) => a - b);\n    let n = nums.length;\n    for (let i = 0; i < n / 2; i++) {\n        averages.add((nums[i] + nums[n - 1 - i]) / 2.0);\n    }\n    return averages.size;\n}\n```\n    \n    1. Initialize an empty sets called 'averages' to store the distinct averages.\n2. Sort the input array 'nums'.\n3. Iterate through the first half of the sorted array and calculate the average of the current number and its counterpart from the other end, then add this average to the 'averages' set.\n4. Return the size of the 'averages' set which represents the distinct averages calculated using the given process.\n    ",
+    "java": "\n    ```java\npublic int distinctAverages(int[] nums) {\n    Set<Double> averages = new HashSet<>();\n    Arrays.sort(nums);\n    int n = nums.length;\n    for (int i = 0; i < n / 2; i++) {\n        averages.add((nums[i] + nums[n - 1 - i]) / 2.0);\n    }\n    return averages.size();\n}\n```\n    \n    1. Initialize an empty sets called 'averages' to store the distinct averages.\n2. Sort the input array 'nums'.\n3. Iterate through the first half of the sorted array and calculate the average of the current number and its counterpart from the other end, then add this average to the 'averages' set.\n4. Return the size of the 'averages' set which represents the distinct averages calculated using the given process.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

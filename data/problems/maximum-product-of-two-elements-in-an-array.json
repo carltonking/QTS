@@ -1,0 +1,24 @@
+{
+  "id": 1464,
+  "title": "Maximum Product of Two Elements in an Array",
+  "slug": "maximum-product-of-two-elements-in-an-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given the array of integers nums, you will choose two different indices i and j of that array. _Return the maximum value of_ (nums[i]-1)*(nums[j]-1).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import Counter\n\ndef minSetSize(arr):\n    count = Counter(arr)\n    freq = list(count.values())\n    freq.sort(reverse=True)\n\n    removed, setSize = 0, 0\n    for f in freq:\n        removed += f\n        setSize += 1\n        if removed * 2 >= len(arr):\n            return setSize\n\n    return 0\n```\n\n    \n    1. Create a map (or dictionary) to store the count of each unique integer in the input array.\n2. Iterate through the input array, incrementing the count for each number in the map.\n3. Create an array (or list) of the counts in the map, sorted in descending order.\n4. Initialize variables `removed` and `setSize` to zero. `removed` tracks the number of elements removed so far, and `setSize` is the size of the set of integers.\n5. Iterate through the sorted count array, adding the count to the `removed` variable and incrementing `setSize`. If the number of `removed` elements is at least half the size of the input array, return `setSize`.\n6. If the loop completes without returning, return 0.\n    ",
+    "javascript": "\n    ```javascript\nfunction minSetSize(arr) {\n    const count = new Map();\n    for (const value of arr)\n        count.set(value, (count.get(value) || 0) + 1);\n\n    const freq = Array.from(count.values());\n    freq.sort((a, b) => b - a);\n\n    let removed = 0, setSize = 0;\n    for (const f of freq) {\n        removed += f;\n        setSize++;\n        if (removed * 2 >= arr.length)\n            return setSize;\n    }\n\n    return 0;\n}\n```\n\n    \n    1. Create a map (or dictionary) to store the count of each unique integer in the input array.\n2. Iterate through the input array, incrementing the count for each number in the map.\n3. Create an array (or list) of the counts in the map, sorted in descending order.\n4. Initialize variables `removed` and `setSize` to zero. `removed` tracks the number of elements removed so far, and `setSize` is the size of the set of integers.\n5. Iterate through the sorted count array, adding the count to the `removed` variable and incrementing `setSize`. If the number of `removed` elements is at least half the size of the input array, return `setSize`.\n6. If the loop completes without returning, return 0.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\nimport java.util.ArrayList;\nimport java.util.Collections;\n\npublic int minSetSize(int[] arr) {\n    HashMap<Integer, Integer> count = new HashMap<>();\n    for (int value : arr)\n        count.put(value, count.getOrDefault(value, 0) + 1);\n\n    ArrayList<Integer> freq = new ArrayList<>(count.values());\n    Collections.sort(freq, Collections.reverseOrder());\n\n    int removed = 0, setSize = 0;\n    for (int f : freq) {\n        removed += f;\n        setSize++;\n        if (removed * 2 >= arr.length)\n            return setSize;\n    }\n\n    return 0;\n}\n```\n\n    \n    1. Create a map (or dictionary) to store the count of each unique integer in the input array.\n2. Iterate through the input array, incrementing the count for each number in the map.\n3. Create an array (or list) of the counts in the map, sorted in descending order.\n4. Initialize variables `removed` and `setSize` to zero. `removed` tracks the number of elements removed so far, and `setSize` is the size of the set of integers.\n5. Iterate through the sorted count array, adding the count to the `removed` variable and incrementing `setSize`. If the number of `removed` elements is at least half the size of the input array, return `setSize`.\n6. If the loop completes without returning, return 0.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

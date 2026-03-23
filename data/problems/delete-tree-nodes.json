@@ -1,0 +1,24 @@
+{
+  "id": 1273,
+  "title": "Delete Tree Nodes",
+  "slug": "delete-tree-nodes",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A tree rooted at node 0 is given as follows:\n\n*   The number of nodes is nodes;\n*   The value of the ith node is value[i];\n*   The parent of the ith node is parent[i].\n\nRemove every subtree whose sum of values of nodes is zero.\n\nReturn _the number of the remaining nodes in the tree_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef countSmallerFrequencies(words, queries):\n    freqWords = [word.count(min(word)) for word in words]\n    \n    ans = []\n    for query in queries:\n        freqQuery = query.count(min(query))\n        ans.append(sum(f > freqQuery for f in freqWords))\n        \n    return ans\n```\n    \n    1. First, we calculate the frequencies of the lexicographically smallest characters in each word of `words`. This is done by iterating through the words, finding the smallest character, counting its frequency, and store the result in a new array named `freqWords`.\n2. Next, we iterate through the queries in `queries`. For each query, we find the lexicographically smallest character, and count its frequency `freqQuery`.\n3. For each query, we count the number of elements in `freqWords` that are greater than the `freqQuery`. This is done using `count_if` in C++, `filter` followed by `count` in Java, a list comprehension with `sum` in Python, and `filter` followed by `length` in JavaScript.\n4. The result is appended to the `ans` array and returned at the end.\n    ",
+    "javascript": "\n    ```javascript\nfunction countSmallerFrequencies(words, queries) {\n    const freqWords = words.map(word => {\n        const minChar = Math.min(...word);\n        return word.split(minChar).length - 1;\n    });\n    \n    const ans = [];\n    for (const query of queries) {\n        const minChar = Math.min(...query);\n        const freqQuery = query.split(minChar).length - 1;\n        \n        ans.push(freqWords.filter(f => f > freqQuery).length);\n    }\n    \n    return ans;\n}\n```\n    \n    1. First, we calculate the frequencies of the lexicographically smallest characters in each word of `words`. This is done by iterating through the words, finding the smallest character, counting its frequency, and store the result in a new array named `freqWords`.\n2. Next, we iterate through the queries in `queries`. For each query, we find the lexicographically smallest character, and count its frequency `freqQuery`.\n3. For each query, we count the number of elements in `freqWords` that are greater than the `freqQuery`. This is done using `count_if` in C++, `filter` followed by `count` in Java, a list comprehension with `sum` in Python, and `filter` followed by `length` in JavaScript.\n4. The result is appended to the `ans` array and returned at the end.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int[] countSmallerFrequencies(String[] words, String[] queries) {\n    int[] freqWords = new int[words.length];\n    \n    for (int i = 0; i < words.length; i++) {\n        char minChar = words[i].chars().min().getAsInt();\n        freqWords[i] = (int) words[i].chars().filter(c -> c == minChar).count();\n    }\n    \n    int[] ans = new int[queries.length];\n    for (int i = 0; i < queries.length; i++) {\n        char minChar = queries[i].chars().min().getAsInt();\n        int freqQuery = (int) queries[i].chars().filter(c -> c == minChar).count();\n        \n        ans[i] = (int) Arrays.stream(freqWords).filter(f -> f > freqQuery).count();\n    }\n\n    return ans;\n}\n```\n    \n    1. First, we calculate the frequencies of the lexicographically smallest characters in each word of `words`. This is done by iterating through the words, finding the smallest character, counting its frequency, and store the result in a new array named `freqWords`.\n2. Next, we iterate through the queries in `queries`. For each query, we find the lexicographically smallest character, and count its frequency `freqQuery`.\n3. For each query, we count the number of elements in `freqWords` that are greater than the `freqQuery`. This is done using `count_if` in C++, `filter` followed by `count` in Java, a list comprehension with `sum` in Python, and `filter` followed by `length` in JavaScript.\n4. The result is appended to the `ans` array and returned at the end.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

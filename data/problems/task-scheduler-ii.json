@@ -1,0 +1,24 @@
+{
+  "id": 2365,
+  "title": "Task Scheduler II",
+  "slug": "task-scheduler-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed array of positive integers tasks, representing tasks that need to be completed in order, where tasks[i] represents the type of the ith task.\n\nYou are also given a positive integer space, which represents the minimum number of days that must pass after the completion of a task before another task of the same type can be performed.\n\nEach day, until all tasks have been completed, you must either:\n\n*   Complete the next task from tasks, or\n*   Take a break.\n\nReturn _the minimum number of days needed to complete all tasks_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_days_to_complete_tasks(tasks, space):\n    task_last_complete = {}\n    days = 0\n\n    for task in tasks:\n        if task in task_last_complete:\n            passed_days = days - task_last_complete[task]\n            if passed_days < space:\n                days += space - passed_days\n        days += 1\n        task_last_complete[task] = days\n\n    return days\n```\n    \n    The algorithm uses a hash table to keep track of the last completed day for each task type. It iterates through the given `tasks`, and for each task, it calculates the number of days passed since the last completion of the same task type. If the passed days are less than the required `space`, we add the difference to the current `days` count, simulating taking breaks until the task can be performed again. Finally, we increment the days count, as well as updating the last completed day of the task type in the hash table. The algorithm returns the total number of days needed to complete all tasks.\n    ",
+    "javascript": "\n    ```javascript\nfunction minDaysToCompleteTasks(tasks, space) {\n    const taskLastComplete = {};\n    let days = 0;\n\n    for (const task of tasks) {\n        if (task in taskLastComplete) {\n            const passedDays = days - taskLastComplete[task];\n            if (passedDays < space) {\n                days += space - passedDays;\n            }\n        }\n        days++;\n        taskLastComplete[task] = days;\n    }\n\n    return days;\n}\n```\n    \n    The algorithm uses a hash table to keep track of the last completed day for each task type. It iterates through the given `tasks`, and for each task, it calculates the number of days passed since the last completion of the same task type. If the passed days are less than the required `space`, we add the difference to the current `days` count, simulating taking breaks until the task can be performed again. Finally, we increment the days count, as well as updating the last completed day of the task type in the hash table. The algorithm returns the total number of days needed to complete all tasks.\n    ",
+    "java": "\n    ```java\npublic int minDaysToCompleteTasks(int[] tasks, int space) {\n    HashMap<Integer, Integer> taskLastComplete = new HashMap<>();\n    int days = 0;\n\n    for (int task : tasks) {\n        if (taskLastComplete.containsKey(task)) {\n            int passedDays = days - taskLastComplete.get(task);\n            if (passedDays < space) {\n                days += space - passedDays;\n            }\n        }\n        days++;\n        taskLastComplete.put(task, days);\n    }\n\n    return days;\n}\n```\n    \n    The algorithm uses a hash table to keep track of the last completed day for each task type. It iterates through the given `tasks`, and for each task, it calculates the number of days passed since the last completion of the same task type. If the passed days are less than the required `space`, we add the difference to the current `days` count, simulating taking breaks until the task can be performed again. Finally, we increment the days count, as well as updating the last completed day of the task type in the hash table. The algorithm returns the total number of days needed to complete all tasks.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

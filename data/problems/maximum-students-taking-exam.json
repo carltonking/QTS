@@ -1,0 +1,24 @@
+{
+  "id": 1349,
+  "title": "Maximum Students Taking Exam",
+  "slug": "maximum-students-taking-exam",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given a m * n matrix seats that represent seats distributions in a classroom. If a seat is broken, it is denoted by '#' character otherwise it is denoted by a '.' character.\n\nStudents can see the answers of those sitting next to the left, right, upper left and upper right, but he cannot see the answers of the student sitting directly in front or behind him. Return the maximum number of students that can take the exam together without any cheating being possible..\n\nStudents must be placed in seats in good condition.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom typing import List\n\ndef checkStraightLine(coordinates: List[List[int]]) -> bool:\n    dx = coordinates[1][0] - coordinates[0][0]\n    dy = coordinates[1][1] - coordinates[0][1]\n\n    for x, y in coordinates[2:]:\n        if dx * (y - coordinates[0][1]) != dy * (x - coordinates[0][0]):\n            return False\n\n    return True\n```\n    \n    The algorithm checks if the given points make a straight line in the XY plane. It calculates the slope (delta y / delta x) between the first two points in the array, and then iterates through the rest of the points comparing their slopes against the calculated slope. This is done by checking if `(dx * y) == (dy * x)` for each point. If any point has a different slope, return false (meaning the points don't make a straight line). If all points have the same slope, return true (meaning the points make a straight line).\n    ",
+    "javascript": "\n    ```javascript\nvar checkStraightLine = function(coordinates) {\n    let dx = coordinates[1][0] - coordinates[0][0];\n    let dy = coordinates[1][1] - coordinates[0][1];\n\n    for(let i = 2; i < coordinates.length; i++) {\n        let x = coordinates[i][0] - coordinates[0][0];\n        let y = coordinates[i][1] - coordinates[0][1];\n        if(dx * y != dy * x) return false;\n    }\n\n    return true;\n};\n```\n    \n    The algorithm checks if the given points make a straight line in the XY plane. It calculates the slope (delta y / delta x) between the first two points in the array, and then iterates through the rest of the points comparing their slopes against the calculated slope. This is done by checking if `(dx * y) == (dy * x)` for each point. If any point has a different slope, return false (meaning the points don't make a straight line). If all points have the same slope, return true (meaning the points make a straight line).\n    ",
+    "java": "\n    ```java\nclass Solution {\n    public boolean checkStraightLine(int[][] coordinates) {\n        int dx = coordinates[1][0] - coordinates[0][0];\n        int dy = coordinates[1][1] - coordinates[0][1];\n\n        for(int i = 2; i < coordinates.length; i++) {\n            int x = coordinates[i][0] - coordinates[0][0];\n            int y = coordinates[i][1] - coordinates[0][1];\n            if(dx * y != dy * x) return false;\n        }\n\n        return true;\n    }\n}\n```\n    \n    The algorithm checks if the given points make a straight line in the XY plane. It calculates the slope (delta y / delta x) between the first two points in the array, and then iterates through the rest of the points comparing their slopes against the calculated slope. This is done by checking if `(dx * y) == (dy * x)` for each point. If any point has a different slope, return false (meaning the points don't make a straight line). If all points have the same slope, return true (meaning the points make a straight line).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

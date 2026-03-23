@@ -1,0 +1,24 @@
+{
+  "id": 1054,
+  "title": "Distant Barcodes",
+  "slug": "distant-barcodes",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "In a warehouse, there is a row of barcodes, where the ith barcode is barcodes[i].\n\nRearrange the barcodes so that no two adjacent barcodes are equal. You may return any answer, and it is guaranteed an answer exists.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef bitwise_complement(n):\n    x = 1\n    while n > x:\n        x = x * 2 + 1\n    return x - n\n```\n    \n    The algorithm starts by setting an integer `x` to 1. Then, we use a while loop to keep multiplying `x` by 2 and adding 1 until it becomes greater than the given number `n`. This results in a number `x` which has all 1s in its binary representation and has the same number of binary digits (or greater) as the given number `n`. Finally, we return the difference between `x` and `n`, which flip-flops 0s and 1s and gives the complement of `n`.\n    ",
+    "javascript": "\n    ```javascript\nfunction bitwiseComplement(n) {\n    let x = 1;\n    while (n > x) {\n        x = x * 2 + 1;\n    }\n    return x - n;\n}\n```\n    \n    The algorithm starts by setting an integer `x` to 1. Then, we use a while loop to keep multiplying `x` by 2 and adding 1 until it becomes greater than the given number `n`. This results in a number `x` which has all 1s in its binary representation and has the same number of binary digits (or greater) as the given number `n`. Finally, we return the difference between `x` and `n`, which flip-flops 0s and 1s and gives the complement of `n`.\n    ",
+    "java": "\n    ```java\npublic int bitwiseComplement(int n) {\n    int x = 1;\n    while (n > x) {\n        x = x * 2 + 1;\n    }\n    return x - n;\n}\n```\n    \n    The algorithm starts by setting an integer `x` to 1. Then, we use a while loop to keep multiplying `x` by 2 and adding 1 until it becomes greater than the given number `n`. This results in a number `x` which has all 1s in its binary representation and has the same number of binary digits (or greater) as the given number `n`. Finally, we return the difference between `x` and `n`, which flip-flops 0s and 1s and gives the complement of `n`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

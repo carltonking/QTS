@@ -1,0 +1,24 @@
+{
+  "id": 1165,
+  "title": "Single-Row Keyboard",
+  "slug": "single-row-keyboard",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "There is a special keyboard with all keys in a single row.\n\nGiven a string keyboard of length 26 indicating the layout of the keyboard (indexed from 0 to 25). Initially, your finger is at index 0. To type a character, you have to move your finger to the index of the desired character. The time taken to move your finger from index i to index j is |i - j|.\n\nYou want to type a string word. Write a function to calculate how much time it takes to type it with one finger.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef calculate_time(keyboard: str, word: str) -> int:\n    time = 0\n    prev_index = 0\n    char_to_index = {char: i for i, char in enumerate(keyboard)}\n\n    for c in word:\n        time += abs(char_to_index[c] - prev_index)\n        prev_index = char_to_index[c]\n\n    return time\n```\n    \n    1. Initialize the time to 0 and set the current position of the finger to index 0 of the keyboard.\n2. Convert the keyboard layout into a map (hashmap, dictionary, or object) with the characters as keys and their corresponding indices as values.\n3. Loop through each character in the given word and add the absolute difference between the previous index and the current index to the total time.\n4. Update the previous index to the index of the current character.\n5. Return the total time.\n    ",
+    "javascript": "\n    ```javascript\nfunction calculateTime(keyboard, word) {\n    let time = 0;\n    let prevIndex = 0;\n    let charToIndex = {};\n\n    for (let i = 0; i < keyboard.length; i++) {\n        charToIndex[keyboard[i]] = i;\n    }\n\n    for (let c of word) {\n        time += Math.abs(charToIndex[c] - prevIndex);\n        prevIndex = charToIndex[c];\n    }\n\n    return time;\n}\n```\n    \n    1. Initialize the time to 0 and set the current position of the finger to index 0 of the keyboard.\n2. Convert the keyboard layout into a map (hashmap, dictionary, or object) with the characters as keys and their corresponding indices as values.\n3. Loop through each character in the given word and add the absolute difference between the previous index and the current index to the total time.\n4. Update the previous index to the index of the current character.\n5. Return the total time.\n    ",
+    "java": "\n    ```java\npublic int calculateTime(String keyboard, String word) {\n    int time = 0;\n    int prevIndex = 0;\n    Map<Character, Integer> charToIndex = new HashMap<>();\n\n    for (int i = 0; i < keyboard.length(); i++) {\n        charToIndex.put(keyboard.charAt(i), i);\n    }\n\n    for (char c : word.toCharArray()) {\n        time += Math.abs(charToIndex.get(c) - prevIndex);\n        prevIndex = charToIndex.get(c);\n    }\n\n    return time;\n}\n```\n    \n    1. Initialize the time to 0 and set the current position of the finger to index 0 of the keyboard.\n2. Convert the keyboard layout into a map (hashmap, dictionary, or object) with the characters as keys and their corresponding indices as values.\n3. Loop through each character in the given word and add the absolute difference between the previous index and the current index to the total time.\n4. Update the previous index to the index of the current character.\n5. Return the total time.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

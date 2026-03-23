@@ -1,0 +1,24 @@
+{
+  "id": 1055,
+  "title": "Shortest Way to Form String",
+  "slug": "shortest-way-to-form-string",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., \"ace \" is a subsequence of \"abcde \" while \"aec \" is not).\n\nGiven two strings source and target, return _the minimum number of subsequences of_ source _such that their concatenation equals_ target. If the task is impossible, return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef num_pairs_divisible_by60(time):\n    count = [0] * 60\n    pairs = 0\n\n    for t in time:\n        mod = t % 60\n        pairs += count[(60 - mod) % 60]\n        count[mod] += 1\n\n    return pairs\n```\n    \n    The algorithm calculates the modulus (`t % 60`) for each song duration and stores the frequency in the `count` array. When iterating through the song durations, if the durations have moduluses that sum to 60, they meet the pair condition. Therefore, for each song duration, it adds the frequency of the required modulus (`(60 - mod) % 60`) to the count of pairs. This way, the algorithm counts all valid pairs for each song duration.\n\nThe algorithm only requires one pass through the input list; thus, its time complexity is O(n), where n is the number of songs in the input list. The extra space needed is the `count` array, which has a constant size of 60; hence, the space complexity is O(1).\n    ",
+    "javascript": "\n    ```javascript\nfunction numPairsDivisibleBy60(time) {\n    let count = new Array(60).fill(0);\n    let pairs = 0;\n\n    for (let t of time) {\n        let mod = t % 60;\n        pairs += count[(60 - mod) % 60];\n        count[mod]++;\n    }\n\n    return pairs;\n}\n```\n    \n    The algorithm calculates the modulus (`t % 60`) for each song duration and stores the frequency in the `count` array. When iterating through the song durations, if the durations have moduluses that sum to 60, they meet the pair condition. Therefore, for each song duration, it adds the frequency of the required modulus (`(60 - mod) % 60`) to the count of pairs. This way, the algorithm counts all valid pairs for each song duration.\n\nThe algorithm only requires one pass through the input list; thus, its time complexity is O(n), where n is the number of songs in the input list. The extra space needed is the `count` array, which has a constant size of 60; hence, the space complexity is O(1).\n    ",
+    "java": "\n    ```java\npublic int numPairsDivisibleBy60(int[] time) {\n    int[] count = new int[60];\n    int pairs = 0;\n\n    for (int t : time) {\n        int mod = t % 60;\n        pairs += count[(60 - mod) % 60];\n        count[mod]++;\n    }\n\n    return pairs;\n}\n```\n    \n    The algorithm calculates the modulus (`t % 60`) for each song duration and stores the frequency in the `count` array. When iterating through the song durations, if the durations have moduluses that sum to 60, they meet the pair condition. Therefore, for each song duration, it adds the frequency of the required modulus (`(60 - mod) % 60`) to the count of pairs. This way, the algorithm counts all valid pairs for each song duration.\n\nThe algorithm only requires one pass through the input list; thus, its time complexity is O(n), where n is the number of songs in the input list. The extra space needed is the `count` array, which has a constant size of 60; hence, the space complexity is O(1).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

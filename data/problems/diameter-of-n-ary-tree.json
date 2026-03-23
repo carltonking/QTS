@@ -1,0 +1,24 @@
+{
+  "id": 1522,
+  "title": "Diameter of N-Ary Tree",
+  "slug": "diameter-of-n-ary-tree",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a root of an [N-ary tree](https://leetcode.com/articles/introduction-to-n-ary-trees/), you need to compute the length of the diameter of the tree.\n\nThe diameter of an N-ary tree is the length of the longest path between any two nodes in the tree. This path may or may not pass through the root.\n\n(_Nary-Tree input serialization is represented in their level order traversal, each group of children is separated by the null value.)_",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef stoneGameIII(stoneValue):\n    n = len(stoneValue)\n    dp = [0] * (n + 1)\n    dp[n - 1] = stoneValue[n - 1]\n    for i in range(n - 2, -1, -1):\n        dp[i] = stoneValue[i] - dp[i + 1]\n        for j in range(1, 3):\n            if i + j < n:\n                dp[i] = max(dp[i], stoneValue[i + j] - dp[i + j + 1])\n    if dp[0] > 0: return \"Alice\"\n    if dp[0] < 0: return \"Bob\"\n    return \"Tie\"\n```\n    \n    We use a dynamic programming approach with a dp array. The dp array is used to store the difference in stone values for each optimal move. We initialize the last element of the dp array as the last element of the stoneValue array. We run a for loop iterating from the second-last element to the first element of the stoneValue array. For each iteration, we initialize dp[i] as the stone value at index i minus the dp value of the next index. Then, we run another for loop inside this loop for two iterations (since players can take up to 3 stones but we already considered taking 1 stone) and update dp[i] by taking the maximum value between the current dp[i] and the value of the stones for each iteration. After completing the loops, we check if dp[0] is positive, negative, or zero and return \"Alice\", \"Bob\", or \"Tie\" accordingly.\n    ",
+    "javascript": "\n    ```javascript\nfunction stoneGameIII(stoneValue) {\n    const n = stoneValue.length;\n    const dp = new Array(n + 1).fill(0);\n    dp[n - 1] = stoneValue[n - 1];\n    for (let i = n - 2; i >= 0; --i) {\n        dp[i] = stoneValue[i] - dp[i + 1];\n        for (let j = 1; j < 3; ++j) {\n            if (i + j < n)\n                dp[i] = Math.max(dp[i], stoneValue[i + j] - dp[i + j + 1]);\n        }\n    }\n    if (dp[0] > 0) return \"Alice\";\n    if (dp[0] < 0) return \"Bob\";\n    return \"Tie\";\n}\n```\n    \n    We use a dynamic programming approach with a dp array. The dp array is used to store the difference in stone values for each optimal move. We initialize the last element of the dp array as the last element of the stoneValue array. We run a for loop iterating from the second-last element to the first element of the stoneValue array. For each iteration, we initialize dp[i] as the stone value at index i minus the dp value of the next index. Then, we run another for loop inside this loop for two iterations (since players can take up to 3 stones but we already considered taking 1 stone) and update dp[i] by taking the maximum value between the current dp[i] and the value of the stones for each iteration. After completing the loops, we check if dp[0] is positive, negative, or zero and return \"Alice\", \"Bob\", or \"Tie\" accordingly.\n    ",
+    "java": "\n    ```java\npublic String stoneGameIII(int[] stoneValue) {\n    int n = stoneValue.length;\n    int[] dp = new int[n + 1];\n    dp[n - 1] = stoneValue[n - 1];\n    for (int i = n - 2; i >= 0; --i) {\n        dp[i] = stoneValue[i] - dp[i + 1];\n        for (int j = 1; j < 3; ++j) {\n            if (i + j < n)\n                dp[i] = Math.max(dp[i], stoneValue[i + j] - dp[i + j + 1]);\n        }\n    }\n    if (dp[0] > 0) return \"Alice\";\n    if (dp[0] < 0) return \"Bob\";\n    return \"Tie\";\n}\n```\n    \n    We use a dynamic programming approach with a dp array. The dp array is used to store the difference in stone values for each optimal move. We initialize the last element of the dp array as the last element of the stoneValue array. We run a for loop iterating from the second-last element to the first element of the stoneValue array. For each iteration, we initialize dp[i] as the stone value at index i minus the dp value of the next index. Then, we run another for loop inside this loop for two iterations (since players can take up to 3 stones but we already considered taking 1 stone) and update dp[i] by taking the maximum value between the current dp[i] and the value of the stones for each iteration. After completing the loops, we check if dp[0] is positive, negative, or zero and return \"Alice\", \"Bob\", or \"Tie\" accordingly.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

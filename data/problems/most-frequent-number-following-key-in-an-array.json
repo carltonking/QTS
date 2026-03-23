@@ -1,0 +1,24 @@
+{
+  "id": 2190,
+  "title": "Most Frequent Number Following Key In an Array",
+  "slug": "most-frequent-number-following-key-in-an-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums. You are also given an integer key, which is present in nums.\n\nFor every unique integer target in nums, count the number of times target immediately follows an occurrence of key in nums. In other words, count the number of indices i such that:\n\n*   0 <= i <= nums.length - 2,\n*   nums[i] == key and,\n*   nums[i + 1] == target.\n\nReturn _the_ target _with the maximum count_. The test cases will be generated such that the target with maximum count is unique.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_once_in_both(words1, words2):\n    counter1 = {}\n    counter2 = {}\n\n    for word in words1:\n        counter1[word] = counter1.get(word, 0) + 1\n    for word in words2:\n        counter2[word] = counter2.get(word, 0) + 1\n\n    count = 0\n    for item in counter1.items():\n        if item[1] == 1 and counter2.get(item[0], 0) == 1:\n            count += 1\n\n    return count\n```\n    \n    1. Create two hashmaps (counter1 and counter2) to store the frequency of each word in words1 and words2, respectively.\n2. Iterate over the two arrays and increase the word count within their respective hashmap.\n3. Initialize a count variable to 0.\n4. Iterate over the entries in counter1, checking both its value and the value in counter2 for that key (word) against 1. If both are equal to 1, increment the count.\n5. Return the final count.\n    ",
+    "javascript": "\n    ```javascript\nfunction countOnceInBoth(words1, words2) {\n    const counter1 = {};\n    const counter2 = {};\n\n    for (const word of words1)\n        counter1[word] = (counter1[word] || 0) + 1;\n    for (const word of words2)\n        counter2[word] = (counter2[word] || 0) + 1;\n\n    let count = 0;\n    for (const item in counter1)\n        if (counter1[item] === 1 && counter2[item] === 1)\n            count++;\n\n    return count;\n}\n```\n    \n    1. Create two hashmaps (counter1 and counter2) to store the frequency of each word in words1 and words2, respectively.\n2. Iterate over the two arrays and increase the word count within their respective hashmap.\n3. Initialize a count variable to 0.\n4. Iterate over the entries in counter1, checking both its value and the value in counter2 for that key (word) against 1. If both are equal to 1, increment the count.\n5. Return the final count.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\nimport java.util.Map;\n\npublic int countOnceInBoth(String[] words1, String[] words2) {\n    Map<String, Integer> counter1 = new HashMap<>();\n    Map<String, Integer> counter2 = new HashMap<>();\n\n    for (String word : words1)\n        counter1.put(word, counter1.getOrDefault(word, 0) + 1);\n    for (String word : words2)\n        counter2.put(word, counter2.getOrDefault(word, 0) + 1);\n\n    int count = 0;\n    for (Map.Entry<String, Integer> item : counter1.entrySet())\n        if (item.getValue() == 1 && counter2.getOrDefault(item.getKey(), 0) == 1)\n            count++;\n\n    return count;\n}\n```\n    \n    1. Create two hashmaps (counter1 and counter2) to store the frequency of each word in words1 and words2, respectively.\n2. Iterate over the two arrays and increase the word count within their respective hashmap.\n3. Initialize a count variable to 0.\n4. Iterate over the entries in counter1, checking both its value and the value in counter2 for that key (word) against 1. If both are equal to 1, increment the count.\n5. Return the final count.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

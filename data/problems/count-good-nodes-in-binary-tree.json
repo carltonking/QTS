@@ -1,0 +1,24 @@
+{
+  "id": 1448,
+  "title": "Count Good Nodes in Binary Tree",
+  "slug": "count-good-nodes-in-binary-tree",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a binary tree root, a node _X_ in the tree is named good if in the path from root to _X_ there are no nodes with a value _greater than_ X.\n\nReturn the number of good nodes in the binary tree.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maximum69Number(num: int) -> int:\n    num_str = list(str(num))\n    for i, c in enumerate(num_str):\n        if c == '6':\n            num_str[i] = '9'\n            break\n    return int(''.join(num_str))\n```\n    \n    1. Convert the integer `num` into a string (or list of characters for Python).\n2. Iterate through the characters of the string (or list).\n3. When encountering the first '6', replace it with '9' and break out of the loop.\n4. Convert the modified string (or list) back into an integer and return it.\n    ",
+    "javascript": "\n    ```javascript\nfunction maximum69Number(num) {\n    let numStr = num.toString();\n    let numChars = numStr.split(\"\");\n    for (let i = 0; i < numChars.length; i++) {\n        if (numChars[i] === \"6\") {\n            numChars[i] = \"9\";\n            break;\n        }\n    }\n    return parseInt(numChars.join(\"\"));\n}\n```\n    \n    1. Convert the integer `num` into a string (or list of characters for Python).\n2. Iterate through the characters of the string (or list).\n3. When encountering the first '6', replace it with '9' and break out of the loop.\n4. Convert the modified string (or list) back into an integer and return it.\n    ",
+    "java": "\n    ```java\npublic int maximum69Number(int num) {\n    String numStr = Integer.toString(num);\n    char[] numChars = numStr.toCharArray();\n    for (int i = 0; i < numChars.length; i++) {\n        if (numChars[i] == '6') {\n            numChars[i] = '9';\n            break;\n        }\n    }\n    return Integer.parseInt(new String(numChars));\n}\n```\n    \n    1. Convert the integer `num` into a string (or list of characters for Python).\n2. Iterate through the characters of the string (or list).\n3. When encountering the first '6', replace it with '9' and break out of the loop.\n4. Convert the modified string (or list) back into an integer and return it.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

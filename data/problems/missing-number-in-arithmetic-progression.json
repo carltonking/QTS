@@ -1,0 +1,24 @@
+{
+  "id": 1228,
+  "title": "Missing Number In Arithmetic Progression",
+  "slug": "missing-number-in-arithmetic-progression",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "In some array arr, the values were in arithmetic progression: the values arr[i + 1] - arr[i] are all equal for every 0 <= i < arr.length - 1.\n\nA value from arr was removed that was not the first or last value in the array.\n\nGiven arr, return _the removed value_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef mctFromLeafValues(arr: List[int]) -> int:\n    n = len(arr)\n    dp = [[0] * n for _ in range(n)]\n    maxs = [[0] * n for _ in range(n)]\n\n    for i in range(n):\n        for j in range(i, n):\n            maxs[i][j] = max(arr[i:j+1])\n\n    for len_ in range(1, n):\n        for i in range(n - len_):\n            j = i + len_\n            dp[i][j] = float('inf')\n            for k in range(i, j):\n                dp[i][j] = min(dp[i][j], dp[i][k] + dp[k+1][j] + maxs[i][k] * maxs[k+1][j])\n\n    return dp[0][n - 1]\n```\n    \n    The algorithm uses dynamic programming to find the smallest possible sum of non-leaf nodes. The 'dp' matrix stores the minimum sum for each sub-array within the input array 'arr'. The 'maxs' matrix stores the maximum values for each sub-array of 'arr'. To fill up the 'dp' matrix, the code iterates through sub-arrays of increasing length and uses previously computed values to find the minimum sum. It tries all possible binary trees using a nested loop and selects the one with the smallest sum. At the end, it returns the minimum sum of non-leaf nodes for the whole array, which is stored in dp[0][n-1].\n    ",
+    "javascript": "\n    ```javascript\nfunction mctFromLeafValues(arr) {\n    const n = arr.length;\n    const dp = Array(n).fill(0).map(() => Array(n).fill(0));\n    const maxs = Array(n).fill(0).map(() => Array(n).fill(0));\n\n    for (let i = 0; i < n; ++i) {\n        for (let j = i; j < n; ++j) {\n            maxs[i][j] = Math.max(...arr.slice(i, j + 1));\n        }\n    }\n\n    for (let len = 1; len < n; ++len) {\n        for (let i = 0; i + len < n; ++i) {\n            let j = i + len;\n            dp[i][j] = Number.MAX_SAFE_INTEGER;\n            for (let k = i; k < j; ++k) {\n                dp[i][j] = Math.min(dp[i][j], dp[i][k] + dp[k + 1][j] + maxs[i][k] * maxs[k + 1][j]);\n            }\n        }\n    }\n    return dp[0][n - 1];\n}\n```\n    \n    The algorithm uses dynamic programming to find the smallest possible sum of non-leaf nodes. The 'dp' matrix stores the minimum sum for each sub-array within the input array 'arr'. The 'maxs' matrix stores the maximum values for each sub-array of 'arr'. To fill up the 'dp' matrix, the code iterates through sub-arrays of increasing length and uses previously computed values to find the minimum sum. It tries all possible binary trees using a nested loop and selects the one with the smallest sum. At the end, it returns the minimum sum of non-leaf nodes for the whole array, which is stored in dp[0][n-1].\n    ",
+    "java": "\n    ```java\npublic int mctFromLeafValues(int[] arr) {\n    int n = arr.length;\n    int[][] dp = new int[n][n];\n    int[][] maxs = new int[n][n];\n\n    for (int i = 0; i < n; ++i) {\n        for (int j = i; j < n; ++j) {\n            maxs[i][j] = Arrays.stream(arr, i, j + 1).max().getAsInt();\n        }\n    }\n\n    for (int len = 1; len < n; ++len) {\n        for (int i = 0; i + len < n; ++i) {\n            int j = i + len;\n            dp[i][j] = Integer.MAX_VALUE;\n            for (int k = i; k < j; ++k) {\n                dp[i][j] = Math.min(dp[i][j], dp[i][k] + dp[k + 1][j] + maxs[i][k] * maxs[k + 1][j]);\n            }\n        }\n    }\n    return dp[0][n - 1];\n}\n```\n    \n    The algorithm uses dynamic programming to find the smallest possible sum of non-leaf nodes. The 'dp' matrix stores the minimum sum for each sub-array within the input array 'arr'. The 'maxs' matrix stores the maximum values for each sub-array of 'arr'. To fill up the 'dp' matrix, the code iterates through sub-arrays of increasing length and uses previously computed values to find the minimum sum. It tries all possible binary trees using a nested loop and selects the one with the smallest sum. At the end, it returns the minimum sum of non-leaf nodes for the whole array, which is stored in dp[0][n-1].\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

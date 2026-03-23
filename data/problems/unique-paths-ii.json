@@ -1,0 +1,24 @@
+{
+  "id": 63,
+  "title": "Unique Paths II",
+  "slug": "unique-paths-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an m x n integer array grid. There is a robot initially located at the top-left corner (i.e., grid[0][0]). The robot tries to move to the bottom-right corner (i.e., grid[m - 1][n - 1]). The robot can only move either down or right at any point in time.\n\nAn obstacle and space are marked as 1 or 0 respectively in grid. A path that the robot takes cannot include any square that is an obstacle.\n\nReturn _the number of possible unique paths that the robot can take to reach the bottom-right corner_.\n\nThe testcases are generated so that the answer will be less than or equal to 2 * 109.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef uniquePathsWithObstacles(grid):\n    m, n = len(grid), len(grid[0])\n    if grid[0][0] == 1:\n        return 0\n\n    grid[0][0] = 1\n    for i in range(1, m):\n        grid[i][0] = 1 if grid[i][0] == 0 and grid[i - 1][0] == 1 else 0\n    for i in range(1, n):\n        grid[0][i] = 1 if grid[0][i] == 0 and grid[0][i - 1] == 1 else 0\n\n    for i in range(1, m):\n        for j in range(1, n):\n            if grid[i][j] == 0:\n                grid[i][j] = grid[i - 1][j] + grid[i][j - 1]\n            else:\n                grid[i][j] = 0\n\n    return grid[m - 1][n - 1]\n```\n    \n    1. If the starting point has an obstacle, return 0 as there is no valid path.\n2. Initialize the first cell of the grid as 1 and process the first row and column,\n   setting their values to 1 if the cell is not an obstacle and if the previous cell is not an obstacle.\n3. Iterate through the grid starting from the second row and column, and for each cell, if it's not an obstacle, set its value to the sum of the values of the cells above it and to its left.\n4. Return the value of the bottom-right corner of the grid, which is the number of unique paths.\n    ",
+    "javascript": "\n    ```javascript\nfunction uniquePathsWithObstacles(grid) {\n    const m = grid.length;\n    const n = grid[0].length;\n    if (grid[0][0] === 1) return 0;\n\n    grid[0][0] = 1;\n    for (let i = 1; i < m; ++i) {\n        grid[i][0] = (grid[i][0] === 0 && grid[i - 1][0] === 1) ? 1 : 0;\n    }\n    for (let i = 1; i < n; ++i) {\n        grid[0][i] = (grid[0][i] === 0 && grid[0][i - 1] === 1) ? 1 : 0;\n    }\n\n    for (let i = 1; i < m; ++i) {\n        for (let j = 1; j < n; ++j) {\n            if (grid[i][j] === 0) {\n                grid[i][j] = grid[i - 1][j] + grid[i][j - 1];\n            } else {\n                grid[i][j] = 0;\n            }\n        }\n    }\n\n    return grid[m - 1][n - 1];\n}\n```\n    \n    1. If the starting point has an obstacle, return 0 as there is no valid path.\n2. Initialize the first cell of the grid as 1 and process the first row and column,\n   setting their values to 1 if the cell is not an obstacle and if the previous cell is not an obstacle.\n3. Iterate through the grid starting from the second row and column, and for each cell, if it's not an obstacle, set its value to the sum of the values of the cells above it and to its left.\n4. Return the value of the bottom-right corner of the grid, which is the number of unique paths.\n    ",
+    "java": "\n    ```java\npublic int uniquePathsWithObstacles(int[][] grid) {\n    int m = grid.length;\n    int n = grid[0].length;\n    if (grid[0][0] == 1) return 0;\n    \n    grid[0][0] = 1;\n    for (int i = 1; i < m; ++i)\n        grid[i][0] = (grid[i][0] == 0 && grid[i - 1][0] == 1) ? 1 : 0;\n    for (int i = 1; i < n; ++i)\n        grid[0][i] = (grid[0][i] == 0 && grid[0][i - 1] == 1) ? 1 : 0;\n\n    for (int i = 1; i < m; ++i)\n        for (int j = 1; j < n; ++j)\n            if (grid[i][j] == 0)\n                grid[i][j] = grid[i - 1][j] + grid[i][j - 1];\n            else\n                grid[i][j] = 0;\n\n    return grid[m - 1][n - 1];\n}\n```\n    \n    1. If the starting point has an obstacle, return 0 as there is no valid path.\n2. Initialize the first cell of the grid as 1 and process the first row and column,\n   setting their values to 1 if the cell is not an obstacle and if the previous cell is not an obstacle.\n3. Iterate through the grid starting from the second row and column, and for each cell, if it's not an obstacle, set its value to the sum of the values of the cells above it and to its left.\n4. Return the value of the bottom-right corner of the grid, which is the number of unique paths.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

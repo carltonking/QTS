@@ -1,0 +1,24 @@
+{
+  "id": 1636,
+  "title": "Sort Array by Increasing Frequency",
+  "slug": "sort-array-by-increasing-frequency",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array of integers nums, sort the array in increasing order based on the frequency of the values. If multiple values have the same frequency, sort them in decreasing order.\n\nReturn the _sorted array_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef num_sub(s: str) -> int:\n    mod = 1000000007\n    result = 0\n    count = 0\n    for c in s:\n        count = count + 1 if c == '1' else 0\n        result = (result + count) % mod\n    return result\n```\n    \n    The algorithm is a single-pass algorithm that iterates over the binary string `s` and calculates the number of contiguous \"1\" substrings seen so far. We use a variable `count` to track the length of the current run of \"1\"s. For each character `c` in `s`:\n- If `c` is \"1\", we increment `count` as we have a longer run of 1's, and add the `count` to the `result`. The notion here is that until this run of 1s breaks, any new 1 being added increases the total number of substrings by the entire size of the current window.\n- If `c` is not a \"1\", we reset the `count` to 0 as the sequence is broken.\n\nFinally, we take the result modulo 10^9 + 7 and return it. \n    ",
+    "javascript": "\n    ```javascript\nfunction numSub(s) {\n    const mod = 1000000007;\n    let result = 0;\n    let count = 0;\n    for (let c of s) {\n        count = (c === '1') ? count + 1 : 0;\n        result = (result + count) % mod;\n    }\n    return result;\n}\n```\n    \n    The algorithm is a single-pass algorithm that iterates over the binary string `s` and calculates the number of contiguous \"1\" substrings seen so far. We use a variable `count` to track the length of the current run of \"1\"s. For each character `c` in `s`:\n- If `c` is \"1\", we increment `count` as we have a longer run of 1's, and add the `count` to the `result`. The notion here is that until this run of 1s breaks, any new 1 being added increases the total number of substrings by the entire size of the current window.\n- If `c` is not a \"1\", we reset the `count` to 0 as the sequence is broken.\n\nFinally, we take the result modulo 10^9 + 7 and return it. \n    ",
+    "java": "\n    ```java\npublic int numSub(String s) {\n    int mod = 1000000007;\n    long result = 0;\n    int count = 0;\n    for (char c : s.toCharArray()) {\n        count = (c == '1') ? count + 1 : 0;\n        result = (result + count) % mod;\n    }\n    return (int)result;\n}\n```\n    \n    The algorithm is a single-pass algorithm that iterates over the binary string `s` and calculates the number of contiguous \"1\" substrings seen so far. We use a variable `count` to track the length of the current run of \"1\"s. For each character `c` in `s`:\n- If `c` is \"1\", we increment `count` as we have a longer run of 1's, and add the `count` to the `result`. The notion here is that until this run of 1s breaks, any new 1 being added increases the total number of substrings by the entire size of the current window.\n- If `c` is not a \"1\", we reset the `count` to 0 as the sequence is broken.\n\nFinally, we take the result modulo 10^9 + 7 and return it. \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

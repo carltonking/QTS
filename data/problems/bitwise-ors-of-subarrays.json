@@ -1,0 +1,24 @@
+{
+  "id": 898,
+  "title": "Bitwise ORs of Subarrays",
+  "slug": "bitwise-ors-of-subarrays",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array arr, return _the number of distinct bitwise ORs of all the non-empty subarrays of_ arr.\n\nThe bitwise OR of a subarray is the bitwise OR of each integer in the subarray. The bitwise OR of a subarray of one integer is that integer.\n\nA subarray is a contiguous non-empty sequence of elements within an array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef transpose(matrix):\n    rows = len(matrix)\n    cols = len(matrix[0])\n    result = [[0] * rows for _ in range(cols)]\n    for i in range(rows):\n        for j in range(cols):\n            result[j][i] = matrix[i][j]\n    return result\n```\n    \n    The algorithm for finding the transpose of a matrix involves first creating an empty matrix with the number of rows and columns swapped. Then, iterate through each element of the input matrix and copy its value to the corresponding reversed row and column index in the new matrix. By switching the row and column indices while copying elements, we effectively flip the matrix over its main diagonal.\n    ",
+    "javascript": "\n    ```javascript\nfunction transpose(matrix) {\n    const rows = matrix.length;\n    const cols = matrix[0].length;\n    const result = Array.from({ length: cols }, () => Array(rows));\n    for (let i = 0; i < rows; i++) {\n        for (let j = 0; j < cols; j++) {\n            result[j][i] = matrix[i][j];\n        }\n    }\n    return result;\n}\n```\n    \n    The algorithm for finding the transpose of a matrix involves first creating an empty matrix with the number of rows and columns swapped. Then, iterate through each element of the input matrix and copy its value to the corresponding reversed row and column index in the new matrix. By switching the row and column indices while copying elements, we effectively flip the matrix over its main diagonal.\n    ",
+    "java": "\n    ```java\npublic int[][] transpose(int[][] matrix) {\n    int rows = matrix.length;\n    int cols = matrix[0].length;\n    int[][] result = new int[cols][rows];\n    for (int i = 0; i < rows; i++) {\n        for (int j = 0; j < cols; j++) {\n            result[j][i] = matrix[i][j];\n        }\n    }\n    return result;\n}\n```\n    \n    The algorithm for finding the transpose of a matrix involves first creating an empty matrix with the number of rows and columns swapped. Then, iterate through each element of the input matrix and copy its value to the corresponding reversed row and column index in the new matrix. By switching the row and column indices while copying elements, we effectively flip the matrix over its main diagonal.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

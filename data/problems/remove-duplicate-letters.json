@@ -1,0 +1,24 @@
+{
+  "id": 316,
+  "title": "Remove Duplicate Letters",
+  "slug": "remove-duplicate-letters",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string s, remove duplicate letters so that every letter appears once and only once. You must make sure your result is the smallest in lexicographical order among all possible results.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef removeDuplicateLetters(s):\n    count = [0] * 256\n    visited = [False] * 256\n    st = []\n\n    for ch in s:\n        count[ord(ch)] += 1\n\n    for ch in s:\n        count[ord(ch)] -= 1\n        if visited[ord(ch)]:\n            continue\n        while st and ch < st[-1] and count[ord(st[-1])] > 0:\n            visited[ord(st.pop())] = False\n        st.append(ch)\n        visited[ord(ch)] = True\n\n    return \"\".join(st)   \n```\n    \n    1. Initialize count and visited arrays. We will use count to track the occurrences of each character in the string and visited to mark if a character has been pushed into the result.\n2. Iterate through the string, count the occurrences of each character.\n3. Iterate through the string again, decrease the count of the current character.\n4. If the current character is visited, continue.\n5. While the stack is not empty, the current character is smaller than the top character on stack, and the count of the top character is greater than 0, set the visited of the top character to false and pop the character from the stack.\n6. Push the current character onto the stack, and set visited to true.\n7. Build the result string from the stack.\n8. Return the result string.\n    ",
+    "javascript": "\n    ```javascript\nfunction removeDuplicateLetters(s) {\n    let count = new Array(256).fill(0);\n    let visited = new Array(256).fill(false);\n    let st = [];\n    \n    for (let ch of s) {\n        count[ch.charCodeAt(0)]++;\n    }\n    \n    for (let ch of s) {\n        count[ch.charCodeAt(0)]--;\n        if (visited[ch.charCodeAt(0)]) continue;\n        while (st.length > 0 && ch < st[st.length - 1] && count[st[st.length - 1].charCodeAt(0)] > 0) {\n            visited[st.pop().charCodeAt(0)] = false;\n        }\n        st.push(ch);\n        visited[ch.charCodeAt(0)] = true;\n    }\n\n    return st.join(\"\");\n}\n```\n    \n    1. Initialize count and visited arrays. We will use count to track the occurrences of each character in the string and visited to mark if a character has been pushed into the result.\n2. Iterate through the string, count the occurrences of each character.\n3. Iterate through the string again, decrease the count of the current character.\n4. If the current character is visited, continue.\n5. While the stack is not empty, the current character is smaller than the top character on stack, and the count of the top character is greater than 0, set the visited of the top character to false and pop the character from the stack.\n6. Push the current character onto the stack, and set visited to true.\n7. Build the result string from the stack.\n8. Return the result string.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic class Solution {\n    public String removeDuplicateLetters(String s) {\n        int[] count = new int[256];\n        boolean[] visited = new boolean[256];\n        Stack<Character> st = new Stack<>();\n        \n        for (char ch : s.toCharArray()) {\n            count[ch]++;\n        }\n        \n        for (char ch : s.toCharArray()) {\n            count[ch]--;\n            if (visited[ch]) continue;\n            while (!st.isEmpty() && ch < st.peek() && count[st.peek()] > 0) {\n                visited[st.pop()] = false;\n            }\n            st.push(ch);\n            visited[ch] = true;\n        }\n        \n        StringBuilder result = new StringBuilder();\n        while (!st.empty()) {\n            result.append(st.pop());\n        }\n        return result.reverse().toString();\n    }\n}\n```\n    \n    1. Initialize count and visited arrays. We will use count to track the occurrences of each character in the string and visited to mark if a character has been pushed into the result.\n2. Iterate through the string, count the occurrences of each character.\n3. Iterate through the string again, decrease the count of the current character.\n4. If the current character is visited, continue.\n5. While the stack is not empty, the current character is smaller than the top character on stack, and the count of the top character is greater than 0, set the visited of the top character to false and pop the character from the stack.\n6. Push the current character onto the stack, and set visited to true.\n7. Build the result string from the stack.\n8. Return the result string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

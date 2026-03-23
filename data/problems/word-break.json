@@ -1,0 +1,42 @@
+{
+  "id": 34,
+  "title": "Word Break",
+  "slug": "word-break",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Dynamic Programming",
+    "Trie"
+  ],
+  "description": "Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of one or more dictionary words.",
+  "examples": [
+    {
+      "input": "s = \"leetcode\", wordDict = [\"leet\",\"code\"]",
+      "output": "true"
+    }
+  ],
+  "constraints": [
+    "1 <= s.length <= 300"
+  ],
+  "starterCode": {
+    "python": "from typing import List\nclass Solution:\n    def wordBreak(self, s: str, wordDict: List[str]) -> bool:\n        pass",
+    "javascript": "var wordBreak = function(s, wordDict) {\n    \n};",
+    "java": "class Solution {\n    public boolean wordBreak(String s, List<String> wordDict) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    bool wordBreak(string s, vector<string>& wordDict) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Word Break\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "leetcode\n[\"leet\",\"code\"]",
+      "expectedOutput": "true"
+    },
+    {
+      "input": "catsandog\n[\"cats\",\"dog\",\"sand\",\"and\",\"cat\"]",
+      "expectedOutput": "false"
+    }
+  ]
+}

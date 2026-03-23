@@ -1,0 +1,24 @@
+{
+  "id": 2133,
+  "title": "Check if Every Row and Column Contains All Numbers",
+  "slug": "check-if-every-row-and-column-contains-all-numbers",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "An n x n matrix is valid if every row and every column contains all the integers from 1 to n (inclusive).\n\nGiven an n x n integer matrix matrix, return true _if the matrix is valid._ Otherwise, return false.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_pairs(nums, target):\n    count = 0\n    for i in range(len(nums)):\n        for j in range(i + 1, len(nums)):\n            if nums[i] + nums[j] == target or nums[j] + nums[i] == target:\n                count += 1\n    return count\n```\n    \n    The algorithm iterates through all possible pairs of indices i and j where `i != j` by using nested loops. For each pair, we check if the concatenation of `nums[i] + nums[j]` or `nums[j] + nums[i]` equals the `target`. If either condition is true, we increment the count. Finally, we return the count of such pairs. This solution has a complexity of O(n^2).\n    ",
+    "javascript": "\n    ```javascript\nfunction countPairs(nums, target) {\n    let count = 0;\n    for (let i = 0; i < nums.length; i++) {\n        for (let j = i + 1; j < nums.length; j++) {\n            if (nums[i] + nums[j] === target || nums[j] + nums[i] === target) {\n                count++;\n            }\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm iterates through all possible pairs of indices i and j where `i != j` by using nested loops. For each pair, we check if the concatenation of `nums[i] + nums[j]` or `nums[j] + nums[i]` equals the `target`. If either condition is true, we increment the count. Finally, we return the count of such pairs. This solution has a complexity of O(n^2).\n    ",
+    "java": "\n    ```java\nimport java.util.List;\n\npublic int countPairs(List<String> nums, String target) {\n    int count = 0;\n    for (int i = 0; i < nums.size(); i++) {\n        for (int j = i + 1; j < nums.size(); j++) {\n            if (nums.get(i).concat(nums.get(j)).equals(target) || nums.get(j).concat(nums.get(i)).equals(target)) {\n                count++;\n            }\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm iterates through all possible pairs of indices i and j where `i != j` by using nested loops. For each pair, we check if the concatenation of `nums[i] + nums[j]` or `nums[j] + nums[i]` equals the `target`. If either condition is true, we increment the count. Finally, we return the count of such pairs. This solution has a complexity of O(n^2).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

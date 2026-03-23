@@ -1,0 +1,24 @@
+{
+  "id": 290,
+  "title": "Word Pattern",
+  "slug": "word-pattern",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a pattern and a string s, find if s follows the same pattern.\n\nHere follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in s.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef word_pattern(pattern, s):\n    words = s.split()\n    if len(pattern) != len(words):\n        return False\n\n    char_map, word_map = {}, {}\n    for c, word in zip(pattern, words):\n        if c not in char_map and word not in word_map:\n            char_map[c] = word\n            word_map[word] = c\n        else:\n            if char_map.get(c) != word or word_map.get(word) != c:\n                return False\n\n    return True\n```\n\n    \n    1. First, split the string 's' into words array based on the space-delimited words.\n2. Check if the length of the pattern and words array is the same, otherwise return false.\n3. Create two maps (hash tables/dictionaries) - one for storing the mapping from a pattern character to a word, and the other for mapping from a word to a pattern character.\n4. Iterate through the pattern and the words array simultaneously using a loop.\n5. If a pattern character and word are not in the respective maps, save the corresponding mapping in both maps.\n6. If they exist, compare the mappings; if they differ, immediately return false.\n7. After the loop is completed, if there is no mismatch, return true.\n    ",
+    "javascript": "\n    ```javascript\nfunction wordPattern(pattern, s) {\n    const words = s.split(' ');\n    if (pattern.length !== words.length) return false;\n\n    const charMap = new Map();\n    const wordMap = new Map();\n\n    for (let i = 0; i < pattern.length; i++) {\n        const c = pattern[i];\n        const word = words[i];\n        if (!charMap.has(c) && !wordMap.has(word)) {\n            charMap.set(c, word);\n            wordMap.set(word, c);\n        } else {\n            if (charMap.get(c) !== word || wordMap.get(word) !== c) return false;\n        }\n    }\n\n    return true;\n}\n```\n\n    \n    1. First, split the string 's' into words array based on the space-delimited words.\n2. Check if the length of the pattern and words array is the same, otherwise return false.\n3. Create two maps (hash tables/dictionaries) - one for storing the mapping from a pattern character to a word, and the other for mapping from a word to a pattern character.\n4. Iterate through the pattern and the words array simultaneously using a loop.\n5. If a pattern character and word are not in the respective maps, save the corresponding mapping in both maps.\n6. If they exist, compare the mappings; if they differ, immediately return false.\n7. After the loop is completed, if there is no mismatch, return true.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\nimport java.util.Map;\n\npublic boolean wordPattern(String pattern, String s) {\n    String[] words = s.split(\" \");\n    if (pattern.length() != words.length) return false;\n\n    Map<Character, String> charMap = new HashMap<>();\n    Map<String, Character> wordMap = new HashMap<>();\n\n    for (int i = 0; i < pattern.length(); i++) {\n        char c = pattern.charAt(i);\n        String word = words[i];\n        if (!charMap.containsKey(c) && !wordMap.containsKey(word)) {\n            charMap.put(c, word);\n            wordMap.put(word, c);\n        } else {\n            if (!word.equals(charMap.get(c)) || c != wordMap.get(word)) return false;\n        }\n    }\n\n    return true;\n}\n```\n\n    \n    1. First, split the string 's' into words array based on the space-delimited words.\n2. Check if the length of the pattern and words array is the same, otherwise return false.\n3. Create two maps (hash tables/dictionaries) - one for storing the mapping from a pattern character to a word, and the other for mapping from a word to a pattern character.\n4. Iterate through the pattern and the words array simultaneously using a loop.\n5. If a pattern character and word are not in the respective maps, save the corresponding mapping in both maps.\n6. If they exist, compare the mappings; if they differ, immediately return false.\n7. After the loop is completed, if there is no mismatch, return true.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

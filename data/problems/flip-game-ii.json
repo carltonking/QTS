@@ -1,0 +1,24 @@
+{
+  "id": 294,
+  "title": "Flip Game II",
+  "slug": "flip-game-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are playing a Flip Game with your friend.\n\nYou are given a string currentState that contains only '+' and '-'. You and your friend take turns to flip two consecutive \"++ \" into \"-- \". The game ends when a person can no longer make a move, and therefore the other person will be the winner.\n\nReturn true _if the starting player can guarantee a win_, and false otherwise.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef canWin(currentState: str) -> bool:\n    for i in range(len(currentState) - 1):\n        if currentState[i] == '+' and currentState[i + 1] == '+':\n            temp = currentState[:i] + \"--\" + currentState[i + 2:]\n            if not canWin(temp):\n                return True\n    return False\n```\n    \n    The algorithm uses a recursive approach to check for all possible game states starting from the given `currentState`. At each step, the code iterates through the string to find two consecutive '+' characters. If found, it flips the two consecutive '+' to '--' and calls the function recursively with this newState to check if the opponent wins or not. If the opponent doesn't win, the function returns true as it guarantees a win for the starting player. If no such situation occurs, the function returns false.\n\nThe runtime complexity of this algorithm is O(n * 2^n) where n is the length of the input string. The reason for this complexity is that, in the worst-case, we may have to explore every possible state of the game tree, and there are 2^n possible game states.\n    ",
+    "javascript": "\n    ```javascript\nfunction canWin(currentState) {\n    for (let i = 0; i < currentState.length - 1; ++i) {\n        if (currentState[i] === '+' && currentState[i + 1] === '+') {\n            let temp = currentState.slice(0, i) + \"--\" + currentState.slice(i + 2);\n            if (!canWin(temp)) return true;\n        }\n    }\n    return false;\n}\n```\n    \n    The algorithm uses a recursive approach to check for all possible game states starting from the given `currentState`. At each step, the code iterates through the string to find two consecutive '+' characters. If found, it flips the two consecutive '+' to '--' and calls the function recursively with this newState to check if the opponent wins or not. If the opponent doesn't win, the function returns true as it guarantees a win for the starting player. If no such situation occurs, the function returns false.\n\nThe runtime complexity of this algorithm is O(n * 2^n) where n is the length of the input string. The reason for this complexity is that, in the worst-case, we may have to explore every possible state of the game tree, and there are 2^n possible game states.\n    ",
+    "java": "\n    ```java\npublic boolean canWin(String currentState) {\n    for (int i = 0; i < currentState.length() - 1; ++i) {\n        if (currentState.charAt(i) == '+' && currentState.charAt(i + 1) == '+') {\n            String temp = currentState.substring(0, i) + \"--\" + currentState.substring(i + 2);\n            if (!canWin(temp)) return true;\n        }\n    }\n    return false;\n}\n```\n    \n    The algorithm uses a recursive approach to check for all possible game states starting from the given `currentState`. At each step, the code iterates through the string to find two consecutive '+' characters. If found, it flips the two consecutive '+' to '--' and calls the function recursively with this newState to check if the opponent wins or not. If the opponent doesn't win, the function returns true as it guarantees a win for the starting player. If no such situation occurs, the function returns false.\n\nThe runtime complexity of this algorithm is O(n * 2^n) where n is the length of the input string. The reason for this complexity is that, in the worst-case, we may have to explore every possible state of the game tree, and there are 2^n possible game states.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

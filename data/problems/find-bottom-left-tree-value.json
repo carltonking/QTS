@@ -1,0 +1,24 @@
+{
+  "id": 513,
+  "title": "Find Bottom Left Tree Value",
+  "slug": "find-bottom-left-tree-value",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the root of a binary tree, return the leftmost value in the last row of the tree.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findBottomLeftValue(self, root: TreeNode) -> int:\n    result = [0, 0] # [depth, value]\n    self.helper(root, 1, result)\n    return result[1]\n\ndef helper(self, node, depth, result):\n    if not node:\n        return\n    if depth > result[0]:\n        result[0] = depth\n        result[1] = node.val\n\n    self.helper(node.left, depth+1, result)\n    self.helper(node.right, depth+1, result)\n```\n\n    \n    To find the leftmost value in the last row of a binary tree, we can use Depth First Search (DFS) traversal.\n\n1. Create a helper function that takes the input node, current depth, and a result variable.\n2. If the input node is null, then return.\n3. For the given depth:\n    a. If the current depth is greater than the previously recorded maximum depth, update the maximum depth and store the node value as the leftmost value.\n    b. Recurse the helper function for the left child of the node, and increment the depth.\n    c. Recurse the helper function for the right child of the node, and increment the depth.\n4. After the DFS traversal, return the leftmost value found in the last row.\n    ",
+    "javascript": "\n    ```javascript\nfunction findBottomLeftValue(root) {\n    const result = { maxDepth: 0, value: 0 };\n    helper(root, 1, result);\n    return result.value;\n};\n\nfunction helper(node, depth, result) {\n    if (!node) return;\n    if (depth > result.maxDepth) {\n        result.maxDepth = depth;\n        result.value = node.val;\n    }\n    helper(node.left, depth+1, result);\n    helper(node.right, depth+1, result);\n}\n```\n\n    \n    To find the leftmost value in the last row of a binary tree, we can use Depth First Search (DFS) traversal.\n\n1. Create a helper function that takes the input node, current depth, and a result variable.\n2. If the input node is null, then return.\n3. For the given depth:\n    a. If the current depth is greater than the previously recorded maximum depth, update the maximum depth and store the node value as the leftmost value.\n    b. Recurse the helper function for the left child of the node, and increment the depth.\n    c. Recurse the helper function for the right child of the node, and increment the depth.\n4. After the DFS traversal, return the leftmost value found in the last row.\n    ",
+    "java": "\n    ```java\npublic int findBottomLeftValue(TreeNode root) {\n    int[] maxDepth = new int[1];\n    int[] result = new int[1];\n    helper(root, 1, maxDepth, result);\n    return result[0];\n}\n\nprivate void helper(TreeNode node, int depth, int[] maxDepth, int[] result) {\n    if (node == null) return;\n    if (depth > maxDepth[0]) {\n        maxDepth[0] = depth;\n        result[0] = node.val;\n    }\n    helper(node.left, depth+1, maxDepth, result);\n    helper(node.right, depth+1, maxDepth, result);\n}\n```\n\n    \n    To find the leftmost value in the last row of a binary tree, we can use Depth First Search (DFS) traversal.\n\n1. Create a helper function that takes the input node, current depth, and a result variable.\n2. If the input node is null, then return.\n3. For the given depth:\n    a. If the current depth is greater than the previously recorded maximum depth, update the maximum depth and store the node value as the leftmost value.\n    b. Recurse the helper function for the left child of the node, and increment the depth.\n    c. Recurse the helper function for the right child of the node, and increment the depth.\n4. After the DFS traversal, return the leftmost value found in the last row.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

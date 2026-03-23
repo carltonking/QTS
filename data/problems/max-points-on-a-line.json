@@ -1,0 +1,24 @@
+{
+  "id": 149,
+  "title": "Max Points on a Line",
+  "slug": "max-points-on-a-line",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given an array of points where points[i] = [xi, yi] represents a point on the X-Y plane, return _the maximum number of points that lie on the same straight line_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom math import gcd\nfrom collections import defaultdict\n\ndef maxPoints(points):\n    n = len(points)\n    if n <= 2:\n        return n\n\n    max_count = 0\n\n    for i in range(n):\n        slope_map = defaultdict(int)\n        duplicates = 0\n        local_max = 0\n\n        for j in range(i+1, n):\n            deltaX = points[j][0] - points[i][0]\n            deltaY = points[j][1] - points[i][1]\n\n            if deltaX == 0 and deltaY == 0:\n                duplicates += 1\n                continue\n\n            g = gcd(deltaX, deltaY)\n            deltaX = deltaX // g\n            deltaY = deltaY // g\n\n            key = f\"{deltaX}_{deltaY}\"\n            slope_map[key] += 1\n            local_max = max(local_max, slope_map[key])\n\n        max_count = max(max_count, local_max + duplicates + 1)\n\n    return max_count\n```\n\n    \n    - Loop through all pairs of points.\n- Calculate the slope of the line determined by the two points `(deltaX / deltaY)`, as well as the number of duplicates of the same point.\n- Count the occurrences of each unique slope (i.e., the lines that go through the same two points), using a hashmap.\n- For each point, find the highest number of slopes and add the duplicates and itself to the count.\n- Find the maximum count of all points, which is the answer.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxPoints(points) {\n    const n = points.length;\n    if (n <= 2) return n;\n\n    let maxCount = 0;\n\n    for (let i = 0; i < n; i++) {\n        const slopeMap = new Map();\n        let duplicates = 0, localMax = 0;\n\n        for (let j = i + 1; j < n; j++) {\n            let deltaX = points[j][0] - points[i][0];\n            let deltaY = points[j][1] - points[i][1];\n\n            if (deltaX === 0 && deltaY === 0) {\n                duplicates++;\n                continue;\n            }\n\n            const gcdVal = gcd(deltaX, deltaY);\n            deltaX /= gcdVal;\n            deltaY /= gcdVal;\n\n            const key = `${deltaX}_${deltaY}`;\n            slopeMap.set(key, (slopeMap.get(key) || 0) + 1);\n            localMax = Math.max(localMax, slopeMap.get(key));\n        }\n        maxCount = Math.max(maxCount, localMax + duplicates + 1);\n    }\n\n    return maxCount;\n}\n\nfunction gcd(a, b) {\n    if (b === 0) return a;\n    return gcd(b, a % b);\n}\n```\n\n    \n    - Loop through all pairs of points.\n- Calculate the slope of the line determined by the two points `(deltaX / deltaY)`, as well as the number of duplicates of the same point.\n- Count the occurrences of each unique slope (i.e., the lines that go through the same two points), using a hashmap.\n- For each point, find the highest number of slopes and add the duplicates and itself to the count.\n- Find the maximum count of all points, which is the answer.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\n\npublic int maxPoints(int[][] points) {\n    int n = points.length;\n    if (n <= 2) return n;\n    int maxCount = 0;\n\n    for (int i = 0; i < n-1; i++) {\n        HashMap<String, Integer> slopeMap = new HashMap<>();\n        int duplicates = 0, localMax = 0;\n\n        for (int j = i+1; j < n; j++) {\n            int deltaX = points[j][0] - points[i][0];\n            int deltaY = points[j][1] - points[i][1];\n\n            if (deltaX == 0 && deltaY == 0) {\n                duplicates++;\n                continue;\n            }\n\n            int gcd = gcd(deltaX, deltaY);\n            deltaX /= gcd;\n            deltaY /= gcd;\n\n            String key = deltaX + \"_\" + deltaY;\n            slopeMap.put(key, slopeMap.getOrDefault(key, 0) + 1);\n            localMax = Math.max(localMax, slopeMap.get(key));\n        }\n        maxCount = Math.max(maxCount, localMax + duplicates + 1);\n    }\n\n    return maxCount;\n}\n\nprivate int gcd(int a, int b) {\n    if(b == 0) return a;\n    return gcd(b, a % b);\n}\n```\n\n    \n    - Loop through all pairs of points.\n- Calculate the slope of the line determined by the two points `(deltaX / deltaY)`, as well as the number of duplicates of the same point.\n- Count the occurrences of each unique slope (i.e., the lines that go through the same two points), using a hashmap.\n- For each point, find the highest number of slopes and add the duplicates and itself to the count.\n- Find the maximum count of all points, which is the answer.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

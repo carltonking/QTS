@@ -1,0 +1,24 @@
+{
+  "id": 1750,
+  "title": "Minimum Length of String After Deleting Similar Ends",
+  "slug": "minimum-length-of-string-after-deleting-similar-ends",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string s consisting only of characters 'a', 'b', and 'c'. You are asked to apply the following algorithm on the string any number of times:\n\n1.  Pick a non-empty prefix from the string s where all the characters in the prefix are equal.\n2.  Pick a non-empty suffix from the string s where all the characters in this suffix are equal.\n3.  The prefix and the suffix should not intersect at any index.\n4.  The characters from the prefix and suffix must be the same.\n5.  Delete both the prefix and the suffix.\n\nReturn _the minimum length of_ s _after performing the above operation any number of times (possibly zero times)_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minimumLength(s: str) -> int:\n    if not s: return 0\n    i, j = 0, len(s) - 1\n    while i < j:\n        if s[i] != s[j]: break\n        remove_char = s[i]\n        while i < len(s) and s[i] == remove_char: i += 1\n        while j >= 0 and s[j] == remove_char: j -= 1\n    return max(0, j - i + 1)\n```\n    \n    The algorithm involves the use of two pointers, one at the beginning and the other at the end of the string. While the characters at the positions of both pointers are the same, we increment the first pointer (i) until a different character is found in the string, and decrement the second pointer (j) until a different character is found. We then return the difference between j and i plus 1, or 0 if the result is negative, as the minimum length after performing the operations.\n    ",
+    "javascript": "\n    ```javascript\nfunction minimumLength(s) {\n    if(s.isEmpty()) return 0;\n    let i = 0, j = s.length - 1;\n    while(i < j){\n        if(s[i] != s[j]) break;\n        let remove_char = s[i];\n        while(i < s.length && s[i] == remove_char) i++;\n        while(j >= 0 && s[j] == remove_char) j--;\n    }\n    return Math.max(0, j - i + 1);\n}\n```\n    \n    The algorithm involves the use of two pointers, one at the beginning and the other at the end of the string. While the characters at the positions of both pointers are the same, we increment the first pointer (i) until a different character is found in the string, and decrement the second pointer (j) until a different character is found. We then return the difference between j and i plus 1, or 0 if the result is negative, as the minimum length after performing the operations.\n    ",
+    "java": "\n    ```java\npublic int minimumLength(String s) {\n    if(s.isEmpty()) return 0;\n    int i = 0, j = s.length() - 1;\n    while(i < j){\n        if(s.charAt(i) != s.charAt(j)) break;\n        char remove_char = s.charAt(i);\n        while(i < s.length() && s.charAt(i) == remove_char) i++;\n        while(j >= 0 && s.charAt(j) == remove_char) j--;\n    }\n    return Math.max(0, j - i + 1);\n}\n```\n    \n    The algorithm involves the use of two pointers, one at the beginning and the other at the end of the string. While the characters at the positions of both pointers are the same, we increment the first pointer (i) until a different character is found in the string, and decrement the second pointer (j) until a different character is found. We then return the difference between j and i plus 1, or 0 if the result is negative, as the minimum length after performing the operations.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

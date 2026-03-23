@@ -1,0 +1,24 @@
+{
+  "id": 1178,
+  "title": "Number of Valid Words for Each Puzzle",
+  "slug": "number-of-valid-words-for-each-puzzle",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "With respect to a given puzzle string, a word is _valid_ if both the following conditions are satisfied:\n\n*   word contains the first letter of puzzle.\n*   For each letter in word, that letter is in puzzle.\n    *   For example, if the puzzle is \"abcdefg \", then valid words are \"faced \", \"cabbage \", and \"baggage \", while\n    *   invalid words are \"beefed \" (does not include 'a') and \"based \" (includes 's' which is not in the puzzle).\n\nReturn _an array_ answer_, where_ answer[i] _is the number of words in the given word list_ words _that is valid with respect to the puzzle_ puzzles[i].",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_num_of_valid_words(words, puzzles):\n    result = []\n    for puzzle in puzzles:\n        count = 0\n        puzzle_set = set(puzzle)\n        for word in words:\n            if puzzle[0] in word:\n                if all(c in puzzle_set for c in word):\n                    count += 1\n        result.append(count)\n    return result\n```\n\n    \n    We iterate through each puzzle in the given puzzles array. Then, we create a set containing all the unique characters of the current puzzle, which will be used later for checking if a word is valid with respect to the puzzle. Afterward, for each word in the words array, we check if the first letter of the puzzle is in this word. If it is, we check if all the characters in the word are present in the puzzle set. If they are, we increment the count of the valid words for the current puzzle. Finally, we append the count to our result list and move on to the next puzzle. We do this for all the puzzles, and the result list is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction findNumOfValidWords(words, puzzles) {\n    const result = [];\n    for (const puzzle of puzzles) {\n        let count = 0;\n        const puzzleSet = new Set(puzzle);\n        for (const word of words) {\n            if (word.includes(puzzle[0])) {\n                if (Array.from(word).every(c => puzzleSet.has(c))) {\n                    count++;\n                }\n            }\n        }\n        result.push(count);\n    }\n    return result;\n}\n```\n\n    \n    We iterate through each puzzle in the given puzzles array. Then, we create a set containing all the unique characters of the current puzzle, which will be used later for checking if a word is valid with respect to the puzzle. Afterward, for each word in the words array, we check if the first letter of the puzzle is in this word. If it is, we check if all the characters in the word are present in the puzzle set. If they are, we increment the count of the valid words for the current puzzle. Finally, we append the count to our result list and move on to the next puzzle. We do this for all the puzzles, and the result list is returned.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic List<Integer> findNumOfValidWords(String[] words, String[] puzzles) {\n    List<Integer> result = new ArrayList<>();\n    for (String puzzle : puzzles) {\n        int count = 0;\n        Set<Character> puzzleSet = new HashSet<>();\n        for (char c : puzzle.toCharArray()) {\n            puzzleSet.add(c);\n        }\n        for (String word : words) {\n            if (word.indexOf(puzzle.charAt(0)) >= 0) {\n                if (word.chars().allMatch(c -> puzzleSet.contains((char) c))) {\n                    count++;\n                }\n            }\n        }\n        result.add(count);\n    }\n    return result;\n}\n```\n\n    \n    We iterate through each puzzle in the given puzzles array. Then, we create a set containing all the unique characters of the current puzzle, which will be used later for checking if a word is valid with respect to the puzzle. Afterward, for each word in the words array, we check if the first letter of the puzzle is in this word. If it is, we check if all the characters in the word are present in the puzzle set. If they are, we increment the count of the valid words for the current puzzle. Finally, we append the count to our result list and move on to the next puzzle. We do this for all the puzzles, and the result list is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

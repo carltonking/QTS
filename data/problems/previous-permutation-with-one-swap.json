@@ -1,0 +1,24 @@
+{
+  "id": 1053,
+  "title": "Previous Permutation With One Swap",
+  "slug": "previous-permutation-with-one-swap",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of positive integers arr (not necessarily distinct), return _the_ _lexicographically_ _largest permutation that is smaller than_ arr, that can be made with exactly one swap. If it cannot be done, then return the same array.\n\nNote that a _swap_ exchanges the positions of two numbers arr[i] and arr[j]",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef prevPermOpt1(arr):\n    n = len(arr)\n    for i in range(n - 2, -1, -1):\n        if arr[i] > arr[i + 1]:\n            j = i + 1\n            while j < n and arr[j] < arr[i]:\n                j += 1\n            arr[i], arr[j - 1] = arr[j - 1], arr[i]\n            break\n    return arr\n```\n\n    \n    The algorithm consists of iterating through the array from right to left to find the first number `arr[i]` that's greater than its immediate right adjacent number, `arr[i + 1]`. Then, it iterates rightwards starting from the `arr[i]` until it finds the number just smaller than `arr[i]`, and it swaps them. This gives the lexicographically largest permutation smaller than `arr` in exactly one swap. If no such number `arr[i]` is found, it means the given array `arr` is already the smallest permutation possible, and the same array is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction prevPermOpt1(arr) {\n    const n = arr.length;\n    for (let i = n - 2; i >= 0; i--) {\n        if (arr[i] > arr[i + 1]) {\n            let j = i + 1;\n            while (j < n && arr[j] < arr[i]) j++;\n            [arr[i], arr[j - 1]] = [arr[j - 1], arr[i]];\n            break;\n        }\n    }\n    return arr;\n}\n```\n\n    \n    The algorithm consists of iterating through the array from right to left to find the first number `arr[i]` that's greater than its immediate right adjacent number, `arr[i + 1]`. Then, it iterates rightwards starting from the `arr[i]` until it finds the number just smaller than `arr[i]`, and it swaps them. This gives the lexicographically largest permutation smaller than `arr` in exactly one swap. If no such number `arr[i]` is found, it means the given array `arr` is already the smallest permutation possible, and the same array is returned.\n    ",
+    "java": "\n    ```java\npublic int[] prevPermOpt1(int[] arr) {\n    int n = arr.length;\n    for (int i = n - 2; i >= 0; i--) {\n        if (arr[i] > arr[i + 1]) {\n            int j = i + 1;\n            while (j < n && arr[j] < arr[i]) j++;\n            int temp = arr[i];\n            arr[i] = arr[j - 1];\n            arr[j - 1] = temp;\n            break;\n        }\n    }\n    return arr;\n}\n```\n\n    \n    The algorithm consists of iterating through the array from right to left to find the first number `arr[i]` that's greater than its immediate right adjacent number, `arr[i + 1]`. Then, it iterates rightwards starting from the `arr[i]` until it finds the number just smaller than `arr[i]`, and it swaps them. This gives the lexicographically largest permutation smaller than `arr` in exactly one swap. If no such number `arr[i]` is found, it means the given array `arr` is already the smallest permutation possible, and the same array is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

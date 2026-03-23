@@ -1,0 +1,24 @@
+{
+  "id": 1828,
+  "title": "Queries on Number of Points Inside a Circle",
+  "slug": "queries-on-number-of-points-inside-a-circle",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array points where points[i] = [xi, yi] is the coordinates of the ith point on a 2D plane. Multiple points can have the same coordinates.\n\nYou are also given an array queries where queries[j] = [xj, yj, rj] describes a circle centered at (xj, yj) with a radius of rj.\n\nFor each query queries[j], compute the number of points inside the jth circle. Points on the border of the circle are considered inside.\n\nReturn _an array_ answer_, where_ answer[j] _is the answer to the_ jth _query_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef countPoints(points, queries):\n    answer = []\n    for query in queries:\n        inside = 0\n        for point in points:\n            dx = point[0] - query[0]\n            dy = point[1] - query[1]\n            if dx * dx + dy * dy <= query[2] * query[2]:\n                inside += 1\n        answer.append(inside)\n    return answer\n```\n\n    \n    For each query circle, we iterate over each point to check if it lies inside the circle. To check if a point is inside the circle, we calculate the squared distance (dx * dx + dy * dy) between the point and the center of the circle. If the squared distance is less than or equal to the squared radius of the circle, that means the point is inside the circle or on its border. We increment an `inside` counter for each point that satisfies this condition. The counter gets added to the `answer` array after iterating over all the points for the current circle. We repeat this process for all query circles and return the array of `inside` counts.\n    ",
+    "javascript": "\n    ```javascript\nfunction countPoints(points, queries) {\n    const answer = [];\n    for (const query of queries) {\n        let inside = 0;\n        for (const point of points) {\n            const dx = point[0] - query[0];\n            const dy = point[1] - query[1];\n            if (dx * dx + dy * dy <= query[2] * query[2]) {\n                inside++;\n            }\n        }\n        answer.push(inside);\n    }\n    return answer;\n}\n```\n\n    \n    For each query circle, we iterate over each point to check if it lies inside the circle. To check if a point is inside the circle, we calculate the squared distance (dx * dx + dy * dy) between the point and the center of the circle. If the squared distance is less than or equal to the squared radius of the circle, that means the point is inside the circle or on its border. We increment an `inside` counter for each point that satisfies this condition. The counter gets added to the `answer` array after iterating over all the points for the current circle. We repeat this process for all query circles and return the array of `inside` counts.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.List;\n\npublic int[] countPoints(int[][] points, int[][] queries) {\n    int[] answer = new int[queries.length];\n    for (int i = 0; i < queries.length; i++) {\n        int inside = 0;\n        for (int[] point : points) {\n            int dx = point[0] - queries[i][0];\n            int dy = point[1] - queries[i][1];\n            if (dx * dx + dy * dy <= queries[i][2] * queries[i][2]) {\n                inside++;\n            }\n        }\n        answer[i] = inside;\n    }\n    return answer;\n}\n```\n\n    \n    For each query circle, we iterate over each point to check if it lies inside the circle. To check if a point is inside the circle, we calculate the squared distance (dx * dx + dy * dy) between the point and the center of the circle. If the squared distance is less than or equal to the squared radius of the circle, that means the point is inside the circle or on its border. We increment an `inside` counter for each point that satisfies this condition. The counter gets added to the `answer` array after iterating over all the points for the current circle. We repeat this process for all query circles and return the array of `inside` counts.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

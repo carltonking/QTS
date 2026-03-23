@@ -1,0 +1,24 @@
+{
+  "id": 1903,
+  "title": "Largest Odd Number in String",
+  "slug": "largest-odd-number-in-string",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a string num, representing a large integer. Return _the largest-valued odd integer (as a string) that is a non-empty substring of_ num_, or an empty string_ \" \" _if no odd integer exists_.\n\nA substring is a contiguous sequence of characters within a string.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef largest_odd_number(num: str) -> str:\n    for i in range(len(num) - 1, -1, -1):\n        if int(num[i]) % 2 != 0:\n            return num[:i + 1]\n    return \"\"\n```\n    \n    The algorithm starts iterating through the given string `num` from the last character to the first one. Since we only need the largest odd number as a substring, we only need to find the first odd digit when iterating from right to left. When we find an odd digit, that means the current non-empty substring is the largest odd number, and we return that substring. If no odd digits are found, the function returns an empty string. The time complexity is O(n), where n is the length of the string `num`.\n    ",
+    "javascript": "\n    ```javascript\nfunction largestOddNumber(num) {\n    for (let i = num.length - 1; i >= 0; i--) {\n        if ((num.charCodeAt(i) - '0'.charCodeAt(0)) % 2 !== 0) {\n            return num.slice(0, i + 1);\n        }\n    }\n    return \"\";\n}\n```\n    \n    The algorithm starts iterating through the given string `num` from the last character to the first one. Since we only need the largest odd number as a substring, we only need to find the first odd digit when iterating from right to left. When we find an odd digit, that means the current non-empty substring is the largest odd number, and we return that substring. If no odd digits are found, the function returns an empty string. The time complexity is O(n), where n is the length of the string `num`.\n    ",
+    "java": "\n    ```java\npublic String largestOddNumber(String num) {\n    for (int i = num.length() - 1; i >= 0; i--) {\n        if ((num.charAt(i) - '0') % 2 != 0) {\n            return num.substring(0, i + 1);\n        }\n    }\n    return \"\";\n}\n```\n    \n    The algorithm starts iterating through the given string `num` from the last character to the first one. Since we only need the largest odd number as a substring, we only need to find the first odd digit when iterating from right to left. When we find an odd digit, that means the current non-empty substring is the largest odd number, and we return that substring. If no odd digits are found, the function returns an empty string. The time complexity is O(n), where n is the length of the string `num`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2470,
+  "title": "Number of Subarrays With LCM Equal to K",
+  "slug": "number-of-subarrays-with-lcm-equal-to-k",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums and an integer k, return _the number of subarrays of_ nums _where the least common multiple of the subarray's elements is_ k.\n\nA subarray is a contiguous non-empty sequence of elements within an array.\n\nThe least common multiple of an array is the smallest positive integer that is divisible by all the array elements.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_lcm_subarrays(nums: List[int], k: int) -> int:\n    def lcm(a, b):\n        temp = a\n        while temp % b != 0:\n            temp += a\n        return temp\n\n    count = 0\n    for i in range(len(nums)):\n        curr_lcm = nums[i]\n        for j in range(i, len(nums)):\n            curr_lcm = lcm(curr_lcm, nums[j])\n            if curr_lcm == k:\n                count += 1\n\n    return count\n```\n    \n    1. Create a function `lcm` that takes two arguments, `a` and `b`, and returns the Least Common Multiple of both.\n2. Initialize a counter `count` to zero.\n3. Iterate through the input array `nums`. For each element, set the current element as the current Least Common Multiple `curr_lcm`.\n4. Iterate from the current element to the end of the array.\n   - Update the current LCM using the `lcm` function, providing the current LCM and the current element from the inner iteration as arguments.\n   - If the LCM is equal to `k`, increment the counter `count`.\n5. Return the counter `count`.\n    ",
+    "javascript": "\n    ```javascript\nfunction countLCMSubarrays(nums, k) {\n    function lcm(a, b) {\n        let temp = a;\n        while (temp % b !== 0) {\n            temp += a;\n        }\n        return temp;\n    }\n\n    let count = 0;\n    for (let i = 0; i < nums.length; i++) {\n        let curr_lcm = nums[i];\n        for (let j = i; j < nums.length; j++) {\n            curr_lcm = lcm(curr_lcm, nums[j]);\n            if (curr_lcm === k) {\n                count++;\n            }\n        }\n    }\n    return count;\n}\n```\n    \n    1. Create a function `lcm` that takes two arguments, `a` and `b`, and returns the Least Common Multiple of both.\n2. Initialize a counter `count` to zero.\n3. Iterate through the input array `nums`. For each element, set the current element as the current Least Common Multiple `curr_lcm`.\n4. Iterate from the current element to the end of the array.\n   - Update the current LCM using the `lcm` function, providing the current LCM and the current element from the inner iteration as arguments.\n   - If the LCM is equal to `k`, increment the counter `count`.\n5. Return the counter `count`.\n    ",
+    "java": "\n    ```java\npublic int countLCMSubarrays(int[] nums, int k) {\n    int count = 0;\n    for (int i = 0; i < nums.length; i++) {\n        int curr_lcm = nums[i];\n        for (int j = i; j < nums.length; j++) {\n            curr_lcm = lcm(curr_lcm, nums[j]);\n            if (curr_lcm == k) {\n                count++;\n            }\n        }\n    }\n    return count;\n}\n\nprivate int lcm(int a, int b) {\n    int temp = a;\n    while ((temp % b) != 0) {\n        temp += a;\n    }\n    return temp;\n}\n```\n    \n    1. Create a function `lcm` that takes two arguments, `a` and `b`, and returns the Least Common Multiple of both.\n2. Initialize a counter `count` to zero.\n3. Iterate through the input array `nums`. For each element, set the current element as the current Least Common Multiple `curr_lcm`.\n4. Iterate from the current element to the end of the array.\n   - Update the current LCM using the `lcm` function, providing the current LCM and the current element from the inner iteration as arguments.\n   - If the LCM is equal to `k`, increment the counter `count`.\n5. Return the counter `count`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

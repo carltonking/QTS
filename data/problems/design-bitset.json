@@ -1,0 +1,24 @@
+{
+  "id": 2166,
+  "title": "Design Bitset",
+  "slug": "design-bitset",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A Bitset is a data structure that compactly stores bits.\n\nImplement the Bitset class:\n\n*   Bitset(int size) Initializes the Bitset with size bits, all of which are 0.\n*   void fix(int idx) Updates the value of the bit at the index idx to 1. If the value was already 1, no change occurs.\n*   void unfix(int idx) Updates the value of the bit at the index idx to 0. If the value was already 0, no change occurs.\n*   void flip() Flips the values of each bit in the Bitset. In other words, all bits with value 0 will now have value 1 and vice versa.\n*   boolean all() Checks if the value of each bit in the Bitset is 1. Returns true if it satisfies the condition, false otherwise.\n*   boolean one() Checks if there is at least one bit in the Bitset with value 1. Returns true if it satisfies the condition, false otherwise.\n*   int count() Returns the total number of bits in the Bitset which have value 1.\n*   String toString() Returns the current composition of the Bitset. Note that in the resultant string, the character at the ith index should coincide with the value at the ith bit of the Bitset.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef valid_move_combinations(pieces, positions):\n    n = len(pieces)\n    count = 0\n\n    for i in range(n):\n        for j in range(n):\n            if i != j and not (pieces[i] == \"bishop\" and (positions[i][0] + positions[i][1]) % 2 != (positions[j][0] + positions[j][1]) % 2):\n                count += 1\n\n    return count\n```\n    \n    The algorithm iterates over all pairs of pieces (not equal to each other) and checks if any of them can move towards the other without violating the rules of a bishop. If a pair passes this condition, it increments the count. In the end, it returns the total count of valid move combinations. It doesn't consider pieces other than bishops for blocking purposes, because rooks and queens can move in any direction and always be able to avoid a collision, while bishops are limited to squares with the same color as their own square.\n    ",
+    "javascript": "\n    ```javascript\nfunction validMoveCombinations(pieces, positions) {\n    const n = pieces.length;\n    let count = 0;\n\n    for (let i = 0; i < n; i++) {\n        for (let j = 0; j < n; j++) {\n            if (i !== j && !(pieces[i] === \"bishop\" && (positions[i][0] + positions[i][1]) % 2 !== (positions[j][0] + positions[j][1]) % 2 )) {\n                count++;\n            }\n        }\n    }\n\n    return count;\n}\n```\n    \n    The algorithm iterates over all pairs of pieces (not equal to each other) and checks if any of them can move towards the other without violating the rules of a bishop. If a pair passes this condition, it increments the count. In the end, it returns the total count of valid move combinations. It doesn't consider pieces other than bishops for blocking purposes, because rooks and queens can move in any direction and always be able to avoid a collision, while bishops are limited to squares with the same color as their own square.\n    ",
+    "java": "\n    ```java\npublic int validMoveCombinations(String[] pieces, int[][] positions) {\n    int n = pieces.length;\n    int count = 0;\n\n    for(int i = 0; i < n; i++) {\n        for(int j = 0; j < n; j++) {\n            if(i != j && !(pieces[i].equals(\"bishop\") && (positions[i][0] + positions[i][1]) % 2 != (positions[j][0] + positions[j][1]) % 2)) {\n                count++;\n            }\n        }\n    }\n\n    return count;\n}\n```\n    \n    The algorithm iterates over all pairs of pieces (not equal to each other) and checks if any of them can move towards the other without violating the rules of a bishop. If a pair passes this condition, it increments the count. In the end, it returns the total count of valid move combinations. It doesn't consider pieces other than bishops for blocking purposes, because rooks and queens can move in any direction and always be able to avoid a collision, while bishops are limited to squares with the same color as their own square.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

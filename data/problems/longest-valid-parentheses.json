@@ -1,0 +1,24 @@
+{
+  "id": 32,
+  "title": "Longest Valid Parentheses",
+  "slug": "longest-valid-parentheses",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given a string containing just the characters '(' and ')', return _the length of the longest valid (well-formed) parentheses_ _substring_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef longest_valid_parentheses(s: str) -> int:\n    n = len(s)\n    result = 0\n    st = []\n\n    for i in range(n):\n        if s[i] == '(':\n            st.append(i)\n        else:\n            if st and s[st[-1]] == '(':\n                st.pop()\n            else:\n                st.append(i)\n\n    if not st:\n        result = n\n    else:\n        right, left = n, 0\n        while st:\n            left = st.pop()\n            result = max(result, right - left - 1)\n            right = left\n        result = max(result, right)\n\n    return result\n```\n    \n    1. Iterate through the string and use a stack to store the indices of unmatched parentheses.\n2. If the current character is '(', push its index onto the stack.\n3. If the current character is ')', check if there's a pair of parentheses. If so, pop the stack, else push the index of unmatched ')'.\n4. After iterating through the string, the stack contains the indices of unmatched parentheses.\n5. Use the indices in the stack to calculate the length of the longest valid parentheses substring.\n6. Return the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction longestValidParentheses(s) {\n    const n = s.length;\n    let result = 0;\n    const st = [];\n\n    for (let i = 0; i < n; ++i) {\n        if (s[i] === '(') {\n            st.push(i);\n        } else {\n            if (st.length > 0 && s[st[st.length - 1]] === '(') {\n                st.pop();\n            } else {\n                st.push(i);\n            }\n        }\n    }\n\n    if (st.length === 0) {\n        result = n;\n    } else {\n        let right = n, left = 0;\n        while (st.length > 0) {\n            left = st.pop();\n            result = Math.max(result, right - left - 1);\n            right = left;\n        }\n        result = Math.max(result, right);\n    }\n\n    return result;\n}\n```\n    \n    1. Iterate through the string and use a stack to store the indices of unmatched parentheses.\n2. If the current character is '(', push its index onto the stack.\n3. If the current character is ')', check if there's a pair of parentheses. If so, pop the stack, else push the index of unmatched ')'.\n4. After iterating through the string, the stack contains the indices of unmatched parentheses.\n5. Use the indices in the stack to calculate the length of the longest valid parentheses substring.\n6. Return the result.\n    ",
+    "java": "\n    ```java\nimport java.util.Stack;\n\npublic int longestValidParentheses(String s) {\n    int n = s.length();\n    int result = 0;\n    Stack<Integer> st = new Stack<>();\n\n    for (int i = 0; i < n; ++i) {\n        if (s.charAt(i) == '(') {\n            st.push(i);\n        } else {\n            if (!st.empty() && s.charAt(st.peek()) == '(') {\n                st.pop();\n            } else {\n                st.push(i);\n            }\n        }\n    }\n\n    if (st.empty()) {\n        result = n;\n    } else {\n        int right = n, left = 0;\n        while (!st.empty()) {\n            left = st.pop();\n            result = Math.max(result, right - left - 1);\n            right = left;\n        }\n        result = Math.max(result, right);\n    }\n\n    return result;\n}\n```\n    \n    1. Iterate through the string and use a stack to store the indices of unmatched parentheses.\n2. If the current character is '(', push its index onto the stack.\n3. If the current character is ')', check if there's a pair of parentheses. If so, pop the stack, else push the index of unmatched ')'.\n4. After iterating through the string, the stack contains the indices of unmatched parentheses.\n5. Use the indices in the stack to calculate the length of the longest valid parentheses substring.\n6. Return the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

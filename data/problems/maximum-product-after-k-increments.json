@@ -1,0 +1,24 @@
+{
+  "id": 2233,
+  "title": "Maximum Product After K Increments",
+  "slug": "maximum-product-after-k-increments",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array of non-negative integers nums and an integer k. In one operation, you may choose any element from nums and increment it by 1.\n\nReturn _the maximum product of_ nums _after at most_ k _operations._ Since the answer may be very large, return it modulo 109 + 7. Note that you should maximize the product before taking the modulo.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef smooth_descent_periods(prices):\n    count = 0\n    i = 1\n    while i < len(prices):\n        if prices[i] == prices[i - 1] - 1:\n            while i < len(prices) and prices[i] == prices[i - 1] - 1:\n                i += 1\n            count += 1\n        else:\n            i += 1\n    return count\n```\n    \n    The algorithm maintains a count of smooth descent periods. We iterate through the `prices` array starting from the second element (index 1). If we find that the current price is less than the previous price by exactly 1, we enter the \"smooth descent\" mode by continuously checking the next elements as long as the price keeps decreasing by exactly 1. Once this condition is no longer true or we reach the end of the `prices` array, we increment the count of smooth descent periods and continue searching from the next unchecked index. Finally, we return the count of smooth descent periods.\n\nThis algorithm has a time complexity of O(n), where n is the number of elements in the `prices` array. The reason it is not O(n^2), despite having nested loops, is that the nested loop's index `i` is never reset, so each element is examined at most twice.\n    ",
+    "javascript": "\n    ```javascript\nfunction smoothDescentPeriods(prices) {\n    let count = 0;\n    for (let i = 1; i < prices.length; ++i) {\n        if (prices[i] === prices[i - 1] - 1) {\n            while (i < prices.length && prices[i] === prices[i - 1] - 1) {\n                i++;\n            }\n            count++;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm maintains a count of smooth descent periods. We iterate through the `prices` array starting from the second element (index 1). If we find that the current price is less than the previous price by exactly 1, we enter the \"smooth descent\" mode by continuously checking the next elements as long as the price keeps decreasing by exactly 1. Once this condition is no longer true or we reach the end of the `prices` array, we increment the count of smooth descent periods and continue searching from the next unchecked index. Finally, we return the count of smooth descent periods.\n\nThis algorithm has a time complexity of O(n), where n is the number of elements in the `prices` array. The reason it is not O(n^2), despite having nested loops, is that the nested loop's index `i` is never reset, so each element is examined at most twice.\n    ",
+    "java": "\n    ```java\npublic int smoothDescentPeriods(int[] prices) {\n    int count = 0;\n    for (int i = 1; i < prices.length; ++i) {\n        if (prices[i] == prices[i - 1] - 1) {\n            while (i < prices.length && prices[i] == prices[i - 1] - 1) {\n                i++;\n            }\n            count++;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm maintains a count of smooth descent periods. We iterate through the `prices` array starting from the second element (index 1). If we find that the current price is less than the previous price by exactly 1, we enter the \"smooth descent\" mode by continuously checking the next elements as long as the price keeps decreasing by exactly 1. Once this condition is no longer true or we reach the end of the `prices` array, we increment the count of smooth descent periods and continue searching from the next unchecked index. Finally, we return the count of smooth descent periods.\n\nThis algorithm has a time complexity of O(n), where n is the number of elements in the `prices` array. The reason it is not O(n^2), despite having nested loops, is that the nested loop's index `i` is never reset, so each element is examined at most twice.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

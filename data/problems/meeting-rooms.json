@@ -1,0 +1,24 @@
+{
+  "id": 252,
+  "title": "Meeting Rooms",
+  "slug": "meeting-rooms",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array of meeting time intervals where intervals[i] = [starti, endi], determine if a person could attend all meetings.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef can_attend_meetings(intervals):\n    intervals.sort()\n\n    for i in range(1, len(intervals)):\n        if intervals[i][0] < intervals[i - 1][1]:\n            return False\n\n    return True\n```\n    \n    1. Sort the meeting intervals by their start times.\n2. Iterate through the sorted intervals. \n3. Check if the start time of the current interval is less than the end time of the previous interval. If so, return false, as the person cannot attend both of these meetings.\n4. If all intervals pass the check, return true, as the person can attend all meetings.\n    ",
+    "javascript": "\n    ```javascript\nfunction canAttendMeetings(intervals) {\n    intervals.sort((a, b) => a[0] - b[0]);\n    \n    for (let i = 1; i < intervals.length; ++i) {\n        if (intervals[i][0] < intervals[i - 1][1])\n            return false;\n    }\n    \n    return true;\n}\n```\n    \n    1. Sort the meeting intervals by their start times.\n2. Iterate through the sorted intervals. \n3. Check if the start time of the current interval is less than the end time of the previous interval. If so, return false, as the person cannot attend both of these meetings.\n4. If all intervals pass the check, return true, as the person can attend all meetings.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic boolean canAttendMeetings(int[][] intervals) {\n    Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));\n    \n    for (int i = 1; i < intervals.length; ++i) {\n        if (intervals[i][0] < intervals[i - 1][1])\n            return false;\n    }\n    \n    return true;\n}\n```\n    \n    1. Sort the meeting intervals by their start times.\n2. Iterate through the sorted intervals. \n3. Check if the start time of the current interval is less than the end time of the previous interval. If so, return false, as the person cannot attend both of these meetings.\n4. If all intervals pass the check, return true, as the person can attend all meetings.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

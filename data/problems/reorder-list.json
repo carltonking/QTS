@@ -1,0 +1,24 @@
+{
+  "id": 143,
+  "title": "Reorder List",
+  "slug": "reorder-list",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given the head of a singly linked-list. The list can be represented as:\n\nL0 -> L1 -> ... -> Ln - 1 -> Ln\n\n_Reorder the list to be on the following form:_\n\nL0 -> Ln -> L1 -> Ln - 1 -> L2 -> Ln - 2 -> ...\n\nYou may not modify the values in the list's nodes. Only nodes themselves may be changed.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef reorderList(head):\n    if not head or not head.next or not head.next.next:\n        return\n\n    # Find the middle node\n    slow = head\n    fast = head\n    while fast.next and fast.next.next:\n        slow = slow.next\n        fast = fast.next.next\n\n    # Reverse the second half\n    prev = None\n    curr = slow.next\n    while curr:\n        next = curr.next\n        curr.next = prev\n        prev = curr\n        curr = next\n    slow.next = None\n\n    # Merge two halves\n    first = head\n    second = prev\n    while second:\n        next = first.next\n        first.next = second\n        first = second\n        second = next\n```\n    \n    1. Find the middle of the linked list using the slow and fast pointer technique.\n2. Reverse the second half of the linked list by iterating through it, and changing each node's next pointer to the previous node.\n3. Merge the two halves of the list by alternating nodes from the first and second halves.\n    ",
+    "javascript": "\n    ```javascript\nclass ListNode {\n    constructor(val, next = null) {\n        this.val = val;\n        this.next = next;\n    }\n}\n\nfunction reorderList(head) {\n    if (!head || !head.next || !head.next.next) return;\n\n    // Find the middle node\n    let slow = head;\n    let fast = head;\n    while (fast.next && fast.next.next) {\n        slow = slow.next;\n        fast = fast.next.next;\n    }\n\n    // Reverse the second half\n    let prev = null;\n    let curr = slow.next;\n    let next;\n    while (curr) {\n        next = curr.next;\n        curr.next = prev;\n        prev = curr;\n        curr = next;\n    }\n    slow.next = null;\n\n    // Merge two halves\n    let first = head;\n    let second = prev;\n    while (second) {\n        next = first.next;\n        first.next = second;\n        first = second;\n        second = next;\n    }\n}\n```\n    \n    1. Find the middle of the linked list using the slow and fast pointer technique.\n2. Reverse the second half of the linked list by iterating through it, and changing each node's next pointer to the previous node.\n3. Merge the two halves of the list by alternating nodes from the first and second halves.\n    ",
+    "java": "\n    ```java\npublic class ListNode {\n    int val;\n    ListNode next;\n    ListNode(int x) { val = x; }\n}\n\npublic void reorderList(ListNode head) {\n    if (head == null || head.next == null || head.next.next == null) return;\n\n    // Find the middle node\n    ListNode slow = head;\n    ListNode fast = head;\n    while (fast.next != null && fast.next.next != null) {\n        slow = slow.next;\n        fast = fast.next.next;\n    }\n\n    // Reverse the second half\n    ListNode prev = null;\n    ListNode curr = slow.next;\n    ListNode next;\n    while (curr != null) {\n        next = curr.next;\n        curr.next = prev;\n        prev = curr;\n        curr = next;\n    }\n    slow.next = null;\n\n    // Merge two halves\n    ListNode first = head;\n    ListNode second = prev;\n    while (second != null) {\n        next = first.next;\n        first.next = second;\n        first = second;\n        second = next;\n    }\n}\n```\n    \n    1. Find the middle of the linked list using the slow and fast pointer technique.\n2. Reverse the second half of the linked list by iterating through it, and changing each node's next pointer to the previous node.\n3. Merge the two halves of the list by alternating nodes from the first and second halves.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 253,
+  "title": "Meeting Rooms II",
+  "slug": "meeting-rooms-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of meeting time intervals intervals where intervals[i] = [starti, endi], return _the minimum number of conference rooms required_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nimport heapq\n\ndef minMeetingRooms(intervals):\n    if not intervals:\n        return 0\n\n    intervals.sort(key=lambda x: x[0])\n\n    min_heap = [intervals[0][1]]\n    for start, end in intervals[1:]:\n        if start >= min_heap[0]:\n            heapq.heappop(min_heap)\n        heapq.heappush(min_heap, end)\n\n    return len(min_heap)\n```\n    \n    1. Sort the intervals by their start times.\n2. Initialize a min-heap to store the end times of the intervals.\n3. Iterate through the sorted intervals.\n   - If the start time of the current interval is greater than or equal to the minimum end time in the heap, it means the meeting room is available, so remove the minimum end time.\n   - Add the end time of the current interval to the heap.\n4. The size of the heap represents the minimum number of meeting rooms required.\n    ",
+    "javascript": "\n    ```javascript\nfunction minMeetingRooms(intervals) {\n    if (intervals.length === 0) return 0;\n\n    intervals.sort((a, b) => a[0] - b[0]);\n    const minHeap = [intervals[0][1]];\n\n    for (let i = 1; i < intervals.length; i++) {\n        if (intervals[i][0] >= minHeap[0]) {\n            minHeap.shift();\n        }\n        minHeap.push(intervals[i][1]);\n        minHeap.sort((a, b) => a - b);\n    }\n\n    return minHeap.length;\n}\n```\n    \n    1. Sort the intervals by their start times.\n2. Initialize a min-heap to store the end times of the intervals.\n3. Iterate through the sorted intervals.\n   - If the start time of the current interval is greater than or equal to the minimum end time in the heap, it means the meeting room is available, so remove the minimum end time.\n   - Add the end time of the current interval to the heap.\n4. The size of the heap represents the minimum number of meeting rooms required.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\nimport java.util.PriorityQueue;\n\npublic int minMeetingRooms(int[][] intervals) {\n    if (intervals == null || intervals.length == 0) return 0;\n    \n    Arrays.sort(intervals, (a, b) -> a[0] - b[0]);\n    PriorityQueue<Integer> minHeap = new PriorityQueue<>();\n    \n    minHeap.add(intervals[0][1]);\n    for (int i = 1; i < intervals.length; i++) {\n        if (intervals[i][0] >= minHeap.peek()) {\n            minHeap.poll();\n        }\n        minHeap.add(intervals[i][1]);\n    }\n    \n    return minHeap.size();\n}\n```\n    \n    1. Sort the intervals by their start times.\n2. Initialize a min-heap to store the end times of the intervals.\n3. Iterate through the sorted intervals.\n   - If the start time of the current interval is greater than or equal to the minimum end time in the heap, it means the meeting room is available, so remove the minimum end time.\n   - Add the end time of the current interval to the heap.\n4. The size of the heap represents the minimum number of meeting rooms required.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

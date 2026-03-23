@@ -1,0 +1,24 @@
+{
+  "id": 392,
+  "title": "Is Subsequence",
+  "slug": "is-subsequence",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given two strings s and t, return true _if_ s _is a subsequence of_ t_, or_ false _otherwise_.\n\nA subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., \"ace \" is a subsequence of \"abcde \" while \"aec \" is not).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_subsequence(s, t):\n    si, ti = 0, 0\n\n    while si < len(s) and ti < len(t):\n        if s[si] == t[ti]:\n            si += 1\n        ti += 1\n\n    return si == len(s)\n```\n\n    \n    We use two pointers to iterate through the strings `s` and `t`. The `si` pointer will be used to iterate through the string `s` and the `ti` pointer will be used for `t`. \n\nAt each iteration of the loop, if the character at the current position of both strings is the same, we increment the `si` pointer. We will always increment the `ti` pointer.\n\nThe loop will continue until we have checked all the characters in the `s` string or until we have checked all the characters in the `t` string. If the `si` pointer is equal to the length of the `s` string, it means we've found all the characters in the `t` string and the function returns true. Otherwise, it returns false.\n\nThis algorithm runs with a time complexity of O(max(n, m)) where n and m are the lengths of the strings s and t, respectively.\n    ",
+    "javascript": "\n    ```javascript\nfunction isSubsequence(s, t) {\n    let si = 0, ti = 0;\n\n    while (si < s.length && ti < t.length) {\n        if (s[si] === t[ti])\n            si++;\n        ti++;\n    }\n\n    return si === s.length;\n}\n```\n\n    \n    We use two pointers to iterate through the strings `s` and `t`. The `si` pointer will be used to iterate through the string `s` and the `ti` pointer will be used for `t`. \n\nAt each iteration of the loop, if the character at the current position of both strings is the same, we increment the `si` pointer. We will always increment the `ti` pointer.\n\nThe loop will continue until we have checked all the characters in the `s` string or until we have checked all the characters in the `t` string. If the `si` pointer is equal to the length of the `s` string, it means we've found all the characters in the `t` string and the function returns true. Otherwise, it returns false.\n\nThis algorithm runs with a time complexity of O(max(n, m)) where n and m are the lengths of the strings s and t, respectively.\n    ",
+    "java": "\n    ```java\nboolean isSubsequence(String s, String t) {\n    int si = 0, ti = 0;\n\n    while (si < s.length() && ti < t.length()) {\n        if (s.charAt(si) == t.charAt(ti))\n            si++;\n        ti++;\n    }\n\n    return si == s.length();\n}\n```\n\n    \n    We use two pointers to iterate through the strings `s` and `t`. The `si` pointer will be used to iterate through the string `s` and the `ti` pointer will be used for `t`. \n\nAt each iteration of the loop, if the character at the current position of both strings is the same, we increment the `si` pointer. We will always increment the `ti` pointer.\n\nThe loop will continue until we have checked all the characters in the `s` string or until we have checked all the characters in the `t` string. If the `si` pointer is equal to the length of the `s` string, it means we've found all the characters in the `t` string and the function returns true. Otherwise, it returns false.\n\nThis algorithm runs with a time complexity of O(max(n, m)) where n and m are the lengths of the strings s and t, respectively.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

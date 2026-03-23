@@ -1,0 +1,24 @@
+{
+  "id": 2209,
+  "title": "Minimum White Tiles After Covering With Carpets",
+  "slug": "minimum-white-tiles-after-covering-with-carpets",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a 0-indexed binary string floor, which represents the colors of tiles on a floor:\n\n*   floor[i] = '0' denotes that the ith tile of the floor is colored black.\n*   On the other hand, floor[i] = '1' denotes that the ith tile of the floor is colored white.\n\nYou are also given numCarpets and carpetLen. You have numCarpets black carpets, each of length carpetLen tiles. Cover the tiles with the given carpets such that the number of white tiles still visible is minimum. Carpets may overlap one another.\n\nReturn _the minimum number of white tiles still visible._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minVisibleWhiteTiles(floor: str, numCarpets: int, carpetLen: int) -> int:\n    n, res = len(floor), len(floor)\n    for i in range(n - carpetLen + 1):\n        count = sum(1 for j in range(carpetLen) if floor[i + j] == '1')\n        for k in range(1, numCarpets + 1):\n            if k * carpetLen - 1 <= i + carpetLen:\n                res = min(res, n - count * k)\n                if i + carpetLen < n:\n                    count -= floor[i + carpetLen - k * carpetLen] == '1'\n                    count += floor[i + carpetLen] == '1'\n    return res\n```\n\n    \n    The algorithm starts by iterating through the `floor` string to count the possible white tiles that can be covered by one carpet in segments of the carpet length. This results in an optimal arrangement. Then we calculate the remaining count of white tiles for each carpet placement separately by overlapping the carpets where needed. Finally, we find the minimum count of visible white tiles from all combinations and return it as the result. While finding the minimum count, we also check for the overlap of different carpets to minimize visible white tiles.\n    ",
+    "javascript": "\n    ```javascript\nfunction minVisibleWhiteTiles(floor, numCarpets, carpetLen) {\n    let n = floor.length, res = n;\n    for (let i = 0; i < n - carpetLen + 1; ++i) {\n        let count = 0;\n        for (let j = 0; j < carpetLen; ++j)\n            count += (floor[i + j] === '1') ? 1 : 0;\n        for (let k = 1; k <= numCarpets && k * carpetLen - 1 <= i + carpetLen; ++k) {\n            res = Math.min(res, n - count * k);\n            if (i + carpetLen < n) {\n                count -= (floor[i + carpetLen - k * carpetLen] === '1') ? 1 : 0;\n                count += (floor[i + carpetLen] === '1') ? 1 : 0;\n            }\n        }\n    }\n    return res;\n}\n```\n\n    \n    The algorithm starts by iterating through the `floor` string to count the possible white tiles that can be covered by one carpet in segments of the carpet length. This results in an optimal arrangement. Then we calculate the remaining count of white tiles for each carpet placement separately by overlapping the carpets where needed. Finally, we find the minimum count of visible white tiles from all combinations and return it as the result. While finding the minimum count, we also check for the overlap of different carpets to minimize visible white tiles.\n    ",
+    "java": "\n    ```java\npublic int minVisibleWhiteTiles(String floor, int numCarpets, int carpetLen) {\n    int n = floor.length(), res = n;\n    for (int i = 0; i < n - carpetLen + 1; ++i) {\n        int count = 0;\n        for (int j = 0; j < carpetLen; ++j)\n            count += (floor.charAt(i + j) == '1') ? 1 : 0;\n        for (int k = 1; k <= numCarpets && k * carpetLen - 1 <= i + carpetLen; ++k) {\n            res = Math.min(res, n - count * k);\n            if (i + carpetLen < n) {\n                count -= (floor.charAt(i + carpetLen - k * carpetLen) == '1') ? 1 : 0;\n                count += (floor.charAt(i + carpetLen) == '1') ? 1 : 0;\n            }\n        }\n    }\n    return res;\n}\n```\n\n    \n    The algorithm starts by iterating through the `floor` string to count the possible white tiles that can be covered by one carpet in segments of the carpet length. This results in an optimal arrangement. Then we calculate the remaining count of white tiles for each carpet placement separately by overlapping the carpets where needed. Finally, we find the minimum count of visible white tiles from all combinations and return it as the result. While finding the minimum count, we also check for the overlap of different carpets to minimize visible white tiles.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

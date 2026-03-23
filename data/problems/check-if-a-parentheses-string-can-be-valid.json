@@ -1,0 +1,24 @@
+{
+  "id": 2116,
+  "title": "Check if a Parentheses String Can Be Valid",
+  "slug": "check-if-a-parentheses-string-can-be-valid",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A parentheses string is a non-empty string consisting only of '(' and ')'. It is valid if any of the following conditions is true:\n\n*   It is ().\n*   It can be written as AB (A concatenated with B), where A and B are valid parentheses strings.\n*   It can be written as (A), where A is a valid parentheses string.\n\nYou are given a parentheses string s and a string locked, both of length n. locked is a binary string consisting only of '0's and '1's. For each index i of locked,\n\n*   If locked[i] is '1', you cannot change s[i].\n*   But if locked[i] is '0', you can change s[i] to either '(' or ')'.\n\nReturn true _if you can make s a valid parentheses string_. Otherwise, return false.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_pairs_with_difference_k(nums, k):\n    freq_map = {}\n    count = 0\n\n    for num in nums:\n        count += freq_map.get(num - k, 0) + freq_map.get(num + k, 0)\n        freq_map[num] = freq_map.get(num, 0) + 1\n\n    return count\n```\n\n    \n    The algorithm iterates through the input array `nums`. For each number `num`, it increments the counter by the frequency of the values `num - k` and `num + k` in the input array. This is because either of them must have a difference of `k` with the current `num`. To achieve that, the algorithm keeps track of the frequency of each number in a hashmap called `freq_map`. In the end, it returns the count of all these pairs.\n\nIn each language implementation, the function follows the same logic but is adjusted to fit the specific syntax and data structure usage of each programming language. All implementations use a dictionary/hashmap data structure to store the frequency of the numbers.\n    ",
+    "javascript": "\n    ```javascript\nfunction countPairsWithDifferenceK(nums, k) {\n    const freqMap = new Map();\n    let count = 0;\n\n    for (const num of nums) {\n        count += (freqMap.get(num - k) || 0) + (freqMap.get(num + k) || 0);\n        freqMap.set(num, (freqMap.get(num) || 0) + 1);\n    }\n\n    return count;\n}\n```\n\n    \n    The algorithm iterates through the input array `nums`. For each number `num`, it increments the counter by the frequency of the values `num - k` and `num + k` in the input array. This is because either of them must have a difference of `k` with the current `num`. To achieve that, the algorithm keeps track of the frequency of each number in a hashmap called `freq_map`. In the end, it returns the count of all these pairs.\n\nIn each language implementation, the function follows the same logic but is adjusted to fit the specific syntax and data structure usage of each programming language. All implementations use a dictionary/hashmap data structure to store the frequency of the numbers.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\nimport java.util.Map;\n\npublic int countPairsWithDifferenceK(int[] nums, int k) {\n    Map<Integer, Integer> freqMap = new HashMap<>();\n    int count = 0;\n\n    for (int num : nums) {\n        count += freqMap.getOrDefault(num - k, 0) + freqMap.getOrDefault(num + k, 0);\n        freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);\n    }\n\n    return count;\n}\n```\n\n    \n    The algorithm iterates through the input array `nums`. For each number `num`, it increments the counter by the frequency of the values `num - k` and `num + k` in the input array. This is because either of them must have a difference of `k` with the current `num`. To achieve that, the algorithm keeps track of the frequency of each number in a hashmap called `freq_map`. In the end, it returns the count of all these pairs.\n\nIn each language implementation, the function follows the same logic but is adjusted to fit the specific syntax and data structure usage of each programming language. All implementations use a dictionary/hashmap data structure to store the frequency of the numbers.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

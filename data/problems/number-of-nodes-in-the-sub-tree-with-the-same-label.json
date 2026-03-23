@@ -1,0 +1,24 @@
+{
+  "id": 1519,
+  "title": "Number of Nodes in the Sub-Tree With the Same Label",
+  "slug": "number-of-nodes-in-the-sub-tree-with-the-same-label",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a tree (i.e. a connected, undirected graph that has no cycles) consisting of n nodes numbered from 0 to n - 1 and exactly n - 1 edges. The root of the tree is the node 0, and each node of the tree has a label which is a lower-case character given in the string labels (i.e. The node with the number i has the label labels[i]).\n\nThe edges array is given on the form edges[i] = [ai, bi], which means there is an edge between nodes ai and bi in the tree.\n\nReturn _an array of size n_ where ans[i] is the number of nodes in the subtree of the ith node which have the same label as node i.\n\nA subtree of a tree T is the tree consisting of a node in T and all of its descendant nodes.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_subsequence(nums):\n    nums.sort(reverse=True)\n    total_sum, current_sum = sum(nums), 0\n    result = []\n    for num in nums:\n        current_sum += num\n        result.append(num)\n        if current_sum > total_sum - current_sum:\n            break\n    return result\n```\n    \n    The algorithm starts by sorting the array in non-increasing order. Then, it iterates through the sorted array, adding each element to the subsequence, and keeping track of the sum of the subsequence. The loop terminates once the sum of the subsequence becomes strictly greater than the sum of the non-included elements. Since the array is sorted in non-increasing order, this guarantees that the resulting subsequence is of minimum size and has the maximum sum of all possible solutions. Finally, the subsequence is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction minSubsequence(nums) {\n    nums.sort((a, b) => b - a);\n    const totalSum = nums.reduce((a, b) => a + b, 0);\n    let currentSum = 0;\n    const result = [];\n    for (const num of nums) {\n        currentSum += num;\n        result.push(num);\n        if (currentSum > totalSum - currentSum) {\n            break;\n        }\n    }\n    return result;\n}\n```\n    \n    The algorithm starts by sorting the array in non-increasing order. Then, it iterates through the sorted array, adding each element to the subsequence, and keeping track of the sum of the subsequence. The loop terminates once the sum of the subsequence becomes strictly greater than the sum of the non-included elements. Since the array is sorted in non-increasing order, this guarantees that the resulting subsequence is of minimum size and has the maximum sum of all possible solutions. Finally, the subsequence is returned.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\nclass Solution {\n    public List<Integer> minSubsequence(int[] nums) {\n        List<Integer> result = new ArrayList<Integer>();\n        Arrays.sort(nums);\n        int totalSum = 0, currentSum = 0;\n        for (int num : nums) {\n            totalSum += num;\n        }\n        for (int i = nums.length - 1; i >= 0; i--) {\n            currentSum += nums[i];\n            result.add(nums[i]);\n            if (currentSum > totalSum - currentSum) {\n                break;\n            }\n        }\n        return result;\n    }\n}\n```\n    \n    The algorithm starts by sorting the array in non-increasing order. Then, it iterates through the sorted array, adding each element to the subsequence, and keeping track of the sum of the subsequence. The loop terminates once the sum of the subsequence becomes strictly greater than the sum of the non-included elements. Since the array is sorted in non-increasing order, this guarantees that the resulting subsequence is of minimum size and has the maximum sum of all possible solutions. Finally, the subsequence is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

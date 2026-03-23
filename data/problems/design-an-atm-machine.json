@@ -1,0 +1,24 @@
+{
+  "id": 2241,
+  "title": "Design an ATM Machine",
+  "slug": "design-an-atm-machine",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There is an ATM machine that stores banknotes of 5 denominations: 20, 50, 100, 200, and 500 dollars. Initially the ATM is empty. The user can use the machine to deposit or withdraw any amount of money.\n\nWhen withdrawing, the machine prioritizes using banknotes of larger values.\n\n*   For example, if you want to withdraw $300 and there are 2 $50 banknotes, 1 $100 banknote, and 1 $200 banknote, then the machine will use the $100 and $200 banknotes.\n*   However, if you try to withdraw $600 and there are 3 $200 banknotes and 1 $500 banknote, then the withdraw request will be rejected because the machine will first try to use the $500 banknote and then be unable to use banknotes to complete the remaining $100. Note that the machine is not allowed to use the $200 banknotes instead of the $500 banknote.\n\nImplement the ATM class:\n\n*   ATM() Initializes the ATM object.\n*   void deposit(int[] banknotesCount) Deposits new banknotes in the order $20, $50, $100, $200, and $500.\n*   int[] withdraw(int amount) Returns an array of length 5 of the number of banknotes that will be handed to the user in the order $20, $50, $100, $200, and $500, and update the number of banknotes in the ATM after withdrawing. Returns [-1] if it is not possible (do not withdraw any banknotes in this case).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef recoverArray(n, nums):\n    nums.sort()\n    arr = [nums[i * 2] for i in range(n)]\n    return arr\n```\n    \n    The algorithm to solve the problem is the same for all the languages. The steps are:\n\n1. Sort the given `nums` array in non-descending order.\n2. Iterate from 0 to `n-1` (inclusive), and for each index `i`, add the number at index `(2*i)` of the sorted `nums` array to the resulting `arr`.\n3. Return the resulting `arr`.\n\nThis works because the sorted `nums` array will have lower integers mixed with higher integers. Given that we have exactly n lower integers and n higher integers, picking every other number (starting at index 0) will give us the desired original array.\n    ",
+    "javascript": "\n    ```javascript\nfunction recoverArray(n, nums) {\n    nums.sort((a, b) => a - b);\n    const arr = new Array(n);\n    for (let i = 0; i < n; i++) {\n        arr[i] = nums[i * 2];\n    }\n    return arr;\n}\n```\n    \n    The algorithm to solve the problem is the same for all the languages. The steps are:\n\n1. Sort the given `nums` array in non-descending order.\n2. Iterate from 0 to `n-1` (inclusive), and for each index `i`, add the number at index `(2*i)` of the sorted `nums` array to the resulting `arr`.\n3. Return the resulting `arr`.\n\nThis works because the sorted `nums` array will have lower integers mixed with higher integers. Given that we have exactly n lower integers and n higher integers, picking every other number (starting at index 0) will give us the desired original array.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int[] recoverArray(int n, int[] nums) {\n    Arrays.sort(nums);\n    int[] arr = new int[n];\n    for (int i = 0; i < n; i++) {\n        arr[i] = nums[i * 2];\n    }\n    return arr;\n}\n```\n    \n    The algorithm to solve the problem is the same for all the languages. The steps are:\n\n1. Sort the given `nums` array in non-descending order.\n2. Iterate from 0 to `n-1` (inclusive), and for each index `i`, add the number at index `(2*i)` of the sorted `nums` array to the resulting `arr`.\n3. Return the resulting `arr`.\n\nThis works because the sorted `nums` array will have lower integers mixed with higher integers. Given that we have exactly n lower integers and n higher integers, picking every other number (starting at index 0) will give us the desired original array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

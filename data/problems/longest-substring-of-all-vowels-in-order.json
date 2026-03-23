@@ -1,0 +1,24 @@
+{
+  "id": 1839,
+  "title": "Longest Substring Of All Vowels in Order",
+  "slug": "longest-substring-of-all-vowels-in-order",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A string is considered beautiful if it satisfies the following conditions:\n\n*   Each of the 5 English vowels ('a', 'e', 'i', 'o', 'u') must appear at least once in it.\n*   The letters must be sorted in alphabetical order (i.e. all 'a's before 'e's, all 'e's before 'i's, etc.).\n\nFor example, strings \"aeiou \" and \"aaaaaaeiiiioou \" are considered beautiful, but \"uaeio \", \"aeoiu \", and \"aaaeeeooo \" are not beautiful.\n\nGiven a string word consisting of English vowels, return _the length of the longest beautiful substring of_ word_. If no such substring exists, return_ 0.\n\nA substring is a contiguous sequence of characters in a string.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef decode(encoded, first):\n    arr = [first]\n    for num in encoded:\n        arr.append(arr[-1] ^ num)\n    return arr\n```\n\n    \n    The algorithm is quite straightforward. Initialize the original array (arr) with the first element given. Then, for every encoded element, we calculate the arr element by using the XOR operation between the previous arr element and the current encoded element. Iterate through the encoded array until you've calculated all arr elements. Finally, return the original array.\n\nThis algorithm follows the property of XOR, which is A ^ B = C means A = B ^ C and B = A ^ C. Since encoded[i] = arr[i] XOR arr[i+1], we can find arr[i+1] by doing encoded[i] XOR arr[i].\n    ",
+    "javascript": "\n    ```javascript\nfunction decode(encoded, first) {\n    const arr = [first];\n    for (let i = 0; i < encoded.length; i++) {\n        arr.push(arr[i] ^ encoded[i]);\n    }\n    return arr;\n}\n```\n\n    \n    The algorithm is quite straightforward. Initialize the original array (arr) with the first element given. Then, for every encoded element, we calculate the arr element by using the XOR operation between the previous arr element and the current encoded element. Iterate through the encoded array until you've calculated all arr elements. Finally, return the original array.\n\nThis algorithm follows the property of XOR, which is A ^ B = C means A = B ^ C and B = A ^ C. Since encoded[i] = arr[i] XOR arr[i+1], we can find arr[i+1] by doing encoded[i] XOR arr[i].\n    ",
+    "java": "\n    ```java\npublic int[] decode(int[] encoded, int first) {\n    int[] arr = new int[encoded.length + 1];\n    arr[0] = first;\n    for (int i = 0; i < encoded.length; i++) {\n        arr[i + 1] = arr[i] ^ encoded[i];\n    }\n    return arr;\n}\n```\n\n    \n    The algorithm is quite straightforward. Initialize the original array (arr) with the first element given. Then, for every encoded element, we calculate the arr element by using the XOR operation between the previous arr element and the current encoded element. Iterate through the encoded array until you've calculated all arr elements. Finally, return the original array.\n\nThis algorithm follows the property of XOR, which is A ^ B = C means A = B ^ C and B = A ^ C. Since encoded[i] = arr[i] XOR arr[i+1], we can find arr[i+1] by doing encoded[i] XOR arr[i].\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

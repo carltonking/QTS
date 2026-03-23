@@ -1,0 +1,24 @@
+{
+  "id": 979,
+  "title": "Distribute Coins in Binary Tree",
+  "slug": "distribute-coins-in-binary-tree",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given the root of a binary tree with n nodes where each node in the tree has node.val coins. There are n coins in total throughout the whole tree.\n\nIn one move, we may choose two adjacent nodes and move one coin from one node to another. A move may be from parent to child, or from child to parent.\n\nReturn _the minimum number of moves required to make every node have exactly one coin_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef decode_permutation(s: str):\n    n = len(s)\n    perm = [0] * (n + 1)\n    next_zero, next_one = 0, n\n\n    for c in s:\n        if c == '0':\n            perm[next_zero] = next_one\n            next_zero += 1\n            next_one -= 1\n        else:\n            perm[next_one] = next_zero\n            next_one -= 1\n            next_zero += 1\n\n    perm[next_zero] = next_one\n    return perm\n```\n\n    \n    The algorithm initializes the result array `perm` and two pointers `next_zero` and `next_one`. The `next_zero` pointer starts at 0, and the `next_one` pointer starts at the last position of `perm`.\n\nThen, the algorithm iterates through the given string `s`:\n- If the current character is '0', the algorithm assigns the value of `next_one` to the position pointed by `next_zero`, then increments `next_zero`, and decrements `next_one`.\n- If the current character is '1', the algorithm assigns the value of `next_zero` to the position pointed by `next_one`, then increments `next_zero`, and decrements `next_one`.\n\nAfter iterating through the whole string `s`, the remaining unused value will be in `next_one`. We assign this value to the position pointed by `next_zero` in the `perm` array.\n\nAt the end of the algorithm, the constructed `perm` array represents a valid permutation.\n    ",
+    "javascript": "\n    ```javascript\nfunction decode_permutation(s) {\n    const n = s.length;\n    const perm = new Array(n + 1);\n    let next_zero = 0, next_one = n;\n\n    for (const c of s) {\n        if (c === '0') {\n            perm[next_zero++] = next_one--;\n        } else {\n            perm[next_one--] = next_zero++;\n        }\n    }\n    perm[next_zero] = next_one;\n    return perm;\n}\n```\n\n    \n    The algorithm initializes the result array `perm` and two pointers `next_zero` and `next_one`. The `next_zero` pointer starts at 0, and the `next_one` pointer starts at the last position of `perm`.\n\nThen, the algorithm iterates through the given string `s`:\n- If the current character is '0', the algorithm assigns the value of `next_one` to the position pointed by `next_zero`, then increments `next_zero`, and decrements `next_one`.\n- If the current character is '1', the algorithm assigns the value of `next_zero` to the position pointed by `next_one`, then increments `next_zero`, and decrements `next_one`.\n\nAfter iterating through the whole string `s`, the remaining unused value will be in `next_one`. We assign this value to the position pointed by `next_zero` in the `perm` array.\n\nAt the end of the algorithm, the constructed `perm` array represents a valid permutation.\n    ",
+    "java": "\n    ```java\npublic int[] decode_permutation(String s) {\n    int n = s.length();\n    int[] perm = new int[n + 1];\n    int next_zero = 0, next_one = n;\n\n    for (char c : s.toCharArray()) {\n        if (c == '0') {\n            perm[next_zero++] = next_one--;\n        } else {\n            perm[next_one--] = next_zero++;\n        }\n    }\n    perm[next_zero] = next_one;\n    return perm;\n}\n```\n\n    \n    The algorithm initializes the result array `perm` and two pointers `next_zero` and `next_one`. The `next_zero` pointer starts at 0, and the `next_one` pointer starts at the last position of `perm`.\n\nThen, the algorithm iterates through the given string `s`:\n- If the current character is '0', the algorithm assigns the value of `next_one` to the position pointed by `next_zero`, then increments `next_zero`, and decrements `next_one`.\n- If the current character is '1', the algorithm assigns the value of `next_zero` to the position pointed by `next_one`, then increments `next_zero`, and decrements `next_one`.\n\nAfter iterating through the whole string `s`, the remaining unused value will be in `next_one`. We assign this value to the position pointed by `next_zero` in the `perm` array.\n\nAt the end of the algorithm, the constructed `perm` array represents a valid permutation.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

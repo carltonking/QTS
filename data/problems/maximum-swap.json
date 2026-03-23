@@ -1,0 +1,24 @@
+{
+  "id": 670,
+  "title": "Maximum Swap",
+  "slug": "maximum-swap",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer num. You can swap two digits at most once to get the maximum valued number.\n\nReturn _the maximum valued number you can get_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maximumSwap(num):\n    num_str = list(str(num))\n    last = {int(v): i for i, v in enumerate(num_str)}\n\n    for i, v in enumerate(num_str):\n        for d in range(9, int(v), -1):\n            if last.get(d, -1) > i:\n                num_str[i], num_str[last[d]] = num_str[last[d]], num_str[i]\n                return int(\"\".join(num_str))\n\n    return num\n```\n    \n    1. Convert the input number to a string (num_str) so that we can manipulate individual digits easily.\n2. Create an array (last) to store the last occurrences of each digit, and populate it by iterating through num_str.\n3. Iterate through num_str; for each digit, check if there is a larger digit that appears later in the number.\n   - If there is, swap the current digit with the larger digit and return the result as an integer.\n4. If no suitable pair of digits is found to swap, return the original input.\n    ",
+    "javascript": "\n    ```javascript\nfunction maximumSwap(num) {\n    let num_str = Array.from(num.toString());\n    let last = new Array(10).fill(0);\n    \n    for (let i = 0; i < num_str.length; i++) {\n        last[parseInt(num_str[i])] = i;\n    }\n    \n    for (let i = 0; i < num_str.length; i++) {\n        for (let d = 9; d > parseInt(num_str[i]); d--) {\n            if (last[d] > i) {\n                [num_str[i], num_str[last[d]]] = [num_str[last[d]], num_str[i]];\n                return parseInt(num_str.join(''));\n            }\n        }\n    }\n    \n    return num;\n}\n```\n    \n    1. Convert the input number to a string (num_str) so that we can manipulate individual digits easily.\n2. Create an array (last) to store the last occurrences of each digit, and populate it by iterating through num_str.\n3. Iterate through num_str; for each digit, check if there is a larger digit that appears later in the number.\n   - If there is, swap the current digit with the larger digit and return the result as an integer.\n4. If no suitable pair of digits is found to swap, return the original input.\n    ",
+    "java": "\n    ```java\npublic int maximumSwap(int num) {\n    char[] num_str = Integer.toString(num).toCharArray();\n    int[] last = new int[10];\n    \n    for (int i = 0; i < num_str.length; i++) {\n        last[num_str[i] - '0'] = i;\n    }\n    \n    for (int i = 0; i < num_str.length; i++) {\n        for (int d = 9; d > num_str[i] - '0'; d--) {\n            if (last[d] > i) {\n                swap(num_str, i, last[d]);\n                return Integer.parseInt(new String(num_str));\n            }\n        }\n    }\n    \n    return num;\n}\n\nprivate void swap(char[] arr, int i, int j) {\n    char temp = arr[i];\n    arr[i] = arr[j];\n    arr[j] = temp;\n}\n```\n    \n    1. Convert the input number to a string (num_str) so that we can manipulate individual digits easily.\n2. Create an array (last) to store the last occurrences of each digit, and populate it by iterating through num_str.\n3. Iterate through num_str; for each digit, check if there is a larger digit that appears later in the number.\n   - If there is, swap the current digit with the larger digit and return the result as an integer.\n4. If no suitable pair of digits is found to swap, return the original input.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1627,
+  "title": "Graph Connectivity With Threshold",
+  "slug": "graph-connectivity-with-threshold",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "We have n cities labeled from 1 to n. Two different cities with labels x and y are directly connected by a bidirectional road if and only if x and y share a common divisor strictly greater than some threshold. More formally, cities with labels x and y have a road between them if there exists an integer z such that all of the following are true:\n\n*   x % z == 0,\n*   y % z == 0, and\n*   z > threshold.\n\nGiven the two integers, n and threshold, and an array of queries, you must determine for each queries[i] = [ai, bi] if cities ai and bi are connected directly or indirectly. (i.e. there is some path between them).\n\nReturn _an array_ answer_, where_ answer.length == queries.length _and_ answer[i] _is_ true _if for the_ ith _query, there is a path between_ ai _and_ bi_, or_ answer[i] _is_ false _if there is no path._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef lastMoment(n, left, right):\n    max_left = max(left, default=0)\n    min_right = min(right, default=n)\n\n    return max(max_left, n - min_right)\n```\n    \n    The algorithm calculates the moment when the last ant(s) fall out of the plank by following these steps:\n\n1. Find the maximum position of ants moving towards the left (max_left). These ants will fall off the left end of the plank.\n\n2. Find the minimum position of ants moving towards the right (min_right). These ants will fall off the right end of the plank.\n\n3. Return the maximum time taken among the ants falling off the left end (max_left) and the right end (n - min_right). This is because the ant that takes the maximum time to fall off the plank will be the last one to fall, so that moment will be the answer.\n    ",
+    "javascript": "\n    ```javascript\nfunction lastMoment(n, left, right) {\n    let max_left = 0;\n    let min_right = n;\n\n    for (let position of left) {\n        max_left = Math.max(max_left, position);\n    }\n\n    for (let position of right) {\n        min_right = Math.min(min_right, position);\n    }\n\n    return Math.max(max_left, n - min_right);\n}\n```\n    \n    The algorithm calculates the moment when the last ant(s) fall out of the plank by following these steps:\n\n1. Find the maximum position of ants moving towards the left (max_left). These ants will fall off the left end of the plank.\n\n2. Find the minimum position of ants moving towards the right (min_right). These ants will fall off the right end of the plank.\n\n3. Return the maximum time taken among the ants falling off the left end (max_left) and the right end (n - min_right). This is because the ant that takes the maximum time to fall off the plank will be the last one to fall, so that moment will be the answer.\n    ",
+    "java": "\n    ```java\npublic int lastMoment(int n, int[] left, int[] right) {\n    int max_left = 0;\n    int min_right = n;\n    \n    for(int position : left) {\n        max_left = Math.max(max_left, position);\n    }\n\n    for(int position : right) {\n        min_right = Math.min(min_right, position);\n    }\n\n    return Math.max(max_left, n - min_right);\n}\n```\n    \n    The algorithm calculates the moment when the last ant(s) fall out of the plank by following these steps:\n\n1. Find the maximum position of ants moving towards the left (max_left). These ants will fall off the left end of the plank.\n\n2. Find the minimum position of ants moving towards the right (min_right). These ants will fall off the right end of the plank.\n\n3. Return the maximum time taken among the ants falling off the left end (max_left) and the right end (n - min_right). This is because the ant that takes the maximum time to fall off the plank will be the last one to fall, so that moment will be the answer.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

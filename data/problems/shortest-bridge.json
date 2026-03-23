@@ -1,0 +1,24 @@
+{
+  "id": 934,
+  "title": "Shortest Bridge",
+  "slug": "shortest-bridge",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an n x n binary matrix grid where 1 represents land and 0 represents water.\n\nAn island is a 4-directionally connected group of 1's not connected to any other 1's. There are exactly two islands in grid.\n\nYou may change 0's to 1's to connect the two islands to form one island.\n\nReturn _the smallest number of_ 0_'s you must flip to connect the two islands_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef subarrayBitwiseORs(arr: List[int]) -> int:\n    result, current, temp = set(), set(), set()\n    for num in arr:\n        temp = {num}\n        for c in current:\n            temp.add(num | c)\n        current = temp\n        result |= current\n    return len(result)\n```\n    \n    The algorithm follows these steps:\n1. We initialize the sets `result`, `current`, and `temp` to empty sets. `result` will store all unique bitwise OR results, `current` will store the bitwise OR results of the previous subarray, and `temp` will store the bitwise OR results of the current subarray.\n2. We iterate over each element in the array.\n3. For each element, create a new `temp` containing the current element; then for each previous result in the `current`, insert the bitwise OR of the current element and the previous result into `temp`. Update `current` to be the new `temp`.\n4. Add all elements from `current` into `result`.\n5. Return the size of the unique `result` set.\n    ",
+    "javascript": "\n    ```javascript\nfunction subarrayBitwiseORs(arr) {\n    let result = new Set(), current = new Set(), temp;\n    for (const num of arr) {\n        temp = new Set([num]);\n        for (const c of current) {\n            temp.add(num | c);\n        }\n        current = temp;\n        for (const c of current) {\n            result.add(c);\n        }\n    }\n    return result.size;\n}\n```\n    \n    The algorithm follows these steps:\n1. We initialize the sets `result`, `current`, and `temp` to empty sets. `result` will store all unique bitwise OR results, `current` will store the bitwise OR results of the previous subarray, and `temp` will store the bitwise OR results of the current subarray.\n2. We iterate over each element in the array.\n3. For each element, create a new `temp` containing the current element; then for each previous result in the `current`, insert the bitwise OR of the current element and the previous result into `temp`. Update `current` to be the new `temp`.\n4. Add all elements from `current` into `result`.\n5. Return the size of the unique `result` set.\n    ",
+    "java": "\n    ```java\nimport java.util.HashSet;\nimport java.util.Set;\n\npublic int subarrayBitwiseORs(int[] arr) {\n    Set<Integer> result = new HashSet<>(), current, temp;\n    for (int num : arr) {\n        temp = new HashSet<>();\n        temp.add(num);\n        for (int c : current) {\n            temp.add(num | c);\n        }\n        current = temp;\n        result.addAll(current);\n    }\n    return result.size();\n}\n```\n    \n    The algorithm follows these steps:\n1. We initialize the sets `result`, `current`, and `temp` to empty sets. `result` will store all unique bitwise OR results, `current` will store the bitwise OR results of the previous subarray, and `temp` will store the bitwise OR results of the current subarray.\n2. We iterate over each element in the array.\n3. For each element, create a new `temp` containing the current element; then for each previous result in the `current`, insert the bitwise OR of the current element and the previous result into `temp`. Update `current` to be the new `temp`.\n4. Add all elements from `current` into `result`.\n5. Return the size of the unique `result` set.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

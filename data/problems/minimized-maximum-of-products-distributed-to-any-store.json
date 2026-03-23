@@ -1,0 +1,24 @@
+{
+  "id": 2064,
+  "title": "Minimized Maximum of Products Distributed to Any Store",
+  "slug": "minimized-maximum-of-products-distributed-to-any-store",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer n indicating there are n specialty retail stores. There are m product types of varying amounts, which are given as a 0-indexed integer array quantities, where quantities[i] represents the number of products of the ith product type.\n\nYou need to distribute all products to the retail stores following these rules:\n\n*   A store can only be given at most one product type but can be given any amount of it.\n*   After distribution, each store will have been given some number of products (possibly 0). Let x represent the maximum number of products given to any store. You want x to be as small as possible, i.e., you want to minimize the maximum number of products that are given to any store.\n\nReturn _the minimum possible_ x.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minimum_maximum(n, quantities):\n    sum_products = sum(quantities)\n    x = (sum_products + n - 1) // n\n    remaining_stores = n\n    for q in quantities:\n        remaining_stores -= (q + x - 1) // x\n        if remaining_stores < 0:\n            x = (sum_products + remaining_stores) // (n + remaining_stores)\n            remaining_stores = n\n    return x\n```\n\n    \n    - Calculate the sum of all products to be distributed.\n- Calculate an initial estimate for x by dividing the total number of products by the number of stores.\n- Initialize a remaining_stores variable to store the stores that have not been assigned products yet.\n- Iterate through each product type:\n  - Decrease remaining_stores by the number of stores needed to distribute the current product type with the current value of x.\n  - If remaining_stores becomes negative, it means x is too small. Recalculate x using the current remaining_stores and start over with remaining_stores equal to the number of stores.\n- Return x when there's no need for further adjustment.\n    ",
+    "javascript": "\n    ```javascript\nfunction minimum_maximum(n, quantities) {\n    let sum_products = quantities.reduce((a, b) => a + b, 0);\n\n    let x = Math.floor((sum_products + n - 1) / n);\n    let remaining_stores = n;\n    for (let q of quantities) {\n        remaining_stores -= Math.floor((q + x - 1) / x);\n        if (remaining_stores < 0) {\n            x = Math.floor((sum_products + remaining_stores) / (n + remaining_stores));\n            remaining_stores = n;\n        }\n    }\n    return x;\n}\n```\n\n    \n    - Calculate the sum of all products to be distributed.\n- Calculate an initial estimate for x by dividing the total number of products by the number of stores.\n- Initialize a remaining_stores variable to store the stores that have not been assigned products yet.\n- Iterate through each product type:\n  - Decrease remaining_stores by the number of stores needed to distribute the current product type with the current value of x.\n  - If remaining_stores becomes negative, it means x is too small. Recalculate x using the current remaining_stores and start over with remaining_stores equal to the number of stores.\n- Return x when there's no need for further adjustment.\n    ",
+    "java": "\n    ```java\npublic int minimum_maximum(int n, int[] quantities) {\n    int sum_products = 0;\n    for (int q : quantities) {\n        sum_products += q;\n    }\n\n    int x = (sum_products + n - 1) / n;\n    int remaining_stores = n;\n    for (int q : quantities) {\n        remaining_stores -= (q + x - 1) / x;\n        if (remaining_stores < 0) {\n            x = (sum_products + remaining_stores) / (n + remaining_stores);\n            remaining_stores = n;\n        }\n    }\n    return x;\n}\n```\n\n    \n    - Calculate the sum of all products to be distributed.\n- Calculate an initial estimate for x by dividing the total number of products by the number of stores.\n- Initialize a remaining_stores variable to store the stores that have not been assigned products yet.\n- Iterate through each product type:\n  - Decrease remaining_stores by the number of stores needed to distribute the current product type with the current value of x.\n  - If remaining_stores becomes negative, it means x is too small. Recalculate x using the current remaining_stores and start over with remaining_stores equal to the number of stores.\n- Return x when there's no need for further adjustment.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

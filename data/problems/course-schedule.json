@@ -1,0 +1,41 @@
+{
+  "id": 24,
+  "title": "Course Schedule",
+  "slug": "course-schedule",
+  "difficulty": "Medium",
+  "tags": [
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph",
+    "Topological Sort"
+  ],
+  "description": "There are numCourses courses you have to take. Return true if you can finish all courses given prerequisites.",
+  "examples": [
+    {
+      "input": "numCourses = 2, prerequisites = [[1,0]]",
+      "output": "true"
+    }
+  ],
+  "constraints": [
+    "1 <= numCourses <= 2000"
+  ],
+  "starterCode": {
+    "python": "from typing import List\nclass Solution:\n    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:\n        pass",
+    "javascript": "var canFinish = function(numCourses, prerequisites) {\n    \n};",
+    "java": "class Solution {\n    public boolean canFinish(int numCourses, int[][] prerequisites) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Course Schedule\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "2\n[[1,0]]",
+      "expectedOutput": "true"
+    },
+    {
+      "input": "2\n[[1,0],[0,1]]",
+      "expectedOutput": "false"
+    }
+  ]
+}

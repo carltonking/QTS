@@ -1,0 +1,24 @@
+{
+  "id": 1674,
+  "title": "Minimum Moves to Make Array Complementary",
+  "slug": "minimum-moves-to-make-array-complementary",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array nums of even length n and an integer limit. In one move, you can replace any integer from nums with another integer between 1 and limit, inclusive.\n\nThe array nums is complementary if for all indices i (0-indexed), nums[i] + nums[n - 1 - i] equals the same number. For example, the array [1,2,3,4] is complementary because for all indices i, nums[i] + nums[n - 1 - i] = 5.\n\nReturn the _minimum number of moves required to make_ nums _complementary_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_operations(n):\n    return n * (n - 1) // 2\n```\n\n    \n    The array arr is an arithmetic progression with an odd common difference of 2, and we want to make all the elements equal. We can achieve this by making all elements equal to the average of the array. The average is equal to (2 * 0 + 1 + 2 * (n - 1) + 1) / 2 = n. Therefore, our goal is to make all elements equal to n.\n\nLet's look at how many steps are required to convert each element in the array to the target value of n. For the first element (index 0), we need to increase its value by (n - 1) steps. For the second element (index 1), we need to decrease its value by (n - 3) steps. Continuing this pattern, for every pair of indices (i, n - i - 1) we can find the number of steps required as the sum of the absolute differences between each element and n.\n \nWe can write the sum of steps as:\nS = (n - 1) + (n - 3) + ... up to n/2 times\n\nLet's write this sum using the arithmetic progression sum formula:\nS = (n - 1) * n / 4\n\nSince we only need the integer value of the result, the total number of minimum operations needed to make all elements equal will be n * (n - 1) / 2.\n    ",
+    "javascript": "\n    ```javascript\nfunction minOperations(n) {\n    return n * (n - 1) / 2;\n}\n```\n\n    \n    The array arr is an arithmetic progression with an odd common difference of 2, and we want to make all the elements equal. We can achieve this by making all elements equal to the average of the array. The average is equal to (2 * 0 + 1 + 2 * (n - 1) + 1) / 2 = n. Therefore, our goal is to make all elements equal to n.\n\nLet's look at how many steps are required to convert each element in the array to the target value of n. For the first element (index 0), we need to increase its value by (n - 1) steps. For the second element (index 1), we need to decrease its value by (n - 3) steps. Continuing this pattern, for every pair of indices (i, n - i - 1) we can find the number of steps required as the sum of the absolute differences between each element and n.\n \nWe can write the sum of steps as:\nS = (n - 1) + (n - 3) + ... up to n/2 times\n\nLet's write this sum using the arithmetic progression sum formula:\nS = (n - 1) * n / 4\n\nSince we only need the integer value of the result, the total number of minimum operations needed to make all elements equal will be n * (n - 1) / 2.\n    ",
+    "java": "\n    ```java\npublic int minOperations(int n) {\n    return n * (n - 1) / 2;\n}\n```\n\n    \n    The array arr is an arithmetic progression with an odd common difference of 2, and we want to make all the elements equal. We can achieve this by making all elements equal to the average of the array. The average is equal to (2 * 0 + 1 + 2 * (n - 1) + 1) / 2 = n. Therefore, our goal is to make all elements equal to n.\n\nLet's look at how many steps are required to convert each element in the array to the target value of n. For the first element (index 0), we need to increase its value by (n - 1) steps. For the second element (index 1), we need to decrease its value by (n - 3) steps. Continuing this pattern, for every pair of indices (i, n - i - 1) we can find the number of steps required as the sum of the absolute differences between each element and n.\n \nWe can write the sum of steps as:\nS = (n - 1) + (n - 3) + ... up to n/2 times\n\nLet's write this sum using the arithmetic progression sum formula:\nS = (n - 1) * n / 4\n\nSince we only need the integer value of the result, the total number of minimum operations needed to make all elements equal will be n * (n - 1) / 2.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

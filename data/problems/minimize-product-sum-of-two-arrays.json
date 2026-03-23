@@ -1,0 +1,24 @@
+{
+  "id": 1874,
+  "title": "Minimize Product Sum of Two Arrays",
+  "slug": "minimize-product-sum-of-two-arrays",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "The product sum of two equal-length arrays a and b is equal to the sum of a[i] * b[i] for all 0 <= i < a.length (0-indexed).\n\n*   For example, if a = [1,2,3,4] and b = [5,2,3,1], the product sum would be 1*5 + 2*2 + 3*3 + 4*1 = 22.\n\nGiven two arrays nums1 and nums2 of length n, return _the minimum product sum if you are allowed to rearrange the order of the elements in_ nums1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef can_choose(groups, nums):\n    g_i, n_i = 0, 0\n    while g_i < len(groups) and n_i + len(groups[g_i]) <= len(nums):\n        if nums[n_i : n_i + len(groups[g_i])] == groups[g_i]:\n            n_i += len(groups[g_i])\n            g_i += 1\n        else:\n            n_i += 1\n    return g_i == len(groups)\n```\n    \n    We initialize two indices, `g_i` for tracking the position in the `groups` array, and `n_i` for tracking the position in the `nums` array. We iterate using a `while` loop, checking if it's possible to process the next group. If it is, we compare the subarray in `nums` starting at `n_i` with the current `groups` element. If they match, we move to the next group and increment the index `n_i` based on the length of the current group. If not, we increment `n_i` by 1.\n\nIf we reach the end of the `groups` array, it means we've matched all the groups to disjoint subarrays, so we return true. Otherwise, we return false.\n    ",
+    "javascript": "\n    ```javascript\nfunction canChoose(groups, nums) {\n    let g_i = 0, n_i = 0;\n    while (g_i < groups.length && n_i + groups[g_i].length <= nums.length) {\n        const match = groups[g_i].every((val, i) => val === nums[n_i + i]);\n        if (match) {\n            n_i += groups[g_i].length;\n            g_i++;\n        } else {\n            n_i++;\n        }\n    }\n    return g_i === groups.length;\n}\n```\n\n    \n    We initialize two indices, `g_i` for tracking the position in the `groups` array, and `n_i` for tracking the position in the `nums` array. We iterate using a `while` loop, checking if it's possible to process the next group. If it is, we compare the subarray in `nums` starting at `n_i` with the current `groups` element. If they match, we move to the next group and increment the index `n_i` based on the length of the current group. If not, we increment `n_i` by 1.\n\nIf we reach the end of the `groups` array, it means we've matched all the groups to disjoint subarrays, so we return true. Otherwise, we return false.\n    ",
+    "java": "\n    ```java\npublic boolean canChoose(int[][] groups, int[] nums) {\n    int g_i = 0, n_i = 0;\n    while (g_i < groups.length && n_i + groups[g_i].length <= nums.length) {\n        boolean match = true;\n        for (int i = 0; i < groups[g_i].length; ++i) {\n            if (groups[g_i][i] != nums[n_i + i]) {\n                match = false;\n                break;\n            }\n        }\n        if (match) {\n            n_i += groups[g_i].length;\n            g_i++;\n        } else {\n            n_i++;\n        }\n    }\n    return g_i == groups.length;\n}\n```\n    \n    We initialize two indices, `g_i` for tracking the position in the `groups` array, and `n_i` for tracking the position in the `nums` array. We iterate using a `while` loop, checking if it's possible to process the next group. If it is, we compare the subarray in `nums` starting at `n_i` with the current `groups` element. If they match, we move to the next group and increment the index `n_i` based on the length of the current group. If not, we increment `n_i` by 1.\n\nIf we reach the end of the `groups` array, it means we've matched all the groups to disjoint subarrays, so we return true. Otherwise, we return false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

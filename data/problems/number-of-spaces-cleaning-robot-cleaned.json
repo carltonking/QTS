@@ -1,0 +1,24 @@
+{
+  "id": 2061,
+  "title": "Number of Spaces Cleaning Robot Cleaned",
+  "slug": "number-of-spaces-cleaning-robot-cleaned",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A room is represented by a 0-indexed 2D binary matrix room where a 0 represents an empty space and a 1 represents a space with an object. The top left corner of the room will be empty in all test cases.\n\nA cleaning robot starts at the top left corner of the room and is facing right. The robot will continue heading straight until it reaches the edge of the room or it hits an object, after which it will turn 90 degrees clockwise and repeat this process. The starting space and all spaces that the robot visits are cleaned by it.\n\nReturn _the number of clean spaces in the room if the robot runs indefinetely._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef colorTheGrid(m, n):\n    mod = 10**9 + 7\n    dp = [6, 6]\n    dpf = [3, 3]\n\n    for _ in range(2, max(m, n) + 1):\n        temp = dp[1]\n        dp[1] = (dpf[1] * 2) % mod\n        dp[0] = temp\n        dpf[1] = (dpf[1] + dpf[0]) % mod\n        dpf[0] = (dpf[0] + temp) % mod\n\n    return (dp[0 if m == 1 else 1] * dpf[0 if n == 1 else 1]) % mod\n```\n    \n    The problem can be solved by dynamic programming. We can use two DP arrays, dp and dpf. The dp array is used to store the number of ways to fill the first i columns, where dp[0] represents filling the first i columns with 3-cell components, and dp[1] represents filling with 2-cell components. The dpf array is similar, but it's used for the vertical direction.\n\nIn each iteration of the loop from 2 to max(m, n), we calculate the number of ways to fill the first i columns for both 2-cell and 3-cell components and update the dp and dpf arrays accordingly.\n\nAfter the loop, the result is the multiplication of the values corresponding to m and n, modulo 10^9 + 7.\n    ",
+    "javascript": "\n    ```javascript\nfunction colorTheGrid(m, n) {\n    const mod = 1000000007;\n    const dp = [6, 6];\n    const dpf = [3, 3];\n    \n    for (let i = 2; i <= Math.max(m, n); ++i) {\n        const temp = dp[1];\n        dp[1] = (dpf[1] * 2) % mod;\n        dp[0] = temp;\n        dpf[1] = (dpf[1] + dpf[0]) % mod;\n        dpf[0] = (dpf[0] + temp) % mod;\n    }\n    \n    return (dp[m === 1 ? 0 : 1] * dpf[n === 1 ? 0 : 1]) % mod;\n}\n```\n    \n    The problem can be solved by dynamic programming. We can use two DP arrays, dp and dpf. The dp array is used to store the number of ways to fill the first i columns, where dp[0] represents filling the first i columns with 3-cell components, and dp[1] represents filling with 2-cell components. The dpf array is similar, but it's used for the vertical direction.\n\nIn each iteration of the loop from 2 to max(m, n), we calculate the number of ways to fill the first i columns for both 2-cell and 3-cell components and update the dp and dpf arrays accordingly.\n\nAfter the loop, the result is the multiplication of the values corresponding to m and n, modulo 10^9 + 7.\n    ",
+    "java": "\n    ```java\npublic int colorTheGrid(int m, int n) {\n    long mod = 1000000007;\n    long[] dp = {6, 6};\n    long[] dpf = {3, 3};\n\n    for (int i = 2; i <= Math.max(m, n); ++i) {\n        long temp = dp[1];\n        dp[1] = (dpf[1] * 2) % mod;\n        dp[0] = temp;\n        dpf[1] = (dpf[1] + dpf[0]) % mod;\n        dpf[0] = (dpf[0] + temp) % mod;\n    }\n\n    return (int)((dp[m == 1 ? 0 : 1] * dpf[n == 1 ? 0 : 1]) % mod);\n}\n```\n    \n    The problem can be solved by dynamic programming. We can use two DP arrays, dp and dpf. The dp array is used to store the number of ways to fill the first i columns, where dp[0] represents filling the first i columns with 3-cell components, and dp[1] represents filling with 2-cell components. The dpf array is similar, but it's used for the vertical direction.\n\nIn each iteration of the loop from 2 to max(m, n), we calculate the number of ways to fill the first i columns for both 2-cell and 3-cell components and update the dp and dpf arrays accordingly.\n\nAfter the loop, the result is the multiplication of the values corresponding to m and n, modulo 10^9 + 7.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

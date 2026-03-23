@@ -1,0 +1,24 @@
+{
+  "id": 264,
+  "title": "Ugly Number II",
+  "slug": "ugly-number-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "An ugly number is a positive integer whose prime factors are limited to 2, 3, and 5.\n\nGiven an integer n, return _the_ nth _ugly number_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef nthUglyNumber(n: int) -> int:\n    ugly_numbers = [0] * n\n    ugly_numbers[0] = 1\n    i2, i3, i5 = 0, 0, 0\n\n    for i in range(1, n):\n        ugly_numbers[i] = min(ugly_numbers[i2] * 2, ugly_numbers[i3] * 3, ugly_numbers[i5] * 5)\n        if ugly_numbers[i] == ugly_numbers[i2] * 2: i2 += 1\n        if ugly_numbers[i] == ugly_numbers[i3] * 3: i3 += 1\n        if ugly_numbers[i] == ugly_numbers[i5] * 5: i5 += 1\n\n    return ugly_numbers[n - 1]\n\n```\n\n    \n    1. Initialize an array of size n and set the first element to 1 (the first ugly number).\n2. Create three variables (i2, i3, and i5) to keep track of the current index of ugly numbers multiplied by 2, 3, and 5.\n3. Iterate through the array from index 1 to n-1, calculating the next ugly number as the minimum of (uglyNumbers[i2] * 2, uglyNumbers[i3] * 3, and uglyNumbers[i5] * 5).\n4. Update the indices (i2, i3, and i5) based on which ugly number was used in the minimum calculation.\n5. The last element of the array is the nth ugly number.\n    ",
+    "javascript": "\n    ```javascript\nfunction nthUglyNumber(n) {\n    let uglyNumbers = new Array(n);\n    uglyNumbers[0] = 1;\n    let i2 = 0, i3 = 0, i5 = 0;\n\n    for (let i = 1; i < n; i++) {\n        uglyNumbers[i] = Math.min(Math.min(uglyNumbers[i2] * 2, uglyNumbers[i3] * 3), uglyNumbers[i5] * 5);\n        if (uglyNumbers[i] === uglyNumbers[i2] * 2) i2++;\n        if (uglyNumbers[i] === uglyNumbers[i3] * 3) i3++;\n        if (uglyNumbers[i] === uglyNumbers[i5] * 5) i5++;\n    }\n\n    return uglyNumbers[n - 1];\n}\n```\n\n    \n    1. Initialize an array of size n and set the first element to 1 (the first ugly number).\n2. Create three variables (i2, i3, and i5) to keep track of the current index of ugly numbers multiplied by 2, 3, and 5.\n3. Iterate through the array from index 1 to n-1, calculating the next ugly number as the minimum of (uglyNumbers[i2] * 2, uglyNumbers[i3] * 3, and uglyNumbers[i5] * 5).\n4. Update the indices (i2, i3, and i5) based on which ugly number was used in the minimum calculation.\n5. The last element of the array is the nth ugly number.\n    ",
+    "java": "\n    ```java\npublic int nthUglyNumber(int n) {\n    int[] uglyNumbers = new int[n];\n    uglyNumbers[0] = 1;\n    int i2 = 0, i3 = 0, i5 = 0;\n\n    for (int i = 1; i < n; i++) {\n        uglyNumbers[i] = Math.min(Math.min(uglyNumbers[i2] * 2, uglyNumbers[i3] * 3), uglyNumbers[i5] * 5);\n        if (uglyNumbers[i] == uglyNumbers[i2] * 2) i2++;\n        if (uglyNumbers[i] == uglyNumbers[i3] * 3) i3++;\n        if (uglyNumbers[i] == uglyNumbers[i5] * 5) i5++;\n    }\n\n    return uglyNumbers[n - 1];\n}\n```\n\n    \n    1. Initialize an array of size n and set the first element to 1 (the first ugly number).\n2. Create three variables (i2, i3, and i5) to keep track of the current index of ugly numbers multiplied by 2, 3, and 5.\n3. Iterate through the array from index 1 to n-1, calculating the next ugly number as the minimum of (uglyNumbers[i2] * 2, uglyNumbers[i3] * 3, and uglyNumbers[i5] * 5).\n4. Update the indices (i2, i3, and i5) based on which ugly number was used in the minimum calculation.\n5. The last element of the array is the nth ugly number.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

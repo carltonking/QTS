@@ -1,0 +1,24 @@
+{
+  "id": 221,
+  "title": "Maximal Square",
+  "slug": "maximal-square",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an m x n binary matrix filled with 0's and 1's, _find the largest square containing only_ 1's _and return its area_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maximalSquare(matrix):\n    m, n = len(matrix), len(matrix[0])\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n    maxSize = 0\n\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if matrix[i - 1][j - 1] == '1':\n                dp[i][j] = min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1\n                maxSize = max(maxSize, dp[i][j])\n\n    return maxSize * maxSize\n```\n    \n    The algorithm uses dynamic programming to find the largest square containing only 1's. It starts by creating a 2D table, `dp`, where `dp[i][j]` represents the size of the largest square ending at position (i, j) in the input matrix. The dimensions of `dp` are m+1 and n+1 to accommodate zero-indexing, and all elements are initialized to zero. \n\nThe algorithm iterates through each element in the input matrix. If the current element is 1, it sets the corresponding entry in `dp` to the minimum of the neighboring `dp` values (i.e., the values at top, left, and top-left) plus 1, which represents the size of the current square. The maxSize variable keeps track of the current largest square size, and at the end, the area of the largest square is returned by squaring maxSize.\n    ",
+    "javascript": "\n    ```javascript\nfunction maximalSquare(matrix) {\n    const m = matrix.length;\n    const n = matrix[0].length;\n    const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));\n    let maxSize = 0;\n\n    for (let i = 1; i <= m; i++) {\n        for (let j = 1; j <= n; j++) {\n            if (matrix[i - 1][j - 1] === '1') {\n                dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1;\n                maxSize = Math.max(maxSize, dp[i][j]);\n            }\n        }\n    }\n\n    return maxSize * maxSize;\n}\n```\n    \n    The algorithm uses dynamic programming to find the largest square containing only 1's. It starts by creating a 2D table, `dp`, where `dp[i][j]` represents the size of the largest square ending at position (i, j) in the input matrix. The dimensions of `dp` are m+1 and n+1 to accommodate zero-indexing, and all elements are initialized to zero. \n\nThe algorithm iterates through each element in the input matrix. If the current element is 1, it sets the corresponding entry in `dp` to the minimum of the neighboring `dp` values (i.e., the values at top, left, and top-left) plus 1, which represents the size of the current square. The maxSize variable keeps track of the current largest square size, and at the end, the area of the largest square is returned by squaring maxSize.\n    ",
+    "java": "\n    ```java\npublic int maximalSquare(char[][] matrix) {\n    int m = matrix.length;\n    int n = matrix[0].length;\n    int[][] dp = new int[m + 1][n + 1];\n    int maxSize = 0;\n\n    for (int i = 1; i <= m; i++) {\n        for (int j = 1; j <= n; j++) {\n            if (matrix[i - 1][j - 1] == '1') {\n                dp[i][j] = Math.min(Math.min(dp[i - 1][j], dp[i][j - 1]), dp[i - 1][j - 1]) + 1;\n                maxSize = Math.max(maxSize, dp[i][j]);\n            }\n        }\n    }\n\n    return maxSize * maxSize;\n}\n```\n    \n    The algorithm uses dynamic programming to find the largest square containing only 1's. It starts by creating a 2D table, `dp`, where `dp[i][j]` represents the size of the largest square ending at position (i, j) in the input matrix. The dimensions of `dp` are m+1 and n+1 to accommodate zero-indexing, and all elements are initialized to zero. \n\nThe algorithm iterates through each element in the input matrix. If the current element is 1, it sets the corresponding entry in `dp` to the minimum of the neighboring `dp` values (i.e., the values at top, left, and top-left) plus 1, which represents the size of the current square. The maxSize variable keeps track of the current largest square size, and at the end, the area of the largest square is returned by squaring maxSize.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

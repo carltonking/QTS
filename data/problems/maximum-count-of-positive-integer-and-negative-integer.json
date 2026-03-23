@@ -1,0 +1,24 @@
+{
+  "id": 2529,
+  "title": "Maximum Count of Positive Integer and Negative Integer",
+  "slug": "maximum-count-of-positive-integer-and-negative-integer",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array nums sorted in non-decreasing order, return _the maximum between the number of positive integers and the number of negative integers._\n\n*   In other words, if the number of positive integers in nums is pos and the number of negative integers is neg, then return the maximum of pos and neg.\n\nNote that 0 is neither positive nor negative.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_positive_negative_count(nums):\n    pos = next((i for i, x in enumerate(nums) if x >= 0), len(nums))\n    neg = len(nums) - pos\n    return max(pos, neg)\n```\n    \n    The original array is sorted in non-decreasing order. We want to find the maximum count between the number of positive integers and the number of negative integers in the array. We can find the position where the first non-negative number appears. This position is the count of negative integers in the array. The count of positive integers would be the total length of the array minus this position.\n\nIn C++, we use `upper_bound` to find the position of the first non-negative number.\nIn Java, Python, and JavaScript, we loop through the array and break when we find the first non-negative number.\n\nAfter finding the position, we calculate the counts of both positive and negative integers, and return the maximum of the two.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxPositiveNegativeCount(nums) {\n    let pos = 0;\n    while (pos < nums.length && nums[pos] < 0) {\n        pos++;\n    }\n    let neg = nums.length - pos;\n    return Math.max(pos, neg);\n}\n```\n    \n    The original array is sorted in non-decreasing order. We want to find the maximum count between the number of positive integers and the number of negative integers in the array. We can find the position where the first non-negative number appears. This position is the count of negative integers in the array. The count of positive integers would be the total length of the array minus this position.\n\nIn C++, we use `upper_bound` to find the position of the first non-negative number.\nIn Java, Python, and JavaScript, we loop through the array and break when we find the first non-negative number.\n\nAfter finding the position, we calculate the counts of both positive and negative integers, and return the maximum of the two.\n    ",
+    "java": "\n    ```java\npublic int maxPositiveNegativeCount(int[] nums) {\n    int pos = 0;\n    while (pos < nums.length && nums[pos] < 0) {\n        pos++;\n    }\n    int neg = nums.length - pos;\n    return Math.max(pos, neg);\n}\n```\n    \n    The original array is sorted in non-decreasing order. We want to find the maximum count between the number of positive integers and the number of negative integers in the array. We can find the position where the first non-negative number appears. This position is the count of negative integers in the array. The count of positive integers would be the total length of the array minus this position.\n\nIn C++, we use `upper_bound` to find the position of the first non-negative number.\nIn Java, Python, and JavaScript, we loop through the array and break when we find the first non-negative number.\n\nAfter finding the position, we calculate the counts of both positive and negative integers, and return the maximum of the two.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

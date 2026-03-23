@@ -1,0 +1,24 @@
+{
+  "id": 1598,
+  "title": "Crawler Log Folder",
+  "slug": "crawler-log-folder",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "The Leetcode file system keeps a log each time some user performs a _change folder_ operation.\n\nThe operations are described below:\n\n*   \"../ \" : Move to the parent folder of the current folder. (If you are already in the main folder, remain in the same folder).\n*   \"./ \" : Remain in the same folder.\n*   \"x/ \" : Move to the child folder named x (This folder is guaranteed to always exist).\n\nYou are given a list of strings logs where logs[i] is the operation performed by the user at the ith step.\n\nThe file system starts in the main folder, then the operations in logs are performed.\n\nReturn _the minimum number of operations needed to go back to the main folder after the change folder operations._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minOperations(logs):\n    depth = 0\n    for log in logs:\n        if log == \"../\":\n            depth = max(0, depth - 1)\n        elif log != \"./\":\n            depth += 1\n    return depth\n```\n    \n    The algorithm iterates through each log entry, incrementing the `depth` variable whenever it encounters a non-relative move (`\"x/\"`). If it encounters a move to the parent directory (`\"../\"`) it decreases the `depth` variable by 1, but only if the depth is greater than 0 to make sure we don't go beyond the main folder. It ignores relative moves (`\"./\"`). Finally, it returns the number of operations needed to go back to the main folder, which is the final value of `depth`.\n    ",
+    "javascript": "\n    ```javascript\nfunction minOperations(logs) {\n    let depth = 0;\n    for (const log of logs) {\n        if (log === \"../\") {\n            depth = Math.max(0, depth - 1);\n        } else if (log !== \"./\") {\n            depth += 1;\n        }\n    }\n    return depth;\n}\n```\n    \n    The algorithm iterates through each log entry, incrementing the `depth` variable whenever it encounters a non-relative move (`\"x/\"`). If it encounters a move to the parent directory (`\"../\"`) it decreases the `depth` variable by 1, but only if the depth is greater than 0 to make sure we don't go beyond the main folder. It ignores relative moves (`\"./\"`). Finally, it returns the number of operations needed to go back to the main folder, which is the final value of `depth`.\n    ",
+    "java": "\n    ```java\npublic int minOperations(String[] logs) {\n    int depth = 0;\n    for (String log : logs) {\n        if (log.equals(\"../\")) {\n            depth = Math.max(0, depth - 1);\n        } else if (!log.equals(\"./\")) {\n            depth += 1;\n        }\n    }\n    return depth;\n}\n```\n    \n    The algorithm iterates through each log entry, incrementing the `depth` variable whenever it encounters a non-relative move (`\"x/\"`). If it encounters a move to the parent directory (`\"../\"`) it decreases the `depth` variable by 1, but only if the depth is greater than 0 to make sure we don't go beyond the main folder. It ignores relative moves (`\"./\"`). Finally, it returns the number of operations needed to go back to the main folder, which is the final value of `depth`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

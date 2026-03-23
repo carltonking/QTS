@@ -1,0 +1,24 @@
+{
+  "id": 983,
+  "title": "Minimum Cost For Tickets",
+  "slug": "minimum-cost-for-tickets",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You have planned some train traveling one year in advance. The days of the year in which you will travel are given as an integer array days. Each day is an integer from 1 to 365.\n\nTrain tickets are sold in three different ways:\n\n*   a 1-day pass is sold for costs[0] dollars,\n*   a 7-day pass is sold for costs[1] dollars, and\n*   a 30-day pass is sold for costs[2] dollars.\n\nThe passes allow that many days of consecutive travel.\n\n*   For example, if we get a 7-day pass on day 2, then we can travel for 7 days: 2, 3, 4, 5, 6, 7, and 8.\n\nReturn _the minimum number of dollars you need to travel every day in the given list of days_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef validateStackSequences(pushed, popped):\n    stack = []\n    popIndex = 0\n    \n    for pushValue in pushed:\n        stack.append(pushValue)\n        while stack and stack[-1] == popped[popIndex]:\n            stack.pop()\n            popIndex += 1\n    \n    return not stack\n```\n\n    \n    The algorithm simulates the behavior of a stack by iterating through the `pushed` elements and pushing them onto a new temporary stack. After each push operation, the algorithm checks if the top element of the stack matches the next expected `popped` element, specified by `popIndex`. If it does match, the algorithm pops the element from the temporary stack and increments `popIndex`. \n\nAfter iterating through all elements in the `pushed` array, if the temporary stack is empty, it indicates that the given `pushed` and `popped` sequences were valid for an initially empty stack. Otherwise, the sequences were not valid, and the function returns `false`.\n    ",
+    "javascript": "\n    ```javascript\nfunction validateStackSequences(pushed, popped) {\n    const stack = [];\n    let popIndex = 0;\n    \n    for (const pushValue of pushed) {\n        stack.push(pushValue);\n        while (stack.length > 0 && stack[stack.length - 1] === popped[popIndex]) {\n            stack.pop();\n            popIndex++;\n        }\n    }\n    \n    return stack.length === 0;\n}\n```\n\n    \n    The algorithm simulates the behavior of a stack by iterating through the `pushed` elements and pushing them onto a new temporary stack. After each push operation, the algorithm checks if the top element of the stack matches the next expected `popped` element, specified by `popIndex`. If it does match, the algorithm pops the element from the temporary stack and increments `popIndex`. \n\nAfter iterating through all elements in the `pushed` array, if the temporary stack is empty, it indicates that the given `pushed` and `popped` sequences were valid for an initially empty stack. Otherwise, the sequences were not valid, and the function returns `false`.\n    ",
+    "java": "\n    ```java\nimport java.util.Stack;\n\npublic boolean validateStackSequences(int[] pushed, int[] popped) {\n    Stack<Integer> stack = new Stack<>();\n    int popIndex = 0;\n    \n    for (int pushValue : pushed) {\n        stack.push(pushValue);\n        while (!stack.isEmpty() && stack.peek() == popped[popIndex]) {\n            stack.pop();\n            popIndex++;\n        }\n    }\n    \n    return stack.isEmpty();\n}\n```\n\n    \n    The algorithm simulates the behavior of a stack by iterating through the `pushed` elements and pushing them onto a new temporary stack. After each push operation, the algorithm checks if the top element of the stack matches the next expected `popped` element, specified by `popIndex`. If it does match, the algorithm pops the element from the temporary stack and increments `popIndex`. \n\nAfter iterating through all elements in the `pushed` array, if the temporary stack is empty, it indicates that the given `pushed` and `popped` sequences were valid for an initially empty stack. Otherwise, the sequences were not valid, and the function returns `false`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

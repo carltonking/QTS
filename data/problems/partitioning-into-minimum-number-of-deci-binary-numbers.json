@@ -1,0 +1,24 @@
+{
+  "id": 1689,
+  "title": "Partitioning Into Minimum Number Of Deci-Binary Numbers",
+  "slug": "partitioning-into-minimum-number-of-deci-binary-numbers",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A decimal number is called deci-binary if each of its digits is either 0 or 1 without any leading zeros. For example, 101 and 1100 are deci-binary, while 112 and 3001 are not.\n\nGiven a string n that represents a positive decimal integer, return _the minimum number of positive deci-binary numbers needed so that they sum up to_ n_._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef containsPattern(arr, m, k):\n    n = len(arr)\n    if m * k > n:\n        return False\n\n    for i in range(n - m * k + 1):\n        patternFound = True\n        for j in range(m):\n            for l in range(1, k):\n                if arr[i + j] != arr[i + j + l * m]:\n                    patternFound = False\n                    break\n            if not patternFound:\n                break\n        if patternFound:\n            return True\n    return False\n```\n    \n    1. Check if the condition `m * k > n` is true, if so return false because it is impossible to find a subarray pattern of length m repeated k times if their product is greater than the array length.\n2. Iterate through the array, checking for the presence of the pattern. Create a nested loop over the pattern length(m) and repetitions(k).\n3. If at any point a pattern doesn't match, mark patternFound as false and break the inner loop.\n4. If a valid pattern is found, return true. Otherwise, continue searching.\n5. If no valid pattern is found by the end of the iteration, return false.\n    ",
+    "javascript": "\n    ```javascript\nfunction containsPattern(arr, m, k) {\n    const n = arr.length;\n    if (m * k > n) return false;\n\n    for (let i = 0; i + m * k <= n; i++) {\n        let patternFound = true;\n        for (let j = 0; j < m; j++) {\n            for (let l = 1; l < k; l++) {\n                if (arr[i + j] !== arr[i + j + l * m]) {\n                    patternFound = false;\n                    break;\n                }\n            }\n            if (!patternFound) break;\n        }\n        if (patternFound) return true;\n    }\n    return false;\n}\n```\n    \n    1. Check if the condition `m * k > n` is true, if so return false because it is impossible to find a subarray pattern of length m repeated k times if their product is greater than the array length.\n2. Iterate through the array, checking for the presence of the pattern. Create a nested loop over the pattern length(m) and repetitions(k).\n3. If at any point a pattern doesn't match, mark patternFound as false and break the inner loop.\n4. If a valid pattern is found, return true. Otherwise, continue searching.\n5. If no valid pattern is found by the end of the iteration, return false.\n    ",
+    "java": "\n    ```java\npublic boolean containsPattern(int[] arr, int m, int k) {\n    int n = arr.length;\n    if (m * k > n) return false;\n\n    for (int i = 0; i + m * k <= n; i++) {\n        boolean patternFound = true;\n        for (int j = 0; j < m; j++) {\n            for (int l = 1; l < k; l++) {\n                if (arr[i + j] != arr[i + j + l * m]) {\n                    patternFound = false;\n                    break;\n                }\n            }\n            if (!patternFound) break;\n        }\n        if (patternFound) return true;\n    }\n    return false;\n}\n```\n    \n    1. Check if the condition `m * k > n` is true, if so return false because it is impossible to find a subarray pattern of length m repeated k times if their product is greater than the array length.\n2. Iterate through the array, checking for the presence of the pattern. Create a nested loop over the pattern length(m) and repetitions(k).\n3. If at any point a pattern doesn't match, mark patternFound as false and break the inner loop.\n4. If a valid pattern is found, return true. Otherwise, continue searching.\n5. If no valid pattern is found by the end of the iteration, return false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

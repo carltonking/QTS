@@ -1,0 +1,24 @@
+{
+  "id": 445,
+  "title": "Add Two Numbers II",
+  "slug": "add-two-numbers-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two non-empty linked lists representing two non-negative integers. The most significant digit comes first and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.\n\nYou may assume the two numbers do not contain any leading zero, except the number 0 itself.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef addTwoNumbers(l1, l2):\n    result = ListNode(0)\n    current = result\n    carry = 0\n    while l1 or l2 or carry:\n        sum = (l1.val if l1 else 0) + (l2.val if l2 else 0) + carry\n        carry = sum // 10\n        current.next = ListNode(sum % 10)\n        current = current.next\n        if l1: l1 = l1.next\n        if l2: l2 = l2.next\n    return result.next\n```\n    \n    The algorithm starts by initializing a dummy result list, setting `current` to point to the dummy node, and initializing a `carry` var to 0. In a `while` loop, we iterate over both input lists and update the `carry` var with the sum divided by 10, representing the digit to be carried to the left (carrying occurs if the sum is >= 10). The sum modulo 10 will be the current digit of the result, and we create a new list node for this digit, updating `current.next` to point to this node. We then update the pointers to the next elements in input lists `l1` and `l2` if they're not null. Once the loop ends, we return the next pointer of the dummy result node.\n    ",
+    "javascript": "\n    ```javascript\nclass ListNode {\n    constructor(val, next) {\n        this.val = (val === undefined ? 0 : val);\n        this.next = (next === undefined ? null : next);\n    }\n}\n\nfunction addTwoNumbers(l1, l2) {\n    let result = new ListNode(0);\n    let current = result;\n    let carry = 0;\n    while (l1 !== null || l2 !== null || carry !== 0) {\n        let sum = (l1 !== null ? l1.val : 0) + (l2 !== null ? l2.val : 0) + carry;\n        carry = Math.floor(sum / 10);\n        current.next = new ListNode(sum % 10);\n        current = current.next;\n        if (l1 !== null) l1 = l1.next;\n        if (l2 !== null) l2 = l2.next;\n    }\n    return result.next;\n}\n```\n\n    \n    The algorithm starts by initializing a dummy result list, setting `current` to point to the dummy node, and initializing a `carry` var to 0. In a `while` loop, we iterate over both input lists and update the `carry` var with the sum divided by 10, representing the digit to be carried to the left (carrying occurs if the sum is >= 10). The sum modulo 10 will be the current digit of the result, and we create a new list node for this digit, updating `current.next` to point to this node. We then update the pointers to the next elements in input lists `l1` and `l2` if they're not null. Once the loop ends, we return the next pointer of the dummy result node.\n    ",
+    "java": "\n    ```java\npublic class ListNode {\n    int val;\n    ListNode next;\n    ListNode() {}\n    ListNode(int val) { this.val = val; }\n    ListNode(int val, ListNode next) { this.val = val; this.next = next; }\n}\n\npublic ListNode addTwoNumbers(ListNode l1, ListNode l2) {\n    ListNode result = new ListNode(0);\n    ListNode current = result;\n    int carry = 0;\n    while (l1 != null || l2 != null || carry != 0) {\n        int sum = (l1 != null ? l1.val : 0) + (l2 != null ? l2.val : 0) + carry;\n        carry = sum / 10;\n        current.next = new ListNode(sum % 10);\n        current = current.next;\n        if (l1 != null) l1 = l1.next;\n        if (l2 != null) l2 = l2.next;\n    }\n    return result.next;\n}\n```\n    \n    The algorithm starts by initializing a dummy result list, setting `current` to point to the dummy node, and initializing a `carry` var to 0. In a `while` loop, we iterate over both input lists and update the `carry` var with the sum divided by 10, representing the digit to be carried to the left (carrying occurs if the sum is >= 10). The sum modulo 10 will be the current digit of the result, and we create a new list node for this digit, updating `current.next` to point to this node. We then update the pointers to the next elements in input lists `l1` and `l2` if they're not null. Once the loop ends, we return the next pointer of the dummy result node.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1730,
+  "title": "Shortest Path to Get Food",
+  "slug": "shortest-path-to-get-food",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are starving and you want to eat food as quickly as possible. You want to find the shortest path to arrive at any food cell.\n\nYou are given an m x n character matrix, grid, of these different types of cells:\n\n*   '*' is your location. There is exactly one '*' cell.\n*   '#' is a food cell. There may be multiple food cells.\n*   'O' is free space, and you can travel through these cells.\n*   'X' is an obstacle, and you cannot travel through these cells.\n\nYou can travel to any adjacent cell north, east, south, or west of your current location if there is not an obstacle.\n\nReturn _the length of the shortest path for you to reach any food cell_. If there is no path for you to reach food, return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_special_integer(nums):\n    for x in range(1, len(nums) + 1):\n        count = sum(1 for num in nums if num >= x)\n        if count == x:\n            return x\n    return -1\n```\n    \n    The algorithm iterates through all integer values of x from 1 to the length of nums. For each value of x, it counts how many elements in nums are greater than or equal to x. If the count is equal to x, the array is considered special and the value of x is returned. If no such x is found after iterating through all possible values, the algorithm returns -1.\n    ",
+    "javascript": "\n    ```javascript\nfunction findSpecialInteger(nums) {\n    for (let x = 1; x <= nums.length; ++x) {\n        let count = 0;\n        for (let num of nums) {\n            if (num >= x) {\n                ++count;\n            }\n        }\n        if (count === x) {\n            return x;\n        }\n    }\n    return -1;\n}\n```\n    \n    The algorithm iterates through all integer values of x from 1 to the length of nums. For each value of x, it counts how many elements in nums are greater than or equal to x. If the count is equal to x, the array is considered special and the value of x is returned. If no such x is found after iterating through all possible values, the algorithm returns -1.\n    ",
+    "java": "\n    ```java\npublic int findSpecialInteger(int[] nums) {\n    for (int x = 1; x <= nums.length; ++x) {\n        int count = 0;\n        for (int num : nums) {\n            if (num >= x) {\n                ++count;\n            }\n        }\n        if (count == x) {\n            return x;\n        }\n    }\n    return -1;\n}\n```\n    \n    The algorithm iterates through all integer values of x from 1 to the length of nums. For each value of x, it counts how many elements in nums are greater than or equal to x. If the count is equal to x, the array is considered special and the value of x is returned. If no such x is found after iterating through all possible values, the algorithm returns -1.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

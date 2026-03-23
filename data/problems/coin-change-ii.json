@@ -1,0 +1,24 @@
+{
+  "id": 518,
+  "title": "Coin Change II",
+  "slug": "coin-change-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array coins representing coins of different denominations and an integer amount representing a total amount of money.\n\nReturn _the number of combinations that make up that amount_. If that amount of money cannot be made up by any combination of the coins, return 0.\n\nYou may assume that you have an infinite number of each kind of coin.\n\nThe answer is guaranteed to fit into a signed 32-bit integer.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef change(amount, coins):\n    dp = [1] + [0] * amount\n    for coin in coins:\n        for i in range(coin, amount + 1):\n            dp[i] += dp[i - coin]\n    return dp[amount]\n```\n    \n    1. Initialize an array `dp` where `dp[i]` represents the number of combinations that make up the amount `i`. The length of the array is `amount + 1` to accommodate index 0. Set `dp[0]` to 1 as there is only one way to make up the amount 0 (by not picking any coins).\n2. Loop through each coin in the `coins` array.\n3. For each coin, iterate through the `dp` array, starting at the index equal to the coin value.\n4. In each iteration, increment the value of `dp[i]` by `dp[i - coin]`. This is because the number of combinations that can make up `i` is increased by the number of combinations that can make up `i - coin`.\n5. After iterating through all the coins and updating the `dp` array, return the value of `dp[amount]`, which represents the number of combinations that can make up the desired amount.\n    ",
+    "javascript": "\n    ```javascript\nfunction change(amount, coins) {\n    let dp = new Array(amount + 1).fill(0);\n    dp[0] = 1;\n    for (let coin of coins) {\n        for (let i = coin; i <= amount; i++) {\n            dp[i] += dp[i - coin];\n        }\n    }\n    return dp[amount];\n}\n```\n    \n    1. Initialize an array `dp` where `dp[i]` represents the number of combinations that make up the amount `i`. The length of the array is `amount + 1` to accommodate index 0. Set `dp[0]` to 1 as there is only one way to make up the amount 0 (by not picking any coins).\n2. Loop through each coin in the `coins` array.\n3. For each coin, iterate through the `dp` array, starting at the index equal to the coin value.\n4. In each iteration, increment the value of `dp[i]` by `dp[i - coin]`. This is because the number of combinations that can make up `i` is increased by the number of combinations that can make up `i - coin`.\n5. After iterating through all the coins and updating the `dp` array, return the value of `dp[amount]`, which represents the number of combinations that can make up the desired amount.\n    ",
+    "java": "\n    ```java\npublic int change(int amount, int[] coins) {\n    int[] dp = new int[amount + 1];\n    dp[0] = 1;\n    for (int coin : coins) {\n        for (int i = coin; i <= amount; i++) {\n            dp[i] += dp[i - coin];\n        }\n    }\n    return dp[amount];\n}\n```\n    \n    1. Initialize an array `dp` where `dp[i]` represents the number of combinations that make up the amount `i`. The length of the array is `amount + 1` to accommodate index 0. Set `dp[0]` to 1 as there is only one way to make up the amount 0 (by not picking any coins).\n2. Loop through each coin in the `coins` array.\n3. For each coin, iterate through the `dp` array, starting at the index equal to the coin value.\n4. In each iteration, increment the value of `dp[i]` by `dp[i - coin]`. This is because the number of combinations that can make up `i` is increased by the number of combinations that can make up `i - coin`.\n5. After iterating through all the coins and updating the `dp` array, return the value of `dp[amount]`, which represents the number of combinations that can make up the desired amount.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

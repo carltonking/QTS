@@ -1,0 +1,24 @@
+{
+  "id": 762,
+  "title": "Prime Number of Set Bits in Binary Representation",
+  "slug": "prime-number-of-set-bits-in-binary-representation",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given two integers left and right, return _the count of numbers in the inclusive range_ [left, right] _having a prime number of set bits in their binary representation_.\n\nRecall that the number of set bits an integer has is the number of 1's present when written in binary.\n\n*   For example, 21 written in binary is 10101, which has 3 set bits.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_prime(n: int) -> bool:\n    if n <= 1:\n        return False\n    if n <= 3:\n        return True\n    if n % 2 == 0 or n % 3 == 0:\n        return False\n    i = 5\n    while i * i <= n:\n        if n % i == 0 or n % (i + 2) == 0:\n            return False\n        i += 6\n    return True\n\ndef count_prime_set_bits(left: int, right: int) -> int:\n    return sum(is_prime(bin(i).count('1')) for i in range(left, right + 1))\n```\n\n    \n    The algorithm first defines a helper function `isPrime` to check if a given number is a prime number. Then, in the main `countPrimeSetBits` function, we iterate through the given range `[left, right]`. For each number, we count the number of 1's in its binary representation and check for primality of that count. If the count is a prime number, we increment the final count of numbers with prime set bits.\n    ",
+    "javascript": "\n    ```javascript\nfunction isPrime(n) {\n    if (n <= 1) return false;\n    if (n <= 3) return true;\n    if (n % 2 === 0 || n % 3 === 0) return false;\n    for (let i = 5; i * i <= n; i += 6)\n        if (n % i === 0 || n % (i + 2) === 0) return false;\n    return true;\n}\n\nfunction countPrimeSetBits(left, right) {\n    let count = 0;\n    for (let i = left; i <= right; ++i)\n        count += isPrime(i.toString(2).split('1').length - 1) ? 1 : 0;\n    return count;\n}\n```\n\n    \n    The algorithm first defines a helper function `isPrime` to check if a given number is a prime number. Then, in the main `countPrimeSetBits` function, we iterate through the given range `[left, right]`. For each number, we count the number of 1's in its binary representation and check for primality of that count. If the count is a prime number, we increment the final count of numbers with prime set bits.\n    ",
+    "java": "\n    ```java\nclass Solution {\n    boolean isPrime(int n) {\n        if (n <= 1) return false;\n        if (n <= 3) return true;\n        if (n % 2 == 0 || n % 3 == 0) return false;\n        for (int i = 5; i * i <= n; i += 6)\n            if (n % i == 0 || n % (i + 2) == 0) return false;\n        return true;\n    }\n    \n    public int countPrimeSetBits(int left, int right) {\n        int count = 0;\n        for (int i = left; i <= right; ++i)\n            count += isPrime(Integer.bitCount(i)) ? 1 : 0;\n        return count;\n    }\n}\n```\n\n    \n    The algorithm first defines a helper function `isPrime` to check if a given number is a prime number. Then, in the main `countPrimeSetBits` function, we iterate through the given range `[left, right]`. For each number, we count the number of 1's in its binary representation and check for primality of that count. If the count is a prime number, we increment the final count of numbers with prime set bits.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

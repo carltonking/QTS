@@ -1,0 +1,24 @@
+{
+  "id": 332,
+  "title": "Reconstruct Itinerary",
+  "slug": "reconstruct-itinerary",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a list of airline tickets where tickets[i] = [fromi, toi] represent the departure and the arrival airports of one flight. Reconstruct the itinerary in order and return it.\n\nAll of the tickets belong to a man who departs from \"JFK \", thus, the itinerary must begin with \"JFK \". If there are multiple valid itineraries, you should return the itinerary that has the smallest lexical order when read as a single string.\n\n*   For example, the itinerary [ \"JFK \", \"LGA \"] has a smaller lexical order than [ \"JFK \", \"LGB \"].\n\nYou may assume all tickets form at least one valid itinerary. You must use all the tickets once and only once.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import defaultdict\n\ndef findItinerary(tickets):\n    flights = defaultdict(list)\n    itinerary = []\n\n    for ticket in tickets:\n        flights[ticket[0]].append(ticket[1])\n        flights[ticket[0]].sort(reverse=True)\n\n    def dfs(airport):\n        while flights[airport]:\n            dfs(flights[airport].pop())\n        itinerary.append(airport)\n\n    dfs(\"JFK\")\n    \n    return itinerary[::-1]\n```\n    \n    1. Create a data structure to store our itinerary as well as the flights to be taken.\n2. Iterate over the given list of airline tickets and create a mapping of departure airports to possible arrival airports in sorted order.\n3. Implement a depth-first search (DFS) helper function to traverse through the airports following the mentioned constraints.\n4. Start the DFS traversal with the departure airport \"JFK.\"\n5. After the traversal is complete, reverse the reconstructed itinerary and return it as the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction findItinerary(tickets) {\n    const flights = {};\n    const itinerary = [];\n\n    for (const ticket of tickets) {\n        if (!flights[ticket[0]]) {\n            flights[ticket[0]] = [];\n        }\n        flights[ticket[0]].push(ticket[1]);\n        flights[ticket[0]].sort((a, b) => b.localeCompare(a));\n    }\n\n    function dfs(airport) {\n        while (flights[airport] && flights[airport].length > 0) {\n            dfs(flights[airport].pop());\n        }\n        itinerary.push(airport);\n    }\n\n    dfs(\"JFK\");\n    \n    return itinerary.reverse();\n}\n```\n    \n    1. Create a data structure to store our itinerary as well as the flights to be taken.\n2. Iterate over the given list of airline tickets and create a mapping of departure airports to possible arrival airports in sorted order.\n3. Implement a depth-first search (DFS) helper function to traverse through the airports following the mentioned constraints.\n4. Start the DFS traversal with the departure airport \"JFK.\"\n5. After the traversal is complete, reverse the reconstructed itinerary and return it as the result.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\nclass Solution {\n    public List<String> findItinerary(List<List<String>> tickets) {\n        HashMap<String, PriorityQueue<String>> flights = new HashMap<>();\n        LinkedList<String> itinerary = new LinkedList<>();\n        \n        for (List<String> ticket : tickets) {\n            flights.putIfAbsent(ticket.get(0), new PriorityQueue<>());\n            flights.get(ticket.get(0)).offer(ticket.get(1));\n        }\n        \n        Stack<String> dfs = new Stack<>();\n        dfs.push(\"JFK\");\n        \n        while (!dfs.isEmpty()) {\n            String nextAirport = dfs.peek();\n            if (flights.get(nextAirport) == null || flights.get(nextAirport).isEmpty()) {\n                itinerary.addFirst(dfs.pop());\n            } else {\n                dfs.push(flights.get(nextAirport).poll());\n            }\n        }\n        \n        return itinerary;\n    }\n}\n```\n    \n    1. Create a data structure to store our itinerary as well as the flights to be taken.\n2. Iterate over the given list of airline tickets and create a mapping of departure airports to possible arrival airports in sorted order.\n3. Implement a depth-first search (DFS) helper function to traverse through the airports following the mentioned constraints.\n4. Start the DFS traversal with the departure airport \"JFK.\"\n5. After the traversal is complete, reverse the reconstructed itinerary and return it as the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

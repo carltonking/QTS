@@ -1,0 +1,24 @@
+{
+  "id": 340,
+  "title": "Longest Substring with At Most K Distinct Characters",
+  "slug": "longest-substring-with-at-most-k-distinct-characters",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string s and an integer k, return _the length of the longest_ _substring_ _of_ s _that contains at most_ k _distinct characters_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef length_of_longest_substring_k_distinct(s: str, k: int) -> int:\n    char_count = {}\n    left = 0\n    max_length = 0\n\n    for right, char in enumerate(s):\n        char_count[char] = char_count.get(char, 0) + 1\n\n        while len(char_count) > k:\n            char_count[s[left]] -= 1\n            if char_count[s[left]] == 0:\n                del char_count[s[left]]\n            left += 1\n\n        max_length = max(max_length, right - left + 1)\n\n    return max_length\n```\n    \n    1. Create a hashmap to store character counts within the sliding window.\n2. Initialize `left` and `maxLength` to zero.\n3. Iterate through the string with a for loop:\n    a. Increment the count of the current character in the hashmap.\n    b. If there are more than `k` distinct characters in the hashmap, move `left` to the right to shrink the window and update the count in the hashmap (remove the entry if the count is zero).\n    c. Update `maxLength` with the length of the current window right - left + 1.\n4. Return `maxLength`.\n    ",
+    "javascript": "\n    ```javascript\nfunction lengthOfLongestSubstringKDistinct(s, k) {\n    const charCount = new Map();\n    let left = 0;\n    let maxLength = 0;\n\n    for (let right = 0; right < s.length; ++right) {\n        charCount.set(s[right], (charCount.get(s[right]) || 0) + 1);\n\n        while (charCount.size > k) {\n            charCount.set(s[left], charCount.get(s[left]) - 1);\n            if (charCount.get(s[left]) === 0) {\n                charCount.delete(s[left]);\n            }\n            left++;\n        }\n\n        maxLength = Math.max(maxLength, right - left + 1);\n    }\n    return maxLength;\n}\n```\n    \n    1. Create a hashmap to store character counts within the sliding window.\n2. Initialize `left` and `maxLength` to zero.\n3. Iterate through the string with a for loop:\n    a. Increment the count of the current character in the hashmap.\n    b. If there are more than `k` distinct characters in the hashmap, move `left` to the right to shrink the window and update the count in the hashmap (remove the entry if the count is zero).\n    c. Update `maxLength` with the length of the current window right - left + 1.\n4. Return `maxLength`.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\n\npublic int lengthOfLongestSubstringKDistinct(String s, int k) {\n    HashMap<Character, Integer> charCount = new HashMap<>();\n    int left = 0, maxLength = 0;\n\n    for (int right = 0; right < s.length(); ++right) {\n        charCount.put(s.charAt(right), charCount.getOrDefault(s.charAt(right), 0) + 1);\n\n        while (charCount.size() > k) {\n            charCount.put(s.charAt(left), charCount.get(s.charAt(left)) - 1);\n            if (charCount.get(s.charAt(left)) == 0) {\n                charCount.remove(s.charAt(left));\n            }\n            left++;\n        }\n\n        maxLength = Math.max(maxLength, right - left + 1);\n    }\n    return maxLength;\n}\n```\n    \n    1. Create a hashmap to store character counts within the sliding window.\n2. Initialize `left` and `maxLength` to zero.\n3. Iterate through the string with a for loop:\n    a. Increment the count of the current character in the hashmap.\n    b. If there are more than `k` distinct characters in the hashmap, move `left` to the right to shrink the window and update the count in the hashmap (remove the entry if the count is zero).\n    c. Update `maxLength` with the length of the current window right - left + 1.\n4. Return `maxLength`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

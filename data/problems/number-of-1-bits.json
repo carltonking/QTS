@@ -1,0 +1,24 @@
+{
+  "id": 191,
+  "title": "Number of 1 Bits",
+  "slug": "number-of-1-bits",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Write a function that takes the binary representation of an unsigned integer and returns the number of '1' bits it has (also known as the [Hamming weight](http://en.wikipedia.org/wiki/Hamming_weight)).\n\nNote:\n\n*   Note that in some languages, such as Java, there is no unsigned integer type. In this case, the input will be given as a signed integer type. It should not affect your implementation, as the integer's internal binary representation is the same, whether it is signed or unsigned.\n*   In Java, the compiler represents the signed integers using [2's complement notation](https://en.wikipedia.org/wiki/Two%27s_complement). Therefore, in",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef hamming_weight(n):\n    count = 0\n    while n:\n        count += n & 1\n        n >>= 1\n    return count\n```\n    \n    The algorithm for this problem is straightforward. We use a bitwise AND operation with 1 to check the rightmost bit of the input integer `n`. If the result is 1, then the rightmost bit is a '1', and we increment the `count`. We continue to check the rest of the bits by shifting `n` to the right (`>>` in C++/Python or `>>>` in Java/JavaScript, since Java/JavaScript use signed right shift) to remove the rightmost bit. The loop continues until `n` becomes 0, which means there are no more '1' bits. Finally, we return the `count` of 1 bits.\n\nNote that the '>>>=' unary operator in Java and JavaScript is used to avoid sign extension when shifting right. This ensures that the shift is done in an unsigned manner.\n    ",
+    "javascript": "\n    ```javascript\nfunction hammingWeight(n) {\n    let count = 0;\n    while (n != 0) {\n        count += n & 1;\n        n >>>= 1;\n    }\n    return count;\n}\n```\n    \n    The algorithm for this problem is straightforward. We use a bitwise AND operation with 1 to check the rightmost bit of the input integer `n`. If the result is 1, then the rightmost bit is a '1', and we increment the `count`. We continue to check the rest of the bits by shifting `n` to the right (`>>` in C++/Python or `>>>` in Java/JavaScript, since Java/JavaScript use signed right shift) to remove the rightmost bit. The loop continues until `n` becomes 0, which means there are no more '1' bits. Finally, we return the `count` of 1 bits.\n\nNote that the '>>>=' unary operator in Java and JavaScript is used to avoid sign extension when shifting right. This ensures that the shift is done in an unsigned manner.\n    ",
+    "java": "\n    ```java\npublic int hammingWeight(int n) {\n    int count = 0;\n    while (n != 0) {\n        count += n & 1;\n        n >>>= 1;\n    }\n    return count;\n}\n```\n    \n    The algorithm for this problem is straightforward. We use a bitwise AND operation with 1 to check the rightmost bit of the input integer `n`. If the result is 1, then the rightmost bit is a '1', and we increment the `count`. We continue to check the rest of the bits by shifting `n` to the right (`>>` in C++/Python or `>>>` in Java/JavaScript, since Java/JavaScript use signed right shift) to remove the rightmost bit. The loop continues until `n` becomes 0, which means there are no more '1' bits. Finally, we return the `count` of 1 bits.\n\nNote that the '>>>=' unary operator in Java and JavaScript is used to avoid sign extension when shifting right. This ensures that the shift is done in an unsigned manner.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

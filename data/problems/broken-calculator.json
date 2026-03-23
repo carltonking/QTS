@@ -1,0 +1,24 @@
+{
+  "id": 991,
+  "title": "Broken Calculator",
+  "slug": "broken-calculator",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There is a broken calculator that has the integer startValue on its display initially. In one operation, you can:\n\n*   multiply the number on display by 2, or\n*   subtract 1 from the number on display.\n\nGiven two integers startValue and target, return _the minimum number of operations needed to display_ target _on the calculator_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef can_reorder_array(arr):\n    from collections import Counter\n    \n    count = Counter(arr)\n    arr = sorted(arr)\n    for x in arr:\n        if count[x] == 0:\n            continue\n        if count[2 * x] > 0:\n            count[x] -= 1\n            count[2 * x] -= 1\n        else:\n            return False\n    return True\n```\n    \n    The algorithm first counts the occurrences of each number in the input array `arr` by creating a hash map called `count`. Then sort the input array in ascending order. Then we iterate through the sorted array, checking if there's a number twice as large as the current number available in the hash map. If so, we decrement the counts for both the current number and twice the current number. If not, we return false because it's not possible to reorder the array as required. If all the numbers have been processed and the condition was satisfied for all, return true.\n    ",
+    "javascript": "\n    ```javascript\nfunction canReorderArray(arr) {\n    const count = {};\n    for (const n of arr) {\n        count[n] = (count[n] || 0) + 1;\n    }\n    arr.sort((a, b) => a - b);\n    for (const x of arr) {\n        if (count[x] === 0) {\n            continue;\n        }\n        if (count[2 * x] > 0) {\n            count[x]--;\n            count[2 * x]--;\n        } else {\n            return false;\n        }\n    }\n    return true;\n}\n```\n    \n    The algorithm first counts the occurrences of each number in the input array `arr` by creating a hash map called `count`. Then sort the input array in ascending order. Then we iterate through the sorted array, checking if there's a number twice as large as the current number available in the hash map. If so, we decrement the counts for both the current number and twice the current number. If not, we return false because it's not possible to reorder the array as required. If all the numbers have been processed and the condition was satisfied for all, return true.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\nimport java.util.HashMap;\n\npublic boolean canReorderArray(int[] arr) {\n    HashMap<Integer, Integer> count = new HashMap<>();\n    for (int n : arr) {\n        count.put(n, count.getOrDefault(n, 0) + 1);\n    }\n    Arrays.sort(arr);\n    for (int x : arr) {\n        if (count.get(x) == 0) {\n            continue;\n        }\n        if (count.getOrDefault(2 * x, 0) > 0) {\n            count.put(x, count.get(x) - 1);\n            count.put(2 * x, count.get(2 * x) - 1);\n        } else {\n            return false;\n        }\n    }\n    return true;\n}\n```\n    \n    The algorithm first counts the occurrences of each number in the input array `arr` by creating a hash map called `count`. Then sort the input array in ascending order. Then we iterate through the sorted array, checking if there's a number twice as large as the current number available in the hash map. If so, we decrement the counts for both the current number and twice the current number. If not, we return false because it's not possible to reorder the array as required. If all the numbers have been processed and the condition was satisfied for all, return true.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

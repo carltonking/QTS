@@ -1,0 +1,24 @@
+{
+  "id": 1786,
+  "title": "Number of Restricted Paths From First to Last Node",
+  "slug": "number-of-restricted-paths-from-first-to-last-node",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There is an undirected weighted connected graph. You are given a positive integer n which denotes that the graph has n nodes labeled from 1 to n, and an array edges where each edges[i] = [ui, vi, weighti] denotes that there is an edge between nodes ui and vi with weight equal to weighti.\n\nA path from node start to node end is a sequence of nodes [z0, z1, z2, ..., zk] such that z0 = start and zk = end and there is an edge between zi and zi+1 where 0 <= i <= k-1.\n\nThe distance of a path is the sum of the weights on the edges of the path. Let distanceToLastNode(x) denote the shortest distance of a path between node n and node x. A restricted path is a path that also satisfies that distanceToLastNode(zi) > distanceToLastNode(zi+1) where 0 <= i <= k-1.\n\nReturn _the number of restricted paths from node_ 1 _to node_ n. Since that number may be too large, return it modulo 109 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_consistent_strings(allowed, words):\n    allowed_set = set(allowed)\n    count = 0\n    for word in words:\n        is_valid = True\n        for c in word:\n            if c not in allowed_set:\n                is_valid = False\n                break\n        if is_valid:\n            count += 1\n    return count\n```\n    \n    We create a set (allowedSet) with the characters of the allowed string. This makes it easy to check if a character is in the allowed string. We initialize a count variable with 0 as the number of consistent words.\n\nFor each word in the words array, we consider it valid initially. Then, we check each character in the word. If it's not in the allowedSet, the word is not valid, and we break the loop. If the word is valid, we increment the count by 1.\n\nAfter checking all the words, we return the count as the result. Our algorithm has a time complexity of O(n*m) where n is the number of words and m is the average length of those words.\n    ",
+    "javascript": "\n    ```javascript\nfunction countConsistentStrings(allowed, words) {\n    const allowedSet = new Set(allowed);\n    let count = 0;\n    for (const word of words) {\n        let isValid = true;\n        for (const c of word) {\n            if (!allowedSet.has(c)) {\n                isValid = false;\n                break;\n            }\n        }\n        if (isValid) {\n            count++;\n        }\n    }\n    return count;\n}\n```\n    \n    We create a set (allowedSet) with the characters of the allowed string. This makes it easy to check if a character is in the allowed string. We initialize a count variable with 0 as the number of consistent words.\n\nFor each word in the words array, we consider it valid initially. Then, we check each character in the word. If it's not in the allowedSet, the word is not valid, and we break the loop. If the word is valid, we increment the count by 1.\n\nAfter checking all the words, we return the count as the result. Our algorithm has a time complexity of O(n*m) where n is the number of words and m is the average length of those words.\n    ",
+    "java": "\n    ```java\npublic int countConsistentStrings(String allowed, String[] words) {\n    Set<Character> allowedSet = new HashSet<>();\n    for (char c : allowed.toCharArray()) {\n        allowedSet.add(c);\n    }\n    int count = 0;\n    for (String word : words) {\n        boolean isValid = true;\n        for (char c : word.toCharArray()) {\n            if (!allowedSet.contains(c)) {\n                isValid = false;\n                break;\n            }\n        }\n        if (isValid) {\n            count++;\n        }\n    }\n    return count;\n}\n```\n    \n    We create a set (allowedSet) with the characters of the allowed string. This makes it easy to check if a character is in the allowed string. We initialize a count variable with 0 as the number of consistent words.\n\nFor each word in the words array, we consider it valid initially. Then, we check each character in the word. If it's not in the allowedSet, the word is not valid, and we break the loop. If the word is valid, we increment the count by 1.\n\nAfter checking all the words, we return the count as the result. Our algorithm has a time complexity of O(n*m) where n is the number of words and m is the average length of those words.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

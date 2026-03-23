@@ -1,0 +1,24 @@
+{
+  "id": 2525,
+  "title": "Categorize Box According to Criteria",
+  "slug": "categorize-box-according-to-criteria",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given four integers length, width, height, and mass, representing the dimensions and mass of a box, respectively, return _a string representing the category of the box_.\n\n*   The box is \"Bulky \" if:\n    *   Any of the dimensions of the box is greater or equal to 104.\n    *   Or, the volume of the box is greater or equal to 109.\n*   If the mass of the box is greater or equal to 100, it is \"Heavy \".\n*   If the box is both \"Bulky \" and \"Heavy \", then its category is \"Both \".\n*   If the box is neither \"Bulky \" nor \"Heavy \", then its category is \"Neither \".\n*   If the box is \"Bulky \" but not \"Heavy \", then its category is \"Bulky \".\n*   If the box is \"Heavy \" but not \"Bulky \", then its category is \"Heavy \".\n\nNote that the volume of the box is the product of its length, width and height.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef boxCategory(length: int, width: int, height: int, mass: int) -> str:\n    bulky = length >= 10000 or width >= 10000 or height >= 10000 or int(length) * width * height >= 1000000000\n    heavy = mass >= 100\n    \n    if bulky and heavy:\n        return \"Both \"\n    if bulky:\n        return \"Bulky \"\n    if heavy:\n        return \"Heavy \"\n    return \"Neither \"\n```\n    \n    The algorithm first checks if the box is bulky by verifying if any of the dimensions equal or exceed 10^4, or if the volume of the box is equal to or greater than 10^9. If the mass of the box is greater or equal to 100, then it's considered heavy.\n\nWe then use conditional statements to determine the category of the box according to the values of the bulky and heavy variables.\n\nIf both the bulky and heavy conditions are true, we return \"Both \". If bulky is true and heavy is false, we return \"Bulky \". If heavy is true and bulky is false, we return \"Heavy \". Otherwise, if neither condition is true, we return \"Neither \".\n    ",
+    "javascript": "\n    ```javascript\nfunction boxCategory(length, width, height, mass) {\n    const bulky = length >= 10000 || width >= 10000 || height >= 10000 || length * width * height >= 1000000000;\n    const heavy = mass >= 100;\n\n    if (bulky && heavy) return \"Both \";\n    if (bulky) return \"Bulky \";\n    if (heavy) return \"Heavy \";\n    return \"Neither \";\n}\n```\n    \n    The algorithm first checks if the box is bulky by verifying if any of the dimensions equal or exceed 10^4, or if the volume of the box is equal to or greater than 10^9. If the mass of the box is greater or equal to 100, then it's considered heavy.\n\nWe then use conditional statements to determine the category of the box according to the values of the bulky and heavy variables.\n\nIf both the bulky and heavy conditions are true, we return \"Both \". If bulky is true and heavy is false, we return \"Bulky \". If heavy is true and bulky is false, we return \"Heavy \". Otherwise, if neither condition is true, we return \"Neither \".\n    ",
+    "java": "\n    ```java\npublic String boxCategory(int length, int width, int height, int mass) {\n    boolean bulky = length >= 10000 || width >= 10000 || height >= 10000 || (long)length * width * height >= 1000000000;\n    boolean heavy = mass >= 100;\n    \n    if (bulky && heavy) return \"Both \";\n    if (bulky) return \"Bulky \";\n    if (heavy) return \"Heavy \";\n    return \"Neither \";\n}\n```\n    \n    The algorithm first checks if the box is bulky by verifying if any of the dimensions equal or exceed 10^4, or if the volume of the box is equal to or greater than 10^9. If the mass of the box is greater or equal to 100, then it's considered heavy.\n\nWe then use conditional statements to determine the category of the box according to the values of the bulky and heavy variables.\n\nIf both the bulky and heavy conditions are true, we return \"Both \". If bulky is true and heavy is false, we return \"Bulky \". If heavy is true and bulky is false, we return \"Heavy \". Otherwise, if neither condition is true, we return \"Neither \".\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

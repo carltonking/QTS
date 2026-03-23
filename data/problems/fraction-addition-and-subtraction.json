@@ -1,0 +1,24 @@
+{
+  "id": 592,
+  "title": "Fraction Addition and Subtraction",
+  "slug": "fraction-addition-and-subtraction",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string expression representing an expression of fraction addition and subtraction, return the calculation result in string format.\n\nThe final result should be an [irreducible fraction](https://en.wikipedia.org/wiki/Irreducible_fraction). If your final result is an integer, change it to the format of a fraction that has a denominator 1. So in this case, 2 should be converted to 2/1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom fractions import Fraction\n\ndef fractionAddition(expression: str) -> str:\n    fractions = expression.replace('+', ' +').replace('-', ' -').split()\n    result = sum(Fraction(fraction) for fraction in fractions)\n    return f\"{result.numerator}/{result.denominator}\"\n```\n    \n    The algorithm first initializes the result fraction A/B to 0/1. It then iterates over the input expression, parsing and adjusting signs of each fraction it encounters. Each fraction's numerator and denominator are found by parsing the characters in the expression. The current sum A/B is updated with the current fraction by the equation:\n\n```\nA = A * den + B * num * sign\nB *= den\n```\n\nAfter updating A/B, the greatest common divisor (GCD) of A and B, found using the Euclidean algorithm, is used to reduce the fraction.\n\nThe process is repeated until the whole string input expression is processed. At the end, the irreducible fraction is returned in the format A/B.\n    ",
+    "javascript": "\n    ```javascript\nfunction gcd(a, b) {\n    return b === 0 ? a : gcd(b, a % b);\n}\n\nfunction fractionAddition(expression) {\n    let A = 0, B = 1;\n    let i = 0;\n    while (i < expression.length) {\n        const sign = expression[i++] === '+' ? 1 : -1;\n        let num = 0, den = 0;\n        while (i < expression.length && !isNaN(expression[i])) {\n            num = num * 10 + parseInt(expression[i++]);\n        }\n        i++; // skip '/'\n        while (i < expression.length && !isNaN(expression[i])) {\n            den = den * 10 + parseInt(expression[i++]);\n        }\n        A = A * den + B * num * sign;\n        B *= den;\n        const GCD = gcd(Math.abs(A), Math.abs(B));\n        A /= GCD;\n        B /= GCD;\n    }\n    return `${A}/${B}`;\n}\n```\n    \n    The algorithm first initializes the result fraction A/B to 0/1. It then iterates over the input expression, parsing and adjusting signs of each fraction it encounters. Each fraction's numerator and denominator are found by parsing the characters in the expression. The current sum A/B is updated with the current fraction by the equation:\n\n```\nA = A * den + B * num * sign\nB *= den\n```\n\nAfter updating A/B, the greatest common divisor (GCD) of A and B, found using the Euclidean algorithm, is used to reduce the fraction.\n\nThe process is repeated until the whole string input expression is processed. At the end, the irreducible fraction is returned in the format A/B.\n    ",
+    "java": "\n    ```java\npublic class Solution {\n    public String fractionAddition(String expression) {\n        int A = 0, B = 1;\n        int i = 0;\n        while(i < expression.length()) {\n            int sign = expression.charAt(i++) == '+' ? 1 : -1;\n            int num = 0, den = 0;\n            while (i < expression.length() && Character.isDigit(expression.charAt(i))) {\n                num = num * 10 + (expression.charAt(i++) - '0');\n            }\n            i++; // skip '/'\n            while (i < expression.length() && Character.isDigit(expression.charAt(i))) {\n                den = den * 10 + (expression.charAt(i++) - '0');\n            }\n            A = A * den + B * num * sign;\n            B *= den;\n            int GCD = gcd(Math.abs(A), Math.abs(B));\n            A /= GCD;\n            B /= GCD;\n        }\n        return A + \"/\" + B;\n    }\n\n    private int gcd(int a, int b) {\n        return b == 0 ? a : gcd(b, a % b);\n    }\n}\n```\n    \n    The algorithm first initializes the result fraction A/B to 0/1. It then iterates over the input expression, parsing and adjusting signs of each fraction it encounters. Each fraction's numerator and denominator are found by parsing the characters in the expression. The current sum A/B is updated with the current fraction by the equation:\n\n```\nA = A * den + B * num * sign\nB *= den\n```\n\nAfter updating A/B, the greatest common divisor (GCD) of A and B, found using the Euclidean algorithm, is used to reduce the fraction.\n\nThe process is repeated until the whole string input expression is processed. At the end, the irreducible fraction is returned in the format A/B.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

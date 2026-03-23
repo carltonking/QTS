@@ -1,0 +1,24 @@
+{
+  "id": 94,
+  "title": "Binary Tree Inorder Traversal",
+  "slug": "binary-tree-inorder-traversal",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given the root of a binary tree, return _the inorder traversal of its nodes' values_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef inorderTraversalHelper(root, result):\n    if not root:\n        return\n    inorderTraversalHelper(root.left, result)\n    result.append(root.val)\n    inorderTraversalHelper(root.right, result)\n\ndef inorderTraversal(root):\n    result = []\n    inorderTraversalHelper(root, result)\n    return result\n```\n    \n    The algorithm simply performs an inorder traversal on the given binary tree. An inorder traversal goes as follows: \n\n1. Traverse the left subtree, and call the function recursively for the left child.\n2. Visit the root.\n3. Traverse the right subtree, and call the function recursively for the right child.\n\nThis process is implemented by defining a helper function (`inorderTraversalHelper`) that takes a node and a `result` list (or vector in C++), and appends the node's value to the `result` list according to the inorder traversal order. The main `inorderTraversal` function initializes the result list and calls the helper function with the root of the tree. At the end, `inorderTraversal` returns the result list containing the values of the nodes in inorder traversal order.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(val, left = null, right = null){\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\nfunction inorderTraversalHelper(root, result) {\n    if (!root) return;\n    inorderTraversalHelper(root.left, result);\n    result.push(root.val);\n    inorderTraversalHelper(root.right, result);\n}\n\nfunction inorderTraversal(root) {\n    let result = [];\n    inorderTraversalHelper(root, result);\n    return result;\n}\n```\n    \n    The algorithm simply performs an inorder traversal on the given binary tree. An inorder traversal goes as follows: \n\n1. Traverse the left subtree, and call the function recursively for the left child.\n2. Visit the root.\n3. Traverse the right subtree, and call the function recursively for the right child.\n\nThis process is implemented by defining a helper function (`inorderTraversalHelper`) that takes a node and a `result` list (or vector in C++), and appends the node's value to the `result` list according to the inorder traversal order. The main `inorderTraversal` function initializes the result list and calls the helper function with the root of the tree. At the end, `inorderTraversal` returns the result list containing the values of the nodes in inorder traversal order.\n    ",
+    "java": "\n    ```java\nimport java.util.List;\nimport java.util.ArrayList;\n\npublic class TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n}\n\npublic List<Integer> inorderTraversal(TreeNode root) {\n    List<Integer> result = new ArrayList<>();\n    inorderTraversalHelper(root, result);\n    return result;\n}\n\nprivate void inorderTraversalHelper(TreeNode root, List<Integer> result) {\n    if (root == null) {\n        return;\n    }\n    inorderTraversalHelper(root.left, result);\n    result.add(root.val);\n    inorderTraversalHelper(root.right, result);\n}\n```\n    \n    The algorithm simply performs an inorder traversal on the given binary tree. An inorder traversal goes as follows: \n\n1. Traverse the left subtree, and call the function recursively for the left child.\n2. Visit the root.\n3. Traverse the right subtree, and call the function recursively for the right child.\n\nThis process is implemented by defining a helper function (`inorderTraversalHelper`) that takes a node and a `result` list (or vector in C++), and appends the node's value to the `result` list according to the inorder traversal order. The main `inorderTraversal` function initializes the result list and calls the helper function with the root of the tree. At the end, `inorderTraversal` returns the result list containing the values of the nodes in inorder traversal order.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

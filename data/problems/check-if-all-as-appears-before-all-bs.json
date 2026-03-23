@@ -1,0 +1,24 @@
+{
+  "id": 2124,
+  "title": "Check if All A's Appears Before All B's",
+  "slug": "check-if-all-as-appears-before-all-bs",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a string s consisting of only the characters 'a' and 'b', return true _if every_ 'a' _appears before every_ 'b' _in the string_. Otherwise, return false.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef firstDayBeenInAllRooms(nextVisit):\n    n = len(nextVisit)\n    ans = 0\n    MOD = 10**9 + 7\n    dp = [0] * n\n\n    for i in range(1, n):\n        dp[i] = (dp[i - 1] + 1 + dp[i - 1] - dp[nextVisit[i - 1]] + MOD) % MOD\n        ans = (ans + dp[i]) % MOD\n    return ans\n```\n    \n    We can solve this problem using dynamic programming. We create an array `dp` of size n and initialize it with 0's. The `dp[i]` should represent the number of days it takes to go from room i to room i+1.\n\nStarting from the second room (i=1), we loop through all rooms and update each `dp[i]` value. To calculate dp[i], we need to perform a cumulative summation of the days it has taken to visit the previous room (dp[i - 1]) plus 1 extra day (day i) and subtract the value at the index stored in nextVisit for the previous room (dp[nextVisit[i - 1]]).\n\nFinally, we add the calculated value modulo 10^9 + 7 to the answer `ans`. Once we exit the loop, we return `ans` as the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction firstDayBeenInAllRooms(nextVisit) {\n    const n = nextVisit.length;\n    let ans = 0, MOD = 1e9 + 7;\n    const dp = Array(n).fill(0);\n\n    for (let i = 1; i < n; ++i) {\n        dp[i] = (dp[i - 1] + 1 + dp[i - 1] - dp[nextVisit[i - 1]] + MOD) % MOD;\n        ans = (ans + dp[i]) % MOD;\n    }\n    return ans;\n};\n```\n    \n    We can solve this problem using dynamic programming. We create an array `dp` of size n and initialize it with 0's. The `dp[i]` should represent the number of days it takes to go from room i to room i+1.\n\nStarting from the second room (i=1), we loop through all rooms and update each `dp[i]` value. To calculate dp[i], we need to perform a cumulative summation of the days it has taken to visit the previous room (dp[i - 1]) plus 1 extra day (day i) and subtract the value at the index stored in nextVisit for the previous room (dp[nextVisit[i - 1]]).\n\nFinally, we add the calculated value modulo 10^9 + 7 to the answer `ans`. Once we exit the loop, we return `ans` as the result.\n    ",
+    "java": "\n    ```java\npublic int firstDayBeenInAllRooms(int[] nextVisit) {\n    int n = nextVisit.length;\n    long ans = 0, MOD = 1000000007;\n    long[] dp = new long[n];\n\n    for (int i = 1; i < n; ++i) {\n        dp[i] = (dp[i - 1] + 1 + dp[i - 1] - dp[nextVisit[i - 1]] + MOD) % MOD;\n        ans = (ans + dp[i]) % MOD;\n    }\n    return (int) ans;\n}\n```\n    \n    We can solve this problem using dynamic programming. We create an array `dp` of size n and initialize it with 0's. The `dp[i]` should represent the number of days it takes to go from room i to room i+1.\n\nStarting from the second room (i=1), we loop through all rooms and update each `dp[i]` value. To calculate dp[i], we need to perform a cumulative summation of the days it has taken to visit the previous room (dp[i - 1]) plus 1 extra day (day i) and subtract the value at the index stored in nextVisit for the previous room (dp[nextVisit[i - 1]]).\n\nFinally, we add the calculated value modulo 10^9 + 7 to the answer `ans`. Once we exit the loop, we return `ans` as the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

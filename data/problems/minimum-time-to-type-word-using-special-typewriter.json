@@ -1,0 +1,24 @@
+{
+  "id": 1974,
+  "title": "Minimum Time to Type Word Using Special Typewriter",
+  "slug": "minimum-time-to-type-word-using-special-typewriter",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "There is a special typewriter with lowercase English letters 'a' to 'z' arranged in a circle with a pointer. A character can only be typed if the pointer is pointing to that character. The pointer is initially pointing to the character 'a'.\n\nEach second, you may perform one of the following operations:\n\n*   Move the pointer one character counterclockwise or clockwise.\n*   Type the character the pointer is currently on.\n\nGiven a string word, return the minimum number of seconds to type out the characters in word.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minTimeToType(word: str) -> int:\n    time = 0\n    position = 0\n    for c in word:\n        next_position = ord(c) - ord('a')\n        diff = abs(next_position - position)\n        time += min(diff, 26 - diff) + 1\n        position = next_position\n    return time\n```\n    \n    1. Initialize the time and position to 0.\n2. Iterate through the characters of the word.\n3. Calculate the next position based on the ASCII value of the character and 'a'.\n4. Calculate the difference between the next position and the current position.\n5. Update the time by adding the minimum of the difference and (26 - difference), and 1 extra second for typing the character.\n6. Update the current position to the next position.\n7. Return the total time after processing all characters in the word.\n    ",
+    "javascript": "\n    ```javascript\nfunction minTimeToType(word) {\n    let time = 0, position = 0;\n    for (const c of word) {\n        let next_position = c.charCodeAt(0) - 'a'.charCodeAt(0);\n        let diff = Math.abs(next_position - position);\n        time += Math.min(diff, 26 - diff) + 1;\n        position = next_position;\n    }\n    return time;\n}\n```\n    \n    1. Initialize the time and position to 0.\n2. Iterate through the characters of the word.\n3. Calculate the next position based on the ASCII value of the character and 'a'.\n4. Calculate the difference between the next position and the current position.\n5. Update the time by adding the minimum of the difference and (26 - difference), and 1 extra second for typing the character.\n6. Update the current position to the next position.\n7. Return the total time after processing all characters in the word.\n    ",
+    "java": "\n    ```java\npublic int minTimeToType(String word) {\n    int time = 0, position = 0;\n    for (char c : word.toCharArray()) {\n        int next_position = c - 'a';\n        int diff = Math.abs(next_position - position);\n        time += Math.min(diff, 26 - diff) + 1;\n        position = next_position;\n    }\n    return time;\n}\n```\n    \n    1. Initialize the time and position to 0.\n2. Iterate through the characters of the word.\n3. Calculate the next position based on the ASCII value of the character and 'a'.\n4. Calculate the difference between the next position and the current position.\n5. Update the time by adding the minimum of the difference and (26 - difference), and 1 extra second for typing the character.\n6. Update the current position to the next position.\n7. Return the total time after processing all characters in the word.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

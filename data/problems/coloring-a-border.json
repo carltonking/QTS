@@ -1,0 +1,24 @@
+{
+  "id": 1034,
+  "title": "Coloring A Border",
+  "slug": "coloring-a-border",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an m x n integer matrix grid, and three integers row, col, and color. Each value in the grid represents the color of the grid square at that location.\n\nTwo squares belong to the same connected component if they have the same color and are next to each other in any of the 4 directions.\n\nThe border of a connected component is all the squares in the connected component that are either 4-directionally adjacent to a square not in the component, or on the boundary of the grid (the first or last row or column).\n\nYou should color the border of the connected component that contains the square grid[row][col] with color.\n\nReturn _the final grid_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef good_subarrays(nums, k):\n    count = 0\n    for i in range(len(nums)):\n        frequency = {}\n        for j in range(i, len(nums)):\n            frequency[nums[j]] = frequency.get(nums[j], 0) + 1\n            if len(frequency) > k:\n                break\n            if len(frequency) == k:\n                count += 1\n    return count\n```\n    \n    The algorithm iterates through each element of the array and starts another loop from that element to the end. In the inner loop, we maintain a frequency map/dict/object which stores the frequency of the integer occurrence in the subarray starting from `i` to the current element of the inner loop. We update the frequency of the integer at each step of the inner loop.\n\nIf the size of the frequency map/dict/object is greater than `k`, we break the inner loop as it's not a good subarray. If the size of the frequency map/dict/object is exactly equal to `k`, we increment the count of good subarrays.\n\nLastly, we return the count of good subarrays after iterating through the entire array. \n    ",
+    "javascript": "\n    ```javascript\nfunction good_subarrays(nums, k) {\n    let count = 0;\n    for (let i = 0; i < nums.length; i++) {\n        let frequency = {};\n        for (let j = i; j < nums.length; j++) {\n            frequency[nums[j]] = (frequency[nums[j]] || 0) + 1;\n            if (Object.keys(frequency).length > k) break;\n            if (Object.keys(frequency).length === k) count++;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm iterates through each element of the array and starts another loop from that element to the end. In the inner loop, we maintain a frequency map/dict/object which stores the frequency of the integer occurrence in the subarray starting from `i` to the current element of the inner loop. We update the frequency of the integer at each step of the inner loop.\n\nIf the size of the frequency map/dict/object is greater than `k`, we break the inner loop as it's not a good subarray. If the size of the frequency map/dict/object is exactly equal to `k`, we increment the count of good subarrays.\n\nLastly, we return the count of good subarrays after iterating through the entire array. \n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\n\npublic int good_subarrays(int[] nums, int k) {\n    int count = 0;\n    for (int i = 0; i < nums.length; i++) {\n        HashMap<Integer, Integer> frequency = new HashMap<>();\n        for (int j = i; j < nums.length; j++) {\n            frequency.put(nums[j], frequency.getOrDefault(nums[j], 0) + 1);\n            if (frequency.size() > k) break;\n            if (frequency.size() == k) count++;\n        }\n    }\n    return count;\n}\n\n```\n    \n    The algorithm iterates through each element of the array and starts another loop from that element to the end. In the inner loop, we maintain a frequency map/dict/object which stores the frequency of the integer occurrence in the subarray starting from `i` to the current element of the inner loop. We update the frequency of the integer at each step of the inner loop.\n\nIf the size of the frequency map/dict/object is greater than `k`, we break the inner loop as it's not a good subarray. If the size of the frequency map/dict/object is exactly equal to `k`, we increment the count of good subarrays.\n\nLastly, we return the count of good subarrays after iterating through the entire array. \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

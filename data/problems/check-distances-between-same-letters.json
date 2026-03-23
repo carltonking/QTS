@@ -1,0 +1,24 @@
+{
+  "id": 2399,
+  "title": "Check Distances Between Same Letters",
+  "slug": "check-distances-between-same-letters",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a 0-indexed string s consisting of only lowercase English letters, where each letter in s appears exactly twice. You are also given a 0-indexed integer array distance of length 26.\n\nEach letter in the alphabet is numbered from 0 to 25 (i.e. 'a' -> 0, 'b' -> 1, 'c' -> 2, ... , 'z' -> 25).\n\nIn a well-spaced string, the number of letters between the two occurrences of the ith letter is distance[i]. If the ith letter does not appear in s, then distance[i] can be ignored.\n\nReturn true _if_ s _is a well-spaced string, otherwise return_ false.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef well_spaced_string(s: str, distance: List[int]) -> bool:\n    first = {}\n    for i, c in enumerate(s):\n        if c not in first:\n            first[c] = i\n        else:\n            if distance[ord(c) - ord('a')] != i - first[c] - 1:\n                return False\n    return True\n```\n    \n    The algorithm iterates through the characters of the given string `s`. If it encounters a character for the first time, it stores the character along with its index in a map `first`. If it encounters the character for the second time, it checks whether the difference between the current index and the first occurrence of the character minus 1 is equal to the required distance given in the `distance` array. If this condition is not met, the function returns `false`. If the iteration is completed without failing the condition, the function returns `true`.\n    ",
+    "javascript": "\n    ```javascript\nfunction wellSpacedString(s, distance) {\n    const first = {};\n    for (let i = 0; i < s.length; ++i) {\n        const c = s[i];\n        if (c in first === false) {\n            first[c] = i;\n        } else {\n            if (distance[c.charCodeAt(0) - 'a'.charCodeAt(0)] !== i - first[c] - 1) {\n                return false;\n            }\n        }\n    }\n    return true;\n}\n```\n    \n    The algorithm iterates through the characters of the given string `s`. If it encounters a character for the first time, it stores the character along with its index in a map `first`. If it encounters the character for the second time, it checks whether the difference between the current index and the first occurrence of the character minus 1 is equal to the required distance given in the `distance` array. If this condition is not met, the function returns `false`. If the iteration is completed without failing the condition, the function returns `true`.\n    ",
+    "java": "\n    ```java\npublic boolean wellSpacedString(String s, int[] distance) {\n    Integer[] first = new Integer[26];\n    for (int i = 0; i < s.length(); ++i) {\n        char c = s.charAt(i);\n        if (first[c - 'a'] == null) {\n            first[c - 'a'] = i;\n        } else {\n            if (distance[c - 'a'] != i - first[c - 'a'] - 1) {\n                return false;\n            }\n        }\n    }\n    return true;\n}\n```\n    \n    The algorithm iterates through the characters of the given string `s`. If it encounters a character for the first time, it stores the character along with its index in a map `first`. If it encounters the character for the second time, it checks whether the difference between the current index and the first occurrence of the character minus 1 is equal to the required distance given in the `distance` array. If this condition is not met, the function returns `false`. If the iteration is completed without failing the condition, the function returns `true`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2521,
+  "title": "Distinct Prime Factors of Product of Array",
+  "slug": "distinct-prime-factors-of-product-of-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of positive integers nums, return _the number of distinct prime factors in the product of the elements of_ nums.\n\nNote that:\n\n*   A number greater than 1 is called prime if it is divisible by only 1 and itself.\n*   An integer val1 is a factor of another integer val2 if val2 / val1 is an integer.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_distinct_prime_factors(nums):\n    prime_factors = set()\n    for n in nums:\n        for divisor in range(2, int(n**0.5) + 1):\n            if n % divisor == 0:\n                prime_factors.add(divisor)\n                prime_factors.add(n // divisor)\n    return len(prime_factors)\n```\n    \n    The algorithm iterates through each number in the input array `nums`. For each number, it computes divisors from 2 to the square root of the number. If a number is divisible by a divisor, both the divisor and its corresponding factor (n // divisor) are added to a set. Using a set ensures that only distinct factors are stored. Finally, the size of the set is returned as it contains the number of distinct prime factors in the product of the elements of `nums`.\n    ",
+    "javascript": "\n    ```javascript\nfunction countDistinctPrimeFactors(nums) {\n    const prime_factors = new Set();\n    for (const n of nums) {\n        for (let divisor = 2; divisor * divisor <= n; ++divisor) {\n            if (n % divisor === 0) {\n                prime_factors.add(divisor);           \n                prime_factors.add(n / divisor);\n            }\n        }\n    }\n    return prime_factors.size;\n}\n```\n    \n    The algorithm iterates through each number in the input array `nums`. For each number, it computes divisors from 2 to the square root of the number. If a number is divisible by a divisor, both the divisor and its corresponding factor (n // divisor) are added to a set. Using a set ensures that only distinct factors are stored. Finally, the size of the set is returned as it contains the number of distinct prime factors in the product of the elements of `nums`.\n    ",
+    "java": "\n    ```java\nimport java.util.Set;\nimport java.util.HashSet;\n\npublic int countDistinctPrimeFactors(int[] nums) {\n    Set<Integer> prime_factors = new HashSet<>();\n    for (int n : nums) {\n        for (int divisor = 2; divisor * divisor <= n; ++divisor) {\n            if (n % divisor == 0) {\n                prime_factors.add(divisor);           \n                prime_factors.add(n / divisor);\n            }\n        }\n    }\n    return prime_factors.size();\n}\n```\n    \n    The algorithm iterates through each number in the input array `nums`. For each number, it computes divisors from 2 to the square root of the number. If a number is divisible by a divisor, both the divisor and its corresponding factor (n // divisor) are added to a set. Using a set ensures that only distinct factors are stored. Finally, the size of the set is returned as it contains the number of distinct prime factors in the product of the elements of `nums`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

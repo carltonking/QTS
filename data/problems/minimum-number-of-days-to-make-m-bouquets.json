@@ -1,0 +1,24 @@
+{
+  "id": 1482,
+  "title": "Minimum Number of Days to Make m Bouquets",
+  "slug": "minimum-number-of-days-to-make-m-bouquets",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array bloomDay, an integer m and an integer k.\n\nYou want to make m bouquets. To make a bouquet, you need to use k adjacent flowers from the garden.\n\nThe garden consists of n flowers, the ith flower will bloom in the bloomDay[i] and then can be used in exactly one bouquet.\n\nReturn _the minimum number of days you need to wait to be able to make_ m _bouquets from the garden_. If it is impossible to make m bouquets return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef smallerNumbersThanCurrent(nums):\n    result = [0] * len(nums)\n    for i in range(len(nums)):\n        for j in range(len(nums)):\n            if nums[j] < nums[i]:\n                result[i] += 1\n    return result\n```\n    \n    The algorithm iterates through each number in the input array (nums) using a nested loop. For each number (nums[i]), it checks if another number (nums[j]) in the array is smaller than it (nums[j] < nums[i]) and increments the count if it is. The count of smaller numbers for each nums[i] is stored in the result array, which is returned at the end.\n    ",
+    "javascript": "\n    ```javascript\nfunction smallerNumbersThanCurrent(nums) {\n    const result = new Array(nums.length).fill(0);\n    for (let i = 0; i < nums.length; i++) {\n        for (let j = 0; j < nums.length; j++) {\n            if (nums[j] < nums[i]) {\n                result[i]++;\n            }\n        }\n    }\n    return result;\n}\n```\n    \n    The algorithm iterates through each number in the input array (nums) using a nested loop. For each number (nums[i]), it checks if another number (nums[j]) in the array is smaller than it (nums[j] < nums[i]) and increments the count if it is. The count of smaller numbers for each nums[i] is stored in the result array, which is returned at the end.\n    ",
+    "java": "\n    ```java\npublic int[] smallerNumbersThanCurrent(int[] nums) {\n    int[] result = new int[nums.length];\n    for (int i = 0; i < nums.length; i++) {\n        for (int j = 0; j < nums.length; j++) {\n            if (nums[j] < nums[i]) {\n                result[i]++;\n            }\n        }\n    }\n    return result;\n}\n```\n    \n    The algorithm iterates through each number in the input array (nums) using a nested loop. For each number (nums[i]), it checks if another number (nums[j]) in the array is smaller than it (nums[j] < nums[i]) and increments the count if it is. The count of smaller numbers for each nums[i] is stored in the result array, which is returned at the end.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

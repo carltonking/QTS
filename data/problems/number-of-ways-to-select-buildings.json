@@ -1,0 +1,24 @@
+{
+  "id": 2222,
+  "title": "Number of Ways to Select Buildings",
+  "slug": "number-of-ways-to-select-buildings",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed binary string s which represents the types of buildings along a street where:\n\n*   s[i] = '0' denotes that the ith building is an office and\n*   s[i] = '1' denotes that the ith building is a restaurant.\n\nAs a city official, you would like to select 3 buildings for random inspection. However, to ensure variety, no two consecutive buildings out of the selected buildings can be of the same type.\n\n*   For example, given s = \"001101 \", we cannot select the 1st, 3rd, and 5th buildings as that would form \"011 \" which is not allowed due to having two consecutive buildings of the same type.\n\nReturn _the number of valid ways to select 3 buildings._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef abbreviated_product(left: int, right: int) -> str:\n    product = 1\n    for i in range(left, right + 1):\n        product *= i\n    return str(product)\n```\n\n    \n    The algorithm for this problem is quite simple. We just need to calculate the product of all integers between left and right, inclusive. To do this, we initialize a variable `product` as 1, and then iterate through all integers in the range [left, right], multiplying the `product` variable by each of these integers. After we've iterated through all integers in the range, `product` will have the result of the multiplication. Finally, we convert the product into a string format and return it. Since the input integers are positive, the product will always be non-negative.\n\nPlease note that this code may not work for very large ranges or numbers due to the limitation of number representation in each language. If more precision or the ability to handle larger numbers is required, you can consider using specialized libraries for arbitrary-precision arithmetic like GMP (C++), BigInteger (Java), or bigint (JavaScript). In Python, you don't need an external library, as you can use Python's built-in support for large integers.\n    ",
+    "javascript": "\n    ```javascript\nfunction abbreviatedProduct(left, right) {\n    let product = 1;\n    for (let i = left; i <= right; i++) {\n        product *= i;\n    }\n    return product.toString();\n}\n```\n\n    \n    The algorithm for this problem is quite simple. We just need to calculate the product of all integers between left and right, inclusive. To do this, we initialize a variable `product` as 1, and then iterate through all integers in the range [left, right], multiplying the `product` variable by each of these integers. After we've iterated through all integers in the range, `product` will have the result of the multiplication. Finally, we convert the product into a string format and return it. Since the input integers are positive, the product will always be non-negative.\n\nPlease note that this code may not work for very large ranges or numbers due to the limitation of number representation in each language. If more precision or the ability to handle larger numbers is required, you can consider using specialized libraries for arbitrary-precision arithmetic like GMP (C++), BigInteger (Java), or bigint (JavaScript). In Python, you don't need an external library, as you can use Python's built-in support for large integers.\n    ",
+    "java": "\n    ```java\npublic String abbreviatedProduct(int left, int right) {\n    long product = 1;\n    for (int i = left; i <= right; i++) {\n        product *= i;\n    }\n    return Long.toString(product);\n}\n```\n\n    \n    The algorithm for this problem is quite simple. We just need to calculate the product of all integers between left and right, inclusive. To do this, we initialize a variable `product` as 1, and then iterate through all integers in the range [left, right], multiplying the `product` variable by each of these integers. After we've iterated through all integers in the range, `product` will have the result of the multiplication. Finally, we convert the product into a string format and return it. Since the input integers are positive, the product will always be non-negative.\n\nPlease note that this code may not work for very large ranges or numbers due to the limitation of number representation in each language. If more precision or the ability to handle larger numbers is required, you can consider using specialized libraries for arbitrary-precision arithmetic like GMP (C++), BigInteger (Java), or bigint (JavaScript). In Python, you don't need an external library, as you can use Python's built-in support for large integers.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

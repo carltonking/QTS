@@ -1,0 +1,24 @@
+{
+  "id": 2285,
+  "title": "Maximum Total Importance of Roads",
+  "slug": "maximum-total-importance-of-roads",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer n denoting the number of cities in a country. The cities are numbered from 0 to n - 1.\n\nYou are also given a 2D integer array roads where roads[i] = [ai, bi] denotes that there exists a bidirectional road connecting cities ai and bi.\n\nYou need to assign each city with an integer value from 1 to n, where each value can only be used once. The importance of a road is then defined as the sum of the values of the two cities it connects.\n\nReturn _the maximum total importance of all roads possible after assigning the values optimally._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass BitSet:\n    def __init__(self, size):\n        self.bits = [0] * ((size + 31) // 32)\n\n    def set(self, index):\n        self.bits[index // 32] |= (1 << (index % 32))\n\n    def get(self, index):\n        return (self.bits[index // 32] & (1 << (index % 32))) != 0\n```\n    \n    The BitSet class stores bits in an array of integers, where each integer represents 32 bits. When creating a new BitSet, we initialize the array with enough integer elements to store the desired number of bits.\n\nTo set a bit at a specific index, we first find the index in the array that contains the desired bit by dividing the requested index by 32. We then set the bit by performing a bitwise OR operation with a mask (1 << (index % 32)). This ensures that the correct bit is set.\n\nTo get the value of a bit at a specific index, we again find the index in the array that contains the desired bit by dividing the requested index by 32. We then retrieve the bit's value by performing a bitwise AND operation with a mask (1 << (index % 32)). If the result is not 0, the bit is set and the function returns true, otherwise it returns false.\n    ",
+    "javascript": "\n    ```javascript\nclass BitSet {\n  constructor(size) {\n    this.bits = new Array(Math.ceil(size / 32)).fill(0);\n  }\n\n  set(index) {\n    this.bits[Math.floor(index / 32)] |= (1 << (index % 32));\n  }\n\n  get(index) {\n    return (this.bits[Math.floor(index / 32)] & (1 << (index % 32))) !== 0;\n  }\n}\n```\n    \n    The BitSet class stores bits in an array of integers, where each integer represents 32 bits. When creating a new BitSet, we initialize the array with enough integer elements to store the desired number of bits.\n\nTo set a bit at a specific index, we first find the index in the array that contains the desired bit by dividing the requested index by 32. We then set the bit by performing a bitwise OR operation with a mask (1 << (index % 32)). This ensures that the correct bit is set.\n\nTo get the value of a bit at a specific index, we again find the index in the array that contains the desired bit by dividing the requested index by 32. We then retrieve the bit's value by performing a bitwise AND operation with a mask (1 << (index % 32)). If the result is not 0, the bit is set and the function returns true, otherwise it returns false.\n    ",
+    "java": "\n    ```java\nclass BitSet {\n    private int[] bits;\n  \n    public BitSet(int size) {\n        bits = new int[(size + 31) / 32];\n    }\n  \n    public void set(int index) {\n        bits[index / 32] |= (1 << (index % 32));\n    }\n  \n    public boolean get(int index) {\n        return (bits[index / 32] & (1 << (index % 32))) != 0;\n    }\n}\n```\n    \n    The BitSet class stores bits in an array of integers, where each integer represents 32 bits. When creating a new BitSet, we initialize the array with enough integer elements to store the desired number of bits.\n\nTo set a bit at a specific index, we first find the index in the array that contains the desired bit by dividing the requested index by 32. We then set the bit by performing a bitwise OR operation with a mask (1 << (index % 32)). This ensures that the correct bit is set.\n\nTo get the value of a bit at a specific index, we again find the index in the array that contains the desired bit by dividing the requested index by 32. We then retrieve the bit's value by performing a bitwise AND operation with a mask (1 << (index % 32)). If the result is not 0, the bit is set and the function returns true, otherwise it returns false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

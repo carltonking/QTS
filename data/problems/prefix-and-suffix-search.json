@@ -1,0 +1,24 @@
+{
+  "id": 745,
+  "title": "Prefix and Suffix Search",
+  "slug": "prefix-and-suffix-search",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Design a special dictionary that searches the words in it by a prefix and a suffix.\n\nImplement the WordFilter class:\n\n*   WordFilter(string[] words) Initializes the object with the words in the dictionary.\n*   f(string pref, string suff) Returns _the index of the word in the dictionary,_ which has the prefix pref and the suffix suff. If there is more than one valid index, return the largest of them. If there is no such word in the dictionary, return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef next_greatest_letter(letters, target):\n    for letter in letters:\n        if letter > target:\n            return letter\n    return letters[0]\n```\n    \n    The algorithm simply iterates through the `letters` array, which is already sorted in non-decreasing order. For each letter in the array, it checks if the letter is larger than the target. If it is, then it returns that letter as the smallest letter larger than the target. If the loop completes without finding a letter larger than the target, the array wraps around, and the first element of the array is returned as the smallest letter larger than the target.\n    ",
+    "javascript": "\n    ```javascript\nfunction nextGreatestLetter(letters, target) {\n    for (let letter of letters) {\n        if (letter > target) {\n            return letter;\n        }\n    }\n    return letters[0];\n}\n```\n    \n    The algorithm simply iterates through the `letters` array, which is already sorted in non-decreasing order. For each letter in the array, it checks if the letter is larger than the target. If it is, then it returns that letter as the smallest letter larger than the target. If the loop completes without finding a letter larger than the target, the array wraps around, and the first element of the array is returned as the smallest letter larger than the target.\n    ",
+    "java": "\n    ```java\npublic char nextGreatestLetter(char[] letters, char target) {\n    for (char letter : letters) {\n        if (letter > target) {\n            return letter;\n        }\n    }\n    return letters[0];\n}\n```\n    \n    The algorithm simply iterates through the `letters` array, which is already sorted in non-decreasing order. For each letter in the array, it checks if the letter is larger than the target. If it is, then it returns that letter as the smallest letter larger than the target. If the loop completes without finding a letter larger than the target, the array wraps around, and the first element of the array is returned as the smallest letter larger than the target.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

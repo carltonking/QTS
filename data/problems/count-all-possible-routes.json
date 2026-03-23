@@ -1,0 +1,24 @@
+{
+  "id": 1575,
+  "title": "Count All Possible Routes",
+  "slug": "count-all-possible-routes",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an array of distinct positive integers locations where locations[i] represents the position of city i. You are also given integers start, finish and fuel representing the starting city, ending city, and the initial amount of fuel you have, respectively.\n\nAt each step, if you are at city i, you can pick any city j such that j != i and 0 <= j < locations.length and move to city j. Moving from city i to city j reduces the amount of fuel you have by |locations[i] - locations[j]|. Please notice that |x| denotes the absolute value of x.\n\nNotice that fuel cannot become negative at any point in time, and that you are allowed to visit any city more than once (including start and finish).\n\nReturn _the count of all possible routes from_ start _to_ finish. Since the answer may be too large, return it modulo 109 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxArea(h, w, horizontalCuts, verticalCuts):\n    horizontalCuts.sort()\n    verticalCuts.sort()\n\n    maxH = max(horizontalCuts[0], h - horizontalCuts[-1])\n    maxV = max(verticalCuts[0], w - verticalCuts[-1])\n\n    for i in range(1, len(horizontalCuts)):\n        maxH = max(maxH, horizontalCuts[i] - horizontalCuts[i - 1])\n\n    for i in range(1, len(verticalCuts)):\n        maxV = max(maxV, verticalCuts[i] - verticalCuts[i - 1])\n\n    return (maxH * maxV) % (10**9 + 7)\n```\n    \n    1. Sort both horizontalCuts and verticalCuts arrays in ascending order.\n2. Calculate the initial values of maxH and maxV as the maximum of the first cut distance and the distance from the last cut to the cake's edge.\n3. Loop through each cut in both arrays (starting from index 1), updating maxH and maxV to be the maximum value between their current value and the difference between the current cut and the previous cut. This will give us the largest distance between cuts for both horizontal and vertical directions.\n4. Return the product of maxH and maxV modulo 10^9 + 7.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxArea(h, w, horizontalCuts, verticalCuts) {\n    horizontalCuts.sort((a, b) => a - b);\n    verticalCuts.sort((a, b) => a - b);\n\n    let maxH = Math.max(horizontalCuts[0], h - horizontalCuts[horizontalCuts.length - 1]);\n    let maxV = Math.max(verticalCuts[0], w - verticalCuts[verticalCuts.length - 1]);\n\n    for (let i = 1; i < horizontalCuts.length; ++i) {\n        maxH = Math.max(maxH, horizontalCuts[i] - horizontalCuts[i - 1]);\n    }\n\n    for (let i = 1; i < verticalCuts.length; ++i) {\n        maxV = Math.max(maxV, verticalCuts[i] - verticalCuts[i - 1]);\n    }\n\n    return BigInt(maxH) * BigInt(maxV) % 1000000007n;\n}\n```\n    \n    1. Sort both horizontalCuts and verticalCuts arrays in ascending order.\n2. Calculate the initial values of maxH and maxV as the maximum of the first cut distance and the distance from the last cut to the cake's edge.\n3. Loop through each cut in both arrays (starting from index 1), updating maxH and maxV to be the maximum value between their current value and the difference between the current cut and the previous cut. This will give us the largest distance between cuts for both horizontal and vertical directions.\n4. Return the product of maxH and maxV modulo 10^9 + 7.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int maxArea(int h, int w, int[] horizontalCuts, int[] verticalCuts) {\n    Arrays.sort(horizontalCuts);\n    Arrays.sort(verticalCuts);\n    \n    int maxH = Math.max(horizontalCuts[0], h - horizontalCuts[horizontalCuts.length - 1]);\n    int maxV = Math.max(verticalCuts[0], w - verticalCuts[verticalCuts.length - 1]);\n    \n    for (int i = 1; i < horizontalCuts.length; ++i) {\n        maxH = Math.max(maxH, horizontalCuts[i] - horizontalCuts[i - 1]);\n    }\n    \n    for (int i = 1; i < verticalCuts.length; ++i) {\n        maxV = Math.max(maxV, verticalCuts[i] - verticalCuts[i - 1]);\n    }\n    \n    return (int)((long)maxH * maxV % 1000000007);\n}\n```\n    \n    1. Sort both horizontalCuts and verticalCuts arrays in ascending order.\n2. Calculate the initial values of maxH and maxV as the maximum of the first cut distance and the distance from the last cut to the cake's edge.\n3. Loop through each cut in both arrays (starting from index 1), updating maxH and maxV to be the maximum value between their current value and the difference between the current cut and the previous cut. This will give us the largest distance between cuts for both horizontal and vertical directions.\n4. Return the product of maxH and maxV modulo 10^9 + 7.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

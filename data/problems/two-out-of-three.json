@@ -1,0 +1,24 @@
+{
+  "id": 2032,
+  "title": "Two Out of Three",
+  "slug": "two-out-of-three",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given three integer arrays nums1, nums2, and nums3, return _a distinct array containing all the values that are present in at least two out of the three arrays. You may return the values in any order_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef largest_odd(num: str) -> str:\n    for i in range(len(num)):\n        if (int(num[i]) % 2) == 1:\n            return num[:i + 1]\n    return \"\"\n```\n    \n    The algorithm used iterates through the input string `num`. For each character, it checks if it's an odd digit (by subtracting '0' and mod-ing 2 to check if it's equal to 1).\n\nIf an odd digit is found, it returns the substring from the beginning of the string to the odd digit (inclusive) as the largest odd integer substring.\n\nIf no odd digit is found, it returns an empty string.\n    ",
+    "javascript": "\n    ```javascript\nfunction largestOdd(num) {\n    for (let i = 0; i < num.length; ++i) {\n        if ((num[i] - '0') % 2 === 1) {\n            return num.substr(0, i + 1);\n        }\n    }\n    return \"\";\n}\n```\n    \n    The algorithm used iterates through the input string `num`. For each character, it checks if it's an odd digit (by subtracting '0' and mod-ing 2 to check if it's equal to 1).\n\nIf an odd digit is found, it returns the substring from the beginning of the string to the odd digit (inclusive) as the largest odd integer substring.\n\nIf no odd digit is found, it returns an empty string.\n    ",
+    "java": "\n    ```java\npublic String largestOdd(String num) {\n    for (int i = 0; i < num.length(); ++i) {\n        if ((num.charAt(i) - '0') % 2 == 1) {\n            return num.substring(0, i + 1);\n        }\n    }\n    return \"\";\n}\n```\n    \n    The algorithm used iterates through the input string `num`. For each character, it checks if it's an odd digit (by subtracting '0' and mod-ing 2 to check if it's equal to 1).\n\nIf an odd digit is found, it returns the substring from the beginning of the string to the odd digit (inclusive) as the largest odd integer substring.\n\nIf no odd digit is found, it returns an empty string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1333,
+  "title": "Filter Restaurants by Vegan-Friendly, Price and Distance",
+  "slug": "filter-restaurants-by-vegan-friendly-price-and-distance",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the array restaurants where restaurants[i] = [idi, ratingi, veganFriendlyi, pricei, distancei]. You have to filter the restaurants using three filters.\n\nThe veganFriendly filter will be either _true_ (meaning you should only include restaurants with veganFriendlyi set to true) or _false_ (meaning you can include any restaurant). In addition, you have the filters maxPrice and maxDistance which are the maximum value for price and distance of restaurants you should consider respectively.\n\nReturn the array of restaurant _IDs_ after filtering, ordered by rating from highest to lowest. For restaurants with the same rating, order them by _id_ from highest to lowest. For simplicity veganFriendlyi and veganFriendly take value _1_ when it is _true_, and _0_ when it is _false_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sort_based_on_mapping(mapping, nums):\n    def mapped_value(num):\n        return int(''.join(str(mapping[int(d)]) for d in str(num)))\n    \n    return sorted(nums, key=mapped_value)\n```\n    \n    The algorithm consists of the following steps:\n1. Define a function to map the given number based on the mapping rules provided.\n2. For each number in the array, calculate and store its mapped value while maintaining the original number.\n3. Sort the numbers based on their mapped values.\n4. Return the sorted array.\n\nIn each language implementation, we start by defining a function to calculate the mapped value of a given number. We then use a sorting function provided by the language and pass a custom comparison function to sort the array based on the mapped values. Finally, we return the sorted array.\n    ",
+    "javascript": "\n    ```javascript\nfunction sortBasedOnMapping(mapping, nums) {\n    const mappedValue = num => {\n        return parseInt([...num.toString()].map(d => mapping[parseInt(d)]).join(''));\n    };\n\n    return nums.sort((a, b) => mappedValue(a) - mappedValue(b));\n}\n```\n    \n    The algorithm consists of the following steps:\n1. Define a function to map the given number based on the mapping rules provided.\n2. For each number in the array, calculate and store its mapped value while maintaining the original number.\n3. Sort the numbers based on their mapped values.\n4. Return the sorted array.\n\nIn each language implementation, we start by defining a function to calculate the mapped value of a given number. We then use a sorting function provided by the language and pass a custom comparison function to sort the array based on the mapped values. Finally, we return the sorted array.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int[] sortBasedOnMapping(int[] mapping, int[] nums) {\n    Integer[] boxedNums = Arrays.stream(nums).boxed().toArray(Integer[]::new);\n    Arrays.sort(boxedNums, (a, b) -> {\n        String aStr = Integer.toString(a);\n        String bStr = Integer.toString(b);\n        for (int i = 0; i < aStr.length(); i++)\n            aStr = aStr.substring(0, i) + mapping[aStr.charAt(i) - '0'] + aStr.substring(i + 1);\n        for (int i = 0; i < bStr.length(); i++)\n            bStr = bStr.substring(0, i) + mapping[bStr.charAt(i) - '0'] + bStr.substring(i + 1);\n        return aStr.compareTo(bStr);\n    });\n    return Arrays.stream(boxedNums).mapToInt(Integer::intValue).toArray();\n}\n```\n    \n    The algorithm consists of the following steps:\n1. Define a function to map the given number based on the mapping rules provided.\n2. For each number in the array, calculate and store its mapped value while maintaining the original number.\n3. Sort the numbers based on their mapped values.\n4. Return the sorted array.\n\nIn each language implementation, we start by defining a function to calculate the mapped value of a given number. We then use a sorting function provided by the language and pass a custom comparison function to sort the array based on the mapped values. Finally, we return the sorted array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

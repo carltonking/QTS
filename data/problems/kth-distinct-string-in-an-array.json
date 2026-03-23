@@ -1,0 +1,24 @@
+{
+  "id": 2053,
+  "title": "Kth Distinct String in an Array",
+  "slug": "kth-distinct-string-in-an-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "A distinct string is a string that is present only once in an array.\n\nGiven an array of strings arr, and an integer k, return _the_ kth _distinct string present in_ arr. If there are fewer than k distinct strings, return _an empty string_ \" \".\n\nNote that the strings are considered in the order in which they appear in the array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_good_string(s: str) -> bool:\n    freq_map = {}\n    for c in s:\n        if c in freq_map:\n            freq_map[c] += 1\n        else:\n            freq_map[c] = 1\n\n    count = next(iter(freq_map.values()))\n    for value in freq_map.values():\n        if value != count:\n            return False\n    return True\n```\n    \n    The algorithm for each implementation is as follows:\n\n1. Create a dictionary/hash map to store the frequencies of each character in the string.\n2. Iterate through the input string and update the dictionary with the character frequencies.\n3. Get the count of the first character in the dictionary.\n4. Iterate through the dictionary, compare the count of each character to the initial count obtained in step 3. If the counts are not equal, return false. In the end, if all counts are equal, return true.\n\nThis algorithm works in O(n) time complexity, where n is the length of the input string, since it traverses the input string and dictionary in linear time.\n    ",
+    "javascript": "\n    ```javascript\nfunction isGoodString(s) {\n    let freqMap = new Map();\n    for (let c of s) {\n        if (freqMap.has(c)) {\n            freqMap.set(c, freqMap.get(c) + 1);\n        } else {\n            freqMap.set(c, 1);\n        }\n    }\n\n    let count = freqMap.values().next().value;\n    for (let value of freqMap.values()) {\n        if (value !== count) {\n            return false;\n        }\n    }\n    return true;\n}\n```\n    \n    The algorithm for each implementation is as follows:\n\n1. Create a dictionary/hash map to store the frequencies of each character in the string.\n2. Iterate through the input string and update the dictionary with the character frequencies.\n3. Get the count of the first character in the dictionary.\n4. Iterate through the dictionary, compare the count of each character to the initial count obtained in step 3. If the counts are not equal, return false. In the end, if all counts are equal, return true.\n\nThis algorithm works in O(n) time complexity, where n is the length of the input string, since it traverses the input string and dictionary in linear time.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\n\npublic boolean isGoodString(String s) {\n    HashMap<Character, Integer> freq_map = new HashMap<>();\n    for (char c : s.toCharArray()) {\n        freq_map.put(c, freq_map.getOrDefault(c, 0) + 1);\n    }\n\n    int count = freq_map.values().iterator().next();\n    for (int value : freq_map.values()) {\n        if (value != count) {\n            return false;\n        }\n    }\n    return true;\n}\n```\n    \n    The algorithm for each implementation is as follows:\n\n1. Create a dictionary/hash map to store the frequencies of each character in the string.\n2. Iterate through the input string and update the dictionary with the character frequencies.\n3. Get the count of the first character in the dictionary.\n4. Iterate through the dictionary, compare the count of each character to the initial count obtained in step 3. If the counts are not equal, return false. In the end, if all counts are equal, return true.\n\nThis algorithm works in O(n) time complexity, where n is the length of the input string, since it traverses the input string and dictionary in linear time.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 85,
+  "title": "Maximal Rectangle",
+  "slug": "maximal-rectangle",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given a rows x cols binary matrix filled with 0's and 1's, find the largest rectangle containing only 1's and return _its area_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maximalRectangle(matrix):\n    if not matrix:\n        return 0\n\n    m = len(matrix)\n    n = len(matrix[0])\n    height = [0] * (n + 1)\n    max_area = 0\n\n    for i in range(m):\n        s = []\n        for j in range(n + 1):\n            if j < n:\n                height[j] = height[j] + 1 if matrix[i][j] == '1' else 0\n            while s and height[j] < height[s[-1]]:\n                h = height[s.pop()]\n                w = j if not s else j - s[-1] - 1\n                max_area = max(max_area, h * w)\n            s.append(j)\n\n    return max_area\n```\n\n    \n    The algorithm uses a stack to keep track of indices of increasing heights. The height-array is updated every row to add the height of the previous row if the cell value is '1', else it is set to 0. Every time a smaller height is encountered than the top of the stack, we pop the top of the stack and calculate the area using that height (popped value) and the width (current index minus the index below the top of the stack minus 1), updating maxArea with the new maximum value. \n\nThis is done for all the rows of the matrix, and finally, the maxArea is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction maximalRectangle(matrix) {\n    if (!matrix.length) return 0;\n\n    let m = matrix.length;\n    let n = matrix[0].length;\n    let height = Array(n + 1).fill(0);\n    let maxArea = 0;\n\n    for (let i = 0; i < m; i++) {\n        let s = [];\n        for (let j = 0; j <= n; j++) {\n            if (j < n) {\n                height[j] = matrix[i][j] === '1' ? height[j] + 1 : 0;\n            }\n            while (s.length && height[j] < height[s[s.length - 1]]) {\n                let h = height[s.pop()];\n                let w = !s.length ? j : j - s[s.length - 1] - 1;\n                maxArea = Math.max(maxArea, h * w);\n            }\n            s.push(j);\n        }\n    }\n\n    return maxArea;\n}\n```\n\n    \n    The algorithm uses a stack to keep track of indices of increasing heights. The height-array is updated every row to add the height of the previous row if the cell value is '1', else it is set to 0. Every time a smaller height is encountered than the top of the stack, we pop the top of the stack and calculate the area using that height (popped value) and the width (current index minus the index below the top of the stack minus 1), updating maxArea with the new maximum value. \n\nThis is done for all the rows of the matrix, and finally, the maxArea is returned.\n    ",
+    "java": "\n    ```java\nimport java.util.Stack;\n\npublic int maximalRectangle(char[][] matrix) {\n    if (matrix.length == 0) return 0;\n\n    int m = matrix.length;\n    int n = matrix[0].length;\n    int[] height = new int[n + 1];\n    int maxArea = 0;\n\n    for (int i = 0; i < m; ++i) {\n        Stack<Integer> s = new Stack<>();\n        for (int j = 0; j <= n; ++j) {\n            if (j < n) {\n                height[j] = matrix[i][j] == '1' ? height[j] + 1 : 0;\n            }\n            while (!s.empty() && height[j] < height[s.peek()]) {\n                int h = height[s.pop()];\n                int w = s.empty() ? j : j - s.peek() - 1;\n                maxArea = Math.max(maxArea, h * w);\n            }\n            s.push(j);\n        }\n    }\n\n    return maxArea;\n}\n```\n\n    \n    The algorithm uses a stack to keep track of indices of increasing heights. The height-array is updated every row to add the height of the previous row if the cell value is '1', else it is set to 0. Every time a smaller height is encountered than the top of the stack, we pop the top of the stack and calculate the area using that height (popped value) and the width (current index minus the index below the top of the stack minus 1), updating maxArea with the new maximum value. \n\nThis is done for all the rows of the matrix, and finally, the maxArea is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

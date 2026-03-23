@@ -1,0 +1,24 @@
+{
+  "id": 582,
+  "title": "Kill Process",
+  "slug": "kill-process",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You have n processes forming a rooted tree structure. You are given two integer arrays pid and ppid, where pid[i] is the ID of the ith process and ppid[i] is the ID of the ith process's parent process.\n\nEach process has only one parent process but may have multiple children processes. Only one process has ppid[i] = 0, which means this process has no parent process (the root of the tree).\n\nWhen a process is killed, all of its children processes will also be killed.\n\nGiven an integer kill representing the ID of a process you want to kill, return _a list of the IDs of the processes that will be killed. You may return the answer in any order._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import defaultdict\n\ndef killProcess(pid, ppid, kill):\n    children = defaultdict(list)\n    for i in range(len(pid)):\n        children[ppid[i]].append(pid[i])\n\n    def dfs(id, killed):\n        killed.append(id)\n        for child in children[id]:\n            dfs(child, killed)\n\n    killed = []\n    dfs(kill, killed)\n    return killed\n```\n    \n    We use a hash map (unordered_map in C++, HashMap in Java, defaultdict in Python, Map in JavaScript) to store the children of each process. We iterate through the `pid` and `ppid` arrays to construct a tree-like data structure in the `children` map.\n\nWe then perform a depth-first search (DFS) starting from the `kill` process to traverse the tree and add all the processes to the `killed` list. The DFS function is implemented in a recursive manner, where we first add the current process id to the list `killed` and then iterate through its children.\n\nWe call the `dfs` function with the `kill` process id to construct the `killed` list and then return it.\n    ",
+    "javascript": "\n    ```javascript\nfunction killProcess(pid, ppid, kill) {\n  const children = new Map();\n  for (let i = 0; i < pid.length; i++) {\n    if (!children.has(ppid[i])) children.set(ppid[i], []);\n    children.get(ppid[i]).push(pid[i]);\n  }\n\n  const killed = [];\n  function dfs(id) {\n    killed.push(id);\n    const childList = children.get(id) || [];\n    for (const child of childList) {\n      dfs(child);\n    }\n  }\n  dfs(kill);\n\n  return killed;\n}\n```\n    \n    We use a hash map (unordered_map in C++, HashMap in Java, defaultdict in Python, Map in JavaScript) to store the children of each process. We iterate through the `pid` and `ppid` arrays to construct a tree-like data structure in the `children` map.\n\nWe then perform a depth-first search (DFS) starting from the `kill` process to traverse the tree and add all the processes to the `killed` list. The DFS function is implemented in a recursive manner, where we first add the current process id to the list `killed` and then iterate through its children.\n\nWe call the `dfs` function with the `kill` process id to construct the `killed` list and then return it.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.HashMap;\nimport java.util.List;\nimport java.util.Map;\n\npublic List<Integer> killProcess(List<Integer> pid, List<Integer> ppid, int kill) {\n    Map<Integer, List<Integer>> children = new HashMap<>();\n    for (int i = 0; i < pid.size(); i++) {\n        children.computeIfAbsent(ppid.get(i), k -> new ArrayList<>()).add(pid.get(i));\n    }\n\n    List<Integer> killed = new ArrayList<>();\n    dfs(kill, children, killed);\n    return killed;\n}\n\nprivate void dfs(int id, Map<Integer, List<Integer>> children, List<Integer> killed) {\n    killed.add(id);\n    for (int child : children.getOrDefault(id, new ArrayList<>())) {\n        dfs(child, children, killed);\n    }\n}\n```\n    \n    We use a hash map (unordered_map in C++, HashMap in Java, defaultdict in Python, Map in JavaScript) to store the children of each process. We iterate through the `pid` and `ppid` arrays to construct a tree-like data structure in the `children` map.\n\nWe then perform a depth-first search (DFS) starting from the `kill` process to traverse the tree and add all the processes to the `killed` list. The DFS function is implemented in a recursive manner, where we first add the current process id to the list `killed` and then iterate through its children.\n\nWe call the `dfs` function with the `kill` process id to construct the `killed` list and then return it.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

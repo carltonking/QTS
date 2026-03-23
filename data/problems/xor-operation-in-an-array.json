@@ -1,0 +1,24 @@
+{
+  "id": 1486,
+  "title": "XOR Operation in an Array",
+  "slug": "xor-operation-in-an-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an integer n and an integer start.\n\nDefine an array nums where nums[i] = start + 2 * i (0-indexed) and n == nums.length.\n\nReturn _the bitwise XOR of all elements of_ nums.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findTheDistanceValue(arr1, arr2, d):\n    count = 0\n    for i in arr1:\n        valid = True\n        for j in arr2:\n            if abs(i - j) <= d:\n                valid = False\n                break\n        if valid:\n            count += 1\n    return count\n```\n    \n    The algorithm starts by initializing a variable `count` to store the number of elements obeying the given constraints. For every element `arr1[i]`, iterate through every element `arr2[j]`. Check if `|arr1[i] - arr2[j]| <= d`. If this condition is true, the current element `arr1[i]` is not valid, so set `valid` to false and break out of the inner loop. If the entire inner loop is exhausted and all elements `arr2[j]` did not meet this condition, the current `arr1[i]` is valid and increments the count. Return the count at the end.\n    ",
+    "javascript": "\n    ```javascript\nfunction findTheDistanceValue(arr1, arr2, d) {\n    let count = 0;\n    for (let i = 0; i < arr1.length; i++) {\n        let valid = true;\n        for (let j = 0; j < arr2.length; j++) {\n            if (Math.abs(arr1[i] - arr2[j]) <= d) {\n                valid = false;\n                break;\n            }\n        }\n        if (valid) count++;\n    }\n    return count;\n}\n```\n    \n    The algorithm starts by initializing a variable `count` to store the number of elements obeying the given constraints. For every element `arr1[i]`, iterate through every element `arr2[j]`. Check if `|arr1[i] - arr2[j]| <= d`. If this condition is true, the current element `arr1[i]` is not valid, so set `valid` to false and break out of the inner loop. If the entire inner loop is exhausted and all elements `arr2[j]` did not meet this condition, the current `arr1[i]` is valid and increments the count. Return the count at the end.\n    ",
+    "java": "\n    ```java\npublic int findTheDistanceValue(int[] arr1, int[] arr2, int d) {\n    int count = 0;\n    for (int i = 0; i < arr1.length; i++) {\n        boolean valid = true;\n        for (int j = 0; j < arr2.length; j++) {\n            if (Math.abs(arr1[i] - arr2[j]) <= d) {\n                valid = false;\n                break;\n            }\n        }\n        if (valid) count++;\n    }\n    return count;\n}\n```\n    \n    The algorithm starts by initializing a variable `count` to store the number of elements obeying the given constraints. For every element `arr1[i]`, iterate through every element `arr2[j]`. Check if `|arr1[i] - arr2[j]| <= d`. If this condition is true, the current element `arr1[i]` is not valid, so set `valid` to false and break out of the inner loop. If the entire inner loop is exhausted and all elements `arr2[j]` did not meet this condition, the current `arr1[i]` is valid and increments the count. Return the count at the end.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

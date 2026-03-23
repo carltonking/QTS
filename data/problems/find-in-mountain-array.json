@@ -1,0 +1,24 @@
+{
+  "id": 1095,
+  "title": "Find in Mountain Array",
+  "slug": "find-in-mountain-array",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "_(This problem is an interactive problem.)_\n\nYou may recall that an array arr is a mountain array if and only if:\n\n*   arr.length >= 3\n*   There exists some i with 0 < i < arr.length - 1 such that:\n    *   arr[0] < arr[1] < ... < arr[i - 1] < arr[i]\n    *   arr[i] > arr[i + 1] > ... > arr[arr.length - 1]\n\nGiven a mountain array mountainArr, return the minimum index such that mountainArr.get(index) == target. If such an index does not exist, return -1.\n\nYou cannot access the mountain array directly. You may only access the array using a MountainArray interface:\n\n*   MountainArray.get(k) returns the element of the array at index k (0-indexed).\n*   MountainArray.length() returns the length of the array.\n\nSubmissions making more than 100 calls to MountainArray.get will be judged _Wrong Answer_. Also, any solutions that attempt to circumvent the judge will result in disqualification.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef twoCitySchedCost(costs):\n    costs.sort(key=lambda x: x[0] - x[1])\n\n    totalCost = 0\n    n = len(costs) // 2\n\n    for i in range(n):\n        totalCost += costs[i][0] + costs[i + n][1]\n\n    return totalCost\n```\n    \n    1. Sort the costs by the difference between the cost of flying to city A and city B. This will effectively prioritize the people who may benefit most from flying to a particular city.\n2. Calculate the total cost by adding the costs for the first half of the sorted list flying to city A, and the latter half flying to city B.\n3. Return the total cost as the result.\n\nThis greedy algorithm minimizes the total cost by selecting the closest suitable matchings for each city, ensuring that we get the lowest possible cost across all possibilities.\n    ",
+    "javascript": "\n    ```javascript\nfunction twoCitySchedCost(costs) {\n    costs.sort((a, b) => (a[0] - a[1]) - (b[0] - b[1]));\n\n    let totalCost = 0;\n    const n = costs.length / 2;\n\n    for (let i = 0; i < n; i++) {\n        totalCost += costs[i][0] + costs[i + n][1];\n    }\n\n    return totalCost;\n}\n```\n    \n    1. Sort the costs by the difference between the cost of flying to city A and city B. This will effectively prioritize the people who may benefit most from flying to a particular city.\n2. Calculate the total cost by adding the costs for the first half of the sorted list flying to city A, and the latter half flying to city B.\n3. Return the total cost as the result.\n\nThis greedy algorithm minimizes the total cost by selecting the closest suitable matchings for each city, ensuring that we get the lowest possible cost across all possibilities.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int twoCitySchedCost(int[][] costs) {\n    Arrays.sort(costs, (a, b) -> (a[0] - a[1]) - (b[0] - b[1]));\n\n    int totalCost = 0;\n    int n = costs.length / 2;\n\n    for (int i = 0; i < n; i++) {\n        totalCost += costs[i][0] + costs[i + n][1];\n    }\n\n    return totalCost;\n}\n```\n    \n    1. Sort the costs by the difference between the cost of flying to city A and city B. This will effectively prioritize the people who may benefit most from flying to a particular city.\n2. Calculate the total cost by adding the costs for the first half of the sorted list flying to city A, and the latter half flying to city B.\n3. Return the total cost as the result.\n\nThis greedy algorithm minimizes the total cost by selecting the closest suitable matchings for each city, ensuring that we get the lowest possible cost across all possibilities.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

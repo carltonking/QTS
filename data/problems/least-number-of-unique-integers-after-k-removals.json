@@ -1,0 +1,24 @@
+{
+  "id": 1481,
+  "title": "Least Number of Unique Integers after K Removals",
+  "slug": "least-number-of-unique-integers-after-k-removals",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of integers arr and an integer k. Find the _least number of unique integers_ after removing exactly k elements.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import Counter\nimport heapq\n\ndef findLeastNumOfUniqueInts(arr, k):\n    count = Counter(arr)\n    pq = list(count.values())\n    heapq.heapify(pq)\n    while k > 0:\n        k -= heapq.heappop(pq)\n    return len(pq) if k == 0 else len(pq) + 1\n```\n    \n    The algorithm first counts the frequency of each unique integer in the array using a hashmap/dictionary. Then the frequencies are put into a min-heap/priority queue. The algorithm then removes k elements, taking into consideration the least frequent integers first (popping from the min-heap). After k elements are removed, the size of the priority queue is the number of remaining unique integers. If k is exactly 0, return the size of the priority queue, otherwise, return the size + 1 (as the last integer's frequency was not completely removed from the queue).\n    ",
+    "javascript": "\n    ```javascript\nfunction findLeastNumOfUniqueInts(arr, k) {\n    let count = {};\n    for (let n of arr) {\n        count[n] = (count[n] || 0) + 1;\n    }\n    let pq = Object.values(count).sort((a, b) => a - b);\n    while (k > 0) {\n        k -= pq.shift();\n    }\n    return k === 0 ? pq.length : pq.length + 1;\n}\n```\n    \n    The algorithm first counts the frequency of each unique integer in the array using a hashmap/dictionary. Then the frequencies are put into a min-heap/priority queue. The algorithm then removes k elements, taking into consideration the least frequent integers first (popping from the min-heap). After k elements are removed, the size of the priority queue is the number of remaining unique integers. If k is exactly 0, return the size of the priority queue, otherwise, return the size + 1 (as the last integer's frequency was not completely removed from the queue).\n    ",
+    "java": "\n    ```java\nimport java.util.*;\nclass Solution {\n    public int findLeastNumOfUniqueInts(int[] arr, int k) {\n        Map<Integer, Integer> count = new HashMap<>();\n        for (int n : arr) {\n           count.put(n, count.getOrDefault(n, 0) + 1);\n        }\n        PriorityQueue<Integer> pq = new PriorityQueue<>();\n        for (int freq : count.values()) {\n            pq.add(freq);\n        }\n        while (k > 0) {\n            k -= pq.poll();\n        }\n        return k == 0 ? pq.size() : pq.size() + 1;\n    }\n}\n```\n    \n    The algorithm first counts the frequency of each unique integer in the array using a hashmap/dictionary. Then the frequencies are put into a min-heap/priority queue. The algorithm then removes k elements, taking into consideration the least frequent integers first (popping from the min-heap). After k elements are removed, the size of the priority queue is the number of remaining unique integers. If k is exactly 0, return the size of the priority queue, otherwise, return the size + 1 (as the last integer's frequency was not completely removed from the queue).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

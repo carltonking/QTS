@@ -1,0 +1,24 @@
+{
+  "id": 9,
+  "title": "Palindrome Number",
+  "slug": "palindrome-number",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer x, return true _if_ x _is a_ _palindrome, and_ false _otherwise_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_palindrome(x: int) -> bool:\n    if x < 0:\n        return False\n    original, reversed = x, 0\n    while x > 0:\n        reversed = reversed * 10 + x % 10\n        x //= 10\n    return original == reversed\n```\n\n    \n    Here is the algorithm:\n\n1. If the integer is negative, immediately return false, as negative numbers cannot be palindromes.\n2. Create a variable named `original` to store the original integer value and `reversed` initialized with 0 to store the reversed integer value.\n3. Iterate through the integer while it's greater than zero and, in each iteration, perform the following operations:\n   a. Multiply the `reversed` value by 10 and add the modulus of the integer (x) by 10.\n   b. Divide the integer (x) by 10, discarding the remainder.\n4. Compare `original` and `reversed` integers; if they are equal, return true; otherwise, return false.\n\nThis approach requires O(log10(n)) time complexity as we are dividing the input by 10 in each iteration.\n    ",
+    "javascript": "\n    ```javascript\nfunction isPalindrome(x) {\n    if (x < 0) return false;\n    let original = x, reversed = 0;\n    while (x > 0) {\n        reversed = reversed * 10 + x % 10;\n        x = Math.floor(x / 10);\n    }\n    return original === reversed;\n}\n```\n\n    \n    Here is the algorithm:\n\n1. If the integer is negative, immediately return false, as negative numbers cannot be palindromes.\n2. Create a variable named `original` to store the original integer value and `reversed` initialized with 0 to store the reversed integer value.\n3. Iterate through the integer while it's greater than zero and, in each iteration, perform the following operations:\n   a. Multiply the `reversed` value by 10 and add the modulus of the integer (x) by 10.\n   b. Divide the integer (x) by 10, discarding the remainder.\n4. Compare `original` and `reversed` integers; if they are equal, return true; otherwise, return false.\n\nThis approach requires O(log10(n)) time complexity as we are dividing the input by 10 in each iteration.\n    ",
+    "java": "\n    ```java\npublic boolean isPalindrome(int x) {\n    if (x < 0) return false;\n    int original = x, reversed = 0;\n    while (x > 0) {\n        reversed = reversed * 10 + x % 10;\n        x /= 10;\n    }\n    return original == reversed;\n}\n```\n\n    \n    Here is the algorithm:\n\n1. If the integer is negative, immediately return false, as negative numbers cannot be palindromes.\n2. Create a variable named `original` to store the original integer value and `reversed` initialized with 0 to store the reversed integer value.\n3. Iterate through the integer while it's greater than zero and, in each iteration, perform the following operations:\n   a. Multiply the `reversed` value by 10 and add the modulus of the integer (x) by 10.\n   b. Divide the integer (x) by 10, discarding the remainder.\n4. Compare `original` and `reversed` integers; if they are equal, return true; otherwise, return false.\n\nThis approach requires O(log10(n)) time complexity as we are dividing the input by 10 in each iteration.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

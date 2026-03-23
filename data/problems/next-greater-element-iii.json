@@ -1,0 +1,24 @@
+{
+  "id": 556,
+  "title": "Next Greater Element III",
+  "slug": "next-greater-element-iii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a positive integer n, find _the smallest integer which has exactly the same digits existing in the integer_ n _and is greater in value than_ n. If no such positive integer exists, return -1.\n\nNote that the returned integer should fit in 32-bit integer, if there is a valid answer but it does not fit in 32-bit integer, return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom itertools import permutations\n\ndef nextGreaterElement(n: int) -> int:\n    num_str = str(n)\n    num_permutations = sorted(set(int(\"\".join(p)) for p in permutations(num_str)))\n    index = num_permutations.index(n)\n    if index + 1 < len(num_permutations) and num_permutations[index + 1] <= 2**31 - 1:\n        return num_permutations[index + 1]\n    return -1\n```\n    \n    1. Convert input integer n to string/array of characters.\n2. Find the rightmost character such that when swapped with a character greater than it, the number increases. If no such character exists, return -1.\n3. Swap the character found with the smallest character to its right that is greater than it.\n4. Sort the portion of the array to the right of the swapped character in non-descending order.\n5. Convert the modified array back to an integer and check if it fits in 32-bit integer. If yes, return the integer, otherwise return -1.\n    ",
+    "javascript": "\n    ```javascript\nfunction nextGreaterElement(n) {\n    const numStr = n.toString();\n    let numArr = numStr.split('');\n    let i, j;\n\n    for (i = numArr.length - 1; i > 0; i--) {\n        if (+numArr[i - 1] < +numArr[i]) break;\n    }\n\n    if (i === 0) return -1;\n\n    let x = +numArr[i - 1], smallest = i;\n    for (j = i + 1; j < numArr.length; j++) {\n        if (+numArr[j] > x && +numArr[j] < +numArr[smallest]) {\n            smallest = j;\n        }\n    }\n\n    [numArr[smallest], numArr[i - 1]] = [numArr[i - 1], numArr[smallest]];\n\n    numArr = [...numArr.slice(0, i), ...numArr.slice(i).sort()];\n\n    const result = parseInt(numArr.join(''), 10);\n\n    return (result <= Math.pow(2, 31) - 1) ? result : -1;\n}\n```\n    \n    1. Convert input integer n to string/array of characters.\n2. Find the rightmost character such that when swapped with a character greater than it, the number increases. If no such character exists, return -1.\n3. Swap the character found with the smallest character to its right that is greater than it.\n4. Sort the portion of the array to the right of the swapped character in non-descending order.\n5. Convert the modified array back to an integer and check if it fits in 32-bit integer. If yes, return the integer, otherwise return -1.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic class Main {\n    public int nextGreaterElement(int n) {\n        char[] number = String.valueOf(n).toCharArray();\n        int i, j;\n        for (i = number.length - 1; i > 0; i--) {\n            if (number[i - 1] < number[i]) {\n                break;\n            }\n        }\n\n        if (i == 0) {\n            return -1;\n        }\n\n        int x = number[i - 1], smallest = i;\n        for (j = i + 1; j < number.length; j++) {\n            if (number[j] > x && number[j] < number[smallest]) {\n                smallest = j;\n            }\n        }\n\n        char temp = number[i - 1];\n        number[i - 1] = number[smallest];\n        number[smallest] = temp;\n\n        Arrays.sort(number, i, number.length);\n\n        long result = Long.parseLong(new String(number));\n\n        return (result <= Integer.MAX_VALUE) ? (int) result : -1;\n    }\n}\n```\n    \n    1. Convert input integer n to string/array of characters.\n2. Find the rightmost character such that when swapped with a character greater than it, the number increases. If no such character exists, return -1.\n3. Swap the character found with the smallest character to its right that is greater than it.\n4. Sort the portion of the array to the right of the swapped character in non-descending order.\n5. Convert the modified array back to an integer and check if it fits in 32-bit integer. If yes, return the integer, otherwise return -1.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

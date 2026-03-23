@@ -1,0 +1,39 @@
+{
+  "id": 43,
+  "title": "Koko Eating Bananas",
+  "slug": "koko-eating-bananas",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Binary Search"
+  ],
+  "description": "Koko loves to eat bananas. Return the minimum integer eating speed k such that she can eat all bananas within h hours.",
+  "examples": [
+    {
+      "input": "piles = [3,6,7,11], h = 8",
+      "output": "4"
+    }
+  ],
+  "constraints": [
+    "1 <= piles.length <= 10^4"
+  ],
+  "starterCode": {
+    "python": "from typing import List\nclass Solution:\n    def minEatingSpeed(self, piles: List[int], h: int) -> int:\n        pass",
+    "javascript": "var minEatingSpeed = function(piles, h) {\n    \n};",
+    "java": "class Solution {\n    public int minEatingSpeed(int[] piles, int h) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    int minEatingSpeed(vector<int>& piles, int h) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Koko Eating Bananas\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "[3,6,7,11]\n8",
+      "expectedOutput": "4"
+    },
+    {
+      "input": "[30,11,23,4,20]\n5",
+      "expectedOutput": "30"
+    }
+  ]
+}

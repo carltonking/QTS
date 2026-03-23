@@ -1,0 +1,24 @@
+{
+  "id": 2342,
+  "title": "Max Sum of a Pair With Equal Sum of Digits",
+  "slug": "max-sum-of-a-pair-with-equal-sum-of-digits",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed array nums consisting of positive integers. You can choose two indices i and j, such that i != j, and the sum of digits of the number nums[i] is equal to that of nums[j].\n\nReturn _the maximum value of_ nums[i] + nums[j] _that you can obtain over all possible indices_ i _and_ j _that satisfy the conditions._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_sum_numbers_with_equal_sum_of_digits(nums):\n    digit_sum_to_max = {}\n    ans = -1\n\n    for num in nums:\n        sum_of_digits = sum(map(int, str(num)))\n        \n        prev_max = digit_sum_to_max.get(sum_of_digits, 0)\n        if prev_max:\n            ans = max(ans, num + prev_max)\n        \n        digit_sum_to_max[sum_of_digits] = max(num, prev_max)\n\n    return ans\n```\n    \n    For each number in the input array, calculate the sum of its digits. Store the maximum value of the numbers with the same digit sum in a hashmap. For each number, check if there is a number in the hashmap with the same digit sum. If there is, calculate their sum and update the answer if their sum is greater than the current answer.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxSumNumbersWithEqualSumOfDigits(nums) {\n    const digitSumToMax = {};\n    let ans = -1;\n\n    for (const num of nums) {\n        let sumOfDigits = 0;\n        for (let temp = num; temp !== 0; temp = Math.floor(temp / 10)) {\n            sumOfDigits += temp % 10;\n        }\n\n        const prevMax = digitSumToMax[sumOfDigits] || 0;\n        if (prevMax) {\n            ans = Math.max(ans, num + prevMax);\n        }\n        digitSumToMax[sumOfDigits] = Math.max(num, prevMax);\n    }\n\n    return ans;\n}\n```\n    \n    For each number in the input array, calculate the sum of its digits. Store the maximum value of the numbers with the same digit sum in a hashmap. For each number, check if there is a number in the hashmap with the same digit sum. If there is, calculate their sum and update the answer if their sum is greater than the current answer.\n    ",
+    "java": "\n    ```java\npublic int maxSumNumbersWithEqualSumOfDigits(int[] nums) {\n    HashMap<Integer, Integer> digitSumToMax = new HashMap<>();\n    int ans = -1;\n\n    for (int num : nums) {\n        int sumOfDigits = 0;\n        for (int temp = num; temp != 0; temp /= 10) {\n            sumOfDigits += temp % 10;\n        }\n\n        int prevMax = digitSumToMax.getOrDefault(sumOfDigits, 0);\n        if (prevMax != 0) {\n            ans = Math.max(ans, num + prevMax);\n        }\n        digitSumToMax.put(sumOfDigits, Math.max(num, prevMax));\n    }\n\n    return ans;\n}\n```\n    \n    For each number in the input array, calculate the sum of its digits. Store the maximum value of the numbers with the same digit sum in a hashmap. For each number, check if there is a number in the hashmap with the same digit sum. If there is, calculate their sum and update the answer if their sum is greater than the current answer.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

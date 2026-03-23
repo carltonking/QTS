@@ -1,0 +1,24 @@
+{
+  "id": 398,
+  "title": "Random Pick Index",
+  "slug": "random-pick-index",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums with possible duplicates, randomly output the index of a given target number. You can assume that the given target number must exist in the array.\n\nImplement the Solution class:\n\n*   Solution(int[] nums) Initializes the object with the array nums.\n*   int pick(int target) Picks a random index i from nums where nums[i] == target. If there are multiple valid i's, then each index should have an equal probability of returning.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nimport random\n\nclass Solution:\n\n    def __init__(self, nums):\n        self.nums = nums\n\n    def pick(self, target):\n        count, res = 0, 0\n        for i, num in enumerate(self.nums):\n            if num == target:\n                count += 1\n                if random.randint(0, count - 1) == 0:\n                    res = i\n        return res\n```\n    \n    The algorithm iterates through the input array and whenever it finds the target element, it increments the count variable. It then generates a random number in the range `[0, count - 1]`. If the random number is 0, set the result to the current index. Since the random generator function may generate 0 multiple times during the iteration, this makes sure that the final result is randomly picked among all occurrences of the target.\n\nAt the end of the loop, the variable `res` contains the randomly picked index of the target value. The time complexity of this algorithm is O(n) and space complexity is O(1).\n    ",
+    "javascript": "\n    ```javascript\nclass Solution {\n    constructor(nums) {\n        this.nums = nums;\n    }\n    \n    pick(target) {\n        let count = 0, res = 0;\n        for (let i = 0; i < this.nums.length; i++) {\n            if (this.nums[i] === target) {\n                count++;\n                if (Math.floor(Math.random() * count) === 0) {\n                    res = i;\n                }\n            }\n        }\n        return res;\n    }\n}\n```\n    \n    The algorithm iterates through the input array and whenever it finds the target element, it increments the count variable. It then generates a random number in the range `[0, count - 1]`. If the random number is 0, set the result to the current index. Since the random generator function may generate 0 multiple times during the iteration, this makes sure that the final result is randomly picked among all occurrences of the target.\n\nAt the end of the loop, the variable `res` contains the randomly picked index of the target value. The time complexity of this algorithm is O(n) and space complexity is O(1).\n    ",
+    "java": "\n    ```java\nimport java.util.Random;\n\nclass Solution {\n    int[] nums;\n    Random rand;\n    \n    public Solution(int[] nums) {\n        this.nums = nums;\n        this.rand = new Random();\n    }\n    \n    public int pick(int target) {\n        int count = 0, res = 0;\n        for (int i = 0; i < nums.length; i++) {\n            if (nums[i] == target) {\n                count++;\n                if (rand.nextInt(count) == 0) {\n                    res = i;\n                }\n            }\n        }\n        return res;\n    }\n}\n```\n    \n    The algorithm iterates through the input array and whenever it finds the target element, it increments the count variable. It then generates a random number in the range `[0, count - 1]`. If the random number is 0, set the result to the current index. Since the random generator function may generate 0 multiple times during the iteration, this makes sure that the final result is randomly picked among all occurrences of the target.\n\nAt the end of the loop, the variable `res` contains the randomly picked index of the target value. The time complexity of this algorithm is O(n) and space complexity is O(1).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2126,
+  "title": "Destroying Asteroids",
+  "slug": "destroying-asteroids",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer mass, which represents the original mass of a planet. You are further given an integer array asteroids, where asteroids[i] is the mass of the ith asteroid.\n\nYou can arrange for the planet to collide with the asteroids in any arbitrary order. If the mass of the planet is greater than or equal to the mass of the asteroid, the asteroid is destroyed and the planet gains the mass of the asteroid. Otherwise, the planet is destroyed.\n\nReturn true _if all asteroids can be destroyed. Otherwise, return_ false_._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef can_destroy_all(mass: int, asteroids: List[int]) -> bool:\n    asteroids.sort()\n    for asteroid in asteroids:\n        if mass >= asteroid:\n            mass += asteroid\n        else:\n            return False\n    return True\n```\n    \n    - Sort the asteroids array in ascending order.\n- Iterate through the sorted asteroids array.\n- At each iteration, check if the planet's mass is greater than or equal to the asteroid's mass.\n  - If it is, add the asteroid's mass to the planet's mass.\n  - If it isn't, return `false` because the planet cannot destroy all asteroids.\n- If the iteration completes successfully, return `true` as the planet can destroy all asteroids.\n    ",
+    "javascript": "\n    ```javascript\nfunction canDestroyAll(mass, asteroids) {\n    asteroids.sort((a, b) => a - b);\n    for (const asteroid of asteroids) {\n        if (mass >= asteroid) {\n            mass += asteroid;\n        } else {\n            return false;\n        }\n    }\n    return true;\n}\n```\n    \n    - Sort the asteroids array in ascending order.\n- Iterate through the sorted asteroids array.\n- At each iteration, check if the planet's mass is greater than or equal to the asteroid's mass.\n  - If it is, add the asteroid's mass to the planet's mass.\n  - If it isn't, return `false` because the planet cannot destroy all asteroids.\n- If the iteration completes successfully, return `true` as the planet can destroy all asteroids.\n    ",
+    "java": "\n    ```java\nboolean canDestroyAll(int mass, int[] asteroids) {\n    Arrays.sort(asteroids);\n    for (int asteroid : asteroids) {\n        if (mass >= asteroid) {\n            mass += asteroid;\n        } else {\n            return false;\n        }\n    }\n    return true;\n}\n```\n    \n    - Sort the asteroids array in ascending order.\n- Iterate through the sorted asteroids array.\n- At each iteration, check if the planet's mass is greater than or equal to the asteroid's mass.\n  - If it is, add the asteroid's mass to the planet's mass.\n  - If it isn't, return `false` because the planet cannot destroy all asteroids.\n- If the iteration completes successfully, return `true` as the planet can destroy all asteroids.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

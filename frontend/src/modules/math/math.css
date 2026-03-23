@@ -1,0 +1,244 @@
+.math-module {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.math-card {
+  max-width: 980px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.math-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.math-section {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.math-section-label {
+  font-size: 0.76rem;
+  color: var(--text-2);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.math-toggle-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.math-toggle {
+  min-width: 72px;
+}
+
+.math-toggle-active {
+  background: var(--text-1) !important;
+  color: var(--bg) !important;
+}
+
+.math-range-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.math-range-card {
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  padding: 1rem;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.math-range-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.math-input-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.math-input-label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  color: var(--text-2);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.math-link-row {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.math-game {
+  min-height: calc(100vh - 8rem);
+  display: grid;
+  align-content: center;
+  gap: 2rem;
+  max-width: 980px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.math-topbar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.math-topbar-item {
+  border: 1px solid var(--border);
+  background: var(--surface-1);
+  padding: 1rem;
+  text-align: center;
+}
+
+.math-topbar-label {
+  font-size: 0.7rem;
+  color: var(--text-2);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.math-topbar-value {
+  margin-top: 0.45rem;
+  font-size: clamp(1.1rem, 2.8vw, 2rem);
+  letter-spacing: 0.08em;
+}
+
+.math-problem-shell {
+  display: grid;
+  gap: 1.25rem;
+  justify-items: center;
+  text-align: center;
+}
+
+.math-problem {
+  font-size: clamp(3rem, 8vw, 6rem);
+  letter-spacing: 0.06em;
+  line-height: 1.05;
+}
+
+.math-answer-input {
+  max-width: 420px;
+  text-align: center;
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+}
+
+.math-answer-solid {
+  border: 2px solid var(--text-1) !important;
+}
+
+.math-answer-dashed {
+  border: 2px dashed var(--text-1) !important;
+}
+
+.math-answer-feedback {
+  min-height: 1.2rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.math-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.math-stat-card {
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  padding: 1rem;
+}
+
+.math-stat-label {
+  font-size: 0.72rem;
+  color: var(--text-2);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.math-stat-value {
+  margin-top: 0.4rem;
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+}
+
+.math-results-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.math-save-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.math-leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.math-leaderboard-table th,
+.math-leaderboard-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.85rem 0.5rem;
+  text-align: left;
+  font-size: 0.86rem;
+  letter-spacing: 0.04em;
+}
+
+.math-leaderboard-table th {
+  color: var(--text-2);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.math-empty {
+  border: 1px dashed var(--text-1);
+  padding: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 720px) {
+  .math-topbar {
+    grid-template-columns: 1fr;
+  }
+
+  .math-input-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .math-save-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .math-results-actions {
+    flex-direction: column;
+  }
+
+  .math-leaderboard-table {
+    display: block;
+    overflow-x: auto;
+  }
+}

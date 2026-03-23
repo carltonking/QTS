@@ -1,0 +1,24 @@
+{
+  "id": 2352,
+  "title": "Equal Row and Column Pairs",
+  "slug": "equal-row-and-column-pairs",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a 0-indexed n x n integer matrix grid, _return the number of pairs_ (ri, cj) _such that row_ ri _and column_ cj _are equal_.\n\nA row and column pair is considered equal if they contain the same elements in the same order (i.e., an equal array).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef countEqualRowColumnPairs(grid: List[List[int]]) -> int:\n   n = len(grid)\n   ans = 0\n\n   for i in range(n):\n      for j in range(n):\n         equal = True\n         for k in range(n):\n             if grid[i][k] != grid[k][j]:\n                 equal = False\n                 break\n         if equal:\n             ans += 1\n\n   return ans\n```\n    \n    We use three nested loops to find the equal row and column pairs. For each row `i` and column `j`, we iterate through elements `k` from `0` to `n` checking if `grid[i][k]` equals `grid[k][j]`. If all elements match for a row and column pair, we increment the answer counter `ans`. Finally, return the value of `ans`.\n    ",
+    "javascript": "\n    ```javascript\nfunction countEqualRowColumnPairs(grid) {\n    let n = grid.length;\n    let ans = 0;\n\n    for (let i = 0; i < n; ++i) {\n        for (let j = 0; j < n; ++j) {\n            let equal = true;\n            for (let k = 0; k < n; ++k) {\n                if (grid[i][k] !== grid[k][j]) {\n                    equal = false;\n                    break;\n                }\n            }\n            if (equal) {\n                ++ans;\n            }\n        }\n    }\n\n    return ans;\n}\n```\n    \n    We use three nested loops to find the equal row and column pairs. For each row `i` and column `j`, we iterate through elements `k` from `0` to `n` checking if `grid[i][k]` equals `grid[k][j]`. If all elements match for a row and column pair, we increment the answer counter `ans`. Finally, return the value of `ans`.\n    ",
+    "java": "\n    ```java\npublic int countEqualRowColumnPairs(int[][] grid) {\n    int n = grid.length;\n    int ans = 0;\n\n    for (int i = 0; i < n; ++i) {\n        for (int j = 0; j < n; ++j) {\n            boolean equal = true;\n            for (int k = 0; k < n; ++k) {\n                if (grid[i][k] != grid[k][j]) {\n                    equal = false;\n                    break;\n                }\n            }\n            if (equal) {\n                ++ans;\n            }\n        }\n    }\n\n    return ans;\n}\n```\n    \n    We use three nested loops to find the equal row and column pairs. For each row `i` and column `j`, we iterate through elements `k` from `0` to `n` checking if `grid[i][k]` equals `grid[k][j]`. If all elements match for a row and column pair, we increment the answer counter `ans`. Finally, return the value of `ans`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

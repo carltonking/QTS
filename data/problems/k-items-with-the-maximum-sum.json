@@ -1,0 +1,24 @@
+{
+  "id": 2600,
+  "title": "K Items With the Maximum Sum",
+  "slug": "k-items-with-the-maximum-sum",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "There is a bag that consists of items, each item has a number 1, 0, or -1 written on it.\n\nYou are given four non-negative integers numOnes, numZeros, numNegOnes, and k.\n\nThe bag initially contains:\n\n*   numOnes items with 1s written on them.\n*   numZeroes items with 0s written on them.\n*   numNegOnes items with -1s written on them.\n\nWe want to pick exactly k items among the available items. Return _the maximum possible sum of numbers written on the items_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_sum(numOnes: int, numZeros: int, numNegOnes: int, k: int) -> int:\n    max_sum = 0\n    for i in range(k + 1):\n        ones = min(i, numOnes)\n        neg_ones = min(k - i, numNegOnes)\n        max_sum = max(max_sum, ones - neg_ones)\n    return max_sum\n```\n    \n    We want to find the maximum sum of __k__ items that can be picked from the given bag. Iterate through __0__ to __k__, and pick the minimum between __i__ and __numOnes__ as the count of ones, and pick the minimum between __k-i__ and __numNegOnes__ as the count of -1s. Since 1 - (-1) = 2, every 1 combined with a -1 will increase max_sum by 2. Calculate the maximum between the current `max_sum` and the sum of ones minus negative ones for each iteration. Return the final `max_sum` after the loop has finished, which will have the maximum possible sum of items.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxSum(numOnes, numZeros, numNegOnes, k) {\n    let maxSum = 0;\n    for (let i = 0; i <= k; ++i) {\n        let ones = Math.min(i, numOnes);\n        let negOnes = Math.min(k - i, numNegOnes);\n        maxSum = Math.max(maxSum, ones - negOnes);\n    }\n    return maxSum;\n}\n```\n    \n    We want to find the maximum sum of __k__ items that can be picked from the given bag. Iterate through __0__ to __k__, and pick the minimum between __i__ and __numOnes__ as the count of ones, and pick the minimum between __k-i__ and __numNegOnes__ as the count of -1s. Since 1 - (-1) = 2, every 1 combined with a -1 will increase max_sum by 2. Calculate the maximum between the current `max_sum` and the sum of ones minus negative ones for each iteration. Return the final `max_sum` after the loop has finished, which will have the maximum possible sum of items.\n    ",
+    "java": "\n    ```java\npublic int maxSum(int numOnes, int numZeros, int numNegOnes, int k) {\n    int maxSum = 0;\n    for (int i = 0; i <= k; ++i) {\n        int ones = Math.min(i, numOnes);\n        int negOnes = Math.min(k - i, numNegOnes);\n        maxSum = Math.max(maxSum, ones - negOnes);\n    }\n    return maxSum;\n}\n```\n    \n    We want to find the maximum sum of __k__ items that can be picked from the given bag. Iterate through __0__ to __k__, and pick the minimum between __i__ and __numOnes__ as the count of ones, and pick the minimum between __k-i__ and __numNegOnes__ as the count of -1s. Since 1 - (-1) = 2, every 1 combined with a -1 will increase max_sum by 2. Calculate the maximum between the current `max_sum` and the sum of ones minus negative ones for each iteration. Return the final `max_sum` after the loop has finished, which will have the maximum possible sum of items.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

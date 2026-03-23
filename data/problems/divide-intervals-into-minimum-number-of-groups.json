@@ -1,0 +1,24 @@
+{
+  "id": 2406,
+  "title": "Divide Intervals Into Minimum Number of Groups",
+  "slug": "divide-intervals-into-minimum-number-of-groups",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 2D integer array intervals where intervals[i] = [lefti, righti] represents the inclusive interval [lefti, righti].\n\nYou have to divide the intervals into one or more groups such that each interval is in exactly one group, and no two intervals that are in the same group intersect each other.\n\nReturn _the minimum number of groups you need to make_.\n\nTwo intervals intersect if there is at least one common number between them. For example, the intervals [1, 5] and [5, 8] intersect.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nimport heapq\n\ndef min_groups(intervals):\n    intervals.sort()\n    pq = []\n    for interval in intervals:\n        if pq and pq[0] < interval[0]:\n            heapq.heappop(pq)\n        heapq.heappush(pq, interval[1])\n    return len(pq)\n```\n    \n    1. Sort the input intervals based on start time (`left`) in ascending order.\n2. Create a priority queue (or similar data structure suitable for the language) sorted by end time (`right`).\n3. Iterate over the intervals, if the start time of the new interval is greater than or equal to the smallest end time in the priority queue, it means the intervals do not intersect, so remove the smallest end time from the queue.\n4. Add the end time of the new interval to the priority queue.\n5. When all intervals have been processed, the size of the priority queue represents the minimum number of groups required.\n    ",
+    "javascript": "\n    ```javascript\nfunction minGroups(intervals) {\n    intervals.sort((a, b) => a[0] - b[0]);\n    const pq = [];\n    for (let interval of intervals) {\n        if (pq.length > 0 && pq[0] < interval[0]) {\n            pq.shift();\n        }\n        pq.push(interval[1]);\n        pq.sort((a, b) => a - b);\n    }\n    return pq.length;\n}\n```\n    \n    1. Sort the input intervals based on start time (`left`) in ascending order.\n2. Create a priority queue (or similar data structure suitable for the language) sorted by end time (`right`).\n3. Iterate over the intervals, if the start time of the new interval is greater than or equal to the smallest end time in the priority queue, it means the intervals do not intersect, so remove the smallest end time from the queue.\n4. Add the end time of the new interval to the priority queue.\n5. When all intervals have been processed, the size of the priority queue represents the minimum number of groups required.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\nimport java.util.PriorityQueue;\n\npublic int minGroups(int[][] intervals) {\n    Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));\n    PriorityQueue<Integer> pq = new PriorityQueue<>();\n    for (int[] interval : intervals) {\n        if (!pq.isEmpty() && pq.peek() < interval[0]) {\n            pq.poll();\n        }\n        pq.offer(interval[1]);\n    }\n    return pq.size();\n}\n```\n    \n    1. Sort the input intervals based on start time (`left`) in ascending order.\n2. Create a priority queue (or similar data structure suitable for the language) sorted by end time (`right`).\n3. Iterate over the intervals, if the start time of the new interval is greater than or equal to the smallest end time in the priority queue, it means the intervals do not intersect, so remove the smallest end time from the queue.\n4. Add the end time of the new interval to the priority queue.\n5. When all intervals have been processed, the size of the priority queue represents the minimum number of groups required.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

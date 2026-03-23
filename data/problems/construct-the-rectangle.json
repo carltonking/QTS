@@ -1,0 +1,24 @@
+{
+  "id": 492,
+  "title": "Construct the Rectangle",
+  "slug": "construct-the-rectangle",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "A web developer needs to know how to design a web page's size. So, given a specific rectangular web page's area, your job by now is to design a rectangular web page, whose length L and width W satisfy the following requirements:\n\n1.  The area of the rectangular web page you designed must equal to the given target area.\n2.  The width W should not be larger than the length L, which means L >= W.\n3.  The difference between length L and width W should be as small as possible.\n\nReturn _an array [L, W] where L and W are the length and width of the web page you designed in sequence._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef constructRectangle(area: int) -> List[int]:\n    width = int(area**0.5)\n    while area % width != 0:\n        width -= 1\n    length = area // width\n    return [length, width]\n```\n    \n    The algorithm starts by calculating the square root of the given area, using the sqrt function in each language. Since web pages with more rectangular shapes are preferred, we start the width from `sqrt(area)` and work our way down.\n\nWe initialize the variable width with the integer value of the square root of the area: `width = sqrt(area)`. This initialization ensures that our width and length will be as close as possible to each other.\n\nWe then use a while loop to check if the current width divides the area evenly (`area % width != 0`). If it doesn't, we decrement the width by one and repeat the loop until we find a width that divides the area evenly.\n\nFinally, we calculate the length by dividing the area with the width: `length = area / width`. We return the length and width as an array in the required sequence: `[length, width]`.\n    ",
+    "javascript": "\n    ```javascript\nfunction constructRectangle(area) {\n    let width = Math.floor(Math.sqrt(area));\n    while(area % width !== 0) {\n        width--;\n    }\n    let length = area / width;\n    return [length, width];\n}\n```\n    \n    The algorithm starts by calculating the square root of the given area, using the sqrt function in each language. Since web pages with more rectangular shapes are preferred, we start the width from `sqrt(area)` and work our way down.\n\nWe initialize the variable width with the integer value of the square root of the area: `width = sqrt(area)`. This initialization ensures that our width and length will be as close as possible to each other.\n\nWe then use a while loop to check if the current width divides the area evenly (`area % width != 0`). If it doesn't, we decrement the width by one and repeat the loop until we find a width that divides the area evenly.\n\nFinally, we calculate the length by dividing the area with the width: `length = area / width`. We return the length and width as an array in the required sequence: `[length, width]`.\n    ",
+    "java": "\n    ```java\npublic int[] constructRectangle(int area) {\n    int width = (int)Math.sqrt(area);\n    while(area % width != 0) {\n        width--;\n    }\n    int length = area / width;\n    return new int[]{length, width};\n}\n```\n    \n    The algorithm starts by calculating the square root of the given area, using the sqrt function in each language. Since web pages with more rectangular shapes are preferred, we start the width from `sqrt(area)` and work our way down.\n\nWe initialize the variable width with the integer value of the square root of the area: `width = sqrt(area)`. This initialization ensures that our width and length will be as close as possible to each other.\n\nWe then use a while loop to check if the current width divides the area evenly (`area % width != 0`). If it doesn't, we decrement the width by one and repeat the loop until we find a width that divides the area evenly.\n\nFinally, we calculate the length by dividing the area with the width: `length = area / width`. We return the length and width as an array in the required sequence: `[length, width]`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

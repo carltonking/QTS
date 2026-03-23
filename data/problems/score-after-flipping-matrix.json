@@ -1,0 +1,24 @@
+{
+  "id": 861,
+  "title": "Score After Flipping Matrix",
+  "slug": "score-after-flipping-matrix",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an m x n binary matrix grid.\n\nA move consists of choosing any row or column and toggling each value in that row or column (i.e., changing all 0's to 1's, and all 1's to 0's).\n\nEvery row of the matrix is interpreted as a binary number, and the score of the matrix is the sum of these numbers.\n\nReturn _the highest possible score after making any number of moves (including zero moves)_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef flipAndInvertImage(image):\n    for row in image:\n        row.reverse()\n        for j in range(len(row)):\n            row[j] = 1 - row[j]\n    return image\n```\n    \n    The algorithm for this problem is to first flip each row of the given binary image horizontally and then invert the image. To flip the row horizontally, we can simply reverse the row. In languages that don't have a built-in reverse function, we can swap elements at the beginning and end of the row and move inward.\n\nAfter reversing the row, we iterate through each element (pixel) in the row, and if it's a 0, we replace it with a 1, and if it's a 1, we replace it with a 0. This can be achieved by simply doing \"1 - element\".\nWe need to perform the above operations for each row in the image.\n\nThe time complexity of this algorithm is O(n * m), where n is the number of rows and m is the number of columns of the image. In this case, since it's given as an n x n binary matrix, the complexity can also be considered O(n^2).\n\nThe space complexity is O(1), since we modify the given image in-place.\n    ",
+    "javascript": "\n    ```javascript\nfunction flipAndInvertImage(image) {\n    for (let row of image) {\n        row.reverse();\n        for (let j = 0; j < row.length; j++) {\n            row[j] = 1 - row[j];\n        }\n    }\n    return image;\n}\n```\n    \n    The algorithm for this problem is to first flip each row of the given binary image horizontally and then invert the image. To flip the row horizontally, we can simply reverse the row. In languages that don't have a built-in reverse function, we can swap elements at the beginning and end of the row and move inward.\n\nAfter reversing the row, we iterate through each element (pixel) in the row, and if it's a 0, we replace it with a 1, and if it's a 1, we replace it with a 0. This can be achieved by simply doing \"1 - element\".\nWe need to perform the above operations for each row in the image.\n\nThe time complexity of this algorithm is O(n * m), where n is the number of rows and m is the number of columns of the image. In this case, since it's given as an n x n binary matrix, the complexity can also be considered O(n^2).\n\nThe space complexity is O(1), since we modify the given image in-place.\n    ",
+    "java": "\n    ```java\nclass Solution {\n    public int[][] flipAndInvertImage(int[][] image) {\n        for (int[] row : image) {\n            int n = row.length;\n            for (int i = 0; i < (n + 1) / 2; i++) {\n                int temp = 1 - row[i];\n                row[i] = 1 - row[n - 1 - i];\n                row[n - 1 - i] = temp;\n            }\n        }\n        return image;\n    }\n}\n```\n    \n    The algorithm for this problem is to first flip each row of the given binary image horizontally and then invert the image. To flip the row horizontally, we can simply reverse the row. In languages that don't have a built-in reverse function, we can swap elements at the beginning and end of the row and move inward.\n\nAfter reversing the row, we iterate through each element (pixel) in the row, and if it's a 0, we replace it with a 1, and if it's a 1, we replace it with a 0. This can be achieved by simply doing \"1 - element\".\nWe need to perform the above operations for each row in the image.\n\nThe time complexity of this algorithm is O(n * m), where n is the number of rows and m is the number of columns of the image. In this case, since it's given as an n x n binary matrix, the complexity can also be considered O(n^2).\n\nThe space complexity is O(1), since we modify the given image in-place.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

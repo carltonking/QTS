@@ -1,0 +1,24 @@
+{
+  "id": 434,
+  "title": "Number of Segments in a String",
+  "slug": "number-of-segments-in-a-string",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a string s, return _the number of segments in the string_.\n\nA segment is defined to be a contiguous sequence of non-space characters.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_segments(s: str) -> int:\n    return len(s.split())\n```\n    \n    The algorithm goes as follows:\n\n1. Remove leading and trailing spaces from the input string.\n2. Split the string on any whitespace into an array or list.\n3. Return the length of the resulting array or list, which corresponds to the number of segments in the input string.\n\nIn C++, the `std::stringstream` is used to read words separated by spaces with the `>>` operator. Java and JavaScript use a regex to match any whitespace, and Python has a built-in `split()` method that splits on any whitespace by default.\n    ",
+    "javascript": "\n    ```javascript\nfunction countSegments(s) {\n    if (!s || s.trim().length === 0) {\n        return 0;\n    }\n    const segments = s.trim().split(/\\s+/);\n    return segments.length;\n}\n```\n    \n    The algorithm goes as follows:\n\n1. Remove leading and trailing spaces from the input string.\n2. Split the string on any whitespace into an array or list.\n3. Return the length of the resulting array or list, which corresponds to the number of segments in the input string.\n\nIn C++, the `std::stringstream` is used to read words separated by spaces with the `>>` operator. Java and JavaScript use a regex to match any whitespace, and Python has a built-in `split()` method that splits on any whitespace by default.\n    ",
+    "java": "\n    ```java\npublic int countSegments(String s) {\n    if (s == null || s.trim().length() == 0) {\n        return 0;\n    }\n    String[] segments = s.trim().split(\"\\\\s+\");\n    return segments.length;\n}\n```\n    \n    The algorithm goes as follows:\n\n1. Remove leading and trailing spaces from the input string.\n2. Split the string on any whitespace into an array or list.\n3. Return the length of the resulting array or list, which corresponds to the number of segments in the input string.\n\nIn C++, the `std::stringstream` is used to read words separated by spaces with the `>>` operator. Java and JavaScript use a regex to match any whitespace, and Python has a built-in `split()` method that splits on any whitespace by default.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

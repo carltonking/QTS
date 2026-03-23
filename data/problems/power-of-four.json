@@ -1,0 +1,24 @@
+{
+  "id": 342,
+  "title": "Power of Four",
+  "slug": "power-of-four",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer n, return _true if it is a power of four. Otherwise, return false_.\n\nAn integer n is a power of four, if there exists an integer x such that n == 4x.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef isPowerOfFour(n: int) -> bool:\n    if n <= 0:\n        return False\n    while n % 4 == 0:\n        n //= 4\n    return n == 1\n```\n    \n    The algorithm checks if a given integer `n` is a power of 4 or not. If `n` is less than or equal to 0, it immediately returns `false`. Otherwise, it enters a loop that checks if `n` is divisible by 4. If it is, it keeps dividing the number by 4 until it is no longer divisible by 4. After the loop, the algorithm checks whether the final remainder is 1 or not. If the remainder is 1, the number was initially a power of 4, and it returns `true`. Otherwise, it returns `false`.\n    ",
+    "javascript": "\n    ```javascript\nfunction isPowerOfFour(n) {\n    if (n <= 0) return false;\n    while (n % 4 === 0) {\n        n = Math.floor(n / 4);\n    }\n    return n === 1;\n}\n```\n    \n    The algorithm checks if a given integer `n` is a power of 4 or not. If `n` is less than or equal to 0, it immediately returns `false`. Otherwise, it enters a loop that checks if `n` is divisible by 4. If it is, it keeps dividing the number by 4 until it is no longer divisible by 4. After the loop, the algorithm checks whether the final remainder is 1 or not. If the remainder is 1, the number was initially a power of 4, and it returns `true`. Otherwise, it returns `false`.\n    ",
+    "java": "\n    ```java\npublic boolean isPowerOfFour(int n) {\n    if (n <= 0) return false;\n    while (n % 4 == 0) {\n        n /= 4;\n    }\n    return n == 1;\n}\n```\n    \n    The algorithm checks if a given integer `n` is a power of 4 or not. If `n` is less than or equal to 0, it immediately returns `false`. Otherwise, it enters a loop that checks if `n` is divisible by 4. If it is, it keeps dividing the number by 4 until it is no longer divisible by 4. After the loop, the algorithm checks whether the final remainder is 1 or not. If the remainder is 1, the number was initially a power of 4, and it returns `true`. Otherwise, it returns `false`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

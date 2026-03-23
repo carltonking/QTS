@@ -1,0 +1,24 @@
+{
+  "id": 296,
+  "title": "Best Meeting Point",
+  "slug": "best-meeting-point",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given an m x n binary grid grid where each 1 marks the home of one friend, return _the minimal total travel distance_.\n\nThe total travel distance is the sum of the distances between the houses of the friends and the meeting point.\n\nThe distance is calculated using [Manhattan Distance](http://en.wikipedia.org/wiki/Taxicab_geometry), where distance(p1, p2) = |p2.x - p1.x| + |p2.y - p1.y|.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minTotalDistance(grid):\n    m, n = len(grid), len(grid[0])\n    rows, cols = [], []\n    for i in range(m):\n        for j in range(n):\n            if grid[i][j] == 1:\n                rows.append(i)\n                cols.append(j)\n\n    cols.sort()\n    row_median, col_median = rows[len(rows) // 2], cols[len(cols) // 2]\n    distance = sum(abs(i - row_median) for i in rows) + sum(abs(j - col_median) for j in cols)\n    return distance\n```\n    \n    1. Iterate through the given grid and store the row and column indices separately for each friend's home.\n2. Sort the columns list.\n3. Find the median of row and column separately (using middle element in sorted list) as it represents the optimal meeting point.\n4. Calculate the total distance by summing up Manhattan Distance for each friend to the meeting point.\n    ",
+    "javascript": "\n    ```javascript\nvar minTotalDistance = function(grid) {\n    let m = grid.length, n = grid[0].length;\n    let rows = [], cols = [];\n    for (let i = 0; i < m; ++i) {\n        for (let j = 0; j < n; ++j) {\n            if (grid[i][j] === 1) {\n                rows.push(i);\n                cols.push(j);\n            }\n        }\n    }\n    cols.sort((a, b) => a - b);\n    let row_median = rows[Math.floor(rows.length / 2)], col_median = cols[Math.floor(cols.length / 2)];\n    let distance = rows.reduce((acc, i) => acc + Math.abs(i - row_median), 0) + cols.reduce((acc, j) => acc + Math.abs(j - col_median), 0);\n    return distance;\n};\n```\n    \n    1. Iterate through the given grid and store the row and column indices separately for each friend's home.\n2. Sort the columns list.\n3. Find the median of row and column separately (using middle element in sorted list) as it represents the optimal meeting point.\n4. Calculate the total distance by summing up Manhattan Distance for each friend to the meeting point.\n    ",
+    "java": "\n    ```java\npublic int minTotalDistance(int[][] grid) {\n    List<Integer> rows = new ArrayList<Integer>();\n    List<Integer> cols = new ArrayList<Integer>();\n    int m = grid.length, n = grid[0].length;\n    for (int i = 0; i < m; ++i) {\n        for (int j = 0; j < n; ++j) {\n            if (grid[i][j] == 1) {\n                rows.add(i);\n                cols.add(j);\n            }\n        }\n    }\n    Collections.sort(cols);\n    int row_median = rows.get(rows.size() / 2), col_median = cols.get(cols.size() / 2);\n    int distance = 0;\n    for (int i : rows) distance += Math.abs(i - row_median);\n    for (int j : cols) distance += Math.abs(j - col_median);\n    return distance;\n}\n```\n    \n    1. Iterate through the given grid and store the row and column indices separately for each friend's home.\n2. Sort the columns list.\n3. Find the median of row and column separately (using middle element in sorted list) as it represents the optimal meeting point.\n4. Calculate the total distance by summing up Manhattan Distance for each friend to the meeting point.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2086,
+  "title": "Minimum Number of Food Buckets to Feed the Hamsters",
+  "slug": "minimum-number-of-food-buckets-to-feed-the-hamsters",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed string hamsters where hamsters[i] is either:\n\n*   'H' indicating that there is a hamster at index i, or\n*   '.' indicating that index i is empty.\n\nYou will add some number of food buckets at the empty indices in order to feed the hamsters. A hamster can be fed if there is at least one food bucket to its left or to its right. More formally, a hamster at index i can be fed if you place a food bucket at index i - 1 and/or at index i + 1.\n\nReturn _the minimum number of food buckets you should place at empty indices to feed all the hamsters or_ -1 _if it is impossible to feed all of them_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef num_special_subsequences(nums):\n    zeros, ones, twos = 0, 0, 0\n    mod = 1000000007\n    for num in nums:\n        if num == 0:\n            zeros = (zeros + 1) % mod\n        elif num == 1:\n            ones = (ones + zeros) % mod\n        else:\n            twos = (twos + ones) % mod\n    return twos\n```\n\n    \n    The algorithm involves counting the number of subsequences that are special. Initialize three counters, `zeros`, `ones`, and `twos`, to count the special subsequences ending with those values. Iterate the array and for each element, update the respective counter. If the element is 0, increment the `zeros` counter, if it is 1, add the number of `zeros` to the `ones` counter, and if it is 2, add the number of `ones` to the `twos` counter. All operations must be performed modulo 109 + 7 to keep the result within required bounds. Finally, return the value of `twos`, which represents the number of special subsequences. ###\n    ",
+    "javascript": "\n    ```javascript\nfunction num_special_subsequences(nums) {\n    let zeros = 0, ones = 0, twos = 0;\n    const mod = 1000000007;\n    for (const num of nums) {\n        if (num === 0) {\n            zeros = (zeros + 1) % mod;\n        } else if (num === 1) {\n            ones = (ones + zeros) % mod;\n        } else {\n            twos = (twos + ones) % mod;\n        }\n    }\n    return twos;\n}\n```\n\n    \n    The algorithm involves counting the number of subsequences that are special. Initialize three counters, `zeros`, `ones`, and `twos`, to count the special subsequences ending with those values. Iterate the array and for each element, update the respective counter. If the element is 0, increment the `zeros` counter, if it is 1, add the number of `zeros` to the `ones` counter, and if it is 2, add the number of `ones` to the `twos` counter. All operations must be performed modulo 109 + 7 to keep the result within required bounds. Finally, return the value of `twos`, which represents the number of special subsequences. ###\n    ",
+    "java": "\n    ```java\npublic int num_special_subsequences(int[] nums) {\n    long zeros = 0, ones = 0, twos = 0;\n    int mod = 1000000007;\n    for (int num : nums) {\n        if (num == 0) {\n            zeros = (zeros + 1) % mod;\n        } else if (num == 1) {\n            ones = (ones + zeros) % mod;\n        } else {\n            twos = (twos + ones) % mod;\n        }\n    }\n    return (int) twos;\n}\n```\n\n    \n    The algorithm involves counting the number of subsequences that are special. Initialize three counters, `zeros`, `ones`, and `twos`, to count the special subsequences ending with those values. Iterate the array and for each element, update the respective counter. If the element is 0, increment the `zeros` counter, if it is 1, add the number of `zeros` to the `ones` counter, and if it is 2, add the number of `ones` to the `twos` counter. All operations must be performed modulo 109 + 7 to keep the result within required bounds. Finally, return the value of `twos`, which represents the number of special subsequences. ###\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 829,
+  "title": "Consecutive Numbers Sum",
+  "slug": "consecutive-numbers-sum",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given an integer n, return _the number of ways you can write_ n _as the sum of consecutive positive integers._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import defaultdict\n\ndef subdomainVisits(cpdomains):\n    counts = defaultdict(int)\n    result = []\n\n    for cpdomain in cpdomains:\n        count, domain = cpdomain.split()\n        count = int(count)\n\n        for i in range(len(domain)):\n            if domain[i] == '.':\n                counts[domain[i + 1:]] += count\n        counts[domain] += count\n\n    for sub, cnt in counts.items():\n        result.append(f\"{cnt} {sub}\")\n        \n    return result\n```\n\n    \n    The algorithm iterates through the input array, splitting each string into count and domain. Then, for each domain, it looks for the period (.) character and for each period (.) found, it updates the count of the subdomain in a hash table/data structure (unordered_map/HashMap/defaultdict/object). Finally, the algorithm iterates through the counts of subdomains and formats an array in the required format to return.\n    ",
+    "javascript": "\n    ```javascript\nfunction subdomainVisits(cpdomains) {\n    const counts = {};\n    const result = [];\n\n    for (let cpdomain of cpdomains) {\n        let [count, domain] = cpdomain.split(' ');\n        count = parseInt(count);\n\n        for (let i = 0; i < domain.length; ++i) {\n            if (domain[i] === '.') {\n                const sub = domain.slice(i + 1);\n                counts[sub] = (counts[sub] || 0) + count;\n            }\n        }\n        counts[domain] = (counts[domain] || 0) + count;\n    }\n\n    for (let sub in counts) {\n        result.push(`${counts[sub]} ${sub}`);\n    }\n    \n    return result;\n}\n```\n\n    \n    The algorithm iterates through the input array, splitting each string into count and domain. Then, for each domain, it looks for the period (.) character and for each period (.) found, it updates the count of the subdomain in a hash table/data structure (unordered_map/HashMap/defaultdict/object). Finally, the algorithm iterates through the counts of subdomains and formats an array in the required format to return.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic List<String> subdomainVisits(String[] cpdomains) {\n    Map<String, Integer> counts = new HashMap<>();\n    List<String> result = new ArrayList<>();\n\n    for (String cpdomain : cpdomains) {\n        String[] info = cpdomain.split(\" \");\n        int count = Integer.valueOf(info[0]);\n        String domain = info[1];\n\n        for (int i = 0; i < domain.length(); ++i) {\n            if (domain.charAt(i) == '.') {\n                counts.put(domain.substring(i + 1), counts.getOrDefault(domain.substring(i + 1), 0) + count);\n            }\n        }\n        counts.put(domain, counts.getOrDefault(domain, 0) + count);\n    }\n\n    for (String sub : counts.keySet()) {\n        result.add(\"\" + counts.get(sub) + \" \" + sub);\n    }\n\n    return result;\n}\n```\n\n    \n    The algorithm iterates through the input array, splitting each string into count and domain. Then, for each domain, it looks for the period (.) character and for each period (.) found, it updates the count of the subdomain in a hash table/data structure (unordered_map/HashMap/defaultdict/object). Finally, the algorithm iterates through the counts of subdomains and formats an array in the required format to return.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

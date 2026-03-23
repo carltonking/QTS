@@ -1,0 +1,24 @@
+{
+  "id": 421,
+  "title": "Maximum XOR of Two Numbers in an Array",
+  "slug": "maximum-xor-of-two-numbers-in-an-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums, return _the maximum result of_ nums[i] XOR nums[j], where 0 <= i <= j < n.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findMaximumXOR(nums):\n    max_xor = 0\n    mask = 0\n\n    for i in range(31, -1, -1):\n        mask |= (1 << i)\n        prefixes = {num & mask for num in nums}\n\n        possible_max = max_xor | (1 << i)\n\n        for prefix in prefixes:\n            if prefix ^ possible_max in prefixes:\n                max_xor = possible_max\n                break\n\n    return max_xor\n```\n    \n    1. Initialize max_xor and mask to 0.\n2. Loop through the 32-bit integer type from the most significant bit to the least significant bit.\n3. In each iteration, find the longest prefix of the XOR value, which is built from more significant bits to less significant bit. Update mask by left-shifting 1 and bitwise OR with the mask.\n4. Add each element bitwise AND the mask into a set called prefixes.\n5. Calculate the possible max XOR value up to the current bit by bitwise OR with (1 << i) and the current max_xor.\n6. Loop through the prefixes and check if the XOR of prefix and possible_max is in the set of prefixes.\n7. If it's in the set, update max_xor to the possible_max and break the loop, otherwise, continue with the next bit.\n8. After processing all bits, return max_xor as the final result.\n    ",
+    "javascript": "\n    ```javascript\nfunction findMaximumXOR(nums) {\n    let max_xor = 0, mask = 0;\n    \n    for (let i = 31; i >= 0; i--) {\n        mask |= (1 << i);\n        let prefixes = new Set();\n        \n        for (let num of nums) {\n            prefixes.add(num & mask);\n        }\n        \n        let possible_max = max_xor | (1 << i);\n\n        for (let prefix of prefixes) {\n            if (prefixes.has(prefix ^ possible_max)) {\n                max_xor = possible_max;\n                break;\n            }\n        }\n    }\n    \n    return max_xor;\n}\n```\n    \n    1. Initialize max_xor and mask to 0.\n2. Loop through the 32-bit integer type from the most significant bit to the least significant bit.\n3. In each iteration, find the longest prefix of the XOR value, which is built from more significant bits to less significant bit. Update mask by left-shifting 1 and bitwise OR with the mask.\n4. Add each element bitwise AND the mask into a set called prefixes.\n5. Calculate the possible max XOR value up to the current bit by bitwise OR with (1 << i) and the current max_xor.\n6. Loop through the prefixes and check if the XOR of prefix and possible_max is in the set of prefixes.\n7. If it's in the set, update max_xor to the possible_max and break the loop, otherwise, continue with the next bit.\n8. After processing all bits, return max_xor as the final result.\n    ",
+    "java": "\n    ```java\npublic int findMaximumXOR(int[] nums) {\n    int max_xor = 0, mask = 0;\n    \n    for (int i = 31; i >= 0; i--) {\n        mask |= (1 << i);\n        HashSet<Integer> prefixes = new HashSet<>();\n        \n        for (int num : nums) {\n            prefixes.add(num & mask);\n        }\n        \n        int possible_max = max_xor | (1 << i);\n        \n        for (int prefix : prefixes) {\n            if (prefixes.contains(prefix ^ possible_max)) {\n                max_xor = possible_max;\n                break;\n            }\n        }\n    }\n    \n    return max_xor;\n}\n```\n    \n    1. Initialize max_xor and mask to 0.\n2. Loop through the 32-bit integer type from the most significant bit to the least significant bit.\n3. In each iteration, find the longest prefix of the XOR value, which is built from more significant bits to less significant bit. Update mask by left-shifting 1 and bitwise OR with the mask.\n4. Add each element bitwise AND the mask into a set called prefixes.\n5. Calculate the possible max XOR value up to the current bit by bitwise OR with (1 << i) and the current max_xor.\n6. Loop through the prefixes and check if the XOR of prefix and possible_max is in the set of prefixes.\n7. If it's in the set, update max_xor to the possible_max and break the loop, otherwise, continue with the next bit.\n8. After processing all bits, return max_xor as the final result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 350,
+  "title": "Intersection of Two Arrays II",
+  "slug": "intersection-of-two-arrays-ii",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given two integer arrays nums1 and nums2, return _an array of their intersection_. Each element in the result must appear as many times as it shows in both arrays and you may return the result in any order.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef intersect(nums1, nums2):\n    count_map = {}\n    result = []\n    \n    for num in nums1:\n        count_map[num] = count_map.get(num, 0) + 1\n    \n    for num in nums2:\n        if count_map.get(num, 0) > 0:\n            result.append(num)\n            count_map[num] -= 1\n\n    return result\n```\n\n    \n    1. Create a hashmap (or dictionary) to count the occurrences of each integer in the first input array, nums1.\n2. Iterate through the second input array, nums2.\n   a. For each element in nums2, check if the element exists in the hashmap and has a count greater than 0.\n   b. If yes, append the element to the result array and decrement the count in the hashmap for that element.\n3. Return the result array containing the intersection elements.\n    ",
+    "javascript": "\n    ```javascript\nfunction intersect(nums1, nums2) {\n    const countMap = {};\n    const result = [];\n    \n    for (const num of nums1) {\n        countMap[num] = (countMap[num] || 0) + 1;\n    }\n    \n    for (const num of nums2) {\n        if (countMap[num] > 0) {\n            result.push(num);\n            countMap[num]--;\n        }\n    }\n\n    return result;\n}\n```\n\n    \n    1. Create a hashmap (or dictionary) to count the occurrences of each integer in the first input array, nums1.\n2. Iterate through the second input array, nums2.\n   a. For each element in nums2, check if the element exists in the hashmap and has a count greater than 0.\n   b. If yes, append the element to the result array and decrement the count in the hashmap for that element.\n3. Return the result array containing the intersection elements.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.HashMap;\n\npublic int[] intersect(int[] nums1, int[] nums2) {\n    HashMap<Integer, Integer> countMap = new HashMap<>();\n    ArrayList<Integer> result = new ArrayList<>();\n    \n    for (int num : nums1) {\n        countMap.put(num, countMap.getOrDefault(num, 0) + 1);\n    }\n    \n    for (int num : nums2) {\n        if (countMap.getOrDefault(num, 0) > 0) {\n            result.add(num);\n            countMap.put(num, countMap.get(num) - 1);\n        }\n    }\n\n    return result.stream().mapToInt(i -> i).toArray();\n}\n```\n\n    \n    1. Create a hashmap (or dictionary) to count the occurrences of each integer in the first input array, nums1.\n2. Iterate through the second input array, nums2.\n   a. For each element in nums2, check if the element exists in the hashmap and has a count greater than 0.\n   b. If yes, append the element to the result array and decrement the count in the hashmap for that element.\n3. Return the result array containing the intersection elements.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

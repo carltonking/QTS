@@ -1,0 +1,24 @@
+{
+  "id": 129,
+  "title": "Sum Root to Leaf Numbers",
+  "slug": "sum-root-to-leaf-numbers",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given the root of a binary tree containing digits from 0 to 9 only.\n\nEach root-to-leaf path in the tree represents a number.\n\n*   For example, the root-to-leaf path 1 -> 2 -> 3 represents the number 123.\n\nReturn _the total sum of all root-to-leaf numbers_. Test cases are generated so that the answer will fit in a 32-bit integer.\n\nA leaf node is a node with no children.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sumNumbers(root, cur=0):\n    if root is None: return 0\n    cur = cur * 10 + root.val\n    if root.left is None and root.right is None: return cur\n    return sumNumbers(root.left, cur) + sumNumbers(root.right, cur)\n```\n\n    \n    The algorithm is a depth-first search (DFS) algorithm that traverses the binary tree. The function is called recursively with the current node and the sum of the numbers traversed till that node. At the beginning, the sum is initialized to zero.\n\nIf the root is null, it means we have reached the end of a path, so we return 0.\n\nWe update the current sum by multiplying it with 10 and adding the value of the current root to it. If the current node is a leaf node (both left and right are null), we return the current sum.\n\nFinally, the result is a sum of the values returned from the left and right subtrees. Since we use the same code for all languages, the only difference lies in the syntax and how the null values are handled. \n    ",
+    "javascript": "\n    ```javascript\nfunction sumNumbers(root, cur = 0) {\n    if (!root) return 0;\n    cur = cur * 10 + root.val;\n    if (!root.left && !root.right) return cur;\n    return sumNumbers(root.left, cur) + sumNumbers(root.right, cur);\n}\n```\n\n    \n    The algorithm is a depth-first search (DFS) algorithm that traverses the binary tree. The function is called recursively with the current node and the sum of the numbers traversed till that node. At the beginning, the sum is initialized to zero.\n\nIf the root is null, it means we have reached the end of a path, so we return 0.\n\nWe update the current sum by multiplying it with 10 and adding the value of the current root to it. If the current node is a leaf node (both left and right are null), we return the current sum.\n\nFinally, the result is a sum of the values returned from the left and right subtrees. Since we use the same code for all languages, the only difference lies in the syntax and how the null values are handled. \n    ",
+    "java": "\n    ```java\npublic int sumNumbers(TreeNode root) {\n    return sumNumbersHelper(root, 0);\n}\n\nprivate int sumNumbersHelper(TreeNode root, int cur) {\n    if (root == null) return 0;\n    cur = cur * 10 + root.val;\n    if (root.left == null && root.right == null) return cur;\n    return sumNumbersHelper(root.left, cur) + sumNumbersHelper(root.right, cur);\n}\n```\n\n    \n    The algorithm is a depth-first search (DFS) algorithm that traverses the binary tree. The function is called recursively with the current node and the sum of the numbers traversed till that node. At the beginning, the sum is initialized to zero.\n\nIf the root is null, it means we have reached the end of a path, so we return 0.\n\nWe update the current sum by multiplying it with 10 and adding the value of the current root to it. If the current node is a leaf node (both left and right are null), we return the current sum.\n\nFinally, the result is a sum of the values returned from the left and right subtrees. Since we use the same code for all languages, the only difference lies in the syntax and how the null values are handled. \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

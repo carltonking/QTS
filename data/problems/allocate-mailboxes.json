@@ -1,0 +1,24 @@
+{
+  "id": 1478,
+  "title": "Allocate Mailboxes",
+  "slug": "allocate-mailboxes",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given the array houses where houses[i] is the location of the ith house along a street and an integer k, allocate k mailboxes in the street.\n\nReturn _the minimum total distance between each house and its nearest mailbox_.\n\nThe test cases are generated so that the answer fits in a 32-bit integer.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_events(events):\n    events.sort(key=lambda x: x[1])\n\n    count = 0\n    last_day = -1\n\n    for event in events:\n        if event[0] > last_day:\n            count += 1\n            last_day = event[1]\n\n    return count\n```\n    \n    The idea is to sort the events by end day. After sorting, iterate through the events and use a variable `lastDay` to keep track of the last day an event was attended. If the current event's start day is greater than the `lastDay`, increment the `count` (number of attended events) and set `lastDay` as the current event's end day. This greedy approach ensures we attend the events that end early and maximize the number of total attended events.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxEvents(events) {\n    events.sort((a, b) => a[1] - b[1]);\n\n    let count = 0;\n    let lastDay = -1;\n\n    for (const event of events) {\n        if (event[0] > lastDay) {\n            count++;\n            lastDay = event[1];\n        }\n    }\n\n    return count;\n}\n```\n    \n    The idea is to sort the events by end day. After sorting, iterate through the events and use a variable `lastDay` to keep track of the last day an event was attended. If the current event's start day is greater than the `lastDay`, increment the `count` (number of attended events) and set `lastDay` as the current event's end day. This greedy approach ensures we attend the events that end early and maximize the number of total attended events.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int maxEvents(int[][] events) {\n    Arrays.sort(events, (a, b) -> a[1] - b[1]);\n\n    int count = 0;\n    int lastDay = -1;\n\n    for (int[] event : events) {\n        if (event[0] > lastDay) {\n            count++;\n            lastDay = event[1];\n        }\n    }\n\n    return count;\n}\n```\n    \n    The idea is to sort the events by end day. After sorting, iterate through the events and use a variable `lastDay` to keep track of the last day an event was attended. If the current event's start day is greater than the `lastDay`, increment the `count` (number of attended events) and set `lastDay` as the current event's end day. This greedy approach ensures we attend the events that end early and maximize the number of total attended events.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

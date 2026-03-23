@@ -1,0 +1,24 @@
+{
+  "id": 383,
+  "title": "Ransom Note",
+  "slug": "ransom-note",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given two strings ransomNote and magazine, return true _if_ ransomNote _can be constructed by using the letters from_ magazine _and_ false _otherwise_.\n\nEach letter in magazine can only be used once in ransomNote.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef can_construct(ransom_note, magazine):\n    letter_count = {}\n    \n    for c in magazine:\n        letter_count[c] = letter_count.get(c, 0) + 1\n        \n    for c in ransom_note:\n        if c not in letter_count or letter_count[c] == 0:\n            return False\n        letter_count[c] -= 1\n        \n    return True\n```\n    \n    The algorithm works as follows:\n1. Create a hash map called `letterCount`, which holds the count of each character in the `magazine` string.\n2. Iterate over the characters in `ransomNote`. For each character:\n   a. If the character is not in `letterCount` or its count is 0, return `false`, as the required letter is not available in `magazine`.\n   b. Decrease the count of the character in `letterCount` by 1.\n3. Once the iteration is done, if the entire `ransomNote` string is processed without any issue, return `true`.\n\nThis algorithm checks if the `ransomNote` can be made from the available characters in the `magazine` by using a single pass through each string and maintaining the count of characters in a hash map.\n    ",
+    "javascript": "\n    ```javascript\nfunction canConstruct(ransomNote, magazine) {\n    let letterCount = new Map();\n    \n    for (const c of magazine) {\n        letterCount.set(c, (letterCount.get(c) || 0) + 1);\n    }\n    \n    for (const c of ransomNote) {\n        if (!letterCount.has(c) || letterCount.get(c) === 0) {\n            return false;\n        }\n        letterCount.set(c, letterCount.get(c) - 1);\n    }\n\n    return true;\n}\n```\n    \n    The algorithm works as follows:\n1. Create a hash map called `letterCount`, which holds the count of each character in the `magazine` string.\n2. Iterate over the characters in `ransomNote`. For each character:\n   a. If the character is not in `letterCount` or its count is 0, return `false`, as the required letter is not available in `magazine`.\n   b. Decrease the count of the character in `letterCount` by 1.\n3. Once the iteration is done, if the entire `ransomNote` string is processed without any issue, return `true`.\n\nThis algorithm checks if the `ransomNote` can be made from the available characters in the `magazine` by using a single pass through each string and maintaining the count of characters in a hash map.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\n\npublic boolean canConstruct(String ransomNote, String magazine) {\n    HashMap<Character, Integer> letterCount = new HashMap<>();\n    \n    for (char c : magazine.toCharArray()) {\n        letterCount.put(c, letterCount.getOrDefault(c, 0) + 1);\n    }\n    \n    for (char c : ransomNote.toCharArray()) {\n        if (!letterCount.containsKey(c) || letterCount.get(c) == 0) {\n            return false;\n        }\n        letterCount.put(c, letterCount.get(c) - 1);\n    }\n\n    return true;\n}\n```\n    \n    The algorithm works as follows:\n1. Create a hash map called `letterCount`, which holds the count of each character in the `magazine` string.\n2. Iterate over the characters in `ransomNote`. For each character:\n   a. If the character is not in `letterCount` or its count is 0, return `false`, as the required letter is not available in `magazine`.\n   b. Decrease the count of the character in `letterCount` by 1.\n3. Once the iteration is done, if the entire `ransomNote` string is processed without any issue, return `true`.\n\nThis algorithm checks if the `ransomNote` can be made from the available characters in the `magazine` by using a single pass through each string and maintaining the count of characters in a hash map.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

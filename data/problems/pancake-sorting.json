@@ -1,0 +1,24 @@
+{
+  "id": 969,
+  "title": "Pancake Sorting",
+  "slug": "pancake-sorting",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of integers arr, sort the array by performing a series of pancake flips.\n\nIn one pancake flip we do the following steps:\n\n*   Choose an integer k where 1 <= k <= arr.length.\n*   Reverse the sub-array arr[0...k-1] (0-indexed).\n\nFor example, if arr = [3,2,1,4] and we performed a pancake flip choosing k = 3, we reverse the sub-array [3,2,1], so arr = [1,2,3,4] after the pancake flip at k = 3.\n\nReturn _an array of the_ k_\\-values corresponding to a sequence of pancake flips that sort_ arr. Any valid answer that sorts the array within 10 * arr.length flips will be judged as correct.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import deque\n\nclass RecentCounter:\n    def __init__(self):\n        self.requests = deque()\n\n    def ping(self, t: int) -> int:\n        self.requests.append(t)\n        while self.requests[0] < t - 3000:\n            self.requests.popleft()\n        return len(self.requests)\n```\n    \n    The algorithm for the RecentCounter class uses a data structure known as a Queue (in C++ and Java, `deque` is used) to store request timestamps. \n\nThe core steps of the algorithm include:\n1. Initialize an empty Queue (or deque) to store request timestamps.\n2. When `ping` is called process it with the timestamp `t`:\n   a. Add `t` to the end of the request timestamps queue.\n   b. Remove all requests from the front of the queue that have a timestamp less than `t - 3000`, because these are not considered recent requests.\n3. Finally, return the length of the queue, which represents the number of recent requests within the time frame.\n\nThis algorithm efficiently processes the requests in O(1) time complexity for each request since all operations on the deque or queue take constant time, although it can be O(n) in the worst case where n is the number of ping calls, the better average case makes it a good choice.\n    ",
+    "javascript": "\n    ```javascript\nclass RecentCounter {\n    constructor() {\n        this.requests = [];\n    }\n\n    ping(t) {\n        this.requests.push(t);\n        while (this.requests[0] < t - 3000) {\n            this.requests.shift();\n        }\n        return this.requests.length;\n    }\n}\n```\n    \n    The algorithm for the RecentCounter class uses a data structure known as a Queue (in C++ and Java, `deque` is used) to store request timestamps. \n\nThe core steps of the algorithm include:\n1. Initialize an empty Queue (or deque) to store request timestamps.\n2. When `ping` is called process it with the timestamp `t`:\n   a. Add `t` to the end of the request timestamps queue.\n   b. Remove all requests from the front of the queue that have a timestamp less than `t - 3000`, because these are not considered recent requests.\n3. Finally, return the length of the queue, which represents the number of recent requests within the time frame.\n\nThis algorithm efficiently processes the requests in O(1) time complexity for each request since all operations on the deque or queue take constant time, although it can be O(n) in the worst case where n is the number of ping calls, the better average case makes it a good choice.\n    ",
+    "java": "\n    ```java\nimport java.util.LinkedList;\nimport java.util.Queue;\n\nclass RecentCounter {\n    Queue<Integer> requests;\n\n    public RecentCounter() {\n        requests = new LinkedList<>();\n    }\n\n    public int ping(int t) {\n        requests.add(t);\n        while (requests.peek() < t - 3000) {\n            requests.poll();\n        }\n        return requests.size();\n    }\n}\n```\n    \n    The algorithm for the RecentCounter class uses a data structure known as a Queue (in C++ and Java, `deque` is used) to store request timestamps. \n\nThe core steps of the algorithm include:\n1. Initialize an empty Queue (or deque) to store request timestamps.\n2. When `ping` is called process it with the timestamp `t`:\n   a. Add `t` to the end of the request timestamps queue.\n   b. Remove all requests from the front of the queue that have a timestamp less than `t - 3000`, because these are not considered recent requests.\n3. Finally, return the length of the queue, which represents the number of recent requests within the time frame.\n\nThis algorithm efficiently processes the requests in O(1) time complexity for each request since all operations on the deque or queue take constant time, although it can be O(n) in the worst case where n is the number of ping calls, the better average case makes it a good choice.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

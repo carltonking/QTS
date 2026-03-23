@@ -1,0 +1,24 @@
+{
+  "id": 1692,
+  "title": "Count Ways to Distribute Candies",
+  "slug": "count-ways-to-distribute-candies",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "There are n unique candies (labeled 1 through n) and k bags. You are asked to distribute all the candies into the bags such that every bag has at least one candy.\n\nThere can be multiple ways to distribute the candies. Two ways are considered different if the candies in one bag in the first way are not all in the same bag in the second way. The order of the bags and the order of the candies within each bag do not matter.\n\nFor example, (1), (2,3) and (2), (1,3) are considered different because candies 2 and 3 in the bag (2,3) in the first way are not in the same bag in the second way (they are split between the bags (2) and (1,3)). However, (1), (2,3) and (3,2), (1) are considered the same because the candies in each bag are all in the same bags in both ways.\n\nGiven two integers, n and k, return _the number of different ways to distribute the candies_. As the answer may be too large, return it modulo 109 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef numTrees(n: int) -> int:\n    dp = [0] * (n + 1)\n    dp[0] = 1\n    dp[1] = 1\n\n    for i in range(2, n + 1):\n        for j in range(i):\n            dp[i] += dp[j] * dp[i - 1 - j]\n            dp[i] %= (10**9 + 7)\n\n    return dp[n]\n```\n    \n    The problem can be solved using dynamic programming. We can define a function `numTrees(i)` that returns the number of possible binary search trees with `i` nodes. We iterate through each possible number of nodes `i` from 2 to `n`. For each of these, we iterate through all possible left sub-tree sizes `j` (from 0 to i-1). Now, the total number of possible right sub-trees for the current `i` will be `i - 1 - j`. \n\nThus, the total number of possible BSTs for the current `i` will be the Cartesian product of the possible left sub-trees and possible right sub-trees. Hence, we can update `dp[i]` as `dp[i] += dp[j] * dp[i - 1 - j]`. \n\nWe continue doing this for all values of `i` until we reach `n`. The final answer will be `dp[n]`, the number of possible BSTs with `n` nodes. Note that we take the answer modulo 10^9 + 7 as the result can be quite large.\n    ",
+    "javascript": "\n    ```javascript\nfunction numTrees(n) {\n    const dp = Array(n + 1).fill(0);\n    dp[0] = 1;\n    dp[1] = 1;\n\n    for (let i = 2; i <= n; i++) {\n        for (let j = 0; j < i; j++) {\n            dp[i] += dp[j] * dp[i - 1 - j];\n            dp[i] %= 1000000007;\n        }\n    }\n\n    return dp[n];\n}\n```\n    \n    The problem can be solved using dynamic programming. We can define a function `numTrees(i)` that returns the number of possible binary search trees with `i` nodes. We iterate through each possible number of nodes `i` from 2 to `n`. For each of these, we iterate through all possible left sub-tree sizes `j` (from 0 to i-1). Now, the total number of possible right sub-trees for the current `i` will be `i - 1 - j`. \n\nThus, the total number of possible BSTs for the current `i` will be the Cartesian product of the possible left sub-trees and possible right sub-trees. Hence, we can update `dp[i]` as `dp[i] += dp[j] * dp[i - 1 - j]`. \n\nWe continue doing this for all values of `i` until we reach `n`. The final answer will be `dp[n]`, the number of possible BSTs with `n` nodes. Note that we take the answer modulo 10^9 + 7 as the result can be quite large.\n    ",
+    "java": "\n    ```java\npublic int numTrees(int n) {\n    int[] dp = new int[n + 1];\n    dp[0] = 1;\n    dp[1] = 1;\n\n    for (int i = 2; i <= n; i++) {\n        for (int j = 0; j < i; j++) {\n            dp[i] += dp[j] * dp[i - 1 - j];\n            dp[i] %= 1000000007;\n        }\n    }\n\n    return dp[n];\n}\n```\n    \n    The problem can be solved using dynamic programming. We can define a function `numTrees(i)` that returns the number of possible binary search trees with `i` nodes. We iterate through each possible number of nodes `i` from 2 to `n`. For each of these, we iterate through all possible left sub-tree sizes `j` (from 0 to i-1). Now, the total number of possible right sub-trees for the current `i` will be `i - 1 - j`. \n\nThus, the total number of possible BSTs for the current `i` will be the Cartesian product of the possible left sub-trees and possible right sub-trees. Hence, we can update `dp[i]` as `dp[i] += dp[j] * dp[i - 1 - j]`. \n\nWe continue doing this for all values of `i` until we reach `n`. The final answer will be `dp[n]`, the number of possible BSTs with `n` nodes. Note that we take the answer modulo 10^9 + 7 as the result can be quite large.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

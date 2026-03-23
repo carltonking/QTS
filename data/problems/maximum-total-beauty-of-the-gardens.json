@@ -1,0 +1,24 @@
+{
+  "id": 2234,
+  "title": "Maximum Total Beauty of the Gardens",
+  "slug": "maximum-total-beauty-of-the-gardens",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Alice is a caretaker of n gardens and she wants to plant flowers to maximize the total beauty of all her gardens.\n\nYou are given a 0-indexed integer array flowers of size n, where flowers[i] is the number of flowers already planted in the ith garden. Flowers that are already planted cannot be removed. You are then given another integer newFlowers, which is the maximum number of flowers that Alice can additionally plant. You are also given the integers target, full, and partial.\n\nA garden is considered complete if it has at least target flowers. The total beauty of the gardens is then determined as the sum of the following:\n\n*   The number of complete gardens multiplied by full.\n*   The minimum number of flowers in any of the incomplete gardens multiplied by partial. If there are no incomplete gardens, then this value will be 0.\n\nReturn _the maximum total beauty that Alice can obtain after planting at most_ newFlowers _flowers._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_operations_to_K_increasing(arr, k):\n    operations = 0\n    for i in range(k, len(arr)):\n        if arr[i] <= arr[i - k]:\n            operations += (arr[i - k] - arr[i] + 1)\n            arr[i] = arr[i - k] + 1\n    return operations\n```\n    \n    To make the array K-increasing, we iterate through the array, starting from index k.\nFor each index i, if the condition arr[i-k] > arr[i] does not hold, it means that we need to change the value of arr[i] to make it K-increasing. So, we calculate the difference between the elements arr[i-k] and arr[i], add 1 to the result, and then update the value of arr[i] by adding the calculated difference to arr[i-k]. We also increment our operations counter by the same difference value.\nThis will ensure that the array is K-increasing and keeps track of the minimum number of operations required to change the array. We continue iterating through the array until the last element and return the total number of operations in the end.\n    ",
+    "javascript": "\n    ```javascript\nfunction minOperationsToKIncreasing(arr, k) {\n    let operations = 0;\n    for (let i = k; i < arr.length; i++) {\n        if (arr[i] <= arr[i - k]) {\n            operations += (arr[i - k] - arr[i] + 1);\n            arr[i] = arr[i - k] + 1;\n        }\n    }\n    return operations;\n}\n```\n    \n    To make the array K-increasing, we iterate through the array, starting from index k.\nFor each index i, if the condition arr[i-k] > arr[i] does not hold, it means that we need to change the value of arr[i] to make it K-increasing. So, we calculate the difference between the elements arr[i-k] and arr[i], add 1 to the result, and then update the value of arr[i] by adding the calculated difference to arr[i-k]. We also increment our operations counter by the same difference value.\nThis will ensure that the array is K-increasing and keeps track of the minimum number of operations required to change the array. We continue iterating through the array until the last element and return the total number of operations in the end.\n    ",
+    "java": "\n    ```java\nint minOperationsToKIncreasing(int[] arr, int k) {\n    int operations = 0;\n    for (int i = k; i < arr.length; i++) {\n        if (arr[i] <= arr[i - k]) {\n            operations += (arr[i - k] - arr[i] + 1);\n            arr[i] = arr[i - k] + 1;\n        }\n    }\n    return operations;\n}\n```\n    \n    To make the array K-increasing, we iterate through the array, starting from index k.\nFor each index i, if the condition arr[i-k] > arr[i] does not hold, it means that we need to change the value of arr[i] to make it K-increasing. So, we calculate the difference between the elements arr[i-k] and arr[i], add 1 to the result, and then update the value of arr[i] by adding the calculated difference to arr[i-k]. We also increment our operations counter by the same difference value.\nThis will ensure that the array is K-increasing and keeps track of the minimum number of operations required to change the array. We continue iterating through the array until the last element and return the total number of operations in the end.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

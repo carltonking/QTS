@@ -1,0 +1,24 @@
+{
+  "id": 958,
+  "title": "Check Completeness of a Binary Tree",
+  "slug": "check-completeness-of-a-binary-tree",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the root of a binary tree, determine if it is a _complete binary tree_.\n\nIn a [complete binary tree](http://en.wikipedia.org/wiki/Binary_tree#Types_of_binary_trees), every level, except possibly the last, is completely filled, and all nodes in the last level are as far left as possible. It can have between 1 and 2h nodes inclusive at the last level h.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sortArrayByParityII(nums):\n    j = 1\n    for i in range(0, len(nums), 2):\n        if nums[i] % 2:\n            while nums[j] % 2:\n                j += 2\n            nums[i], nums[j] = nums[j], nums[i]\n    return nums\n```\n    \n    Iterate through the elements of the input array with a step of 2, starting at index 0 (even indices). If the current element is odd, find the nearest odd-indexed element that is even (variable j), and then swap the elements at these indices. This ensures that the even-indexed elements will be even and the odd indexed elements will be odd, satisfying the problem requirements. The time complexity of this algorithm is O(n).\n    ",
+    "javascript": "\n    ```javascript\nfunction sortArrayByParityII(nums) {\n    let j = 1;\n    for (let i = 0; i < nums.length; i += 2) {\n        if (nums[i] % 2 !== 0) {\n            while (nums[j] % 2 !== 0) {\n                j += 2;\n            }\n            [nums[i], nums[j]] = [nums[j], nums[i]];\n        }\n    }\n    return nums;\n}\n```\n    \n    Iterate through the elements of the input array with a step of 2, starting at index 0 (even indices). If the current element is odd, find the nearest odd-indexed element that is even (variable j), and then swap the elements at these indices. This ensures that the even-indexed elements will be even and the odd indexed elements will be odd, satisfying the problem requirements. The time complexity of this algorithm is O(n).\n    ",
+    "java": "\n    ```java\npublic int[] sortArrayByParityII(int[] nums) {\n    int j = 1;\n    for (int i = 0; i < nums.length; i += 2) {\n        if (nums[i] % 2 != 0) {\n            while (nums[j] % 2 != 0) {\n                j += 2;\n            }\n            int temp = nums[i];\n            nums[i] = nums[j];\n            nums[j] = temp;\n        }\n    }\n    return nums;\n}\n```\n    \n    Iterate through the elements of the input array with a step of 2, starting at index 0 (even indices). If the current element is odd, find the nearest odd-indexed element that is even (variable j), and then swap the elements at these indices. This ensures that the even-indexed elements will be even and the odd indexed elements will be odd, satisfying the problem requirements. The time complexity of this algorithm is O(n).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

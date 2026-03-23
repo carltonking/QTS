@@ -1,0 +1,24 @@
+{
+  "id": 1062,
+  "title": "Longest Repeating Substring",
+  "slug": "longest-repeating-substring",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string s, return _the length of the longest repeating substrings_. If no repeating substring exists, return 0.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_longest_repeating_substring(s: str) -> int:\n    n = len(s)\n    max_substr_length = 0\n    for length in range(1, n // 2 + 1):\n        max_repeat_count = repeat_count = 0\n        for i in range(n - length):\n            if s[i:i + length] == s[i + length:i + 2 * length]:\n                repeat_count += 1\n            else:\n                max_repeat_count = max(max_repeat_count, repeat_count)\n                repeat_count = 0\n        max_substr_length = max(max_substr_length, max_repeat_count * length)\n    return max_substr_length\n```\n    \n    The algorithm iterates through each possible length of a substring (`len`). For each `len`, it checks if the current substring `s[i:i+len]` is equal to the next substring `s[i+len:i+2*len]`. If the substrings are equal, it increments `repeat_count` and updates `max_repeat_count` if needed. After iterating through all possible substring lengths, it returns the longest length of the repeated substrings as `max_substr_length`.\n    ",
+    "javascript": "\n    ```javascript\nfunction findLongestRepeatingSubstring(s) {\n    let n = s.length;\n    let maxSubstrLength = 0;\n    for (let len = 1; len <= n / 2; ++len) {\n        let maxRepeatCount = 0, repeatCount = 0;\n        for (let i = 0; i < n - len; ++i) {\n            if (s.substring(i, i + len) === s.substring(i + len, i + 2 * len)) {\n                repeatCount++;\n            } else {\n                maxRepeatCount = Math.max(maxRepeatCount, repeatCount);\n                repeatCount = 0;\n            }\n        }\n        maxSubstrLength = Math.max(maxSubstrLength, maxRepeatCount * len);\n    }\n    return maxSubstrLength;\n}\n```\n    \n    The algorithm iterates through each possible length of a substring (`len`). For each `len`, it checks if the current substring `s[i:i+len]` is equal to the next substring `s[i+len:i+2*len]`. If the substrings are equal, it increments `repeat_count` and updates `max_repeat_count` if needed. After iterating through all possible substring lengths, it returns the longest length of the repeated substrings as `max_substr_length`.\n    ",
+    "java": "\n    ```java\npublic int findLongestRepeatingSubstring(String s) {\n    int n = s.length();\n    int maxSubstrLength = 0;\n    for (int len = 1; len <= n / 2; ++len) {\n        int maxRepeatCount = 0, repeatCount = 0;\n        for (int i = 0; i < n - len; ++i) {\n            if (s.substring(i, i + len).equals(s.substring(i + len, i + 2 * len))) {\n                repeatCount++;\n            } else {\n                maxRepeatCount = Math.max(maxRepeatCount, repeatCount);\n                repeatCount = 0;\n            }\n        }\n        maxSubstrLength = Math.max(maxSubstrLength, maxRepeatCount * len);\n    }\n    return maxSubstrLength;\n}\n```\n    \n    The algorithm iterates through each possible length of a substring (`len`). For each `len`, it checks if the current substring `s[i:i+len]` is equal to the next substring `s[i+len:i+2*len]`. If the substrings are equal, it increments `repeat_count` and updates `max_repeat_count` if needed. After iterating through all possible substring lengths, it returns the longest length of the repeated substrings as `max_substr_length`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1498,
+  "title": "Number of Subsequences That Satisfy the Given Sum Condition",
+  "slug": "number-of-subsequences-that-satisfy-the-given-sum-condition",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array of integers nums and an integer target.\n\nReturn _the number of non-empty subsequences of_ nums _such that the sum of the minimum and maximum element on it is less or equal to_ target. Since the answer may be too large, return it modulo 109 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef getTargetCopy(self, original: TreeNode, cloned: TreeNode, target: TreeNode) -> TreeNode:\n    if original is None:\n        return None\n    if original is target:\n        return cloned\n\n    left = self.getTargetCopy(original.left, cloned.left, target)\n    return left if left else self.getTargetCopy(original.right, cloned.right, target)\n```\n    \n    The algorithm is a simple binary tree traversal using recursion. It starts at the roots of both the original and cloned trees. Since the cloned tree is an exact copy of the original, their structure is the same.\n\nFor each node, the algorithm checks:\n1. If the current 'original' node is null, return null, because it means we've reached the end of a branch without finding the target.\n2. If the current 'original' node is the target node, return the current 'cloned' node, as we've found the corresponding node in the cloned tree.\n3. If neither condition is met, call the function recursively on both the left and right subtrees of the current nodes.\n\nWhen the recursion returns a non-null result, it means the target node has been found, and the reference to the corresponding node in the cloned tree is returned. If the recursion returns null, it means the target node has not been found in the currently explored branches, and the algorithm continues searching.\n    ",
+    "javascript": "\n    ```javascript\nfunction getTargetCopy(original, cloned, target) {\n    if (original === null)\n        return null;\n    if (original === target)\n        return cloned;\n\n    let left = getTargetCopy(original.left, cloned.left, target);\n    return left ? left : getTargetCopy(original.right, cloned.right, target);\n}\n```\n    \n    The algorithm is a simple binary tree traversal using recursion. It starts at the roots of both the original and cloned trees. Since the cloned tree is an exact copy of the original, their structure is the same.\n\nFor each node, the algorithm checks:\n1. If the current 'original' node is null, return null, because it means we've reached the end of a branch without finding the target.\n2. If the current 'original' node is the target node, return the current 'cloned' node, as we've found the corresponding node in the cloned tree.\n3. If neither condition is met, call the function recursively on both the left and right subtrees of the current nodes.\n\nWhen the recursion returns a non-null result, it means the target node has been found, and the reference to the corresponding node in the cloned tree is returned. If the recursion returns null, it means the target node has not been found in the currently explored branches, and the algorithm continues searching.\n    ",
+    "java": "\n    ```java\npublic TreeNode getTargetCopy(TreeNode original, TreeNode cloned, TreeNode target) {\n    if (original == null)\n        return null;\n    if (original == target)\n        return cloned;\n\n    TreeNode left = getTargetCopy(original.left, cloned.left, target);\n    return left != null ? left : getTargetCopy(original.right, cloned.right, target);\n}\n```\n    \n    The algorithm is a simple binary tree traversal using recursion. It starts at the roots of both the original and cloned trees. Since the cloned tree is an exact copy of the original, their structure is the same.\n\nFor each node, the algorithm checks:\n1. If the current 'original' node is null, return null, because it means we've reached the end of a branch without finding the target.\n2. If the current 'original' node is the target node, return the current 'cloned' node, as we've found the corresponding node in the cloned tree.\n3. If neither condition is met, call the function recursively on both the left and right subtrees of the current nodes.\n\nWhen the recursion returns a non-null result, it means the target node has been found, and the reference to the corresponding node in the cloned tree is returned. If the recursion returns null, it means the target node has not been found in the currently explored branches, and the algorithm continues searching.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1970,
+  "title": "Last Day Where You Can Still Cross",
+  "slug": "last-day-where-you-can-still-cross",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "There is a 1-based binary matrix where 0 represents land and 1 represents water. You are given integers row and col representing the number of rows and columns in the matrix, respectively.\n\nInitially on day 0, the entire matrix is land. However, each day a new cell becomes flooded with water. You are given a 1-based 2D array cells, where cells[i] = [ri, ci] represents that on the ith day, the cell on the rith row and cith column (1-based coordinates) will be covered with water (i.e., changed to 1).\n\nYou want to find the last day that it is possible to walk from the top to the bottom by only walking on land cells. You can start from any cell in the top row and end at any cell in the bottom row. You can only travel in the four cardinal directions (left, right, up, and down).\n\nReturn _the last day where it is possible to walk from the top to the bottom by only walking on land cells_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sort_sentence(s: str) -> str:\n    tokens = s.split()\n    words = [''] * len(tokens)\n    \n    for token in tokens:\n        pos = int(token[-1]) - 1\n        words[pos] = token[:-1]\n    \n    return ' '.join(words)\n```\n    \n    1. First, we split the input string into an array of words or tokens.\n2. We create a new array called 'words' of equal length as tokens.\n3. Then, we iterate through each token in the tokens array.\n4. For each token, we parse its last character as the 1-indexed position and calculate the 0-indexed position by subtracting 1.\n5. We then use slicing or substring methods to remove the last character of the token and store the result in the corresponding 0-indexed position in the 'words' array.\n6. Finally, after processing all tokens, we join the words array back into a single string separated by spaces and return it as the original sentence.\n    ",
+    "javascript": "\n    ```javascript\nfunction sortSentence(s) {\n    const tokens = s.split(\" \");\n    const words = Array(tokens.length);\n    \n    for (const token of tokens) {\n        const pos = parseInt(token.slice(-1)) - 1;\n        words[pos] = token.slice(0, -1);\n    }\n    \n    return words.join(\" \");\n}\n```\n    \n    1. First, we split the input string into an array of words or tokens.\n2. We create a new array called 'words' of equal length as tokens.\n3. Then, we iterate through each token in the tokens array.\n4. For each token, we parse its last character as the 1-indexed position and calculate the 0-indexed position by subtracting 1.\n5. We then use slicing or substring methods to remove the last character of the token and store the result in the corresponding 0-indexed position in the 'words' array.\n6. Finally, after processing all tokens, we join the words array back into a single string separated by spaces and return it as the original sentence.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic String sortSentence(String s) {\n    String[] tokens = s.split(\" \");\n    String[] words = new String[tokens.length];\n    \n    for (String token : tokens) {\n        int pos = Integer.parseInt(token.substring(token.length() - 1)) - 1;\n        words[pos] = token.substring(0, token.length() - 1);\n    }\n    \n    return String.join(\" \", words);\n}\n```\n    \n    1. First, we split the input string into an array of words or tokens.\n2. We create a new array called 'words' of equal length as tokens.\n3. Then, we iterate through each token in the tokens array.\n4. For each token, we parse its last character as the 1-indexed position and calculate the 0-indexed position by subtracting 1.\n5. We then use slicing or substring methods to remove the last character of the token and store the result in the corresponding 0-indexed position in the 'words' array.\n6. Finally, after processing all tokens, we join the words array back into a single string separated by spaces and return it as the original sentence.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2262,
+  "title": "Total Appeal of A String",
+  "slug": "total-appeal-of-a-string",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "The appeal of a string is the number of distinct characters found in the string.\n\n*   For example, the appeal of \"abbca \" is 3 because it has 3 distinct characters: 'a', 'b', and 'c'.\n\nGiven a string s, return _the total appeal of all of its substrings._\n\nA substring is a contiguous sequence of characters within a string.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_points(questions):\n    n = len(questions)\n    dp = [0] * (n + 1)\n\n    for i in range(n - 1, -1, -1):\n        skip_next = i + questions[i][1]\n        dp[i] = max(dp[i + 1], questions[i][0] + (dp[skip_next] if skip_next < n else 0))\n\n    return dp[0]\n```\n\n    \n    We use dynamic programming to solve the problem. We create an array `dp` of size `n+1` to store the maximum points we can earn for each question. We initialize the array elements to 0.\n\nWe iterate through the questions in reverse order, starting from the last question. For each question `i`, we calculate the index `skip_next` by adding the current index and the `brainpower` value of the question. We update the `dp[i]` value with the maximum between `dp[i+1]` (if we skip the current question) and `questions[i][0] + (dp[skip_next] if skip_next < n else 0)` (if we solve the current question).\n\nFinally, we return the maximum points we can earn, which is stored in `dp[0]`.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxPoints(questions) {\n    const n = questions.length;\n    const dp = new Array(n + 1).fill(0);\n\n    for (let i = n - 1; i >= 0; i--) {\n        const skip_next = i + questions[i][1];\n        dp[i] = Math.max(dp[i + 1], questions[i][0] + (skip_next < n ? dp[skip_next] : 0));\n    }\n\n    return dp[0];\n}\n```\n\n    \n    We use dynamic programming to solve the problem. We create an array `dp` of size `n+1` to store the maximum points we can earn for each question. We initialize the array elements to 0.\n\nWe iterate through the questions in reverse order, starting from the last question. For each question `i`, we calculate the index `skip_next` by adding the current index and the `brainpower` value of the question. We update the `dp[i]` value with the maximum between `dp[i+1]` (if we skip the current question) and `questions[i][0] + (dp[skip_next] if skip_next < n else 0)` (if we solve the current question).\n\nFinally, we return the maximum points we can earn, which is stored in `dp[0]`.\n    ",
+    "java": "\n    ```java\npublic int maxPoints(int[][] questions) {\n    int n = questions.length;\n    int[] dp = new int[n + 1];\n\n    for (int i = n - 1; i >= 0; i--) {\n        int skip_next = i + questions[i][1];\n        dp[i] = Math.max(dp[i + 1], questions[i][0] + (skip_next < n ? dp[skip_next] : 0));\n    }\n\n    return dp[0];\n}\n```\n\n    \n    We use dynamic programming to solve the problem. We create an array `dp` of size `n+1` to store the maximum points we can earn for each question. We initialize the array elements to 0.\n\nWe iterate through the questions in reverse order, starting from the last question. For each question `i`, we calculate the index `skip_next` by adding the current index and the `brainpower` value of the question. We update the `dp[i]` value with the maximum between `dp[i+1]` (if we skip the current question) and `questions[i][0] + (dp[skip_next] if skip_next < n else 0)` (if we solve the current question).\n\nFinally, we return the maximum points we can earn, which is stored in `dp[0]`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

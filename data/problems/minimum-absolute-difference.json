@@ -1,0 +1,24 @@
+{
+  "id": 1200,
+  "title": "Minimum Absolute Difference",
+  "slug": "minimum-absolute-difference",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array of distinct integers arr, find all pairs of elements with the minimum absolute difference of any two elements.\n\nReturn a list of pairs in ascending order(with respect to pairs), each pair [a, b] follows\n\n*   a, b are from arr\n*   a < b\n*   b - a equals to the minimum absolute difference of any two elements in arr",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom typing import List\n\ndef minimumAbsDifference(arr: List[int]) -> List[List[int]]:\n    arr.sort()\n    min_diff = min(arr[i] - arr[i - 1] for i in range(1, len(arr)))\n\n    result = []\n    for i in range(1, len(arr)):\n        if arr[i] - arr[i - 1] == min_diff:\n            result.append([arr[i - 1], arr[i]])\n\n    return result\n```\n    \n    1. Sort the input array in ascending order.\n2. Iterate through the sorted array and find the minimum absolute difference between adjacent elements. This value will be the minimum difference between any two elements in the array.\n3. Iterate through the sorted array again and construct the output list by adding pairs of elements with an absolute difference equal to the minimum difference found in step 2.\n    ",
+    "javascript": "\n    ```javascript\nfunction minimumAbsDifference(arr) {\n    arr.sort((a, b) => a - b);\n    let minDiff = Infinity;\n    for (let i = 1; i < arr.length; i++) {\n        minDiff = Math.min(minDiff, arr[i] - arr[i - 1]);\n    }\n\n    const result = [];\n    for (let i = 1; i < arr.length; i++) {\n        if (arr[i] - arr[i - 1] === minDiff) {\n            result.push([arr[i - 1], arr[i]]);\n        }\n    }\n\n    return result;\n}\n```\n    \n    1. Sort the input array in ascending order.\n2. Iterate through the sorted array and find the minimum absolute difference between adjacent elements. This value will be the minimum difference between any two elements in the array.\n3. Iterate through the sorted array again and construct the output list by adding pairs of elements with an absolute difference equal to the minimum difference found in step 2.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.List;\n\npublic List<List<Integer>> minimumAbsDifference(int[] arr) {\n    Arrays.sort(arr);\n    int minDiff = Integer.MAX_VALUE;\n    for (int i = 1; i < arr.length; i++) {\n        minDiff = Math.min(minDiff, arr[i] - arr[i - 1]);\n    }\n\n    List<List<Integer>> result = new ArrayList<>();\n    for (int i = 1; i < arr.length; i++) {\n        if (arr[i] - arr[i - 1] == minDiff) {\n            result.add(Arrays.asList(arr[i - 1], arr[i]));\n        }\n    }\n\n    return result;\n}\n```\n    \n    1. Sort the input array in ascending order.\n2. Iterate through the sorted array and find the minimum absolute difference between adjacent elements. This value will be the minimum difference between any two elements in the array.\n3. Iterate through the sorted array again and construct the output list by adding pairs of elements with an absolute difference equal to the minimum difference found in step 2.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

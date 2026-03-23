@@ -1,0 +1,24 @@
+{
+  "id": 2177,
+  "title": "Find Three Consecutive Integers That Sum to a Given Number",
+  "slug": "find-three-consecutive-integers-that-sum-to-a-given-number",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer num, return _three consecutive integers (as a sorted array)_ _that sum to_ num. If num cannot be expressed as the sum of three consecutive integers, return _an empty array._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef almost_equivalent(word1, word2):\n    freq1 = {}\n    freq2 = {}\n\n    for c in word1:\n        freq1[c] = freq1.get(c, 0) + 1\n    for c in word2:\n        freq2[c] = freq2.get(c, 0) + 1\n\n    for c in \"abcdefghijklmnopqrstuvwxyz\":\n        if abs(freq1.get(c, 0) - freq2.get(c, 0)) > 3:\n            return False\n\n    return True\n```\n\n    \n    The algorithm starts by initializing two frequency dictionaries (or unordered maps, hashmaps) freq1 and freq2 for tracking characters in word1 and word2, respectively. Then, it iterates through each character in both words to count character frequencies.\n\nAfter the frequencies have been computed, the algorithm loops through each letter from 'a' to 'z' and checks if their corresponding frequencies' absolute differences are greater than 3. If so, it immediately returns false, as the words are not almost equivalent. \n\nFinally, if no such differences are found, it returns true, meaning the words are almost equivalent.\n    ",
+    "javascript": "\n    ```javascript\nfunction almostEquivalent(word1, word2) {\n    let freq1 = {};\n    let freq2 = {};\n\n    for (let c of word1) {\n        if (!freq1.hasOwnProperty(c)) {\n            freq1[c] = 0;\n        }\n        freq1[c]++;\n    }\n    for (let c of word2) {\n        if (!freq2.hasOwnProperty(c)) {\n            freq2[c] = 0;\n        }\n        freq2[c]++;\n    }\n\n    for (let c = 'a'.charCodeAt(0); c <= 'z'.charCodeAt(0); c++) {\n        let char = String.fromCharCode(c);\n        if (Math.abs((freq1[char] || 0) - (freq2[char] || 0)) > 3) {\n            return false;\n        }\n    }\n\n    return true;\n}\n```\n\n    \n    The algorithm starts by initializing two frequency dictionaries (or unordered maps, hashmaps) freq1 and freq2 for tracking characters in word1 and word2, respectively. Then, it iterates through each character in both words to count character frequencies.\n\nAfter the frequencies have been computed, the algorithm loops through each letter from 'a' to 'z' and checks if their corresponding frequencies' absolute differences are greater than 3. If so, it immediately returns false, as the words are not almost equivalent. \n\nFinally, if no such differences are found, it returns true, meaning the words are almost equivalent.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\n\npublic boolean almostEquivalent(String word1, String word2) {\n    HashMap<Character, Integer> freq1 = new HashMap<>();\n    HashMap<Character, Integer> freq2 = new HashMap<>();\n\n    for (char c : word1.toCharArray()) {\n        freq1.put(c, freq1.getOrDefault(c, 0) + 1);\n    }\n    for (char c : word2.toCharArray()) {\n        freq2.put(c, freq2.getOrDefault(c, 0) + 1);\n    }\n    for (char c = 'a'; c <= 'z'; c++) {\n        if (Math.abs(freq1.getOrDefault(c, 0) - freq2.getOrDefault(c, 0)) > 3) {\n            return false;\n        }\n    }\n\n    return true;\n}\n```\n\n    \n    The algorithm starts by initializing two frequency dictionaries (or unordered maps, hashmaps) freq1 and freq2 for tracking characters in word1 and word2, respectively. Then, it iterates through each character in both words to count character frequencies.\n\nAfter the frequencies have been computed, the algorithm loops through each letter from 'a' to 'z' and checks if their corresponding frequencies' absolute differences are greater than 3. If so, it immediately returns false, as the words are not almost equivalent. \n\nFinally, if no such differences are found, it returns true, meaning the words are almost equivalent.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

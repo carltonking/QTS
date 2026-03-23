@@ -1,0 +1,24 @@
+{
+  "id": 2204,
+  "title": "Distance to a Cycle in Undirected Graph",
+  "slug": "distance-to-a-cycle-in-undirected-graph",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a positive integer n representing the number of nodes in a connected undirected graph containing exactly one cycle. The nodes are numbered from 0 to n - 1 (inclusive).\n\nYou are also given a 2D integer array edges, where edges[i] = [node1i, node2i] denotes that there is a bidirectional edge connecting node1i and node2i in the graph.\n\nThe distance between two nodes a and b is defined to be the minimum number of edges that are needed to go from a to b.\n\nReturn _an integer array answer_ _of size_ n_, where_ answer[i] _is the minimum distance between the_ ith _node and any node in the cycle._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nimport heapq\n\ndef largest_sum_sequence(nums, k):\n    min_heap = []\n    \n    for num in nums:\n        heapq.heappush(min_heap, num)\n        if len(min_heap) > k:\n            heapq.heappop(min_heap)\n    \n    result = [0] * k\n    for i in range(k-1, -1, -1):\n        result[i] = heapq.heappop(min_heap)\n    \n    return result\n```\n    \n    The algorithm uses a min-heap of size `k` to keep track of the largest `k` elements in the input array. It iterates through the array, pushing each element to the heap. If the heap has more than `k` elements, it pops the smallest element. After processing all elements, the min-heap contains the desired subsequence having the largest sum, and we just need to transform the heap back to an array with the same order of elements.\n    ",
+    "javascript": "\n    ```javascript\nfunction largestSumSequence(nums, k) {\n    const minHeap = new MinHeap();\n\n    for (const num of nums) {\n        minHeap.push(num);\n        if (minHeap.getSize() > k) {\n            minHeap.pop();\n        }\n    }\n\n    const result = new Array(k);\n    for (let i = k - 1; i >= 0; i--) {\n        result[i] = minHeap.pop();\n    }\n\n    return result;\n}\n\nclass MinHeap {\n    constructor() {\n        this.heap = [];\n    }\n\n    push(num) {\n        this.heap.push(num);\n        this.bubbleUp(this.heap.length - 1);\n    }\n\n    pop() {\n        const min = this.heap[0];\n        this.heap[0] = this.heap.pop();\n        this.bubbleDown(0);\n        return min;\n    }\n\n    getSize() {\n        return this.heap.length;\n    }\n\n    bubbleUp(index) {\n        while (index > 0 && this.heap[index] < this.heap[Math.floor((index - 1) / 2)]) {\n            this.swap(index, Math.floor((index - 1) / 2));\n            index = Math.floor((index - 1) / 2);\n        }\n    }\n\n    bubbleDown(index) {\n        while (2 * index + 1 < this.heap.length) {\n            let minIndex = 2 * index + 1;\n            if (2 * index + 2 < this.heap.length && this.heap[minIndex] > this.heap[2 * index + 2]) {\n                minIndex = 2 * index + 2;\n            }\n            if (this.heap[index] > this.heap[minIndex]) {\n                this.swap(index, minIndex);\n                index = minIndex;\n            } else {\n                break;\n            }\n        }\n    }\n\n    swap(i, j) {\n        const tmp = this.heap[i];\n        this.heap[i] = this.heap[j];\n        this.heap[j] = tmp;\n    }\n}\n```\n    \n    The algorithm uses a min-heap of size `k` to keep track of the largest `k` elements in the input array. It iterates through the array, pushing each element to the heap. If the heap has more than `k` elements, it pops the smallest element. After processing all elements, the min-heap contains the desired subsequence having the largest sum, and we just need to transform the heap back to an array with the same order of elements.\n    ",
+    "java": "\n    ```java\nimport java.util.PriorityQueue;\n\npublic int[] largestSumSequence(int[] nums, int k) {\n    PriorityQueue<Integer> minHeap = new PriorityQueue<>(k);\n    \n    for (int num : nums) {\n        minHeap.offer(num);\n        if (minHeap.size() > k) {\n            minHeap.poll();\n        }\n    }\n    \n    int[] result = new int[k];\n    for (int i = k - 1; i >= 0; i--) {\n        result[i] = minHeap.poll();\n    }\n    \n    return result;\n}\n```\n    \n    The algorithm uses a min-heap of size `k` to keep track of the largest `k` elements in the input array. It iterates through the array, pushing each element to the heap. If the heap has more than `k` elements, it pops the smallest element. After processing all elements, the min-heap contains the desired subsequence having the largest sum, and we just need to transform the heap back to an array with the same order of elements.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

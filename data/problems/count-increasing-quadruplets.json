@@ -1,0 +1,24 @@
+{
+  "id": 2552,
+  "title": "Count Increasing Quadruplets",
+  "slug": "count-increasing-quadruplets",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given a 0-indexed integer array nums of size n containing all numbers from 1 to n, return _the number of increasing quadruplets_.\n\nA quadruplet (i, j, k, l) is increasing if:\n\n*   0 <= i < j < k < l < n, and\n*   nums[i] < nums[k] < nums[j] < nums[l].",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    \r\n```javascript\r\nfunction increasingQuadruplets(nums) {\r\n    const n = nums.length;\r\n    let count = 0;\r\n    for(let i = 0; i < n - 3; i++) {\r\n        for(let j = i + 1; j < n - 2; j++) {\r\n            for(let k = j + 1; k < n - 1; k++) {\r\n                if(nums[i] < nums[k] && nums[k] < nums[j]) {\r\n                    for(let l = k + 1; l < n; l++) {\r\n                        if(nums[j] < nums[l]) {\r\n                            count++;\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    } \r\n    return count;\r\n}\r\n```\r\n\r\n    \n    \r\nWe iterate through all combinations of indices `i, j, k, l` such that `0 <= i < j < k < l < n`. For each quadruplet of indices, we check if `nums[i] < nums[k] < nums[j] < nums[l]`. If so, we increment our count of increasing quadruplets. After iterating through all possible quadruplets, we return our count.\r\n    ",
+    "javascript": "\n    \r\n```python\r\ndef increasing_quadruplets(nums):\r\n    n = len(nums)\r\n    count = 0\r\n    for i in range(n - 3):\r\n        for j in range(i + 1, n - 2):\r\n            for k in range(j + 1, n - 1):\r\n                if nums[i] < nums[k] and nums[k] < nums[j]:\r\n                    for l in range(k + 1, n):\r\n                        if nums[j] < nums[l]:\r\n                            count += 1\r\n    return count\r\n```\r\n\r\n    \n    \r\nWe iterate through all combinations of indices `i, j, k, l` such that `0 <= i < j < k < l < n`. For each quadruplet of indices, we check if `nums[i] < nums[k] < nums[j] < nums[l]`. If so, we increment our count of increasing quadruplets. After iterating through all possible quadruplets, we return our count.\r\n    ",
+    "java": "\n    \r\n```java\r\npublic int increasingQuadruplets(int[] nums) {\r\n    int n = nums.length, count = 0;\r\n    for(int i = 0; i < n - 3; i++) {\r\n        for(int j = i + 1; j < n - 2; j++) {\r\n            for(int k = j + 1; k < n - 1; k++) {\r\n                if(nums[i] < nums[k] && nums[k] < nums[j]) {\r\n                    for(int l = k + 1; l < n; l++) {\r\n                        if(nums[j] < nums[l]) {\r\n                            count++;\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    } \r\n    return count;\r\n}\r\n```\r\n\r\n    \n    \r\nWe iterate through all combinations of indices `i, j, k, l` such that `0 <= i < j < k < l < n`. For each quadruplet of indices, we check if `nums[i] < nums[k] < nums[j] < nums[l]`. If so, we increment our count of increasing quadruplets. After iterating through all possible quadruplets, we return our count.\r\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

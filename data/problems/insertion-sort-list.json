@@ -1,0 +1,24 @@
+{
+  "id": 147,
+  "title": "Insertion Sort List",
+  "slug": "insertion-sort-list",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the head of a singly linked list, sort the list using insertion sort, and return _the sorted list's head_.\n\nThe steps of the insertion sort algorithm:\n\n1.  Insertion sort iterates, consuming one input element each repetition and growing a sorted output list.\n2.  At each iteration, insertion sort removes one element from the input data, finds the location it belongs within the sorted list and inserts it there.\n3.  It repeats until no input elements remain.\n\nThe following is a graphical example of the insertion sort algorithm. The partially sorted list (black) initially contains only the first element in the list. One element (red) is removed from the input data and inserted in-place into the sorted list with each iteration.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef insertionSortList(head):\n    dummy = ListNode(0)\n    cur = dummy\n\n    while head:\n        while cur.next and cur.next.val < head.val:\n            cur = cur.next\n        \n        temp = head.next\n        head.next = cur.next\n        cur.next = head\n        head = temp\n        cur = dummy\n\n    return dummy.next\n```\n    \n    The insertion sort algorithm for a linked list involves iterating through the list, removing one element at a time, and inserting it into the sorted sublist. We use a dummy node to act as the head of the sorted sublist, which initially has no elements. In each iteration, we compare the current element (its value) to the elements in the sorted sublist, and insert it into its proper position. This is done by updating the \"next\" pointers for the appropriate nodes. The process is repeated until all elements from the original list have been processed and added to the sorted sublist. At the end, the sorted sublist is returned, starting from the next node after the dummy head node.\n    ",
+    "javascript": "\n    ```javascript\nclass ListNode {\n    constructor(val, next) {\n        this.val = (val === undefined ? 0 : val);\n        this.next = (next === undefined ? null : next);\n    }\n}\n\nfunction insertionSortList(head) {\n    let dummy = new ListNode(0);\n    let cur;\n\n    while (head) {\n        cur = dummy;\n        while (cur.next && cur.next.val < head.val) {\n            cur = cur.next;\n        }\n\n        let temp = head.next;\n        head.next = cur.next;\n        cur.next = head;\n        head = temp;\n    }\n\n    return dummy.next;\n}\n```\n    \n    The insertion sort algorithm for a linked list involves iterating through the list, removing one element at a time, and inserting it into the sorted sublist. We use a dummy node to act as the head of the sorted sublist, which initially has no elements. In each iteration, we compare the current element (its value) to the elements in the sorted sublist, and insert it into its proper position. This is done by updating the \"next\" pointers for the appropriate nodes. The process is repeated until all elements from the original list have been processed and added to the sorted sublist. At the end, the sorted sublist is returned, starting from the next node after the dummy head node.\n    ",
+    "java": "\n    ```java\nclass ListNode {\n    int val;\n    ListNode next;\n}\n\npublic ListNode insertionSortList(ListNode head) {\n    ListNode dummy = new ListNode(0);\n    ListNode cur;\n\n    while (head != null) {\n        cur = dummy;\n        while (cur.next != null && cur.next.val < head.val) {\n            cur = cur.next;\n        }\n\n        ListNode temp = head.next;\n        head.next = cur.next;\n        cur.next = head;\n        head = temp;\n    }\n\n    return dummy.next;\n}\n```\n    \n    The insertion sort algorithm for a linked list involves iterating through the list, removing one element at a time, and inserting it into the sorted sublist. We use a dummy node to act as the head of the sorted sublist, which initially has no elements. In each iteration, we compare the current element (its value) to the elements in the sorted sublist, and insert it into its proper position. This is done by updating the \"next\" pointers for the appropriate nodes. The process is repeated until all elements from the original list have been processed and added to the sorted sublist. At the end, the sorted sublist is returned, starting from the next node after the dummy head node.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

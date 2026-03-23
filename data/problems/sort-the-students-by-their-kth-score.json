@@ -1,0 +1,24 @@
+{
+  "id": 2545,
+  "title": "Sort the Students by Their Kth Score",
+  "slug": "sort-the-students-by-their-kth-score",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There is a class with m students and n exams. You are given a 0-indexed m x n integer matrix score, where each row represents one student and score[i][j] denotes the score the ith student got in the jth exam. The matrix score contains distinct integers only.\n\nYou are also given an integer k. Sort the students (i.e., the rows of the matrix) by their scores in the kth (0-indexed) exam from the highest to the lowest.\n\nReturn _the matrix after sorting it._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sort_students(score, k):\n    score.sort(key=lambda x: x[k], reverse=True)\n    return score\n```\n\n    \n    The algorithm makes use of the given programming language's built-in sorting function (e.g., `sort` function for C++, Java, Python, and JavaScript). A custom sorting function is supplied as an argument to the built-in sort function.\n\nFor each language, the custom sorting function utilizes a lambda function that compares the `k`-th exam scores of two students (i.e., rows of the matrix). The lambda function sorts rows in descending order based on their scores in the `k`-th exam. The result is a sorted matrix where students' rows are rearranged according to their scores in the `k`-th exam.\n\nHere's an overview of the custom sorting function for each language:\n* C++: Uses lambda function `[k] (const vector<int>& a, const vector<int>& b) { return a[k] > b[k]; }`\n* Java: Uses lambda function `(a, b) -> b[k] - a[k]`\n* Python: Uses lambda function `key=lambda x: x[k], reverse=True`\n* JavaScript: Uses lambda function `(a, b) => b[k] - a[k]`\n    ",
+    "javascript": "\n    ```javascript\nfunction sort_students(score, k) {\n    return score.sort((a, b) => b[k] - a[k]);\n}\n```\n\n    \n    The algorithm makes use of the given programming language's built-in sorting function (e.g., `sort` function for C++, Java, Python, and JavaScript). A custom sorting function is supplied as an argument to the built-in sort function.\n\nFor each language, the custom sorting function utilizes a lambda function that compares the `k`-th exam scores of two students (i.e., rows of the matrix). The lambda function sorts rows in descending order based on their scores in the `k`-th exam. The result is a sorted matrix where students' rows are rearranged according to their scores in the `k`-th exam.\n\nHere's an overview of the custom sorting function for each language:\n* C++: Uses lambda function `[k] (const vector<int>& a, const vector<int>& b) { return a[k] > b[k]; }`\n* Java: Uses lambda function `(a, b) -> b[k] - a[k]`\n* Python: Uses lambda function `key=lambda x: x[k], reverse=True`\n* JavaScript: Uses lambda function `(a, b) => b[k] - a[k]`\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\nclass Solution {\n    public int[][] sortStudents(int[][] score, int k) {\n        Arrays.sort(score, (a, b) -> b[k] - a[k]);\n        return score;\n    }\n}\n```\n\n    \n    The algorithm makes use of the given programming language's built-in sorting function (e.g., `sort` function for C++, Java, Python, and JavaScript). A custom sorting function is supplied as an argument to the built-in sort function.\n\nFor each language, the custom sorting function utilizes a lambda function that compares the `k`-th exam scores of two students (i.e., rows of the matrix). The lambda function sorts rows in descending order based on their scores in the `k`-th exam. The result is a sorted matrix where students' rows are rearranged according to their scores in the `k`-th exam.\n\nHere's an overview of the custom sorting function for each language:\n* C++: Uses lambda function `[k] (const vector<int>& a, const vector<int>& b) { return a[k] > b[k]; }`\n* Java: Uses lambda function `(a, b) -> b[k] - a[k]`\n* Python: Uses lambda function `key=lambda x: x[k], reverse=True`\n* JavaScript: Uses lambda function `(a, b) => b[k] - a[k]`\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

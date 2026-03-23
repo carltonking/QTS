@@ -1,0 +1,24 @@
+{
+  "id": 1845,
+  "title": "Seat Reservation Manager",
+  "slug": "seat-reservation-manager",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Design a system that manages the reservation state of n seats that are numbered from 1 to n.\n\nImplement the SeatManager class:\n\n*   SeatManager(int n) Initializes a SeatManager object that will manage n seats numbered from 1 to n. All seats are initially available.\n*   int reserve() Fetches the smallest-numbered unreserved seat, reserves it, and returns its number.\n*   void unreserve(int seatNumber) Unreserves the seat with the given seatNumber.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef largestSubmatrix(matrix):\n    m, n = len(matrix), len(matrix[0])\n    height = [0] * n\n    max_area = 0\n\n    for i in range(m):\n        for j in range(n):\n            if matrix[i][j] == 1:\n                height[j] += 1\n            else:\n                height[j] = 0\n        sorted_height = sorted(height)\n        for j in range(n):\n            max_area = max(max_area, sorted_height[j] * (n - j))\n\n    return max_area\n```\n\n    \n    1. Initialize a height array of size n with all elements as 0, and set max_area as 0.\n2. Iterate through each row of the matrix:\n   a. For each column, if the current matrix element is 1, increment the height array element. Otherwise, set the height element to 0.\n   b. Create a sorted copy of the height array.\n   c. Iterate through the sorted height array and update the max_area as maximum of max_area and the product of the current sorted height element and the difference between n and the current index.\n3. Return the max_area. This represents the optimal area of the largest submatrix with all elements as 1.\n    ",
+    "javascript": "\n    ```javascript\nfunction largestSubmatrix(matrix) {\n    const m = matrix.length, n = matrix[0].length;\n    const height = Array(n).fill(0);\n    let max_area = 0;\n\n    for (let i = 0; i < m; ++i) {\n        for (let j = 0; j < n; ++j) {\n            if (matrix[i][j] === 1) height[j]++;\n            else height[j] = 0;\n        }\n        const sorted_height = [...height].sort((a, b) => a - b);\n        for (let j = 0; j < n; ++j) {\n            max_area = Math.max(max_area, sorted_height[j] * (n - j));\n        }\n    }\n    return max_area;\n}\n```\n\n    \n    1. Initialize a height array of size n with all elements as 0, and set max_area as 0.\n2. Iterate through each row of the matrix:\n   a. For each column, if the current matrix element is 1, increment the height array element. Otherwise, set the height element to 0.\n   b. Create a sorted copy of the height array.\n   c. Iterate through the sorted height array and update the max_area as maximum of max_area and the product of the current sorted height element and the difference between n and the current index.\n3. Return the max_area. This represents the optimal area of the largest submatrix with all elements as 1.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\nclass Solution {\n    public int largestSubmatrix(int[][] matrix) {\n        int m = matrix.length, n = matrix[0].length;\n        int[] height = new int[n];\n        int max_area = 0;\n\n        for (int i = 0; i < m; ++i) {\n            for (int j = 0; j < n; ++j) {\n                if (matrix[i][j] == 1) height[j]++;\n                else height[j] = 0;\n            }\n            int[] sorted_height = height.clone();\n            Arrays.sort(sorted_height);\n            for (int j = 0; j < n; ++j) {\n                max_area = Math.max(max_area, sorted_height[j] * (n - j));\n            }\n        }\n        return max_area;\n    }\n}\n```\n\n    \n    1. Initialize a height array of size n with all elements as 0, and set max_area as 0.\n2. Iterate through each row of the matrix:\n   a. For each column, if the current matrix element is 1, increment the height array element. Otherwise, set the height element to 0.\n   b. Create a sorted copy of the height array.\n   c. Iterate through the sorted height array and update the max_area as maximum of max_area and the product of the current sorted height element and the difference between n and the current index.\n3. Return the max_area. This represents the optimal area of the largest submatrix with all elements as 1.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

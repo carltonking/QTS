@@ -1,0 +1,24 @@
+{
+  "id": 2424,
+  "title": "Longest Uploaded Prefix",
+  "slug": "longest-uploaded-prefix",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a stream of n videos, each represented by a distinct number from 1 to n that you need to \"upload \" to a server. You need to implement a data structure that calculates the length of the longest uploaded prefix at various points in the upload process.\n\nWe consider i to be an uploaded prefix if all videos in the range 1 to i (inclusive) have been uploaded to the server. The longest uploaded prefix is the maximum value of i that satisfies this definition.\n\nImplement the LUPrefix class:\n\n*   LUPrefix(int n) Initializes the object for a stream of n videos.\n*   void upload(int video) Uploads video to the server.\n*   int longest() Returns the length of the longest uploaded prefix defined above.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass LUPrefix:\n    def __init__(self, n: int):\n        self.max_prefix_length = 0\n        self.next_video = 1\n        self.uploaded = [False] * (n + 1)\n\n    def upload(self, video: int) -> None:\n        self.uploaded[video] = True\n        if video == self.next_video:\n            while self.uploaded[self.next_video]:\n                self.next_video += 1\n\n    def longest(self) -> int:\n        return self.next_video - 1\n```\n    \n    The data structure keeps track of the next video that should be uploaded in `next_video`. It also maintains an array or vector `uploaded` of size `n+1`. Each index corresponds to whether the video at that index has been uploaded or not. When a new video is uploaded to the server, the corresponding boolean flag in the array is set to `true`. If the uploaded video's index matches the expected next video, `next_video` is updated while the other videos in the contiguous sequence are also marked as uploaded. The length of the longest uploaded prefix is equal to the value of `next_video` minus `1`.\n    ",
+    "javascript": "\n    ```javascript\nclass LUPrefix {\n    constructor(n) {\n        this.maxPrefixLength = 0;\n        this.nextVideo = 1;\n        this.uploaded = new Array(n + 1).fill(false);\n    }\n\n    upload(video) {\n        this.uploaded[video] = true;\n        if (video === this.nextVideo) {\n            while (this.uploaded[this.nextVideo]) this.nextVideo++;\n        }\n    }\n\n    longest() {\n        return this.nextVideo - 1;\n    }\n}\n```\n    \n    The data structure keeps track of the next video that should be uploaded in `next_video`. It also maintains an array or vector `uploaded` of size `n+1`. Each index corresponds to whether the video at that index has been uploaded or not. When a new video is uploaded to the server, the corresponding boolean flag in the array is set to `true`. If the uploaded video's index matches the expected next video, `next_video` is updated while the other videos in the contiguous sequence are also marked as uploaded. The length of the longest uploaded prefix is equal to the value of `next_video` minus `1`.\n    ",
+    "java": "\n    ```java\nclass LUPrefix {\n    private int maxPrefixLength, nextVideo;\n    private boolean[] uploaded;\n\n    public LUPrefix(int n) {\n        maxPrefixLength = 0;\n        nextVideo = 1;\n        uploaded = new boolean[n + 1];\n    }\n\n    public void upload(int video) {\n        uploaded[video] = true;\n        if (video == nextVideo) {\n            while (uploaded[nextVideo]) nextVideo++;\n        }\n    }\n\n    public int longest() {\n        return nextVideo - 1;\n    }\n}\n```\n    \n    The data structure keeps track of the next video that should be uploaded in `next_video`. It also maintains an array or vector `uploaded` of size `n+1`. Each index corresponds to whether the video at that index has been uploaded or not. When a new video is uploaded to the server, the corresponding boolean flag in the array is set to `true`. If the uploaded video's index matches the expected next video, `next_video` is updated while the other videos in the contiguous sequence are also marked as uploaded. The length of the longest uploaded prefix is equal to the value of `next_video` minus `1`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

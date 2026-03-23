@@ -1,0 +1,24 @@
+{
+  "id": 1652,
+  "title": "Defuse the Bomb",
+  "slug": "defuse-the-bomb",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You have a bomb to defuse, and your time is running out! Your informer will provide you with a circular array code of length of n and a key k.\n\nTo decrypt the code, you must replace every number. All the numbers are replaced simultaneously.\n\n*   If k > 0, replace the ith number with the sum of the next k numbers.\n*   If k < 0, replace the ith number with the sum of the previous k numbers.\n*   If k == 0, replace the ith number with 0.\n\nAs code is circular, the next element of code[n-1] is code[0], and the previous element of code[0] is code[n-1].\n\nGiven the circular array code and an integer key k, return _the decrypted code to defuse the bomb_!",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minOperations(target: str) -> int:\n    operations = 0\n    current_bit = '0'\n    for bit in target:\n        if bit != current_bit:\n            operations += 1\n            current_bit = bit\n    return operations\n```\n    \n    The algorithm iterates through the target binary string, keeping track of the current bit. Whenever it encounters a bit in the target string that is different from the current one, it increments the operation counter and updates the current bit. By following this approach, we ensure that we only need to flip bits when necessary, resulting in the minimum number of operations.\n    ",
+    "javascript": "\n    ```javascript\nfunction minOperations(target) {\n    let operations = 0;\n    let current_bit = '0';\n    for (let bit of target) {\n        if (bit !== current_bit) {\n            operations++;\n            current_bit = bit;\n        }\n    }\n    return operations;\n}\n```\n\n    \n    The algorithm iterates through the target binary string, keeping track of the current bit. Whenever it encounters a bit in the target string that is different from the current one, it increments the operation counter and updates the current bit. By following this approach, we ensure that we only need to flip bits when necessary, resulting in the minimum number of operations.\n    ",
+    "java": "\n    ```java\npublic int minOperations(String target) {\n    int operations = 0;\n    char current_bit = '0';\n    for (char bit : target.toCharArray()) {\n        if (bit != current_bit) {\n            operations++;\n            current_bit = bit;\n        }\n    }\n    return operations;\n}\n```\n    \n    The algorithm iterates through the target binary string, keeping track of the current bit. Whenever it encounters a bit in the target string that is different from the current one, it increments the operation counter and updates the current bit. By following this approach, we ensure that we only need to flip bits when necessary, resulting in the minimum number of operations.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

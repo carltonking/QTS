@@ -1,0 +1,24 @@
+{
+  "id": 2554,
+  "title": "Maximum Number of Integers to Choose From a Range I",
+  "slug": "maximum-number-of-integers-to-choose-from-a-range-i",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array banned and two integers n and maxSum. You are choosing some number of integers following the below rules:\n\n*   The chosen integers have to be in the range [1, n].\n*   Each integer can be chosen at most once.\n*   The chosen integers should not be in the array banned.\n*   The sum of the chosen integers should not exceed maxSum.\n\nReturn _the maximum number of integers you can choose following the mentioned rules_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_chosen_integers(banned, n, max_sum):\n    banned_set = set(banned)\n    count = 0\n    total_sum = 0\n    for i in range(n, 0, -1):\n        if i not in banned_set and max_sum - total_sum >= i:\n            total_sum += i\n            count += 1\n    return count\n```\n    \n    The algorithm initializes a set containing the elements from the banned list. It then iterates from `n` down to `1` and checks the following conditions:\n\n1. If the current integer `i` is not in the banned set.\n2. If the maxSum minus the current sum is greater than or equal to `i`.\n\nIf both conditions are met, it adds the integer to the sum and increments the count of chosen integers. After the loop finishes, the algorithm returns the count.\n\nThe algorithm efficiently finds the maximum number of integers that meet the conditions by iterating in decreasing order, and the usage of set ensures constant time lookup for banned elements.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxChosenIntegers(banned, n, maxSum) {\n    const bannedSet = new Set(banned);\n    let count = 0, sum = 0;\n    for (let i = n; i >= 1 && maxSum - sum >= i; i--) {\n        if (!bannedSet.has(i)) {\n            sum += i;\n            count++;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm initializes a set containing the elements from the banned list. It then iterates from `n` down to `1` and checks the following conditions:\n\n1. If the current integer `i` is not in the banned set.\n2. If the maxSum minus the current sum is greater than or equal to `i`.\n\nIf both conditions are met, it adds the integer to the sum and increments the count of chosen integers. After the loop finishes, the algorithm returns the count.\n\nThe algorithm efficiently finds the maximum number of integers that meet the conditions by iterating in decreasing order, and the usage of set ensures constant time lookup for banned elements.\n    ",
+    "java": "\n    ```java\nimport java.util.HashSet;\nimport java.util.Set;\n\npublic int maxChosenIntegers(int[] banned, int n, int maxSum) {\n    Set<Integer> bannedSet = new HashSet<>();\n    for (int b : banned) {\n        bannedSet.add(b);\n    }\n    int count = 0, sum = 0;\n    for (int i = n; i >= 1 && maxSum - sum >= i; i--) {\n        if (!bannedSet.contains(i)) {\n            sum += i;\n            count++;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm initializes a set containing the elements from the banned list. It then iterates from `n` down to `1` and checks the following conditions:\n\n1. If the current integer `i` is not in the banned set.\n2. If the maxSum minus the current sum is greater than or equal to `i`.\n\nIf both conditions are met, it adds the integer to the sum and increments the count of chosen integers. After the loop finishes, the algorithm returns the count.\n\nThe algorithm efficiently finds the maximum number of integers that meet the conditions by iterating in decreasing order, and the usage of set ensures constant time lookup for banned elements.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,39 @@
+{
+  "id": 41,
+  "title": "Counting Bits",
+  "slug": "counting-bits",
+  "difficulty": "Easy",
+  "tags": [
+    "Dynamic Programming",
+    "Bit Manipulation"
+  ],
+  "description": "Given an integer n, return an array ans of length n + 1 such that for each i, ans[i] is the number of 1s in the binary representation of i.",
+  "examples": [
+    {
+      "input": "n = 2",
+      "output": "[0,1,1]"
+    }
+  ],
+  "constraints": [
+    "0 <= n <= 10^5"
+  ],
+  "starterCode": {
+    "python": "from typing import List\nclass Solution:\n    def countBits(self, n: int) -> List[int]:\n        pass",
+    "javascript": "var countBits = function(n) {\n    \n};",
+    "java": "class Solution {\n    public int[] countBits(int n) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    vector<int> countBits(int n) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Counting Bits\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "2",
+      "expectedOutput": "[0,1,1]"
+    },
+    {
+      "input": "5",
+      "expectedOutput": "[0,1,1,2,1,2]"
+    }
+  ]
+}

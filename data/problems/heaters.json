@@ -1,0 +1,24 @@
+{
+  "id": 475,
+  "title": "Heaters",
+  "slug": "heaters",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Winter is coming! During the contest, your first job is to design a standard heater with a fixed warm radius to warm all the houses.\n\nEvery house can be warmed, as long as the house is within the heater's warm radius range.\n\nGiven the positions of houses and heaters on a horizontal line, return _the minimum radius standard of heaters so that those heaters could cover all houses._\n\nNotice that all the heaters follow your radius standard, and the warm radius will the same.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findRadius(houses, heaters):\n    houses.sort()\n    heaters.sort()\n    result, i = 0, 0\n\n    for house in houses:\n        while i < len(heaters) - 1 and abs(heaters[i + 1] - house) <= abs(heaters[i] - house):\n            i += 1\n        result = max(result, abs(heaters[i] - house))\n\n    return result\n```\n    \n    1. Sort both the arrays `houses` and `heaters`.\n2. Initialize two variables `result` and `i` to store the minimum required radius and the current heater index, respectively.\n3. Iterate through the `houses` array.\n   1. Using a nested while loop:\n   2. Increment `i` until the current heater is closer to the current house than the next heater.\n   3. Update `result` with the maximum distance between a house and a heater we have seen so far.\n4. After iterating through all houses, `result` contains the minimum radius for the heaters to cover all houses.\n    ",
+    "javascript": "\n    ```javascript\nfunction findRadius(houses, heaters) {\n    houses.sort((a, b) => a - b);\n    heaters.sort((a, b) => a - b);\n    let result = 0;\n    let i = 0;\n\n    for (const house of houses) {\n        while (i < heaters.length - 1 &&\n               Math.abs(heaters[i + 1] - house) <= Math.abs(heaters[i] - house)) {\n            i++;\n        }\n        result = Math.max(result, Math.abs(heaters[i] - house));\n    }\n    return result;\n}\n```\n    \n    1. Sort both the arrays `houses` and `heaters`.\n2. Initialize two variables `result` and `i` to store the minimum required radius and the current heater index, respectively.\n3. Iterate through the `houses` array.\n   1. Using a nested while loop:\n   2. Increment `i` until the current heater is closer to the current house than the next heater.\n   3. Update `result` with the maximum distance between a house and a heater we have seen so far.\n4. After iterating through all houses, `result` contains the minimum radius for the heaters to cover all houses.\n    ",
+    "java": "\n    ```java\npublic int findRadius(int[] houses, int[] heaters) {\n    Arrays.sort(houses);\n    Arrays.sort(heaters);\n    int result = 0;\n    int i = 0;\n\n    for (int house : houses) {\n        while (i < heaters.length - 1 &&\n               Math.abs(heaters[i + 1] - house) <= Math.abs(heaters[i] - house)) {\n            i++;\n        }\n        result = Math.max(result, Math.abs(heaters[i] - house));\n    }\n    return result;\n}\n```\n    \n    1. Sort both the arrays `houses` and `heaters`.\n2. Initialize two variables `result` and `i` to store the minimum required radius and the current heater index, respectively.\n3. Iterate through the `houses` array.\n   1. Using a nested while loop:\n   2. Increment `i` until the current heater is closer to the current house than the next heater.\n   3. Update `result` with the maximum distance between a house and a heater we have seen so far.\n4. After iterating through all houses, `result` contains the minimum radius for the heaters to cover all houses.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

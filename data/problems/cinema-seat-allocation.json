@@ -1,0 +1,24 @@
+{
+  "id": 1386,
+  "title": "Cinema Seat Allocation",
+  "slug": "cinema-seat-allocation",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A cinema has n rows of seats, numbered from 1 to n and there are ten seats in each row, labelled from 1 to 10 as shown in the figure above.\n\nGiven the array reservedSeats containing the numbers of seats already reserved, for example, reservedSeats[i] = [3,8] means the seat located in row 3 and labelled with 8 is already reserved.\n\n_Return the maximum number of four-person groups you can assign on the cinema seats._ A four-person group occupies four adjacent seats in one single row. Seats across an aisle (such as [3,3] and [3,4]) are not considered to be adjacent, but there is an exceptional case on which an aisle split a four-person group, in that case, the aisle split a four-person group in the middle, which means to have two people on each side.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef shiftGrid(grid, k):\n    m, n = len(grid), len(grid[0])\n    k %= (m * n)\n    res = [[0] * n for _ in range(m)]\n    for i in range(m):\n        for j in range(n):\n            idx = (i * n + j + k) % (m * n)\n            res[idx // n][idx % n] = grid[i][j]\n    return res\n```\n\n    \n    The algorithm works as follows:\n1. Get the dimensions of the grid, `m` and `n`, and calculate the total number of elements.\n2. Take the modulo of `k` with the total number of elements, so that `k` doesn't exceed the grid size.\n3. Initialize a result grid `res` with the same dimensions, filled with 0s.\n4. Iterate through the original grid using two nested loops, one for rows and one for columns.\n5. For each element in the original grid, calculate its new position in the result grid, using the formula `(i * n + j + k) % (m * n)` for the flattened indices.\n6. Assign the grid element to its new position in the result grid.\n7. Return the result grid after iterating through all elements.\n    ",
+    "javascript": "\n    ```javascript\nfunction shiftGrid(grid, k) {\n    const m = grid.length, n = grid[0].length;\n    k %= (m * n);\n    const res = Array.from({length: m}, () => Array(n).fill(0));\n    for (let i = 0; i < m; ++i) {\n        for (let j = 0; j < n; ++j) {\n            let idx = (i * n + j + k) % (m * n);\n            res[Math.floor(idx / n)][idx % n] = grid[i][j];\n        }\n    }\n    return res;\n}\n```\n\n    \n    The algorithm works as follows:\n1. Get the dimensions of the grid, `m` and `n`, and calculate the total number of elements.\n2. Take the modulo of `k` with the total number of elements, so that `k` doesn't exceed the grid size.\n3. Initialize a result grid `res` with the same dimensions, filled with 0s.\n4. Iterate through the original grid using two nested loops, one for rows and one for columns.\n5. For each element in the original grid, calculate its new position in the result grid, using the formula `(i * n + j + k) % (m * n)` for the flattened indices.\n6. Assign the grid element to its new position in the result grid.\n7. Return the result grid after iterating through all elements.\n    ",
+    "java": "\n    ```java\nimport java.util.List;\nimport java.util.ArrayList;\n\npublic List<List<Integer>> shiftGrid(int[][] grid, int k) {\n    int m = grid.length, n = grid[0].length;\n    k %= (m * n);\n    List<List<Integer>> res = new ArrayList<>();\n    for (int i = 0; i < m; ++i) {\n        List<Integer> row = new ArrayList<>();\n        for (int j = 0; j < n; ++j) {\n            int idx = (i * n + j + k) % (m * n);\n            row.add(grid[idx / n][idx % n]);\n        }\n        res.add(row);\n    }\n    return res;\n}\n```\n\n    \n    The algorithm works as follows:\n1. Get the dimensions of the grid, `m` and `n`, and calculate the total number of elements.\n2. Take the modulo of `k` with the total number of elements, so that `k` doesn't exceed the grid size.\n3. Initialize a result grid `res` with the same dimensions, filled with 0s.\n4. Iterate through the original grid using two nested loops, one for rows and one for columns.\n5. For each element in the original grid, calculate its new position in the result grid, using the formula `(i * n + j + k) % (m * n)` for the flattened indices.\n6. Assign the grid element to its new position in the result grid.\n7. Return the result grid after iterating through all elements.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1090,
+  "title": "Largest Values From Labels",
+  "slug": "largest-values-from-labels",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There is a set of n items. You are given two integer arrays values and labels where the value and the label of the ith element are values[i] and labels[i] respectively. You are also given two integers numWanted and useLimit.\n\nChoose a subset s of the n elements such that:\n\n*   The size of the subset s is less than or equal to numWanted.\n*   There are at most useLimit items with the same label in s.\n\nThe score of a subset is the sum of the values in the subset.\n\nReturn _the maximum score of a subset_ s.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom typing import List\n\ndef largestValsFromLabels(values: List[int], labels: List[int], numWanted: int, useLimit: int) -> int:\n    items = list(zip(values, labels))\n    items.sort(key=lambda x: x[0], reverse=True)\n\n    label_count = {}\n    ans = 0\n\n    for value, label in items:\n        if label not in label_count:\n            label_count[label] = 0\n        if label_count[label] < useLimit:\n            ans += value\n            label_count[label] += 1\n            numWanted -= 1\n            if numWanted == 0:\n                break\n\n    return ans\n```\n\n    \n    1. Create a list of pairs containing value and label.\n2. Sort the list of pairs based on the value in decreasing order.\n3. Initialize an empty hash table called 'labelCount' to store the count of each label in the selected subset.\n4. Initialize 'ans' to 0, which will store the result of maximum score.\n5. Iterate through the sorted list of pairs:\n   a. If the label is not in 'labelCount', set the label count as 0.\n   b. If the count of the current label is less than the 'useLimit', add the value to 'ans', increment the count of the label, and decrement 'numWanted'.\n   c. If 'numWanted' becomes 0, break the loop.\n6. Return 'ans'.\n    ",
+    "javascript": "\n    ```javascript\nfunction largestValsFromLabels(values, labels, numWanted, useLimit) {\n    const items = values.map((value, i) => [value, labels[i]]);\n    items.sort((a, b) => b[0] - a[0]);\n\n    const labelCount = {};\n    let ans = 0;\n\n    for (const [value, label] of items) {\n        if (!labelCount.hasOwnProperty(label)) {\n            labelCount[label] = 0;\n        }\n        if (labelCount[label] < useLimit) {\n            ans += value;\n            labelCount[label]++;\n            numWanted--;\n            if (numWanted === 0) break;\n        }\n    }\n\n    return ans;\n}\n```\n\n    \n    1. Create a list of pairs containing value and label.\n2. Sort the list of pairs based on the value in decreasing order.\n3. Initialize an empty hash table called 'labelCount' to store the count of each label in the selected subset.\n4. Initialize 'ans' to 0, which will store the result of maximum score.\n5. Iterate through the sorted list of pairs:\n   a. If the label is not in 'labelCount', set the label count as 0.\n   b. If the count of the current label is less than the 'useLimit', add the value to 'ans', increment the count of the label, and decrement 'numWanted'.\n   c. If 'numWanted' becomes 0, break the loop.\n6. Return 'ans'.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic int largestValsFromLabels(int[] values, int[] labels, int numWanted, int useLimit) {\n    int n = values.length;\n    int[][] items = new int[n][2];\n    for (int i = 0; i < n; ++i) {\n        items[i][0] = values[i];\n        items[i][1] = labels[i];\n    }\n\n    Arrays.sort(items, (a, b) -> Integer.compare(b[0], a[0]));\n\n    Map<Integer, Integer> labelCount = new HashMap<>();\n    int ans = 0;\n\n    for (int[] item : items) {\n        labelCount.putIfAbsent(item[1], 0);\n        if (labelCount.get(item[1]) < useLimit) {\n            ans += item[0];\n            labelCount.put(item[1], labelCount.get(item[1]) + 1);\n            if (--numWanted == 0) break;\n        }\n    }\n\n    return ans;\n}\n```\n\n    \n    1. Create a list of pairs containing value and label.\n2. Sort the list of pairs based on the value in decreasing order.\n3. Initialize an empty hash table called 'labelCount' to store the count of each label in the selected subset.\n4. Initialize 'ans' to 0, which will store the result of maximum score.\n5. Iterate through the sorted list of pairs:\n   a. If the label is not in 'labelCount', set the label count as 0.\n   b. If the count of the current label is less than the 'useLimit', add the value to 'ans', increment the count of the label, and decrement 'numWanted'.\n   c. If 'numWanted' becomes 0, break the loop.\n6. Return 'ans'.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

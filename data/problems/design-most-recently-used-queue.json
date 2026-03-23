@@ -1,0 +1,24 @@
+{
+  "id": 1756,
+  "title": "Design Most Recently Used Queue",
+  "slug": "design-most-recently-used-queue",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Design a queue-like data structure that moves the most recently used element to the end of the queue.\n\nImplement the MRUQueue class:\n\n*   MRUQueue(int n) constructs the MRUQueue with n elements: [1,2,3,...,n].\n*   int fetch(int k) moves the kth element (1-indexed) to the end of the queue and returns it.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_deletions(s: str) -> int:\n    a_count, deletions = 0, 0\n    for c in s:\n        if c == 'a':\n            a_count += 1\n        else:\n            if a_count > 0:\n                a_count -= 1\n            else:\n                deletions += 1\n    return deletions\n```\n    \n    The algorithm works as follows:\n1. Initialize counters for the number of 'a' characters seen (`aCount`) and the number of deletions needed (`deletions`).\n2. Iterate through the characters in the input string `s`.\n3. If the current character is 'a', increment the `aCount` counter.\n4. If the current character is 'b', check if the `aCount` counter is greater than 0.\n5. If `aCount` is greater than 0, it means we can pair a previously seen 'a' with this 'b', so decrement `aCount`.\n6. If `aCount` is not greater than 0, it means there are no 'a's to pair with this 'b', so increment the `deletions` counter.\n7. At the end of the loop, return the `deletions` counter as the result.\n\nThis algorithm ensures that for each 'b' character we encounter, we either pair it with a previously seen 'a' character or delete it if there are no 'a's to pair with. As a result, we minimize the number of deletions needed to make the string balanced.\n    ",
+    "javascript": "\n    ```javascript\nfunction minDeletions(s) {\n    let aCount = 0, deletions = 0;\n    for (let c of s) {\n        if (c === 'a') {\n            aCount++;\n        } else {\n            if (aCount > 0) {\n                aCount--;\n            } else {\n                deletions++;\n            }\n        }\n    }\n    return deletions;\n}\n```\n    \n    The algorithm works as follows:\n1. Initialize counters for the number of 'a' characters seen (`aCount`) and the number of deletions needed (`deletions`).\n2. Iterate through the characters in the input string `s`.\n3. If the current character is 'a', increment the `aCount` counter.\n4. If the current character is 'b', check if the `aCount` counter is greater than 0.\n5. If `aCount` is greater than 0, it means we can pair a previously seen 'a' with this 'b', so decrement `aCount`.\n6. If `aCount` is not greater than 0, it means there are no 'a's to pair with this 'b', so increment the `deletions` counter.\n7. At the end of the loop, return the `deletions` counter as the result.\n\nThis algorithm ensures that for each 'b' character we encounter, we either pair it with a previously seen 'a' character or delete it if there are no 'a's to pair with. As a result, we minimize the number of deletions needed to make the string balanced.\n    ",
+    "java": "\n    ```java\npublic int minDeletions(String s) {\n    int aCount = 0, bCount = 0, deletions = 0;\n    for (char c : s.toCharArray()) {\n        if (c == 'a') {\n            aCount++;\n        } else {\n            if (aCount > 0) {\n                aCount--;\n            } else {\n                deletions++;\n            }\n        }\n    }\n    return deletions;\n}\n```\n    \n    The algorithm works as follows:\n1. Initialize counters for the number of 'a' characters seen (`aCount`) and the number of deletions needed (`deletions`).\n2. Iterate through the characters in the input string `s`.\n3. If the current character is 'a', increment the `aCount` counter.\n4. If the current character is 'b', check if the `aCount` counter is greater than 0.\n5. If `aCount` is greater than 0, it means we can pair a previously seen 'a' with this 'b', so decrement `aCount`.\n6. If `aCount` is not greater than 0, it means there are no 'a's to pair with this 'b', so increment the `deletions` counter.\n7. At the end of the loop, return the `deletions` counter as the result.\n\nThis algorithm ensures that for each 'b' character we encounter, we either pair it with a previously seen 'a' character or delete it if there are no 'a's to pair with. As a result, we minimize the number of deletions needed to make the string balanced.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

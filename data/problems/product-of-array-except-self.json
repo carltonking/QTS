@@ -1,0 +1,39 @@
+{
+  "id": 28,
+  "title": "Product of Array Except Self",
+  "slug": "product-of-array-except-self",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Prefix Sum"
+  ],
+  "description": "Given an integer array nums, return an array answer such that answer[i] equals the product of all the elements of nums except nums[i].",
+  "examples": [
+    {
+      "input": "nums = [1,2,3,4]",
+      "output": "[24,12,8,6]"
+    }
+  ],
+  "constraints": [
+    "2 <= nums.length <= 10^5"
+  ],
+  "starterCode": {
+    "python": "from typing import List\nclass Solution:\n    def productExceptSelf(self, nums: List[int]) -> List[int]:\n        pass",
+    "javascript": "var productExceptSelf = function(nums) {\n    \n};",
+    "java": "class Solution {\n    public int[] productExceptSelf(int[] nums) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    vector<int> productExceptSelf(vector<int>& nums) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Product of Array Except Self\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "[1,2,3,4]",
+      "expectedOutput": "[24,12,8,6]"
+    },
+    {
+      "input": "[-1,1,0,-3,3]",
+      "expectedOutput": "[0,0,9,0,0]"
+    }
+  ]
+}

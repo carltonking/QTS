@@ -1,0 +1,24 @@
+{
+  "id": 2200,
+  "title": "Find All K-Distant Indices in an Array",
+  "slug": "find-all-k-distant-indices-in-an-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums and two integers key and k. A k-distant index is an index i of nums for which there exists at least one index j such that |i - j| <= k and nums[j] == key.\n\nReturn _a list of all k-distant indices sorted in increasing order_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef can_fit_stamps(grid, stampHeight, stampWidth):\n    m, n = len(grid), len(grid[0])\n    for i in range(m - stampHeight + 1):\n        for j in range(n - stampWidth + 1):\n            canFit = True\n            for x in range(stampHeight):\n                for y in range(stampWidth):\n                    if grid[i + x][j + y] == 1:\n                        canFit = False\n                        break\n                if not canFit:\n                    break\n            if canFit:\n                return True\n    return False\n```\n    \n    The algorithm loops through the cells of the grid, and for each cell, it checks if a stamp can fit the area starting from that cell. If the stamp fits without any occupied cells (value of 1) in the area, the function returns true. If the loop finishes without finding any fitting area, the function returns false.\n    ",
+    "javascript": "\n    ```javascript\nfunction canFitStamps(grid, stampHeight, stampWidth) {\n    let m = grid.length, n = grid[0].length;\n    for (let i = 0; i + stampHeight - 1 < m; ++i) {\n        for (let j = 0; j + stampWidth - 1 < n; ++j) {\n            let canFit = true;\n            for (let x = 0; x < stampHeight && canFit; ++x) {\n                for (let y = 0; y < stampWidth && canFit; ++y) {\n                    if (grid[i + x][j + y] === 1) {\n                        canFit = false;\n                    }\n                }\n            }\n            if (canFit) {\n                return true;\n            }\n        }\n    }\n    return false;\n}\n```\n    \n    The algorithm loops through the cells of the grid, and for each cell, it checks if a stamp can fit the area starting from that cell. If the stamp fits without any occupied cells (value of 1) in the area, the function returns true. If the loop finishes without finding any fitting area, the function returns false.\n    ",
+    "java": "\n    ```java\npublic boolean canFitStamps(int[][] grid, int stampHeight, int stampWidth) {\n    int m = grid.length, n = grid[0].length;\n    for (int i = 0; i + stampHeight - 1 < m; ++i) {\n        for (int j = 0; j + stampWidth - 1 < n; ++j) {\n            boolean canFit = true;\n            for (int x = 0; x < stampHeight && canFit; ++x) {\n                for (int y = 0; y < stampWidth && canFit; ++y) {\n                    if (grid[i + x][j + y] == 1) {\n                        canFit = false;\n                    }\n                }\n            }\n            if (canFit) {\n                return true;\n            }\n        }\n    }\n    return false;\n}\n```\n    \n    The algorithm loops through the cells of the grid, and for each cell, it checks if a stamp can fit the area starting from that cell. If the stamp fits without any occupied cells (value of 1) in the area, the function returns true. If the loop finishes without finding any fitting area, the function returns false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

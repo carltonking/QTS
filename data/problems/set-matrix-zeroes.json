@@ -1,0 +1,24 @@
+{
+  "id": 73,
+  "title": "Set Matrix Zeroes",
+  "slug": "set-matrix-zeroes",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an m x n integer matrix matrix, if an element is 0, set its entire row and column to 0's.\n\nYou must do it [in place](https://en.wikipedia.org/wiki/In-place_algorithm).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef setZeroes(matrix):\n    rows = len(matrix)\n    cols = len(matrix[0])\n    firstRow, firstCol = False, False\n\n    for i in range(rows):\n        for j in range(cols):\n            if matrix[i][j] == 0:\n                if i == 0: firstRow = True\n                if j == 0: firstCol = True\n                matrix[i][0] = 0\n                matrix[0][j] = 0\n\n    for i in range(1, rows):\n        for j in range(1, cols):\n            if matrix[i][0] == 0 or matrix[0][j] == 0:\n                matrix[i][j] = 0\n\n    if firstRow:\n        for j in range(cols):\n            matrix[0][j] = 0\n\n    if firstCol:\n        for i in range(rows):\n            matrix[i][0] = 0\n```\n    \n    1. Iterate over the matrix, marking the first element of the row and column for every 0 encountered.\n2. Set a flag if the first row or the first column has a 0.\n3. Iterate over the matrix, ignoring the first row and first column. Set the element to 0 if the corresponding first row or column is marked.\n4. Finally, set the first row and column to 0 if their flags are set.\n    ",
+    "javascript": "\n    ```javascript\nfunction setZeroes(matrix) {\n    let rows = matrix.length;\n    let cols = matrix[0].length;\n    let firstRow = false;\n    let firstCol = false;\n \n    for (let i = 0; i < rows; i++) {\n        for (let j = 0; j < cols; j++) {\n            if (matrix[i][j] === 0) {\n                if (i === 0) firstRow = true;\n                if (j === 0) firstCol = true;\n                matrix[i][0] = 0;\n                matrix[0][j] = 0;\n            }\n        }\n    }\n    \n    for (let i = 1; i < rows; i++) {\n        for (let j = 1; j < cols; j++) {\n            if (matrix[i][0] === 0 || matrix[0][j] === 0) {\n                matrix[i][j] = 0;\n            }\n        }\n    }\n    \n    if (firstRow) {\n        for (let j = 0; j < cols; j++) \n            matrix[0][j] = 0;\n    }\n    \n    if (firstCol) {\n        for (let i = 0; i < rows; i++)\n            matrix[i][0] = 0;\n    }\n}\n```\n    \n    1. Iterate over the matrix, marking the first element of the row and column for every 0 encountered.\n2. Set a flag if the first row or the first column has a 0.\n3. Iterate over the matrix, ignoring the first row and first column. Set the element to 0 if the corresponding first row or column is marked.\n4. Finally, set the first row and column to 0 if their flags are set.\n    ",
+    "java": "\n    ```java\npublic void setZeroes(int[][] matrix) {\n    int rows = matrix.length;\n    int cols = matrix[0].length;\n    boolean firstRow = false, firstCol = false;\n\n    for (int i = 0; i < rows; i++) {\n        for (int j = 0; j < cols; j++) {\n            if (matrix[i][j] == 0) {\n                if (i == 0) firstRow = true;\n                if (j == 0) firstCol = true;\n                matrix[i][0] = 0;\n                matrix[0][j] = 0;\n            }\n        }\n    }\n\n    for (int i = 1; i < rows; i++) {\n        for (int j = 1; j < cols; j++) {\n            if (matrix[i][0] == 0 || matrix[0][j] == 0)\n                matrix[i][j] = 0;\n        }\n    }\n\n    if (firstRow) {\n        for (int j = 0; j < cols; j++)\n            matrix[0][j] = 0;\n    }\n\n    if (firstCol) {\n        for (int i = 0; i < rows; i++)\n            matrix[i][0] = 0;\n    }\n}\n```\n    \n    1. Iterate over the matrix, marking the first element of the row and column for every 0 encountered.\n2. Set a flag if the first row or the first column has a 0.\n3. Iterate over the matrix, ignoring the first row and first column. Set the element to 0 if the corresponding first row or column is marked.\n4. Finally, set the first row and column to 0 if their flags are set.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1792,
+  "title": "Maximum Average Pass Ratio",
+  "slug": "maximum-average-pass-ratio",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There is a school that has classes of students and each class will be having a final exam. You are given a 2D integer array classes, where classes[i] = [passi, totali]. You know beforehand that in the ith class, there are totali total students, but only passi number of students will pass the exam.\n\nYou are also given an integer extraStudents. There are another extraStudents brilliant students that are guaranteed to pass the exam of any class they are assigned to. You want to assign each of the extraStudents students to a class in a way that maximizes the average pass ratio across all the classes.\n\nThe pass ratio of a class is equal to the number of students of the class that will pass the exam divided by the total number of students of the class. The average pass ratio is the sum of pass ratios of all the classes divided by the number of the classes.\n\nReturn _the maximum possible average pass ratio after assigning the_ extraStudents _students._ Answers within 10-5 of the actual answer will be accepted.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef most_competitive(nums, k):\n    stack = []\n    n = len(nums)\n\n    for i in range(n):\n        while stack and nums[i] < stack[-1] and len(stack) + n - i > k:\n            stack.pop()\n        if len(stack) < k:\n            stack.append(nums[i])\n\n    return stack\n```\n    \n    The algorithm utilizes a stack and goes through the `nums` array once. It decides whether to add an element to the stack based on the following criteria: \n1. The stack is not empty (to allow pop operation).\n2. The current element is smaller than the top element of the stack (the most recent element).\n3. The sum of stack size and remaining elements (n - i) in the array is greater than k, ensuring that we have enough elements left to form a subsequence of size `k`.\n\nThen, if the stack size is less than `k`, we add the current element of `nums` to the stack.\n\nFinally, we pop out the elements and add them to the result array in a reversed order, creating the most competitive subsequence with size `k`.\n    ",
+    "javascript": "\n    ```javascript\nfunction mostCompetitive(nums, k) {\n    const stack = [];\n    const n = nums.length;\n\n    for (let i = 0; i < n; i++) {\n        while (stack.length > 0 && nums[i] < stack[stack.length - 1] && stack.length + n - i > k) {\n            stack.pop();\n        }\n        if (stack.length < k) {\n            stack.push(nums[i]);\n        }\n    }\n\n    return stack;\n}\n```\n    \n    The algorithm utilizes a stack and goes through the `nums` array once. It decides whether to add an element to the stack based on the following criteria: \n1. The stack is not empty (to allow pop operation).\n2. The current element is smaller than the top element of the stack (the most recent element).\n3. The sum of stack size and remaining elements (n - i) in the array is greater than k, ensuring that we have enough elements left to form a subsequence of size `k`.\n\nThen, if the stack size is less than `k`, we add the current element of `nums` to the stack.\n\nFinally, we pop out the elements and add them to the result array in a reversed order, creating the most competitive subsequence with size `k`.\n    ",
+    "java": "\n    ```java\nimport java.util.Stack;\n\npublic int[] mostCompetitive(int[] nums, int k) {\n    Stack<Integer> stack = new Stack<>();\n    int n = nums.length;\n\n    for (int i = 0; i < n; i++) {\n        while (!stack.isEmpty() && nums[i] < stack.peek() && stack.size() + n - i > k) {\n            stack.pop();\n        }\n        if (stack.size() < k) {\n            stack.push(nums[i]);\n        }\n    }\n\n    int[] result = new int[k];\n    for (int i = k - 1; i >= 0; i--) {\n        result[i] = stack.pop();\n    }\n\n    return result;\n}\n```\n    \n    The algorithm utilizes a stack and goes through the `nums` array once. It decides whether to add an element to the stack based on the following criteria: \n1. The stack is not empty (to allow pop operation).\n2. The current element is smaller than the top element of the stack (the most recent element).\n3. The sum of stack size and remaining elements (n - i) in the array is greater than k, ensuring that we have enough elements left to form a subsequence of size `k`.\n\nThen, if the stack size is less than `k`, we add the current element of `nums` to the stack.\n\nFinally, we pop out the elements and add them to the result array in a reversed order, creating the most competitive subsequence with size `k`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

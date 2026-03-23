@@ -1,0 +1,24 @@
+{
+  "id": 1402,
+  "title": "Reducing Dishes",
+  "slug": "reducing-dishes",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "A chef has collected data on the satisfaction level of his n dishes. Chef can cook any dish in 1 unit of time.\n\nLike-time coefficient of a dish is defined as the time taken to cook that dish including previous dishes multiplied by its satisfaction level i.e. time[i] * satisfaction[i].\n\nReturn _the maximum sum of like-time coefficient that the chef can obtain after dishes preparation_.\n\nDishes can be prepared in any order and the chef can discard some dishes to get this maximum value.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef countSquares(matrix: List[List[int]]) -> int:\n    m, n, ans = len(matrix), len(matrix[0]), 0\n    dp = [[0] * n for _ in range(m)]\n    for i in range(m):\n        for j in range(n):\n            if i == 0 or j == 0:\n                dp[i][j] = matrix[i][j]\n            elif matrix[i][j]:\n                dp[i][j] = min(dp[i-1][j-1], dp[i-1][j], dp[i][j-1]) + 1\n            ans += dp[i][j]\n    return ans\n```\n    \n    The algorithm uses a dynamic programming approach. For each cell of the input matrix, we create a `dp` matrix that will store the size of the square that ends at the current cell `[i, j]`. If the current cell contains 1, we need to check the values of the neighbors, i.e., cells `[i-1, j-1]`, `[i-1, j]`, and `[i, j-1]`. To form a square of size `k`, all three neighboring cells must have squares of size `k-1`. Thus, we set the current cell in `dp` to the minimum of the neighboring cells plus one (`dp[i][j] = min(dp[i-1][j-1], dp[i-1][j], dp[i][j-1]) + 1`).\n\nFor each cell, we then add its value in the `dp` matrix to the result (`ans += dp[i][j]`). Finally, we return the total number of squares found.\n    ",
+    "javascript": "\n    ```javascript\nfunction countSquares(matrix) {\n    const m = matrix.length, n = matrix[0].length;\n    let ans = 0, dp = Array.from({length: m}, () => Array(n));\n    for(let i = 0; i < m; i++) {\n        for(let j = 0; j < n; j++) {\n            if(i === 0 || j === 0) dp[i][j] = matrix[i][j];\n            else if(matrix[i][j]) dp[i][j] = Math.min(dp[i-1][j-1], dp[i-1][j], dp[i][j-1]) + 1;\n            ans += dp[i][j];\n        }\n    }\n    return ans;\n}\n```\n    \n    The algorithm uses a dynamic programming approach. For each cell of the input matrix, we create a `dp` matrix that will store the size of the square that ends at the current cell `[i, j]`. If the current cell contains 1, we need to check the values of the neighbors, i.e., cells `[i-1, j-1]`, `[i-1, j]`, and `[i, j-1]`. To form a square of size `k`, all three neighboring cells must have squares of size `k-1`. Thus, we set the current cell in `dp` to the minimum of the neighboring cells plus one (`dp[i][j] = min(dp[i-1][j-1], dp[i-1][j], dp[i][j-1]) + 1`).\n\nFor each cell, we then add its value in the `dp` matrix to the result (`ans += dp[i][j]`). Finally, we return the total number of squares found.\n    ",
+    "java": "\n    ```java\npublic int countSquares(int[][] matrix) {\n    int m = matrix.length, n = matrix[0].length, ans = 0;\n    int[][] dp = new int[m][n];\n    for(int i = 0; i < m; i++) {\n        for(int j = 0; j < n; j++) {\n            if(i == 0 || j == 0) dp[i][j] = matrix[i][j];\n            else if(matrix[i][j] == 1) dp[i][j] = Math.min(dp[i-1][j-1], Math.min(dp[i-1][j], dp[i][j-1])) + 1;\n            ans += dp[i][j];\n        }\n    }\n    return ans;\n}\n```\n    \n    The algorithm uses a dynamic programming approach. For each cell of the input matrix, we create a `dp` matrix that will store the size of the square that ends at the current cell `[i, j]`. If the current cell contains 1, we need to check the values of the neighbors, i.e., cells `[i-1, j-1]`, `[i-1, j]`, and `[i, j-1]`. To form a square of size `k`, all three neighboring cells must have squares of size `k-1`. Thus, we set the current cell in `dp` to the minimum of the neighboring cells plus one (`dp[i][j] = min(dp[i-1][j-1], dp[i-1][j], dp[i][j-1]) + 1`).\n\nFor each cell, we then add its value in the `dp` matrix to the result (`ans += dp[i][j]`). Finally, we return the total number of squares found.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

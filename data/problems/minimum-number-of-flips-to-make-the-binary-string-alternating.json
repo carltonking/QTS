@@ -1,0 +1,24 @@
+{
+  "id": 1888,
+  "title": "Minimum Number of Flips to Make the Binary String Alternating",
+  "slug": "minimum-number-of-flips-to-make-the-binary-string-alternating",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a binary string s. You are allowed to perform two types of operations on the string in any sequence:\n\n*   Type-1: Remove the character at the start of the string s and append it to the end of the string.\n*   Type-2: Pick any character in s and flip its value, i.e., if its value is '0' it becomes '1' and vice-versa.\n\nReturn _the minimum number of type-2 operations you need to perform_ _such that_ s _becomes alternating._\n\nThe string is called alternating if no two adjacent characters are equal.\n\n*   For example, the strings \"010 \" and \"1010 \" are alternating, while the string \"0100 \" is not.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef nearestValidPoint(x, y, points):\n    min_distance = float('inf')\n    min_index = -1\n\n    for i, point in enumerate(points):\n        if x == point[0] or y == point[1]:\n            distance = abs(x - point[0]) + abs(y - point[1])\n            if distance < min_distance:\n                min_distance = distance\n                min_index = i\n\n    return min_index\n```\n    \n    The algorithm iterates through the array of points and checks, in each iteration, whether the point shares the same x-coordinate or the same y-coordinate with the given location. If it does, it calculates the Manhattan distance between the current point and the location. If this distance is smaller than the minimum distance found so far, the algorithm updates the minimum distance and the index of the point in the array.\n\nIn the end, if at least one valid point was found, the algorithm returns the index of the point with the smallest Manhattan distance. If no valid points were found, the algorithm returns -1.\n    ",
+    "javascript": "\n    ```javascript\nfunction nearestValidPoint(x, y, points) {\n    let minDistance = Infinity;\n    let minIndex = -1;\n\n    for (let i = 0; i < points.length; i++) {\n        if (x === points[i][0] || y === points[i][1]) {\n            let distance = Math.abs(x - points[i][0]) + Math.abs(y - points[i][1]);\n            if (distance < minDistance) {\n                minDistance = distance;\n                minIndex = i;\n            }\n        }\n    }\n\n    return minIndex;\n}\n```\n    \n    The algorithm iterates through the array of points and checks, in each iteration, whether the point shares the same x-coordinate or the same y-coordinate with the given location. If it does, it calculates the Manhattan distance between the current point and the location. If this distance is smaller than the minimum distance found so far, the algorithm updates the minimum distance and the index of the point in the array.\n\nIn the end, if at least one valid point was found, the algorithm returns the index of the point with the smallest Manhattan distance. If no valid points were found, the algorithm returns -1.\n    ",
+    "java": "\n    ```java\npublic int nearestValidPoint(int x, int y, int[][] points) {\n    int minDistance = Integer.MAX_VALUE;\n    int minIndex = -1;\n\n    for (int i = 0; i < points.length; i++) {\n        if (x == points[i][0] || y == points[i][1]) {\n            int distance = Math.abs(x - points[i][0]) + Math.abs(y - points[i][1]);\n            if (distance < minDistance) {\n                minDistance = distance;\n                minIndex = i;\n            }\n        }\n    }\n\n    return minIndex;\n}\n```\n    \n    The algorithm iterates through the array of points and checks, in each iteration, whether the point shares the same x-coordinate or the same y-coordinate with the given location. If it does, it calculates the Manhattan distance between the current point and the location. If this distance is smaller than the minimum distance found so far, the algorithm updates the minimum distance and the index of the point in the array.\n\nIn the end, if at least one valid point was found, the algorithm returns the index of the point with the smallest Manhattan distance. If no valid points were found, the algorithm returns -1.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

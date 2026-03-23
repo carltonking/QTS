@@ -1,0 +1,24 @@
+{
+  "id": 131,
+  "title": "Palindrome Partitioning",
+  "slug": "palindrome-partitioning",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string s, partition s such that every substring of the partition is a palindrome. Return _all possible palindrome partitioning of_ s.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef isPalindrome(s, start, end):\n    while start < end:\n        if s[start] != s[end]:\n            return False\n        start += 1\n        end -= 1\n    return True\n\ndef dfs(s, start, results, current):\n    if start == len(s):\n        results.append(current[:])\n        return\n    \n    for end in range(start, len(s)):\n        if isPalindrome(s, start, end):\n            current.append(s[start:end+1])\n            dfs(s, end + 1, results, current)\n            current.pop()\n\ndef partition(s):\n    results = []\n    dfs(s, 0, results, [])\n    return results\n```\n    \n    The algorithm is based on depth-first search (DFS). It starts by iterating over substrings at each position and checks if the substring is a palindrome. If it is a palindrome, it adds the substring to the current list and does a depth-first search at the next position. When the search reaches the end of the string, it adds the current list to the results list. After searching at a given position, it backtracks to the previous position and continues to search for palindromes. The overall time complexity is O(N * 2^N) where N is the length of the string.\n    ",
+    "javascript": "\n    ```javascript\nfunction isPalindrome(s, start, end) {\n    while (start < end) {\n        if (s[start++] !== s[end--]) return false;\n    }\n    return true;\n}\n\nfunction dfs(s, start, results, current) {\n    if (start === s.length) {\n        results.push([...current]);\n        return;\n    }\n    \n    for (let end = start; end < s.length; end++) {\n        if (isPalindrome(s, start, end)) {\n            current.push(s.slice(start, end + 1));\n            dfs(s, end + 1, results, current);\n            current.pop();\n        }\n    }\n}\n\nfunction partition(s) {\n    let results = [];\n    dfs(s, 0, results, []);\n    return results;\n}\n```\n    \n    The algorithm is based on depth-first search (DFS). It starts by iterating over substrings at each position and checks if the substring is a palindrome. If it is a palindrome, it adds the substring to the current list and does a depth-first search at the next position. When the search reaches the end of the string, it adds the current list to the results list. After searching at a given position, it backtracks to the previous position and continues to search for palindromes. The overall time complexity is O(N * 2^N) where N is the length of the string.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic class Solution {\n    private boolean isPalindrome(String s, int start, int end) {\n        while (start < end) {\n            if (s.charAt(start++) != s.charAt(end--)) return false;\n        }\n        return true;\n    }\n\n    private void dfs(String s, int start, List<List<String>> results, List<String> current) {\n        if (start == s.length()) {\n            results.add(new ArrayList<>(current));\n            return;\n        }\n        \n        for (int end = start; end < s.length(); end++) {\n            if (isPalindrome(s, start, end)) {\n                current.add(s.substring(start, end + 1));\n                dfs(s, end + 1, results, current);\n                current.remove(current.size() - 1);\n            }\n        }\n    }\n\n    public List<List<String>> partition(String s) {\n        List<List<String>> results = new ArrayList<>();\n        List<String> current = new ArrayList<>();\n        dfs(s, 0, results, current);\n        return results;\n    }\n}\n```\n    \n    The algorithm is based on depth-first search (DFS). It starts by iterating over substrings at each position and checks if the substring is a palindrome. If it is a palindrome, it adds the substring to the current list and does a depth-first search at the next position. When the search reaches the end of the string, it adds the current list to the results list. After searching at a given position, it backtracks to the previous position and continues to search for palindromes. The overall time complexity is O(N * 2^N) where N is the length of the string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

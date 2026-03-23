@@ -1,0 +1,24 @@
+{
+  "id": 2526,
+  "title": "Find Consecutive Integers from a Data Stream",
+  "slug": "find-consecutive-integers-from-a-data-stream",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "For a stream of integers, implement a data structure that checks if the last k integers parsed in the stream are equal to value.\n\nImplement the DataStream class:\n\n*   DataStream(int value, int k) Initializes the object with an empty integer stream and the two integers value and k.\n*   boolean consec(int num) Adds num to the stream of integers. Returns true if the last k integers are equal to value, and false otherwise. If there are less than k integers, the condition does not hold true, so returns false.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import deque\n\nclass DataStream:\n    def __init__(self, value: int, k: int):\n        self.value = value\n        self.k = k\n        self.stream = deque()\n\n    def consec(self, num: int) -> bool:\n        self.stream.append(num)\n        if len(self.stream) > self.k:\n            self.stream.popleft()\n\n        return len(self.stream) == self.k and self.stream.count(self.value) == self.k\n```\n\n    \n    The algorithm stores the integers in a deque or queue (in Python and JavaScript, a list can also be used) and keeps the last `k` integers stored while removing older ones. It then checks whether there are exactly `k` integers and all integers are equal to `value`. If these conditions are met, it returns `True`. Otherwise, it returns `False`.\n    ",
+    "javascript": "\n    ```javascript\nclass DataStream {\n    constructor(value, k) {\n        this.value = value;\n        this.k = k;\n        this.stream = [];\n    }\n    \n    consec(num) {\n        this.stream.push(num);\n        if (this.stream.length > this.k)\n            this.stream.shift();\n        \n        return this.stream.length === this.k && this.stream.filter(x => x === this.value).length === this.k;\n    }\n}\n```\n\n    \n    The algorithm stores the integers in a deque or queue (in Python and JavaScript, a list can also be used) and keeps the last `k` integers stored while removing older ones. It then checks whether there are exactly `k` integers and all integers are equal to `value`. If these conditions are met, it returns `True`. Otherwise, it returns `False`.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\nclass DataStream {\n    private int value;\n    private int k;\n    private Queue<Integer> stream;\n\n    public DataStream(int value, int k) {\n        this.value = value;\n        this.k = k;\n        this.stream = new LinkedList<>();\n    }\n    \n    public boolean consec(int num) {\n        stream.add(num);\n        if (stream.size() > k)\n            stream.poll();\n        \n        return stream.size() == k && Collections.frequency(stream, value) == k;\n    }\n}\n```\n\n    \n    The algorithm stores the integers in a deque or queue (in Python and JavaScript, a list can also be used) and keeps the last `k` integers stored while removing older ones. It then checks whether there are exactly `k` integers and all integers are equal to `value`. If these conditions are met, it returns `True`. Otherwise, it returns `False`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

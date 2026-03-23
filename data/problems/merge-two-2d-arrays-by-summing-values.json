@@ -1,0 +1,24 @@
+{
+  "id": 2570,
+  "title": "Merge Two 2D Arrays by Summing Values",
+  "slug": "merge-two-2d-arrays-by-summing-values",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given two 2D integer arrays nums1 and nums2.\n\n*   nums1[i] = [idi, vali] indicate that the number with the id idi has a value equal to vali.\n*   nums2[i] = [idi, vali] indicate that the number with the id idi has a value equal to vali.\n\nEach array contains unique ids and is sorted in ascending order by id.\n\nMerge the two arrays into one array that is sorted in ascending order by id, respecting the following conditions:\n\n*   Only ids that appear in at least one of the two arrays should be included in the resulting array.\n*   Each id should be included only once and its value should be the sum of the values of this id in the two arrays. If the id does not exist in one of the two arrays then its value in that array is considered to be 0.\n\nReturn _the resulting array_. The returned array must be sorted in ascending order by id.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef merge_nums(nums1, nums2):\n    merged_map = {}\n    merged = []\n\n    for id_val_pair in nums1:\n        id_, val_ = id_val_pair\n        if id_ not in merged_map:\n            merged_map[id_] = val_\n        else:\n            merged_map[id_] += val_\n\n    for id_val_pair in nums2:\n        id_, val_ = id_val_pair\n        if id_ not in merged_map:\n            merged_map[id_] = val_\n        else:\n            merged_map[id_] += val_\n\n    for id_, val_ in merged_map.items():\n        merged.append([id_, val_])\n    \n    return merged\n```\n    \n    1. Create an empty map `merged_map` and an empty list `merged` that will store the final result.\n2. Iterate through both `nums1` and `nums2`, and for each id and value pair:\n   i. Check if the id exists in `merged_map`. If it does, add the value to the existing value in `merged_map`.\n  ii. If the id does not exist in `merged_map`, insert the id into the map and set its value to the current value.\n3. After both arrays have been processed, iterate through `merged_map` and append each id-value pair as a list to the `merged` list.\n4. Return the `merged` list.\n    ",
+    "javascript": "\n    ```javascript\nfunction merge_nums(nums1, nums2) {\n    const merged_map = new Map();\n    const merged = [];\n\n    for(const [id, val] of nums1) {\n        merged_map.set(id, (merged_map.get(id) || 0) + val);\n    }\n\n    for(const [id, val] of nums2) {\n        merged_map.set(id, (merged_map.get(id) || 0) + val);\n    }\n\n    for(const [id, val] of merged_map.entries()) {\n        merged.push([id, val]);\n    }\n\n    return merged;\n}\n```\n    \n    1. Create an empty map `merged_map` and an empty list `merged` that will store the final result.\n2. Iterate through both `nums1` and `nums2`, and for each id and value pair:\n   i. Check if the id exists in `merged_map`. If it does, add the value to the existing value in `merged_map`.\n  ii. If the id does not exist in `merged_map`, insert the id into the map and set its value to the current value.\n3. After both arrays have been processed, iterate through `merged_map` and append each id-value pair as a list to the `merged` list.\n4. Return the `merged` list.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.HashMap;\nimport java.util.List;\nimport java.util.Map;\n\npublic List<List<Integer>> merge_nums(List<List<Integer>> nums1, List<List<Integer>> nums2) {\n    Map<Integer, Integer> merged_map = new HashMap<>();;\n    List<List<Integer>> merged = new ArrayList<>();\n\n    for(List<Integer> p : nums1) {\n        merged_map.put(p.get(0), merged_map.getOrDefault(p.get(0), 0) + p.get(1));\n    }\n\n    for(List<Integer> p : nums2) {\n        merged_map.put(p.get(0), merged_map.getOrDefault(p.get(0), 0) + p.get(1));\n    }\n\n    for(Map.Entry<Integer, Integer> entry : merged_map.entrySet()) {\n        List<Integer> tmp = new ArrayList<>();\n        tmp.add(entry.getKey());\n        tmp.add(entry.getValue());\n        merged.add(tmp);\n    }\n\n    return merged;\n}\n```\n    \n    1. Create an empty map `merged_map` and an empty list `merged` that will store the final result.\n2. Iterate through both `nums1` and `nums2`, and for each id and value pair:\n   i. Check if the id exists in `merged_map`. If it does, add the value to the existing value in `merged_map`.\n  ii. If the id does not exist in `merged_map`, insert the id into the map and set its value to the current value.\n3. After both arrays have been processed, iterate through `merged_map` and append each id-value pair as a list to the `merged` list.\n4. Return the `merged` list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1502,
+  "title": "Can Make Arithmetic Progression From Sequence",
+  "slug": "can-make-arithmetic-progression-from-sequence",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "A sequence of numbers is called an arithmetic progression if the difference between any two consecutive elements is the same.\n\nGiven an array of numbers arr, return true _if the array can be rearranged to form an arithmetic progression. Otherwise, return_ false.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef can_construct(s, k):\n    char_counts = [0] * 26\n\n    for c in s:\n        char_counts[ord(c) - ord('a')] += 1\n\n    odd_count = sum(count % 2 for count in char_counts)\n\n    return odd_count <= k <= len(s)\n```\n\n    \n    The algorithm counts the occurrences of each character in the input string s. For each character count, it checks if it is odd - if so, it increases the odd count.\n\nThen, the function checks if the odd count is less than or equal to k (the number of palindrome strings required) and if k is less than or equal to the length of the input string s. If both these conditions are satisfied, the function returns true, meaning it is possible to construct k palindrome strings using all the characters in s. Otherwise, it returns false. \n    ",
+    "javascript": "\n    ```javascript\nfunction canConstruct(s, k) {\n    let charCounts = new Array(26).fill(0);\n\n    for (let c of s) \n        charCounts[c.charCodeAt(0) - 'a'.charCodeAt(0)]++;\n\n    let oddCount = charCounts.reduce((acc, count) => acc + (count % 2), 0);\n\n    return oddCount <= k && k <= s.length;\n}\n```\n\n    \n    The algorithm counts the occurrences of each character in the input string s. For each character count, it checks if it is odd - if so, it increases the odd count.\n\nThen, the function checks if the odd count is less than or equal to k (the number of palindrome strings required) and if k is less than or equal to the length of the input string s. If both these conditions are satisfied, the function returns true, meaning it is possible to construct k palindrome strings using all the characters in s. Otherwise, it returns false. \n    ",
+    "java": "\n    ```java\npublic boolean canConstruct(String s, int k) {\n    int[] charCounts = new int[26];\n\n    for (char c : s.toCharArray()) \n        charCounts[c - 'a']++;\n\n    int oddCount = 0;\n    for (int count : charCounts) \n        oddCount += count % 2;\n\n    return oddCount <= k && k <= s.length();\n}\n```\n\n    \n    The algorithm counts the occurrences of each character in the input string s. For each character count, it checks if it is odd - if so, it increases the odd count.\n\nThen, the function checks if the odd count is less than or equal to k (the number of palindrome strings required) and if k is less than or equal to the length of the input string s. If both these conditions are satisfied, the function returns true, meaning it is possible to construct k palindrome strings using all the characters in s. Otherwise, it returns false. \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

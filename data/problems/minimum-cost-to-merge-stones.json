@@ -1,0 +1,24 @@
+{
+  "id": 1000,
+  "title": "Minimum Cost to Merge Stones",
+  "slug": "minimum-cost-to-merge-stones",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "There are n piles of stones arranged in a row. The ith pile has stones[i] stones.\n\nA move consists of merging exactly k consecutive piles into one pile, and the cost of this move is equal to the total number of stones in these k piles.\n\nReturn _the minimum cost to merge all piles of stones into one pile_. If it is impossible, return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_deletion_size(strs):\n    rows, cols = len(strs), len(strs[0])\n    count = 0\n    for c in range(cols):\n        for r in range(1, rows):\n            if strs[r - 1][c] > strs[r][c]:\n                count += 1\n                break\n    return count\n```\n\n    \n    For a given set of strings, we need to find how many characters can be deleted so that each remaining string is in lexicographic order. To achieve this, we iterate through each column (character position) of the strings and compare each character in the current column to its adjacent one in the next row. If the character violates lexicographic order, we increment the deletion count and move to the next column. We do this for all columns and return the minimum number of character deletions required to satisfy the conditions mentioned.\n    ",
+    "javascript": "\n    ```javascript\nfunction minDeletionSize(strs) {\n    const rows = strs.length;\n    const cols = strs[0].length;\n    let count = 0;\n    for (let c = 0; c < cols; ++c) {\n        for (let r = 1; r < rows; ++r) {\n            if (strs[r - 1][c] > strs[r][c]) {\n                ++count;\n                break;\n            }\n        }\n    }\n    return count;\n}\n```\n\n    \n    For a given set of strings, we need to find how many characters can be deleted so that each remaining string is in lexicographic order. To achieve this, we iterate through each column (character position) of the strings and compare each character in the current column to its adjacent one in the next row. If the character violates lexicographic order, we increment the deletion count and move to the next column. We do this for all columns and return the minimum number of character deletions required to satisfy the conditions mentioned.\n    ",
+    "java": "\n    ```java\npublic int minDeletionSize(String[] strs) {\n    int rows = strs.length, cols = strs[0].length();\n    int count = 0;\n    for (int c = 0; c < cols; ++c) {\n        for (int r = 1; r < rows; ++r) {\n            if (strs[r - 1].charAt(c) > strs[r].charAt(c)) {\n                ++count;\n                break;\n            }\n        }\n    }\n    return count;\n}\n```\n\n    \n    For a given set of strings, we need to find how many characters can be deleted so that each remaining string is in lexicographic order. To achieve this, we iterate through each column (character position) of the strings and compare each character in the current column to its adjacent one in the next row. If the character violates lexicographic order, we increment the deletion count and move to the next column. We do this for all columns and return the minimum number of character deletions required to satisfy the conditions mentioned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

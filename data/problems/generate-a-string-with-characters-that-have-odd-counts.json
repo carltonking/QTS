@@ -1,0 +1,24 @@
+{
+  "id": 1374,
+  "title": "Generate a String With Characters That Have Odd Counts",
+  "slug": "generate-a-string-with-characters-that-have-odd-counts",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer n, _return a string with n characters such that each character in such string occurs an odd number of times_.\n\nThe returned string must contain only lowercase English letters. If there are multiples valid strings, return any of them.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef generateTheString(n: int) -> str:\n    result = 'a' * n\n    if n % 2 == 0:\n        result = result[:-1] + 'b'\n    return result\n```\n    \n    The algorithm to solve this problem is straightforward. We initialize the result with a single character (lowercase 'a') repeated `n` times. If the given integer `n` is even, replace the last character with a different character (lowercase 'b') to make sure that each character occurrence is odd. The resulting string contains each character an odd number of times, satisfying the problem's constraints.\n    ",
+    "javascript": "\n    ```javascript\nfunction generateTheString(n) {\n    let result = 'a'.repeat(n);\n    if (n % 2 === 0) {\n        result = result.slice(0, -1) + 'b';\n    }\n    return result;\n}\n```\n    \n    The algorithm to solve this problem is straightforward. We initialize the result with a single character (lowercase 'a') repeated `n` times. If the given integer `n` is even, replace the last character with a different character (lowercase 'b') to make sure that each character occurrence is odd. The resulting string contains each character an odd number of times, satisfying the problem's constraints.\n    ",
+    "java": "\n    ```java\nclass Solution {\n    public String generateTheString(int n) {\n        StringBuilder result = new StringBuilder();\n        for (int i = 0; i < n - 1; i++)\n            result.append('a');\n        if (n % 2 == 0)\n            result.append('b');\n        else\n            result.append('a');\n        return result.toString();\n    }\n}\n```\n    \n    The algorithm to solve this problem is straightforward. We initialize the result with a single character (lowercase 'a') repeated `n` times. If the given integer `n` is even, replace the last character with a different character (lowercase 'b') to make sure that each character occurrence is odd. The resulting string contains each character an odd number of times, satisfying the problem's constraints.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

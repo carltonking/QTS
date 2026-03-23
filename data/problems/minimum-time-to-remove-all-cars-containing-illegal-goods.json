@@ -1,0 +1,24 @@
+{
+  "id": 2167,
+  "title": "Minimum Time to Remove All Cars Containing Illegal Goods",
+  "slug": "minimum-time-to-remove-all-cars-containing-illegal-goods",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a 0-indexed binary string s which represents a sequence of train cars. s[i] = '0' denotes that the ith car does not contain illegal goods and s[i] = '1' denotes that the ith car does contain illegal goods.\n\nAs the train conductor, you would like to get rid of all the cars containing illegal goods. You can do any of the following three operations any number of times:\n\n1.  Remove a train car from the left end (i.e., remove s[0]) which takes 1 unit of time.\n2.  Remove a train car from the right end (i.e., remove s[s.length - 1]) which takes 1 unit of time.\n3.  Remove a train car from anywhere in the sequence which takes 2 units of time.\n\nReturn _the minimum time to remove all the cars containing illegal goods_.\n\nNote that an empty sequence of cars is considered to have no cars containing illegal goods.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_time_to_remove_illegal_goods(s: str) -> int:\n    ones = twos = 0\n    for c in s:\n        if c == '1':\n            twos += ones\n            ones += 1\n    return ones + min(ones, twos)\n```\n    \n    The algorithm:\n1. Initialize two counters, `ones` and `twos`, to 0.\n2. Iterate through the characters in the string.\n3. If a character is '1', increment `ones` then add the current value of `ones` to `twos`.\n4. At the end, return `ones + min(ones, twos)`.\n\nStep 3 updates the count based on either removing the car from the left (`ones`) or anywhere (`twos`). The result of this step generates the minimum among the accumulated time spent on removing cars by both methods, which also includes the cars yet to be processed.\n\nThe time complexity is O(n), where n is the length of the input string. This is because we iterate through the whole string in a single pass. The space complexity is O(1) as we only use a constant amount of extra space for the counters.\n    ",
+    "javascript": "\n    ```javascript\nfunction min_time_to_remove_illegal_goods(s) {\n    let ones = 0, twos = 0;\n    for (let c of s) {\n        if (c === '1') {\n            twos += ones;\n            ones++;\n        }\n    }\n    return ones + Math.min(ones, twos);\n}\n```\n    \n    The algorithm:\n1. Initialize two counters, `ones` and `twos`, to 0.\n2. Iterate through the characters in the string.\n3. If a character is '1', increment `ones` then add the current value of `ones` to `twos`.\n4. At the end, return `ones + min(ones, twos)`.\n\nStep 3 updates the count based on either removing the car from the left (`ones`) or anywhere (`twos`). The result of this step generates the minimum among the accumulated time spent on removing cars by both methods, which also includes the cars yet to be processed.\n\nThe time complexity is O(n), where n is the length of the input string. This is because we iterate through the whole string in a single pass. The space complexity is O(1) as we only use a constant amount of extra space for the counters.\n    ",
+    "java": "\n    ```java\nint min_time_to_remove_illegal_goods(String s) {\n    int ones = 0, twos = 0;\n    for (char c : s.toCharArray()) {\n        if (c == '1') {\n            twos += ones;\n            ones++;\n        }\n    }\n    return ones + Math.min(ones, twos);\n}\n```\n    \n    The algorithm:\n1. Initialize two counters, `ones` and `twos`, to 0.\n2. Iterate through the characters in the string.\n3. If a character is '1', increment `ones` then add the current value of `ones` to `twos`.\n4. At the end, return `ones + min(ones, twos)`.\n\nStep 3 updates the count based on either removing the car from the left (`ones`) or anywhere (`twos`). The result of this step generates the minimum among the accumulated time spent on removing cars by both methods, which also includes the cars yet to be processed.\n\nThe time complexity is O(n), where n is the length of the input string. This is because we iterate through the whole string in a single pass. The space complexity is O(1) as we only use a constant amount of extra space for the counters.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

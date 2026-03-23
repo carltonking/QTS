@@ -1,0 +1,24 @@
+{
+  "id": 1514,
+  "title": "Path with Maximum Probability",
+  "slug": "path-with-maximum-probability",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an undirected weighted graph of n nodes (0-indexed), represented by an edge list where edges[i] = [a, b] is an undirected edge connecting the nodes a and b with a probability of success of traversing that edge succProb[i].\n\nGiven two nodes start and end, find the path with the maximum probability of success to go from start to end and return its success probability.\n\nIf there is no path from start to end, return 0. Your answer will be accepted if it differs from the correct answer by at most 1e-5.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_start_value(nums):\n    min_sum, sum = 0, 0\n    for num in nums:\n        sum += num\n        min_sum = min(min_sum, sum)\n    return 1 - min_sum\n```\n    \n    We iterate through the array and at each iteration, we add the current element to the sum. We keep track of the minimum sum we've seen in min_sum. In the end, we return the result as 1 - min_sum, which ensures that the step by step sum is never less than 1.\n    ",
+    "javascript": "\n    ```javascript\nfunction minStartValue(nums) {\n    let min_sum = 0, sum = 0;\n    for (const num of nums) {\n        sum += num;\n        min_sum = Math.min(min_sum, sum);\n    }\n    return 1 - min_sum;\n}\n```\n    \n    We iterate through the array and at each iteration, we add the current element to the sum. We keep track of the minimum sum we've seen in min_sum. In the end, we return the result as 1 - min_sum, which ensures that the step by step sum is never less than 1.\n    ",
+    "java": "\n    ```java\npublic int minStartValue(int[] nums) {\n    int min_sum = 0, sum = 0;\n    for (int num : nums) {\n        sum += num;\n        min_sum = Math.min(min_sum, sum);\n    }\n    return 1 - min_sum;\n}\n```\n    \n    We iterate through the array and at each iteration, we add the current element to the sum. We keep track of the minimum sum we've seen in min_sum. In the end, we return the result as 1 - min_sum, which ensures that the step by step sum is never less than 1.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

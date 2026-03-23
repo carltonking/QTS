@@ -1,0 +1,24 @@
+{
+  "id": 2348,
+  "title": "Number of Zero-Filled Subarrays",
+  "slug": "number-of-zero-filled-subarrays",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums, return _the number of subarrays filled with_ 0.\n\nA subarray is a contiguous non-empty sequence of elements within an array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef numberOfSubarraysWithZeroes(nums):\n    count = 0\n    zero_count = 0\n\n    for num in nums:\n        if num == 0:\n            zero_count += 1\n            count += zero_count\n        else:\n            zero_count = 0\n\n    return count\n```\n\n    \n    For this problem, we iterate through the given `nums` array. If we encounter a zero, we increment `zeroCount`, which keeps track of consecutive zeroes. We then add `zeroCount` to our total `count`, which represents the number of subarrays filled with zeroes.\n\nIf we encounter a non-zero number, we reset `zeroCount` to 0.\n\nFinally, we return the total `count` as the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction numberOfSubarraysWithZeroes(nums) {\n    let count = 0;\n    let zeroCount = 0;\n    \n    for (const num of nums) {\n        if (num === 0) {\n            zeroCount++;\n            count += zeroCount;\n        } else {\n            zeroCount = 0;\n        }\n    }\n    return count;\n}\n```\n\n    \n    For this problem, we iterate through the given `nums` array. If we encounter a zero, we increment `zeroCount`, which keeps track of consecutive zeroes. We then add `zeroCount` to our total `count`, which represents the number of subarrays filled with zeroes.\n\nIf we encounter a non-zero number, we reset `zeroCount` to 0.\n\nFinally, we return the total `count` as the result.\n    ",
+    "java": "\n    ```java\npublic int numberOfSubarraysWithZeroes(int[] nums) {\n    int count = 0;\n    int zeroCount = 0;\n    \n    for (int num : nums) {\n        if (num == 0) {\n            zeroCount++;\n            count += zeroCount;\n        } else {\n            zeroCount = 0;\n        }\n    }\n    return count;\n}\n```\n\n    \n    For this problem, we iterate through the given `nums` array. If we encounter a zero, we increment `zeroCount`, which keeps track of consecutive zeroes. We then add `zeroCount` to our total `count`, which represents the number of subarrays filled with zeroes.\n\nIf we encounter a non-zero number, we reset `zeroCount` to 0.\n\nFinally, we return the total `count` as the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

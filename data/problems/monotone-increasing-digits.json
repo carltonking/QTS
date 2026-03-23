@@ -1,0 +1,24 @@
+{
+  "id": 738,
+  "title": "Monotone Increasing Digits",
+  "slug": "monotone-increasing-digits",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "An integer has monotone increasing digits if and only if each pair of adjacent digits x and y satisfy x <= y.\n\nGiven an integer n, return _the largest number that is less than or equal to_ n _with monotone increasing digits_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef monotoneIncreasingDigits(n: int) -> int:\n    n_str = [c for c in str(n)]\n\n    i = len(n_str) - 1\n    while i > 0:\n        if n_str[i] < n_str[i - 1]:\n            n_str[i - 1] = chr(ord(n_str[i - 1]) - 1)\n            for j in range(i, len(n_str)):\n                n_str[j] = '9'\n        i -= 1\n\n    return int(''.join(n_str))\n```\n    \n    1. Convert the input integer to a string for easier manipulation of individual digits, and get its length.\n2. Initialize counter `i` starting at the right-most digit and going left.\n3. If the current digit is less than the previous one, we decrement the previous digit by 1 as it must be less than or equal, then set all digits to the right of the modified digit to 9 (so that the number remains the largest possible).\n4. Continue with step 3 until every previous digit has been checked, adjusting digits as needed.\n5. Convert the string of digits back to an integer and return it.\n    ",
+    "javascript": "\n    ```javascript\nfunction monotoneIncreasingDigits(n) {\n    let n_str = n.toString();\n    let n_len = n_str.length;\n\n    let i = n_len - 1;\n    while (i > 0) {\n        if (n_str.charAt(i) < n_str.charAt(i - 1)) {\n            n_str = n_str.slice(0, i-1) + String.fromCharCode(n_str.charCodeAt(i-1) - 1) + '9'.repeat(n_len - i);\n        }\n        --i;\n    }\n\n    return parseInt(n_str);\n}\n```\n\n    \n    1. Convert the input integer to a string for easier manipulation of individual digits, and get its length.\n2. Initialize counter `i` starting at the right-most digit and going left.\n3. If the current digit is less than the previous one, we decrement the previous digit by 1 as it must be less than or equal, then set all digits to the right of the modified digit to 9 (so that the number remains the largest possible).\n4. Continue with step 3 until every previous digit has been checked, adjusting digits as needed.\n5. Convert the string of digits back to an integer and return it.\n    ",
+    "java": "\n    ```java\npublic int monotoneIncreasingDigits(int n) {\n    char[] n_str = String.valueOf(n).toCharArray();\n    int n_len = n_str.length;\n\n    int i = n_len - 1;\n    while (i > 0) {\n        if (n_str[i] < n_str[i - 1]) {\n            n_str[i - 1] -= 1;\n            for (int j = i; j < n_len; ++j) {\n                n_str[j] = '9';\n            }\n        }\n        --i;\n    }\n\n    return Integer.parseInt(new String(n_str));\n}\n```\n    \n    1. Convert the input integer to a string for easier manipulation of individual digits, and get its length.\n2. Initialize counter `i` starting at the right-most digit and going left.\n3. If the current digit is less than the previous one, we decrement the previous digit by 1 as it must be less than or equal, then set all digits to the right of the modified digit to 9 (so that the number remains the largest possible).\n4. Continue with step 3 until every previous digit has been checked, adjusting digits as needed.\n5. Convert the string of digits back to an integer and return it.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

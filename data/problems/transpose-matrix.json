@@ -1,0 +1,24 @@
+{
+  "id": 867,
+  "title": "Transpose Matrix",
+  "slug": "transpose-matrix",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a 2D integer array matrix, return _the transpose of_ matrix.\n\nThe transpose of a matrix is the matrix flipped over its main diagonal, switching the matrix's row and column indices.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef new21Game(n: int, k: int, maxPts: int) -> float:\n    if k == 0 or n >= k + maxPts:\n        return 1\n    \n    dp = [0] * (n + 1)\n    dp[0] = 1\n    s, ans = 1, 0\n\n    for i in range(1, n + 1):\n        dp[i] = s / maxPts\n        if i < k:\n            s += dp[i]\n        else:\n            ans += dp[i]\n        if i >= maxPts:\n            s -= dp[i - maxPts]\n\n    return ans\n```\n\n    \n    1. If Alice has already reached k points or n >= k + maxPts, there is no chance of drawing more cards, so return 1.\n2. Create a dynamic programming array (dp) to store the probability of reaching each point from 0 to n. Initialize dp[0] as 1.\n3. Keep a rolling sum of probabilities and iterate through the range [1, n]. Calculate the probability of reaching points i as the rolling sum divided by maxPts.\n4. If i < k, Alice needs to draw more cards, so update the rolling sum by adding the i-th probability.\n5. If i >= k, Alice already reached the target, so update the answer by adding the i-th probability.\n6. If i >= maxPts, remove the (i-maxPts)-th probability from the rolling sum since it's not in the range of possibilities.\n7. Return the accumulated probability after the iteration.\n    ",
+    "javascript": "\n    ```javascript\nfunction new21Game(n, k, maxPts) {\n    if (k === 0 || n >= k + maxPts) {\n        return 1;\n    }\n\n    let dp = new Array(n + 1).fill(0);\n    dp[0] = 1;\n    let sum = 1, ans = 0;\n\n    for (let i = 1; i <= n; i++) {\n        dp[i] = sum / maxPts;\n        if (i < k) {\n            sum += dp[i];\n        } else {\n            ans += dp[i];\n        }\n        if (i >= maxPts) {\n            sum -= dp[i - maxPts];\n        }\n    }\n\n    return ans;\n}\n```\n\n    \n    1. If Alice has already reached k points or n >= k + maxPts, there is no chance of drawing more cards, so return 1.\n2. Create a dynamic programming array (dp) to store the probability of reaching each point from 0 to n. Initialize dp[0] as 1.\n3. Keep a rolling sum of probabilities and iterate through the range [1, n]. Calculate the probability of reaching points i as the rolling sum divided by maxPts.\n4. If i < k, Alice needs to draw more cards, so update the rolling sum by adding the i-th probability.\n5. If i >= k, Alice already reached the target, so update the answer by adding the i-th probability.\n6. If i >= maxPts, remove the (i-maxPts)-th probability from the rolling sum since it's not in the range of possibilities.\n7. Return the accumulated probability after the iteration.\n    ",
+    "java": "\n    ```java\npublic double new21Game(int n, int k, int maxPts) {\n    if (k == 0 || n >= k + maxPts) {\n        return 1;\n    }\n    \n    double[] dp = new double[n + 1];\n    dp[0] = 1;\n    double sum = 1, ans = 0;\n    \n    for (int i = 1; i <= n; i++) {\n        dp[i] = sum / maxPts;\n        if (i < k) {\n            sum += dp[i];\n        } else {\n            ans += dp[i];\n        }\n        if (i >= maxPts) {\n            sum -= dp[i - maxPts];\n        }\n    }\n    \n    return ans;\n}\n```\n\n    \n    1. If Alice has already reached k points or n >= k + maxPts, there is no chance of drawing more cards, so return 1.\n2. Create a dynamic programming array (dp) to store the probability of reaching each point from 0 to n. Initialize dp[0] as 1.\n3. Keep a rolling sum of probabilities and iterate through the range [1, n]. Calculate the probability of reaching points i as the rolling sum divided by maxPts.\n4. If i < k, Alice needs to draw more cards, so update the rolling sum by adding the i-th probability.\n5. If i >= k, Alice already reached the target, so update the answer by adding the i-th probability.\n6. If i >= maxPts, remove the (i-maxPts)-th probability from the rolling sum since it's not in the range of possibilities.\n7. Return the accumulated probability after the iteration.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

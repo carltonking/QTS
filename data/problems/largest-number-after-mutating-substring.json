@@ -1,0 +1,24 @@
+{
+  "id": 1946,
+  "title": "Largest Number After Mutating Substring",
+  "slug": "largest-number-after-mutating-substring",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a string num, which represents a large integer. You are also given a 0-indexed integer array change of length 10 that maps each digit 0-9 to another digit. More formally, digit d maps to digit change[d].\n\nYou may choose to mutate a single substring of num. To mutate a substring, replace each digit num[i] with the digit it maps to in change (i.e. replace num[i] with change[num[i]]).\n\nReturn _a string representing the largest possible integer after mutating (or choosing not to) a single substring of_ num.\n\nA substring is a contiguous sequence of characters within the string.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nimport bisect\n\ndef minAbsoluteSumDiff(nums1, nums2):\n    n = len(nums1)\n    total = 0\n    max_diff = 0\n    mod = 10**9 + 7\n    sorted_nums1 = sorted(nums1)\n    \n    for i in range(n):\n        diff = abs(nums1[i] - nums2[i])\n        total += diff\n        \n        pos = bisect_left(sorted_nums1, nums2[i])\n        if pos != n:\n            max_diff = max(max_diff, diff - abs(sorted_nums1[pos] - nums2[i]))\n        if pos != 0:\n            max_diff = max(max_diff, diff - abs(sorted_nums1[pos - 1] - nums2[i]))\n    \n    return (total - max_diff + mod) % mod\n```\n    \n    The algorithm:\n1. Calculate the total absolute difference of the original two arrays.\n2. Find the maximum possible reduction in the absolute difference due to swapping an element in nums1 with another.\n3. Use binary search to find the position of the element in the sorted copy of nums1.\n4. Check both the position found and the position before it, if any. Calculate the potential absolute difference after replacement and update the maxDiff.\n5. Return the result as (total - maxDiff) modulo 1e9 + 7.\n    ",
+    "javascript": "\n    ```javascript\nfunction minAbsoluteSumDiff(nums1, nums2) {\n    const n = nums1.length;\n    let total = 0;\n    let maxDiff = 0;\n    const mod = 1e9 + 7;\n    const sortedNums1 = [...nums1].sort((a, b) => a - b);\n    \n    for (let i = 0; i < n; i++) {\n        const diff = Math.abs(nums1[i] - nums2[i]);\n        total += diff;\n        \n        const pos = sortedNums1.findIndex(x => x >= nums2[i]);\n        if (pos !== n) {\n            maxDiff = Math.max(maxDiff, diff - Math.abs(sortedNums1[pos] - nums2[i]));\n        }\n        if (pos !== 0) {\n            maxDiff = Math.max(maxDiff, diff - Math.abs(sortedNums1[pos - 1] - nums2[i]));\n        }\n    }\n    return (total - maxDiff + mod) % mod;\n}\n```\n    \n    The algorithm:\n1. Calculate the total absolute difference of the original two arrays.\n2. Find the maximum possible reduction in the absolute difference due to swapping an element in nums1 with another.\n3. Use binary search to find the position of the element in the sorted copy of nums1.\n4. Check both the position found and the position before it, if any. Calculate the potential absolute difference after replacement and update the maxDiff.\n5. Return the result as (total - maxDiff) modulo 1e9 + 7.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int minAbsoluteSumDiff(int[] nums1, int[] nums2) {\n    int n = nums1.length;\n    long total = 0;\n    int maxDiff = 0;\n    int mod = 1_000_000_007;\n    int[] sortedNums1 = nums1.clone();\n    Arrays.sort(sortedNums1);\n    \n    for (int i = 0; i < n; i++) {\n        int diff = Math.abs(nums1[i] - nums2[i]);\n        total += diff;\n        \n        int pos = Arrays.binarySearch(sortedNums1, nums2[i]);\n        if (pos < 0) {\n            pos = ~pos;\n        }\n        if (pos != n) {\n            maxDiff = Math.max(maxDiff, diff - Math.abs(sortedNums1[pos] - nums2[i]));\n        }\n        if (pos != 0) {\n            maxDiff = Math.max(maxDiff, diff - Math.abs(sortedNums1[pos - 1] - nums2[i]));\n        }\n    }\n    return (int)((total - maxDiff + mod) % mod);\n}\n```\n    \n    The algorithm:\n1. Calculate the total absolute difference of the original two arrays.\n2. Find the maximum possible reduction in the absolute difference due to swapping an element in nums1 with another.\n3. Use binary search to find the position of the element in the sorted copy of nums1.\n4. Check both the position found and the position before it, if any. Calculate the potential absolute difference after replacement and update the maxDiff.\n5. Return the result as (total - maxDiff) modulo 1e9 + 7.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

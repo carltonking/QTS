@@ -1,0 +1,24 @@
+{
+  "id": 324,
+  "title": "Wiggle Sort II",
+  "slug": "wiggle-sort-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums, reorder it such that nums[0] < nums[1] > nums[2] < nums[3]....\n\nYou may assume the input array always has a valid answer.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef wiggleSort(nums):\n    nums.sort()\n    for i in range(1, len(nums) - 1, 2):\n        nums[i], nums[i + 1] = nums[i + 1], nums[i]\n```\n\n    \n    1. First, sort the array in ascending order. This step ensures that the smaller element is always before the larger element in the sorted array.\n2. Iterate through the sorted array, starting from the second element (index 1) and incrementing by 2 so that the iteration only impacts every other element.\n3. Swap the current element with the next element in the array during the iteration. This will make the current element greater than its neighbors, fulfilling the requirements of the wiggle sort.\n    ",
+    "javascript": "\n    ```javascript\nfunction wiggleSort(nums) {\n    nums.sort((a, b) => a - b);\n    for (let i = 1; i < nums.length - 1; i += 2) {\n        [nums[i], nums[i + 1]] = [nums[i + 1], nums[i]];\n    }\n}\n```\n\n    \n    1. First, sort the array in ascending order. This step ensures that the smaller element is always before the larger element in the sorted array.\n2. Iterate through the sorted array, starting from the second element (index 1) and incrementing by 2 so that the iteration only impacts every other element.\n3. Swap the current element with the next element in the array during the iteration. This will make the current element greater than its neighbors, fulfilling the requirements of the wiggle sort.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\npublic void wiggleSort(int[] nums) {\n    Arrays.sort(nums);\n    for (int i = 1; i < nums.length - 1; i += 2) {\n        int temp = nums[i];\n        nums[i] = nums[i + 1];\n        nums[i + 1] = temp;\n    }\n}\n```\n\n    \n    1. First, sort the array in ascending order. This step ensures that the smaller element is always before the larger element in the sorted array.\n2. Iterate through the sorted array, starting from the second element (index 1) and incrementing by 2 so that the iteration only impacts every other element.\n3. Swap the current element with the next element in the array during the iteration. This will make the current element greater than its neighbors, fulfilling the requirements of the wiggle sort.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

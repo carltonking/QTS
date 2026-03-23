@@ -1,0 +1,24 @@
+{
+  "id": 1429,
+  "title": "First Unique Number",
+  "slug": "first-unique-number",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You have a queue of integers, you need to retrieve the first unique integer in the queue.\n\nImplement the FirstUnique class:\n\n*   FirstUnique(int[] nums) Initializes the object with the numbers in the queue.\n*   int showFirstUnique() returns the value of the first unique integer of the queue, and returns \\-1 if there is no such integer.\n*   void add(int value) insert value to the queue.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_solvable(words, result):\n    return sum(words.values()) % 10 == result % 10\n```\n    \n    The problem states that we need to check if the given equation is solvable based on a given mapping of characters to integers. The best data structure to represent this mapping is a dictionary (or map) for each language.\n\nThe algorithm is as follows:\n\n1. For each character in the words (left side of the equation), get the corresponding integer value from the map and add it to a sum variable.\n2. Check if the sum of the left side modulo 10 is equal to the right side of the equation modulo 10. If they are equal, return `true`, otherwise return `false`.\n\nThe reason for using the modulo operation is to ensure that the sum of the left side does not exceed the range of single-digit numbers, which is a constraint of the problem.\n    ",
+    "javascript": "\n    ```javascript\nfunction isSolvable(words, result) {\n    let sum = 0;\n    for (let key in words) {\n        sum += words[key];\n    }\n    return sum % 10 === result % 10;\n}\n```\n    \n    The problem states that we need to check if the given equation is solvable based on a given mapping of characters to integers. The best data structure to represent this mapping is a dictionary (or map) for each language.\n\nThe algorithm is as follows:\n\n1. For each character in the words (left side of the equation), get the corresponding integer value from the map and add it to a sum variable.\n2. Check if the sum of the left side modulo 10 is equal to the right side of the equation modulo 10. If they are equal, return `true`, otherwise return `false`.\n\nThe reason for using the modulo operation is to ensure that the sum of the left side does not exceed the range of single-digit numbers, which is a constraint of the problem.\n    ",
+    "java": "\n    ```java\nimport java.util.Map;\n\npublic boolean isSolvable(Map<Character, Integer> words, int result) {\n    int sum = 0;\n    for (int value : words.values()) {\n        sum += value;\n    }\n    return sum % 10 == result % 10;\n}\n```\n    \n    The problem states that we need to check if the given equation is solvable based on a given mapping of characters to integers. The best data structure to represent this mapping is a dictionary (or map) for each language.\n\nThe algorithm is as follows:\n\n1. For each character in the words (left side of the equation), get the corresponding integer value from the map and add it to a sum variable.\n2. Check if the sum of the left side modulo 10 is equal to the right side of the equation modulo 10. If they are equal, return `true`, otherwise return `false`.\n\nThe reason for using the modulo operation is to ensure that the sum of the left side does not exceed the range of single-digit numbers, which is a constraint of the problem.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

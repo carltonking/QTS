@@ -1,0 +1,24 @@
+{
+  "id": 1039,
+  "title": "Minimum Score Triangulation of Polygon",
+  "slug": "minimum-score-triangulation-of-polygon",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You have a convex n\\-sided polygon where each vertex has an integer value. You are given an integer array values where values[i] is the value of the ith vertex (i.e., clockwise order).\n\nYou will triangulate the polygon into n - 2 triangles. For each triangle, the value of that triangle is the product of the values of its vertices, and the total score of the triangulation is the sum of these values over all n - 2 triangles in the triangulation.\n\nReturn _the smallest possible total score that you can achieve with some triangulation of the polygon_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_judge(n, trust):\n    trustCounts = [0] * (n + 1)\n    for a, b in trust:\n        trustCounts[a] -= 1\n        trustCounts[b] += 1\n\n    for i in range(1, n + 1):\n        if trustCounts[i] == n - 1:\n            return i\n    return -1\n```\n    \n    1. We create an array `trustCounts` of length `n+1` initialized with zeroes. This will hold the number of trust relationships for each person.\n2. For each trust[i] = [a, b] in the input trust array, we decrease the count for person 'a' by 1 (since 'a' trusts someone else) and increase the count for person 'b' by 1 (since 'b' is trusted by 'a').\n3. We then iterate through the `trustCounts` array from 1 to n (inclusive). If the trust count for person 'i' is `n - 1`, this means that every other person trusts 'i', and 'i' trusts no one else. In this case, 'i' is the town judge and we return 'i'.\n4. If no such 'i' is found, we return -1 as the town judge cannot be identified.\n    ",
+    "javascript": "\n    ```javascript\nfunction findJudge(n, trust) {\n    const trustCounts = new Array(n + 1).fill(0);\n    for (const relation of trust) {\n        trustCounts[relation[0]]--;\n        trustCounts[relation[1]]++;\n    }\n\n    for (let i = 1; i <= n; i++) {\n        if (trustCounts[i] === n - 1) {\n            return i;\n        }\n    }\n    return -1;\n}\n```\n\n    \n    1. We create an array `trustCounts` of length `n+1` initialized with zeroes. This will hold the number of trust relationships for each person.\n2. For each trust[i] = [a, b] in the input trust array, we decrease the count for person 'a' by 1 (since 'a' trusts someone else) and increase the count for person 'b' by 1 (since 'b' is trusted by 'a').\n3. We then iterate through the `trustCounts` array from 1 to n (inclusive). If the trust count for person 'i' is `n - 1`, this means that every other person trusts 'i', and 'i' trusts no one else. In this case, 'i' is the town judge and we return 'i'.\n4. If no such 'i' is found, we return -1 as the town judge cannot be identified.\n    ",
+    "java": "\n    ```java\npublic int findJudge(int n, int[][] trust) {\n    int[] trustCounts = new int[n + 1];\n    for (int[] relation : trust) {\n        trustCounts[relation[0]]--;\n        trustCounts[relation[1]]++;\n    }\n    \n    for (int i = 1; i <= n; i++) {\n        if (trustCounts[i] == n - 1) {\n            return i;\n        }\n    }\n    return -1;\n}\n```\n    \n    1. We create an array `trustCounts` of length `n+1` initialized with zeroes. This will hold the number of trust relationships for each person.\n2. For each trust[i] = [a, b] in the input trust array, we decrease the count for person 'a' by 1 (since 'a' trusts someone else) and increase the count for person 'b' by 1 (since 'b' is trusted by 'a').\n3. We then iterate through the `trustCounts` array from 1 to n (inclusive). If the trust count for person 'i' is `n - 1`, this means that every other person trusts 'i', and 'i' trusts no one else. In this case, 'i' is the town judge and we return 'i'.\n4. If no such 'i' is found, we return -1 as the town judge cannot be identified.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

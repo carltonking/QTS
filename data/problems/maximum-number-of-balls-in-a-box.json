@@ -1,0 +1,24 @@
+{
+  "id": 1742,
+  "title": "Maximum Number of Balls in a Box",
+  "slug": "maximum-number-of-balls-in-a-box",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are working in a ball factory where you have n balls numbered from lowLimit up to highLimit inclusive (i.e., n == highLimit - lowLimit + 1), and an infinite number of boxes numbered from 1 to infinity.\n\nYour job at this factory is to put each ball in the box with a number equal to the sum of digits of the ball's number. For example, the ball number 321 will be put in the box number 3 + 2 + 1 = 6 and the ball number 10 will be put in the box number 1 + 0 = 1.\n\nGiven two integers lowLimit and highLimit, return _the number of balls in the box with the most balls._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxWidthOfVerticalArea(points):\n    xs = sorted([point[0] for point in points])\n    max_width = 0\n    for i in range(1, len(xs)):\n        max_width = max(max_width, xs[i] - xs[i - 1])\n    return max_width\n```\n\n    \n    1. Obtain all the x-coordinates from the given points, and store them in a new list (`xs`).\n2. Sort the x-coordinates in ascending order.\n3. Initialize the maximum width (`max_width`) to be 0.\n4. Iterate through the sorted x coordinates:\n   - For each consecutive pair of x-coordinates, calculate their difference.\n   - Update the `max_width` with the maximum value between the current `max_width` and the difference.\n5. Return the `max_width`.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxWidthOfVerticalArea(points) {\n    const xs = points.map(point => point[0]).sort((a, b) => a - b);\n    let max_width = 0;\n    for (let i = 1; i < xs.length; i++) {\n        max_width = Math.max(max_width, xs[i] - xs[i - 1]);\n    }\n    return max_width;\n}\n```\n\n    \n    1. Obtain all the x-coordinates from the given points, and store them in a new list (`xs`).\n2. Sort the x-coordinates in ascending order.\n3. Initialize the maximum width (`max_width`) to be 0.\n4. Iterate through the sorted x coordinates:\n   - For each consecutive pair of x-coordinates, calculate their difference.\n   - Update the `max_width` with the maximum value between the current `max_width` and the difference.\n5. Return the `max_width`.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic int maxWidthOfVerticalArea(int[][] points) {\n    List<Integer> xs = new ArrayList<>();\n    for (int[] point : points) {\n        xs.add(point[0]);\n    }\n    Collections.sort(xs);\n\n    int max_width = 0;\n    for (int i = 1; i < xs.size(); i++) {\n        max_width = Math.max(max_width, xs.get(i) - xs.get(i - 1));\n    }\n\n    return max_width;\n}\n```\n\n    \n    1. Obtain all the x-coordinates from the given points, and store them in a new list (`xs`).\n2. Sort the x-coordinates in ascending order.\n3. Initialize the maximum width (`max_width`) to be 0.\n4. Iterate through the sorted x coordinates:\n   - For each consecutive pair of x-coordinates, calculate their difference.\n   - Update the `max_width` with the maximum value between the current `max_width` and the difference.\n5. Return the `max_width`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

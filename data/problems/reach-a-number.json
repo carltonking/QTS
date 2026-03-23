@@ -1,0 +1,24 @@
+{
+  "id": 754,
+  "title": "Reach a Number",
+  "slug": "reach-a-number",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are standing at position 0 on an infinite number line. There is a destination at position target.\n\nYou can make some number of moves numMoves so that:\n\n*   On each move, you can either go left or right.\n*   During the ith move (starting from i == 1 to i == numMoves), you take i steps in the chosen direction.\n\nGiven the integer target, return _the minimum number of moves required (i.e., the minimum_ numMoves_) to reach the destination_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef reachNumber(target: int) -> int:\n    target = abs(target)\n    step = 0\n    sum = 0\n    while sum < target:\n        step += 1\n        sum += step\n    while (sum - target) % 2 != 0:\n        step += 1\n        sum += step\n    return step\n```\n\n    \n    1. Calculate the absolute value of `target` since reaching a negative target can be achieved similarly to reaching a positive target.\n2. Initialize the steps count `step` and a variable `sum` to store the sum of steps.\n3. Keep adding steps to `sum` until the `sum` is greater than or equal to the target.\n4. If the difference between the `sum` and the `target` is not divisible by 2, it means we haven't reached an even-numbered position or an odd-numbered position according to the parity of the `target`. If that's the case, increment `step` and add the new `step` to the `sum`.\n5. Repeat step 4 until the difference between the `sum` and the `target` is divisible by 2.\n6. Return the value of `step`.\n    ",
+    "javascript": "\n    ```javascript\nfunction reachNumber(target) {\n    target = Math.abs(target);\n    let step = 0, sum = 0;\n    while (sum < target) {\n        step++;\n        sum += step;\n    }\n    while ((sum - target) % 2 != 0) {\n        step++;\n        sum += step;\n    }\n    return step;\n}\n```\n\n    \n    1. Calculate the absolute value of `target` since reaching a negative target can be achieved similarly to reaching a positive target.\n2. Initialize the steps count `step` and a variable `sum` to store the sum of steps.\n3. Keep adding steps to `sum` until the `sum` is greater than or equal to the target.\n4. If the difference between the `sum` and the `target` is not divisible by 2, it means we haven't reached an even-numbered position or an odd-numbered position according to the parity of the `target`. If that's the case, increment `step` and add the new `step` to the `sum`.\n5. Repeat step 4 until the difference between the `sum` and the `target` is divisible by 2.\n6. Return the value of `step`.\n    ",
+    "java": "\n    ```java\npublic int reachNumber(int target) {\n    target = Math.abs(target);\n    int step = 0, sum = 0;\n    while (sum < target) {\n        step++;\n        sum += step;\n    }\n    while ((sum - target) % 2 != 0) {\n        step++;\n        sum += step;\n    }\n    return step;\n}\n```\n\n    \n    1. Calculate the absolute value of `target` since reaching a negative target can be achieved similarly to reaching a positive target.\n2. Initialize the steps count `step` and a variable `sum` to store the sum of steps.\n3. Keep adding steps to `sum` until the `sum` is greater than or equal to the target.\n4. If the difference between the `sum` and the `target` is not divisible by 2, it means we haven't reached an even-numbered position or an odd-numbered position according to the parity of the `target`. If that's the case, increment `step` and add the new `step` to the `sum`.\n5. Repeat step 4 until the difference between the `sum` and the `target` is divisible by 2.\n6. Return the value of `step`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

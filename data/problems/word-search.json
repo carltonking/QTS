@@ -1,0 +1,41 @@
+{
+  "id": 48,
+  "title": "Word Search",
+  "slug": "word-search",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Backtracking",
+    "Matrix"
+  ],
+  "description": "Given an m x n grid of characters board and a string word, return true if word exists in the grid.",
+  "examples": [
+    {
+      "input": "board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"ABCCED\"",
+      "output": "true"
+    }
+  ],
+  "constraints": [
+    "m == board.length",
+    "n = board[i].length"
+  ],
+  "starterCode": {
+    "python": "from typing import List\nclass Solution:\n    def exist(self, board: List[List[str]], word: str) -> bool:\n        pass",
+    "javascript": "var exist = function(board, word) {\n    \n};",
+    "java": "class Solution {\n    public boolean exist(char[][] board, String word) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    bool exist(vector<vector<char>>& board, string word) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Word Search\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "[[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]]\nABCCED",
+      "expectedOutput": "true"
+    },
+    {
+      "input": "[[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]]\nABCB",
+      "expectedOutput": "false"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": 46,
+  "title": "Permutations",
+  "slug": "permutations",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Backtracking"
+  ],
+  "description": "Given an array nums of distinct integers, return all possible permutations.",
+  "examples": [
+    {
+      "input": "nums = [1,2,3]",
+      "output": "[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]"
+    }
+  ],
+  "constraints": [
+    "1 <= nums.length <= 6"
+  ],
+  "starterCode": {
+    "python": "from typing import List\nclass Solution:\n    def permute(self, nums: List[int]) -> List[List[int]]:\n        pass",
+    "javascript": "var permute = function(nums) {\n    \n};",
+    "java": "class Solution {\n    public List<List<Integer>> permute(int[] nums) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    vector<vector<int>> permute(vector<int>& nums) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Permutations\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "[1,2,3]",
+      "expectedOutput": "[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]"
+    },
+    {
+      "input": "[0,1]",
+      "expectedOutput": "[[0,1],[1,0]]"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": 354,
+  "title": "Russian Doll Envelopes",
+  "slug": "russian-doll-envelopes",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a 2D array of integers envelopes where envelopes[i] = [wi, hi] represents the width and the height of an envelope.\n\nOne envelope can fit into another if and only if both the width and height of one envelope are greater than the other envelope's width and height.\n\nReturn _the maximum number of envelopes you can Russian doll (i.e., put one inside the other)_.\n\nNote: You cannot rotate an envelope.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom bisect import bisect_left\n\ndef max_envelopes(envelopes):\n    envelopes.sort(key=lambda x: (x[0], -x[1]))\n    dp = []\n    \n    for _, h in envelopes:\n        idx = bisect_left(dp, h)\n        if idx == len(dp):\n            dp.append(h)\n        else:\n            dp[idx] = h\n\n    return len(dp)\n```\n    \n    1. Sort the envelopes based on width and in ascending order. If the widths are equal, sort by height in descending order.\n2. Create an empty list `dp` to maintain the increasing subsequence.\n3. Iterate through the sorted envelopes and for each envelope, find the index of the height in `dp` with binary search. If the index is equal to the length of `dp`, append the height to `dp`. Otherwise, replace the element at the index in `dp` with the current height.\n4. The length of `dp` will be the maximum number of envelopes that can be put one inside the other.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxEnvelopes(envelopes) {\n    envelopes.sort((a, b) => a[0] === b[0] ? b[1] - a[1] : a[0] - b[0]);\n    const dp = [];\n\n    for (const envelope of envelopes) {\n        const idx = lowerBound(dp, envelope[1]);\n        if (idx === dp.length) {\n            dp.push(envelope[1]);\n        } else {\n            dp[idx] = envelope[1];\n        }\n    }\n\n    return dp.length;\n\n    function lowerBound(arr, target) {\n        let low = 0, high = arr.length;\n        while (low < high) {\n            const mid = Math.floor((low + high) / 2);\n            if (arr[mid] < target) {\n                low = mid + 1;\n            } else {\n                high = mid;\n            }\n        }\n        return low;\n    }\n}\n```\n    \n    1. Sort the envelopes based on width and in ascending order. If the widths are equal, sort by height in descending order.\n2. Create an empty list `dp` to maintain the increasing subsequence.\n3. Iterate through the sorted envelopes and for each envelope, find the index of the height in `dp` with binary search. If the index is equal to the length of `dp`, append the height to `dp`. Otherwise, replace the element at the index in `dp` with the current height.\n4. The length of `dp` will be the maximum number of envelopes that can be put one inside the other.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\nimport java.util.Comparator;\n\npublic int maxEnvelopes(int[][] envelopes) {\n    Arrays.sort(envelopes, new Comparator<int[]>() {\n        public int compare(int[] a, int[] b) {\n            return a[0] == b[0] ? b[1] - a[1] : a[0] - b[0];\n        }\n    });\n\n    int[] dp = new int[envelopes.length];\n    int len = 0;\n    for (int[] envelope : envelopes) {\n        int idx = Arrays.binarySearch(dp, 0, len, envelope[1]);\n        if (idx < 0) {\n            idx = -(idx + 1);\n        }\n        dp[idx] = envelope[1];\n        if (idx == len) {\n            len++;\n        }\n    }\n\n    return len;\n}\n```\n    \n    1. Sort the envelopes based on width and in ascending order. If the widths are equal, sort by height in descending order.\n2. Create an empty list `dp` to maintain the increasing subsequence.\n3. Iterate through the sorted envelopes and for each envelope, find the index of the height in `dp` with binary search. If the index is equal to the length of `dp`, append the height to `dp`. Otherwise, replace the element at the index in `dp` with the current height.\n4. The length of `dp` will be the maximum number of envelopes that can be put one inside the other.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

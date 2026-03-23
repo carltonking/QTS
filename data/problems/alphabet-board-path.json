@@ -1,0 +1,24 @@
+{
+  "id": 1138,
+  "title": "Alphabet Board Path",
+  "slug": "alphabet-board-path",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "On an alphabet board, we start at position (0, 0), corresponding to character board[0][0].\n\nHere, board = [ \"abcde \", \"fghij \", \"klmno \", \"pqrst \", \"uvwxy \", \"z \"], as shown in the diagram below.\n\nWe may make the following moves:\n\n*   'U' moves our position up one row, if the position exists on the board;\n*   'D' moves our position down one row, if the position exists on the board;\n*   'L' moves our position left one column, if the position exists on the board;\n*   'R' moves our position right one column, if the position exists on the board;\n*   '!' adds the character board[r][c] at our current position (r, c) to the answer.\n\n(Here, the only positions that exist on the board are positions with letters on them.)\n\nReturn a sequence of moves that makes our answer equal to target in the minimum number of moves. You may return any path that does so.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxSatisfied(customers, grumpy, minutes):\n    total, max_increase, window_increase = 0, 0, 0\n    i, j = 0, 0\n    while i < len(customers):\n        if i - j == minutes:\n            window_increase -= customers[j] * grumpy[j]\n            j += 1\n        window_increase += customers[i] * grumpy[i]\n        total += customers[i] * (1 - grumpy[i])\n        max_increase = max(max_increase, window_increase)\n        i += 1\n    return total + max_increase\n```\n    \n    1. Initialize total customers satisfied, max increase, and the window increase as all 0s.\n2. Use two pointers i, and j. Iterate through every customer in the array.\n3. If the difference between i and j is equal to the given minutes, then reduce the window increase by customers[j] multiplied by grumpy[j] and increment j.\n4. Add customers[i] multiplied by grumpy[i] to the window increase.\n5. Add customers[i] multiplied by (1 - grumpy[i]) to the total satisfied customers.\n6. Calculate the maximum increase by comparing the current max increase with the window increase.\n7. At the end, return the total + maxIncrease as the maximum number of satisfied customers.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxSatisfied(customers, grumpy, minutes) {\n    let total = 0, maxIncrease = 0, windowIncrease = 0;\n    for (let i = 0, j = 0; i < customers.length; ++i) {\n        if (i - j === minutes) {\n            windowIncrease -= customers[j] * grumpy[j];\n            ++j;\n        }\n        windowIncrease += customers[i] * grumpy[i];\n        total += customers[i] * (1 - grumpy[i]);\n        maxIncrease = Math.max(maxIncrease, windowIncrease);\n    }\n    return total + maxIncrease;\n}\n```\n    \n    1. Initialize total customers satisfied, max increase, and the window increase as all 0s.\n2. Use two pointers i, and j. Iterate through every customer in the array.\n3. If the difference between i and j is equal to the given minutes, then reduce the window increase by customers[j] multiplied by grumpy[j] and increment j.\n4. Add customers[i] multiplied by grumpy[i] to the window increase.\n5. Add customers[i] multiplied by (1 - grumpy[i]) to the total satisfied customers.\n6. Calculate the maximum increase by comparing the current max increase with the window increase.\n7. At the end, return the total + maxIncrease as the maximum number of satisfied customers.\n    ",
+    "java": "\n    ```java\npublic int maxSatisfied(int[] customers, int[] grumpy, int minutes) {\n    int total = 0, maxIncrease = 0, windowIncrease = 0;\n    for (int i = 0, j = 0; i < customers.length; ++i) {\n        if (i - j == minutes) {\n            windowIncrease -= customers[j] * grumpy[j];\n            ++j;\n        }\n        windowIncrease += customers[i] * grumpy[i];\n        total += customers[i] * (1 - grumpy[i]);\n        maxIncrease = Math.max(maxIncrease, windowIncrease);\n    }\n    return total + maxIncrease;\n}\n```\n    \n    1. Initialize total customers satisfied, max increase, and the window increase as all 0s.\n2. Use two pointers i, and j. Iterate through every customer in the array.\n3. If the difference between i and j is equal to the given minutes, then reduce the window increase by customers[j] multiplied by grumpy[j] and increment j.\n4. Add customers[i] multiplied by grumpy[i] to the window increase.\n5. Add customers[i] multiplied by (1 - grumpy[i]) to the total satisfied customers.\n6. Calculate the maximum increase by comparing the current max increase with the window increase.\n7. At the end, return the total + maxIncrease as the maximum number of satisfied customers.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 873,
+  "title": "Length of Longest Fibonacci Subsequence",
+  "slug": "length-of-longest-fibonacci-subsequence",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A sequence x1, x2, ..., xn is _Fibonacci-like_ if:\n\n*   n >= 3\n*   xi + xi+1 == xi+2 for all i + 2 <= n\n\nGiven a strictly increasing array arr of positive integers forming a sequence, return _the length of the longest Fibonacci-like subsequence of_ arr. If one does not exist, return 0.\n\nA subsequence is derived from another sequence arr by deleting any number of elements (including none) from arr, without changing the order of the remaining elements. For example, [3, 5, 8] is a subsequence of [3, 4, 5, 6, 7, 8].",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nimport random\n\ndef match(a, b):\n    return sum(a[i] == b[i] for i in range(6))\n\ndef find_secret_word(wordlist, master):\n    for _ in range(10):\n        guess = random.choice(wordlist)\n        match_cnt = master.guess(guess)\n        if match_cnt == 6:\n            return\n        wordlist = [word for word in wordlist if match(word, guess) == match_cnt]\n```\n    \n    1. Define a `match` function to calculate the number of exact matches between two strings.\n2. For 10 iterations or until the secret word is guessed:\n  a. Randomly select a word (`guess`) from the `wordlist`.\n  b. Call `Master.guess` with the `guess`, and store the number of exact matches in `match_cnt`.\n  c. If the `match_cnt` equals 6 (i.e., the word is guessed), terminate the loop.\n  d. Filter the `wordlist` to keep only those words that have the same number of exact matches with the `guess` as `match_cnt`.\n3. Complete the loop and return.\n    ",
+    "javascript": "\n    ```javascript\nfunction match(a, b) {\n    let matches = 0;\n    for (let i = 0; i < 6; ++i)\n        if (a[i] == b[i]) matches++;\n    return matches;\n}\n\nfunction findSecretWord(wordlist, master) {\n    let n = wordlist.length;\n    for (let i = 0, matchCnt = 0; i < 10 && matchCnt < 6; ++i) {\n        let guess = wordlist[Math.floor(Math.random() * n)];\n        matchCnt = master.guess(guess);\n        let candidates = [];\n        for (const word of wordlist)\n            if (match(word, guess) == matchCnt)\n                candidates.push(word);\n        wordlist = candidates;\n        n = wordlist.length;\n    }\n}\n```\n    \n    1. Define a `match` function to calculate the number of exact matches between two strings.\n2. For 10 iterations or until the secret word is guessed:\n  a. Randomly select a word (`guess`) from the `wordlist`.\n  b. Call `Master.guess` with the `guess`, and store the number of exact matches in `match_cnt`.\n  c. If the `match_cnt` equals 6 (i.e., the word is guessed), terminate the loop.\n  d. Filter the `wordlist` to keep only those words that have the same number of exact matches with the `guess` as `match_cnt`.\n3. Complete the loop and return.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\nimport java.util.Random;\n\nclass Solution {\n    private int match(String a, String b) {\n        int matches = 0;\n        for (int i = 0; i < 6; ++i)\n            if (a.charAt(i) == b.charAt(i)) matches++;\n        return matches;\n    }\n\n    public void findSecretWord(String[] wordlist, Master master) {\n        List<String> words = new ArrayList<>();\n        for (String word : wordlist) words.add(word);\n        Random rand = new Random();\n\n        for (int i = 0, matchCnt = 0; i < 10 && matchCnt < 6; ++i) {\n            String guess = words.get(rand.nextInt(words.size()));\n            matchCnt = master.guess(guess);\n            List<String> candidates = new ArrayList<>();\n            for (String word : words)\n                if (match(word, guess) == matchCnt)\n                    candidates.add(word);\n            words = candidates;\n        }\n    }\n}\n```\n    \n    1. Define a `match` function to calculate the number of exact matches between two strings.\n2. For 10 iterations or until the secret word is guessed:\n  a. Randomly select a word (`guess`) from the `wordlist`.\n  b. Call `Master.guess` with the `guess`, and store the number of exact matches in `match_cnt`.\n  c. If the `match_cnt` equals 6 (i.e., the word is guessed), terminate the loop.\n  d. Filter the `wordlist` to keep only those words that have the same number of exact matches with the `guess` as `match_cnt`.\n3. Complete the loop and return.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

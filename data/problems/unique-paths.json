@@ -1,0 +1,40 @@
+{
+  "id": 35,
+  "title": "Unique Paths",
+  "slug": "unique-paths",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "Dynamic Programming",
+    "Combinatorics"
+  ],
+  "description": "There is a robot on an m x n grid. The robot can only move either down or right. Return the number of possible unique paths.",
+  "examples": [
+    {
+      "input": "m = 3, n = 7",
+      "output": "28"
+    }
+  ],
+  "constraints": [
+    "1 <= m, n <= 100"
+  ],
+  "starterCode": {
+    "python": "class Solution:\n    def uniquePaths(self, m: int, n: int) -> int:\n        pass",
+    "javascript": "var uniquePaths = function(m, n) {\n    \n};",
+    "java": "class Solution {\n    public int uniquePaths(int m, int n) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    int uniquePaths(int m, int n) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Unique Paths\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "3\n7",
+      "expectedOutput": "28"
+    },
+    {
+      "input": "3\n2",
+      "expectedOutput": "3"
+    }
+  ]
+}

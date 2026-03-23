@@ -1,0 +1,24 @@
+{
+  "id": 2363,
+  "title": "Merge Similar Items",
+  "slug": "merge-similar-items",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given two 2D integer arrays, items1 and items2, representing two sets of items. Each array items has the following properties:\n\n*   items[i] = [valuei, weighti] where valuei represents the value and weighti represents the weight of the ith item.\n*   The value of each item in items is unique.\n\nReturn _a 2D integer array_ ret _where_ ret[i] = [valuei, weighti]_,_ _with_ weighti _being the sum of weights of all items with value_ valuei.\n\nNote: ret should be returned in ascending order by value.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sum_weights(items1, items2):\n    weight_sums = {}\n    result = []\n\n    for value, weight in items1:\n        weight_sums[value] = weight_sums.get(value, 0) + weight\n    for value, weight in items2:\n        weight_sums[value] = weight_sums.get(value, 0) + weight\n\n    for value, weight in sorted(weight_sums.items()):\n        result.append([value, weight])\n\n    return result\n```\n    \n    1. Create a map called `weightSums` to store the sum of weights for every `value`. Initialize an empty list `result` for returning the solution.\n2. Iterate over the `items1` and `items2` arrays. For each `[value, weight]` pair, add the weight to the `weightSums` map for that value. If the value is not present in the map, set its value to be equal to the current weight.\n3. Loop through the sorted `weightSums` items (by key/values in ascending order), and append each `[value, weight]` to the `result` list.\n4. Return the `result` list.\n    ",
+    "javascript": "\n    ```javascript\nfunction sumWeights(items1, items2) {\n    const weightSums = new Map();\n    const result = [];\n\n    items1.forEach(([value, weight]) => {\n        weightSums.set(value, (weightSums.get(value) || 0) + weight);\n    });\n    items2.forEach(([value, weight]) => {\n        weightSums.set(value, (weightSums.get(value) || 0) + weight);\n    });\n\n    for (const [value, weight] of Array.from(weightSums.entries()).sort((a, b) => a[0] - b[0])) {\n        result.push([value, weight]);\n    }\n\n    return result;\n}\n```\n    \n    1. Create a map called `weightSums` to store the sum of weights for every `value`. Initialize an empty list `result` for returning the solution.\n2. Iterate over the `items1` and `items2` arrays. For each `[value, weight]` pair, add the weight to the `weightSums` map for that value. If the value is not present in the map, set its value to be equal to the current weight.\n3. Loop through the sorted `weightSums` items (by key/values in ascending order), and append each `[value, weight]` to the `result` list.\n4. Return the `result` list.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\nclass Main {\n    public static List<List<Integer>> sumWeights(List<List<Integer>> items1, List<List<Integer>> items2) {\n        Map<Integer, Integer> weightSums = new TreeMap<>();\n        List<List<Integer>> result = new ArrayList<>();\n\n        for (List<Integer> item : items1) {\n            weightSums.put(item.get(0), weightSums.getOrDefault(item.get(0), 0) + item.get(1));\n        }\n        for (List<Integer> item : items2) {\n            weightSums.put(item.get(0), weightSums.getOrDefault(item.get(0), 0) + item.get(1));\n        }\n\n        for (Map.Entry<Integer, Integer> entry : weightSums.entrySet()) {\n            result.add(Arrays.asList(entry.getKey(), entry.getValue()));\n        }\n\n        return result;\n    }\n}\n```\n    \n    1. Create a map called `weightSums` to store the sum of weights for every `value`. Initialize an empty list `result` for returning the solution.\n2. Iterate over the `items1` and `items2` arrays. For each `[value, weight]` pair, add the weight to the `weightSums` map for that value. If the value is not present in the map, set its value to be equal to the current weight.\n3. Loop through the sorted `weightSums` items (by key/values in ascending order), and append each `[value, weight]` to the `result` list.\n4. Return the `result` list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

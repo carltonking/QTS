@@ -1,0 +1,24 @@
+{
+  "id": 2195,
+  "title": "Append K Integers With Minimal Sum",
+  "slug": "append-k-integers-with-minimal-sum",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array nums and an integer k. Append k unique positive integers that do not appear in nums to nums such that the resulting total sum is minimum.\n\nReturn _the sum of the_ k _integers appended to_ nums.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef time_to_buy_tickets(tickets, k):\n    time = 0\n    while tickets[k] > 0:\n        for i in range(len(tickets)):\n            if tickets[i] > 0:\n                tickets[i] -= 1\n                time += 1\n                if i == k and tickets[k] == 0:\n                    return time\n    return time\n```\n    \n    The algorithm iterates through the people in line and, for each person, it decrements the number of desired tickets if the person still needs to buy tickets. Then, it increments the time variable to account for the time taken to buy the ticket. If the current person is the target person (at position k) and they have finished buying tickets (tickets[k] == 0), the function returns the current time.\n\nThe outer while-loop ensures that the process continues until the target person at position k has bought all the desired tickets. When all the people in line have bought the necessary tickets, the loop stops, and the time variable is returned as the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction timeToBuyTickets(tickets, k) {\n    let time = 0;\n    while (tickets[k] > 0) {\n        for (let i = 0; i < tickets.length; i++) {\n            if (tickets[i] > 0) {\n                tickets[i]--;\n                time++;\n                if (i === k && tickets[k] === 0)\n                    return time;\n            }\n        }\n    }\n    return time;\n}\n```\n    \n    The algorithm iterates through the people in line and, for each person, it decrements the number of desired tickets if the person still needs to buy tickets. Then, it increments the time variable to account for the time taken to buy the ticket. If the current person is the target person (at position k) and they have finished buying tickets (tickets[k] == 0), the function returns the current time.\n\nThe outer while-loop ensures that the process continues until the target person at position k has bought all the desired tickets. When all the people in line have bought the necessary tickets, the loop stops, and the time variable is returned as the result.\n    ",
+    "java": "\n    ```java\npublic int timeToBuyTickets(int[] tickets, int k) {\n    int time = 0;\n    while (tickets[k] > 0) {\n        for (int i = 0; i < tickets.length; i++) {\n            if (tickets[i] > 0) {\n                tickets[i]--;\n                time++;\n                if (i == k && tickets[k] == 0)\n                    return time;\n            }\n        }\n    }\n    return time;\n}\n```\n    \n    The algorithm iterates through the people in line and, for each person, it decrements the number of desired tickets if the person still needs to buy tickets. Then, it increments the time variable to account for the time taken to buy the ticket. If the current person is the target person (at position k) and they have finished buying tickets (tickets[k] == 0), the function returns the current time.\n\nThe outer while-loop ensures that the process continues until the target person at position k has bought all the desired tickets. When all the people in line have bought the necessary tickets, the loop stops, and the time variable is returned as the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

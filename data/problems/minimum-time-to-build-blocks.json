@@ -1,0 +1,24 @@
+{
+  "id": 1199,
+  "title": "Minimum Time to Build Blocks",
+  "slug": "minimum-time-to-build-blocks",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a list of blocks, where blocks[i] = t means that the i\\-th block needs t units of time to be built. A block can only be built by exactly one worker.\n\nA worker can either split into two workers (number of workers increases by one) or build a block then go home. Both decisions cost some time.\n\nThe time cost of spliting one worker into two workers is given as an integer split. Note that if two workers split at the same time, they split in parallel so the cost would be split.\n\nOutput the minimum time needed to build all blocks.\n\nInitially, there is only one worker.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nimport heapq\n\ndef min_build_time(blocks, split):\n    heapq.heapify(blocks)\n    \n    while len(blocks) > 1:\n        a = heapq.heappop(blocks)\n        b = heapq.heappop(blocks)\n        heapq.heappush(blocks, b + split)\n    \n    return blocks[0]\n```\n    \n    We use a priority queue to get the smallest time units of the blocks. In each iteration, we get the two smallest time units and insert the larger one plus the split time back into the priority queue. This is repeated until there is only one element left in the priority queue.\n\nThis results in the workers splitting and working on the blocks with the smallest time units.\n\nInitially, we insert all blocks' time units into the priority queue. Then we enter a loop where we get the two smallest elements (a and b), pop them from the priority queue, and add (b + split) back into the priority queue. We keep doing this until there's only one element left in the priority queue.\n\nFinally, we return the last remaining element as the minimum time needed to build all blocks.\n    ",
+    "javascript": "\n    ```javascript\nfunction minBuildTime(blocks, split) {\n    const pq = new PriorityQueue();\n    for (const block of blocks) {\n        pq.add(block);\n    }\n    \n    while (pq.size() > 1) {\n        const a = pq.poll();\n        const b = pq.poll();\n        pq.add(b + split);\n    }\n    \n    return pq.poll();\n}\n```\n    \n    We use a priority queue to get the smallest time units of the blocks. In each iteration, we get the two smallest time units and insert the larger one plus the split time back into the priority queue. This is repeated until there is only one element left in the priority queue.\n\nThis results in the workers splitting and working on the blocks with the smallest time units.\n\nInitially, we insert all blocks' time units into the priority queue. Then we enter a loop where we get the two smallest elements (a and b), pop them from the priority queue, and add (b + split) back into the priority queue. We keep doing this until there's only one element left in the priority queue.\n\nFinally, we return the last remaining element as the minimum time needed to build all blocks.\n    ",
+    "java": "\n    ```java\nimport java.util.PriorityQueue;\n\npublic int minBuildTime(int[] blocks, int split) {\n    PriorityQueue<Integer> pq = new PriorityQueue<>();\n    \n    for (int block : blocks) {\n        pq.add(block);\n    }\n    \n    while (pq.size() > 1) {\n        int a = pq.poll();\n        int b = pq.poll();\n        pq.add(b + split);\n    }\n    \n    return pq.poll();\n}\n```\n    \n    We use a priority queue to get the smallest time units of the blocks. In each iteration, we get the two smallest time units and insert the larger one plus the split time back into the priority queue. This is repeated until there is only one element left in the priority queue.\n\nThis results in the workers splitting and working on the blocks with the smallest time units.\n\nInitially, we insert all blocks' time units into the priority queue. Then we enter a loop where we get the two smallest elements (a and b), pop them from the priority queue, and add (b + split) back into the priority queue. We keep doing this until there's only one element left in the priority queue.\n\nFinally, we return the last remaining element as the minimum time needed to build all blocks.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

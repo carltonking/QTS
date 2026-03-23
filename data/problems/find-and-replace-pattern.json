@@ -1,0 +1,24 @@
+{
+  "id": 890,
+  "title": "Find and Replace Pattern",
+  "slug": "find-and-replace-pattern",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a list of strings words and a string pattern, return _a list of_ words[i] _that match_ pattern. You may return the answer in any order.\n\nA word matches the pattern if there exists a permutation of letters p so that after replacing every letter x in the pattern with p(x), we get the desired word.\n\nRecall that a permutation of letters is a bijection from letters to letters: every letter maps to another letter, and no two letters map to the same letter.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef lemonadeChange(bills):\n    five, ten = 0, 0\n    for bill in bills:\n        if bill == 5:\n            five += 1\n        elif bill == 10:\n            if not five:\n                return False\n            five -= 1\n            ten += 1\n        else:\n            if ten and five:\n                ten -= 1\n                five -= 1\n            elif five >= 3:\n                five -= 3\n            else:\n                return False\n    return True\n```\n    \n    We initialize two variables `five` and `ten` to count the number of $5 and $10 bills we have as change. Then we iterate through each customer's bill in the `bills` array. If they pay with a $5 bill, we just increment the `five` counter. If they pay with a $10 bill, we check if we have any $5 bills to give as change; if so, we decrement the `five` counter and increment the `ten` counter, otherwise we return false. If they pay with a $20 bill, we check if we have one $10 and one $5 bill or three $5 bills to provide as change; if so, we update the counters accordingly, otherwise we return false. If we successfully go through the whole array, we return true as we were able to provide change for every customer.\n    ",
+    "javascript": "\n    ```javascript\nfunction lemonadeChange(bills) {\n    let five = 0, ten = 0;\n    for (let bill of bills) {\n        if (bill === 5)\n            five++;\n        else if (bill === 10) {\n            if (five === 0) return false;\n            five--;\n            ten++;\n        } else {\n            if (ten > 0 && five > 0) {\n                ten--;\n                five--;\n            } else if (five >= 3)\n                five -= 3;\n            else\n                return false;\n        }\n    }\n    return true;\n}\n```\n    \n    We initialize two variables `five` and `ten` to count the number of $5 and $10 bills we have as change. Then we iterate through each customer's bill in the `bills` array. If they pay with a $5 bill, we just increment the `five` counter. If they pay with a $10 bill, we check if we have any $5 bills to give as change; if so, we decrement the `five` counter and increment the `ten` counter, otherwise we return false. If they pay with a $20 bill, we check if we have one $10 and one $5 bill or three $5 bills to provide as change; if so, we update the counters accordingly, otherwise we return false. If we successfully go through the whole array, we return true as we were able to provide change for every customer.\n    ",
+    "java": "\n    ```java\npublic boolean lemonadeChange(int[] bills) {\n    int five = 0, ten = 0;\n    for (int bill : bills) {\n        if (bill == 5)\n            five++;\n        else if (bill == 10) {\n            if (five == 0) return false;\n            five--;\n            ten++;\n        } else {\n            if (ten > 0 && five > 0) {\n                ten--;\n                five--;\n            } else if (five >= 3)\n                five -= 3;\n            else\n                return false;\n        }\n    }\n    return true;\n}\n```\n\n    \n    We initialize two variables `five` and `ten` to count the number of $5 and $10 bills we have as change. Then we iterate through each customer's bill in the `bills` array. If they pay with a $5 bill, we just increment the `five` counter. If they pay with a $10 bill, we check if we have any $5 bills to give as change; if so, we decrement the `five` counter and increment the `ten` counter, otherwise we return false. If they pay with a $20 bill, we check if we have one $10 and one $5 bill or three $5 bills to provide as change; if so, we update the counters accordingly, otherwise we return false. If we successfully go through the whole array, we return true as we were able to provide change for every customer.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2331,
+  "title": "Evaluate Boolean Binary Tree",
+  "slug": "evaluate-boolean-binary-tree",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given the root of a full binary tree with the following properties:\n\n*   Leaf nodes have either the value 0 or 1, where 0 represents False and 1 represents True.\n*   Non-leaf nodes have either the value 2 or 3, where 2 represents the boolean OR and 3 represents the boolean AND.\n\nThe evaluation of a node is as follows:\n\n*   If the node is a leaf node, the evaluation is the value of the node, i.e. True or False.\n*   Otherwise, evaluate the node's two children and apply the boolean operation of its value with the children's evaluations.\n\nReturn _the boolean result of evaluating the_ root _node._\n\nA full binary tree is a binary tree where each node has either 0 or 2 children.\n\nA leaf node is a node that has zero children.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef evalTree(root: 'TreeNode') -> bool:\n    if not root.left and not root.right:\n        return root.val == 1\n    left = evalTree(root.left)\n    right = evalTree(root.right)\n\n    if root.val == 2:\n        return left or right\n    return left and right\n```\n\n    \n    This problem uses a binary tree to calculate boolean values.\n\nThe algorithm for this problem is a recursive depth-first search.\n1. If the current node is a leaf node, return its value (`True` / `False`).\n2. If the current node is a non-leaf node, recursively compute the values of its left and right children.\n3. If the current node is an `OR` node, return the result of `left || right`. If it's an `AND` node, return the result of `left && right`.\n\nThe base case here is when the node is a leaf node, and the recursion will stop, returning its boolean value. At each level of recursion, it will evaluate the operator associated with the node and build up the final result.\n    ",
+    "javascript": "\n    ```javascript\nfunction evalTree(root) {\n    if (!root.left && !root.right)\n        return root.val === 1;\n    const left = evalTree(root.left);\n    const right = evalTree(root.right);\n\n    if (root.val === 2)\n        return left || right;\n    return left && right;\n}\n```\n\n    \n    This problem uses a binary tree to calculate boolean values.\n\nThe algorithm for this problem is a recursive depth-first search.\n1. If the current node is a leaf node, return its value (`True` / `False`).\n2. If the current node is a non-leaf node, recursively compute the values of its left and right children.\n3. If the current node is an `OR` node, return the result of `left || right`. If it's an `AND` node, return the result of `left && right`.\n\nThe base case here is when the node is a leaf node, and the recursion will stop, returning its boolean value. At each level of recursion, it will evaluate the operator associated with the node and build up the final result.\n    ",
+    "java": "\n    ```java\npublic boolean evalTree(TreeNode root) {\n    if (root.left == null && root.right == null)\n        return root.val == 1;\n    boolean left = evalTree(root.left);\n    boolean right = evalTree(root.right);\n    \n    if (root.val == 2)\n        return left || right;\n    return left && right;\n}\n```\n\n    \n    This problem uses a binary tree to calculate boolean values.\n\nThe algorithm for this problem is a recursive depth-first search.\n1. If the current node is a leaf node, return its value (`True` / `False`).\n2. If the current node is a non-leaf node, recursively compute the values of its left and right children.\n3. If the current node is an `OR` node, return the result of `left || right`. If it's an `AND` node, return the result of `left && right`.\n\nThe base case here is when the node is a leaf node, and the recursion will stop, returning its boolean value. At each level of recursion, it will evaluate the operator associated with the node and build up the final result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

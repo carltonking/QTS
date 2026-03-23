@@ -1,0 +1,24 @@
+{
+  "id": 335,
+  "title": "Self Crossing",
+  "slug": "self-crossing",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an array of integers distance.\n\nYou start at the point (0, 0) on an X-Y plane, and you move distance[0] meters to the north, then distance[1] meters to the west, distance[2] meters to the south, distance[3] meters to the east, and so on. In other words, after each move, your direction changes counter-clockwise.\n\nReturn true _if your path crosses itself or_ false _if it does not_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_path_crossing(distance):\n    visited = set([(0, 0)])\n    x, y = 0, 0\n    directions = [(0, 1), (-1, 0), (0, -1), (1, 0)]\n    \n    for i, d in enumerate(distance):\n        dx, dy = directions[i % 4]\n        for _ in range(d):\n            x += dx\n            y += dy\n            if (x, y) in visited:\n                return True\n            visited.add((x, y))\n    return False\n```\n\n    \n    - Create a visited set containing the initial starting point `(0, 0)`\n- Create variables x, y initialized as 0, which represent the current position\n- Create two arrays dx, and dy to represent the change in the x and y directions for each step depending on the current direction (north, west, south, east).\n- Use a nested loop to iterate over each step in given distances\n  - Calculate the current direction using modulo operation\n  - Move x and y based on the current direction using dx and dy\n  - Check if the resulting point is in the visited set. If so, return True\n  - Otherwise, add the point to the visited set\n- After iterating through all steps, return False if no crossing has been detected\n    ",
+    "javascript": "\n    ```javascript\nfunction isPathCrossing(distance) {\n    let visited = new Set([\"0,0\"]);\n    let x = 0, y = 0;\n    const dx = [0, -1, 0, 1];\n    const dy = [1, 0, -1, 0];\n    \n    for (let i = 0; i < distance.length; i++) {\n        let direction = i % 4;\n        for (let j = 0; j < distance[i]; j++) {\n            x += dx[direction];\n            y += dy[direction];\n            let point = `${x},${y}`; \n            if (visited.has(point)) {\n                return true;\n            }\n            visited.add(point);\n        }\n    }\n    return false;\n}\n```\n\n    \n    - Create a visited set containing the initial starting point `(0, 0)`\n- Create variables x, y initialized as 0, which represent the current position\n- Create two arrays dx, and dy to represent the change in the x and y directions for each step depending on the current direction (north, west, south, east).\n- Use a nested loop to iterate over each step in given distances\n  - Calculate the current direction using modulo operation\n  - Move x and y based on the current direction using dx and dy\n  - Check if the resulting point is in the visited set. If so, return True\n  - Otherwise, add the point to the visited set\n- After iterating through all steps, return False if no crossing has been detected\n    ",
+    "java": "\n    ```java\npublic boolean isPathCrossing(int[] distance) {\n    Set<Pair<Integer, Integer>> visited = new HashSet<>();\n    int x = 0, y = 0;\n    visited.add(new Pair<>(x, y));\n    int[] dx = {0, -1, 0, 1};\n    int[] dy = {1, 0, -1, 0};\n    \n    for (int i = 0; i < distance.length; i++) {\n        int direction = i % 4;\n        for (int j = 0; j < distance[i]; j++) {\n            x += dx[direction];\n            y += dy[direction];\n            Pair<Integer, Integer> point = new Pair<>(x, y);\n            if (!visited.add(point)) {\n                return true;\n            }\n        }\n    }\n    return false;\n}\n```\n\n    \n    - Create a visited set containing the initial starting point `(0, 0)`\n- Create variables x, y initialized as 0, which represent the current position\n- Create two arrays dx, and dy to represent the change in the x and y directions for each step depending on the current direction (north, west, south, east).\n- Use a nested loop to iterate over each step in given distances\n  - Calculate the current direction using modulo operation\n  - Move x and y based on the current direction using dx and dy\n  - Check if the resulting point is in the visited set. If so, return True\n  - Otherwise, add the point to the visited set\n- After iterating through all steps, return False if no crossing has been detected\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

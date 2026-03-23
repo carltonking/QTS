@@ -1,0 +1,24 @@
+{
+  "id": 968,
+  "title": "Binary Tree Cameras",
+  "slug": "binary-tree-cameras",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given the root of a binary tree. We install cameras on the tree nodes where each camera at a node can monitor its parent, itself, and its immediate children.\n\nReturn _the minimum number of cameras needed to monitor all nodes of the tree_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef beautifulArray(n: int) -> List[int]:\n    result = [1]\n    while len(result) < n:\n        temp = []\n        for i in result:\n            if i * 2 - 1 <= n:\n                temp.append(i * 2 - 1)\n        for i in result:\n            if i * 2 <= n:\n                temp.append(i * 2)\n        result = temp\n    return result\n```\n    \n    The algorithm starts with an array containing just the number 1. It then generates a new array by iterating through the current array and checking if the element value multiplied by 2 minus 1 and the element value multiplied by 2 are both less than or equal to n. If they are, these two new numbers are added to a temporary array. The current array now becomes the temporary array. This process continues until the size of the current array is equal to the integer n.\n\nThe resulting array is a beautiful array because it satisfies the conditions of the question. This approach works as the operations in the algorithm ensure that elements in the odd positions and even positions will always be less than or equal to n, thus maintaining the desired intervals between elements.\n    ",
+    "javascript": "\n    ```javascript\nfunction beautifulArray(n) {\n    let result = [1];\n    while (result.length < n) {\n        let temp = [];\n        for (let i of result) {\n            if (i * 2 - 1 <= n)\n                temp.push(i * 2 - 1);\n        }\n        for (let i of result) {\n            if (i * 2 <= n)\n                temp.push(i * 2);\n        }\n        result = temp;\n    }\n    return result;\n}\n```\n    \n    The algorithm starts with an array containing just the number 1. It then generates a new array by iterating through the current array and checking if the element value multiplied by 2 minus 1 and the element value multiplied by 2 are both less than or equal to n. If they are, these two new numbers are added to a temporary array. The current array now becomes the temporary array. This process continues until the size of the current array is equal to the integer n.\n\nThe resulting array is a beautiful array because it satisfies the conditions of the question. This approach works as the operations in the algorithm ensure that elements in the odd positions and even positions will always be less than or equal to n, thus maintaining the desired intervals between elements.\n    ",
+    "java": "\n    ```java\npublic int[] beautifulArray(int n) {\n    List<Integer> result = new ArrayList<>();\n    result.add(1);\n    while (result.size() < n) {\n        List<Integer> temp = new ArrayList<>();\n        for (int i : result) {\n            if (i * 2 - 1 <= n)\n                temp.add(i * 2 - 1);\n        }\n        for (int i : result) {\n            if (i * 2 <= n)\n                temp.add(i * 2);\n        }\n        result = temp;\n    }\n    return result.stream().mapToInt(i->i).toArray();\n}\n```\n    \n    The algorithm starts with an array containing just the number 1. It then generates a new array by iterating through the current array and checking if the element value multiplied by 2 minus 1 and the element value multiplied by 2 are both less than or equal to n. If they are, these two new numbers are added to a temporary array. The current array now becomes the temporary array. This process continues until the size of the current array is equal to the integer n.\n\nThe resulting array is a beautiful array because it satisfies the conditions of the question. This approach works as the operations in the algorithm ensure that elements in the odd positions and even positions will always be less than or equal to n, thus maintaining the desired intervals between elements.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

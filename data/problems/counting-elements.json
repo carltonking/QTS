@@ -1,0 +1,24 @@
+{
+  "id": 1426,
+  "title": "Counting Elements",
+  "slug": "counting-elements",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer array arr, count how many elements x there are, such that x + 1 is also in arr. If there are duplicates in arr, count them separately.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sum_zero(n):\n    res = []\n    for i in range(1, (n // 2) + 1):\n        res.append(i)\n        res.append(-i)\n    if n % 2 != 0:\n        res.append(0)\n    return res\n```\n    \n    The algorithm iterates from 1 to n/2 (inclusive). For each number i, it appends both i and -i to the result array, making their sum equal to 0. If the given integer n is odd, then there is one more number remaining which is 0, so we append 0 to the result array. By doing this, we create a unique array of integers adding up to 0. The time complexity of this algorithm is O(n/2) = O(n), and the space complexity is also O(n) as the size of the result array is equal to the given input n.\n    ",
+    "javascript": "\n    ```javascript\nfunction sumZero(n) {\n    const res = [];\n    for (let i = 1; i <= Math.floor(n / 2); i++) {\n        res.push(i);\n        res.push(-i);\n    }\n    if (n % 2 !== 0) {\n        res.push(0);\n    }\n    return res;\n}\n```\n    \n    The algorithm iterates from 1 to n/2 (inclusive). For each number i, it appends both i and -i to the result array, making their sum equal to 0. If the given integer n is odd, then there is one more number remaining which is 0, so we append 0 to the result array. By doing this, we create a unique array of integers adding up to 0. The time complexity of this algorithm is O(n/2) = O(n), and the space complexity is also O(n) as the size of the result array is equal to the given input n.\n    ",
+    "java": "\n    ```java\npublic int[] sumZero(int n) {\n    int[] res = new int[n];\n    for (int i = 1; i <= n / 2; i++) {\n        res[i - 1] = i;\n        res[n - i] = -i;\n    }\n    return res;\n}\n```\n    \n    The algorithm iterates from 1 to n/2 (inclusive). For each number i, it appends both i and -i to the result array, making their sum equal to 0. If the given integer n is odd, then there is one more number remaining which is 0, so we append 0 to the result array. By doing this, we create a unique array of integers adding up to 0. The time complexity of this algorithm is O(n/2) = O(n), and the space complexity is also O(n) as the size of the result array is equal to the given input n.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

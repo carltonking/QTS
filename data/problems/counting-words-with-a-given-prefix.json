@@ -1,0 +1,24 @@
+{
+  "id": 2185,
+  "title": "Counting Words With a Given Prefix",
+  "slug": "counting-words-with-a-given-prefix",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an array of strings words and a string pref.\n\nReturn _the number of strings in_ words _that contain_ pref _as a prefix_.\n\nA prefix of a string s is any leading contiguous substring of s.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_prefixes(words, pref):\n    return sum(1 for word in words if word.startswith(pref))\n```\n    \n    The algorithm iterates through the list of words and checks if the word starts with the given prefix. If it does, increment the count. Finally, return the count.\n    ",
+    "javascript": "\n    ```javascript\nfunction count_prefixes(words, pref) {\n    let count = 0;\n    for(const word of words) {\n        if(word.startsWith(pref)) {\n            count++;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm iterates through the list of words and checks if the word starts with the given prefix. If it does, increment the count. Finally, return the count.\n    ",
+    "java": "\n    ```java\npublic int count_prefixes(String[] words, String pref) {\n    int count = 0;\n    for(String word : words) {\n        if(word.startsWith(pref)) {\n            count++;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm iterates through the list of words and checks if the word starts with the given prefix. If it does, increment the count. Finally, return the count.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

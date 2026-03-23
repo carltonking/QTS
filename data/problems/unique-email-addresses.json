@@ -1,0 +1,24 @@
+{
+  "id": 929,
+  "title": "Unique Email Addresses",
+  "slug": "unique-email-addresses",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Every valid email consists of a local name and a domain name, separated by the '@' sign. Besides lowercase letters, the email may contain one or more '.' or '+'.\n\n*   For example, in \"alice@leetcode.com \", \"alice \" is the local name, and \"leetcode.com \" is the domain name.\n\nIf you add periods '.' between some characters in the local name part of an email address, mail sent there will be forwarded to the same address without dots in the local name. Note that this rule does not apply to domain names.\n\n*   For example, \"alice.z@leetcode.com \" and \"alicez@leetcode.com \" forward to the same email address.\n\nIf you add a plus '+' in the local name, everything after the first plus sign will be ignored. This allows certain emails to be filtered. Note that this rule does not apply to domain names.\n\n*   For example, \"m.y+name@email.com \" will be forwarded to \"my@email.com \".\n\nIt is possible to use both of these rules at the same time.\n\nGiven an array of strings emails where we send one email to each emails[i], return _the number of different addresses that actually receive mails_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef num_special_equivalent_groups(words):\n    groups = set()\n\n    for word in words:\n        evens = \"\".join(sorted(word[0::2]))\n        odds = \"\".join(sorted(word[1::2]))\n\n        groups.add(evens + odds)\n\n    return len(groups)\n```\n\n    \n    1. Initialize an empty set to store the unique groups.\n2. For each word in the input list:\n   a. Initialize two empty strings `evens` and `odds` to store even and odd indexed characters.\n   b. Iterate through the word, and for each character, append it to either `evens` or `odds` based on its index being even or odd.\n   c. Sort the `evens` and `odds` strings.\n   d. Concatenate `evens` and `odds`, and insert the result into the set. If this string is already in the set, it doesn't get duplicated.\n3. Return the size of the set, which represents the number of unique groups.\n    ",
+    "javascript": "\n    ```javascript\nfunction numSpecialEquivalentGroups(words) {\n    const groups = new Set();\n\n    for (const word of words) {\n        let evens = \"\";\n        let odds = \"\";\n\n        for (let i = 0; i < word.length; ++i) {\n            if (i % 2 === 0) evens += word[i];\n            else odds += word[i];\n        }\n\n        evens = evens.split(\"\").sort().join(\"\");\n        odds = odds.split(\"\").sort().join(\"\");\n\n        groups.add(evens + odds);\n    }\n\n    return groups.size;\n}\n```\n\n    \n    1. Initialize an empty set to store the unique groups.\n2. For each word in the input list:\n   a. Initialize two empty strings `evens` and `odds` to store even and odd indexed characters.\n   b. Iterate through the word, and for each character, append it to either `evens` or `odds` based on its index being even or odd.\n   c. Sort the `evens` and `odds` strings.\n   d. Concatenate `evens` and `odds`, and insert the result into the set. If this string is already in the set, it doesn't get duplicated.\n3. Return the size of the set, which represents the number of unique groups.\n    ",
+    "java": "\n    ```java\nimport java.util.Set;\nimport java.util.HashSet;\nimport java.util.Arrays;\n\npublic int numSpecialEquivalentGroups(String[] words) {\n    Set<String> groups = new HashSet<>();\n\n    for (String word : words) {\n        StringBuilder evens = new StringBuilder();\n        StringBuilder odds = new StringBuilder();\n\n        for (int i = 0; i < word.length(); ++i) {\n            if (i % 2 == 0) evens.append(word.charAt(i));\n            else odds.append(word.charAt(i));\n        }\n\n        char[] evenArr = evens.toString().toCharArray();\n        Arrays.sort(evenArr);\n        char[] oddArr = odds.toString().toCharArray();\n        Arrays.sort(oddArr);\n\n        groups.add(new String(evenArr) + new String(oddArr));\n    }\n\n    return groups.size();\n}\n```\n\n    \n    1. Initialize an empty set to store the unique groups.\n2. For each word in the input list:\n   a. Initialize two empty strings `evens` and `odds` to store even and odd indexed characters.\n   b. Iterate through the word, and for each character, append it to either `evens` or `odds` based on its index being even or odd.\n   c. Sort the `evens` and `odds` strings.\n   d. Concatenate `evens` and `odds`, and insert the result into the set. If this string is already in the set, it doesn't get duplicated.\n3. Return the size of the set, which represents the number of unique groups.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

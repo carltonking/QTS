@@ -1,0 +1,24 @@
+{
+  "id": 2553,
+  "title": "Separate the Digits in an Array",
+  "slug": "separate-the-digits-in-an-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array of positive integers nums, return _an array_ answer _that consists of the digits of each integer in_ nums _after separating them in the same order they appear in_ nums.\n\nTo separate the digits of an integer is to get all the digits it has in the same order.\n\n*   For example, for the integer 10921, the separation of its digits is [1,0,9,2,1].",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef separate_digits(nums):\n    answer = []\n    for num in nums:\n        digits = [int(d) for d in str(num)]\n        answer.extend(digits)\n    return answer\n```\n\n    \n    For each number num in the nums array:\n\n1. Convert the number to its string representation.\n2. Iterate through the string and extract the digits, appending them to the answer array.\n\nRepeat this process for all numbers in the nums array.\n    ",
+    "javascript": "\n    ```javascript\nfunction separateDigits(nums) {\n    const answer = [];\n    for (const num of nums) {\n        const digits = num.toString().split(\"\").map(Number);\n        answer.push(...digits);\n    }\n    return answer;\n}\n```\n\n    \n    For each number num in the nums array:\n\n1. Convert the number to its string representation.\n2. Iterate through the string and extract the digits, appending them to the answer array.\n\nRepeat this process for all numbers in the nums array.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<Integer> separateDigits(int[] nums) {\n    List<Integer> answer = new ArrayList<>();\n    for (int num : nums) {\n        String numStr = Integer.toString(num);\n        for (char ch : numStr.toCharArray()) {\n            answer.add(Character.getNumericValue(ch));\n        }\n    }\n    return answer;\n}\n```\n\n    \n    For each number num in the nums array:\n\n1. Convert the number to its string representation.\n2. Iterate through the string and extract the digits, appending them to the answer array.\n\nRepeat this process for all numbers in the nums array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

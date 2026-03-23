@@ -1,0 +1,24 @@
+{
+  "id": 2264,
+  "title": "Largest 3-Same-Digit Number in String",
+  "slug": "largest-3-same-digit-number-in-string",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a string num representing a large integer. An integer is good if it meets the following conditions:\n\n*   It is a substring of num with length 3.\n*   It consists of only one unique digit.\n\nReturn _the maximum good integer as a string or an empty string_ \" \" _if no such integer exists_.\n\nNote:\n\n*   A substring is a contiguous sequence of characters within a string.\n*   There may be leading zeroes in num or a good integer.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef split_and_minimize(num):\n    a = num // 1000\n    b = (num % 1000) // 100\n    c = (num % 100) // 10\n    d = num % 10\n    return ((a * 10 + c) * 10 + b) * 10 + d\n```\n    \n    First, we split the given four-digit number 'num' into its individual digits a, b, c, and d.\nThen, we create two new numbers by changing the positioning of the digits in the following manner:\n\n- new1 = a*10 + c (i.e., the first and the third digits of the original number)\n- new2 = b*10 + d (i.e., the second and the fourth digits of the original number)\n\nFinally, we return the sum of these two new numbers as the minimum possible sum of new1 and new2.\n    ",
+    "javascript": "\n    ```javascript\nfunction splitAndMinimize(num) {\n    let a = Math.floor(num / 1000);\n    let b = Math.floor((num % 1000) / 100);\n    let c = Math.floor((num % 100) / 10);\n    let d = num % 10;\n    return ((a * 10 + c) * 10 + b) * 10 + d;\n}\n```\n    \n    First, we split the given four-digit number 'num' into its individual digits a, b, c, and d.\nThen, we create two new numbers by changing the positioning of the digits in the following manner:\n\n- new1 = a*10 + c (i.e., the first and the third digits of the original number)\n- new2 = b*10 + d (i.e., the second and the fourth digits of the original number)\n\nFinally, we return the sum of these two new numbers as the minimum possible sum of new1 and new2.\n    ",
+    "java": "\n    ```java\nint splitAndMinimize(int num) {\n    int a = num / 1000;\n    int b = (num % 1000) / 100;\n    int c = (num % 100) / 10;\n    int d = num % 10;\n    return ((a * 10 + c) * 10 + b) * 10 + d;\n}\n```\n    \n    First, we split the given four-digit number 'num' into its individual digits a, b, c, and d.\nThen, we create two new numbers by changing the positioning of the digits in the following manner:\n\n- new1 = a*10 + c (i.e., the first and the third digits of the original number)\n- new2 = b*10 + d (i.e., the second and the fourth digits of the original number)\n\nFinally, we return the sum of these two new numbers as the minimum possible sum of new1 and new2.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

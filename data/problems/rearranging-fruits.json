@@ -1,0 +1,24 @@
+{
+  "id": 2561,
+  "title": "Rearranging Fruits",
+  "slug": "rearranging-fruits",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You have two fruit baskets containing n fruits each. You are given two 0-indexed integer arrays basket1 and basket2 representing the cost of fruit in each basket. You want to make both baskets equal. To do so, you can use the following operation as many times as you want:\n\n*   Chose two indices i and j, and swap the ith fruit of basket1 with the jth fruit of basket2.\n*   The cost of the swap is min(basket1[i],basket2[j]).\n\nTwo baskets are considered equal if sorting them according to the fruit cost makes them exactly the same baskets.\n\nReturn _the minimum cost to make both the baskets equal or_ -1 _if impossible._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_cost_to_equal_baskets(basket1, basket2):\n    diff_count = {}\n    for i in range(len(basket1)):\n        diff = basket1[i] - basket2[i]\n        diff_count[diff] = diff_count.get(diff, 0) + 1\n\n    min_cost = float('inf')\n    for diff, count in diff_count.items():\n        if count == diff_count.get(-diff, 0):\n            cost = sum(min(basket1[i], basket2[i]) for i in range(len(basket1)) if basket1[i] - basket2[i] == diff)\n            min_cost = min(min_cost, cost)\n\n    return -1 if min_cost == float('inf') else min_cost // 2\n```\n    \n    1. Calculate the differences between the elements of basket1 and basket2, and store the counts in a hash map (diff_count).\n2. Iterate through the diff_count hash map, checking if there is an equal count for the negative difference value.\n3. If there is an equal count, calculate the total cost for swaps of the current difference.\n4. Keep track of the minimum total cost found.\n5. Return the minimum total cost divided by 2, or -1 if no valid swaps were found.\n    ",
+    "javascript": "\n    ```javascript\nfunction minCostToEqualBaskets(basket1, basket2) {\n    const diffCount = new Map();\n    for (let i = 0; i < basket1.length; i++) {\n        const diff = basket1[i] - basket2[i];\n        diffCount.set(diff, (diffCount.get(diff) || 0) + 1);\n    }\n\n    let minCost = Infinity, cost = 0;\n    for (const [diff, count] of diffCount.entries()) {\n        if (count === diffCount.get(-diff)) {\n            cost = 0;\n            for (let i = 0; i < basket1.length; i++) {\n                if (basket1[i] - basket2[i] === diff) {\n                    cost += Math.min(basket1[i], basket2[i]);\n                }\n            }\n            minCost = Math.min(minCost, cost);\n        }\n    }\n\n    return minCost === Infinity ? -1 : minCost / 2;\n}\n```\n    \n    1. Calculate the differences between the elements of basket1 and basket2, and store the counts in a hash map (diff_count).\n2. Iterate through the diff_count hash map, checking if there is an equal count for the negative difference value.\n3. If there is an equal count, calculate the total cost for swaps of the current difference.\n4. Keep track of the minimum total cost found.\n5. Return the minimum total cost divided by 2, or -1 if no valid swaps were found.\n    ",
+    "java": "\n    ```java\npublic int minCostToEqualBaskets(int[] basket1, int[] basket2) {\n    Map<Integer, Integer> diffCount = new HashMap<>();\n    for (int i = 0; i < basket1.length; i++) {\n        diffCount.put(basket1[i] - basket2[i], diffCount.getOrDefault(basket1[i] - basket2[i], 0) + 1);\n    }\n\n    int minCost = Integer.MAX_VALUE, cost = 0;\n    for (Map.Entry<Integer, Integer> entry : diffCount.entrySet()) {\n        if (entry.getValue().equals(diffCount.get(-entry.getKey()))) {\n            cost = 0;\n            for (int i = 0; i < basket1.length; i++) {\n                if (basket1[i] - basket2[i] == entry.getKey()) {\n                    cost += Math.min(basket1[i], basket2[i]);\n                }\n            }\n            minCost = Math.min(minCost, cost);\n        }\n    }\n\n    return minCost == Integer.MAX_VALUE ? -1 : minCost / 2;\n}\n```\n    \n    1. Calculate the differences between the elements of basket1 and basket2, and store the counts in a hash map (diff_count).\n2. Iterate through the diff_count hash map, checking if there is an equal count for the negative difference value.\n3. If there is an equal count, calculate the total cost for swaps of the current difference.\n4. Keep track of the minimum total cost found.\n5. Return the minimum total cost divided by 2, or -1 if no valid swaps were found.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

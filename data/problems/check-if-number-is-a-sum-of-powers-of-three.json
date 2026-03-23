@@ -1,0 +1,24 @@
+{
+  "id": 1780,
+  "title": "Check if Number is a Sum of Powers of Three",
+  "slug": "check-if-number-is-a-sum-of-powers-of-three",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer n, return true _if it is possible to represent_ n _as the sum of distinct powers of three._ Otherwise, return false.\n\nAn integer y is a power of three if there exists an integer x such that y == 3x.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef check_powers_of_three(n: int) -> bool:\n    while n > 0:\n        if n % 3 == 2:\n            return False\n        n //= 3\n    return True\n```\n    \n    The algorithm uses a simple approach by iteratively dividing the given number `n` by 3 (the base of the powers of three). During the division process, it checks if any of the remainders of division is 2. If it finds a remainder of 2 at any stage, it immediately returns `false` since having a 2 in the base-3 representation of the number indicates that it cannot be represented solely by distinct powers of three.\n\nThe time complexity of this algorithm is O(log n), as each iteration reduces the number by a factor of 3.\n    ",
+    "javascript": "\n    ```javascript\nfunction checkPowersOfThree(n) {\n    while (n > 0) {\n        if (n % 3 === 2) return false;\n        n = Math.floor(n / 3);\n    }\n    return true;\n}\n```\n    \n    The algorithm uses a simple approach by iteratively dividing the given number `n` by 3 (the base of the powers of three). During the division process, it checks if any of the remainders of division is 2. If it finds a remainder of 2 at any stage, it immediately returns `false` since having a 2 in the base-3 representation of the number indicates that it cannot be represented solely by distinct powers of three.\n\nThe time complexity of this algorithm is O(log n), as each iteration reduces the number by a factor of 3.\n    ",
+    "java": "\n    ```java\npublic boolean checkPowersOfThree(int n) {\n    while (n > 0) {\n        if (n % 3 == 2) return false;\n        n /= 3;\n    }\n    return true;\n}\n```\n    \n    The algorithm uses a simple approach by iteratively dividing the given number `n` by 3 (the base of the powers of three). During the division process, it checks if any of the remainders of division is 2. If it finds a remainder of 2 at any stage, it immediately returns `false` since having a 2 in the base-3 representation of the number indicates that it cannot be represented solely by distinct powers of three.\n\nThe time complexity of this algorithm is O(log n), as each iteration reduces the number by a factor of 3.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

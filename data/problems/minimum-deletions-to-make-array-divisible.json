@@ -1,0 +1,24 @@
+{
+  "id": 2344,
+  "title": "Minimum Deletions to Make Array Divisible",
+  "slug": "minimum-deletions-to-make-array-divisible",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given two positive integer arrays nums and numsDivide. You can delete any number of elements from nums.\n\nReturn _the minimum number of deletions such that the smallest element in_ nums _divides all the elements of_ numsDivide. If this is not possible, return -1.\n\nNote that an integer x divides y if y % x == 0.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_deletions(nums, nums_divide):\n    res = float('inf')\n    for num in nums:\n        cnt = 0\n        found = True\n        for d in nums_divide:\n            if d % num != 0:\n                found = False\n                break\n        if found:\n            for n in nums:\n                if n == num:\n                    cnt += 1\n            res = min(res, len(nums) - cnt)\n    return -1 if res == float('inf') else res\n```\n    \n    For each number in `nums`, check if it divides all elements in `numsDivide`. If it does, count how many times it appears in `nums` and calculate the minimum number of deletions required to make it the smallest element in `nums` by subtracting the count (cnt) from the size (length) of the nums array (need to delete all other elements). Keep track of the minimum result for all numbers. If the minimum result is still Infinity (initial value) after looping through all numbers, it means there is no solution, and we return -1. Otherwise, return the minimum result.\n    ",
+    "javascript": "\n    ```javascript\nfunction minDeletions(nums, numsDivide) {\n    let res = Infinity;\n    for (let num of nums) {\n        let cnt = 0;\n        let found = true;\n        for (let d of numsDivide) {\n            if (d % num !== 0) {\n                found = false;\n                break;\n            }\n        }\n        if (found) {\n            for (let n of nums) {\n                if (n === num) {\n                    cnt++;\n                }\n            }\n            res = Math.min(res, nums.length - cnt);\n        }\n    }\n    return res === Infinity ? -1 : res;\n}\n```\n    \n    For each number in `nums`, check if it divides all elements in `numsDivide`. If it does, count how many times it appears in `nums` and calculate the minimum number of deletions required to make it the smallest element in `nums` by subtracting the count (cnt) from the size (length) of the nums array (need to delete all other elements). Keep track of the minimum result for all numbers. If the minimum result is still Infinity (initial value) after looping through all numbers, it means there is no solution, and we return -1. Otherwise, return the minimum result.\n    ",
+    "java": "\n    ```java\npublic int minDeletions(int[] nums, int[] numsDivide) {\n    int res = Integer.MAX_VALUE;\n    for (int num : nums) {\n        int cnt = 0;\n        boolean found = true;\n        for (int d : numsDivide) {\n            if (d % num != 0) {\n                found = false;\n                break;\n            }\n        }\n        if (found) {\n            for (int n : nums) {\n                if (n == num) {\n                    cnt++;\n                }\n            }\n            res = Math.min(res, nums.length - cnt);\n        }\n    }\n    return res == Integer.MAX_VALUE ? -1 : res;\n}\n```\n    \n    For each number in `nums`, check if it divides all elements in `numsDivide`. If it does, count how many times it appears in `nums` and calculate the minimum number of deletions required to make it the smallest element in `nums` by subtracting the count (cnt) from the size (length) of the nums array (need to delete all other elements). Keep track of the minimum result for all numbers. If the minimum result is still Infinity (initial value) after looping through all numbers, it means there is no solution, and we return -1. Otherwise, return the minimum result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1960,
+  "title": "Maximum Product of the Length of Two Palindromic Substrings",
+  "slug": "maximum-product-of-the-length-of-two-palindromic-substrings",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a 0-indexed string s and are tasked with finding two non-intersecting palindromic substrings of odd length such that the product of their lengths is maximized.\n\nMore formally, you want to choose four integers i, j, k, l such that 0 <= i <= j < k <= l < s.length and both the substrings s[i...j] and s[k...l] are palindromes and have odd lengths. s[i...j] denotes a substring from index i to index j inclusive.\n\nReturn _the maximum possible product of the lengths of the two non-intersecting palindromic substrings._\n\nA palindrome is a string that is the same forward and backward. A substring is a contiguous sequence of characters in a string.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_pangram(sentence):\n    alphabet = [False] * 26\n    for c in sentence:\n        alphabet[ord(c) - ord('a')] = True\n    return all(alphabet)\n```\n    \n    The algorithm starts by creating an array called `alphabet`, which contains 26 boolean elements, initially all set to false. This array represents the English alphabet from 'a' to 'z', where each false value means the corresponding letter hasn't been found yet in the sentence, and true indicates that the letter has been found.\n\nNext, we iterate through each character in the input sentence. For each character, we update the corresponding index in the `alphabet` array by setting its value to true. The index is calculated by subtracting the ASCII code of the character 'a' from the ASCII code of the current character.\n\nFinally, we iterate through the boolean elements in the `alphabet` array. If any of the elements are still set to false, it means that the corresponding letter hasn't appeared in the sentence, and so we return false. If all elements are true, it means that each letter of the alphabet appeared at least once in the sentence, making it a pangram, so we return true.\n    ",
+    "javascript": "\n    ```javascript\nfunction isPangram(sentence) {\n    const alphabet = new Array(26).fill(false);\n    for (const c of sentence) {\n        alphabet[c.charCodeAt(0) - 'a'.charCodeAt(0)] = true;\n    }\n    return alphabet.every(flag => flag);\n}\n```\n    \n    The algorithm starts by creating an array called `alphabet`, which contains 26 boolean elements, initially all set to false. This array represents the English alphabet from 'a' to 'z', where each false value means the corresponding letter hasn't been found yet in the sentence, and true indicates that the letter has been found.\n\nNext, we iterate through each character in the input sentence. For each character, we update the corresponding index in the `alphabet` array by setting its value to true. The index is calculated by subtracting the ASCII code of the character 'a' from the ASCII code of the current character.\n\nFinally, we iterate through the boolean elements in the `alphabet` array. If any of the elements are still set to false, it means that the corresponding letter hasn't appeared in the sentence, and so we return false. If all elements are true, it means that each letter of the alphabet appeared at least once in the sentence, making it a pangram, so we return true.\n    ",
+    "java": "\n    ```java\npublic boolean isPangram(String sentence) {\n    boolean[] alphabet = new boolean[26];\n    for (char c : sentence.toCharArray()) {\n        alphabet[c - 'a'] = true;\n    }\n    for (boolean flag : alphabet) {\n        if (!flag) return false;\n    }\n    return true;\n}\n```\n    \n    The algorithm starts by creating an array called `alphabet`, which contains 26 boolean elements, initially all set to false. This array represents the English alphabet from 'a' to 'z', where each false value means the corresponding letter hasn't been found yet in the sentence, and true indicates that the letter has been found.\n\nNext, we iterate through each character in the input sentence. For each character, we update the corresponding index in the `alphabet` array by setting its value to true. The index is calculated by subtracting the ASCII code of the character 'a' from the ASCII code of the current character.\n\nFinally, we iterate through the boolean elements in the `alphabet` array. If any of the elements are still set to false, it means that the corresponding letter hasn't appeared in the sentence, and so we return false. If all elements are true, it means that each letter of the alphabet appeared at least once in the sentence, making it a pangram, so we return true.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

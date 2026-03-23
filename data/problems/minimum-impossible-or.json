@@ -1,0 +1,24 @@
+{
+  "id": 2568,
+  "title": "Minimum Impossible OR",
+  "slug": "minimum-impossible-or",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums.\n\nWe say that an integer x is expressible from nums if there exist some integers 0 <= index1 < index2 < ... < indexk < nums.length for which nums[index1] | nums[index2] | ... | nums[indexk] = x. In other words, an integer is expressible if it can be written as the bitwise OR of some subsequence of nums.\n\nReturn _the minimum positive non-zero integer that is not_ _expressible from_ nums.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_non_expressible_integer(nums):\n    result = 1\n    nums.sort()\n    for num in nums:\n        if num > result:\n            break\n        result += num\n    return result\n```\n    \n    The algorithm first sorts the input array. Then, it initializes a \"result\" variable with a value of 1, which represents the smallest positive non-zero integer.\n\nThe algorithm then iterates through the sorted array. For each number, it checks whether the current number is greater than the \"result\" variable. If it is, the algorithm breaks out of the loop, because it has found the smallest positive number that cannot be expressed as the bitwise OR of a subsequence of the input array.\n\nIf the current number is not greater than the \"result\" variable, the algorithm updates the \"result\" variable by adding the current number to it. This is because the sorted array guarantees that the numbers are in increasing order, so the bitwise OR of any subsequence of the array will always produce a result greater than or equal to the current \"result\" variable.\n\nFinally, the algorithm returns the value of the \"result\" variable, which represents the smallest positive non-zero integer that cannot be expressed as the bitwise OR of a subsequence of the input array.\n    ",
+    "javascript": "\n    ```javascript\nfunction minNonExpressibleInteger(nums) {\n    let result = 1;\n    nums.sort((a, b) => a - b);\n    for (const num of nums) {\n        if (num > result) break;\n        result += num;\n    }\n    return result;\n}\n```\n    \n    The algorithm first sorts the input array. Then, it initializes a \"result\" variable with a value of 1, which represents the smallest positive non-zero integer.\n\nThe algorithm then iterates through the sorted array. For each number, it checks whether the current number is greater than the \"result\" variable. If it is, the algorithm breaks out of the loop, because it has found the smallest positive number that cannot be expressed as the bitwise OR of a subsequence of the input array.\n\nIf the current number is not greater than the \"result\" variable, the algorithm updates the \"result\" variable by adding the current number to it. This is because the sorted array guarantees that the numbers are in increasing order, so the bitwise OR of any subsequence of the array will always produce a result greater than or equal to the current \"result\" variable.\n\nFinally, the algorithm returns the value of the \"result\" variable, which represents the smallest positive non-zero integer that cannot be expressed as the bitwise OR of a subsequence of the input array.\n    ",
+    "java": "\n    ```java\npublic int minNonExpressibleInteger(int[] nums) {\n    int result = 1;\n    Arrays.sort(nums);\n    for (int num : nums) {\n        if (num > result) break;\n        result += num;\n    }\n    return result;\n}\n```\n    \n    The algorithm first sorts the input array. Then, it initializes a \"result\" variable with a value of 1, which represents the smallest positive non-zero integer.\n\nThe algorithm then iterates through the sorted array. For each number, it checks whether the current number is greater than the \"result\" variable. If it is, the algorithm breaks out of the loop, because it has found the smallest positive number that cannot be expressed as the bitwise OR of a subsequence of the input array.\n\nIf the current number is not greater than the \"result\" variable, the algorithm updates the \"result\" variable by adding the current number to it. This is because the sorted array guarantees that the numbers are in increasing order, so the bitwise OR of any subsequence of the array will always produce a result greater than or equal to the current \"result\" variable.\n\nFinally, the algorithm returns the value of the \"result\" variable, which represents the smallest positive non-zero integer that cannot be expressed as the bitwise OR of a subsequence of the input array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

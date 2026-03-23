@@ -1,0 +1,24 @@
+{
+  "id": 1808,
+  "title": "Maximize Number of Nice Divisors",
+  "slug": "maximize-number-of-nice-divisors",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a positive integer primeFactors. You are asked to construct a positive integer n that satisfies the following conditions:\n\n*   The number of prime factors of n (not necessarily distinct) is at most primeFactors.\n*   The number of nice divisors of n is maximized. Note that a divisor of n is nice if it is divisible by every prime factor of n. For example, if n = 12, then its prime factors are [2,2,3], then 6 and 12 are nice divisors, while 3 and 4 are not.\n\nReturn _the number of nice divisors of_ n. Since that number can be too large, return it modulo 109 + 7.\n\nNote that a prime number is a natural number greater than 1 that is not a product of two smaller natural numbers. The prime factors of a number n is a list of prime numbers such that their product equals n.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef stoneGame(stones):\n    n = len(stones)\n    dp = [[0] * n for _ in range(n)]\n    \n    for i in range(n - 1, -1, -1):\n        for j in range(i + 1, n):\n            dp[i][j] = max(stones[j] - dp[i][j - 1], stones[i] - dp[i + 1][j])\n    \n    return dp[0][n - 1]\n```\n    \n    The algorithm utilizes dynamic programming approach to find the maximum difference between Alice and Bob's scores. We create a 2D table \"dp\" where `dp[i][j]` stores the difference of scores between the two players when considering stones from index i to index j.\n\nWe iterate i from n-1 to 0, and j from i+1 to n-1. On ith row and jth column, we take the maximum value among the difference of the jth stone's value and `dp[i][j - 1]` and the difference of ith stone's value and `dp[i + 1][j]`. This represents the optimal choice of leftmost or rightmost stone to maximize the current difference.\n\nFinally, we return the value in `dp[0][n - 1]`, which represents the maximum difference when considering all the stones.\n    ",
+    "javascript": "\n    ```javascript\nfunction stoneGame(stones) {\n    const n = stones.length;\n    const dp = Array.from({length:n}, () => Array(n).fill(0));\n    \n    for (let i = n - 1; i >= 0; i--) {\n        for (let j = i + 1; j < n; j++) {\n            dp[i][j] = Math.max(stones[j] - dp[i][j - 1], stones[i] - dp[i + 1][j]);\n        }\n    }\n    \n    return dp[0][n - 1];\n}\n```\n    \n    The algorithm utilizes dynamic programming approach to find the maximum difference between Alice and Bob's scores. We create a 2D table \"dp\" where `dp[i][j]` stores the difference of scores between the two players when considering stones from index i to index j.\n\nWe iterate i from n-1 to 0, and j from i+1 to n-1. On ith row and jth column, we take the maximum value among the difference of the jth stone's value and `dp[i][j - 1]` and the difference of ith stone's value and `dp[i + 1][j]`. This represents the optimal choice of leftmost or rightmost stone to maximize the current difference.\n\nFinally, we return the value in `dp[0][n - 1]`, which represents the maximum difference when considering all the stones.\n    ",
+    "java": "\n    ```java\npublic int stoneGame(int[] stones) {\n    int n = stones.length;\n    int[][] dp = new int[n][n];\n    \n    for (int i = n - 1; i >= 0; i--) {\n        for (int j = i + 1; j < n; j++) {\n            dp[i][j] = Math.max(stones[j] - dp[i][j - 1], stones[i] - dp[i + 1][j]);\n        }\n    }\n    \n    return dp[0][n - 1];\n}\n```\n    \n    The algorithm utilizes dynamic programming approach to find the maximum difference between Alice and Bob's scores. We create a 2D table \"dp\" where `dp[i][j]` stores the difference of scores between the two players when considering stones from index i to index j.\n\nWe iterate i from n-1 to 0, and j from i+1 to n-1. On ith row and jth column, we take the maximum value among the difference of the jth stone's value and `dp[i][j - 1]` and the difference of ith stone's value and `dp[i + 1][j]`. This represents the optimal choice of leftmost or rightmost stone to maximize the current difference.\n\nFinally, we return the value in `dp[0][n - 1]`, which represents the maximum difference when considering all the stones.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

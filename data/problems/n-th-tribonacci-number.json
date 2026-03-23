@@ -1,0 +1,24 @@
+{
+  "id": 1137,
+  "title": "N-th Tribonacci Number",
+  "slug": "n-th-tribonacci-number",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "The Tribonacci sequence Tn is defined as follows:\n\nT0 = 0, T1 = 1, T2 = 1, and Tn+3 = Tn + Tn+1 + Tn+2 for n >= 0.\n\nGiven n, return the value of Tn.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef height_checker(heights):\n    expected = sorted(heights)\n    count = 0\n    for i in range(len(heights)):\n        if heights[i] != expected[i]:\n            count += 1\n    return count\n```\n    \n    The algorithm consists of the following steps:\n1. Create a copy of the given `heights` array and sort it in non-decreasing order to create the `expected` array.\n2. Iterate through both `heights` and `expected` arrays simultaneously and compare the corresponding elements.\n3. If `heights[i]` is not equal to `expected[i]`, increment the counter.\n4. Return the counter as the final answer.\n\nThis algorithm has time complexity O(n log n) due to the sorting step, where n is the number of students.\n    ",
+    "javascript": "\n    ```javascript\nfunction heightChecker(heights) {\n    const studentsInTheWrongLine = heights\n        .slice()\n        .sort((a, b) => a - b)\n        .reduce((count, height, idx) => {\n            return height === heights[idx] ? count : count + 1;\n        }, 0);\n\n    return studentsInTheWrongLine;\n}\n```\n    \n    The algorithm consists of the following steps:\n1. Create a copy of the given `heights` array and sort it in non-decreasing order to create the `expected` array.\n2. Iterate through both `heights` and `expected` arrays simultaneously and compare the corresponding elements.\n3. If `heights[i]` is not equal to `expected[i]`, increment the counter.\n4. Return the counter as the final answer.\n\nThis algorithm has time complexity O(n log n) due to the sorting step, where n is the number of students.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int heightChecker(int[] heights) {\n    int[] expected = heights.clone();\n    Arrays.sort(expected);\n    int count = 0;\n    for (int i = 0; i < heights.length; i++) {\n        if (heights[i] != expected[i]) {\n            count++;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm consists of the following steps:\n1. Create a copy of the given `heights` array and sort it in non-decreasing order to create the `expected` array.\n2. Iterate through both `heights` and `expected` arrays simultaneously and compare the corresponding elements.\n3. If `heights[i]` is not equal to `expected[i]`, increment the counter.\n4. Return the counter as the final answer.\n\nThis algorithm has time complexity O(n log n) due to the sorting step, where n is the number of students.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

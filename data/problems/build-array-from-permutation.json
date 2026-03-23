@@ -1,0 +1,24 @@
+{
+  "id": 1920,
+  "title": "Build Array from Permutation",
+  "slug": "build-array-from-permutation",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a zero-based permutation nums (0-indexed), build an array ans of the same length where ans[i] = nums[nums[i]] for each 0 <= i < nums.length and return it.\n\nA zero-based permutation nums is an array of distinct integers from 0 to nums.length - 1 (inclusive).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef square_is_white(coordinates: str) -> bool:\n    return (ord(coordinates[0]) - ord('a') + ord(coordinates[1]) - ord('1')) % 2 == 0\n```\n    \n    The algorithm first calculates the position of the square using the ASCII values of the characters given in the coordinate string, then the row and column positions are added together. If the sum is even, the square is a white square, otherwise it is a black square.\n    ",
+    "javascript": "\n    ```javascript\nfunction squareIsWhite(coordinates) {\n    return (coordinates.charCodeAt(0) - 'a'.charCodeAt(0) + coordinates.charCodeAt(1) - '1'.charCodeAt(0)) % 2 === 0;\n}\n```\n    \n    The algorithm first calculates the position of the square using the ASCII values of the characters given in the coordinate string, then the row and column positions are added together. If the sum is even, the square is a white square, otherwise it is a black square.\n    ",
+    "java": "\n    ```java\npublic boolean squareIsWhite(String coordinates) {\n    return (coordinates.charAt(0) - 'a' + coordinates.charAt(1) - '1') % 2 == 0;\n}\n```\n    \n    The algorithm first calculates the position of the square using the ASCII values of the characters given in the coordinate string, then the row and column positions are added together. If the sum is even, the square is a white square, otherwise it is a black square.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

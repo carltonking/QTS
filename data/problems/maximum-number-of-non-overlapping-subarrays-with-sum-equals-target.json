@@ -1,0 +1,24 @@
+{
+  "id": 1546,
+  "title": "Maximum Number of Non-Overlapping Subarrays With Sum Equals Target",
+  "slug": "maximum-number-of-non-overlapping-subarrays-with-sum-equals-target",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array nums and an integer target, return _the maximum number of non-empty non-overlapping subarrays such that the sum of values in each subarray is equal to_ target.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxNonOverlapping(nums, target):\n    prefix_sum = {0: 0}\n    sum, count = 0, 0\n    for num in nums:\n        sum += num\n        if sum - target in prefix_sum:\n            count = max(count, 1 + prefix_sum[sum - target])\n        prefix_sum[sum] = count\n    return count\n```\n    \n    We use the prefix sum to cumulatively store the sum of the array until the current position. On each iteration, we calculate the sum of elements and then check if the (current sum - target) exists in the prefix sum hashmap. If it exists, it means we have a subarray that sums to the target, so we update our count. We also make sure to only consider non-overlapping subarrays by storing the current max count in the hashmap.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxNonOverlapping(nums, target) {\n    const prefixSum = new Map();\n    let sum = 0, count = 0;\n    prefixSum.set(0, 0);\n    for (const num of nums) {\n        sum += num;\n        if (prefixSum.has(sum - target)) {\n            count = Math.max(count, 1 + prefixSum.get(sum - target));\n        }\n        prefixSum.set(sum, count);\n    }\n    return count;\n}\n```\n    \n    We use the prefix sum to cumulatively store the sum of the array until the current position. On each iteration, we calculate the sum of elements and then check if the (current sum - target) exists in the prefix sum hashmap. If it exists, it means we have a subarray that sums to the target, so we update our count. We also make sure to only consider non-overlapping subarrays by storing the current max count in the hashmap.\n    ",
+    "java": "\n    ```java\npublic int maxNonOverlapping(int[] nums, int target) {\n    Map<Integer, Integer> prefixSum = new HashMap<>();\n    int sum = 0, count = 0;\n    prefixSum.put(0, 0);\n    for (int num : nums) {\n        sum += num;\n        if (prefixSum.containsKey(sum - target)) {\n            count = Math.max(count, 1 + prefixSum.get(sum - target));\n        }\n        prefixSum.put(sum, count);\n    }\n    return count;\n}\n```\n    \n    We use the prefix sum to cumulatively store the sum of the array until the current position. On each iteration, we calculate the sum of elements and then check if the (current sum - target) exists in the prefix sum hashmap. If it exists, it means we have a subarray that sums to the target, so we update our count. We also make sure to only consider non-overlapping subarrays by storing the current max count in the hashmap.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

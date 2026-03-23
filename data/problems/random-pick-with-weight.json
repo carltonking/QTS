@@ -1,0 +1,24 @@
+{
+  "id": 528,
+  "title": "Random Pick with Weight",
+  "slug": "random-pick-with-weight",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed array of positive integers w where w[i] describes the weight of the ith index.\n\nYou need to implement the function pickIndex(), which randomly picks an index in the range [0, w.length - 1] (inclusive) and returns it. The probability of picking an index i is w[i] / sum(w).\n\n*   For example, if w = [1, 3], the probability of picking index 0 is 1 / (1 + 3) = 0.25 (i.e., 25%), and the probability of picking index 1 is 3 / (1 + 3) = 0.75 (i.e., 75%).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef swapNodes(head, k):\n    first, second, temp = head, head, head\n    for _ in range(k - 1):\n        temp = temp.next\n    first = temp\n    temp = temp.next\n    while temp:\n        temp = temp.next\n        second = second.next\n\n    first.val, second.val = second.val, first.val\n    return head\n```\n    \n    1. Set three pointers (first, second, and temp) to point to the head of the linked list.\n2. Move the temp pointer forward by (k - 1) times to point to the kth node from the beginning.\n3. Set the first pointer to point to the temp (kth node from the beginning).\n4. Move the temp pointer to the next node, while moving second pointer to the next node as the temp pointer reaches the end of the list.\n5. When the temp pointer reaches the end of the list, the second pointer will be at the kth node from the end of the list.\n6. Swap the values of the nodes pointed by the first and second pointers.\n7. Return the head of the modified linked list.\n    ",
+    "javascript": "\n    ```javascript\nclass ListNode {\n    constructor(val = 0, next = null) {\n        this.val = val;\n        this.next = next;\n    }\n}\n\nfunction swapNodes(head, k) {\n    let first = head, second = head, temp = head;\n    for (let i = 0; i < k - 1; i++) {\n        temp = temp.next;\n    }\n    first = temp;\n    temp = temp.next;\n    while (temp !== null) {\n        temp = temp.next;\n        second = second.next;\n    }\n\n    [first.val, second.val] = [second.val, first.val];\n    return head;\n}\n```\n    \n    1. Set three pointers (first, second, and temp) to point to the head of the linked list.\n2. Move the temp pointer forward by (k - 1) times to point to the kth node from the beginning.\n3. Set the first pointer to point to the temp (kth node from the beginning).\n4. Move the temp pointer to the next node, while moving second pointer to the next node as the temp pointer reaches the end of the list.\n5. When the temp pointer reaches the end of the list, the second pointer will be at the kth node from the end of the list.\n6. Swap the values of the nodes pointed by the first and second pointers.\n7. Return the head of the modified linked list.\n    ",
+    "java": "\n    ```java\npublic class ListNode {\n    int val;\n    ListNode next;\n    ListNode(int x) { val = x; }\n}\n\npublic ListNode swapNodes(ListNode head, int k) {\n    ListNode first = head, second = head, temp = head;\n    for (int i = 0; i < k - 1; i++) {\n        temp = temp.next;\n    }\n    first = temp;\n    temp = temp.next;\n    while (temp != null) {\n        temp = temp.next;\n        second = second.next;\n    }\n    int tmp = first.val;\n    first.val = second.val;\n    second.val = tmp;\n\n    return head;\n}\n```\n    \n    1. Set three pointers (first, second, and temp) to point to the head of the linked list.\n2. Move the temp pointer forward by (k - 1) times to point to the kth node from the beginning.\n3. Set the first pointer to point to the temp (kth node from the beginning).\n4. Move the temp pointer to the next node, while moving second pointer to the next node as the temp pointer reaches the end of the list.\n5. When the temp pointer reaches the end of the list, the second pointer will be at the kth node from the end of the list.\n6. Swap the values of the nodes pointed by the first and second pointers.\n7. Return the head of the modified linked list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

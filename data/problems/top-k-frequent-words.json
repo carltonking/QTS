@@ -1,0 +1,24 @@
+{
+  "id": 692,
+  "title": "Top K Frequent Words",
+  "slug": "top-k-frequent-words",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of strings words and an integer k, return _the_ k _most frequent strings_.\n\nReturn the answer sorted by the frequency from highest to lowest. Sort the words with the same frequency by their lexicographical order.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nimport heapq\nfrom collections import Counter\n\ndef k_frequent_words(words, k):\n    word_count = Counter(words)\n    heap = [(-count, word) for word, count in word_count.items()]\n    heapq.heapify(heap)\n\n    result = []\n    for _ in range(k):\n        result.append(heapq.heappop(heap)[1])\n\n    return result\n```\n    \n    1. Count the frequency of each word in the given `words` array using a hashmap or a dictionary.\n2. Create a priority queue (also called heap) that sorts the words by their frequency, and for those with the same frequency it sorts lexicographically.\n3. Add all word frequency pairs to the priority queue.\n4. Pop the top `k` elements from the priority queue and store the words in the result list.\n5. Return the result list containing the top `k` frequent words sorted as required.\n    ",
+    "javascript": "\n    ```javascript\nfunction kFrequentWords(words, k) {\n    const wordCount = new Map();\n    for (const word of words) {\n        wordCount.set(word, (wordCount.get(word) || 0) + 1);\n    }\n\n    const pq = Array.from(wordCount.entries()).sort((a, b) => {\n        if (a[1] === b[1]) {\n            return a[0].localeCompare(b[0]);\n        }\n        return b[1] - a[1];\n    });\n\n    const result = [];\n    for (let i = 0; i < k; i++) {\n        result.push(pq[i][0]);\n    }\n    return result;\n}\n```\n    \n    1. Count the frequency of each word in the given `words` array using a hashmap or a dictionary.\n2. Create a priority queue (also called heap) that sorts the words by their frequency, and for those with the same frequency it sorts lexicographically.\n3. Add all word frequency pairs to the priority queue.\n4. Pop the top `k` elements from the priority queue and store the words in the result list.\n5. Return the result list containing the top `k` frequent words sorted as required.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic class Solution {\n    public List<String> kFrequentWords(String[] words, int k) {\n        Map<String, Integer> wordCount = new HashMap<>();\n        for (String word : words) {\n            wordCount.put(word, wordCount.getOrDefault(word, 0) + 1);\n        }\n\n        PriorityQueue<Map.Entry<String, Integer>> pq = new PriorityQueue<>(\n                (a, b) -> a.getValue() == b.getValue()\n                        ? a.getKey().compareTo(b.getKey())\n                        : b.getValue() - a.getValue()\n        );\n        pq.addAll(wordCount.entrySet());\n\n        List<String> result = new ArrayList<>();\n        for (int i = 0; i < k; i++) {\n            result.add(pq.poll().getKey());\n        }\n        return result;\n    }\n}\n```\n    \n    1. Count the frequency of each word in the given `words` array using a hashmap or a dictionary.\n2. Create a priority queue (also called heap) that sorts the words by their frequency, and for those with the same frequency it sorts lexicographically.\n3. Add all word frequency pairs to the priority queue.\n4. Pop the top `k` elements from the priority queue and store the words in the result list.\n5. Return the result list containing the top `k` frequent words sorted as required.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

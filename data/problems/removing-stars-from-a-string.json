@@ -1,0 +1,24 @@
+{
+  "id": 2390,
+  "title": "Removing Stars From a String",
+  "slug": "removing-stars-from-a-string",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a string s, which contains stars *.\n\nIn one operation, you can:\n\n*   Choose a star in s.\n*   Remove the closest non-star character to its left, as well as remove the star itself.\n\nReturn _the string after all stars have been removed_.\n\nNote:\n\n*   The input will be generated such that the operation is always possible.\n*   It can be shown that the resulting string will always be unique.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef remove_stars(s: str) -> str:\n    result = []\n    for c in s:\n        if c == '*':\n            if result:\n                result.pop()\n        else:\n            result.append(c)\n    return ''.join(result)\n```\n\n    \n    For each character in the given string `s`, we iterate through the characters. If the character is a star, we remove the last character of the `result` only if `result` is not empty. Otherwise, we append the character to the `result`. Finally, we return the `result` as a string. This algorithm simulates the removal operation described in the question. Since we always remove characters that are closest to the stars, the order of operations does not matter, and the algorithm produces the unique possible output.\n    ",
+    "javascript": "\n    ```javascript\nfunction removeStars(s) {\n    let result = [];\n    for (let c of s) {\n        if (c === '*') {\n            if (result.length > 0) {\n                result.pop();\n            }\n        } else {\n            result.push(c);\n        }\n    }\n    return result.join('');\n}\n```\n\n    \n    For each character in the given string `s`, we iterate through the characters. If the character is a star, we remove the last character of the `result` only if `result` is not empty. Otherwise, we append the character to the `result`. Finally, we return the `result` as a string. This algorithm simulates the removal operation described in the question. Since we always remove characters that are closest to the stars, the order of operations does not matter, and the algorithm produces the unique possible output.\n    ",
+    "java": "\n    ```java\npublic String removeStars(String s) {\n    StringBuilder result = new StringBuilder();\n    for (char c : s.toCharArray()) {\n        if (c == '*') {\n            if (result.length() > 0) {\n                result.deleteCharAt(result.length() - 1);\n            }\n        } else {\n            result.append(c);\n        }\n    }\n    return result.toString();\n}\n```\n\n    \n    For each character in the given string `s`, we iterate through the characters. If the character is a star, we remove the last character of the `result` only if `result` is not empty. Otherwise, we append the character to the `result`. Finally, we return the `result` as a string. This algorithm simulates the removal operation described in the question. Since we always remove characters that are closest to the stars, the order of operations does not matter, and the algorithm produces the unique possible output.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

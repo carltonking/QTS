@@ -1,0 +1,24 @@
+{
+  "id": 2371,
+  "title": "Minimize Maximum Value in a Grid",
+  "slug": "minimize-maximum-value-in-a-grid",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an m x n integer matrix grid containing distinct positive integers.\n\nYou have to replace each integer in the matrix with a positive integer satisfying the following conditions:\n\n*   The relative order of every two elements that are in the same row or column should stay the same after the replacements.\n*   The maximum number in the matrix after the replacements should be as small as possible.\n\nThe relative order stays the same if for all pairs of elements in the original matrix such that grid[r1][c1] > grid[r2][c2] where either r1 == r2 or c1 == c2, then it must be true that grid[r1][c1] > grid[r2][c2] after the replacements.\n\nFor example, if grid = [[2, 4, 5], [7, 3, 9]] then a good replacement could be either grid = [[1, 2, 3], [2, 1, 4]] or grid = [[1, 2, 3], [3, 1, 4]].\n\nReturn _the resulting matrix._ If there are multiple answers, return any of them.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef smallest_max_number_grid(grid):\n    rows = [0] * len(grid)\n    cols = [0] * len(grid[0])\n    \n    for i in range(len(grid)):\n        for j in range(len(grid[0])):\n            rows[i] = max(rows[i], grid[i][j])\n            cols[j] = max(cols[j], grid[i][j])\n\n    for i in range(len(grid)):\n        for j in range(len(grid[0])):\n            grid[i][j] = min(rows[i], cols[j])\n\n    return grid\n```\n\n    \n    First, we create two arrays of length `m` and `n` to represent the rows and columns of the input grid. We then iterate through each row and column of the grid, updating the row and column arrays with the maximum values found in each. Finally, we iterate through the input grid again and update each value to be the minimum of its corresponding row and column maximum value.\n    ",
+    "javascript": "\n    ```javascript\nfunction smallestMaxNumberGrid(grid) {\n    let rows = new Array(grid.length).fill(0);\n    let cols = new Array(grid[0].length).fill(0);\n\n    for (let i = 0; i < grid.length; i++) {\n        for (let j = 0; j < grid[i].length; j++) {\n            rows[i] = Math.max(rows[i], grid[i][j]);\n            cols[j] = Math.max(cols[j], grid[i][j]);\n        }\n    }\n\n    for (let i = 0; i < grid.length; i++) {\n        for (let j = 0; j < grid[i].length; j++) {\n            grid[i][j] = Math.min(rows[i], cols[j]);\n        }\n    }\n\n    return grid;\n}\n```\n\n    \n    First, we create two arrays of length `m` and `n` to represent the rows and columns of the input grid. We then iterate through each row and column of the grid, updating the row and column arrays with the maximum values found in each. Finally, we iterate through the input grid again and update each value to be the minimum of its corresponding row and column maximum value.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic int[][] smallestMaxNumberGrid(int[][] grid) {\n    int[] rows = new int[grid.length];\n    int[] cols = new int[grid[0].length];\n    \n    for (int i = 0; i < grid.length; i++) {\n        for (int j = 0; j < grid[i].length; j++) {\n            rows[i] = Math.max(rows[i], grid[i][j]);\n            cols[j] = Math.max(cols[j], grid[i][j]);\n        }\n    }\n\n    for (int i = 0; i < grid.length; i++) {\n        for (int j = 0; j < grid[i].length; j++) {\n            grid[i][j] = Math.min(rows[i], cols[j]);\n        }\n    }\n\n    return grid;\n}\n```\n\n    \n    First, we create two arrays of length `m` and `n` to represent the rows and columns of the input grid. We then iterate through each row and column of the grid, updating the row and column arrays with the maximum values found in each. Finally, we iterate through the input grid again and update each value to be the minimum of its corresponding row and column maximum value.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

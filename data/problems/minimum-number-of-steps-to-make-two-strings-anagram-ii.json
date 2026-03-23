@@ -1,0 +1,24 @@
+{
+  "id": 2186,
+  "title": "Minimum Number of Steps to Make Two Strings Anagram II",
+  "slug": "minimum-number-of-steps-to-make-two-strings-anagram-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two strings s and t. In one step, you can append any character to either s or t.\n\nReturn _the minimum number of steps to make_ s _and_ t _anagrams of each other._\n\nAn anagram of a string is a string that contains the same characters with a different (or the same) ordering.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_vowel_substrings(word: str) -> int:\n    count = 0\n    n = len(word)\n    vowels = set()\n\n    for i in range(n):\n        if word[i] in \"aeiou\":\n            vowels.clear()\n            for j in range(i, n):\n                if word[j] in \"aeiou\":\n                    vowels.add(word[j])\n                if len(vowels) == 5:\n                    count += 1\n    return count\n```\n\n    \n    The algorithm starts by iterating through the input string (`word`). For each character in `word`, we first check if the character is a vowel (i.e., 'a', 'e', 'i', 'o', or 'u'). If it is not a vowel, we move on to the next character. If it is a vowel, we clear the `vowels` set and start another loop that iterates over the remaining characters, adding each successive vowel to the `vowels` set. At each step, we check if the current vowel is the last one needed to complete the set. If so, we increment the `count` variable. Finally, we return the total count of vowel substrings after all iterations. The main difference in each implementation is in the syntax and data structures required for each language, but the overall algorithm is the same.\n    ",
+    "javascript": "\n    ```javascript\nfunction countVowelSubstrings(word) {\n    let count = 0, n = word.length;\n    let vowels = new Set();\n\n    for (let i = 0; i < n; i++) {\n        if (\"aeiou\".includes(word[i])) {\n            vowels.clear();\n            for (let j = i; j < n; j++) {\n                if (\"aeiou\".includes(word[j])) {\n                    vowels.add(word[j]);\n                }\n                if (vowels.size === 5) count++;\n            }\n        }\n    }\n    return count;\n}\n```\n\n    \n    The algorithm starts by iterating through the input string (`word`). For each character in `word`, we first check if the character is a vowel (i.e., 'a', 'e', 'i', 'o', or 'u'). If it is not a vowel, we move on to the next character. If it is a vowel, we clear the `vowels` set and start another loop that iterates over the remaining characters, adding each successive vowel to the `vowels` set. At each step, we check if the current vowel is the last one needed to complete the set. If so, we increment the `count` variable. Finally, we return the total count of vowel substrings after all iterations. The main difference in each implementation is in the syntax and data structures required for each language, but the overall algorithm is the same.\n    ",
+    "java": "\n    ```java\nimport java.util.HashSet;\nimport java.util.Set;\n\npublic int countVowelSubstrings(String word) {\n    int count = 0, n = word.length();\n    Set<Character> vowels = new HashSet<>();\n\n    for (int i = 0; i < n; i++) {\n        if (\"aeiou\".indexOf(word.charAt(i)) != -1) {\n            vowels.clear();\n            for (int j = i; j < n; j++) {\n                if (\"aeiou\".indexOf(word.charAt(j)) != -1) {\n                    vowels.add(word.charAt(j));\n                }\n                if (vowels.size() == 5) count++;\n            }\n        }\n    }\n    return count;\n}\n```\n\n    \n    The algorithm starts by iterating through the input string (`word`). For each character in `word`, we first check if the character is a vowel (i.e., 'a', 'e', 'i', 'o', or 'u'). If it is not a vowel, we move on to the next character. If it is a vowel, we clear the `vowels` set and start another loop that iterates over the remaining characters, adding each successive vowel to the `vowels` set. At each step, we check if the current vowel is the last one needed to complete the set. If so, we increment the `count` variable. Finally, we return the total count of vowel substrings after all iterations. The main difference in each implementation is in the syntax and data structures required for each language, but the overall algorithm is the same.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

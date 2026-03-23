@@ -1,0 +1,24 @@
+{
+  "id": 886,
+  "title": "Possible Bipartition",
+  "slug": "possible-bipartition",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "We want to split a group of n people (labeled from 1 to n) into two groups of any size. Each person may dislike some other people, and they should not go into the same group.\n\nGiven the integer n and the array dislikes where dislikes[i] = [ai, bi] indicates that the person labeled ai does not like the person labeled bi, return true _if it is possible to split everyone into two groups in this way_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef scoreOfParentheses(s):\n    score, depth = 0, 0\n    for i in range(len(s)):\n        if s[i] == '(':\n            depth += 1\n        else:\n            depth -= 1\n            if s[i - 1] == '(':\n                score += 1 << depth\n    return score\n```\n    \n    The algorithm processes the given balanced parentheses string `s` in a single pass, keeping track of the current depth (number of open parentheses) and the current score. When an open parenthesis is encountered, the depth is incremented. When a close parenthesis is encountered, the depth is decremented. If the close parenthesis follows an open parenthesis, the pair contributes to the score according to the depth. The final score is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction scoreOfParentheses(s) {\n    let score = 0, depth = 0;\n    for (let i = 0; i < s.length; i++) {\n        if (s[i] === '(')\n            depth++;\n        else {\n            depth--;\n            if (s[i - 1] === '(')\n                score += 1 << depth;\n        }\n    }\n    return score;\n}\n```\n\n    \n    The algorithm processes the given balanced parentheses string `s` in a single pass, keeping track of the current depth (number of open parentheses) and the current score. When an open parenthesis is encountered, the depth is incremented. When a close parenthesis is encountered, the depth is decremented. If the close parenthesis follows an open parenthesis, the pair contributes to the score according to the depth. The final score is returned.\n    ",
+    "java": "\n    ```java\nint scoreOfParentheses(String s) {\n    int score = 0, depth = 0;\n    for (int i = 0; i < s.length(); i++) {\n        if (s.charAt(i) == '(')\n            depth++;\n        else {\n            depth--;\n            if (s.charAt(i - 1) == '(')\n                score += 1 << depth;\n        }\n    }\n    return score;\n}\n```\n    \n    The algorithm processes the given balanced parentheses string `s` in a single pass, keeping track of the current depth (number of open parentheses) and the current score. When an open parenthesis is encountered, the depth is incremented. When a close parenthesis is encountered, the depth is decremented. If the close parenthesis follows an open parenthesis, the pair contributes to the score according to the depth. The final score is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

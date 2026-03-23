@@ -1,0 +1,24 @@
+{
+  "id": 1027,
+  "title": "Longest Arithmetic Subsequence",
+  "slug": "longest-arithmetic-subsequence",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array nums of integers, return _the length of the longest arithmetic subsequence in_ nums.\n\nNote that:\n\n*   A subsequence is an array that can be derived from another array by deleting some or no elements without changing the order of the remaining elements.\n*   A sequence seq is arithmetic if seq[i + 1] - seq[i] are all the same value (for 0 <= i < seq.length - 1).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sumEvenAfterQueries(nums, queries):\n    answer = []\n    even_sum = sum(num for num in nums if num % 2 == 0)\n\n    for value, index in queries:\n        if nums[index] % 2 == 0:\n            even_sum -= nums[index]\n        nums[index] += value\n        if nums[index] % 2 == 0:\n            even_sum += nums[index]\n        answer.append(even_sum)\n\n    return answer\n```\n\n    \n    1. Calculate the initial sum of all even numbers in the given array.\n2. For each query:\n    a. Check if the number at the given index is even, and if so, subtract it from the even sum.\n    b. Add the given value to the number at the given index.\n    c. Check if the updated number at the given index is now even, and if so, add it to the even sum.\n    d. Append the current even sum to the answer array.\n3. Return the answer array after all queries have been processed.\n    ",
+    "javascript": "\n    ```javascript\nfunction sumEvenAfterQueries(nums, queries) {\n    const answer = [];\n    let even_sum = nums.reduce((sum, num) => num % 2 === 0 ? sum + num : sum, 0);\n\n    for (const [value, index] of queries) {\n        if (nums[index] % 2 === 0) {\n            even_sum -= nums[index];\n        }\n        nums[index] += value;\n        if (nums[index] % 2 === 0) {\n            even_sum += nums[index];\n        }\n        answer.push(even_sum);\n    }\n\n    return answer;\n}\n```\n\n    \n    1. Calculate the initial sum of all even numbers in the given array.\n2. For each query:\n    a. Check if the number at the given index is even, and if so, subtract it from the even sum.\n    b. Add the given value to the number at the given index.\n    c. Check if the updated number at the given index is now even, and if so, add it to the even sum.\n    d. Append the current even sum to the answer array.\n3. Return the answer array after all queries have been processed.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic int[] sumEvenAfterQueries(int[] nums, int[][] queries) {\n    int[] answer = new int[queries.length];\n    int even_sum = 0;\n\n    for (int num : nums) {\n        if (num % 2 == 0) {\n            even_sum += num;\n        }\n    }\n\n    for (int i = 0; i < queries.length; i++) {\n        int value = queries[i][0];\n        int index = queries[i][1];\n\n        if (nums[index] % 2 == 0) {\n            even_sum -= nums[index];\n        }\n        nums[index] += value;\n        if (nums[index] % 2 == 0) {\n            even_sum += nums[index];\n        }\n        answer[i] = even_sum;\n    }\n\n    return answer;\n}\n```\n\n    \n    1. Calculate the initial sum of all even numbers in the given array.\n2. For each query:\n    a. Check if the number at the given index is even, and if so, subtract it from the even sum.\n    b. Add the given value to the number at the given index.\n    c. Check if the updated number at the given index is now even, and if so, add it to the even sum.\n    d. Append the current even sum to the answer array.\n3. Return the answer array after all queries have been processed.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

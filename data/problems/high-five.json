@@ -1,0 +1,24 @@
+{
+  "id": 1086,
+  "title": "High Five",
+  "slug": "high-five",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a list of the scores of different students, items, where items[i] = [IDi, scorei] represents one score from a student with IDi, calculate each student's top five average.\n\nReturn _the answer as an array of pairs_ result_, where_ result[j] = [IDj, topFiveAveragej] _represents the student with_ IDj _and their top five average. Sort_ result _by_ IDj _in increasing order._\n\nA student's top five average is calculated by taking the sum of their top five scores and dividing it by 5 using integer division.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef alice_win(n):\n    return n % 2 == 0\n```\n\n    \n    The game is a simple parity-based game, where Alice and Bob alternately change the number on the board. Since Alice goes first, if the number on the board is even initially, Alice has the opportunity to make a move and maintain the even number status of the board. If Alice and Bob are playing optimally, they will always choose a number that is a divisor of the current number by 2, to guarantee they leave an even number on the board. In this way, the parity of the number on the board never changes.\n\nSo, when the number becomes 1, the player whose turn it is will lose, as they cannot choose a divisor of the current number that is less than the current number. Since the number remains even throughout the game, if it starts as an even number, Alice will always win; if it starts as an odd number, Bob will always win. The algorithm simply checks if the given number is even and returns true if Alice wins, and false otherwise. The code implementations for each language perform the modulo operation `%` to check if the given number is even.\n    ",
+    "javascript": "\n    ```javascript\nfunction aliceWin(n) {\n    return n % 2 === 0;\n}\n```\n\n    \n    The game is a simple parity-based game, where Alice and Bob alternately change the number on the board. Since Alice goes first, if the number on the board is even initially, Alice has the opportunity to make a move and maintain the even number status of the board. If Alice and Bob are playing optimally, they will always choose a number that is a divisor of the current number by 2, to guarantee they leave an even number on the board. In this way, the parity of the number on the board never changes.\n\nSo, when the number becomes 1, the player whose turn it is will lose, as they cannot choose a divisor of the current number that is less than the current number. Since the number remains even throughout the game, if it starts as an even number, Alice will always win; if it starts as an odd number, Bob will always win. The algorithm simply checks if the given number is even and returns true if Alice wins, and false otherwise. The code implementations for each language perform the modulo operation `%` to check if the given number is even.\n    ",
+    "java": "\n    ```java\nboolean aliceWin(int n) {\n    return n % 2 == 0;\n}\n```\n\n    \n    The game is a simple parity-based game, where Alice and Bob alternately change the number on the board. Since Alice goes first, if the number on the board is even initially, Alice has the opportunity to make a move and maintain the even number status of the board. If Alice and Bob are playing optimally, they will always choose a number that is a divisor of the current number by 2, to guarantee they leave an even number on the board. In this way, the parity of the number on the board never changes.\n\nSo, when the number becomes 1, the player whose turn it is will lose, as they cannot choose a divisor of the current number that is less than the current number. Since the number remains even throughout the game, if it starts as an even number, Alice will always win; if it starts as an odd number, Bob will always win. The algorithm simply checks if the given number is even and returns true if Alice wins, and false otherwise. The code implementations for each language perform the modulo operation `%` to check if the given number is even.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

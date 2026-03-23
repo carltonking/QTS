@@ -1,0 +1,24 @@
+{
+  "id": 648,
+  "title": "Replace Words",
+  "slug": "replace-words",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "In English, we have a concept called root, which can be followed by some other word to form another longer word - let's call this word successor. For example, when the root \"an \" is followed by the successor word \"other \", we can form a new word \"another \".\n\nGiven a dictionary consisting of many roots and a sentence consisting of words separated by spaces, replace all the successors in the sentence with the root forming it. If a successor can be replaced by more than one root, replace it with the root that has the shortest length.\n\nReturn _the sentence_ after the replacement.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef replaceWords(dict, sentence):\n    roots = set(dict)\n    words = sentence.split()\n    result = []\n\n    for word in words:\n        prefix = ''\n        for i in range(1, len(word) + 1):\n            prefix = word[:i]\n            if prefix in roots:\n                break\n        result.append(prefix)\n\n    return ' '.join(result)\n```\n    \n    1. Create a set of roots from the given dictionary to easily look up if a word fragment is in the roots.\n2. Split the sentence into words.\n3. Iterate through each word, create a prefix variable that will keep track of the word fragment:\n   a. Start with an empty prefix.\n   b. Iterate through the characters of the word, adding one character at a time to the prefix.\n   c. Check if the prefix is in the roots set.\n   d. If a root is found, break the iteration.\n4. Add the final prefix to the result list.\n5. Join the result list into a string, separating words with spaces.\n6. Return the final result string.\n    ",
+    "javascript": "\n    ```javascript\nfunction replaceWords(dict, sentence) {\n    const roots = new Set(dict);\n    const words = sentence.split(' ');\n    const result = [];\n\n    for (const word of words) {\n        let prefix = '';\n        for (let i = 1; i <= word.length; ++i) {\n            prefix = word.substring(0, i);\n            if (roots.has(prefix)) {\n                break;\n            }\n        }\n        result.push(prefix);\n    }\n\n    return result.join(' ');\n}\n```\n    \n    1. Create a set of roots from the given dictionary to easily look up if a word fragment is in the roots.\n2. Split the sentence into words.\n3. Iterate through each word, create a prefix variable that will keep track of the word fragment:\n   a. Start with an empty prefix.\n   b. Iterate through the characters of the word, adding one character at a time to the prefix.\n   c. Check if the prefix is in the roots set.\n   d. If a root is found, break the iteration.\n4. Add the final prefix to the result list.\n5. Join the result list into a string, separating words with spaces.\n6. Return the final result string.\n    ",
+    "java": "\n    ```java\nimport java.util.List;\nimport java.util.Set;\nimport java.util.HashSet;\nimport java.util.Arrays;\n\npublic String replaceWords(List<String> dict, String sentence) {\n    Set<String> roots = new HashSet<>(dict);\n    String[] words = sentence.split(\" \");\n    StringBuilder result = new StringBuilder();\n\n    for (String word : words) {\n        String prefix = \"\";\n        for (int i = 1; i <= word.length(); ++i) {\n            prefix = word.substring(0, i);\n            if (roots.contains(prefix)) {\n                break;\n            }\n        }\n        result.append(prefix).append(\" \");\n    }\n\n    return result.toString().trim();\n}\n```\n    \n    1. Create a set of roots from the given dictionary to easily look up if a word fragment is in the roots.\n2. Split the sentence into words.\n3. Iterate through each word, create a prefix variable that will keep track of the word fragment:\n   a. Start with an empty prefix.\n   b. Iterate through the characters of the word, adding one character at a time to the prefix.\n   c. Check if the prefix is in the roots set.\n   d. If a root is found, break the iteration.\n4. Add the final prefix to the result list.\n5. Join the result list into a string, separating words with spaces.\n6. Return the final result string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1630,
+  "title": "Arithmetic Subarrays",
+  "slug": "arithmetic-subarrays",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A sequence of numbers is called arithmetic if it consists of at least two elements, and the difference between every two consecutive elements is the same. More formally, a sequence s is arithmetic if and only if s[i+1] - s[i] == s[1] - s[0] for all valid i.\n\nFor example, these are arithmetic sequences:\n\n1, 3, 5, 7, 9\n7, 7, 7, 7\n3, -1, -5, -9\n\nThe following sequence is not arithmetic:\n\n1, 1, 2, 5, 7\n\nYou are given an array of n integers, nums, and two arrays of m integers each, l and r, representing the m range queries, where the ith query is the range [l[i], r[i]]. All the arrays are 0-indexed.\n\nReturn _a list of_ boolean _elements_ answer_, where_ answer[i] _is_ true _if the subarray_ nums[l[i]], nums[l[i]+1], ... , nums[r[i]] _can be rearranged to form an arithmetic sequence, and_ false _otherwise._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_odds(low, high):\n    return (high + 1) // 2 - low // 2\n```\n    \n    If the low and the high are both even, then the difference between the count of numbers from 1 to low and from 1 to high should give us the count of odd numbers between low and high (inclusive). \n\nThe number of odd numbers between 1 and an integer n is calculated by `(n + 1) / 2`. So, for the low and high values, we can calculate the odd counts in the same way. Then subtract the count of odd numbers from 1 to low, from the count of odd numbers from 1 to high. The result should give us the count of odd numbers between low and high.\n\nFor example, if low is 2 and high is 9:\n- The count of odd numbers between 1 to 9 is (9 + 1) / 2 = 5\n- The count of odd numbers between 1 to 2 is (2 + 1) / 2 = 1\nThe count of odd numbers between 2 and 9 is 5 - 1 = 4\n    ",
+    "javascript": "\n    ```javascript\nfunction countOdds(low, high) {\n    return Math.floor((high + 1) / 2) - Math.floor(low / 2);\n}\n```\n    \n    If the low and the high are both even, then the difference between the count of numbers from 1 to low and from 1 to high should give us the count of odd numbers between low and high (inclusive). \n\nThe number of odd numbers between 1 and an integer n is calculated by `(n + 1) / 2`. So, for the low and high values, we can calculate the odd counts in the same way. Then subtract the count of odd numbers from 1 to low, from the count of odd numbers from 1 to high. The result should give us the count of odd numbers between low and high.\n\nFor example, if low is 2 and high is 9:\n- The count of odd numbers between 1 to 9 is (9 + 1) / 2 = 5\n- The count of odd numbers between 1 to 2 is (2 + 1) / 2 = 1\nThe count of odd numbers between 2 and 9 is 5 - 1 = 4\n    ",
+    "java": "\n    ```java\npublic int countOdds(int low, int high) {\n    return (high + 1) / 2 - low / 2;\n}\n```\n    \n    If the low and the high are both even, then the difference between the count of numbers from 1 to low and from 1 to high should give us the count of odd numbers between low and high (inclusive). \n\nThe number of odd numbers between 1 and an integer n is calculated by `(n + 1) / 2`. So, for the low and high values, we can calculate the odd counts in the same way. Then subtract the count of odd numbers from 1 to low, from the count of odd numbers from 1 to high. The result should give us the count of odd numbers between low and high.\n\nFor example, if low is 2 and high is 9:\n- The count of odd numbers between 1 to 9 is (9 + 1) / 2 = 5\n- The count of odd numbers between 1 to 2 is (2 + 1) / 2 = 1\nThe count of odd numbers between 2 and 9 is 5 - 1 = 4\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

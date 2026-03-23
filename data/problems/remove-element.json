@@ -1,0 +1,24 @@
+{
+  "id": 27,
+  "title": "Remove Element",
+  "slug": "remove-element",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer array nums and an integer val, remove all occurrences of val in nums [in-place](https://en.wikipedia.org/wiki/In-place_algorithm). The order of the elements may be changed. Then return _the number of elements in_ nums _which are not equal to_ val.\n\nConsider the number of elements in nums which are not equal to val be k, to get accepted, you need to do the following things:\n\n*   Change the array nums such that the first k elements of nums contain the elements which are not equal to val. The remaining elements of nums are not important as well as the size of nums.\n*   Return k.\n\nCustom Judge:\n\nThe judge will test your solution with the following code:\n\nint[] nums = [...]; // Input array\nint val = ...; // Value to remove\nint[] expectedNums = [...]; // The expected answer with correct length.\n                            // It is sorted with no values equaling val.\n\nint k = removeElement(nums, val); // Calls your implementation\n\nassert k == expectedNums.length;\nsort(nums, 0, k); // Sort the first k elements of nums\nfor (int i = 0; i < actualLength; i++) {\n    assert nums[i] == expectedNums[i];\n}\n\nIf all assertions pass, then your solution will be accepted.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef removeElement(nums, val):\n    i = 0\n    for j in range(len(nums)):\n        if nums[j] != val:\n            nums[i] = nums[j]\n            i += 1\n    return i\n```\n    \n    The algorithm uses two pointers approach. The pointer `i` maintains the position where the next non-val element should be placed, and pointer `j` iterates through the array. If the element at `j` is not equal to `val`, we place it at the position `i` and increment the `i` pointer. The loop continues until we have checked all the elements in the array. The `i` pointer will give us the count of elements that are not equal to `val`, which is the result. Thus, we return the value of `i` as the final result.\n\nThe time complexity of this algorithm is O(n), where n is the number of elements in the array, as we only iterate through the array once. The space complexity is O(1) since we do not use any extra memory. We modify the input array in-place.\n    ",
+    "javascript": "\n    ```javascript\nfunction removeElement(nums, val) {\n    let i = 0;\n    for (let j = 0; j < nums.length; j++) {\n        if (nums[j] !== val) {\n            nums[i] = nums[j];\n            i++;\n        }\n    }\n    return i;\n}\n```\n    \n    The algorithm uses two pointers approach. The pointer `i` maintains the position where the next non-val element should be placed, and pointer `j` iterates through the array. If the element at `j` is not equal to `val`, we place it at the position `i` and increment the `i` pointer. The loop continues until we have checked all the elements in the array. The `i` pointer will give us the count of elements that are not equal to `val`, which is the result. Thus, we return the value of `i` as the final result.\n\nThe time complexity of this algorithm is O(n), where n is the number of elements in the array, as we only iterate through the array once. The space complexity is O(1) since we do not use any extra memory. We modify the input array in-place.\n    ",
+    "java": "\n    ```java\npublic int removeElement(int[] nums, int val) {\n    int i = 0;\n    for (int j = 0; j < nums.length; j++) {\n        if (nums[j] != val) {\n            nums[i] = nums[j];\n            i++;\n        }\n    }\n    return i;\n}\n```\n    \n    The algorithm uses two pointers approach. The pointer `i` maintains the position where the next non-val element should be placed, and pointer `j` iterates through the array. If the element at `j` is not equal to `val`, we place it at the position `i` and increment the `i` pointer. The loop continues until we have checked all the elements in the array. The `i` pointer will give us the count of elements that are not equal to `val`, which is the result. Thus, we return the value of `i` as the final result.\n\nThe time complexity of this algorithm is O(n), where n is the number of elements in the array, as we only iterate through the array once. The space complexity is O(1) since we do not use any extra memory. We modify the input array in-place.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

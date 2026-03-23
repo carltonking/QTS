@@ -1,0 +1,24 @@
+{
+  "id": 186,
+  "title": "Reverse Words in a String II",
+  "slug": "reverse-words-in-a-string-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a character array s, reverse the order of the words.\n\nA word is defined as a sequence of non-space characters. The words in s will be separated by a single space.\n\nYour code must solve the problem in-place, i.e. without allocating extra space.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef reverseWords(s: list) -> None:\n    def reverse(s, start, end):\n        while start < end:\n            s[start], s[end] = s[end], s[start]\n            start += 1\n            end -= 1\n\n    reverse(s, 0, len(s)-1)\n    start = 0\n    for i, char in enumerate(s + [' ']):\n        if char == ' ':\n            reverse(s, start, i - 1)\n            start = i + 1\n```\n    \n    1. Reverse the whole array.\n2. Traverse elements in the reversed array.\n3. If the current element is a space, reverse the sub-array from the start of the word to the last element before the space. Then, set start to the next element after space.\n4. If it's the end of the array, reverse the sub-array from the start of the array to the last element.\n    ",
+    "javascript": "\n    ```javascript\nfunction reverseWords(s) {\n    function reverse(s, start, end) {\n        while (start < end) {\n            [s[start], s[end]] = [s[end], s[start]];\n            start++;\n            end--;\n        }\n    }\n\n    reverse(s, 0, s.length - 1);\n    let start = 0;\n    for (let i = 0; i <= s.length; i++) {\n        if (i === s.length || s[i] === ' ') {\n            reverse(s, start, i - 1);\n            start = i + 1;\n        }\n    }\n}\n```\n    \n    1. Reverse the whole array.\n2. Traverse elements in the reversed array.\n3. If the current element is a space, reverse the sub-array from the start of the word to the last element before the space. Then, set start to the next element after space.\n4. If it's the end of the array, reverse the sub-array from the start of the array to the last element.\n    ",
+    "java": "\n    ```java\npublic void reverseWords(char[] s) {\n    reverse(s, 0, s.length - 1);\n    int start = 0;\n    for (int i = 0; i <= s.length; i++) {\n        if (i == s.length || s[i] == ' ') {\n            reverse(s, start, i - 1);\n            start = i + 1;\n        }\n    }\n}\n\nprivate void reverse(char[] s, int start, int end) {\n    while (start < end) {\n        char temp = s[start];\n        s[start++] = s[end];\n        s[end--] = temp;\n    }\n}\n```\n    \n    1. Reverse the whole array.\n2. Traverse elements in the reversed array.\n3. If the current element is a space, reverse the sub-array from the start of the word to the last element before the space. Then, set start to the next element after space.\n4. If it's the end of the array, reverse the sub-array from the start of the array to the last element.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

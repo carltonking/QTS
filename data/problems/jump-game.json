@@ -1,0 +1,40 @@
+{
+  "id": 22,
+  "title": "Jump Game",
+  "slug": "jump-game",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Greedy"
+  ],
+  "description": "You are given an integer array nums. Each element represents your maximum jump length at that position. Determine if you can reach the last index.",
+  "examples": [
+    {
+      "input": "nums = [2,3,1,1,4]",
+      "output": "true"
+    }
+  ],
+  "constraints": [
+    "1 <= nums.length <= 10^4"
+  ],
+  "starterCode": {
+    "python": "from typing import List\nclass Solution:\n    def canJump(self, nums: List[int]) -> bool:\n        pass",
+    "javascript": "var canJump = function(nums) {\n    \n};",
+    "java": "class Solution {\n    public boolean canJump(int[] nums) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    bool canJump(vector<int>& nums) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Jump Game\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "[2,3,1,1,4]",
+      "expectedOutput": "true"
+    },
+    {
+      "input": "[3,2,1,0,4]",
+      "expectedOutput": "false"
+    }
+  ]
+}

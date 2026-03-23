@@ -1,0 +1,24 @@
+{
+  "id": 935,
+  "title": "Knight Dialer",
+  "slug": "knight-dialer",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "The chess knight has a unique movement, it may move two squares vertically and one square horizontally, or two squares horizontally and one square vertically (with both forming the shape of an L). The possible movements of chess knight are shown in this diagaram:\n\nA chess knight can move as indicated in the chess diagram below:\n\nWe have a chess knight and a phone pad as shown below, the knight can only stand on a numeric cell (i.e. blue cell).\n\nGiven an integer n, return how many distinct phone numbers of length n we can dial.\n\nYou are allowed to place the knight on any numeric cell initially and then you should perform n - 1 jumps to dial a number of length n. All jumps should be valid knight jumps.\n\nAs the answer may be very large, return the answer modulo 109 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef lex_smallest_string(s, k):\n    res = s\n    for i in range(k):\n        tmp = s[i:] + s[:i]\n        if tmp < res:\n            res = tmp\n    return res\n```\n    \n    The algorithm for this problem is quite simple. We can iterate through the first `k` characters of the input string `s`. In each iteration, we generate a new string by moving the substring consisting of the first `i` characters to the end of the string. Then, we compare the new string with the current result. If the new string is lexicographically smaller, we update the result. After iterating through all `k` possibilities, we return the lexicographically smallest string we've found. \n    ",
+    "javascript": "\n    ```javascript\nfunction lexSmallestString(s, k) {\n    let res = s;\n    for (let i = 0; i < k; i++) {\n        let tmp = s.slice(i) + s.slice(0, i);\n        if (tmp < res) {\n            res = tmp;\n        }\n    }\n    return res;\n}\n```\n    \n    The algorithm for this problem is quite simple. We can iterate through the first `k` characters of the input string `s`. In each iteration, we generate a new string by moving the substring consisting of the first `i` characters to the end of the string. Then, we compare the new string with the current result. If the new string is lexicographically smaller, we update the result. After iterating through all `k` possibilities, we return the lexicographically smallest string we've found. \n    ",
+    "java": "\n    ```java\npublic String lexSmallestString(String s, int k) {\n    String res = s;\n    for (int i = 0; i < k; i++) {\n        String tmp = s.substring(i) + s.substring(0, i);\n        if (tmp.compareTo(res) < 0) {\n            res = tmp;\n        }\n    }\n    return res;\n}\n```\n    \n    The algorithm for this problem is quite simple. We can iterate through the first `k` characters of the input string `s`. In each iteration, we generate a new string by moving the substring consisting of the first `i` characters to the end of the string. Then, we compare the new string with the current result. If the new string is lexicographically smaller, we update the result. After iterating through all `k` possibilities, we return the lexicographically smallest string we've found. \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

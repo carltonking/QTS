@@ -1,0 +1,24 @@
+{
+  "id": 1236,
+  "title": "Web Crawler",
+  "slug": "web-crawler",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a url startUrl and an interface HtmlParser, implement a web crawler to crawl all links that are under the same hostname as startUrl.\n\nReturn all urls obtained by your web crawler in any order.\n\nYour crawler should:\n\n*   Start from the page: startUrl\n*   Call HtmlParser.getUrls(url) to get all urls from a webpage of given url.\n*   Do not crawl the same link twice.\n*   Explore only the links that are under the same hostname as startUrl.\n\nAs shown in the example url above, the hostname is example.org. For simplicity sake, you may assume all urls use http protocol without any port specified. For example, the urls http://leetcode.com/problems and http://leetcode.com/contest are under the same hostname, while urls http://example.org/test and http://example.com/abc are not under the same hostname.\n\nThe HtmlParser interface is defined as such:\n\ninterface HtmlParser {\n  // Return a list of all urls from a webpage of given _url_.\n  public List getUrls(String url);\n}\n\nBelow are two examples explaining the functionality of the problem, for custom testing purposes you'll have three variables urls, edges and startUrl. Notice that you will only have access to startUrl in your code, while urls and edges are not directly accessible to you in code.\n\nNote: Consider the same URL with the trailing slash \"/ \" as a different URL. For example, \"http://news.yahoo.com \", and \"http://news.yahoo.com/ \" are different urls.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef tribonacci(n: int) -> int:\n    if n == 0: return 0\n    if n == 1 or n == 2: return 1\n    a, b, c = 0, 1, 1\n    for _ in range(3, n + 1):\n        a, b, c = b, c, a + b + c\n    return c\n```\n    \n    The algorithm initializes the first three Tribonacci numbers `a`, `b`, and `c` with the values `0`, `1`, and `1`, respectively. It then iterates from `i=3` to `i=n`, computing each next Tribonacci number as the sum of the previous three (`a, b, c`). After each iteration, it shifts the values of `a`, `b`, and `c` to the right, dropping the smallest one and assigning the new calculated value to the last position. This is done until the value of `c` is the nth Tribonacci number.\n\nFinally, the algorithm returns the latest value of `c`, which represents the desired Tribonacci number `Tn`.\n    ",
+    "javascript": "\n    ```javascript\nfunction tribonacci(n) {\n    if(n==0) return 0;\n    if(n==1 || n==2) return 1;\n    let a = 0, b = 1, c = 1, d;\n    for(let i = 3; i <= n; ++i) {\n        d = a + b + c;\n        a = b;\n        b = c;\n        c = d;\n    }\n    return c;\n}\n```\n    \n    The algorithm initializes the first three Tribonacci numbers `a`, `b`, and `c` with the values `0`, `1`, and `1`, respectively. It then iterates from `i=3` to `i=n`, computing each next Tribonacci number as the sum of the previous three (`a, b, c`). After each iteration, it shifts the values of `a`, `b`, and `c` to the right, dropping the smallest one and assigning the new calculated value to the last position. This is done until the value of `c` is the nth Tribonacci number.\n\nFinally, the algorithm returns the latest value of `c`, which represents the desired Tribonacci number `Tn`.\n    ",
+    "java": "\n    ```java\npublic int tribonacci(int n) {\n    if(n==0) return 0;\n    if(n==1 || n==2) return 1;\n    int a = 0, b = 1, c = 1, d;\n    for(int i = 3; i <= n; i++) {\n        d = a + b + c;\n        a = b;\n        b = c;\n        c = d;\n    }\n    return c;\n}\n```\n    \n    The algorithm initializes the first three Tribonacci numbers `a`, `b`, and `c` with the values `0`, `1`, and `1`, respectively. It then iterates from `i=3` to `i=n`, computing each next Tribonacci number as the sum of the previous three (`a, b, c`). After each iteration, it shifts the values of `a`, `b`, and `c` to the right, dropping the smallest one and assigning the new calculated value to the last position. This is done until the value of `c` is the nth Tribonacci number.\n\nFinally, the algorithm returns the latest value of `c`, which represents the desired Tribonacci number `Tn`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

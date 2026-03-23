@@ -1,0 +1,24 @@
+{
+  "id": 825,
+  "title": "Friends Of Appropriate Ages",
+  "slug": "friends-of-appropriate-ages",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There are n persons on a social media website. You are given an integer array ages where ages[i] is the age of the ith person.\n\nA Person x will not send a friend request to a person y (x != y) if any of the following conditions is true:\n\n*   age[y] <= 0.5 * age[x] + 7\n*   age[y] > age[x]\n*   age[y] > 100 && age[x] < 100\n\nOtherwise, x will send a friend request to y.\n\nNote that if x sends a request to y, y will not necessarily send a request to x. Also, a person will not send a friend request to themself.\n\nReturn _the total number of friend requests made_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_increase_keeping_skyline(grid):\n    n = len(grid)\n    row_max = [0] * n\n    col_max = [0] * n\n    \n    for i in range(n):\n        for j in range(n):\n            row_max[i] = max(row_max[i], grid[i][j])\n            col_max[j] = max(col_max[j], grid[i][j])\n    \n    total_sum = 0\n    for i in range(n):\n        for j in range(n):\n            total_sum += min(row_max[i], col_max[j]) - grid[i][j]\n    \n    return total_sum\n```\n    \n    1. Find the maximum height of the buildings in each row and store them in 'row_max'.\n2. Find the maximum height of the buildings in each column and store them in 'col_max'.\n3. Iterate through each building in the grid and calculate the minimum of the row_max and col_max for the current building.\n4. Subtract the current building height from the minimum value found in step 3 and add the result to the total_sum.\n5. Return the total_sum.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxIncreaseKeepingSkyline(grid) {\n    const n = grid.length;\n    const row_max = new Array(n).fill(0);\n    const col_max = new Array(n).fill(0);\n    \n    for (let i = 0; i < n; ++i) {\n        for (let j = 0; j < n; ++j) {\n            row_max[i] = Math.max(row_max[i], grid[i][j]);\n            col_max[j] = Math.max(col_max[j], grid[i][j]);\n        }\n    }\n    \n    let total_sum = 0;\n    for (let i = 0; i < n; ++i) {\n        for (let j = 0; j < n; ++j) {\n            total_sum += Math.min(row_max[i], col_max[j]) - grid[i][j];\n        }\n    }\n    \n    return total_sum;\n}\n```\n\n    \n    1. Find the maximum height of the buildings in each row and store them in 'row_max'.\n2. Find the maximum height of the buildings in each column and store them in 'col_max'.\n3. Iterate through each building in the grid and calculate the minimum of the row_max and col_max for the current building.\n4. Subtract the current building height from the minimum value found in step 3 and add the result to the total_sum.\n5. Return the total_sum.\n    ",
+    "java": "\n    ```java\npublic int maxIncreaseKeepingSkyline(int[][] grid) {\n    int n = grid.length;\n    int[] row_max = new int[n];\n    int[] col_max = new int[n];\n    \n    for (int i = 0; i < n; ++i) {\n        for (int j = 0; j < n; ++j) {\n            row_max[i] = Math.max(row_max[i], grid[i][j]);\n            col_max[j] = Math.max(col_max[j], grid[i][j]);\n        }\n    }\n    \n    int total_sum = 0;\n    for (int i = 0; i < n; ++i) {\n        for (int j = 0; j < n; ++j) {\n            total_sum += Math.min(row_max[i], col_max[j]) - grid[i][j];\n        }\n    }\n    \n    return total_sum;\n}\n```\n    \n    1. Find the maximum height of the buildings in each row and store them in 'row_max'.\n2. Find the maximum height of the buildings in each column and store them in 'col_max'.\n3. Iterate through each building in the grid and calculate the minimum of the row_max and col_max for the current building.\n4. Subtract the current building height from the minimum value found in step 3 and add the result to the total_sum.\n5. Return the total_sum.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

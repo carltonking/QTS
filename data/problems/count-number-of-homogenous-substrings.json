@@ -1,0 +1,24 @@
+{
+  "id": 1759,
+  "title": "Count Number of Homogenous Substrings",
+  "slug": "count-number-of-homogenous-substrings",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string s, return _the number of homogenous substrings of_ s_._ Since the answer may be too large, return it modulo 109 + 7.\n\nA string is homogenous if all the characters of the string are the same.\n\nA substring is a contiguous sequence of characters within a string.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_homogenous(s: str) -> int:\n    MOD = 1000000007\n    count, total = 1, 0\n    for i in range(1, len(s)):\n        count = count + 1 if s[i] == s[i - 1] else 1\n        total = (total + count) % MOD\n    return (total + count) % MOD\n```\n    \n    The algorithm follows a simple approach to iterate through the string and count the homogenous substrings. It starts with `count = 1` representing the individual characters as valid homogenous substrings.\n\nFor each character in the string, we compare it with its previous character. If they match, we increment the `count`. If they don't match, we reset `count` back to one as these continuous substrings will start again with new characters.\n\nAs we iterate, we maintain a variable `total`, which contains the number of homogenous substrings found in the string. We sum this variable with `count` and update it modulo `10^9 + 7`.\n\nFinally, we need to account for the last character, so we sum `count` with `total` for the final answer.\n\nTime complexity: O(n) as it iterates through the input string.\nSpace complexity: O(1) as it only maintains a few variables.\n    ",
+    "javascript": "\n    ```javascript\nfunction countHomogenous(s) {\n    const MOD = 1000000007;\n    let count = 1;\n    let total = 0;\n    for (let i = 1; i < s.length; ++i) {\n        count = (s[i] === s[i - 1]) ? count + 1 : 1;\n        total = (total + count) % MOD;\n    }\n    return (total + count) % MOD;\n}\n```\n    \n    The algorithm follows a simple approach to iterate through the string and count the homogenous substrings. It starts with `count = 1` representing the individual characters as valid homogenous substrings.\n\nFor each character in the string, we compare it with its previous character. If they match, we increment the `count`. If they don't match, we reset `count` back to one as these continuous substrings will start again with new characters.\n\nAs we iterate, we maintain a variable `total`, which contains the number of homogenous substrings found in the string. We sum this variable with `count` and update it modulo `10^9 + 7`.\n\nFinally, we need to account for the last character, so we sum `count` with `total` for the final answer.\n\nTime complexity: O(n) as it iterates through the input string.\nSpace complexity: O(1) as it only maintains a few variables.\n    ",
+    "java": "\n    ```java\npublic int countHomogenous(String s) {\n    final int MOD = 1000000007;\n    long count = 1;\n    long total = 0;\n    for (int i = 1; i < s.length(); ++i) {\n        count = (s.charAt(i) == s.charAt(i - 1)) ? count + 1 : 1;\n        total = (total + count) % MOD;\n    }\n    return (int) (total + count) % MOD;\n}\n```\n    \n    The algorithm follows a simple approach to iterate through the string and count the homogenous substrings. It starts with `count = 1` representing the individual characters as valid homogenous substrings.\n\nFor each character in the string, we compare it with its previous character. If they match, we increment the `count`. If they don't match, we reset `count` back to one as these continuous substrings will start again with new characters.\n\nAs we iterate, we maintain a variable `total`, which contains the number of homogenous substrings found in the string. We sum this variable with `count` and update it modulo `10^9 + 7`.\n\nFinally, we need to account for the last character, so we sum `count` with `total` for the final answer.\n\nTime complexity: O(n) as it iterates through the input string.\nSpace complexity: O(1) as it only maintains a few variables.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

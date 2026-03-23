@@ -1,0 +1,24 @@
+{
+  "id": 1206,
+  "title": "Design Skiplist",
+  "slug": "design-skiplist",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Design a Skiplist without using any built-in libraries.\n\nA skiplist is a data structure that takes O(log(n)) time to add, erase and search. Comparing with treap and red-black tree which has the same function and performance, the code length of Skiplist can be comparatively short and the idea behind Skiplists is just simple linked lists.\n\nFor example, we have a Skiplist containing [30,40,50,60,70,90] and we want to add 80 and 45 into it. The Skiplist works this way:\n\nArtyom Kalinin [CC BY-SA 3.0], via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Skip_list_add_element-en.gif \"Artyom Kalinin [CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons\")\n\nYou can see there are many layers in the Skiplist. Each layer is a sorted linked list. With the help of the top layers, add, erase and search can be faster than O(n). It can be proven that the average time complexity for each operation is O(log(n)) and space complexity is O(n).\n\nSee more about Skiplist: [https://en.wikipedia.org/wiki/Skip\\_list](https://en.wikipedia.org/wiki/Skip_list)\n\nImplement the Skiplist class:\n\n*   Skiplist() Initializes the object of the skiplist.\n*   bool search(int target) Returns true if the integer target exists in the Skiplist or false otherwise.\n*   void add(int num) Inserts the value num into the SkipList.\n*   bool erase(int num) Removes the value num from the Skiplist and returns true. If num does not exist in the Skiplist, do nothing and return false. If there exist multiple num values, removing any one of them is fine.\n\nNote that duplicates may exist in the Skiplist, your code needs to handle this situation.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef corp_flight_bookings(bookings, n):\n    answer = [0] * n\n    for start, end, seats in bookings:\n        answer[start - 1] += seats\n        if end < n:\n            answer[end] -= seats\n    for i in range(1, n):\n        answer[i] += answer[i - 1]\n    return answer\n```\n    \n    For each booking `[first, last, seats]`, we add the number of `seats` to the array `answer` at the index `first-1` and subtract the number of `seats` at the index `last`. This means that we have a running total of reserved seats at each index of the array `answer`. Then, to finalize the result, we go through the array `answer`, summing up the previous values to get the total reserved seats at each index.\n    ",
+    "javascript": "\n    ```javascript\nfunction corpFlightBookings(bookings, n) {\n    let answer = new Array(n).fill(0);\n    for (let booking of bookings) {\n        answer[booking[0] - 1] += booking[2];\n        if (booking[1] < n) {\n            answer[booking[1]] -= booking[2];\n        }\n    }\n    for (let i = 1; i < n; i++) {\n        answer[i] += answer[i - 1];\n    }\n    return answer;\n}\n```\n    \n    For each booking `[first, last, seats]`, we add the number of `seats` to the array `answer` at the index `first-1` and subtract the number of `seats` at the index `last`. This means that we have a running total of reserved seats at each index of the array `answer`. Then, to finalize the result, we go through the array `answer`, summing up the previous values to get the total reserved seats at each index.\n    ",
+    "java": "\n    ```java\npublic int[] corpFlightBookings(int[][] bookings, int n) {\n    int[] answer = new int[n];\n    for (int[] booking : bookings) {\n        answer[booking[0] - 1] += booking[2];\n        if (booking[1] < n) {\n            answer[booking[1]] -= booking[2];\n        }\n    }\n    for (int i = 1; i < n; i++) {\n        answer[i] += answer[i - 1];\n    }\n    return answer;\n}\n```\n    \n    For each booking `[first, last, seats]`, we add the number of `seats` to the array `answer` at the index `first-1` and subtract the number of `seats` at the index `last`. This means that we have a running total of reserved seats at each index of the array `answer`. Then, to finalize the result, we go through the array `answer`, summing up the previous values to get the total reserved seats at each index.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2093,
+  "title": "Minimum Cost to Reach City With Discounts",
+  "slug": "minimum-cost-to-reach-city-with-discounts",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A series of highways connect n cities numbered from 0 to n - 1. You are given a 2D integer array highways where highways[i] = [city1i, city2i, tolli] indicates that there is a highway that connects city1i and city2i, allowing a car to go from city1i to city2i and vice versa for a cost of tolli.\n\nYou are also given an integer discounts which represents the number of discounts you have. You can use a discount to travel across the ith highway for a cost of tolli / 2 (integer division). Each discount may only be used once, and you can only use at most one discount per highway.\n\nReturn _the minimum total cost to go from city_ 0 _to city_ n - 1_, or_ -1 _if it is not possible to go from city_ 0 _to city_ n - 1_._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_prefix_string(s, words):\n    temp = \"\"\n    for word in words:\n        temp += word\n        if temp == s:\n            return True\n        if len(temp) > len(s):\n            break\n    return False\n```\n    \n    The algorithm does the following to determine if the given string s is a prefix string of words:\n\n1. Create an empty temporary string (temp).\n2. Iterate through each word in the words array:\n   a. Concatenate the word to the temporary string.\n   b. Check if the temporary string is equal to the given string s. If it is, return true.\n   c. If the length of the temporary string is greater than the length of the given string s, break the loop.\n3. If the loop completes without returning true, return false. This means that the given string s is not a prefix string of words.\n\nThis algorithm has a time complexity of O(n * m) where n is the number of words and m is the length of the longest word in words.\n    ",
+    "javascript": "\n    ```javascript\nfunction isPrefixString(s, words) {\n    let temp = \"\";\n    for (const word of words) {\n        temp += word;\n        if (temp === s) return true;\n        if (temp.length > s.length) break;\n    }\n    return false;\n}\n```\n    \n    The algorithm does the following to determine if the given string s is a prefix string of words:\n\n1. Create an empty temporary string (temp).\n2. Iterate through each word in the words array:\n   a. Concatenate the word to the temporary string.\n   b. Check if the temporary string is equal to the given string s. If it is, return true.\n   c. If the length of the temporary string is greater than the length of the given string s, break the loop.\n3. If the loop completes without returning true, return false. This means that the given string s is not a prefix string of words.\n\nThis algorithm has a time complexity of O(n * m) where n is the number of words and m is the length of the longest word in words.\n    ",
+    "java": "\n    ```java\npublic boolean isPrefixString(String s, String[] words) {\n    StringBuilder sb = new StringBuilder();\n    for (String word : words) {\n        sb.append(word);\n        if (sb.toString().equals(s)) return true;\n        if (sb.length() > s.length()) break;\n    }\n    return false;\n}\n```\n    \n    The algorithm does the following to determine if the given string s is a prefix string of words:\n\n1. Create an empty temporary string (temp).\n2. Iterate through each word in the words array:\n   a. Concatenate the word to the temporary string.\n   b. Check if the temporary string is equal to the given string s. If it is, return true.\n   c. If the length of the temporary string is greater than the length of the given string s, break the loop.\n3. If the loop completes without returning true, return false. This means that the given string s is not a prefix string of words.\n\nThis algorithm has a time complexity of O(n * m) where n is the number of words and m is the length of the longest word in words.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

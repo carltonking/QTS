@@ -1,0 +1,24 @@
+{
+  "id": 1014,
+  "title": "Best Sightseeing Pair",
+  "slug": "best-sightseeing-pair",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array values where values[i] represents the value of the ith sightseeing spot. Two sightseeing spots i and j have a distance j - i between them.\n\nThe score of a pair (i < j) of sightseeing spots is values[i] + values[j] + i - j: the sum of the values of the sightseeing spots, minus the distance between them.\n\nReturn _the maximum score of a pair of sightseeing spots_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef kClosest(points, k):\n    points.sort(key=lambda x: x[0] ** 2 + x[1] ** 2)\n    return points[:k]\n```\n    \n    We define a custom comparison function that calculates the Euclidean distance of two points from the origin. In C++, Python, and JavaScript, we use a lambda function, while in Java we use a lambda expression.\n\nWe then use a sorting algorithm provided by the language's standard library to sort the array of points based on the custom comparison function. In C++, we use the `partial_sort` function, whereas in the other languages, we use the `sort` function.\n\nThe `partial_sort` function in C++ allows us to sort only the first `k` elements in the array. After sorting, we then return a new vector containing only the first `k` elements of the `points` vector.\n\nIn Java, Python, and JavaScript, we sort the entire array of points and then return a new array or list containing only the first `k` points. In Java, we use `Arrays.copyOfRange` to make the new array, while in Python and JavaScript, we use array slicing to select the first `k` elements.\n    ",
+    "javascript": "\n    ```javascript\nfunction kClosest(points, k) {\n    return points.sort((a, b) => (a[0] * a[0] + a[1] * a[1]) - (b[0] * b[0] + b[1] * b[1])).slice(0, k);\n}\n```\n    \n    We define a custom comparison function that calculates the Euclidean distance of two points from the origin. In C++, Python, and JavaScript, we use a lambda function, while in Java we use a lambda expression.\n\nWe then use a sorting algorithm provided by the language's standard library to sort the array of points based on the custom comparison function. In C++, we use the `partial_sort` function, whereas in the other languages, we use the `sort` function.\n\nThe `partial_sort` function in C++ allows us to sort only the first `k` elements in the array. After sorting, we then return a new vector containing only the first `k` elements of the `points` vector.\n\nIn Java, Python, and JavaScript, we sort the entire array of points and then return a new array or list containing only the first `k` points. In Java, we use `Arrays.copyOfRange` to make the new array, while in Python and JavaScript, we use array slicing to select the first `k` elements.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int[][] kClosest(int[][] points, int k) {\n    Arrays.sort(points, (a, b) -> (a[0] * a[0] + a[1] * a[1]) - (b[0] * b[0] + b[1] * b[1]));\n    return Arrays.copyOfRange(points, 0, k);\n}\n```\n    \n    We define a custom comparison function that calculates the Euclidean distance of two points from the origin. In C++, Python, and JavaScript, we use a lambda function, while in Java we use a lambda expression.\n\nWe then use a sorting algorithm provided by the language's standard library to sort the array of points based on the custom comparison function. In C++, we use the `partial_sort` function, whereas in the other languages, we use the `sort` function.\n\nThe `partial_sort` function in C++ allows us to sort only the first `k` elements in the array. After sorting, we then return a new vector containing only the first `k` elements of the `points` vector.\n\nIn Java, Python, and JavaScript, we sort the entire array of points and then return a new array or list containing only the first `k` points. In Java, we use `Arrays.copyOfRange` to make the new array, while in Python and JavaScript, we use array slicing to select the first `k` elements.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

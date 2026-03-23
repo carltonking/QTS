@@ -1,0 +1,24 @@
+{
+  "id": 259,
+  "title": "3Sum Smaller",
+  "slug": "3sum-smaller",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of n integers nums and an integer target, find the number of index triplets i, j, k with 0 <= i < j < k < n that satisfy the condition nums[i] + nums[j] + nums[k] < target.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef threeSumSmaller(nums, target):\n    count = 0\n    nums.sort()\n    for i in range(len(nums)):\n        j, k = i + 1, len(nums) - 1\n        while j < k:\n            if nums[i] + nums[j] + nums[k] < target:\n                count += k - j\n                j += 1\n            else:\n                k -= 1\n    return count\n```\n    \n    To solve this problem, we first sort the input array. Then we loop through each element in the array and use two pointers, `j` and `k`, initialized to the following element and the last element in the sorted array, respectively. We repeat the process until `j` is less than `k`. Inside the loop, we check if the sum of `nums[i]`, `nums[j]`, and `nums[k]` is less than the target. If it is, we add the difference `k - j` to the count and increment `j`. Otherwise, we decrement `k`. Finally, we return the count.\n    ",
+    "javascript": "\n    ```javascript\nfunction threeSumSmaller(nums, target) {\n    let count = 0;\n    nums.sort((a, b) => a - b);\n    for (let i = 0; i < nums.length; ++i) {\n        let j = i + 1, k = nums.length - 1;\n        while (j < k) {\n            if (nums[i] + nums[j] + nums[k] < target) {\n                count += k - j;\n                ++j;\n            } else {\n                --k;\n            }\n        }\n    }\n    return count;\n}\n```\n    \n    To solve this problem, we first sort the input array. Then we loop through each element in the array and use two pointers, `j` and `k`, initialized to the following element and the last element in the sorted array, respectively. We repeat the process until `j` is less than `k`. Inside the loop, we check if the sum of `nums[i]`, `nums[j]`, and `nums[k]` is less than the target. If it is, we add the difference `k - j` to the count and increment `j`. Otherwise, we decrement `k`. Finally, we return the count.\n    ",
+    "java": "\n    ```java\npublic int threeSumSmaller(int[] nums, int target) {\n    int count = 0;\n    Arrays.sort(nums);\n    for (int i = 0; i < nums.length; ++i) {\n        int j = i + 1, k = nums.length - 1;\n        while (j < k) {\n            if (nums[i] + nums[j] + nums[k] < target) {\n                count += k - j;\n                ++j;\n            } else {\n                --k;\n            }\n        }\n    }\n    return count;\n}\n```\n    \n    To solve this problem, we first sort the input array. Then we loop through each element in the array and use two pointers, `j` and `k`, initialized to the following element and the last element in the sorted array, respectively. We repeat the process until `j` is less than `k`. Inside the loop, we check if the sum of `nums[i]`, `nums[j]`, and `nums[k]` is less than the target. If it is, we add the difference `k - j` to the count and increment `j`. Otherwise, we decrement `k`. Finally, we return the count.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

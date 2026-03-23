@@ -1,0 +1,24 @@
+{
+  "id": 2591,
+  "title": "Distribute Money to Maximum Children",
+  "slug": "distribute-money-to-maximum-children",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an integer money denoting the amount of money (in dollars) that you have and another integer children denoting the number of children that you must distribute the money to.\n\nYou have to distribute the money according to the following rules:\n\n*   All money must be distributed.\n*   Everyone must receive at least 1 dollar.\n*   Nobody receives 4 dollars.\n\nReturn _the maximum number of children who may receive exactly_ 8 _dollars if you distribute the money according to the aforementioned rules_. If there is no way to distribute the money, return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maximum_children_with_eight_dollars(money, children):\n    if money < children * 1 or money > children * 8:\n        return -1\n    max_eights = (money - children) // 7\n    return children if max_eights >= children else max_eights\n```\n    \n    In this problem, we calculate the maximum number of children who get exactly 8 dollars by making sure that we follow the given rules. We first check if it's possible to distribute money with these constraints. If the amount of money is less than the product of the number of children and 1 or greater than the product of the number of children and 8, return -1 as it's not possible.\n\nThen, find the maximum number of eights by subtracting the number of children from the amount of money and dividing the result by 7. We divide the result by 7, as we're trying to maximize the children getting exactly 8 dollars, and the other amounts could range from 1 to 3 or 5 to 7. \n\nFinally, if the maximum number of eights is greater than or equal to the number of children, return the number of children. Otherwise, return the maximum number of eights. This calculation ensures that we're getting the maximum number of children who get exactly 8 dollars.\n    ",
+    "javascript": "\n    ```javascript\nfunction maximumChildrenWithEightDollars(money, children) {\n    if (money < children * 1 || money > children * 8) return -1;\n    let max_eights = Math.floor((money - children) / 7);\n    return max_eights >= children ? children : max_eights;\n}\n```\n    \n    In this problem, we calculate the maximum number of children who get exactly 8 dollars by making sure that we follow the given rules. We first check if it's possible to distribute money with these constraints. If the amount of money is less than the product of the number of children and 1 or greater than the product of the number of children and 8, return -1 as it's not possible.\n\nThen, find the maximum number of eights by subtracting the number of children from the amount of money and dividing the result by 7. We divide the result by 7, as we're trying to maximize the children getting exactly 8 dollars, and the other amounts could range from 1 to 3 or 5 to 7. \n\nFinally, if the maximum number of eights is greater than or equal to the number of children, return the number of children. Otherwise, return the maximum number of eights. This calculation ensures that we're getting the maximum number of children who get exactly 8 dollars.\n    ",
+    "java": "\n    ```java\npublic int maximumChildrenWithEightDollars(int money, int children) {\n    if (money < children * 1 || money > children * 8) return -1;\n    int max_eights = (money - children) / 7;\n    return max_eights >= children ? children : max_eights;\n}\n```\n    \n    In this problem, we calculate the maximum number of children who get exactly 8 dollars by making sure that we follow the given rules. We first check if it's possible to distribute money with these constraints. If the amount of money is less than the product of the number of children and 1 or greater than the product of the number of children and 8, return -1 as it's not possible.\n\nThen, find the maximum number of eights by subtracting the number of children from the amount of money and dividing the result by 7. We divide the result by 7, as we're trying to maximize the children getting exactly 8 dollars, and the other amounts could range from 1 to 3 or 5 to 7. \n\nFinally, if the maximum number of eights is greater than or equal to the number of children, return the number of children. Otherwise, return the maximum number of eights. This calculation ensures that we're getting the maximum number of children who get exactly 8 dollars.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

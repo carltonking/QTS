@@ -1,0 +1,24 @@
+{
+  "id": 783,
+  "title": "Minimum Distance Between BST Nodes",
+  "slug": "minimum-distance-between-bst-nodes",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given the root of a Binary Search Tree (BST), return _the minimum difference between the values of any two different nodes in the tree_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef searchBST(root: TreeNode, val: int) -> TreeNode:\n    if not root or root.val == val:\n        return root\n    return searchBST(root.left, val) if root.val > val else searchBST(root.right, val)\n```\n    \n    We are given a binary search tree (BST) and an integer value `val`. Our task is to find the node in the tree with the same value as `val` and return the subtree rooted at that node. If there is no such node, we should return null.\n\nTo solve this problem, we use a recursive function `searchBST`. We first check whether the current `root` is null or has the value we are searching for. If either condition is true, we return the root.\n\nOtherwise, we compare the given `val` with the current node's value. If `val` is less than the current node's value, we proceed to search the left subtree. Otherwise, we search the right subtree, and we return the result of either search.\n\nThis algorithm leverages the properties of a binary search tree, which ensures that for each node, all elements in the left subtree are less than the node, and all elements in the right subtree are greater than the node, enabling efficient search.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(val = 0, left = null, right = null) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\nfunction searchBST(root, val) {\n    if (!root || root.val === val) {\n        return root;\n    }\n    return (root.val > val) ? searchBST(root.left, val) : searchBST(root.right, val);\n}\n```\n    \n    We are given a binary search tree (BST) and an integer value `val`. Our task is to find the node in the tree with the same value as `val` and return the subtree rooted at that node. If there is no such node, we should return null.\n\nTo solve this problem, we use a recursive function `searchBST`. We first check whether the current `root` is null or has the value we are searching for. If either condition is true, we return the root.\n\nOtherwise, we compare the given `val` with the current node's value. If `val` is less than the current node's value, we proceed to search the left subtree. Otherwise, we search the right subtree, and we return the result of either search.\n\nThis algorithm leverages the properties of a binary search tree, which ensures that for each node, all elements in the left subtree are less than the node, and all elements in the right subtree are greater than the node, enabling efficient search.\n    ",
+    "java": "\n    ```java\npublic class TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n    TreeNode(int x) { val = x; }\n}\n\npublic TreeNode searchBST(TreeNode root, int val) {\n    if (root == null || root.val == val) {\n        return root;\n    }\n    return (root.val > val) ? searchBST(root.left, val) : searchBST(root.right, val);\n}\n```\n    \n    We are given a binary search tree (BST) and an integer value `val`. Our task is to find the node in the tree with the same value as `val` and return the subtree rooted at that node. If there is no such node, we should return null.\n\nTo solve this problem, we use a recursive function `searchBST`. We first check whether the current `root` is null or has the value we are searching for. If either condition is true, we return the root.\n\nOtherwise, we compare the given `val` with the current node's value. If `val` is less than the current node's value, we proceed to search the left subtree. Otherwise, we search the right subtree, and we return the result of either search.\n\nThis algorithm leverages the properties of a binary search tree, which ensures that for each node, all elements in the left subtree are less than the node, and all elements in the right subtree are greater than the node, enabling efficient search.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

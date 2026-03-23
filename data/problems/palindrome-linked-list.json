@@ -1,0 +1,24 @@
+{
+  "id": 234,
+  "title": "Palindrome Linked List",
+  "slug": "palindrome-linked-list",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given the head of a singly linked list, return true _if it is a_ _palindrome_ _or_ false _otherwise_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef isPalindrome(head):\n    if not head or not head.next:\n        return True\n\n    fast, slow, prev = head, head, None\n    while fast and fast.next:\n        fast = fast.next.next\n        temp = slow.next\n        slow.next = prev\n        prev = slow\n        slow = temp\n\n    if fast:\n        slow = slow.next\n\n    while prev and prev.val == slow.val:\n        prev = prev.next\n        slow = slow.next\n\n    return prev == None\n```\n    \n    The function uses the slow and fast pointers approach to find the middle of the linked list. It simultaneously reverses the first half of the linked list. At the end of this process, slow will be at the middle and prev will be the reversed first half of the list. If the list has an odd length, slow moves one step forward (skipping the middle element). Finally, we compare the elements of the reversed first half (using prev) and the rest of the list (starting from slow). If they match, it means the list is a palindrome.\n    ",
+    "javascript": "\n    ```javascript\nclass ListNode {\n    constructor(val, next) {\n        this.val = val === undefined ? 0 : val;\n        this.next = next === undefined ? null : next;\n    }\n}\n\nfunction isPalindrome(head) {\n    if (!head || !head.next) return true;\n\n    let fast = head, slow = head, prev = null;\n    while (fast && fast.next) {\n        fast = fast.next.next;\n        let temp = slow.next;\n        slow.next = prev;\n        prev = slow;\n        slow = temp;\n    }\n\n    if (fast) slow = slow.next;\n\n    while (prev && prev.val === slow.val) {\n        prev = prev.next;\n        slow = slow.next;\n    }\n\n    return prev === null;\n}\n```\n\n    \n    The function uses the slow and fast pointers approach to find the middle of the linked list. It simultaneously reverses the first half of the linked list. At the end of this process, slow will be at the middle and prev will be the reversed first half of the list. If the list has an odd length, slow moves one step forward (skipping the middle element). Finally, we compare the elements of the reversed first half (using prev) and the rest of the list (starting from slow). If they match, it means the list is a palindrome.\n    ",
+    "java": "\n    ```java\nclass ListNode {\n    int val;\n    ListNode next;\n    ListNode(int x) { val = x; }\n}\n\npublic boolean isPalindrome(ListNode head) {\n    if (head == null || head.next == null) return true;\n\n    ListNode fast = head, slow = head, prev = null;\n    while (fast != null && fast.next != null) {\n        fast = fast.next.next;\n        ListNode temp = slow.next;\n        slow.next = prev;\n        prev = slow;\n        slow = temp;\n    }\n    \n    if (fast != null) slow = slow.next;\n\n    while (prev != null && prev.val == slow.val) {\n        prev = prev.next;\n        slow = slow.next;\n    }\n\n    return prev == null;\n}\n```\n    \n    The function uses the slow and fast pointers approach to find the middle of the linked list. It simultaneously reverses the first half of the linked list. At the end of this process, slow will be at the middle and prev will be the reversed first half of the list. If the list has an odd length, slow moves one step forward (skipping the middle element). Finally, we compare the elements of the reversed first half (using prev) and the rest of the list (starting from slow). If they match, it means the list is a palindrome.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

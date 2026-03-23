@@ -1,0 +1,24 @@
+{
+  "id": 1911,
+  "title": "Maximum Alternating Subsequence Sum",
+  "slug": "maximum-alternating-subsequence-sum",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "The alternating sum of a 0-indexed array is defined as the sum of the elements at even indices minus the sum of the elements at odd indices.\n\n*   For example, the alternating sum of [4,2,5,3] is (4 + 5) - (2 + 3) = 4.\n\nGiven an array nums, return _the maximum alternating sum of any subsequence of_ nums _(after reindexing the elements of the subsequence)_.\n\nA subsequence of an array is a new array generated from the original array by deleting some elements (possibly none) without changing the remaining elements' relative order. For example, [2,7,4] is a subsequence of [4,2,3,7,2,1,4] (the underlined elements), while [2,4,2] is not.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_elements(nums, limit, goal):\n    total_sum = sum(nums)\n    diff = abs(goal - total_sum)\n    return (diff + limit - 1) // limit\n```\n\n    \n    The solution calculates the sum of the given array and finds the difference between the goal and the sum (abs(goal - sum)). Then, it calculates the required number of elements to add based on the limit. To find the minimum number of elements, we divide the difference by the limit and round up to the closest integer value. This ensures that the minimum number of elements is added while maintaining the property of abs(nums[i]) <= limit.\n    ",
+    "javascript": "\n    ```javascript\nfunction minElements(nums, limit, goal) {\n    let sum = nums.reduce((a, b) => a + b, 0);\n    let diff = Math.abs(goal - sum);\n    return Math.ceil(diff / limit);\n}\n```\n\n    \n    The solution calculates the sum of the given array and finds the difference between the goal and the sum (abs(goal - sum)). Then, it calculates the required number of elements to add based on the limit. To find the minimum number of elements, we divide the difference by the limit and round up to the closest integer value. This ensures that the minimum number of elements is added while maintaining the property of abs(nums[i]) <= limit.\n    ",
+    "java": "\n    ```java\nint minElements(int[] nums, int limit, int goal) {\n    long sum = 0;\n    for (int num : nums) sum += num;\n    long diff = Math.abs(goal - sum);\n    return (int)((diff + limit - 1) / limit);\n}\n```\n\n    \n    The solution calculates the sum of the given array and finds the difference between the goal and the sum (abs(goal - sum)). Then, it calculates the required number of elements to add based on the limit. To find the minimum number of elements, we divide the difference by the limit and round up to the closest integer value. This ensures that the minimum number of elements is added while maintaining the property of abs(nums[i]) <= limit.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

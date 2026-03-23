@@ -1,0 +1,24 @@
+{
+  "id": 561,
+  "title": "Array Partition",
+  "slug": "array-partition",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer array nums of 2n integers, group these integers into n pairs (a1, b1), (a2, b2), ..., (an, bn) such that the sum of min(ai, bi) for all i is maximized. Return _the maximized sum_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef array_pair_sum(nums):\n    nums.sort()\n    return sum(nums[::2])\n```\n    \n    1. First, sort the given 'nums' array/vector in ascending order.\n2. Iterate over the sorted array, with a step of 2, starting from index 0.\n3. During the iteration, accumulate the sum of every ith element (from sorted array) to maximize the sum of minimum elements in pairs.\n4. Return the accumulated sum.\n    ",
+    "javascript": "\n    ```javascript\nfunction arrayPairSum(nums) {\n    nums.sort((a, b) => a - b);\n    let sum = 0;\n    for (let i = 0; i < nums.length; i += 2) {\n        sum += nums[i];\n    }\n    return sum;\n}\n```\n    \n    1. First, sort the given 'nums' array/vector in ascending order.\n2. Iterate over the sorted array, with a step of 2, starting from index 0.\n3. During the iteration, accumulate the sum of every ith element (from sorted array) to maximize the sum of minimum elements in pairs.\n4. Return the accumulated sum.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int arrayPairSum(int[] nums) {\n    Arrays.sort(nums);\n    int sum = 0;\n    for (int i = 0; i < nums.length; i += 2) {\n        sum += nums[i];\n    }\n    return sum;\n}\n```\n    \n    1. First, sort the given 'nums' array/vector in ascending order.\n2. Iterate over the sorted array, with a step of 2, starting from index 0.\n3. During the iteration, accumulate the sum of every ith element (from sorted array) to maximize the sum of minimum elements in pairs.\n4. Return the accumulated sum.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

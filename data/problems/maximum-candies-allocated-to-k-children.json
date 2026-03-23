@@ -1,0 +1,24 @@
+{
+  "id": 2226,
+  "title": "Maximum Candies Allocated to K Children",
+  "slug": "maximum-candies-allocated-to-k-children",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array candies. Each element in the array denotes a pile of candies of size candies[i]. You can divide each pile into any number of sub piles, but you cannot merge two piles together.\n\nYou are also given an integer k. You should allocate piles of candies to k children such that each child gets the same number of candies. Each child can take at most one pile of candies and some piles of candies may go unused.\n\nReturn _the maximum number of candies each child can get._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_rods_with_all_colors(rings: str) -> int:\n    rod_colors = [0] * 10\n\n    for i in range(0, len(rings), 2):\n        color = ord(rings[i]) - ord('A')\n        rod = int(rings[i + 1])\n\n        rod_colors[rod] |= (1 << color)\n\n    return rod_colors.count(7)\n```\n    \n    1. We will use an array `rod_colors` to represent the color state of each rod. The integer value 7 is used to represent all three colors being present, where each bit corresponds to the different colors (red=001, green=010, blue=100).\n2. Loop through the given string `rings` with a step of 2. For each pair of characters, calculate the color and rod index.\n3. Using a bitwise OR operation, we update the corresponding rod's color state by OR'ing its current state with the new color bit.\n4. Count the number of elements in `rod_colors` array that have a value of 7 (all three color bits set) and return the count.\n    ",
+    "javascript": "\n    ```javascript\nfunction countRodsWithAllColors(rings) {\n    let rod_colors = new Array(10).fill(0);\n\n    for (let i = 0; i < rings.length; i += 2) {\n        let color = rings.charCodeAt(i) - 'A'.charCodeAt(0);\n        let rod = parseInt(rings[i + 1]);\n\n        rod_colors[rod] |= (1 << color);\n    }\n\n    return rod_colors.filter(x => x === 7).length;\n}\n```\n    \n    1. We will use an array `rod_colors` to represent the color state of each rod. The integer value 7 is used to represent all three colors being present, where each bit corresponds to the different colors (red=001, green=010, blue=100).\n2. Loop through the given string `rings` with a step of 2. For each pair of characters, calculate the color and rod index.\n3. Using a bitwise OR operation, we update the corresponding rod's color state by OR'ing its current state with the new color bit.\n4. Count the number of elements in `rod_colors` array that have a value of 7 (all three color bits set) and return the count.\n    ",
+    "java": "\n    ```java\npublic int countRodsWithAllColors(String rings) {\n    int[] rod_colors = new int[10];\n\n    for (int i = 0; i < rings.length(); i += 2) {\n        int color = rings.charAt(i) - 'A';\n        int rod = rings.charAt(i + 1) - '0';\n\n        rod_colors[rod] |= (1 << color);\n    }\n\n    int count = 0;\n    for (int colors : rod_colors) {\n        if (colors == 7) { \n            count++;\n        }\n    }\n\n    return count;\n}\n```\n    \n    1. We will use an array `rod_colors` to represent the color state of each rod. The integer value 7 is used to represent all three colors being present, where each bit corresponds to the different colors (red=001, green=010, blue=100).\n2. Loop through the given string `rings` with a step of 2. For each pair of characters, calculate the color and rod index.\n3. Using a bitwise OR operation, we update the corresponding rod's color state by OR'ing its current state with the new color bit.\n4. Count the number of elements in `rod_colors` array that have a value of 7 (all three color bits set) and return the count.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

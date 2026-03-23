@@ -1,0 +1,44 @@
+{
+  "id": 16,
+  "title": "Linked List Cycle",
+  "slug": "linked-list-cycle",
+  "difficulty": "Easy",
+  "tags": [
+    "Hash Table",
+    "Linked List",
+    "Two Pointers"
+  ],
+  "description": "Given head, determine if the linked list has a cycle in it.",
+  "examples": [
+    {
+      "input": "head = [3,2,0,-4], pos = 1",
+      "output": "true"
+    }
+  ],
+  "constraints": [
+    "The number of nodes is in [0, 10^4]"
+  ],
+  "starterCode": {
+    "python": "class Solution:\n    def hasCycle(self, head) -> bool:\n        pass",
+    "javascript": "var hasCycle = function(head) {\n    \n};",
+    "java": "class Solution {\n    public boolean hasCycle(ListNode head) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    bool hasCycle(ListNode *head) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Linked List Cycle\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "[3,2,0,-4]\n1",
+      "expectedOutput": "true"
+    },
+    {
+      "input": "[1,2]\n0",
+      "expectedOutput": "true"
+    },
+    {
+      "input": "[1]\n-1",
+      "expectedOutput": "false"
+    }
+  ]
+}

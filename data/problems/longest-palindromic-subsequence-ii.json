@@ -1,0 +1,24 @@
+{
+  "id": 1682,
+  "title": "Longest Palindromic Subsequence II",
+  "slug": "longest-palindromic-subsequence-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A subsequence of a string s is considered a good palindromic subsequence if:\n\n*   It is a subsequence of s.\n*   It is a palindrome (has the same value if reversed).\n*   It has an even length.\n*   No two consecutive characters are equal, except the two middle ones.\n\nFor example, if s = \"abcabcabb \", then \"abba \" is considered a good palindromic subsequence, while \"bcb \" (not even length) and \"bbbb \" (has equal consecutive characters) are not.\n\nGiven a string s, return _the length of the longest good palindromic subsequence in_ s.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef most_visited(n, rounds):\n    visited = [0] * (n + 1)\n    \n    for i in range(1, len(rounds)):\n        start, end = rounds[i - 1], rounds[i]\n        while start != end:\n            visited[start] += 1\n            start = (start % n) + 1\n    visited[rounds[-1]] += 1\n    \n    max_visits = max(visited);\n    return [i for i in range(1, n + 1) if visited[i] == max_visits]\n```\n    \n    The algorithm initializes an array `visited` that counts the visits for each sector. We iterate over the given `rounds` array, and for each consecutive pair of sectors (i.e., from `rounds[i - 1]` to `rounds[i]`), we increment the count of visits for each sector in between (inclusive of the starting sector). After updating the visit count for each round, we find the maximum number of visits (`maxVisits`). Lastly, we iterate over the `visited` array and create a list of all sectors with maximum visits (`result`). The function returns the `result` list.\n    ",
+    "javascript": "\n    ```javascript\nfunction mostVisited(n, rounds) {\n    const visited = new Array(n + 1).fill(0);\n    \n    for (let i = 1; i < rounds.length; ++i) {\n        for (let start = rounds[i - 1], end = rounds[i]; start !== end; start = start % n + 1) {\n            ++visited[start];\n        }\n    }\n    ++visited[rounds[rounds.length - 1]];\n    \n    const maxVisits = Math.max(...visited);\n    const result = [];\n    \n    for (let i = 1; i <= n; ++i) {\n        if (visited[i] === maxVisits) {\n            result.push(i);\n        }\n    }\n    return result;\n}\n```\n    \n    The algorithm initializes an array `visited` that counts the visits for each sector. We iterate over the given `rounds` array, and for each consecutive pair of sectors (i.e., from `rounds[i - 1]` to `rounds[i]`), we increment the count of visits for each sector in between (inclusive of the starting sector). After updating the visit count for each round, we find the maximum number of visits (`maxVisits`). Lastly, we iterate over the `visited` array and create a list of all sectors with maximum visits (`result`). The function returns the `result` list.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic List<Integer> mostVisited(int n, int[] rounds) {\n    int[] visited = new int[n + 1];\n    for (int i = 1; i < rounds.length; ++i) {\n        for (int start = rounds[i - 1], end = rounds[i]; start != end; start = start % n + 1) {\n            ++visited[start];\n        }\n    }\n    ++visited[rounds[rounds.length - 1]];\n\n    int maxVisits = Arrays.stream(visited).max().getAsInt();\n    List<Integer> result = new ArrayList<>();\n\n    for (int i = 1; i <= n; ++i) {\n        if (visited[i] == maxVisits) {\n            result.add(i);\n        }\n    }\n    return result;\n}\n```\n    \n    The algorithm initializes an array `visited` that counts the visits for each sector. We iterate over the given `rounds` array, and for each consecutive pair of sectors (i.e., from `rounds[i - 1]` to `rounds[i]`), we increment the count of visits for each sector in between (inclusive of the starting sector). After updating the visit count for each round, we find the maximum number of visits (`maxVisits`). Lastly, we iterate over the `visited` array and create a list of all sectors with maximum visits (`result`). The function returns the `result` list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

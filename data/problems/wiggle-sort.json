@@ -1,0 +1,24 @@
+{
+  "id": 280,
+  "title": "Wiggle Sort",
+  "slug": "wiggle-sort",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums, reorder it such that nums[0] <= nums[1] >= nums[2] <= nums[3]....\n\nYou may assume the input array always has a valid answer.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef wiggleSort(nums):\n    for i in range(1, len(nums)):\n        if (i % 2 == 0 and nums[i] > nums[i-1]) or (i % 2 == 1 and nums[i] < nums[i-1]):\n            nums[i], nums[i-1] = nums[i-1], nums[i]\n```\n    \n    The algorithm iterates through the array from index 1 to the end. It checks whether the current element violates the wiggle condition. If the current index is even and the current element is greater than the previous element, or if the current index is odd and the current element is smaller than the previous element, it swaps the current and the previous element.\n    ",
+    "javascript": "\n    ```javascript\nfunction wiggleSort(nums) {\n    for (let i = 1; i < nums.length; i++) {\n        if (i % 2 === 0 && nums[i] > nums[i-1] || i % 2 === 1 && nums[i] < nums[i-1]) {\n            [nums[i], nums[i-1]] = [nums[i-1], nums[i]];\n        }\n    }\n}\n```\n    \n    The algorithm iterates through the array from index 1 to the end. It checks whether the current element violates the wiggle condition. If the current index is even and the current element is greater than the previous element, or if the current index is odd and the current element is smaller than the previous element, it swaps the current and the previous element.\n    ",
+    "java": "\n    ```java\npublic void wiggleSort(int[] nums) {\n    for (int i = 1; i < nums.length; i++) {\n        if (i % 2 == 0 && nums[i] > nums[i-1] || i % 2 == 1 && nums[i] < nums[i-1]) {\n            int temp = nums[i];\n            nums[i] = nums[i-1];\n            nums[i-1] = temp;\n        }\n    }\n}\n```\n    \n    The algorithm iterates through the array from index 1 to the end. It checks whether the current element violates the wiggle condition. If the current index is even and the current element is greater than the previous element, or if the current index is odd and the current element is smaller than the previous element, it swaps the current and the previous element.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

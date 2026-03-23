@@ -1,0 +1,24 @@
+{
+  "id": 2360,
+  "title": "Longest Cycle in a Graph",
+  "slug": "longest-cycle-in-a-graph",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a directed graph of n nodes numbered from 0 to n - 1, where each node has at most one outgoing edge.\n\nThe graph is represented with a given 0-indexed array edges of size n, indicating that there is a directed edge from node i to node edges[i]. If there is no outgoing edge from node i, then edges[i] == -1.\n\nReturn _the length of the longest cycle in the graph_. If no cycle exists, return -1.\n\nA cycle is a path that starts and ends at the same node.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findLongestCycle(edges):\n    n = len(edges)\n    visited = [False] * n\n    longest_cycle = -1\n\n    for i in range(n):\n        if not visited[i]:\n            length = 0\n            node = i\n\n            while not visited[node] and edges[node] != -1:\n                visited[node] = True\n                length += 1\n                node = edges[node]\n\n            if edges[node] == i:\n                longest_cycle = max(longest_cycle, length)\n\n    return longest_cycle\n```\n    \n    The algorithm iterates through each node in the graph. For each unvisited node, we start a loop that increases the path length on every iteration until the current node is visited or there is no outgoing edge from the current node. If the next node is equal to the starting node, we found a cycle, which update the longest cycle if it is greater than the current longest cycle.\n    ",
+    "javascript": "\n    ```javascript\nfunction findLongestCycle(edges) {\n    const n = edges.length;\n    const visited = new Array(n).fill(false);\n    let longest_cycle = -1;\n\n    for (let i = 0; i < n; ++i) {\n        if (!visited[i]) {\n            let length = 0;\n            let node = i;\n\n            while (!visited[node] && edges[node] !== -1) {\n                visited[node] = true;\n                length++;\n                node = edges[node];\n            }\n\n            if (edges[node] === i) {\n                longest_cycle = Math.max(longest_cycle, length);\n            }\n        }\n    }\n\n    return longest_cycle;\n}\n```\n    \n    The algorithm iterates through each node in the graph. For each unvisited node, we start a loop that increases the path length on every iteration until the current node is visited or there is no outgoing edge from the current node. If the next node is equal to the starting node, we found a cycle, which update the longest cycle if it is greater than the current longest cycle.\n    ",
+    "java": "\n    ```java\npublic int findLongestCycle(int[] edges) {\n    int n = edges.length;\n    boolean[] visited = new boolean[n];\n    int longest_cycle = -1;\n\n    for (int i = 0; i < n; ++i) {\n        if (!visited[i]) {\n            int length = 0;\n            int node = i;\n\n            while (!visited[node] && edges[node] != -1) {\n                visited[node] = true;\n                length++;\n                node = edges[node];\n            }\n\n            if (edges[node] == i) {\n                longest_cycle = Math.max(longest_cycle, length);\n            }\n        }\n    }\n\n    return longest_cycle;\n}\n```\n    \n    The algorithm iterates through each node in the graph. For each unvisited node, we start a loop that increases the path length on every iteration until the current node is visited or there is no outgoing edge from the current node. If the next node is equal to the starting node, we found a cycle, which update the longest cycle if it is greater than the current longest cycle.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

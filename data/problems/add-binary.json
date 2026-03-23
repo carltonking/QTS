@@ -1,0 +1,24 @@
+{
+  "id": 67,
+  "title": "Add Binary",
+  "slug": "add-binary",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given two binary strings a and b, return _their sum as a binary string_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef addBinary(a: str, b: str) -> str:\n    result, carry, i, j = \"\", 0, len(a) - 1, len(b) - 1\n    while i >= 0 or j >= 0 or carry:\n        if i >= 0:\n            carry += int(a[i])\n            i -= 1\n        if j >= 0:\n            carry += int(b[j])\n            j -= 1\n        result = str(carry % 2) + result\n        carry //= 2\n    return result\n```\n    \n    The algorithm initializes an empty result binary string, carry, and two pointers i and j pointing to the last element of strings a and b respectively.\nIn each iteration:\n- If i is not out of bounds, add the corresponding binary number to the carry.\n- If j is not out of bounds, add the corresponding binary number to the carry.\n- Append the remainder of dividing carry by 2 to the result binary string (left side).\n- Update carry by dividing it by 2 (integer division).\n\nThis process continues until i and j pointers become out of bounds and there is no carry left.\n\nFinally, return the result binary string.\n    ",
+    "javascript": "\n    ```javascript\nfunction addBinary(a, b) {\n    let result = \"\";\n    let i = a.length - 1, j = b.length - 1, carry = 0;\n    while (i >= 0 || j >= 0 || carry) {\n        if (i >= 0) carry += parseInt(a[i--], 10);\n        if (j >= 0) carry += parseInt(b[j--], 10);\n        result = (carry % 2) + result;\n        carry = Math.floor(carry / 2);\n    }\n    return result;\n}\n```\n    \n    The algorithm initializes an empty result binary string, carry, and two pointers i and j pointing to the last element of strings a and b respectively.\nIn each iteration:\n- If i is not out of bounds, add the corresponding binary number to the carry.\n- If j is not out of bounds, add the corresponding binary number to the carry.\n- Append the remainder of dividing carry by 2 to the result binary string (left side).\n- Update carry by dividing it by 2 (integer division).\n\nThis process continues until i and j pointers become out of bounds and there is no carry left.\n\nFinally, return the result binary string.\n    ",
+    "java": "\n    ```java\npublic String addBinary(String a, String b) {\n    StringBuilder result = new StringBuilder();\n    int i = a.length() - 1, j = b.length() - 1, carry = 0;\n    while (i >= 0 || j >= 0 || carry != 0) {\n        if (i >= 0) carry += a.charAt(i--) - '0';\n        if (j >= 0) carry += b.charAt(j--) - '0';\n        result.insert(0, carry % 2);\n        carry /= 2;\n    }\n    return result.toString();\n}\n```\n    \n    The algorithm initializes an empty result binary string, carry, and two pointers i and j pointing to the last element of strings a and b respectively.\nIn each iteration:\n- If i is not out of bounds, add the corresponding binary number to the carry.\n- If j is not out of bounds, add the corresponding binary number to the carry.\n- Append the remainder of dividing carry by 2 to the result binary string (left side).\n- Update carry by dividing it by 2 (integer division).\n\nThis process continues until i and j pointers become out of bounds and there is no carry left.\n\nFinally, return the result binary string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

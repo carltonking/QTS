@@ -1,0 +1,24 @@
+{
+  "id": 2455,
+  "title": "Average Value of Even Numbers That Are Divisible by Three",
+  "slug": "average-value-of-even-numbers-that-are-divisible-by-three",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer array nums of positive integers, return _the average value of all even integers that are divisible by_ 3_._\n\nNote that the average of n elements is the sum of the n elements divided by n and rounded down to the nearest integer.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef average_even_divisible_by_three(nums):\n    total = 0\n    count = 0\n    for num in nums:\n        if num % 2 == 0 and num % 3 == 0:\n            total += num\n            count += 1\n    return total // count if count > 0 else 0\n```\n    \n    The algorithm iterates through the input array, checking if an element is even (`num % 2 == 0`) and divisible by 3 (`num % 3 == 0`). If the element satisfies both conditions, it is added to the `sum` and the `count` is incremented. After the iteration, if `count` is greater than 0, the average is calculated by dividing the `sum` by `count`. The result is returned as an integer by rounding down the division result in all languages. If `count` is 0, meaning there were no elements that satisfied the conditions, the function returns 0.\n    ",
+    "javascript": "\n    ```javascript\nfunction averageEvenDivisibleByThree(nums) {\n    let sum = 0;\n    let count = 0;\n    for (let num of nums) {\n        if (num % 2 === 0 && num % 3 === 0) {\n            sum += num;\n            count++;\n        }\n    }\n    return count === 0 ? 0 : Math.floor(sum / count);\n}\n```\n    \n    The algorithm iterates through the input array, checking if an element is even (`num % 2 == 0`) and divisible by 3 (`num % 3 == 0`). If the element satisfies both conditions, it is added to the `sum` and the `count` is incremented. After the iteration, if `count` is greater than 0, the average is calculated by dividing the `sum` by `count`. The result is returned as an integer by rounding down the division result in all languages. If `count` is 0, meaning there were no elements that satisfied the conditions, the function returns 0.\n    ",
+    "java": "\n    ```java\npublic int averageEvenDivisibleByThree(int[] nums) {\n    int sum = 0;\n    int count = 0;\n    for (int num : nums) {\n        if (num % 2 == 0 && num % 3 == 0) {\n            sum += num;\n            count++;\n        }\n    }\n    return count == 0 ? 0 : sum / count;\n}\n```\n    \n    The algorithm iterates through the input array, checking if an element is even (`num % 2 == 0`) and divisible by 3 (`num % 3 == 0`). If the element satisfies both conditions, it is added to the `sum` and the `count` is incremented. After the iteration, if `count` is greater than 0, the average is calculated by dividing the `sum` by `count`. The result is returned as an integer by rounding down the division result in all languages. If `count` is 0, meaning there were no elements that satisfied the conditions, the function returns 0.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

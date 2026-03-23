@@ -1,0 +1,24 @@
+{
+  "id": 1227,
+  "title": "Airplane Seat Assignment Probability",
+  "slug": "airplane-seat-assignment-probability",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "n passengers board an airplane with exactly n seats. The first passenger has lost the ticket and picks a seat randomly. But after that, the rest of the passengers will:\n\n*   Take their own seat if it is still available, and\n*   Pick other seats randomly when they find their seat occupied\n\nReturn _the probability that the_ nth _person gets his own seat_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import defaultdict\n\ndef num_equiv_domino_pairs(dominoes):\n    freq = defaultdict(int)\n    result = 0\n    for domino in dominoes:\n        key = min(domino[0], domino[1]) * 10 + max(domino[0], domino[1])\n        result += freq[key]\n        freq[key] += 1\n    return result\n```\n    \n    To find the number of equivalent domino pairs, we can use a hash map to count the frequencies of distinct dominoes. We loop through the given domino list and create a unique key for each domino by taking the minimum of the two numbers as the first part, and the maximum as the second part (this ensures that equivalent rotated dominoes have the same key).\n\nFor each domino, we increment the frequency count in the hash map and then add the current frequency count to the result. This sum represents the count of equivalent pairs found so far.\n\nOnce the loop is completed, we return the result as the total number of equivalent domino pairs.\n    ",
+    "javascript": "\n    ```javascript\nfunction numEquivDominoPairs(dominoes) {\n    const freq = {};\n    let result = 0;\n    for (const domino of dominoes) {\n        const key = Math.min(domino[0], domino[1]) * 10 + Math.max(domino[0], domino[1]);\n        result += (freq[key] || 0);\n        freq[key] = (freq[key] || 0) + 1;\n    }\n    return result;\n}\n```\n    \n    To find the number of equivalent domino pairs, we can use a hash map to count the frequencies of distinct dominoes. We loop through the given domino list and create a unique key for each domino by taking the minimum of the two numbers as the first part, and the maximum as the second part (this ensures that equivalent rotated dominoes have the same key).\n\nFor each domino, we increment the frequency count in the hash map and then add the current frequency count to the result. This sum represents the count of equivalent pairs found so far.\n\nOnce the loop is completed, we return the result as the total number of equivalent domino pairs.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic int numEquivDominoPairs(int[][] dominoes) {\n    Map<Integer, Integer> freq = new HashMap<>();\n    int result = 0;\n    for (int[] domino : dominoes) {\n        int key = Math.min(domino[0], domino[1]) * 10 + Math.max(domino[0], domino[1]);\n        result += freq.getOrDefault(key, 0);\n        freq.put(key, freq.getOrDefault(key, 0) + 1);\n    }\n    return result;\n}\n```\n    \n    To find the number of equivalent domino pairs, we can use a hash map to count the frequencies of distinct dominoes. We loop through the given domino list and create a unique key for each domino by taking the minimum of the two numbers as the first part, and the maximum as the second part (this ensures that equivalent rotated dominoes have the same key).\n\nFor each domino, we increment the frequency count in the hash map and then add the current frequency count to the result. This sum represents the count of equivalent pairs found so far.\n\nOnce the loop is completed, we return the result as the total number of equivalent domino pairs.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

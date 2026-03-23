@@ -1,0 +1,24 @@
+{
+  "id": 1276,
+  "title": "Number of Burgers with No Waste of Ingredients",
+  "slug": "number-of-burgers-with-no-waste-of-ingredients",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given two integers tomatoSlices and cheeseSlices. The ingredients of different burgers are as follows:\n\n*   Jumbo Burger: 4 tomato slices and 1 cheese slice.\n*   Small Burger: 2 Tomato slices and 1 cheese slice.\n\nReturn [total_jumbo, total_small] so that the number of remaining tomatoSlices equal to 0 and the number of remaining cheeseSlices equal to 0. If it is not possible to make the remaining tomatoSlices and cheeseSlices equal to 0 return [].",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef closest_factors(num):\n    factor1 = int((num + 2) ** 0.5)\n    while True:\n        factor2 = (num + 2) // factor1\n        if factor1 * factor2 == num + 2:\n            return factor1, factor2\n        factor2 = (num + 1) // factor1\n        if factor1 * factor2 == num + 1:\n            return factor1, factor2\n        factor1 -= 1\n```\n    \n    1. Initialize factor1 as the square root of num + 2, rounded down to an integer.\n2. In an infinite loop (which will eventually be broken), do the following:\n3. Calculate factor2 as the integer division of (num + 2) by factor1. Check if the product of factor1 and factor2 equals num + 2; if so, return the pair (factor1, factor2).\n4. Calculate factor2 as the integer division of (num + 1) by factor1. Check if the product of factor1 and factor2 equals num + 1; if so, return the pair (factor1, factor2).\n5. If neither multiplication has produced num + 1 or num + 2, decrement factor1 and continue to the next iteration.\n6. Since the loop will eventually find a valid pair of factors, this algorithm will always return a solution.\n    ",
+    "javascript": "\n    ```javascript\nfunction closestFactors(num) {\n    let factor1 = Math.floor(Math.sqrt(num + 2));\n    while (true) {\n        let factor2 = Math.floor((num + 2) / factor1);\n        if (factor1 * factor2 === num + 2) {\n            return [factor1, factor2];\n        }\n        factor2 = Math.floor((num + 1) / factor1);\n        if (factor1 * factor2 === num + 1) {\n            return [factor1, factor2];\n        }\n        factor1--;\n    }\n}\n```\n    \n    1. Initialize factor1 as the square root of num + 2, rounded down to an integer.\n2. In an infinite loop (which will eventually be broken), do the following:\n3. Calculate factor2 as the integer division of (num + 2) by factor1. Check if the product of factor1 and factor2 equals num + 2; if so, return the pair (factor1, factor2).\n4. Calculate factor2 as the integer division of (num + 1) by factor1. Check if the product of factor1 and factor2 equals num + 1; if so, return the pair (factor1, factor2).\n5. If neither multiplication has produced num + 1 or num + 2, decrement factor1 and continue to the next iteration.\n6. Since the loop will eventually find a valid pair of factors, this algorithm will always return a solution.\n    ",
+    "java": "\n    ```java\npublic int[] closestFactors(int num) {\n    int factor1 = (int) Math.sqrt(num + 2);\n    while (true) {\n        int factor2 = (num + 2) / factor1;\n        if (factor1 * factor2 == num + 2) {\n            return new int[] {factor1, factor2};\n        }\n        factor2 = (num + 1) / factor1;\n        if (factor1 * factor2 == num + 1) {\n            return new int[] {factor1, factor2};\n        }\n        factor1--;\n    }\n}\n```\n    \n    1. Initialize factor1 as the square root of num + 2, rounded down to an integer.\n2. In an infinite loop (which will eventually be broken), do the following:\n3. Calculate factor2 as the integer division of (num + 2) by factor1. Check if the product of factor1 and factor2 equals num + 2; if so, return the pair (factor1, factor2).\n4. Calculate factor2 as the integer division of (num + 1) by factor1. Check if the product of factor1 and factor2 equals num + 1; if so, return the pair (factor1, factor2).\n5. If neither multiplication has produced num + 1 or num + 2, decrement factor1 and continue to the next iteration.\n6. Since the loop will eventually find a valid pair of factors, this algorithm will always return a solution.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

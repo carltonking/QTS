@@ -1,0 +1,24 @@
+{
+  "id": 156,
+  "title": "Binary Tree Upside Down",
+  "slug": "binary-tree-upside-down",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the root of a binary tree, turn the tree upside down and return _the new root_.\n\nYou can turn a binary tree upside down with the following steps:\n\n1.  The original left child becomes the new root.\n2.  The original root becomes the new right child.\n3.  The original right child becomes the new left child.\n\nThe mentioned steps are done level by level. It is guaranteed that every right node has a sibling (a left node with the same parent) and has no children.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, x):\n        self.val = x\n        self.left = None\n        self.right = None\n\ndef upside_down_binary_tree(root):\n    if not root or not root.left:\n        return root\n    new_root = upside_down_binary_tree(root.left)\n    root.left.right = root\n    root.left.left = root.right\n    root.left = None\n    root.right = None\n    return new_root\n```\n    \n    The algorithm uses a recursive depth-first search approach to solve the problem. It checks if the root or the left child of the root is `null`. If either of them is `null`, the function returns the current root as the new root.\n\nThen, the algorithm calls itself recursively, passing the left child of the current root as the new argument, until it reaches the last node in the leftmost branch. This last node becomes the new root.\n\nAt each level of recursion, the algorithm updates the left and right children of the current root's left child to be the current root and the current root's right child, respectively. Then, it sets the current root's left and right children to `null`.\n\nFinally, it returns the new root at the end of the algorithm.\n    ",
+    "javascript": "\n    ```javascript\nfunction TreeNode(val, left, right) {\n    this.val = (val === undefined ? 0 : val);\n    this.left = (left === undefined ? null : left);\n    this.right = (right === undefined ? null : right);\n}\n\nfunction upsideDownBinaryTree(root) {\n    if (!root || !root.left) {\n        return root;\n    }\n    let new_root = upsideDownBinaryTree(root.left);\n    root.left.right = root;\n    root.left.left = root.right;\n    root.left = null;\n    root.right = null;\n    return new_root;\n}\n```\n    \n    The algorithm uses a recursive depth-first search approach to solve the problem. It checks if the root or the left child of the root is `null`. If either of them is `null`, the function returns the current root as the new root.\n\nThen, the algorithm calls itself recursively, passing the left child of the current root as the new argument, until it reaches the last node in the leftmost branch. This last node becomes the new root.\n\nAt each level of recursion, the algorithm updates the left and right children of the current root's left child to be the current root and the current root's right child, respectively. Then, it sets the current root's left and right children to `null`.\n\nFinally, it returns the new root at the end of the algorithm.\n    ",
+    "java": "\n    ```java\npublic class TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n    TreeNode(int x) { val = x; }\n}\n\npublic TreeNode upsideDownBinaryTree(TreeNode root) {\n    if (root == null || root.left == null) {\n        return root;\n    }\n    TreeNode new_root = upsideDownBinaryTree(root.left);\n    root.left.right = root;\n    root.left.left = root.right;\n    root.left = null;\n    root.right = null;\n    return new_root;\n}\n```\n    \n    The algorithm uses a recursive depth-first search approach to solve the problem. It checks if the root or the left child of the root is `null`. If either of them is `null`, the function returns the current root as the new root.\n\nThen, the algorithm calls itself recursively, passing the left child of the current root as the new argument, until it reaches the last node in the leftmost branch. This last node becomes the new root.\n\nAt each level of recursion, the algorithm updates the left and right children of the current root's left child to be the current root and the current root's right child, respectively. Then, it sets the current root's left and right children to `null`.\n\nFinally, it returns the new root at the end of the algorithm.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

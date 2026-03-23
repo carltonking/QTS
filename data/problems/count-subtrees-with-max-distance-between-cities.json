@@ -1,0 +1,24 @@
+{
+  "id": 1617,
+  "title": "Count Subtrees With Max Distance Between Cities",
+  "slug": "count-subtrees-with-max-distance-between-cities",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "There are n cities numbered from 1 to n. You are given an array edges of size n-1, where edges[i] = [ui, vi] represents a bidirectional edge between cities ui and vi. There exists a unique path between each pair of cities. In other words, the cities form a tree.\n\nA subtree is a subset of cities where every city is reachable from every other city in the subset, where the path between each pair passes through only the cities from the subset. Two subtrees are different if there is a city in one subtree that is not present in the other.\n\nFor each d from 1 to n-1, find the number of subtrees in which the maximum distance between any two cities in the subtree is equal to d.\n\nReturn _an array of size_ n-1 _where the_ dth _element (1-indexed) is the number of subtrees in which the maximum distance between any two cities is equal to_ d.\n\nNotice that the distance between the two cities is the number of edges in the path between them.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef winnerSquareGame(n: int) -> bool:\n    dp = [False] * (n + 1)\n    for i in range(1, n + 1):\n        j = 1\n        while j * j <= i:\n            if not dp[i - j * j]:\n                dp[i] = True\n                break\n            j += 1\n    return dp[n]\n```\n    \n    We use dynamic programming to solve this problem. We create a boolean array `dp` of size `(n + 1)` to store if the current player can win with the remaining stones at position `i`. Each entry `dp[i]` is set to `false` initially.\n\nWe iterate through all possible numbers of stones from `1` to `n`. For each stone `i`, we iterate through all possible square numbers `j` less than or equal to `i`. Inside the inner loop, we check if the current player, when playing optimally, can win using the stones `i - j*j`. If the current player cannot win (`dp[i - j * j]` is false), it means the current player can win using the square number `j` and we set `dp[i]` to `true`.\n\nThe result for Alice winning the game is the value of `dp[n]`.\n    ",
+    "javascript": "\n    ```javascript\nfunction winnerSquareGame(n) {\n    const dp = new Array(n + 1).fill(false);\n    for (let i = 1; i <= n; i++) {\n        for (let j = 1; j * j <= i; j++) {\n            if (!dp[i - j * j]) {\n                dp[i] = true;\n                break;\n            }\n        }\n    }\n    return dp[n];\n}\n```\n    \n    We use dynamic programming to solve this problem. We create a boolean array `dp` of size `(n + 1)` to store if the current player can win with the remaining stones at position `i`. Each entry `dp[i]` is set to `false` initially.\n\nWe iterate through all possible numbers of stones from `1` to `n`. For each stone `i`, we iterate through all possible square numbers `j` less than or equal to `i`. Inside the inner loop, we check if the current player, when playing optimally, can win using the stones `i - j*j`. If the current player cannot win (`dp[i - j * j]` is false), it means the current player can win using the square number `j` and we set `dp[i]` to `true`.\n\nThe result for Alice winning the game is the value of `dp[n]`.\n    ",
+    "java": "\n    ```java\npublic boolean winnerSquareGame(int n) {\n    boolean[] dp = new boolean[n + 1];\n    for (int i = 1; i <= n; i++) {\n        for (int j = 1; j * j <= i; j++) {\n            if (!dp[i - j * j]) {\n                dp[i] = true;\n                break;\n            }\n        }\n    }\n    return dp[n];\n}\n```\n    \n    We use dynamic programming to solve this problem. We create a boolean array `dp` of size `(n + 1)` to store if the current player can win with the remaining stones at position `i`. Each entry `dp[i]` is set to `false` initially.\n\nWe iterate through all possible numbers of stones from `1` to `n`. For each stone `i`, we iterate through all possible square numbers `j` less than or equal to `i`. Inside the inner loop, we check if the current player, when playing optimally, can win using the stones `i - j*j`. If the current player cannot win (`dp[i - j * j]` is false), it means the current player can win using the square number `j` and we set `dp[i]` to `true`.\n\nThe result for Alice winning the game is the value of `dp[n]`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2530,
+  "title": "Maximal Score After Applying K Operations",
+  "slug": "maximal-score-after-applying-k-operations",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums and an integer k. You have a starting score of 0.\n\nIn one operation:\n\n1.  choose an index i such that 0 <= i < nums.length,\n2.  increase your score by nums[i], and\n3.  replace nums[i] with ceil(nums[i] / 3).\n\nReturn _the maximum possible score you can attain after applying exactly_ k _operations_.\n\nThe ceiling function ceil(val) is the least integer greater than or equal to val.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nimport heapq\n\ndef max_score(nums, k):\n    pq = [-x for x in nums]\n    heapq.heapify(pq)\n    score = 0\n\n    for _ in range(k):\n        cur = -heapq.heappop(pq)\n        score += cur\n        heapq.heappush(pq, -cur // 3)\n\n    return score\n```\n\n    \n    The algorithm is based on a priority queue which prioritizes elements in descending order. This enables us to always pick the element with the highest value in the array when applying an operation. For each operation, we pop the highest element from the priority queue, increase the score by that element, and push the element divided by 3 back into the priority queue. We do this for `k` operations and return the final score. The priority queue ensures that we always get the maximum score for each operation.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxScore(nums, k) {\n    const pq = new PriorityQueue();\n    nums.forEach(e => pq.enqueue(e, -e));\n    let score = 0;\n\n    for (let i = 0; i < k; i++) {\n        let cur = pq.dequeue()['element'];\n        score += cur;\n        pq.enqueue(cur / 3, -cur / 3);\n    }\n\n    return score;\n}\n\nclass PriorityQueue {\n    constructor() {\n        this.collection = [];\n    }\n\n    enqueue(element, priority) {\n        if (this.isEmpty()) {\n            this.collection.push({ element: element, priority: priority });\n        } else {\n            let added = false;\n            for (let i = 0; i < this.collection.length; i++) {\n                if (priority < this.collection[i].priority) {\n                    this.collection.splice(i, 0, { element: element, priority: priority });\n                    added = true;\n                    break;\n                }\n            }\n            if(!added) {\n                this.collection.push({ element: element, priority: priority });\n            }\n        }\n    }\n\n    dequeue() {\n        return this.collection.shift();\n    }\n\n    isEmpty() {\n        return this.collection.length === 0;\n    }\n}\n```\n\n    \n    The algorithm is based on a priority queue which prioritizes elements in descending order. This enables us to always pick the element with the highest value in the array when applying an operation. For each operation, we pop the highest element from the priority queue, increase the score by that element, and push the element divided by 3 back into the priority queue. We do this for `k` operations and return the final score. The priority queue ensures that we always get the maximum score for each operation.\n    ",
+    "java": "\n    ```java\nimport java.util.PriorityQueue;\nimport java.util.Collections;\nimport java.util.List;\n\npublic int maxScore(List<Integer> nums, int k) {\n    PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());\n    pq.addAll(nums);\n    int score = 0;\n\n    for (int i = 0; i < k; i++) {\n        int cur = pq.poll();\n        score += cur;\n        pq.add(cur / 3);\n    }\n\n    return score;\n}\n```\n\n    \n    The algorithm is based on a priority queue which prioritizes elements in descending order. This enables us to always pick the element with the highest value in the array when applying an operation. For each operation, we pop the highest element from the priority queue, increase the score by that element, and push the element divided by 3 back into the priority queue. We do this for `k` operations and return the final score. The priority queue ensures that we always get the maximum score for each operation.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

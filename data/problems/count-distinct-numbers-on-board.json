@@ -1,0 +1,24 @@
+{
+  "id": 2549,
+  "title": "Count Distinct Numbers on Board",
+  "slug": "count-distinct-numbers-on-board",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a positive integer n, that is initially placed on a board. Every day, for 109 days, you perform the following procedure:\n\n*   For each number x present on the board, find all numbers 1 <= i <= n such that x % i == 1.\n*   Then, place those numbers on the board.\n\nReturn _the number of distinct integers present on the board after_ 109 _days have elapsed_.\n\nNote:\n\n*   Once a number is placed on the board, it will remain on it until the end.\n*   % stands for the modulo operation. For example, 14 % 3 is 2.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef distinct_numbers(n):\n    return n - 1\n```\n\n    \n    For a given `n`, we only calculate the count of distinct integers that can be added to the board because of `n`.\n\nIt can be observed that only the numbers in the range `[2, n]` will satisfy the condition `x % i == 1`, where `x = n`. It is because when `i` is 1, we have `n % 1 == 0`. So, the numbers `[2, n-1]`, inclusive, will be added to the board, making the count of distinct integers on the board equal to `n - 1`.\n\nSince we are only concerned about the count of distinct integers and not the actual integers on the board, this algorithm works regardless of the value of `10^9` days.\n    ",
+    "javascript": "\n    ```javascript\nfunction distinctNumbers(n) {\n    return n - 1;\n}\n```\n\n    \n    For a given `n`, we only calculate the count of distinct integers that can be added to the board because of `n`.\n\nIt can be observed that only the numbers in the range `[2, n]` will satisfy the condition `x % i == 1`, where `x = n`. It is because when `i` is 1, we have `n % 1 == 0`. So, the numbers `[2, n-1]`, inclusive, will be added to the board, making the count of distinct integers on the board equal to `n - 1`.\n\nSince we are only concerned about the count of distinct integers and not the actual integers on the board, this algorithm works regardless of the value of `10^9` days.\n    ",
+    "java": "\n    ```java\npublic int distinctNumbers(int n) {\n    return n - 1;\n}\n```\n\n    \n    For a given `n`, we only calculate the count of distinct integers that can be added to the board because of `n`.\n\nIt can be observed that only the numbers in the range `[2, n]` will satisfy the condition `x % i == 1`, where `x = n`. It is because when `i` is 1, we have `n % 1 == 0`. So, the numbers `[2, n-1]`, inclusive, will be added to the board, making the count of distinct integers on the board equal to `n - 1`.\n\nSince we are only concerned about the count of distinct integers and not the actual integers on the board, this algorithm works regardless of the value of `10^9` days.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 943,
+  "title": "Find the Shortest Superstring",
+  "slug": "find-the-shortest-superstring",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given an array of strings words, return _the smallest string that contains each string in_ words _as a substring_. If there are multiple valid strings of the smallest length, return any of them.\n\nYou may assume that no string in words is a substring of another string in words.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sum_of_mins(arr):\n    mod = 10**9 + 7\n    n = len(arr)\n    left, right = [0] * n, [0] * n\n    st = []\n\n    for i in range(n):\n        while st and arr[st[-1]] > arr[i]:\n            st.pop()\n        left[i] = st[-1] if st else -1\n        st.append(i)\n\n    st.clear()\n    for i in range(n - 1, -1, -1):\n        while st and arr[st[-1]] > arr[i]:\n            st.pop()\n        right[i] = st[-1] if st else n\n        st.append(i)\n\n    ans = 0\n    for i in range(n):\n        ans = (ans + arr[i] * (i - left[i]) * (right[i] - i)) % mod\n    return ans\n```\n    \n    To find the sum of minimum elements in all subarrays, we first find two auxiliary arrays, 'left' and 'right', which store the index of the closest smaller element for each element in the input array from left and right respectively.\n\nWe then iterate over the array and for each element, we find the product of the element, its distance to the previous smaller element (stored in 'left') and its distance to the next smaller element (stored in 'right'). The sum of these products for all elements in the array gives us the sum of minimums in all subarrays.\n\nFinally, we return the total sum of minimums modulo 10^9 + 7.\n    ",
+    "javascript": "\n    ```javascript\nfunction sumOfMins(arr) {\n    let mod = 1e9 + 7;\n    let n = arr.length;\n    let left = new Array(n), right = new Array(n);\n    let st = [];\n\n    for (let i = 0; i < n; i++) {\n        while (st.length && arr[st[st.length - 1]] > arr[i]) {\n            st.pop();\n        }\n        left[i] = st.length === 0 ? -1 : st[st.length - 1];\n        st.push(i);\n    }\n\n    st = [];\n    for (let i = n - 1; i >= 0; i--) {\n        while (st.length && arr[st[st.length - 1]] > arr[i]) {\n            st.pop();\n        }\n        right[i] = st.length === 0 ? n : st[st.length - 1];\n        st.push(i);\n    }\n\n    let ans = 0;\n    for (let i = 0; i < n; i++) {\n        ans = (ans + arr[i] * (i - left[i]) * (right[i] - i)) % mod;\n    }\n    return ans;\n}\n```\n    \n    To find the sum of minimum elements in all subarrays, we first find two auxiliary arrays, 'left' and 'right', which store the index of the closest smaller element for each element in the input array from left and right respectively.\n\nWe then iterate over the array and for each element, we find the product of the element, its distance to the previous smaller element (stored in 'left') and its distance to the next smaller element (stored in 'right'). The sum of these products for all elements in the array gives us the sum of minimums in all subarrays.\n\nFinally, we return the total sum of minimums modulo 10^9 + 7.\n    ",
+    "java": "\n    ```java\npublic int sumOfMins(int[] arr) {\n    int mod = (int)1e9 + 7;\n    int n = arr.length;\n    int[] left = new int[n], right = new int[n];\n    Stack<Integer> st = new Stack<>();\n\n    for (int i = 0; i < n; i++) {\n        while (!st.isEmpty() && arr[st.peek()] > arr[i]) {\n            st.pop();\n        }\n        left[i] = st.isEmpty() ? -1 : st.peek();\n        st.push(i);\n    }\n\n    st.clear();\n    for (int i = n - 1; i >= 0; i--) {\n        while (!st.isEmpty() && arr[st.peek()] > arr[i]) {\n            st.pop();\n        }\n        right[i] = st.isEmpty() ? n : st.peek();\n        st.push(i);\n    }\n\n    int ans = 0;\n    for (int i = 0; i < n; i++) {\n        ans = (int)((ans + (long)arr[i] * (i - left[i]) * (right[i] - i)) % mod);\n    }\n    return ans;\n}\n```\n    \n    To find the sum of minimum elements in all subarrays, we first find two auxiliary arrays, 'left' and 'right', which store the index of the closest smaller element for each element in the input array from left and right respectively.\n\nWe then iterate over the array and for each element, we find the product of the element, its distance to the previous smaller element (stored in 'left') and its distance to the next smaller element (stored in 'right'). The sum of these products for all elements in the array gives us the sum of minimums in all subarrays.\n\nFinally, we return the total sum of minimums modulo 10^9 + 7.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

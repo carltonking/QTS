@@ -1,0 +1,24 @@
+{
+  "id": 2546,
+  "title": "Apply Bitwise Operations to Make Strings Equal",
+  "slug": "apply-bitwise-operations-to-make-strings-equal",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two 0-indexed binary strings s and target of the same length n. You can do the following operation on s any number of times:\n\n*   Choose two different indices i and j where 0 <= i, j < n.\n*   Simultaneously, replace s[i] with (s[i] OR s[j]) and s[j] with (s[i] XOR s[j]).\n\nFor example, if s = \"0110 \", you can choose i = 0 and j = 2, then simultaneously replace s[0] with (s[0] OR s[2] = 0 OR 1 = 1), and s[2] with (s[0] XOR s[2] = 0 XOR 1 = 1), so we will have s = \"1110 \".\n\nReturn true _if you can make the string_ s _equal to_ target_, or_ false _otherwise_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef can_make_equal(s: str, target: str) -> bool:\n    s_count_ones = s.count('1')\n    target_count_ones = target.count('1')\n    return s_count_ones >= target_count_ones\n```\n    \n    The algorithm counts the number of ones in both strings `s` and `target`. Then it checks if the count of ones in `s` is greater than or equal to the count of ones in `target`. If it is true, then we can make `s` equal to `target` using the given operations; otherwise, we cannot.\n    ",
+    "javascript": "\n    ```javascript\nfunction canMakeEqual(s, target) {\n    const sCountOnes = [...s].filter(c => c === '1').length;\n    const targetCountOnes = [...target].filter(c => c === '1').length;\n    return sCountOnes >= targetCountOnes;\n}\n```\n    \n    The algorithm counts the number of ones in both strings `s` and `target`. Then it checks if the count of ones in `s` is greater than or equal to the count of ones in `target`. If it is true, then we can make `s` equal to `target` using the given operations; otherwise, we cannot.\n    ",
+    "java": "\n    ```java\nboolean canMakeEqual(String s, String target) {\n    int sCountOnes = 0;\n    int targetCountOnes = 0;\n    for (char c : s.toCharArray()) {\n        if (c == '1') sCountOnes++;\n    }\n    for (char c : target.toCharArray()) {\n        if (c == '1') targetCountOnes++;\n    }\n    return sCountOnes >= targetCountOnes;\n}\n```\n    \n    The algorithm counts the number of ones in both strings `s` and `target`. Then it checks if the count of ones in `s` is greater than or equal to the count of ones in `target`. If it is true, then we can make `s` equal to `target` using the given operations; otherwise, we cannot.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

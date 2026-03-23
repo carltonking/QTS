@@ -1,0 +1,39 @@
+{
+  "id": 14,
+  "title": "Reverse Linked List",
+  "slug": "reverse-linked-list",
+  "difficulty": "Easy",
+  "tags": [
+    "Linked List",
+    "Recursion"
+  ],
+  "description": "Given the head of a singly linked list, reverse the list and return the reversed list.",
+  "examples": [
+    {
+      "input": "head = [1,2,3,4,5]",
+      "output": "[5,4,3,2,1]"
+    }
+  ],
+  "constraints": [
+    "0 <= number of nodes <= 5000"
+  ],
+  "starterCode": {
+    "python": "class Solution:\n    def reverseList(self, head):\n        pass",
+    "javascript": "var reverseList = function(head) {\n    \n};",
+    "java": "class Solution {\n    public ListNode reverseList(ListNode head) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    ListNode* reverseList(ListNode* head) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Reverse Linked List\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "[1,2,3,4,5]",
+      "expectedOutput": "[5,4,3,2,1]"
+    },
+    {
+      "input": "[]",
+      "expectedOutput": "[]"
+    }
+  ]
+}

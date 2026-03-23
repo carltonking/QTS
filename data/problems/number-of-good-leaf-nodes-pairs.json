@@ -1,0 +1,24 @@
+{
+  "id": 1530,
+  "title": "Number of Good Leaf Nodes Pairs",
+  "slug": "number-of-good-leaf-nodes-pairs",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given the root of a binary tree and an integer distance. A pair of two different leaf nodes of a binary tree is said to be good if the length of the shortest path between them is less than or equal to distance.\n\nReturn _the number of good leaf node pairs_ in the tree.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef check_if_can_break(s1, s2):\n    s1 = sorted(s1)\n    s2 = sorted(s2)\n\n    can_break_1 = can_break_2 = True\n    for c1, c2 in zip(s1, s2):\n        if c1 < c2:\n            can_break_1 = False\n        if c2 < c1:\n            can_break_2 = False\n\n    return can_break_1 or can_break_2\n```\n\n    \n    In this problem, we need to identify if some permutation of string `s1` can break some permutation of string `s2` or vice-versa. To achieve this, we can sort each string and then compare corresponding characters to check if one string has characters greater than or equal to the other string at every position.\n\nHere are the steps for the algorithm:\n\n1. Sort both strings, `s1` and `s2`.\n2. Initialize two boolean variables `can_break_1` and `can_break_2` as `true`.\n3. Compare each character of the sorted `s1` and `s2` at the same index. If `s1[i]` is smaller than `s2[i]`, set `can_break_1` to `false`. If `s2[i]` is smaller than `s1[i]`, set `can_break_2` to `false`.\n4. If `can_break_1` or `can_break_2` is `true`, return `true`. Otherwise, return `false`.\n\nThe algorithm is implemented in all four languages - C++, Java, Python, and JavaScript - following the syntax and conventions for each language. The core logic remains the same for all implementations.\n    ",
+    "javascript": "\n    ```javascript\nfunction checkIfCanBreak(s1, s2) {\n    let sorted1 = [...s1].sort();\n    let sorted2 = [...s2].sort();\n\n    let canBreak1 = true, canBreak2 = true;\n    for(let i = 0; i < sorted1.length; i++) {\n        if(sorted1[i] < sorted2[i]) canBreak1 = false;\n        if(sorted2[i] < sorted1[i]) canBreak2 = false;\n    }\n    return canBreak1 || canBreak2;\n}\n```\n\n    \n    In this problem, we need to identify if some permutation of string `s1` can break some permutation of string `s2` or vice-versa. To achieve this, we can sort each string and then compare corresponding characters to check if one string has characters greater than or equal to the other string at every position.\n\nHere are the steps for the algorithm:\n\n1. Sort both strings, `s1` and `s2`.\n2. Initialize two boolean variables `can_break_1` and `can_break_2` as `true`.\n3. Compare each character of the sorted `s1` and `s2` at the same index. If `s1[i]` is smaller than `s2[i]`, set `can_break_1` to `false`. If `s2[i]` is smaller than `s1[i]`, set `can_break_2` to `false`.\n4. If `can_break_1` or `can_break_2` is `true`, return `true`. Otherwise, return `false`.\n\nThe algorithm is implemented in all four languages - C++, Java, Python, and JavaScript - following the syntax and conventions for each language. The core logic remains the same for all implementations.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic boolean checkIfCanBreak(String s1, String s2) {\n    char[] arr1 = s1.toCharArray();\n    char[] arr2 = s2.toCharArray();\n    Arrays.sort(arr1);\n    Arrays.sort(arr2);\n    \n    boolean canBreak1 = true, canBreak2 = true;\n    for(int i = 0; i < arr1.length; i++) {\n        if(arr1[i] < arr2[i]) canBreak1 = false;\n        if(arr2[i] < arr1[i]) canBreak2 = false;\n    }\n    return canBreak1 || canBreak2;\n}\n```\n\n    \n    In this problem, we need to identify if some permutation of string `s1` can break some permutation of string `s2` or vice-versa. To achieve this, we can sort each string and then compare corresponding characters to check if one string has characters greater than or equal to the other string at every position.\n\nHere are the steps for the algorithm:\n\n1. Sort both strings, `s1` and `s2`.\n2. Initialize two boolean variables `can_break_1` and `can_break_2` as `true`.\n3. Compare each character of the sorted `s1` and `s2` at the same index. If `s1[i]` is smaller than `s2[i]`, set `can_break_1` to `false`. If `s2[i]` is smaller than `s1[i]`, set `can_break_2` to `false`.\n4. If `can_break_1` or `can_break_2` is `true`, return `true`. Otherwise, return `false`.\n\nThe algorithm is implemented in all four languages - C++, Java, Python, and JavaScript - following the syntax and conventions for each language. The core logic remains the same for all implementations.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

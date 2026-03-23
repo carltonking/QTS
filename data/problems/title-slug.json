@@ -1,0 +1,24 @@
+{
+  "id": 194,
+  "title": "Transpose File",
+  "slug": "title-slug",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a text file file.txt, transpose its content.\n\nYou may assume that each row has the same number of columns, and each field is separated by the ' ' character.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef transpose(content):\n    data = [line.split(\" \") for line in content]\n    result = [\" \".join(data[j][i] for j in range(len(data))) for i in range(len(data[0]))]\n    return result\n```\n\n    \n    First, we read the content and split each line by the \" \" character to create a 2D array of words named `data`. Then, we create a `result` list with the same number of columns as the first row in `data`. \n\nNext, we loop through the 2D array using a nested loop. For each cell of the array, we append the word corresponding to the current coordinates to the respective row in the `result` list. In this manner, we transpose the content.\n\nFinally, we return the `result`, which is the transposed version of the content.\n    ",
+    "javascript": "\n    ```javascript\nfunction transpose(content) {\n    let data = content.map(line => line.split(\" \"));\n    let result = new Array(data[0].length).fill(\"\");\n    for (let i = 0; i < data[0].length; i++) {\n        for (let j = 0; j < data.length; j++) {\n            result[i] += (j > 0 ? \" \" : \"\") + data[j][i];\n        }\n    }\n\n    return result;\n}\n```\n\n    \n    First, we read the content and split each line by the \" \" character to create a 2D array of words named `data`. Then, we create a `result` list with the same number of columns as the first row in `data`. \n\nNext, we loop through the 2D array using a nested loop. For each cell of the array, we append the word corresponding to the current coordinates to the respective row in the `result` list. In this manner, we transpose the content.\n\nFinally, we return the `result`, which is the transposed version of the content.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic List<String> transpose(List<String> content) {\n    List<List<String>> data = new ArrayList<>();\n    for (String line : content) {\n        List<String> row = new ArrayList<>(Arrays.asList(line.split(\" \")));\n        data.add(row);\n    }\n\n    List<String> result = new ArrayList<>(Collections.nCopies(data.get(0).size(), \"\"));\n    for (int i = 0; i < data.get(0).size(); i++) {\n        for (int j = 0; j < data.size(); j++) {\n            result.set(i, result.get(i) + (j > 0 ? \" \" : \"\") + data.get(j).get(i));\n        }\n    }\n\n    return result;\n}\n```\n\n    \n    First, we read the content and split each line by the \" \" character to create a 2D array of words named `data`. Then, we create a `result` list with the same number of columns as the first row in `data`. \n\nNext, we loop through the 2D array using a nested loop. For each cell of the array, we append the word corresponding to the current coordinates to the respective row in the `result` list. In this manner, we transpose the content.\n\nFinally, we return the `result`, which is the transposed version of the content.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

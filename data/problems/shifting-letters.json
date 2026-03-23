@@ -1,0 +1,24 @@
+{
+  "id": 848,
+  "title": "Shifting Letters",
+  "slug": "shifting-letters",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a string s of lowercase English letters and an integer array shifts of the same length.\n\nCall the shift() of a letter, the next letter in the alphabet, (wrapping around so that 'z' becomes 'a').\n\n*   For example, shift('a') = 'b', shift('t') = 'u', and shift('z') = 'a'.\n\nNow for each shifts[i] = x, we want to shift the first i + 1 letters of s, x times.\n\nReturn _the final string after all such shifts to s are applied_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef shiftingLetters(s: str, shifts) -> str:\n    for i in range(len(shifts) - 2, -1, -1):\n        shifts[i] += shifts[i + 1] % 26\n\n    result = list(s)\n    for i in range(len(s)):\n        result[i] = chr((ord(result[i]) - ord('a') + shifts[i] % 26) % 26 + ord('a'))\n        \n    return \"\".join(result)\n```\n    \n    For this problem, we first need to retrieve the total shifts needed for each character. To achieve this, we start from the last character's shift value and go backwards through the `shifts` array, summing the shifts and taking the modulo 26 to avoid loops in the alphabet.\n\nOnce we have the total shifts needed for each character, we iterate through the given string `s`, and for each character, we calculate its new position in the alphabet by adding the character's total shift modulo 26, and updating its value in the result string or array.\n\nFinally, we return the result string/array, which holds the final string after all of the shifts have been applied.\n    ",
+    "javascript": "\n    ```javascript\nfunction shiftingLetters(s, shifts) {\n    for (let i = shifts.length - 2; i >= 0; i--) {\n        shifts[i] = (shifts[i] + shifts[i + 1] % 26) % 26;\n    }\n    \n    let result = s.split('');\n    for (let i = 0; i < s.length; i++) {\n        result[i] = String.fromCharCode((result[i].charCodeAt(0) - 'a'.charCodeAt(0) + shifts[i] % 26) % 26 + 'a'.charCodeAt(0));\n    }\n    \n    return result.join('');\n}\n```\n    \n    For this problem, we first need to retrieve the total shifts needed for each character. To achieve this, we start from the last character's shift value and go backwards through the `shifts` array, summing the shifts and taking the modulo 26 to avoid loops in the alphabet.\n\nOnce we have the total shifts needed for each character, we iterate through the given string `s`, and for each character, we calculate its new position in the alphabet by adding the character's total shift modulo 26, and updating its value in the result string or array.\n\nFinally, we return the result string/array, which holds the final string after all of the shifts have been applied.\n    ",
+    "java": "\n    ```java\npublic String shiftingLetters(String s, int[] shifts) {\n    for (int i = shifts.length - 2; i >= 0; i--) {\n        shifts[i] = (shifts[i] + shifts[i + 1] % 26) % 26;\n    }\n    \n    char[] result = s.toCharArray();\n    for (int i = 0; i < s.length(); i++) {\n        result[i] = (char) ((result[i] - 'a' + shifts[i] % 26) % 26 + 'a');\n    }\n    \n    return new String(result);\n}\n```\n    \n    For this problem, we first need to retrieve the total shifts needed for each character. To achieve this, we start from the last character's shift value and go backwards through the `shifts` array, summing the shifts and taking the modulo 26 to avoid loops in the alphabet.\n\nOnce we have the total shifts needed for each character, we iterate through the given string `s`, and for each character, we calculate its new position in the alphabet by adding the character's total shift modulo 26, and updating its value in the result string or array.\n\nFinally, we return the result string/array, which holds the final string after all of the shifts have been applied.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

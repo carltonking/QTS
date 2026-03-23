@@ -1,0 +1,24 @@
+{
+  "id": 1812,
+  "title": "Determine Color of a Chessboard Square",
+  "slug": "determine-color-of-a-chessboard-square",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given coordinates, a string that represents the coordinates of a square of the chessboard. Below is a chessboard for your reference.\n\nReturn true _if the square is white, and_ false _if the square is black_.\n\nThe coordinate will always represent a valid chessboard square. The coordinate will always have the letter first, and the number second.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef reformat_number(number):\n    cleaned_number = ''.join(c for c in number if c.isdigit())\n\n    blocks = []\n    n = len(cleaned_number)\n    i = 0\n    while i < n:\n        if n - i == 2 or n - i == 4:\n            blocks.append(cleaned_number[i:i + 2])\n            i += 2\n        else:\n            blocks.append(cleaned_number[i:i + 3])\n            i += 3\n\n    return '-'.join(blocks)\n```\n    \n    1. Remove all non-digit characters from the given phone number string.\n2. Create a list called `blocks` which will store the number groups.\n3. Loop through the cleaned number string:\n   - If there are exactly 2 or 4 digits remaining, add a group of 2 digits to `blocks`.\n   - Otherwise, add a group of 3 digits to `blocks`.\n4. Join the groups in `blocks` with dashes and return the resulting string.\n    ",
+    "javascript": "\n    ```javascript\nfunction reformatNumber(number) {\n    const cleanedNumber = number.replace(/\\D/g, '');\n\n    const blocks = [];\n    let n = cleanedNumber.length;\n    for (let i = 0; i < n;) {\n        if (n - i === 2 || n - i === 4) {\n            blocks.push(cleanedNumber.substr(i, 2));\n            i += 2;\n        } else {\n            blocks.push(cleanedNumber.substr(i, 3));\n            i += 3;\n        }\n    }\n\n    return blocks.join('-');\n}\n```\n    \n    1. Remove all non-digit characters from the given phone number string.\n2. Create a list called `blocks` which will store the number groups.\n3. Loop through the cleaned number string:\n   - If there are exactly 2 or 4 digits remaining, add a group of 2 digits to `blocks`.\n   - Otherwise, add a group of 3 digits to `blocks`.\n4. Join the groups in `blocks` with dashes and return the resulting string.\n    ",
+    "java": "\n    ```java\npublic String reformatNumber(String number) {\n    String cleanedNumber = \"\";\n    for (char c : number.toCharArray()) {\n        if (Character.isDigit(c)) {\n            cleanedNumber += c;\n        }\n    }\n\n    List<String> blocks = new ArrayList<>();\n    int n = cleanedNumber.length();\n    for (int i = 0; i < n;) {\n        if (n - i == 2 || n - i == 4) {\n            blocks.add(cleanedNumber.substring(i, i + 2));\n            i += 2;\n        } else {\n            blocks.add(cleanedNumber.substring(i, i + 3));\n            i += 3;\n        }\n    }\n\n    String formattedNumber = blocks.get(0);\n    for (int i = 1; i < blocks.size(); i++) {\n        formattedNumber += '-' + blocks.get(i);\n    }\n    return formattedNumber;\n}\n```\n    \n    1. Remove all non-digit characters from the given phone number string.\n2. Create a list called `blocks` which will store the number groups.\n3. Loop through the cleaned number string:\n   - If there are exactly 2 or 4 digits remaining, add a group of 2 digits to `blocks`.\n   - Otherwise, add a group of 3 digits to `blocks`.\n4. Join the groups in `blocks` with dashes and return the resulting string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

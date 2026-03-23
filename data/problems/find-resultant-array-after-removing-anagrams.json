@@ -1,0 +1,24 @@
+{
+  "id": 2273,
+  "title": "Find Resultant Array After Removing Anagrams",
+  "slug": "find-resultant-array-after-removing-anagrams",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a 0-indexed string array words, where words[i] consists of lowercase English letters.\n\nIn one operation, select any index i such that 0 < i < words.length and words[i - 1] and words[i] are anagrams, and delete words[i] from words. Keep performing this operation as long as you can select an index that satisfies the conditions.\n\nReturn words _after performing all operations_. It can be shown that selecting the indices for each operation in any arbitrary order will lead to the same result.\n\nAn Anagram is a word or phrase formed by rearranging the letters of a different word or phrase using all the original letters exactly once. For example, \"dacb \" is an anagram of \"abdc \".",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef anagramOperations(words):\n    i = 1\n    while i < len(words):\n        word1 = sorted(words[i])\n        word2 = sorted(words[i - 1])\n        if word1 == word2:\n            del words[i]\n        else:\n            i += 1\n    return words\n```\n\n    \n    The algorithm iterates through the input array `words` starting from index 1. For each index `i` it checks if `words[i]` and `words[i-1]` are anagrams by sorting the characters within the two strings and comparing if they are equal (sorting and comparing their characters arrays in Java and JavaScript). If they are anagrams, it removes `words[i]` from the array and decrements index `i`. If not, it increments `i`. This continues until `i` reaches the end of the array. The resulting array will have no adjacent strings that are anagrams, since it iterated through all adjacent pairs and removed anagrams where possible.\n    ",
+    "javascript": "\n    ```javascript\nfunction anagramOperations(words) {\n  let i = 1;\n  while (i < words.length) {\n    let word1 = words[i].split('').sort().join('');\n    let word2 = words[i - 1].split('').sort().join('');\n    \n    if (word1 === word2) {\n      words.splice(i, 1);\n    } else {\n      i++;\n    }\n  }\n  return words;\n}\n```\n\n    \n    The algorithm iterates through the input array `words` starting from index 1. For each index `i` it checks if `words[i]` and `words[i-1]` are anagrams by sorting the characters within the two strings and comparing if they are equal (sorting and comparing their characters arrays in Java and JavaScript). If they are anagrams, it removes `words[i]` from the array and decrements index `i`. If not, it increments `i`. This continues until `i` reaches the end of the array. The resulting array will have no adjacent strings that are anagrams, since it iterated through all adjacent pairs and removed anagrams where possible.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.List;\n\npublic List<String> anagramOperations(String[] words) {\n    List<String> result = new ArrayList<>();\n    result.add(words[0]);\n    \n    for (int i = 1; i < words.length; i++) {\n        char[] first = words[i].toCharArray();\n        char[] second = words[i - 1].toCharArray();\n        Arrays.sort(first);\n        Arrays.sort(second);\n        \n        if (!Arrays.equals(first, second)) {\n            result.add(words[i]);\n        }\n    }\n    \n    return result;\n}\n```\n\n    \n    The algorithm iterates through the input array `words` starting from index 1. For each index `i` it checks if `words[i]` and `words[i-1]` are anagrams by sorting the characters within the two strings and comparing if they are equal (sorting and comparing their characters arrays in Java and JavaScript). If they are anagrams, it removes `words[i]` from the array and decrements index `i`. If not, it increments `i`. This continues until `i` reaches the end of the array. The resulting array will have no adjacent strings that are anagrams, since it iterated through all adjacent pairs and removed anagrams where possible.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

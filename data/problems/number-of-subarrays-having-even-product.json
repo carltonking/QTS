@@ -1,0 +1,24 @@
+{
+  "id": 2495,
+  "title": "Number of Subarrays Having Even Product",
+  "slug": "number-of-subarrays-having-even-product",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a 0-indexed integer array nums, return _the number of subarrays of_ nums _having an even product_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef numberOfEvenSubarrays(nums):\n    n = len(nums)\n    evenCount, oddCount, result = 0, 0, 0\n\n    for num in nums:\n        if num % 2 == 0:\n            evenCount += 1\n            result += evenCount\n        else:\n            evenCount, oddCount = oddCount, evenCount\n            oddCount += 1\n            result += oddCount\n\n    return result\n```\n    \n    In this algorithm, the number of subarrays with even product can be formed by keeping track of counts of even and odd products in the subarrays ending at the current index. `evenCount` and `oddCount` are used to store the number of subarrays ending at the current index with even and odd products, respectively.\n\nFor each number in the input array `nums`, we check if the current number is even or odd. If the current number is even, the number of even subarrays ending at the current index is incremented by 1 (`evenCount++`). The result is incremented by the value of `evenCount`.\n\nIf the current number is odd, we swap the values of `evenCount` and `oddCount` (as an even product multiplied by an odd number gives an odd product, and vice versa). The count of odd subarrays ending at the current index is incremented by 1 (`oddCount++`), and the result is incremented by the value of `oddCount`.\n\nWe do this for each number in the input array `nums` and return the final result.\n    ",
+    "javascript": "\n    ```javascript\nfunction numberOfEvenSubarrays(nums) {\n    let n = nums.length;\n    let evenCount = 0, oddCount = 0, result = 0;\n\n    for (let num of nums) {\n        if (num % 2 === 0) {\n            evenCount++;\n            result += evenCount;\n        } else {\n            [evenCount, oddCount] = [oddCount, evenCount];\n            oddCount++;\n            result += oddCount;\n        }\n    }\n\n    return result;\n}\n```\n    \n    In this algorithm, the number of subarrays with even product can be formed by keeping track of counts of even and odd products in the subarrays ending at the current index. `evenCount` and `oddCount` are used to store the number of subarrays ending at the current index with even and odd products, respectively.\n\nFor each number in the input array `nums`, we check if the current number is even or odd. If the current number is even, the number of even subarrays ending at the current index is incremented by 1 (`evenCount++`). The result is incremented by the value of `evenCount`.\n\nIf the current number is odd, we swap the values of `evenCount` and `oddCount` (as an even product multiplied by an odd number gives an odd product, and vice versa). The count of odd subarrays ending at the current index is incremented by 1 (`oddCount++`), and the result is incremented by the value of `oddCount`.\n\nWe do this for each number in the input array `nums` and return the final result.\n    ",
+    "java": "\n    ```java\npublic int numberOfEvenSubarrays(int[] nums) {\n    int n = nums.length;\n    int evenCount = 0, oddCount = 0, result = 0;\n\n    for (int num : nums) {\n        if (num % 2 == 0) {\n            evenCount++;\n            result += evenCount;\n        } else {\n            int temp = evenCount;\n            evenCount = oddCount;\n            oddCount = temp;\n            oddCount++;\n            result += oddCount;\n        }\n    }\n\n    return result;\n}\n```\n    \n    In this algorithm, the number of subarrays with even product can be formed by keeping track of counts of even and odd products in the subarrays ending at the current index. `evenCount` and `oddCount` are used to store the number of subarrays ending at the current index with even and odd products, respectively.\n\nFor each number in the input array `nums`, we check if the current number is even or odd. If the current number is even, the number of even subarrays ending at the current index is incremented by 1 (`evenCount++`). The result is incremented by the value of `evenCount`.\n\nIf the current number is odd, we swap the values of `evenCount` and `oddCount` (as an even product multiplied by an odd number gives an odd product, and vice versa). The count of odd subarrays ending at the current index is incremented by 1 (`oddCount++`), and the result is incremented by the value of `oddCount`.\n\nWe do this for each number in the input array `nums` and return the final result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

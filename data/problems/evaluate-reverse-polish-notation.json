@@ -1,0 +1,24 @@
+{
+  "id": 150,
+  "title": "Evaluate Reverse Polish Notation",
+  "slug": "evaluate-reverse-polish-notation",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array of strings tokens that represents an arithmetic expression in a [Reverse Polish Notation](http://en.wikipedia.org/wiki/Reverse_Polish_notation).\n\nEvaluate the expression. Return _an integer that represents the value of the expression_.\n\nNote that:\n\n*   The valid operators are '+', '-', '*', and '/'.\n*   Each operand may be an integer or another expression.\n*   The division between two integers always truncates toward zero.\n*   There will not be any division by zero.\n*   The input represents a valid arithmetic expression in a reverse polish notation.\n*   The answer and all the intermediate calculations can be represented in a 32-bit integer.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef evalRPN(tokens):\n    stack = []\n    for token in tokens:\n        if token in {\"+\", \"-\", \"*\", \"/\"}:\n            b = stack.pop()\n            a = stack.pop()\n            if token == \"+\":\n                stack.append(a + b)\n            elif token == \"-\":\n                stack.append(a - b)\n            elif token == \"*\":\n                stack.append(a * b)\n            else:\n                stack.append(int(a / b))\n        else:\n            stack.append(int(token))\n    return stack[-1]\n```\n    \n    The algorithm for evaluating the Reverse Polish Notation (RPN) expression is based on the stack data structure. Iterate through the given tokens array, and for each token:\n\n1. If the token is an operator (+, -, *, /), pop the top two elements from the stack, apply the operation, and push the result back onto the stack.\n2. If the token is a number, push it onto the stack.\n\nAfter the loop, the top element on the stack is the final result of the evaluated RPN expression.\n\nNote that in Python and JavaScript, we need to make sure the division result is truncated toward zero using `int(a / b)` and `Math.trunc(a / b)` respectively.\n    ",
+    "javascript": "\n    ```javascript\nfunction evalRPN(tokens) {\n    const stack = [];\n    for (const token of tokens) {\n        if (token === \"+\" || token === \"-\" || token === \"*\" || token === \"/\") {\n            const b = stack.pop();\n            const a = stack.pop();\n            if (token === \"+\") stack.push(a + b);\n            else if (token === \"-\") stack.push(a - b);\n            else if (token === \"*\") stack.push(a * b);\n            else stack.push(Math.trunc(a / b));\n        } else {\n            stack.push(parseInt(token));\n        }\n    }\n    return stack.pop();\n}\n```\n    \n    The algorithm for evaluating the Reverse Polish Notation (RPN) expression is based on the stack data structure. Iterate through the given tokens array, and for each token:\n\n1. If the token is an operator (+, -, *, /), pop the top two elements from the stack, apply the operation, and push the result back onto the stack.\n2. If the token is a number, push it onto the stack.\n\nAfter the loop, the top element on the stack is the final result of the evaluated RPN expression.\n\nNote that in Python and JavaScript, we need to make sure the division result is truncated toward zero using `int(a / b)` and `Math.trunc(a / b)` respectively.\n    ",
+    "java": "\n    ```java\nimport java.util.Stack;\n\npublic int evalRPN(String[] tokens) {\n    Stack<Integer> stack = new Stack<>();\n    for (String token : tokens) {\n        if (token.equals(\"+\") || token.equals(\"-\") || token.equals(\"*\") || token.equals(\"/\")) {\n            int b = stack.pop();\n            int a = stack.pop();\n            if (token.equals(\"+\")) stack.push(a + b);\n            else if (token.equals(\"-\")) stack.push(a - b);\n            else if (token.equals(\"*\")) stack.push(a * b);\n            else stack.push(a / b);\n        } else {\n            stack.push(Integer.parseInt(token));\n        }\n    }\n    return stack.pop();\n}\n```\n    \n    The algorithm for evaluating the Reverse Polish Notation (RPN) expression is based on the stack data structure. Iterate through the given tokens array, and for each token:\n\n1. If the token is an operator (+, -, *, /), pop the top two elements from the stack, apply the operation, and push the result back onto the stack.\n2. If the token is a number, push it onto the stack.\n\nAfter the loop, the top element on the stack is the final result of the evaluated RPN expression.\n\nNote that in Python and JavaScript, we need to make sure the division result is truncated toward zero using `int(a / b)` and `Math.trunc(a / b)` respectively.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

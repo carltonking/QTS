@@ -1,0 +1,24 @@
+{
+  "id": 2562,
+  "title": "Find the Array Concatenation Value",
+  "slug": "find-the-array-concatenation-value",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums.\n\nThe concatenation of two numbers is the number formed by concatenating their numerals.\n\n*   For example, the concatenation of 15, 49 is 1549.\n\nThe concatenation value of nums is initially equal to 0. Perform this operation until nums becomes empty:\n\n*   If there exists more than one number in nums, pick the first element and last element in nums respectively and add the value of their concatenation to the concatenation value of nums, then delete the first and last element from nums.\n*   If one element exists, add its value to the concatenation value of nums, then delete it.\n\nReturn _the concatenation value of the nums_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef concatenationValue(nums):\n    value = 0\n    while nums:\n        n = len(nums)\n        if n == 1:\n            value += nums[0]\n            nums.pop()\n        else:\n            value += int(str(nums[0]) + str(nums[-1]))\n            nums.pop(0)\n            nums.pop()\n    return value\n```\n    \n    The algorithm goes as follows:\n1. Initialize the concatenation value to 0.\n2. Check if the nums list is empty. If it is not:\n   a. Check if the length of the nums list is 1. If it is, add the only element in the list to the concatenation value and remove it from the list.\n   b. If there is more than one element in the nums list, concatenate the first and last elements and add this value to the concatenation value. Then, remove both elements from the list.\n3. Repeat step 2 until the nums list is empty.\n4. Return the concatenation value.\n    ",
+    "javascript": "\n    ```javascript\nfunction concatenationValue(nums) {\n    let value = 0;\n    while (nums.length > 0) {\n        let n = nums.length;\n        if (n === 1) {\n            value += nums[0];\n            nums.pop();\n        } else {\n            value += parseInt(nums[0].toString() + nums[n - 1].toString());\n            nums.shift();\n            nums.pop();\n        }\n    }\n    return value;\n}\n```\n    \n    The algorithm goes as follows:\n1. Initialize the concatenation value to 0.\n2. Check if the nums list is empty. If it is not:\n   a. Check if the length of the nums list is 1. If it is, add the only element in the list to the concatenation value and remove it from the list.\n   b. If there is more than one element in the nums list, concatenate the first and last elements and add this value to the concatenation value. Then, remove both elements from the list.\n3. Repeat step 2 until the nums list is empty.\n4. Return the concatenation value.\n    ",
+    "java": "\n    ```java\npublic int concatenationValue(int[] nums) {\n    int value = 0;\n    int n = nums.length;\n    for (int i = 0; i < n; i += 2) {\n        if (i == n - 1 - i) {\n            value += nums[i];\n        } else {\n            value += Integer.parseInt(String.valueOf(nums[i]) + String.valueOf(nums[n - 1 - i]));\n        }\n    }\n    return value;\n}\n```\n    \n    The algorithm goes as follows:\n1. Initialize the concatenation value to 0.\n2. Check if the nums list is empty. If it is not:\n   a. Check if the length of the nums list is 1. If it is, add the only element in the list to the concatenation value and remove it from the list.\n   b. If there is more than one element in the nums list, concatenate the first and last elements and add this value to the concatenation value. Then, remove both elements from the list.\n3. Repeat step 2 until the nums list is empty.\n4. Return the concatenation value.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

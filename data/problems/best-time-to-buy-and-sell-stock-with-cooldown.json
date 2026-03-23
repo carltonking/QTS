@@ -1,0 +1,24 @@
+{
+  "id": 309,
+  "title": "Best Time to Buy and Sell Stock with Cooldown",
+  "slug": "best-time-to-buy-and-sell-stock-with-cooldown",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array prices where prices[i] is the price of a given stock on the ith day.\n\nFind the maximum profit you can achieve. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times) with the following restrictions:\n\n*   After you sell your stock, you cannot buy stock on the next day (i.e., cooldown one day).\n\nNote: You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxProfit(prices):\n    profit = 0\n    for i in range(1, len(prices)):\n        profit += max(prices[i] - prices[i - 1], 0)\n    return profit\n```\n    \n    The algorithm iterates through the given `prices` array. For each day, starting from day 1 (index 1), it calculates the difference between the current day's price and the previous day's price. If the difference is positive, it means there is profit to be made by selling on this day after buying on the previous day. The profitable difference is then added to the total profit. This is done for all consecutive days in the array. By the end of the iteration, the total accumulated profit will be the maximum possible, considering the constraints given in the problem statement. No additional transactions are needed because selling and buying again at the same price does not change the profit.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxProfit(prices) {\n    let profit = 0;\n    for (let i = 1; i < prices.length; i++) {\n        profit += Math.max(prices[i] - prices[i - 1], 0);\n    }\n    return profit;\n}\n```\n    \n    The algorithm iterates through the given `prices` array. For each day, starting from day 1 (index 1), it calculates the difference between the current day's price and the previous day's price. If the difference is positive, it means there is profit to be made by selling on this day after buying on the previous day. The profitable difference is then added to the total profit. This is done for all consecutive days in the array. By the end of the iteration, the total accumulated profit will be the maximum possible, considering the constraints given in the problem statement. No additional transactions are needed because selling and buying again at the same price does not change the profit.\n    ",
+    "java": "\n    ```java\npublic int maxProfit(int[] prices) {\n    int profit = 0;\n    for (int i = 1; i < prices.length; i++) {\n        profit += Math.max(prices[i] - prices[i - 1], 0);\n    }\n    return profit;\n}\n```\n    \n    The algorithm iterates through the given `prices` array. For each day, starting from day 1 (index 1), it calculates the difference between the current day's price and the previous day's price. If the difference is positive, it means there is profit to be made by selling on this day after buying on the previous day. The profitable difference is then added to the total profit. This is done for all consecutive days in the array. By the end of the iteration, the total accumulated profit will be the maximum possible, considering the constraints given in the problem statement. No additional transactions are needed because selling and buying again at the same price does not change the profit.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

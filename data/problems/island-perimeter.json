@@ -1,0 +1,24 @@
+{
+  "id": 463,
+  "title": "Island Perimeter",
+  "slug": "island-perimeter",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given row x col grid representing a map where grid[i][j] = 1 represents land and grid[i][j] = 0 represents water.\n\nGrid cells are connected horizontally/vertically (not diagonally). The grid is completely surrounded by water, and there is exactly one island (i.e., one or more connected land cells).\n\nThe island doesn't have \"lakes \", meaning the water inside isn't connected to the water around the island. One cell is a square with side length 1. The grid is rectangular, width and height don't exceed 100. Determine the perimeter of the island.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef islandPerimeter(grid):\n    perimeter = 0\n    for row in range(len(grid)):\n        for col in range(len(grid[row])):\n            if grid[row][col] == 1:\n                perimeter += 4\n                if row > 0 and grid[row - 1][col] == 1:\n                    perimeter -= 2\n                if col > 0 and grid[row][col - 1] == 1:\n                    perimeter -= 2\n    return perimeter\n```\n    \n    The algorithm iterates through each cell in the grid. If a cell contains land, increment the perimeter count by 4 (each side of the square). If there is land in the adjacent cell to the left or above, decrement the perimeter count by 2 for each adjacent land cell as they share a common side. This way, we can calculate the total perimeter of the island without any extra data structures or recursion.\n    ",
+    "javascript": "\n    ```javascript\nfunction islandPerimeter(grid) {\n    let perimeter = 0;\n    for (let row = 0; row < grid.length; row++) {\n        for (let col = 0; col < grid[row].length; col++) {\n            if (grid[row][col] === 1) {\n                perimeter += 4;\n                if (row > 0 && grid[row - 1][col] === 1) perimeter -= 2;\n                if (col > 0 && grid[row][col - 1] === 1) perimeter -= 2;\n            }\n        }\n    }\n    return perimeter;\n}\n```\n    \n    The algorithm iterates through each cell in the grid. If a cell contains land, increment the perimeter count by 4 (each side of the square). If there is land in the adjacent cell to the left or above, decrement the perimeter count by 2 for each adjacent land cell as they share a common side. This way, we can calculate the total perimeter of the island without any extra data structures or recursion.\n    ",
+    "java": "\n    ```java\npublic int islandPerimeter(int[][] grid) {\n    int perimeter = 0;\n    for (int row = 0; row < grid.length; row++) {\n        for (int col = 0; col < grid[row].length; col++) {\n            if (grid[row][col] == 1) {\n                perimeter += 4;\n                if (row > 0 && grid[row - 1][col] == 1) perimeter -= 2;\n                if (col > 0 && grid[row][col - 1] == 1) perimeter -= 2;\n            }\n        }\n    }\n    return perimeter;\n}\n```\n    \n    The algorithm iterates through each cell in the grid. If a cell contains land, increment the perimeter count by 4 (each side of the square). If there is land in the adjacent cell to the left or above, decrement the perimeter count by 2 for each adjacent land cell as they share a common side. This way, we can calculate the total perimeter of the island without any extra data structures or recursion.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

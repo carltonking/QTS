@@ -1,0 +1,24 @@
+{
+  "id": 2223,
+  "title": "Sum of Scores of Built Strings",
+  "slug": "sum-of-scores-of-built-strings",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are building a string s of length n one character at a time, prepending each new character to the front of the string. The strings are labeled from 1 to n, where the string with length i is labeled si.\n\n*   For example, for s = \"abaca \", s1 == \"a \", s2 == \"ca \", s3 == \"aca \", etc.\n\nThe score of si is the length of the longest common prefix between si and sn (Note that s == sn).\n\nGiven the final string s, return _the sum of the score of every_ si.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef string_sum_scores(s):\n    score = 0\n    prefix_length = 0\n\n    for i in range(len(s) - 1, -1, -1):\n        if s[i] == s[-1]:\n            prefix_length += 1\n        else:\n            prefix_length = 0\n        score += prefix_length\n        \n    return score\n```\n\n    \n    The algorithm starts iterating from the end of the string `s` to the beginning. For each character, it checks if the character is equal to the last character of the string. If the character is equal, it increases the `prefix_length` counter, otherwise, it resets the `prefix_length` to 0. We update the `score` by adding the `prefix_length` after each iteration.\n\nAs we are prepending the new characters to the front of the string, iterating in reverse order will generate the desired strings (s_i) in the correct order.\n    ",
+    "javascript": "\n    ```javascript\nfunction stringSumScores(s) {\n    let score = 0;\n    let prefix_length = 0;\n\n    for (let i = s.length - 1; i >= 0; i--) {\n        if (s[i] === s[s.length - 1]) {\n            prefix_length++;\n        } else {\n            prefix_length = 0;\n        }\n        score += prefix_length;\n    }\n    return score;\n}\n```\n\n    \n    The algorithm starts iterating from the end of the string `s` to the beginning. For each character, it checks if the character is equal to the last character of the string. If the character is equal, it increases the `prefix_length` counter, otherwise, it resets the `prefix_length` to 0. We update the `score` by adding the `prefix_length` after each iteration.\n\nAs we are prepending the new characters to the front of the string, iterating in reverse order will generate the desired strings (s_i) in the correct order.\n    ",
+    "java": "\n    ```java\npublic int stringSumScores(String s){\n    int score = 0;\n    int prefix_length = 0;\n\n    for (int i = s.length() - 1; i >= 0; i--) {\n        if (s.charAt(i) == s.charAt(s.length() - 1)) {\n            prefix_length++;\n        } else {\n            prefix_length = 0;\n        }\n        score += prefix_length;\n    }\n    return score;\n}\n\n```\n\n    \n    The algorithm starts iterating from the end of the string `s` to the beginning. For each character, it checks if the character is equal to the last character of the string. If the character is equal, it increases the `prefix_length` counter, otherwise, it resets the `prefix_length` to 0. We update the `score` by adding the `prefix_length` after each iteration.\n\nAs we are prepending the new characters to the front of the string, iterating in reverse order will generate the desired strings (s_i) in the correct order.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

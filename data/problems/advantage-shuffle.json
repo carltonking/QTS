@@ -1,0 +1,24 @@
+{
+  "id": 870,
+  "title": "Advantage Shuffle",
+  "slug": "advantage-shuffle",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two integer arrays nums1 and nums2 both of the same length. The advantage of nums1 with respect to nums2 is the number of indices i for which nums1[i] > nums2[i].\n\nReturn _any permutation of_ nums1 _that maximizes its advantage with respect to_ nums2.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom sortedcontainers import SortedList\n\ndef advantage_count(nums1, nums2):\n    nums1_sorted = SortedList(nums1)\n    result = []\n    for num in nums2:\n        index = nums1_sorted.bisect_right(num)\n        if index == len(nums1_sorted):\n            val = nums1_sorted.pop(0)\n        else:\n            val = nums1_sorted.pop(index)\n        result.append(val)\n    return result\n```\n    \n    1. Create a sorted data structure (`multiset` in C++, `TreeSet` in Java, `SortedList` in Python, and a sorted array in JavaScript) from nums1.\n2. For each number `num` in nums2, find the smallest element in the sorted data structure that is greater than `num`. If there is no such element, select the smallest element in the sorted data structure.\n3. Remove the selected element from the sorted data structure and append it to the result list/array.\n4. Return the result list/array after processing all elements in nums2.\n    ",
+    "javascript": "\n    ```javascript\nfunction advantageCount(nums1, nums2) {\n    const sortedNums1 = [...nums1].sort((a, b) => a - b);\n    const result = [];\n    for (const num of nums2) {\n        let index = sortedNums1.findIndex(el => el > num);\n        if (index === -1) index = 0;\n        result.push(sortedNums1[index]);\n        sortedNums1.splice(index, 1);\n    }\n    return result;\n}\n```\n    \n    1. Create a sorted data structure (`multiset` in C++, `TreeSet` in Java, `SortedList` in Python, and a sorted array in JavaScript) from nums1.\n2. For each number `num` in nums2, find the smallest element in the sorted data structure that is greater than `num`. If there is no such element, select the smallest element in the sorted data structure.\n3. Remove the selected element from the sorted data structure and append it to the result list/array.\n4. Return the result list/array after processing all elements in nums2.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\nclass Solution {\n    public int[] advantageCount(int[] nums1, int[] nums2) {\n        int n = nums1.length;\n        int[] result = new int[n];\n        TreeSet<Integer> set = new TreeSet<>();\n        for (int num : nums1) set.add(num);\n        for (int i = 0; i < n; i++) {\n            Integer greater = set.higher(nums2[i]);\n            if (greater == null) {\n                greater = set.first();\n            }\n            set.remove(greater);\n            result[i] = greater;\n        }\n        return result;\n    }\n}\n```\n    \n    1. Create a sorted data structure (`multiset` in C++, `TreeSet` in Java, `SortedList` in Python, and a sorted array in JavaScript) from nums1.\n2. For each number `num` in nums2, find the smallest element in the sorted data structure that is greater than `num`. If there is no such element, select the smallest element in the sorted data structure.\n3. Remove the selected element from the sorted data structure and append it to the result list/array.\n4. Return the result list/array after processing all elements in nums2.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

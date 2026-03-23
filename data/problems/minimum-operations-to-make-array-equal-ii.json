@@ -1,0 +1,24 @@
+{
+  "id": 2541,
+  "title": "Minimum Operations to Make Array Equal II",
+  "slug": "minimum-operations-to-make-array-equal-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two integer arrays nums1 and nums2 of equal length n and an integer k. You can perform the following operation on nums1:\n\n*   Choose two indexes i and j and increment nums1[i] by k and decrement nums1[j] by k. In other words, nums1[i] = nums1[i] + k and nums1[j] = nums1[j] - k.\n\nnums1 is said to be equal to nums2 if for all indices i such that 0 <= i < n, nums1[i] == nums2[i].\n\nReturn _the minimum number of operations required to make_ nums1 _equal to_ nums2. If it is impossible to make them equal, return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_changes(nums1, nums2, k):\n    n = len(nums1)\n    operations = 0\n    for i in range(n):\n        diff = abs(nums1[i] - nums2[i])\n        if diff % k != 0:\n            return -1\n        operations += diff // k\n    return operations\n```\n    \n    The algorithm iterates through both input arrays and computes the absolute difference between corresponding elements in `nums1` and `nums2`. If any difference is not divisible by `k`, it is impossible to make both arrays equal, so the function returns `-1`. Otherwise, the function adds the required number of operations (`diff / k`) to the total operations counter. After iterating through all the elements, the function returns the total number of required operations.\n    ",
+    "javascript": "\n    ```javascript\nfunction minChanges(nums1, nums2, k) {\n    let n = nums1.length;\n    let operations = 0;\n    for (let i = 0; i < n; ++i) {\n        let diff = Math.abs(nums1[i] - nums2[i]);\n        if (diff % k !== 0) return -1;\n        operations += diff / k;\n    }\n    return operations;\n}\n```\n    \n    The algorithm iterates through both input arrays and computes the absolute difference between corresponding elements in `nums1` and `nums2`. If any difference is not divisible by `k`, it is impossible to make both arrays equal, so the function returns `-1`. Otherwise, the function adds the required number of operations (`diff / k`) to the total operations counter. After iterating through all the elements, the function returns the total number of required operations.\n    ",
+    "java": "\n    ```java\npublic int minChanges(int[] nums1, int[] nums2, int k) {\n    int n = nums1.length;\n    int operations = 0;\n    for (int i = 0; i < n; ++i) {\n        int diff = Math.abs(nums1[i] - nums2[i]);\n        if (diff % k != 0) return -1;\n        operations += diff / k;\n    }\n    return operations;\n}\n```\n    \n    The algorithm iterates through both input arrays and computes the absolute difference between corresponding elements in `nums1` and `nums2`. If any difference is not divisible by `k`, it is impossible to make both arrays equal, so the function returns `-1`. Otherwise, the function adds the required number of operations (`diff / k`) to the total operations counter. After iterating through all the elements, the function returns the total number of required operations.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1646,
+  "title": "Get Maximum in Generated Array",
+  "slug": "get-maximum-in-generated-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an integer n. A 0-indexed integer array nums of length n + 1 is generated in the following way:\n\n*   nums[0] = 0\n*   nums[1] = 1\n*   nums[2 * i] = nums[i] when 2 <= 2 * i <= n\n*   nums[2 * i + 1] = nums[i] + nums[i + 1] when 2 <= 2 * i + 1 <= n\n\nReturn _the maximum integer in the array_ nums​​​.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findKthPositive(arr, k):\n    i, num = 0, 1\n    while k > 0:\n        if i < len(arr) and arr[i] == num:\n            i += 1\n        else:\n            k -= 1\n        num += 1\n    return num - 1\n```\n    \n    1. Initialize two pointers `i` and `num`. `i` is used to iterate through the input array `arr`, and `num` is used to check if the integer is in the array.\n2. Use a while loop that runs until `k` becomes 0. Inside the loop, we do the following:\n   - Check if the current value of `num` is in the array (i.e., if `arr[i] == num`). If it is, increment `i`. This means the current value of `num` is not a missing number.\n   - If the current value of `num` is not in the array, decrement `k`. This means we found one missing number.\n   - Increment `num`.\n3. When the loop ends, `k` becomes 0, meaning we found the kth missing number. The value of `num - 1` is the kth missing positive integer. Return this value.\n    ",
+    "javascript": "\n    ```javascript\nfunction findKthPositive(arr, k) {\n    let i = 0, num = 1;\n    while (k > 0) {\n        if (i < arr.length && arr[i] === num) {\n            i++;\n        } else {\n            k--;\n        }\n        num++;\n    }\n    return num - 1;\n}\n```\n    \n    1. Initialize two pointers `i` and `num`. `i` is used to iterate through the input array `arr`, and `num` is used to check if the integer is in the array.\n2. Use a while loop that runs until `k` becomes 0. Inside the loop, we do the following:\n   - Check if the current value of `num` is in the array (i.e., if `arr[i] == num`). If it is, increment `i`. This means the current value of `num` is not a missing number.\n   - If the current value of `num` is not in the array, decrement `k`. This means we found one missing number.\n   - Increment `num`.\n3. When the loop ends, `k` becomes 0, meaning we found the kth missing number. The value of `num - 1` is the kth missing positive integer. Return this value.\n    ",
+    "java": "\n    ```java\npublic int findKthPositive(int[] arr, int k) {\n    int i = 0, num = 1;\n    while (k > 0) {\n        if (i < arr.length && arr[i] == num) {\n            i++;\n        } else {\n            k--;\n        }\n        num++;\n    }\n    return num - 1;\n}\n```\n    \n    1. Initialize two pointers `i` and `num`. `i` is used to iterate through the input array `arr`, and `num` is used to check if the integer is in the array.\n2. Use a while loop that runs until `k` becomes 0. Inside the loop, we do the following:\n   - Check if the current value of `num` is in the array (i.e., if `arr[i] == num`). If it is, increment `i`. This means the current value of `num` is not a missing number.\n   - If the current value of `num` is not in the array, decrement `k`. This means we found one missing number.\n   - Increment `num`.\n3. When the loop ends, `k` becomes 0, meaning we found the kth missing number. The value of `num - 1` is the kth missing positive integer. Return this value.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2062,
+  "title": "Count Vowel Substrings of a String",
+  "slug": "count-vowel-substrings-of-a-string",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "A substring is a contiguous (non-empty) sequence of characters within a string.\n\nA vowel substring is a substring that only consists of vowels ('a', 'e', 'i', 'o', and 'u') and has all five vowels present in it.\n\nGiven a string word, return _the number of vowel substrings in_ word.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_vowel_substrings(word: str) -> int:\n    count, a, e, i, o, u = 0, 0, 0, 0, 0, 0\n    for c in word:\n        if c == 'a': a += 1\n        elif c == 'e': e = a + e\n        elif c == 'i': i = e + i\n        elif c == 'o': o = i + o\n        elif c == 'u': u = o + u\n    return u\n```\n    \n    The algorithm counts the number of vowel substrings in the given input `word`. The basic idea is to maintain separate counter variables for each vowel `a`, `e`, `i`, `o`, and `u`. When iterating through the characters of the input string, the algorithm increases or updates the respective counter variables based on whether a character is a given type of vowel. The updated counter variables keep track of the number of vowel substrings. Once the iteration is completed, the result can be obtained from the counter variable of last vowel `u`. This solution has a time complexity of O(N), where N is the length of the input string `word`.\n    ",
+    "javascript": "\n    ```javascript\nfunction countVowelSubstrings(word) {\n    let count = 0, a = 0, e = 0, i = 0, o = 0, u = 0;\n    for (let c of word) {\n        if (c === 'a') a++;\n        else if (c === 'e') e = a + e;\n        else if (c === 'i') i = e + i;\n        else if (c === 'o') o = i + o;\n        else if (c === 'u') u = o + u;\n    }\n    return u;\n}\n```\n    \n    The algorithm counts the number of vowel substrings in the given input `word`. The basic idea is to maintain separate counter variables for each vowel `a`, `e`, `i`, `o`, and `u`. When iterating through the characters of the input string, the algorithm increases or updates the respective counter variables based on whether a character is a given type of vowel. The updated counter variables keep track of the number of vowel substrings. Once the iteration is completed, the result can be obtained from the counter variable of last vowel `u`. This solution has a time complexity of O(N), where N is the length of the input string `word`.\n    ",
+    "java": "\n    ```java\nint countVowelSubstrings(String word) {\n    int count = 0, a = 0, e = 0, i = 0, o = 0, u = 0;\n    for (char c : word.toCharArray()) {\n        if (c == 'a') a++;\n        else if (c == 'e') e = a + e;\n        else if (c == 'i') i = e + i;\n        else if (c == 'o') o = i + o;\n        else if (c == 'u') u = o + u;\n    }\n    return u;\n}\n```\n    \n    The algorithm counts the number of vowel substrings in the given input `word`. The basic idea is to maintain separate counter variables for each vowel `a`, `e`, `i`, `o`, and `u`. When iterating through the characters of the input string, the algorithm increases or updates the respective counter variables based on whether a character is a given type of vowel. The updated counter variables keep track of the number of vowel substrings. Once the iteration is completed, the result can be obtained from the counter variable of last vowel `u`. This solution has a time complexity of O(N), where N is the length of the input string `word`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

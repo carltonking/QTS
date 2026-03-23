@@ -1,0 +1,24 @@
+{
+  "id": 1150,
+  "title": "Check If a Number Is Majority Element in a Sorted Array",
+  "slug": "check-if-a-number-is-majority-element-in-a-sorted-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer array nums sorted in non-decreasing order and an integer target, return true _if_ target _is a majority element, or_ false _otherwise_.\n\nA majority element in an array nums is an element that appears more than nums.length / 2 times in the array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_majority_element(nums, target):\n    count = 0\n    for num in nums:\n        if num == target: count += 1\n        if count > len(nums) / 2: return True\n    return False\n```\n    \n    The algorithm is simple, we iterate through the array, and when we find the target number, we increment the count variable. If the count variable ever becomes greater than `nums.length / 2`, we return true because the target is a majority element. Otherwise, after iterating through the array, we return false because the target is not a majority element. This approach has a linear time complexity of O(n), where n is the length of the array.\n    ",
+    "javascript": "\n    ```javascript\nfunction isMajorityElement(nums, target) {\n    let count = 0;\n    for (const num of nums) {\n        if (num === target) count++;\n        if (count > nums.length / 2) return true;\n    }\n    return false;\n}\n```\n    \n    The algorithm is simple, we iterate through the array, and when we find the target number, we increment the count variable. If the count variable ever becomes greater than `nums.length / 2`, we return true because the target is a majority element. Otherwise, after iterating through the array, we return false because the target is not a majority element. This approach has a linear time complexity of O(n), where n is the length of the array.\n    ",
+    "java": "\n    ```java\nboolean isMajorityElement(int[] nums, int target) {\n    int count = 0;\n    for (int num : nums) {\n        if (num == target) count++;\n        if (count > nums.length / 2) return true;\n    }\n    return false;\n}\n```\n    \n    The algorithm is simple, we iterate through the array, and when we find the target number, we increment the count variable. If the count variable ever becomes greater than `nums.length / 2`, we return true because the target is a majority element. Otherwise, after iterating through the array, we return false because the target is not a majority element. This approach has a linear time complexity of O(n), where n is the length of the array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

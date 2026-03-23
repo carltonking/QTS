@@ -1,0 +1,24 @@
+{
+  "id": 1944,
+  "title": "Number of Visible People in a Queue",
+  "slug": "number-of-visible-people-in-a-queue",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "There are n people standing in a queue, and they numbered from 0 to n - 1 in left to right order. You are given an array heights of distinct integers where heights[i] represents the height of the ith person.\n\nA person can see another person to their right in the queue if everybody in between is shorter than both of them. More formally, the ith person can see the jth person if i < j and min(heights[i], heights[j]) > max(heights[i+1], heights[i+2], ..., heights[j-1]).\n\nReturn _an array_ answer _of length_ n _where_ answer[i] _is the number of people the_ ith _person can see to their right in the queue_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef truncate_sentence(s, k):\n    words = s.split(' ')\n    return ' '.join(words[:k])\n```\n    \n    1. We start by splitting the given sentence (s) into a list of words.\n2. We then iterate through the list of words (or use slicing in some languages) to form the result, but only up to the k-th word.\n3. When the iterations are done or we formed the k-th word, we append the words with space as a delimiter.\n4. Finally, return the truncated sentence as a string.\n\nPlease note that some languages have slightly different syntax but the overall algorithm remains the same.\n    ",
+    "javascript": "\n    ```javascript\nfunction truncateSentence(s, k) {\n    let words = s.split(' ');\n    return words.slice(0, k).join(' ');\n}\n```\n    \n    1. We start by splitting the given sentence (s) into a list of words.\n2. We then iterate through the list of words (or use slicing in some languages) to form the result, but only up to the k-th word.\n3. When the iterations are done or we formed the k-th word, we append the words with space as a delimiter.\n4. Finally, return the truncated sentence as a string.\n\nPlease note that some languages have slightly different syntax but the overall algorithm remains the same.\n    ",
+    "java": "\n    ```java\npublic String truncateSentence(String s, int k) {\n    String[] words = s.split(\" \");\n    StringBuilder result = new StringBuilder();\n    for (int i = 0; i < k; i++) {\n        result.append(words[i]);\n        if (i < k - 1) {\n            result.append(\" \");\n        }\n    }\n    return result.toString();\n}\n```\n    \n    1. We start by splitting the given sentence (s) into a list of words.\n2. We then iterate through the list of words (or use slicing in some languages) to form the result, but only up to the k-th word.\n3. When the iterations are done or we formed the k-th word, we append the words with space as a delimiter.\n4. Finally, return the truncated sentence as a string.\n\nPlease note that some languages have slightly different syntax but the overall algorithm remains the same.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

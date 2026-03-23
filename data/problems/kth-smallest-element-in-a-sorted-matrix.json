@@ -1,0 +1,24 @@
+{
+  "id": 378,
+  "title": "Kth Smallest Element in a Sorted Matrix",
+  "slug": "kth-smallest-element-in-a-sorted-matrix",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an n x n matrix where each of the rows and columns is sorted in ascending order, return _the_ kth _smallest element in the matrix_.\n\nNote that it is the kth smallest element in the sorted order, not the kth distinct element.\n\nYou must find a solution with a memory complexity better than O(n2).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nimport heapq\n\ndef kthSmallest(matrix, k):\n    n = len(matrix)\n    min_heap = []\n\n    for i in range(n):\n        heapq.heappush(min_heap, (matrix[i][0], i, 0))\n\n    while k > 1:\n        val, row, col = heapq.heappop(min_heap)\n\n        if col + 1 < n:\n            heapq.heappush(min_heap, (matrix[row][col + 1], row, col + 1))\n\n        k -= 1\n\n    return min_heap[0][0]\n```\n    \n    1. Initialize a min-heap and insert the first element of each row (sorted rows) into the heap along with row and column index.\n2. Pop the minimum element from the heap `k-1` times.\n3. Each time an element is popped, insert the next element from the same row (if there is any) into the heap.\n4. The kth smallest element is the top of the heap after the previous steps.\n\nThe time complexity is O(k * log(n)) as we have at most `n` elements in the heap, and the memory complexity is O(n) for the heap.\n    ",
+    "javascript": "\n    ```javascript\nfunction kthSmallest(matrix, k) {\n    const n = matrix.length;\n    const minHeap = [];\n\n    for (let i = 0; i < n; i++) {\n        minHeap.push({ value: matrix[i][0], row: i, col: 0 });\n    }\n\n    minHeap.sort((a, b) => a.value - b.value);\n\n    while (--k) {\n        const { value, row, col } = minHeap.shift();\n\n        if (col + 1 < n) {\n            const newVal = { value: matrix[row][col + 1], row: row, col: col + 1 };\n            insertSorted(minHeap, newVal, (a, b) => a.value - b.value);\n        }\n    }\n\n    return minHeap[0].value;\n}\n\nfunction insertSorted(arr, item, comparator) {\n    const insertIndex = arr.findIndex((el) => comparator(el, item) > 0);\n\n    if (insertIndex === -1) {\n        arr.push(item);\n    } else {\n        arr.splice(insertIndex, 0, item);\n    }\n}\n```\n\n    \n    1. Initialize a min-heap and insert the first element of each row (sorted rows) into the heap along with row and column index.\n2. Pop the minimum element from the heap `k-1` times.\n3. Each time an element is popped, insert the next element from the same row (if there is any) into the heap.\n4. The kth smallest element is the top of the heap after the previous steps.\n\nThe time complexity is O(k * log(n)) as we have at most `n` elements in the heap, and the memory complexity is O(n) for the heap.\n    ",
+    "java": "\n    ```java\nimport java.util.PriorityQueue;\n\npublic int kthSmallest(int[][] matrix, int k) {\n    int n = matrix.length;\n    PriorityQueue<int[]> minHeap = new PriorityQueue<>((a, b) -> a[0] - b[0]);\n\n    for (int i = 0; i < n; i++) {\n        minHeap.offer(new int[]{matrix[i][0], i, 0});\n    }\n\n    while (--k > 0) {\n        int[] element = minHeap.poll();\n        int row = element[1];\n        int col = element[2];\n\n        if (col + 1 < n) {\n            minHeap.offer(new int[]{matrix[row][col + 1], row, col + 1});\n        }\n    }\n\n    return minHeap.peek()[0];\n}\n```\n\n    \n    1. Initialize a min-heap and insert the first element of each row (sorted rows) into the heap along with row and column index.\n2. Pop the minimum element from the heap `k-1` times.\n3. Each time an element is popped, insert the next element from the same row (if there is any) into the heap.\n4. The kth smallest element is the top of the heap after the previous steps.\n\nThe time complexity is O(k * log(n)) as we have at most `n` elements in the heap, and the memory complexity is O(n) for the heap.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

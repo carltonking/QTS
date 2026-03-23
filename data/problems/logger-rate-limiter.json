@@ -1,0 +1,24 @@
+{
+  "id": 359,
+  "title": "Logger Rate Limiter",
+  "slug": "logger-rate-limiter",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Design a logger system that receives a stream of messages along with their timestamps. Each unique message should only be printed at most every 10 seconds (i.e. a message printed at timestamp t will prevent other identical messages from being printed until timestamp t + 10).\n\nAll messages will come in chronological order. Several messages may arrive at the same timestamp.\n\nImplement the Logger class:\n\n*   Logger() Initializes the logger object.\n*   bool shouldPrintMessage(int timestamp, string message) Returns true if the message should be printed in the given timestamp, otherwise returns false.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass Logger:\n    def __init__(self):\n        self.message_timestamps = {}\n\n    def shouldPrintMessage(self, timestamp: int, message: str) -> bool:\n        if message not in self.message_timestamps or timestamp - self.message_timestamps[message] >= 10:\n            self.message_timestamps[message] = timestamp\n            return True\n        return False\n```\n    \n    The algorithm initializes an empty map to store message timestamps. The `shouldPrintMessage` function takes input parameters `timestamp` and `message`. It checks if the message is in the map or not. If the message is not in the map or the difference between the given timestamp and the message's timestamp is greater than or equal to 10, it updates the message's timestamp in the map with the given timestamp, and the function returns `true`. If the difference is less than 10, the function returns `false`. This ensures that messages will only be printed at most every 10 seconds.\n    ",
+    "javascript": "\n    ```javascript\nclass Logger {\n    constructor() {\n        this.messageTimestamps = {};\n    }\n\n    shouldPrintMessage(timestamp, message) {\n        if (!this.messageTimestamps.hasOwnProperty(message) || timestamp - this.messageTimestamps[message] >= 10) {\n            this.messageTimestamps[message] = timestamp;\n            return true;\n        }\n        return false;\n    }\n}\n```\n    \n    The algorithm initializes an empty map to store message timestamps. The `shouldPrintMessage` function takes input parameters `timestamp` and `message`. It checks if the message is in the map or not. If the message is not in the map or the difference between the given timestamp and the message's timestamp is greater than or equal to 10, it updates the message's timestamp in the map with the given timestamp, and the function returns `true`. If the difference is less than 10, the function returns `false`. This ensures that messages will only be printed at most every 10 seconds.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\nimport java.util.Map;\n\npublic class Logger {\n    private Map<String, Integer> messageTimestamps;\n\n    public Logger() {\n        messageTimestamps = new HashMap<>();\n    }\n\n    public boolean shouldPrintMessage(int timestamp, String message) {\n        if (!messageTimestamps.containsKey(message) || timestamp - messageTimestamps.get(message) >= 10) {\n            messageTimestamps.put(message, timestamp);\n            return true;\n        }\n        return false;\n    }\n}\n```\n    \n    The algorithm initializes an empty map to store message timestamps. The `shouldPrintMessage` function takes input parameters `timestamp` and `message`. It checks if the message is in the map or not. If the message is not in the map or the difference between the given timestamp and the message's timestamp is greater than or equal to 10, it updates the message's timestamp in the map with the given timestamp, and the function returns `true`. If the difference is less than 10, the function returns `false`. This ensures that messages will only be printed at most every 10 seconds.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

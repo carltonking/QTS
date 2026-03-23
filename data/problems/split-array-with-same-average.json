@@ -1,0 +1,24 @@
+{
+  "id": 805,
+  "title": "Split Array With Same Average",
+  "slug": "split-array-with-same-average",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an integer array nums.\n\nYou should move each element of nums into one of the two arrays A and B such that A and B are non-empty, and average(A) == average(B).\n\nReturn true if it is possible to achieve that and false otherwise.\n\nNote that for an array arr, average(arr) is the sum of all the elements of arr over the length of arr.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom typing import List\n\ndef escape_ghosts(ghosts: List[List[int]], target: List[int]) -> bool:\n    max_dist = abs(target[0]) + abs(target[1])\n    for ghost in ghosts:\n        ghost_dist = abs(ghost[0] - target[0]) + abs(ghost[1] - target[1])\n        if ghost_dist <= max_dist:\n            return False\n    return True\n```\n\n    \n    The PAC-MAN's shortest path to the target is moving diagonally, so it takes |xtarget| + |ytarget| steps to reach the target. The algorithm calculates this optimal distance to the target and checks whether it is smaller than the distance from every ghost to the target. If the PAC-MAN can reach the target with fewer moves than any ghost, it is possible to escape. Otherwise, if any ghost is closer to the target than PAC-MAN, it is impossible to reach the target before being caught.\n\nThe algorithm is based on the Manhattan distance, which calculates the sum of the absolute differences of the coordinates. Using Manhattan distance ensures that we are only considering the minimum number of moves required to reach the target, disregarding any possible extra moves taken during the game.\n    ",
+    "javascript": "\n    ```javascript\nfunction escapeGhosts(ghosts, target) {\n    let maxDist = Math.abs(target[0]) + Math.abs(target[1]);\n    for (let ghost of ghosts) {\n        let ghostDist = Math.abs(ghost[0] - target[0]) + Math.abs(ghost[1] - target[1]);\n        if (ghostDist <= maxDist) {\n            return false;\n        }\n    }\n    return true;\n}\n```\n\n    \n    The PAC-MAN's shortest path to the target is moving diagonally, so it takes |xtarget| + |ytarget| steps to reach the target. The algorithm calculates this optimal distance to the target and checks whether it is smaller than the distance from every ghost to the target. If the PAC-MAN can reach the target with fewer moves than any ghost, it is possible to escape. Otherwise, if any ghost is closer to the target than PAC-MAN, it is impossible to reach the target before being caught.\n\nThe algorithm is based on the Manhattan distance, which calculates the sum of the absolute differences of the coordinates. Using Manhattan distance ensures that we are only considering the minimum number of moves required to reach the target, disregarding any possible extra moves taken during the game.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic class Solution {\n    public boolean escapeGhosts(int[][] ghosts, int[] target) {\n        int maxDist = Math.abs(target[0]) + Math.abs(target[1]);\n        for (int[] ghost : ghosts) {\n            int ghostDist = Math.abs(ghost[0] - target[0]) + Math.abs(ghost[1] - target[1]);\n            if (ghostDist <= maxDist) {\n                return false;\n            }\n        }\n        return true;\n    }\n}\n```\n\n    \n    The PAC-MAN's shortest path to the target is moving diagonally, so it takes |xtarget| + |ytarget| steps to reach the target. The algorithm calculates this optimal distance to the target and checks whether it is smaller than the distance from every ghost to the target. If the PAC-MAN can reach the target with fewer moves than any ghost, it is possible to escape. Otherwise, if any ghost is closer to the target than PAC-MAN, it is impossible to reach the target before being caught.\n\nThe algorithm is based on the Manhattan distance, which calculates the sum of the absolute differences of the coordinates. Using Manhattan distance ensures that we are only considering the minimum number of moves required to reach the target, disregarding any possible extra moves taken during the game.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

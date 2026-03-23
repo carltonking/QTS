@@ -1,0 +1,24 @@
+{
+  "id": 1130,
+  "title": "Minimum Cost Tree From Leaf Values",
+  "slug": "minimum-cost-tree-from-leaf-values",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array arr of positive integers, consider all binary trees such that:\n\n*   Each node has either 0 or 2 children;\n*   The values of arr correspond to the values of each leaf in an in-order traversal of the tree.\n*   The value of each non-leaf node is equal to the product of the largest leaf value in its left and right subtree, respectively.\n\nAmong all possible binary trees considered, return _the smallest possible sum of the values of each non-leaf node_. It is guaranteed this sum fits into a 32-bit integer.\n\nA node is a leaf if and only if it has zero children.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nimport heapq\n\ndef lastStoneWeight(stones):\n    stones = [-stone for stone in stones]\n    heapq.heapify(stones)\n    while len(stones) > 1:\n        y = -heapq.heappop(stones)\n        x = -heapq.heappop(stones)\n        if x != y:\n            heapq.heappush(stones, -(y - x))\n    return -stones[0] if stones else 0\n```\n    \n    The algorithm makes use of a max priority queue to store the stones' weights. In each iteration, we dequeue the two largest stones (x and y) and smash them together. If their weights aren't the same, we enqueue the leftover weight (y - x) back into the priority queue. We repeat this process until there's only one stone left or no stone left in the queue. Finally, we return the weight of the remaining stone or 0 if there's none.\n\nNote: In the _JavaScript_ implementation, you need to use an external library for priority queue such as \"priorityqueuejs\", or you can create your own implementation of max priority queue.\n    ",
+    "javascript": "\n    ```javascript\nfunction lastStoneWeight(stones) {\n    const pq = new MinPriorityQueue({ priority: x => -x });\n    stones.forEach(stone => pq.enqueue(stone));\n    while (pq.size() > 1) {\n        const x = pq.dequeue().element;\n        const y = pq.dequeue().element;\n        if (x !== y) {\n            pq.enqueue(y - x);\n        }\n    }\n    return pq.isEmpty() ? 0 : pq.front().element;\n}\n```\n    \n    The algorithm makes use of a max priority queue to store the stones' weights. In each iteration, we dequeue the two largest stones (x and y) and smash them together. If their weights aren't the same, we enqueue the leftover weight (y - x) back into the priority queue. We repeat this process until there's only one stone left or no stone left in the queue. Finally, we return the weight of the remaining stone or 0 if there's none.\n\nNote: In the _JavaScript_ implementation, you need to use an external library for priority queue such as \"priorityqueuejs\", or you can create your own implementation of max priority queue.\n    ",
+    "java": "\n    ```java\npublic int lastStoneWeight(int[] stones) {\n    PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());\n    for (int stone : stones) {\n        pq.add(stone);\n    }\n    while (pq.size() > 1) {\n        int x = pq.poll();\n        int y = pq.poll();\n        if (x != y) {\n            pq.add(y - x);\n        }\n    }\n    return pq.isEmpty() ? 0 : pq.peek();\n}\n```\n    \n    The algorithm makes use of a max priority queue to store the stones' weights. In each iteration, we dequeue the two largest stones (x and y) and smash them together. If their weights aren't the same, we enqueue the leftover weight (y - x) back into the priority queue. We repeat this process until there's only one stone left or no stone left in the queue. Finally, we return the weight of the remaining stone or 0 if there's none.\n\nNote: In the _JavaScript_ implementation, you need to use an external library for priority queue such as \"priorityqueuejs\", or you can create your own implementation of max priority queue.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

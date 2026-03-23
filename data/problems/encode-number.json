@@ -1,0 +1,24 @@
+{
+  "id": 1256,
+  "title": "Encode Number",
+  "slug": "encode-number",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a non-negative integer num, Return its _encoding_ string.\n\nThe encoding is done by converting the integer to a string using a secret function that you should deduce from the following table:",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef arrayRankTransform(arr):\n    sorted_arr = sorted(arr)\n    rank_map = {}\n    rank = 1\n\n    for num in sorted_arr:\n        if num not in rank_map:\n            rank_map[num] = rank\n            rank += 1\n\n    return [rank_map[num] for num in arr]\n```\n    \n    1. Create a new array, `sorted_arr`, that contains the elements of the given `arr` sorted in ascending order.\n2. Create a hash map or dictionary, `rank_map`, that will store the rank for each unique integer in the array.\n3. Initialize a `rank` variable to 1.\n4. Iterate through the sorted array, and for each unique integer not in the `rank_map`, assign its rank and increment the rank counter.\n5. Iterate through the original array, replacing each element with its corresponding rank from the `rank_map`.\n6. Return the modified array.\n    ",
+    "javascript": "\n    ```javascript\nfunction arrayRankTransform(arr) {\n    const sortedArr = [...arr].sort((a, b) => a - b);\n    const rankMap = {};\n    let rank = 1;\n\n    for(const num of sortedArr) {\n        if(!(num in rankMap)) {\n            rankMap[num] = rank++;\n        }\n    }\n\n    return arr.map(num => rankMap[num]);\n}\n```\n    \n    1. Create a new array, `sorted_arr`, that contains the elements of the given `arr` sorted in ascending order.\n2. Create a hash map or dictionary, `rank_map`, that will store the rank for each unique integer in the array.\n3. Initialize a `rank` variable to 1.\n4. Iterate through the sorted array, and for each unique integer not in the `rank_map`, assign its rank and increment the rank counter.\n5. Iterate through the original array, replacing each element with its corresponding rank from the `rank_map`.\n6. Return the modified array.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\nimport java.util.HashMap;\n\npublic int[] arrayRankTransform(int[] arr) {\n    int[] sortedArr = arr.clone();\n    Arrays.sort(sortedArr);\n    HashMap<Integer, Integer> rankMap = new HashMap<>();\n    int rank = 1;\n\n    for(int num : sortedArr) {\n        if(!rankMap.containsKey(num)) {\n            rankMap.put(num, rank++);\n        }\n    }\n\n    for(int i = 0; i < arr.length; i++) {\n        arr[i] = rankMap.get(arr[i]);\n    }\n\n    return arr;\n}\n```\n    \n    1. Create a new array, `sorted_arr`, that contains the elements of the given `arr` sorted in ascending order.\n2. Create a hash map or dictionary, `rank_map`, that will store the rank for each unique integer in the array.\n3. Initialize a `rank` variable to 1.\n4. Iterate through the sorted array, and for each unique integer not in the `rank_map`, assign its rank and increment the rank counter.\n5. Iterate through the original array, replacing each element with its corresponding rank from the `rank_map`.\n6. Return the modified array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

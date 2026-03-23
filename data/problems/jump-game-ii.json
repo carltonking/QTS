@@ -1,0 +1,24 @@
+{
+  "id": 45,
+  "title": "Jump Game II",
+  "slug": "jump-game-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed array of integers nums of length n. You are initially positioned at nums[0].\n\nEach element nums[i] represents the maximum length of a forward jump from index i. In other words, if you are at nums[i], you can jump to any nums[i + j] where:\n\n*   0 <= j <= nums[i] and\n*   i + j < n\n\nReturn _the minimum number of jumps to reach_ nums[n - 1]. The test cases are generated such that you can reach nums[n - 1].",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef jump(nums):\n    jumps = 0\n    current_end = 0\n    current_farthest = 0\n\n    for i in range(len(nums) - 1):\n        current_farthest = max(current_farthest, i + nums[i])\n        if i == current_end:\n            jumps += 1\n            current_end = current_farthest\n\n    return jumps\n```\n    \n    We initialize jumps to count the number of jumps, current_end to keep track of the farthest index we can reach with the current number of jumps, and current_farthest to keep track of the farthest index that can be reached from the current position.\n\nWe loop through the array up to the second last element. For each index, we calculate and store the farthest index that can be reached from the current index. If the current index equals the current end, we increment the jumps, as we need one more jump to reach or go beyond the current end, and update the current_end with the current_farthest value.\n\nFinally, we return the number of jumps which represents the minimum number of jumps needed to reach the last index.\n    ",
+    "javascript": "\n    ```javascript\nfunction jump(nums) {\n    let jumps = 0, currentEnd = 0, currentFarthest = 0;\n\n    for (let i = 0; i < nums.length - 1; i++) {\n        currentFarthest = Math.max(currentFarthest, i + nums[i]);\n        if (i === currentEnd) {\n            jumps++;\n            currentEnd = currentFarthest;\n        }\n    }\n    return jumps;\n}\n```\n    \n    We initialize jumps to count the number of jumps, current_end to keep track of the farthest index we can reach with the current number of jumps, and current_farthest to keep track of the farthest index that can be reached from the current position.\n\nWe loop through the array up to the second last element. For each index, we calculate and store the farthest index that can be reached from the current index. If the current index equals the current end, we increment the jumps, as we need one more jump to reach or go beyond the current end, and update the current_end with the current_farthest value.\n\nFinally, we return the number of jumps which represents the minimum number of jumps needed to reach the last index.\n    ",
+    "java": "\n    ```java\npublic int jump(int[] nums) {\n    int jumps = 0, currentEnd = 0, currentFarthest = 0;\n    \n    for (int i = 0; i < nums.length - 1; i++) {\n        currentFarthest = Math.max(currentFarthest, i + nums[i]);\n        if (i == currentEnd) {\n            jumps++;\n            currentEnd = currentFarthest;\n        }\n    }\n    return jumps;\n}\n```\n    \n    We initialize jumps to count the number of jumps, current_end to keep track of the farthest index we can reach with the current number of jumps, and current_farthest to keep track of the farthest index that can be reached from the current position.\n\nWe loop through the array up to the second last element. For each index, we calculate and store the farthest index that can be reached from the current index. If the current index equals the current end, we increment the jumps, as we need one more jump to reach or go beyond the current end, and update the current_end with the current_farthest value.\n\nFinally, we return the number of jumps which represents the minimum number of jumps needed to reach the last index.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

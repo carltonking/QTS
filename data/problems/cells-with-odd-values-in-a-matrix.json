@@ -1,0 +1,24 @@
+{
+  "id": 1252,
+  "title": "Cells with Odd Values in a Matrix",
+  "slug": "cells-with-odd-values-in-a-matrix",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "There is an m x n matrix that is initialized to all 0's. There is also a 2D array indices where each indices[i] = [ri, ci] represents a 0-indexed location to perform some increment operations on the matrix.\n\nFor each location indices[i], do both of the following:\n\n1.  Increment all the cells on row ri.\n2.  Increment all the cells on column ci.\n\nGiven m, n, and indices, return _the number of odd-valued cells in the matrix after applying the increment to all locations in_ indices.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef break_palindrome(palindrome: str) -> str:\n    n = len(palindrome)\n    if n < 2:\n        return \"\"\n    \n    palindrome = list(palindrome)\n    for i in range(n // 2):\n        if palindrome[i] != 'a':\n            palindrome[i] = 'a'\n            return \"\".join(palindrome)\n    \n    palindrome[-1] = 'b'\n    return \"\".join(palindrome)\n```\n    \n    The algorithm starts by checking if the length of the input string is less than 2, in which case it returns an empty string, as there is no way to make it non-palindrome with a single character replacement. \n\nThen, it iterates over the characters of the string up to the middle position (length / 2). If it finds a character different from 'a', it replaces the character with 'a' to ensure lexicographically smallest result, and returns the modified string.\n\nIf the loop ends and all characters up to the middle are 'a's, then it replaces the last character of the string with 'b' and returns the modified string. This ensures that the string is no longer a palindrome, and retains the lexicographically smallest property.\n    ",
+    "javascript": "\n    ```javascript\nfunction breakPalindrome(palindrome) {\n    const n = palindrome.length;\n    if (n < 2) return \"\";\n    \n    let arr = palindrome.split(\"\");\n    for (let i = 0; i < Math.floor(n / 2); i++) {\n        if (arr[i] !== 'a') {\n            arr[i] = 'a';\n            return arr.join(\"\");\n        }\n    }\n    \n    arr[n - 1] = 'b';\n    return arr.join(\"\");\n}\n```\n    \n    The algorithm starts by checking if the length of the input string is less than 2, in which case it returns an empty string, as there is no way to make it non-palindrome with a single character replacement. \n\nThen, it iterates over the characters of the string up to the middle position (length / 2). If it finds a character different from 'a', it replaces the character with 'a' to ensure lexicographically smallest result, and returns the modified string.\n\nIf the loop ends and all characters up to the middle are 'a's, then it replaces the last character of the string with 'b' and returns the modified string. This ensures that the string is no longer a palindrome, and retains the lexicographically smallest property.\n    ",
+    "java": "\n    ```java\npublic String breakPalindrome(String palindrome) {\n    int n = palindrome.length();\n    if (n < 2) return \"\";\n    \n    char[] arr = palindrome.toCharArray();\n    for (int i = 0; i < n / 2; i++) {\n        if (arr[i] != 'a') {\n            arr[i] = 'a';\n            return new String(arr);\n        }\n    }\n    \n    arr[n - 1] = 'b';\n    return new String(arr);\n}\n```\n    \n    The algorithm starts by checking if the length of the input string is less than 2, in which case it returns an empty string, as there is no way to make it non-palindrome with a single character replacement. \n\nThen, it iterates over the characters of the string up to the middle position (length / 2). If it finds a character different from 'a', it replaces the character with 'a' to ensure lexicographically smallest result, and returns the modified string.\n\nIf the loop ends and all characters up to the middle are 'a's, then it replaces the last character of the string with 'b' and returns the modified string. This ensures that the string is no longer a palindrome, and retains the lexicographically smallest property.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

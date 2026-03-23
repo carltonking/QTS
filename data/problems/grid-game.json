@@ -1,0 +1,24 @@
+{
+  "id": 2017,
+  "title": "Grid Game",
+  "slug": "grid-game",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed 2D array grid of size 2 x n, where grid[r][c] represents the number of points at position (r, c) on the matrix. Two robots are playing a game on this matrix.\n\nBoth robots initially start at (0, 0) and want to reach (1, n-1). Each robot may only move to the right ((r, c) to (r, c + 1)) or down ((r, c) to (r + 1, c)).\n\nAt the start of the game, the first robot moves from (0, 0) to (1, n-1), collecting all the points from the cells on its path. For all cells (r, c) traversed on the path, grid[r][c] is set to 0. Then, the second robot moves from (0, 0) to (1, n-1), collecting the points on its path. Note that their paths may intersect with one another.\n\nThe first robot wants to minimize the number of points collected by the second robot. In contrast, the second robot wants to maximize the number of points it collects. If both robots play optimally, return _the number of points collected by the second robot._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_operations(s):\n    cnt = 0\n    for i in range(1, len(s)):\n        if s[i] == s[i-1]:\n            cnt += 1\n    return cnt\n```\n    \n    The algorithm for solving this problem involves simply iterating through the given string and counting the number of adjacent equal characters. For every such pair, a type-2 operation can be performed to make them different, thus ensuring s becomes alternating.\n\n1. Initialize a counter, `cnt`, to store the number of operations required.\n2. Iterate through the characters of the string, starting from the second character (index 1), until the end of the string.\n3. In every step, if the current character is equal to the previous character, increment the counter `cnt`. This indicates that a type-2 operation is needed to make them different.\n4. Once the iteration is completed, return the value of `cnt`.\n\nThe time complexity of this algorithm is O(n), where n is the length of the input string.\n    ",
+    "javascript": "\n    ```javascript\nfunction min_operations(s) {\n    let cnt = 0;\n    for(let i = 1; i < s.length; ++i) {\n        if(s[i] === s[i-1]) cnt++;\n    }\n    return cnt;\n}\n```\n\n    \n    The algorithm for solving this problem involves simply iterating through the given string and counting the number of adjacent equal characters. For every such pair, a type-2 operation can be performed to make them different, thus ensuring s becomes alternating.\n\n1. Initialize a counter, `cnt`, to store the number of operations required.\n2. Iterate through the characters of the string, starting from the second character (index 1), until the end of the string.\n3. In every step, if the current character is equal to the previous character, increment the counter `cnt`. This indicates that a type-2 operation is needed to make them different.\n4. Once the iteration is completed, return the value of `cnt`.\n\nThe time complexity of this algorithm is O(n), where n is the length of the input string.\n    ",
+    "java": "\n    ```java\nint min_operations(String s) {\n    int cnt = 0;\n    for(int i = 1; i < s.length(); ++i) {\n        if(s.charAt(i) == s.charAt(i-1)) cnt++;\n    }\n    return cnt;\n}\n```\n    \n    The algorithm for solving this problem involves simply iterating through the given string and counting the number of adjacent equal characters. For every such pair, a type-2 operation can be performed to make them different, thus ensuring s becomes alternating.\n\n1. Initialize a counter, `cnt`, to store the number of operations required.\n2. Iterate through the characters of the string, starting from the second character (index 1), until the end of the string.\n3. In every step, if the current character is equal to the previous character, increment the counter `cnt`. This indicates that a type-2 operation is needed to make them different.\n4. Once the iteration is completed, return the value of `cnt`.\n\nThe time complexity of this algorithm is O(n), where n is the length of the input string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

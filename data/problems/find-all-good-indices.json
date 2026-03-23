@@ -1,0 +1,24 @@
+{
+  "id": 2420,
+  "title": "Find All Good Indices",
+  "slug": "find-all-good-indices",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums of size n and a positive integer k.\n\nWe call an index i in the range k <= i < n - k good if the following conditions are satisfied:\n\n*   The k elements that are just before the index i are in non-increasing order.\n*   The k elements that are just after the index i are in non-decreasing order.\n\nReturn _an array of all good indices sorted in increasing order_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_good_indices(nums, k):\n    good_indices = []\n    for i in range(k, len(nums) - k):\n        left_non_inc = all(nums[i - j - 1] >= nums[i - j - 2] for j in range(k - 1))\n        right_non_dec = all(nums[i + j + 1] >= nums[i + j + 2] for j in range(k - 1))\n\n        if left_non_inc and right_non_dec:\n            good_indices.append(i)\n\n    return good_indices\n```    \n    We start by iterating over the elements in the given input range `[k, n - k)`, then check if the `k` elements before each index are in non-increasing order and the `k` elements after each index are in non-decreasing order. If the condition is satisfied for an index, we add it to the `good_indices` array. Upon completion, we return the array of good indices.\n    ",
+    "javascript": "\n    ```js\nfunction findGoodIndices(nums, k) {\n    const goodIndices = [];\n    for (let i = k; i < nums.length - k; i++) {\n        let leftNonInc = true;\n        let rightNonDec = true;\n\n        for (let j = 0; j < k - 1; j++) {\n            if (nums[i - j - 1] < nums[i - j - 2]) {\n                leftNonInc = false;\n                break;\n            }\n        }\n\n        for (let j = 0; j < k - 1; j++) {\n            if (nums[i + j + 1] < nums[i + j + 2]) {\n                rightNonDec = false;\n                break;\n            }\n        }\n\n        if (leftNonInc && rightNonDec) {\n            goodIndices.push(i);\n        }\n    }\n    return goodIndices;\n}\n```    \n    We start by iterating over the elements in the given input range `[k, n - k)`, then check if the `k` elements before each index are in non-increasing order and the `k` elements after each index are in non-decreasing order. If the condition is satisfied for an index, we add it to the `good_indices` array. Upon completion, we return the array of good indices.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<Integer> findGoodIndices(int[] nums, int k) {\n    List<Integer> goodIndices = new ArrayList<>();\n    for (int i = k; i < nums.length - k; i++) {\n        boolean leftNonInc = true;\n        boolean rightNonDec = true;\n\n        for (int j = 0; j < k - 1; j++) {\n            if (nums[i - j - 1] < nums[i - j - 2]) {\n                leftNonInc = false;\n                break;\n            }\n        }\n\n        for (int j = 0; j < k - 1; j++) {\n            if (nums[i + j + 1] < nums[i + j + 2]) {\n                rightNonDec = false;\n                break;\n            }\n        }\n\n        if (leftNonInc && rightNonDec) {\n            goodIndices.add(i);\n        }\n    }\n    return goodIndices;\n}\n```    \n    We start by iterating over the elements in the given input range `[k, n - k)`, then check if the `k` elements before each index are in non-increasing order and the `k` elements after each index are in non-decreasing order. If the condition is satisfied for an index, we add it to the `good_indices` array. Upon completion, we return the array of good indices.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

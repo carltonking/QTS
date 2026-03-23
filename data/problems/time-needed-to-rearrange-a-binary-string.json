@@ -1,0 +1,24 @@
+{
+  "id": 2380,
+  "title": "Time Needed to Rearrange a Binary String",
+  "slug": "time-needed-to-rearrange-a-binary-string",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a binary string s. In one second, all occurrences of \"01 \" are simultaneously replaced with \"10 \". This process repeats until no occurrences of \"01 \" exist.\n\nReturn _the number of seconds needed to complete this process._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_seconds_to_transform(s: str) -> int:\n    cnt_0, cnt_1 = 0, 0\n    for c in s:\n        if c == '0': cnt_0 += 1\n        else: cnt_1 += 1\n    return min(cnt_0, cnt_1)\n```\n    \n    The minimum number of operations needed to complete the transformation is equal to the minimum of the count of '0's and the count of '1's in the given string `s`. We loop through the string and count the number of '0's and '1's. Finally, we simply return the minimum of the counts as the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction findSecondsToTransform(s) {\n    let cnt0 = 0, cnt1 = 0;\n    for (let c of s) {\n        if (c === '0') cnt0++;\n        else cnt1++;\n    }\n    return Math.min(cnt0, cnt1);\n}\n```\n    \n    The minimum number of operations needed to complete the transformation is equal to the minimum of the count of '0's and the count of '1's in the given string `s`. We loop through the string and count the number of '0's and '1's. Finally, we simply return the minimum of the counts as the result.\n    ",
+    "java": "\n    ```java\nint findSecondsToTransform(String s) {\n    int cnt0 = 0, cnt1 = 0;\n    for (char c : s.toCharArray()) {\n        if (c == '0') cnt0++;\n        else cnt1++;\n    }\n    return Math.min(cnt0, cnt1);\n}\n```\n    \n    The minimum number of operations needed to complete the transformation is equal to the minimum of the count of '0's and the count of '1's in the given string `s`. We loop through the string and count the number of '0's and '1's. Finally, we simply return the minimum of the counts as the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2393,
+  "title": "Count Strictly Increasing Subarrays",
+  "slug": "count-strictly-increasing-subarrays",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array nums consisting of positive integers.\n\nReturn _the number of subarrays of_ nums _that are in strictly increasing order._\n\nA subarray is a contiguous part of an array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef num_strictly_increasing_subarrays(nums):\n    n = len(nums)\n    count = 0\n    sum = 0\n    for i in range(1, n):\n        if nums[i] > nums[i - 1]:\n            count += 1\n        else:\n            count = 0\n        sum += count\n    return sum + n\n```\n    \n    In this solution, we iterate through the array once, whereas we maintain two variables: `count` and `sum`. `count` is the length of the current increasing subarray, and `sum` keeps the sum of all lengths.\nFor each element, starting with the second one, we check whether it is greater than the previous element. If so, we increment the `count`, otherwise we reset the `count` to zero. We add the `count` to the `sum` at each iteration.\nWhen the loop finishes, we have the total number of strictly increasing subarrays of length 2 or more. We finally add the length of the original array `n` to the result to include the length 1 subarrays, and return the final result.\n    ",
+    "javascript": "\n    ```javascript\nfunction numStrictlyIncreasingSubarrays(nums) {\n    const n = nums.length;\n    let count = 0;\n    let sum = 0;\n    for (let i = 1; i < n; ++i) {\n        if (nums[i] > nums[i - 1]) {\n            count++;\n        } else {\n            count = 0;\n        }\n        sum += count;\n    }\n    return sum + n;\n}\n```\n    \n    In this solution, we iterate through the array once, whereas we maintain two variables: `count` and `sum`. `count` is the length of the current increasing subarray, and `sum` keeps the sum of all lengths.\nFor each element, starting with the second one, we check whether it is greater than the previous element. If so, we increment the `count`, otherwise we reset the `count` to zero. We add the `count` to the `sum` at each iteration.\nWhen the loop finishes, we have the total number of strictly increasing subarrays of length 2 or more. We finally add the length of the original array `n` to the result to include the length 1 subarrays, and return the final result.\n    ",
+    "java": "\n    ```java\npublic int numStrictlyIncreasingSubarrays(int[] nums) {\n    int n = nums.length;\n    int count = 0, sum = 0;\n    for (int i = 1; i < n; ++i) {\n        if (nums[i] > nums[i - 1]) {\n            count++;\n        } else {\n            count = 0;\n        }\n        sum += count;\n    }\n    return sum + n;\n}\n```\n    \n    In this solution, we iterate through the array once, whereas we maintain two variables: `count` and `sum`. `count` is the length of the current increasing subarray, and `sum` keeps the sum of all lengths.\nFor each element, starting with the second one, we check whether it is greater than the previous element. If so, we increment the `count`, otherwise we reset the `count` to zero. We add the `count` to the `sum` at each iteration.\nWhen the loop finishes, we have the total number of strictly increasing subarrays of length 2 or more. We finally add the length of the original array `n` to the result to include the length 1 subarrays, and return the final result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

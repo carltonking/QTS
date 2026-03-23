@@ -1,0 +1,24 @@
+{
+  "id": 2395,
+  "title": "Find Subarrays With Equal Sum",
+  "slug": "find-subarrays-with-equal-sum",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a 0-indexed integer array nums, determine whether there exist two subarrays of length 2 with equal sum. Note that the two subarrays must begin at different indices.\n\nReturn true _if these subarrays exist, and_ false _otherwise._\n\nA subarray is a contiguous non-empty sequence of elements within an array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef equal_sum_subarrays(nums):\n    sums = set()\n    for i in range(1, len(nums)):\n        current_sum = nums[i] + nums[i - 1]\n        if current_sum in sums:\n            return True\n        sums.add(current_sum)\n    return False\n```\n    \n    The algorithm works by iterating through the array, calculating the sum of each pair of adjacent elements, and using a set to store the seen sums. If the current sum already exists in the set, it means that there are two subarrays with equal sums, so the function returns `true`. At the end of the loop, if no such subarrays were found, the function returns `false`.\n\nTime complexity is O(n), where n is the size of the input array, since we are iterating through the elements only once. Space complexity is also O(n) as at worst we have to store all possible sums in the set.\n    ",
+    "javascript": "\n    ```javascript\nfunction equalSumSubarrays(nums) {\n    const sums = new Set();\n    for (let i = 1; i < nums.length; ++i) {\n        const sum = nums[i] + nums[i - 1];\n        if (sums.has(sum)) return true;\n        sums.add(sum);\n    }\n    return false;\n}\n```\n    \n    The algorithm works by iterating through the array, calculating the sum of each pair of adjacent elements, and using a set to store the seen sums. If the current sum already exists in the set, it means that there are two subarrays with equal sums, so the function returns `true`. At the end of the loop, if no such subarrays were found, the function returns `false`.\n\nTime complexity is O(n), where n is the size of the input array, since we are iterating through the elements only once. Space complexity is also O(n) as at worst we have to store all possible sums in the set.\n    ",
+    "java": "\n    ```java\npublic boolean equalSumSubarrays(int[] nums) {\n    Set<Integer> sums = new HashSet<>();\n    for (int i = 1; i < nums.length; ++i) {\n        int sum = nums[i] + nums[i - 1];\n        if (sums.contains(sum)) return true;\n        sums.add(sum);\n    }\n    return false;\n}\n```\n    \n    The algorithm works by iterating through the array, calculating the sum of each pair of adjacent elements, and using a set to store the seen sums. If the current sum already exists in the set, it means that there are two subarrays with equal sums, so the function returns `true`. At the end of the loop, if no such subarrays were found, the function returns `false`.\n\nTime complexity is O(n), where n is the size of the input array, since we are iterating through the elements only once. Space complexity is also O(n) as at worst we have to store all possible sums in the set.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

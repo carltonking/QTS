@@ -1,0 +1,24 @@
+{
+  "id": 1463,
+  "title": "Cherry Pickup II",
+  "slug": "cherry-pickup-ii",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a rows x cols matrix grid representing a field of cherries where grid[i][j] represents the number of cherries that you can collect from the (i, j) cell.\n\nYou have two robots that can collect cherries for you:\n\n*   Robot #1 is located at the top-left corner (0, 0), and\n*   Robot #2 is located at the top-right corner (0, cols - 1).\n\nReturn _the maximum number of cherries collection using both robots by following the rules below_:\n\n*   From a cell (i, j), robots can move to cell (i + 1, j - 1), (i + 1, j), or (i + 1, j + 1).\n*   When any robot passes through a cell, It picks up all cherries, and the cell becomes an empty cell.\n*   When both robots stay in the same cell, only one takes the cherries.\n*   Both robots cannot move outside of the grid at any moment.\n*   Both robots should reach the bottom row in grid.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom typing import List\nimport heapq\n\ndef kWeakestRows(mat: List[List[int]], k: int) -> List[int]:\n    soldier_rows = [(row.count(1), i) for i, row in enumerate(mat)]\n    heapq.heapify(soldier_rows)\n    return [heapq.heappop(soldier_rows)[1] for _ in range(k)]\n```\n\n    \n    The given problem can be solved by iterating through the matrix and counting the number of 1's (soldiers) in each row. We create a list `soldier_row` (or priority queue in java) of pairs (or arrays) such that pairs first element is the count of 1's and second element is the row index.\n\nThen we sort the list `soldier_row` (not needed in java, as priority queue handles that internally). While sorting, if there is a tie for the number of soldiers, the row index will be the tiebreaker.\n\nFinally, we create an output list by taking indices of the first `k` weakest rows from the sorted list and return that list as our answer.\n    ",
+    "javascript": "\n    ```javascript\nfunction kWeakestRows(mat, k) {\n    const soldierRows = mat.map((row, i) => [row.reduce((count, val) => count + val, 0), i]);\n    soldierRows.sort((a, b) => a[0] - b[0] || a[1] - b[1]);\n    return soldierRows.slice(0, k).map(row => row[1]);\n}\n```\n\n    \n    The given problem can be solved by iterating through the matrix and counting the number of 1's (soldiers) in each row. We create a list `soldier_row` (or priority queue in java) of pairs (or arrays) such that pairs first element is the count of 1's and second element is the row index.\n\nThen we sort the list `soldier_row` (not needed in java, as priority queue handles that internally). While sorting, if there is a tie for the number of soldiers, the row index will be the tiebreaker.\n\nFinally, we create an output list by taking indices of the first `k` weakest rows from the sorted list and return that list as our answer.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic int[] kWeakestRows(int[][] mat, int k) {\n    int m = mat.length;\n    int[] result = new int[k];\n    PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[0] == b[0] ? a[1] - b[1] : a[0] - b[0]);\n\n    for (int i = 0; i < m; ++i) {\n        int soldiers = 0;\n        for (int val : mat[i]) {\n            if (val == 1) {\n                soldiers++;\n            } else {\n                break;\n            }\n        }\n        pq.add(new int[]{soldiers, i});\n    }\n\n    for (int i = 0; i < k; ++i) {\n        result[i] = pq.poll()[1];\n    }\n    return result;\n}\n```\n\n    \n    The given problem can be solved by iterating through the matrix and counting the number of 1's (soldiers) in each row. We create a list `soldier_row` (or priority queue in java) of pairs (or arrays) such that pairs first element is the count of 1's and second element is the row index.\n\nThen we sort the list `soldier_row` (not needed in java, as priority queue handles that internally). While sorting, if there is a tie for the number of soldiers, the row index will be the tiebreaker.\n\nFinally, we create an output list by taking indices of the first `k` weakest rows from the sorted list and return that list as our answer.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

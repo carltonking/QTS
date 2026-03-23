@@ -1,0 +1,24 @@
+{
+  "id": 2115,
+  "title": "Find All Possible Recipes from Given Supplies",
+  "slug": "find-all-possible-recipes-from-given-supplies",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You have information about n different recipes. You are given a string array recipes and a 2D string array ingredients. The ith recipe has the name recipes[i], and you can create it if you have all the needed ingredients from ingredients[i]. Ingredients to a recipe may need to be created from other recipes, i.e., ingredients[i] may contain a string that is in recipes.\n\nYou are also given a string array supplies containing all the ingredients that you initially have, and you have an infinite supply of all of them.\n\nReturn _a list of all the recipes that you can create._ You may return the answer in any order.\n\nNote that two recipes may contain each other in their ingredients.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef numDistinct(binary):\n    mod = 10**9 + 7\n    zero_count, ones_count = 0, 0\n\n    for c in binary:\n        if c == '0':\n            zero_count = (zero_count + ones_count) % mod\n        else:\n            ones_count = (ones_count * 2 + 1) % mod\n    \n    return zero_count\n```\n    \n    The algorithm proceeds by iterating through the given binary string. For each character in the string, we increment the counts for zeros and ones accordingly. The zero count is incremented by the current ones count whenever a '0' is encountered in the binary string. The ones count is incremented by the current ones count plus 1 whenever a '1' is encountered in the binary string, and the count is multiplied by 2 to account for the fact that we can use the ones in combination with the zeros. Finally, we return the zero count which represents the count of non-leading-zero subsequences. To keep the result within the given range, we use modulo 109 + 7 after each update to the counts. \n    ",
+    "javascript": "\n    ```javascript\nfunction numDistinct(binary) {\n    const mod = 1e9 + 7;\n    let zero_count = 0, ones_count = 0;\n\n    for (const c of binary) {\n        if (c === '0') {\n            zero_count = (zero_count + ones_count) % mod;\n        } else {\n            ones_count = (ones_count * 2 + 1) % mod;\n        }\n    }\n    return zero_count;\n}\n```\n    \n    The algorithm proceeds by iterating through the given binary string. For each character in the string, we increment the counts for zeros and ones accordingly. The zero count is incremented by the current ones count whenever a '0' is encountered in the binary string. The ones count is incremented by the current ones count plus 1 whenever a '1' is encountered in the binary string, and the count is multiplied by 2 to account for the fact that we can use the ones in combination with the zeros. Finally, we return the zero count which represents the count of non-leading-zero subsequences. To keep the result within the given range, we use modulo 109 + 7 after each update to the counts. \n    ",
+    "java": "\n    ```java\npublic int numDistinct(String binary) {\n    int mod = 1000000007;\n    int zero_count = 0, ones_count = 0;\n\n    for (char c : binary.toCharArray()) {\n        if (c == '0') {\n            zero_count = (zero_count + ones_count) % mod;\n        } else {\n            ones_count = (ones_count * 2 + 1) % mod;\n        }\n    }\n    return zero_count;\n}\n```\n    \n    The algorithm proceeds by iterating through the given binary string. For each character in the string, we increment the counts for zeros and ones accordingly. The zero count is incremented by the current ones count whenever a '0' is encountered in the binary string. The ones count is incremented by the current ones count plus 1 whenever a '1' is encountered in the binary string, and the count is multiplied by 2 to account for the fact that we can use the ones in combination with the zeros. Finally, we return the zero count which represents the count of non-leading-zero subsequences. To keep the result within the given range, we use modulo 109 + 7 after each update to the counts. \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

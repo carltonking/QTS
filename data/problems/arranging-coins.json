@@ -1,0 +1,24 @@
+{
+  "id": 441,
+  "title": "Arranging Coins",
+  "slug": "arranging-coins",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You have n coins and you want to build a staircase with these coins. The staircase consists of k rows where the ith row has exactly i coins. The last row of the staircase may be incomplete.\n\nGiven the integer n, return _the number of complete rows of the staircase you will build_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef arrange_coins(n: int) -> int:\n    k = 0\n    while n > k:\n        k += 1\n        n -= k\n    return k\n```\n    \n    The algorithm initializes a variable k, which represents the current row number, to 0. Then it enters a loop where it checks if n is greater than k. If so, it increments k by 1 and subtracts k from n. This process continues until n is no longer greater than k. Finally, the value of k is returned, representing the number of complete rows of the staircase. This approach has a time complexity of O(sqrt(n)) since the number of iterations increases linearly with the size of the staircase.\n    ",
+    "javascript": "\n    ```javascript\nfunction arrangeCoins(n) {\n    let k = 0;\n    while (n > k) {\n        k++;\n        n -= k;\n    }\n    return k;\n}\n```\n    \n    The algorithm initializes a variable k, which represents the current row number, to 0. Then it enters a loop where it checks if n is greater than k. If so, it increments k by 1 and subtracts k from n. This process continues until n is no longer greater than k. Finally, the value of k is returned, representing the number of complete rows of the staircase. This approach has a time complexity of O(sqrt(n)) since the number of iterations increases linearly with the size of the staircase.\n    ",
+    "java": "\n    ```java\npublic int arrangeCoins(int n) {\n    int k = 0;\n    while (n > k) {\n        k++;\n        n -= k;\n    }\n    return k;\n}\n```\n    \n    The algorithm initializes a variable k, which represents the current row number, to 0. Then it enters a loop where it checks if n is greater than k. If so, it increments k by 1 and subtracts k from n. This process continues until n is no longer greater than k. Finally, the value of k is returned, representing the number of complete rows of the staircase. This approach has a time complexity of O(sqrt(n)) since the number of iterations increases linearly with the size of the staircase.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

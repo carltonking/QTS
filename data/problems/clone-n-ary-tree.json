@@ -1,0 +1,24 @@
+{
+  "id": 1490,
+  "title": "Clone N-ary Tree",
+  "slug": "clone-n-ary-tree",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a root of an N-ary tree, return a [deep copy](https://en.wikipedia.org/wiki/Object_copying#Deep_copy) (clone) of the tree.\n\nEach node in the n-ary tree contains a val (int) and a list (List[Node]) of its children.\n\nclass Node {\n    public int val;\n    public List children;\n}\n\n_Nary-Tree input serialization is represented in their level order traversal, each group of children is separated by the null value (See examples)._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef generate_the_string(n: int) -> str:\n    if n % 2 == 0:\n        return 'a' * (n - 1) + 'b'\n    else:\n        return 'a' * n\n```\n    \n    The algorithm constructs a string with 'n' characters, making sure that the count of every character is odd. \n\nHere is a simple approach:\n1. We start by adding 'n' times the character 'a' to the string.\n2. If 'n' is odd, then the string already satisfies the condition, and we return it.\n3. If 'n' is even, we change the last character of the string to 'b'. Now, the string has 'n - 1' occurrences of 'a' (which is odd) and 1 occurrence of 'b' (also odd), and then we return the string.\n4. With this approach, at most, two different characters are used, and both their counts are odd, satisfying the problem conditions. \n\nThus, we have a valid solution with a time complexity of O(n) for string construction, and it's possible to return any of the multiple valid strings.\n    ",
+    "javascript": "\n    ```javascript\nfunction generateTheString(n) {\n    let result = \"\";\n    for (let i = 0; i < n - 1; i++) {\n        result += 'a';\n    }\n    if (n % 2 === 0) {\n        result += 'b';\n    } else {\n        result += 'a';\n    }\n    return result;\n}\n```\n    \n    The algorithm constructs a string with 'n' characters, making sure that the count of every character is odd. \n\nHere is a simple approach:\n1. We start by adding 'n' times the character 'a' to the string.\n2. If 'n' is odd, then the string already satisfies the condition, and we return it.\n3. If 'n' is even, we change the last character of the string to 'b'. Now, the string has 'n - 1' occurrences of 'a' (which is odd) and 1 occurrence of 'b' (also odd), and then we return the string.\n4. With this approach, at most, two different characters are used, and both their counts are odd, satisfying the problem conditions. \n\nThus, we have a valid solution with a time complexity of O(n) for string construction, and it's possible to return any of the multiple valid strings.\n    ",
+    "java": "\n    ```java\npublic class Solution {\n    public String generateTheString(int n) {\n        StringBuilder sb = new StringBuilder();\n        for (int i = 0; i < n - 1; i++) {\n            sb.append('a');\n        }\n        if (n % 2 == 0) {\n            sb.append('b');\n        } else {\n            sb.append('a');\n        }\n        return sb.toString();\n    }\n}\n```\n    \n    The algorithm constructs a string with 'n' characters, making sure that the count of every character is odd. \n\nHere is a simple approach:\n1. We start by adding 'n' times the character 'a' to the string.\n2. If 'n' is odd, then the string already satisfies the condition, and we return it.\n3. If 'n' is even, we change the last character of the string to 'b'. Now, the string has 'n - 1' occurrences of 'a' (which is odd) and 1 occurrence of 'b' (also odd), and then we return the string.\n4. With this approach, at most, two different characters are used, and both their counts are odd, satisfying the problem conditions. \n\nThus, we have a valid solution with a time complexity of O(n) for string construction, and it's possible to return any of the multiple valid strings.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

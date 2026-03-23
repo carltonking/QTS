@@ -1,0 +1,39 @@
+{
+  "id": 42,
+  "title": "Reverse Bits",
+  "slug": "reverse-bits",
+  "difficulty": "Easy",
+  "tags": [
+    "Divide and Conquer",
+    "Bit Manipulation"
+  ],
+  "description": "Reverse bits of a given 32 bits unsigned integer.",
+  "examples": [
+    {
+      "input": "n = 00000010100101000001111010011100",
+      "output": "964176192"
+    }
+  ],
+  "constraints": [
+    "Input must be a binary string or integer representing 32 bits"
+  ],
+  "starterCode": {
+    "python": "class Solution:\n    def reverseBits(self, n: int) -> int:\n        pass",
+    "javascript": "var reverseBits = function(n) {\n    \n};",
+    "java": "class Solution {\n    public int reverseBits(int n) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    uint32_t reverseBits(uint32_t n) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Reverse Bits\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "43261596",
+      "expectedOutput": "964176192"
+    },
+    {
+      "input": "4294967293",
+      "expectedOutput": "3221225471"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": 266,
+  "title": "Palindrome Permutation",
+  "slug": "palindrome-permutation",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a string s, return true _if a permutation of the string could form a_ _palindrome_ _and_ false _otherwise_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef canPermutePalindrome(s: str) -> bool:\n    count = {}\n    for c in s:\n        if c in count:\n            count[c] += 1\n        else:\n            count[c] = 1\n    odd_count = 0\n    for value in count.values():\n        if value % 2:\n            odd_count += 1\n    return odd_count <= 1\n```\n    \n    The algorithm counts the occurrences of each character in the string using a hash map (or dictionary for Python). Then, it iterates through the count values in the hash map and checks how many characters have odd occurrences. If the string can form a palindrome, there should be at most one character having an odd number of occurrences.\n\nThe logic is based on the fact that a string can form a palindrome if it meets the following condition: If the string length is even, there should be an even number of occurrences for each character. If the string length is odd, there should be only one character having odd occurrences and the rest should have even occurrences.\n\nThe algorithm simply returns true if the odd_count is less than or equal to 1, indicating the string can form a palindrome; otherwise, it returns false.\n    ",
+    "javascript": "\n    ```javascript\nfunction canPermutePalindrome(s) {\n    const count = {}\n    for (const c of s) {\n        if (c in count) {\n            count[c]++;\n        } else {\n            count[c] = 1;\n        }\n    }\n    let odd_count = 0;\n    for (const value of Object.values(count)) {\n        if (value % 2) {\n            odd_count++;\n        }\n    }\n    return odd_count <= 1;\n}\n```\n\n    \n    The algorithm counts the occurrences of each character in the string using a hash map (or dictionary for Python). Then, it iterates through the count values in the hash map and checks how many characters have odd occurrences. If the string can form a palindrome, there should be at most one character having an odd number of occurrences.\n\nThe logic is based on the fact that a string can form a palindrome if it meets the following condition: If the string length is even, there should be an even number of occurrences for each character. If the string length is odd, there should be only one character having odd occurrences and the rest should have even occurrences.\n\nThe algorithm simply returns true if the odd_count is less than or equal to 1, indicating the string can form a palindrome; otherwise, it returns false.\n    ",
+    "java": "\n    ```java\npublic boolean canPermutePalindrome(String s) {\n    HashMap<Character, Integer> count = new HashMap<>();\n    for(char c : s.toCharArray()) {\n        count.put(c, count.getOrDefault(c, 0) + 1);\n    }\n    int odd_count = 0;\n    for(int value : count.values()) {\n        if (value % 2 != 0) {\n            odd_count++;\n        }\n    }\n    return odd_count <= 1;\n}\n```\n    \n    The algorithm counts the occurrences of each character in the string using a hash map (or dictionary for Python). Then, it iterates through the count values in the hash map and checks how many characters have odd occurrences. If the string can form a palindrome, there should be at most one character having an odd number of occurrences.\n\nThe logic is based on the fact that a string can form a palindrome if it meets the following condition: If the string length is even, there should be an even number of occurrences for each character. If the string length is odd, there should be only one character having odd occurrences and the rest should have even occurrences.\n\nThe algorithm simply returns true if the odd_count is less than or equal to 1, indicating the string can form a palindrome; otherwise, it returns false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

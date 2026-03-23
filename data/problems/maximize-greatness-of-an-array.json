@@ -1,0 +1,24 @@
+{
+  "id": 2592,
+  "title": "Maximize Greatness of an Array",
+  "slug": "maximize-greatness-of-an-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums. You are allowed to permute nums into a new array perm of your choosing.\n\nWe define the greatness of nums be the number of indices 0 <= i < nums.length for which perm[i] > nums[i].\n\nReturn _the maximum possible greatness you can achieve after permuting_ nums.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_greatness(nums):\n    nums.sort()\n    greatness = 0\n    for i in range(1, len(nums)):\n        if nums[i - 1] < nums[i]:\n            nums[i - 1], nums[i] = nums[i], nums[i - 1]\n            greatness += 1\n    return greatness\n```\n    \n    The algorithm consists of sorting the `nums` array in ascending order. Then, we iterate over the array from index 1 to the end. If the current element is greater than the one before it, we swap them and increase the greatness counter. This ensures that at each step, we have the maximum possible greatness for the current element. The algorithm takes advantage of the sorted array to perform permutations in a greedy manner, maximizing greatness at each step. The final result is the maximum greatness possible.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxGreatness(nums) {\n    nums.sort((a, b) => a - b);\n    let greatness = 0;\n    for (let i = 1; i < nums.length; ++i) {\n        if (nums[i - 1] < nums[i]) {\n            [nums[i - 1], nums[i]] = [nums[i], nums[i - 1]];\n            ++greatness;\n        }\n    }\n    return greatness;\n}\n```\n    \n    The algorithm consists of sorting the `nums` array in ascending order. Then, we iterate over the array from index 1 to the end. If the current element is greater than the one before it, we swap them and increase the greatness counter. This ensures that at each step, we have the maximum possible greatness for the current element. The algorithm takes advantage of the sorted array to perform permutations in a greedy manner, maximizing greatness at each step. The final result is the maximum greatness possible.\n    ",
+    "java": "\n    ```java\npublic int maxGreatness(int[] nums) {\n    Arrays.sort(nums);\n    int greatness = 0;\n    for (int i = 1; i < nums.length; ++i) {\n        if (nums[i - 1] < nums[i]) {\n            int temp = nums[i - 1];\n            nums[i - 1] = nums[i];\n            nums[i] = temp;\n            ++greatness;\n        }\n    }\n    return greatness;\n}\n```\n    \n    The algorithm consists of sorting the `nums` array in ascending order. Then, we iterate over the array from index 1 to the end. If the current element is greater than the one before it, we swap them and increase the greatness counter. This ensures that at each step, we have the maximum possible greatness for the current element. The algorithm takes advantage of the sorted array to perform permutations in a greedy manner, maximizing greatness at each step. The final result is the maximum greatness possible.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

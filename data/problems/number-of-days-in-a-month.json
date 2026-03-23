@@ -1,0 +1,24 @@
+{
+  "id": 1118,
+  "title": "Number of Days in a Month",
+  "slug": "number-of-days-in-a-month",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a year year and a month month, return _the number of days of that month_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef number_of_days(year, month):\n    if month == 2:\n        if (year % 4 == 0 and year % 100 != 0) or year % 400 == 0:\n            return 29\n        return 28\n    if month in [4, 6, 9, 11]:\n        return 30\n    return 31\n```\n    \n    The algorithm first checks if the given month is February. If it is, then it determines if the given year is a leap year. A leap year is a year that is divisible by 4 and not divisible by 100, or divisible by 400. If it is a leap year, it returns 29 as the number of days in February; otherwise, it returns 28.\n\nIf the given month is April, June, September, or November, the algorithm returns 30 as the number of days in that month. For all other months (January, March, May, July, August, October, and December), the algorithm returns 31 as the number of days in that month.\n    ",
+    "javascript": "\n    ```javascript\nfunction numberOfDays(year, month) {\n    if (month == 2) {\n        if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)\n            return 29;\n        return 28;\n    }\n    if (month == 4 || month == 6 || month == 9 || month == 11)\n        return 30;\n    return 31;\n}\n```\n    \n    The algorithm first checks if the given month is February. If it is, then it determines if the given year is a leap year. A leap year is a year that is divisible by 4 and not divisible by 100, or divisible by 400. If it is a leap year, it returns 29 as the number of days in February; otherwise, it returns 28.\n\nIf the given month is April, June, September, or November, the algorithm returns 30 as the number of days in that month. For all other months (January, March, May, July, August, October, and December), the algorithm returns 31 as the number of days in that month.\n    ",
+    "java": "\n    ```java\nint numberOfDays(int year, int month) {\n    if (month == 2) {\n        if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)\n            return 29;\n        return 28;\n    }\n    if (month == 4 || month == 6 || month == 9 || month == 11)\n        return 30;\n    return 31;\n}\n```\n    \n    The algorithm first checks if the given month is February. If it is, then it determines if the given year is a leap year. A leap year is a year that is divisible by 4 and not divisible by 100, or divisible by 400. If it is a leap year, it returns 29 as the number of days in February; otherwise, it returns 28.\n\nIf the given month is April, June, September, or November, the algorithm returns 30 as the number of days in that month. For all other months (January, March, May, July, August, October, and December), the algorithm returns 31 as the number of days in that month.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

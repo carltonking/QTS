@@ -1,0 +1,24 @@
+{
+  "id": 1067,
+  "title": "Digit Count in Range",
+  "slug": "digit-count-in-range",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given a single-digit integer d and two integers low and high, return _the number of times that_ d _occurs as a digit in all integers in the inclusive range_ [low, high].",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_digit(d, low, high):\n    count = 0\n    for i in range(low, high + 1):\n        num = i\n        while num > 0:\n            if num % 10 == d:\n                count += 1\n            num //= 10\n    return count\n```\n    \n    The algorithm loops through all integers between `low` and `high` (inclusive). For each integer, it iterates through each digit by dividing it by 10 each time and taking the remainder (mod 10) to check if it matches the given digit `d`. If a match is found, it increments the `count` variable. Finally, it returns the total count.\n    ",
+    "javascript": "\n    ```javascript\nfunction countDigit(d, low, high) {\n    let count = 0;\n    for (let i = low; i <= high; i++) {\n        let num = i;\n        while (num > 0) {\n            if (num % 10 === d) {\n                count++;\n            }\n            num = Math.floor(num / 10);\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm loops through all integers between `low` and `high` (inclusive). For each integer, it iterates through each digit by dividing it by 10 each time and taking the remainder (mod 10) to check if it matches the given digit `d`. If a match is found, it increments the `count` variable. Finally, it returns the total count.\n    ",
+    "java": "\n    ```java\npublic int countDigit(int d, int low, int high) {\n    int count = 0;\n    for (int i = low; i <= high; i++) {\n        int num = i;\n        while (num > 0) {\n            if (num % 10 == d) {\n                count++;\n            }\n            num /= 10;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm loops through all integers between `low` and `high` (inclusive). For each integer, it iterates through each digit by dividing it by 10 each time and taking the remainder (mod 10) to check if it matches the given digit `d`. If a match is found, it increments the `count` variable. Finally, it returns the total count.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

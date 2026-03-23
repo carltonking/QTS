@@ -1,0 +1,24 @@
+{
+  "id": 1844,
+  "title": "Replace All Digits with Characters",
+  "slug": "replace-all-digits-with-characters",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a 0-indexed string s that has lowercase English letters in its even indices and digits in its odd indices.\n\nThere is a function shift(c, x), where c is a character and x is a digit, that returns the xth character after c.\n\n*   For example, shift('a', 5) = 'f' and shift('x', 0) = 'x'.\n\nFor every odd index i, you want to replace the digit s[i] with shift(s[i-1], s[i]).\n\nReturn s _after replacing all digits. It is guaranteed that_ shift(s[i-1], s[i]) _will never exceed_ 'z'.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_balls(low_limit: int, high_limit: int) -> int:\n    box_counts = [0] * 46\n    for i in range(low_limit, high_limit + 1):\n        box_number = sum(map(int, str(i)))\n        box_counts[box_number] += 1\n    return max(box_counts)\n```\n    \n    1. Initialize an array `boxCounts` with 46 elements, all set to 0. This array will store the counts of balls in each box. We use 46 because the maximum possible sum of digits for numbers in the range of the problem is 9 + 9 + 9 + 9 + 9 = 45.\n2. Iterate through numbers from `lowLimit` to `highLimit`, inclusive.\n3. For each number, calculate the sum of its digits (box number) using a while loop.\n4. Increment the count in `boxCounts` corresponding to the calculated box number.\n5. Once all numbers have been placed in boxes, return the maximum count in the `boxCounts` array.\n    ",
+    "javascript": "\n    ```javascript\nfunction countBalls(lowLimit, highLimit) {\n    const boxCounts = new Array(46).fill(0);\n    for(let i = lowLimit; i <= highLimit; i++) {\n        let boxNumber = 0;\n        let num = i;\n        while(num) {\n            boxNumber += num % 10;\n            num = Math.floor(num / 10);\n        }\n        boxCounts[boxNumber]++;\n    }\n    return Math.max(...boxCounts);\n}\n```\n    \n    1. Initialize an array `boxCounts` with 46 elements, all set to 0. This array will store the counts of balls in each box. We use 46 because the maximum possible sum of digits for numbers in the range of the problem is 9 + 9 + 9 + 9 + 9 = 45.\n2. Iterate through numbers from `lowLimit` to `highLimit`, inclusive.\n3. For each number, calculate the sum of its digits (box number) using a while loop.\n4. Increment the count in `boxCounts` corresponding to the calculated box number.\n5. Once all numbers have been placed in boxes, return the maximum count in the `boxCounts` array.\n    ",
+    "java": "\n    ```java\npublic int countBalls(int lowLimit, int highLimit) {\n    int[] boxCounts = new int[46];\n    for(int i = lowLimit; i <= highLimit; i++) {\n        int boxNumber = 0;\n        int num = i;\n        while(num != 0) {\n            boxNumber += num % 10;\n            num /= 10;\n        }\n        boxCounts[boxNumber]++;\n    }\n    return Arrays.stream(boxCounts).max().orElse(0);\n}\n```\n    \n    1. Initialize an array `boxCounts` with 46 elements, all set to 0. This array will store the counts of balls in each box. We use 46 because the maximum possible sum of digits for numbers in the range of the problem is 9 + 9 + 9 + 9 + 9 = 45.\n2. Iterate through numbers from `lowLimit` to `highLimit`, inclusive.\n3. For each number, calculate the sum of its digits (box number) using a while loop.\n4. Increment the count in `boxCounts` corresponding to the calculated box number.\n5. Once all numbers have been placed in boxes, return the maximum count in the `boxCounts` array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

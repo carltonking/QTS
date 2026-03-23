@@ -1,0 +1,24 @@
+{
+  "id": 1745,
+  "title": "Palindrome Partitioning IV",
+  "slug": "palindrome-partitioning-iv",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given a string s, return true _if it is possible to split the string_ s _into three non-empty palindromic substrings. Otherwise, return_ false.​​​​​\n\nA string is said to be palindrome if it the same string when reversed.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_palindrome(s, start, end):\n    while start < end:\n        if s[start] != s[end]:\n            return False\n        start += 1\n        end -= 1\n    return True\n\ndef check_partitioning(s):\n    n = len(s)\n    for i in range(0, n - 2):\n        if is_palindrome(s, 0, i):\n            for j in range(i + 1, n - 1):\n                if is_palindrome(s, i + 1, j) and is_palindrome(s, j + 1, n - 1):\n                    return True\n    return False\n```\n    \n    The algorithm creates a helper function `isPalindrome` to check if a given substring is a palindrome based on start and end indices. Then, in the main function `checkPartitioning`, it iterates through the string to find a possible split that gives three non-empty palindromic substrings. In the outer loop, it goes from 0 to `n - 3` and checks if the substring from 0 to `i` is palindrome. In the inner loop, it goes from `i + 1` to `n - 2` and checks if the substring from `i + 1` to `j` and from `j + 1` to `n-1` are both palindromes. If such a split is found, it returns true. If all possible splits are checked and no palindromic split is found, the function returns false.\n    ",
+    "javascript": "\n    ```javascript\nfunction isPalindrome(s, start, end) {\n    while (start < end) {\n        if (s[start] !== s[end]) return false;\n        start++;\n        end--;\n    }\n    return true;\n}\n\nfunction checkPartitioning(s) {\n    const n = s.length;\n    for (let i = 0; i < n - 2; ++i) {\n        if (isPalindrome(s, 0, i)) {\n            for (let j = i + 1; j < n - 1; ++j) {\n                if (isPalindrome(s, i + 1, j) && isPalindrome(s, j + 1, n - 1)) return true;\n            }\n        }\n    }\n    return false;\n}\n```\n    \n    The algorithm creates a helper function `isPalindrome` to check if a given substring is a palindrome based on start and end indices. Then, in the main function `checkPartitioning`, it iterates through the string to find a possible split that gives three non-empty palindromic substrings. In the outer loop, it goes from 0 to `n - 3` and checks if the substring from 0 to `i` is palindrome. In the inner loop, it goes from `i + 1` to `n - 2` and checks if the substring from `i + 1` to `j` and from `j + 1` to `n-1` are both palindromes. If such a split is found, it returns true. If all possible splits are checked and no palindromic split is found, the function returns false.\n    ",
+    "java": "\n    ```java\npublic class Solution {\n    private boolean isPalindrome(String s, int start, int end) {\n        while (start < end) {\n            if (s.charAt(start) != s.charAt(end)) return false;\n            start++;\n            end--;\n        }\n        return true;\n    }\n\n    public boolean checkPartitioning(String s) {\n        int n = s.length();\n        for (int i = 0; i < n - 2; ++i) {\n            if (isPalindrome(s, 0, i)) {\n                for (int j = i + 1; j < n - 1; ++j) {\n                    if (isPalindrome(s, i + 1, j) && isPalindrome(s, j + 1, n - 1)) return true;\n                }\n            }\n        }\n        return false;\n    }\n}\n```\n    \n    The algorithm creates a helper function `isPalindrome` to check if a given substring is a palindrome based on start and end indices. Then, in the main function `checkPartitioning`, it iterates through the string to find a possible split that gives three non-empty palindromic substrings. In the outer loop, it goes from 0 to `n - 3` and checks if the substring from 0 to `i` is palindrome. In the inner loop, it goes from `i + 1` to `n - 2` and checks if the substring from `i + 1` to `j` and from `j + 1` to `n-1` are both palindromes. If such a split is found, it returns true. If all possible splits are checked and no palindromic split is found, the function returns false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1578,
+  "title": "Minimum Time to Make Rope Colorful",
+  "slug": "minimum-time-to-make-rope-colorful",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Alice has n balloons arranged on a rope. You are given a 0-indexed string colors where colors[i] is the color of the ith balloon.\n\nAlice wants the rope to be colorful. She does not want two consecutive balloons to be of the same color, so she asks Bob for help. Bob can remove some balloons from the rope to make it colorful. You are given a 0-indexed integer array neededTime where neededTime[i] is the time (in seconds) that Bob needs to remove the ith balloon from the rope.\n\nReturn _the minimum time Bob needs to make the rope colorful_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minTime(colors: str, neededTime: List[int]) -> int:\n    res, prev = 0, -1\n    for i in range(len(colors) - 1):\n        if colors[i] == colors[i + 1]:\n            if prev == -1 or neededTime[i] < neededTime[prev]:\n                prev = i\n            if neededTime[i + 1] < neededTime[prev]:\n                prev = i + 1\n            res += neededTime[prev]\n            neededTime[prev] = 1000000\n            prev = -1\n    return res\n```\n    \n    The algorithm needs to find the minimum time to remove consecutive balloons with the same color. It iterates through the colors array, and for each pair of consecutive colors that are the same, it checks which of the two balloons takes the least time to remove, and removes it. Then, it updates the `neededTime` array by setting the removed balloon's needed time to a large number (1000000) and sums up the needed time for each removed balloon in the `res` variable. Finally, it returns the total time spent (the value of `res`).\n    ",
+    "javascript": "\n    ```javascript\nfunction minTime(colors, neededTime) {\n    let res = 0, prev = -1;\n    for (let i = 0; i < colors.length - 1; i++) {\n        if (colors[i] === colors[i + 1]) {\n            if (prev === -1 || neededTime[i] < neededTime[prev]) prev = i;\n            if (neededTime[i + 1] < neededTime[prev]) prev = i + 1;\n            res += neededTime[prev];\n            neededTime[prev] = 1000000;\n            prev = -1;\n        }\n    }\n    return res;\n}\n```\n    \n    The algorithm needs to find the minimum time to remove consecutive balloons with the same color. It iterates through the colors array, and for each pair of consecutive colors that are the same, it checks which of the two balloons takes the least time to remove, and removes it. Then, it updates the `neededTime` array by setting the removed balloon's needed time to a large number (1000000) and sums up the needed time for each removed balloon in the `res` variable. Finally, it returns the total time spent (the value of `res`).\n    ",
+    "java": "\n    ```java\npublic int minTime(String colors, int[] neededTime) {\n    int res = 0, prev = -1;\n    for (int i = 0; i < colors.length() - 1; i++) {\n        if (colors.charAt(i) == colors.charAt(i + 1)) {\n            if (prev == -1 || neededTime[i] < neededTime[prev]) prev = i;\n            if (neededTime[i + 1] < neededTime[prev]) prev = i + 1;\n            res += neededTime[prev];\n            neededTime[prev] = 1000000;\n            prev = -1;\n        }\n    }\n    return res;\n}\n```\n    \n    The algorithm needs to find the minimum time to remove consecutive balloons with the same color. It iterates through the colors array, and for each pair of consecutive colors that are the same, it checks which of the two balloons takes the least time to remove, and removes it. Then, it updates the `neededTime` array by setting the removed balloon's needed time to a large number (1000000) and sums up the needed time for each removed balloon in the `res` variable. Finally, it returns the total time spent (the value of `res`).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

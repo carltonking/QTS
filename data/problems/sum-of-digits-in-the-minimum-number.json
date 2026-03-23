@@ -1,0 +1,24 @@
+{
+  "id": 1085,
+  "title": "Sum of Digits in the Minimum Number",
+  "slug": "sum-of-digits-in-the-minimum-number",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer array nums, return 0 _if the sum of the digits of the minimum integer in_ nums _is odd, or_ 1 _otherwise_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sum_of_digits(nums):\n    min_val = min(nums)\n    digit_sum = sum(int(digit) for digit in str(min_val))\n    return 1 if digit_sum % 2 == 0 else 0\n```\n\n    \n    1. Find the minimal element (`minVal`) of given array `nums`.\n2. Calculate the sum of the digits of the minimal element (`digitSum`).\n3. Check if the sum of the digits is odd or even.\n   - If it's even, return 1.\n   - If it's odd, return 0.\n    ",
+    "javascript": "\n    ```javascript\nfunction sumOfDigits(nums) {\n    const minVal = Math.min(...nums);\n    let digitSum = 0;\n    let temp = minVal;\n    while (temp > 0) {\n        digitSum += temp % 10;\n        temp = Math.floor(temp / 10);\n    }\n    return digitSum % 2 === 0 ? 1 : 0;\n}\n```\n\n    \n    1. Find the minimal element (`minVal`) of given array `nums`.\n2. Calculate the sum of the digits of the minimal element (`digitSum`).\n3. Check if the sum of the digits is odd or even.\n   - If it's even, return 1.\n   - If it's odd, return 0.\n    ",
+    "java": "\n    ```java\npublic int sumOfDigits(int[] nums) {\n    int minVal = Arrays.stream(nums).min().getAsInt();\n    int digitSum = 0;\n    while (minVal > 0) {\n        digitSum += minVal % 10;\n        minVal /= 10;\n    }\n    return digitSum % 2 == 0 ? 1 : 0;\n}\n```\n\n    \n    1. Find the minimal element (`minVal`) of given array `nums`.\n2. Calculate the sum of the digits of the minimal element (`digitSum`).\n3. Check if the sum of the digits is odd or even.\n   - If it's even, return 1.\n   - If it's odd, return 0.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

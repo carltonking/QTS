@@ -1,0 +1,24 @@
+{
+  "id": 2283,
+  "title": "Check if Number Has Equal Digit Count and Digit Value",
+  "slug": "check-if-number-has-equal-digit-count-and-digit-value",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a 0-indexed string num of length n consisting of digits.\n\nReturn true _if for every index_ i _in the range_ 0 <= i < n_, the digit_ i _occurs_ num[i] _times in_ num_, otherwise return_ false.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef rearrange_array(nums):\n    nums.sort()\n    for i in range(1, len(nums) - 1, 2):\n        nums[i], nums[i + 1] = nums[i + 1], nums[i]\n    return nums\n```\n    \n    The algorithm starts by sorting the given integer array `nums` in ascending order. Then, iterates through the sorted array using a for-loop, swapping the numbers at the even index with the number immediately after it. The next step in the loop is done by incrementing the iterator by 2 (i.e., `i += 2`). The algorithm continues until the entire array is rearranged. Finally, the rearranged array is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction rearrangeArray(nums) {\n    nums.sort((a, b) => a - b);\n    for (let i = 1; i < nums.length - 1; i += 2) {\n        [nums[i], nums[i + 1]] = [nums[i + 1], nums[i]];\n    }\n    return nums;\n}\n```\n    \n    The algorithm starts by sorting the given integer array `nums` in ascending order. Then, iterates through the sorted array using a for-loop, swapping the numbers at the even index with the number immediately after it. The next step in the loop is done by incrementing the iterator by 2 (i.e., `i += 2`). The algorithm continues until the entire array is rearranged. Finally, the rearranged array is returned.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int[] rearrangeArray(int[] nums) {\n    Arrays.sort(nums);\n    for (int i = 1; i < nums.length - 1; i += 2) {\n        int temp = nums[i];\n        nums[i] = nums[i + 1];\n        nums[i + 1] = temp;\n    }\n    return nums;\n}\n```\n    \n    The algorithm starts by sorting the given integer array `nums` in ascending order. Then, iterates through the sorted array using a for-loop, swapping the numbers at the even index with the number immediately after it. The next step in the loop is done by incrementing the iterator by 2 (i.e., `i += 2`). The algorithm continues until the entire array is rearranged. Finally, the rearranged array is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

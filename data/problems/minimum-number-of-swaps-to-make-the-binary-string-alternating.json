@@ -1,0 +1,24 @@
+{
+  "id": 1864,
+  "title": "Minimum Number of Swaps to Make the Binary String Alternating",
+  "slug": "minimum-number-of-swaps-to-make-the-binary-string-alternating",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a binary string s, return _the minimum number of character swaps to make it alternating, or_ -1 _if it is impossible._\n\nThe string is called alternating if no two adjacent characters are equal. For example, the strings \"010 \" and \"1010 \" are alternating, while the string \"0100 \" is not.\n\nAny two characters may be swapped, even if they are not adjacent.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minSwaps(s):\n    zeroCount = s.count('0')\n    oneCount = len(s) - zeroCount\n\n    if abs(zeroCount - oneCount) > 1:\n        return -1\n\n    swaps1 = swaps2 = 0\n    for i, c in enumerate(s):\n        if i % 2 == 0 and c != '0':\n            swaps1 += 1\n        if i % 2 == 1 and c != '1':\n            swaps1 += 1\n    swaps1 = swaps1 // 2\n\n    for i, c in enumerate(s):\n        if i % 2 == 0 and c != '1':\n            swaps2 += 1\n        if i % 2 == 1 and c != '0':\n            swaps2 += 1\n    swaps2 = swaps2 // 2\n\n    if zeroCount == oneCount:\n        return min(swaps1, swaps2)\n    return swaps2 if zeroCount > oneCount else swaps1\n```\n    \n    1. Count the number of zeroes and ones in the string\n2. If the difference between the counts is greater than 1, it's impossible, return -1\n3. Calculate the number of swaps required for alternating starting with 0 and 1\n4. If the counts of 0's and 1's are equal, return the minimum of both swaps, else return the swaps for the smaller count.\n    ",
+    "javascript": "\n    ```javascript\nfunction minSwaps(s) {\n    let zeroCount = 0, oneCount = 0;\n    for (const c of s) {\n        (c === '0') ? zeroCount++ : oneCount++;\n    }\n\n    if (Math.abs(zeroCount - oneCount) > 1) {\n        return -1;\n    }\n\n    let swaps1 = 0, swaps2 = 0;\n    for (let i = 0; i < s.length; i++) {\n        if (i % 2 === 0 && s[i] !== '0') {\n            swaps1++;\n        }\n        if (i % 2 === 1 && s[i] !== '1') {\n            swaps1++;\n        }\n    }\n    swaps1 = swaps1 / 2;\n\n    for (let i = 0; i < s.length; i++) {\n        if (i % 2 === 0 && s[i] !== '1') {\n            swaps2++;\n        }\n        if (i % 2 === 1 && s[i] !== '0') {\n            swaps2++;\n        }\n    }\n    swaps2 = swaps2 / 2;\n\n    if (zeroCount === oneCount) {\n        return Math.min(swaps1, swaps2);\n    }\n    return (zeroCount > oneCount) ? swaps2 : swaps1;\n}\n```\n    \n    1. Count the number of zeroes and ones in the string\n2. If the difference between the counts is greater than 1, it's impossible, return -1\n3. Calculate the number of swaps required for alternating starting with 0 and 1\n4. If the counts of 0's and 1's are equal, return the minimum of both swaps, else return the swaps for the smaller count.\n    ",
+    "java": "\n    ```java\npublic int minSwaps(String s) {\n    int zeroCount = 0, oneCount = 0;\n    for (char c : s.toCharArray()) {\n        if (c == '0') {\n            zeroCount++;\n        } else {\n            oneCount++;\n        }\n    }\n\n    if (Math.abs(zeroCount - oneCount) > 1) {\n        return -1;\n    }\n\n    int swaps1 = 0, swaps2 = 0;\n    for (int i = 0; i < s.length(); i++) {\n        if (i % 2 == 0 && s.charAt(i) != '0') {\n            swaps1++;\n        }\n        if (i % 2 == 1 && s.charAt(i) != '1') {\n            swaps1++;\n        }\n    }\n    swaps1 = swaps1 / 2;\n\n    for (int i = 0; i < s.length(); i++) {\n        if (i % 2 == 0 && s.charAt(i) != '1') {\n            swaps2++;\n        }\n        if (i % 2 == 1 && s.charAt(i) != '0') {\n            swaps2++;\n        }\n    }\n    swaps2 = swaps2 / 2;\n\n    if (zeroCount == oneCount) {\n        return Math.min(swaps1, swaps2);\n    }\n    return (zeroCount > oneCount) ? swaps2 : swaps1;\n}\n```\n    \n    1. Count the number of zeroes and ones in the string\n2. If the difference between the counts is greater than 1, it's impossible, return -1\n3. Calculate the number of swaps required for alternating starting with 0 and 1\n4. If the counts of 0's and 1's are equal, return the minimum of both swaps, else return the swaps for the smaller count.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

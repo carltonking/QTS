@@ -1,0 +1,24 @@
+{
+  "id": 1025,
+  "title": "Divisor Game",
+  "slug": "divisor-game",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Alice and Bob take turns playing a game, with Alice starting first.\n\nInitially, there is a number n on the chalkboard. On each player's turn, that player makes a move consisting of:\n\n*   Choosing any x with 0 < x < n and n % x == 0.\n*   Replacing the number n on the chalkboard with n - x.\n\nAlso, if a player cannot make a move, they lose the game.\n\nReturn true _if and only if Alice wins the game, assuming both players play optimally_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef mincostTickets(days, costs):\n  travel_days = set(days)\n  dp = [0] * 366\n\n  for i in range(1, 366):\n    if i not in travel_days:\n      dp[i] = dp[i - 1]\n    else:\n      dp[i] = min(dp[i - 1] + costs[0],\n                  dp[max(0, i - 7)] + costs[1],\n                  dp[max(0, i - 30)] + costs[2])\n\n  return dp[365]\n```\n    \n    1. Create a set of travel days.\n2. Initialize a dynamic programming (dp) array of length 366, where dp[i] will represent the minimum cost to travel on the given days up to the i-th day of the year.\n3. Iterate through the days of the year (1 to 365).\n   a. If the current day is not a travel day, then there's no need to buy a pass for this day, therefore the minimum cost is the same as the previous day.\n   b. If the current day is a travel day, calculate the minimum cost to travel by considering the three options: buying a 1-day pass, buying a 7-day pass, or buying a 30-day pass.\n4. Return the minimum cost to travel on all given days (dp[365]).\n\nThis algorithm leverages dynamic programming to calculate the minimum cost of traveling on the given days. By iterating through each day and updating the dp array based on previous results, the final minimum cost is obtained efficiently.\n    ",
+    "javascript": "\n    ```javascript\nfunction mincostTickets(days, costs) {\n  const travelDays = new Set(days);\n  const dp = new Array(366).fill(0);\n\n  for (let i = 1; i <= 365; ++i) {\n    if (!travelDays.has(i)) {\n      dp[i] = dp[i - 1];\n    } else {\n      dp[i] = Math.min(dp[i - 1] + costs[0],\n                   Math.min(dp[Math.max(0, i - 7)] + costs[1],\n                            dp[Math.max(0, i - 30)] + costs[2]));\n    }\n  }\n\n  return dp[365];\n}\n```\n    \n    1. Create a set of travel days.\n2. Initialize a dynamic programming (dp) array of length 366, where dp[i] will represent the minimum cost to travel on the given days up to the i-th day of the year.\n3. Iterate through the days of the year (1 to 365).\n   a. If the current day is not a travel day, then there's no need to buy a pass for this day, therefore the minimum cost is the same as the previous day.\n   b. If the current day is a travel day, calculate the minimum cost to travel by considering the three options: buying a 1-day pass, buying a 7-day pass, or buying a 30-day pass.\n4. Return the minimum cost to travel on all given days (dp[365]).\n\nThis algorithm leverages dynamic programming to calculate the minimum cost of traveling on the given days. By iterating through each day and updating the dp array based on previous results, the final minimum cost is obtained efficiently.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic int mincostTickets(int[] days, int[] costs) {\n  Set<Integer> travelDays = new HashSet<>();\n  for (int day : days) travelDays.add(day);\n  int[] dp = new int[366];\n\n  for (int i = 1; i <= 365; ++i) {\n    if (!travelDays.contains(i)) {\n      dp[i] = dp[i - 1];\n    } else {\n      dp[i] = Math.min(dp[i - 1] + costs[0],\n                   Math.min(dp[Math.max(0, i - 7)] + costs[1],\n                            dp[Math.max(0, i - 30)] + costs[2]));\n    }\n  }\n\n  return dp[365];\n}\n```\n    \n    1. Create a set of travel days.\n2. Initialize a dynamic programming (dp) array of length 366, where dp[i] will represent the minimum cost to travel on the given days up to the i-th day of the year.\n3. Iterate through the days of the year (1 to 365).\n   a. If the current day is not a travel day, then there's no need to buy a pass for this day, therefore the minimum cost is the same as the previous day.\n   b. If the current day is a travel day, calculate the minimum cost to travel by considering the three options: buying a 1-day pass, buying a 7-day pass, or buying a 30-day pass.\n4. Return the minimum cost to travel on all given days (dp[365]).\n\nThis algorithm leverages dynamic programming to calculate the minimum cost of traveling on the given days. By iterating through each day and updating the dp array based on previous results, the final minimum cost is obtained efficiently.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

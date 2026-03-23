@@ -1,0 +1,24 @@
+{
+  "id": 368,
+  "title": "Largest Divisible Subset",
+  "slug": "largest-divisible-subset",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a set of distinct positive integers nums, return the largest subset answer such that every pair (answer[i], answer[j]) of elements in this subset satisfies:\n\n*   answer[i] % answer[j] == 0, or\n*   answer[j] % answer[i] == 0\n\nIf there are multiple solutions, return any of them.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef largestDivisibleSubset(nums):\n    nums.sort()\n    n = len(nums)\n    count = [1] * n\n    prev = [-1] * n\n\n    max_idx = 0\n    for i in range(1, n):\n        for j in range(i):\n            if nums[i] % nums[j] == 0 and count[i] < count[j] + 1:\n                count[i] = count[j] + 1\n                prev[i] = j\n        if count[max_idx] < count[i]:\n            max_idx = i\n\n    res = []\n    i = max_idx\n    while i >= 0:\n        res.append(nums[i])\n        i = prev[i]\n\n    return res\n```\n    \n    1. Sort the input array.\n2. Initialize two arrays: count and prev, both with the same length as the input array.\n   - count will store the length of the largest subsets ending at index i.\n   - prev stores the index of the previous element in the largest subset.\n3. Initialize max_idx to store the index of the maximum count.\n4. Loop through the sorted array, and for each element, compare it with its previous elements.\n   - If it is divisible by the previous element, update the count and prev arrays accordingly.\n5. After looping and updating the arrays, use max_idx to trace back the elements forming the largest subset.\n6. Return the largest subset.\n    ",
+    "javascript": "\n    ```javascript\nfunction largestDivisibleSubset(nums) {\n    nums.sort((a, b) => a - b);\n    const n = nums.length;\n    const count = new Array(n).fill(1);\n    const prev = new Array(n).fill(-1);\n    let max_idx = 0;\n\n    for (let i = 1; i < n; i++) {\n        for (let j = 0; j < i; j++) {\n            if (nums[i] % nums[j] === 0 && count[i] < count[j] + 1) {\n                count[i] = count[j] + 1;\n                prev[i] = j;\n            }\n        }\n        if (count[max_idx] < count[i]) {\n            max_idx = i;\n        }\n    }\n\n    const res = [];\n    for (let i = max_idx; i >= 0; i = prev[i]) {\n        res.push(nums[i]);\n    }\n\n    return res;\n}\n```\n    \n    1. Sort the input array.\n2. Initialize two arrays: count and prev, both with the same length as the input array.\n   - count will store the length of the largest subsets ending at index i.\n   - prev stores the index of the previous element in the largest subset.\n3. Initialize max_idx to store the index of the maximum count.\n4. Loop through the sorted array, and for each element, compare it with its previous elements.\n   - If it is divisible by the previous element, update the count and prev arrays accordingly.\n5. After looping and updating the arrays, use max_idx to trace back the elements forming the largest subset.\n6. Return the largest subset.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic List<Integer> largestDivisibleSubset(int[] nums) {\n    Arrays.sort(nums);\n    int n = nums.length;\n    int[] count = new int[n];\n    int[] prev = new int[n];\n    int max_idx = 0;\n    Arrays.fill(prev, -1);\n    Arrays.fill(count, 1);\n\n    for (int i = 1; i < n; i++) {\n        for (int j = 0; j < i; j++) {\n            if (nums[i] % nums[j] == 0 && count[i] < count[j] + 1) {\n                count[i] = count[j] + 1;\n                prev[i] = j;\n            }\n        }\n        if (count[max_idx] < count[i]) max_idx = i;\n    }\n\n    List<Integer> res = new ArrayList<>();\n    for (int i = max_idx; i >= 0; i = prev[i]) {\n        res.add(nums[i]);\n    }\n\n    return res;\n}\n```\n    \n    1. Sort the input array.\n2. Initialize two arrays: count and prev, both with the same length as the input array.\n   - count will store the length of the largest subsets ending at index i.\n   - prev stores the index of the previous element in the largest subset.\n3. Initialize max_idx to store the index of the maximum count.\n4. Loop through the sorted array, and for each element, compare it with its previous elements.\n   - If it is divisible by the previous element, update the count and prev arrays accordingly.\n5. After looping and updating the arrays, use max_idx to trace back the elements forming the largest subset.\n6. Return the largest subset.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

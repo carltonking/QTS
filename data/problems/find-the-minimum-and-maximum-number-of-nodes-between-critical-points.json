@@ -1,0 +1,24 @@
+{
+  "id": 2058,
+  "title": "Find the Minimum and Maximum Number of Nodes Between Critical Points",
+  "slug": "find-the-minimum-and-maximum-number-of-nodes-between-critical-points",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A critical point in a linked list is defined as either a local maxima or a local minima.\n\nA node is a local maxima if the current node has a value strictly greater than the previous node and the next node.\n\nA node is a local minima if the current node has a value strictly smaller than the previous node and the next node.\n\nNote that a node can only be a local maxima/minima if there exists both a previous node and a next node.\n\nGiven a linked list head, return _an array of length 2 containing_ [minDistance, maxDistance] _where_ minDistance _is the minimum distance between any two distinct critical points and_ maxDistance _is the maximum distance between any two distinct critical points. If there are fewer than two critical points, return_ [-1, -1].",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef get_concatenation(nums):\n    n = len(nums)\n    ans = [0] * (2 * n)\n    for i in range(n):\n        ans[i] = nums[i]\n        ans[i + n] = nums[i]\n    return ans\n```\n    \n    The algorithm iterates through the input array `nums` from index 0 to index n-1 (inclusive). For each value at index i (`nums[i]`), the algorithm stores the value in the corresponding places in the `ans` array at indices i and i+n. This process effectively concatenates the input array `nums` to itself, creating and returning the desired output array `ans`. Time complexity is O(n) where n is the length of the input array.\n    ",
+    "javascript": "\n    ```javascript\nfunction getConcatenation(nums) {\n    const n = nums.length;\n    const ans = new Array(2 * n);\n    for (let i = 0; i < n; i++) {\n        ans[i] = nums[i];\n        ans[i + n] = nums[i];\n    }\n    return ans;\n}\n```\n    \n    The algorithm iterates through the input array `nums` from index 0 to index n-1 (inclusive). For each value at index i (`nums[i]`), the algorithm stores the value in the corresponding places in the `ans` array at indices i and i+n. This process effectively concatenates the input array `nums` to itself, creating and returning the desired output array `ans`. Time complexity is O(n) where n is the length of the input array.\n    ",
+    "java": "\n    ```java\npublic int[] getConcatenation(int[] nums) {\n    int n = nums.length;\n    int[] ans = new int[2 * n];\n    for (int i = 0; i < n; i++) {\n        ans[i] = nums[i];\n        ans[i + n] = nums[i];\n    }\n    return ans;\n}\n```\n    \n    The algorithm iterates through the input array `nums` from index 0 to index n-1 (inclusive). For each value at index i (`nums[i]`), the algorithm stores the value in the corresponding places in the `ans` array at indices i and i+n. This process effectively concatenates the input array `nums` to itself, creating and returning the desired output array `ans`. Time complexity is O(n) where n is the length of the input array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

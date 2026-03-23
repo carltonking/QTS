@@ -1,0 +1,24 @@
+{
+  "id": 328,
+  "title": "Odd Even Linked List",
+  "slug": "odd-even-linked-list",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the head of a singly linked list, group all the nodes with odd indices together followed by the nodes with even indices, and return _the reordered list_.\n\nThe first node is considered odd, and the second node is even, and so on.\n\nNote that the relative order inside both the even and odd groups should remain as it was in the input.\n\nYou must solve the problem in O(1) extra space complexity and O(n) time complexity.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef odd_even_list(head: ListNode) -> ListNode:\n    if not head:\n        return None\n    odd, even, even_head = head, head.next, head.next\n    while even and even.next:\n        odd.next = even.next\n        odd = odd.next\n        even.next = odd.next\n        even = even.next\n    odd.next = even_head\n    return head\n```\n    \n    The algorithm works by maintaining two pointers: `odd` and `even`. Initially, `odd` is set to the head of the list (first node) and `even` is set to the second node. We also store the head of the even list in a separate variable `even_head`.\n\nWe start traversing the list using a while loop, checking if `even` and `even.next` are not null. Inside the loop, we update the `next` pointers of both the odd and even nodes as we go, effectively reordering the nodes.\n\nFinally, after the loop, we connect the end of the odd list with the head of the even list and return the head of the merged list.\n    ",
+    "javascript": "\n    ```javascript\nclass ListNode {\n    constructor(val, next = null) {\n        this.val = val;\n        this.next = next;\n    }\n}\n\nfunction oddEvenList(head) {\n    if (!head) return null;\n    let odd = head,\n        even = head.next,\n        evenHead = even;\n    while (even && even.next) {\n        odd.next = even.next;\n        odd = odd.next;\n        even.next = odd.next;\n        even = even.next;\n    }\n    odd.next = evenHead;\n    return head;\n}\n```\n\n    \n    The algorithm works by maintaining two pointers: `odd` and `even`. Initially, `odd` is set to the head of the list (first node) and `even` is set to the second node. We also store the head of the even list in a separate variable `even_head`.\n\nWe start traversing the list using a while loop, checking if `even` and `even.next` are not null. Inside the loop, we update the `next` pointers of both the odd and even nodes as we go, effectively reordering the nodes.\n\nFinally, after the loop, we connect the end of the odd list with the head of the even list and return the head of the merged list.\n    ",
+    "java": "\n    ```java\npublic class ListNode {\n    int val;\n    ListNode next;\n    ListNode() {}\n    ListNode(int val) { this.val = val; }\n    ListNode(int val, ListNode next) { this.val = val; this.next = next; }\n}\n\npublic ListNode oddEvenList(ListNode head) {\n    if (head == null) return null;\n    ListNode odd = head, even = head.next, evenHead = even;\n    while (even != null && even.next != null) {\n        odd.next = even.next;\n        odd = odd.next;\n        even.next = odd.next;\n        even = even.next;\n    }\n    odd.next = evenHead;\n    return head;\n}\n```\n    \n    The algorithm works by maintaining two pointers: `odd` and `even`. Initially, `odd` is set to the head of the list (first node) and `even` is set to the second node. We also store the head of the even list in a separate variable `even_head`.\n\nWe start traversing the list using a while loop, checking if `even` and `even.next` are not null. Inside the loop, we update the `next` pointers of both the odd and even nodes as we go, effectively reordering the nodes.\n\nFinally, after the loop, we connect the end of the odd list with the head of the even list and return the head of the merged list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

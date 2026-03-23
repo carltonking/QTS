@@ -1,0 +1,24 @@
+{
+  "id": 628,
+  "title": "Maximum Product of Three Numbers",
+  "slug": "maximum-product-of-three-numbers",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer array nums, _find three numbers whose product is maximum and return the maximum product_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maximumProduct(nums):\n    nums.sort()\n    n = len(nums)\n    return max(nums[0] * nums[1] * nums[-1], nums[-1] * nums[-2] * nums[-3])\n```\n    \n    First, we sort the input array in non-decreasing order. After sorting, we can determine the maximum product using two possible scenarios.\n\n1. The maximum product is formed by the product of the three highest numbers in the array. We can get this by multiplying the last three elements of the sorted array.\n\n2. The maximum product is formed by the product of the two lowest (most negative) numbers and the highest number in the array. We can get this by multiplying the first two elements and the last element of the sorted array.\n\nWe take the maximum of these two results to get the final answer.\n    ",
+    "javascript": "\n    ```javascript\nfunction maximumProduct(nums) {\n    nums.sort((a, b) => a - b);\n    const n = nums.length;\n    return Math.max(nums[0] * nums[1] * nums[n-1], nums[n-1] * nums[n-2] * nums[n-3]);\n}\n```\n    \n    First, we sort the input array in non-decreasing order. After sorting, we can determine the maximum product using two possible scenarios.\n\n1. The maximum product is formed by the product of the three highest numbers in the array. We can get this by multiplying the last three elements of the sorted array.\n\n2. The maximum product is formed by the product of the two lowest (most negative) numbers and the highest number in the array. We can get this by multiplying the first two elements and the last element of the sorted array.\n\nWe take the maximum of these two results to get the final answer.\n    ",
+    "java": "\n    ```java\npublic int maximumProduct(int[] nums) {\n    Arrays.sort(nums);\n    int n = nums.length;\n    return Math.max(nums[0] * nums[1] * nums[n-1], nums[n-1] * nums[n-2] * nums[n-3]);\n}\n```\n    \n    First, we sort the input array in non-decreasing order. After sorting, we can determine the maximum product using two possible scenarios.\n\n1. The maximum product is formed by the product of the three highest numbers in the array. We can get this by multiplying the last three elements of the sorted array.\n\n2. The maximum product is formed by the product of the two lowest (most negative) numbers and the highest number in the array. We can get this by multiplying the first two elements and the last element of the sorted array.\n\nWe take the maximum of these two results to get the final answer.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

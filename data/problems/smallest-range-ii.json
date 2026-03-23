@@ -1,0 +1,24 @@
+{
+  "id": 910,
+  "title": "Smallest Range II",
+  "slug": "smallest-range-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array nums and an integer k.\n\nFor each index i where 0 <= i < nums.length, change nums[i] to be either nums[i] + k or nums[i] - k.\n\nThe score of nums is the difference between the maximum and minimum elements in nums.\n\nReturn _the minimum score of_ nums _after changing the values at each index_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef nthMagicalNumber(n, a, b):\n    mod = 1000000007\n    lcm = a * b // gcd(a, b)\n    left, right = 1, 10**14\n    while left < right:\n        mid = left + (right - left) // 2\n        if (mid // a + mid // b - mid // lcm) < n:\n            left = mid + 1\n        else:\n            right = mid\n    return left % mod\n\ndef gcd(a, b):\n    return a if b == 0 else gcd(b, a % b)\n```\n    \n    We use binary search for this problem. We set the initial search interval which is between 1 and 10^14, where 10^14 is an arbitrary maximum value that can adjust based on the input constraints. We find the LCM (Least Common Multiple) of a and b to count their common divisors.\n\nIn each step of the binary search, we first get the middle value `mid` between `left` and `right`. Then, we check the condition, if the sum of (`mid` divided by a) and (`mid` divided by b) minus (`mid` divided by LCM) is less than `n`. If it is less than `n`, we set `left` equal to `mid` plus 1, else we set `right` equal to `mid`. We keep reducing the search interval until `left` becomes equal to or greater than `right`. Finally, we return the `left` value modulo 109 + 7.\n    ",
+    "javascript": "\n    ```javascript\nfunction nthMagicalNumber(n, a, b) {\n    const mod = 1e9 + 7;\n    const lcm = a * b / gcd(a, b);\n    let left = 1, right = 1e14, mid;\n    while(left < right) {\n        mid = left + Math.trunc((right - left) / 2);\n        if (Math.trunc(mid / a + mid / b - mid / lcm) < n) {\n            left = mid + 1;\n        } else {\n            right = mid;\n        }\n    }\n    return left % mod;\n}\n\nfunction gcd(a, b) {\n    return b === 0 ? a : gcd(b, a % b);\n}\n```\n    \n    We use binary search for this problem. We set the initial search interval which is between 1 and 10^14, where 10^14 is an arbitrary maximum value that can adjust based on the input constraints. We find the LCM (Least Common Multiple) of a and b to count their common divisors.\n\nIn each step of the binary search, we first get the middle value `mid` between `left` and `right`. Then, we check the condition, if the sum of (`mid` divided by a) and (`mid` divided by b) minus (`mid` divided by LCM) is less than `n`. If it is less than `n`, we set `left` equal to `mid` plus 1, else we set `right` equal to `mid`. We keep reducing the search interval until `left` becomes equal to or greater than `right`. Finally, we return the `left` value modulo 109 + 7.\n    ",
+    "java": "\n    ```java\npublic int nthMagicalNumber(int n, int a, int b) {\n    long mod = 1000000007;\n    long lcm = a * b / gcd(a, b);\n    long left = 1, right = (long)1e14, mid;\n    while(left < right) {\n        mid = left + (right - left) / 2;\n        if ((mid / a + mid / b - mid / lcm) < n) {\n            left = mid + 1;\n        } else {\n            right = mid;\n        }\n    }\n    return (int)(left % mod);\n}\n\npublic int gcd(int a, int b) {\n    return b == 0 ? a : gcd(b, a % b);\n}\n```\n    \n    We use binary search for this problem. We set the initial search interval which is between 1 and 10^14, where 10^14 is an arbitrary maximum value that can adjust based on the input constraints. We find the LCM (Least Common Multiple) of a and b to count their common divisors.\n\nIn each step of the binary search, we first get the middle value `mid` between `left` and `right`. Then, we check the condition, if the sum of (`mid` divided by a) and (`mid` divided by b) minus (`mid` divided by LCM) is less than `n`. If it is less than `n`, we set `left` equal to `mid` plus 1, else we set `right` equal to `mid`. We keep reducing the search interval until `left` becomes equal to or greater than `right`. Finally, we return the `left` value modulo 109 + 7.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

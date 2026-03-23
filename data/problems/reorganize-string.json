@@ -1,0 +1,24 @@
+{
+  "id": 767,
+  "title": "Reorganize String",
+  "slug": "reorganize-string",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string s, rearrange the characters of s so that any two adjacent characters are not the same.\n\nReturn _any possible rearrangement of_ s _or return_ \" \" _if not possible_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_prime(n: int) -> bool:\n    if n <= 1:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\ndef count_prime_set_bits(left: int, right: int) -> int:\n    count = 0\n    for i in range(left, right + 1):\n        bits = bin(i).count('1')\n        if is_prime(bits):\n            count += 1\n    return count\n```\n    \n    The algorithm consists of two functions: `is_prime` which checks if a given number is prime, and `count_prime_set_bits` which iterates through the range [left, right] and counts the numbers with a prime number of set bits in their binary representation.\n\nThe `is_prime` function checks if a number is prime by iterating through the range [2, sqrt(n)] and checking if n is divisible by any of these numbers. If it's divisible by any of these numbers, then it's not prime (returns false) otherwise, it's prime (returns true).\n\nIn the `count_prime_set_bits` function, we iterate through the range [left, right]. For each number, we count the number of set bits (1's) in its binary representation using an appropriate bit counting function/method for each language. We then check if the resulting count is prime using the `is_prime` function. If it is, we increment the counter.\n\nFinally, we return the counter after iterating through the range.\n    ",
+    "javascript": "\n    ```javascript\nfunction isPrime(n) {\n    if (n <= 1) return false;\n    for (let i = 2; i * i <= n; i++) {\n        if (n % i === 0) return false;\n    }\n    return true;\n}\n\nfunction countPrimeSetBits(left, right) {\n    let count = 0;\n    for (let i = left; i <= right; i++) {\n        let bits = i.toString(2).split('1').length - 1;\n        if (isPrime(bits)) count++;\n    }\n    return count;\n}\n```\n    \n    The algorithm consists of two functions: `is_prime` which checks if a given number is prime, and `count_prime_set_bits` which iterates through the range [left, right] and counts the numbers with a prime number of set bits in their binary representation.\n\nThe `is_prime` function checks if a number is prime by iterating through the range [2, sqrt(n)] and checking if n is divisible by any of these numbers. If it's divisible by any of these numbers, then it's not prime (returns false) otherwise, it's prime (returns true).\n\nIn the `count_prime_set_bits` function, we iterate through the range [left, right]. For each number, we count the number of set bits (1's) in its binary representation using an appropriate bit counting function/method for each language. We then check if the resulting count is prime using the `is_prime` function. If it is, we increment the counter.\n\nFinally, we return the counter after iterating through the range.\n    ",
+    "java": "\n    ```java\npublic boolean isPrime(int n) {\n    if (n <= 1) return false;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return false;\n    }\n    return true;\n}\n\npublic int countPrimeSetBits(int left, int right) {\n    int count = 0;\n    for (int i = left; i <= right; i++) {\n        int bits = Integer.bitCount(i);\n        if (isPrime(bits)) count++;\n    }\n    return count;\n}\n```\n    \n    The algorithm consists of two functions: `is_prime` which checks if a given number is prime, and `count_prime_set_bits` which iterates through the range [left, right] and counts the numbers with a prime number of set bits in their binary representation.\n\nThe `is_prime` function checks if a number is prime by iterating through the range [2, sqrt(n)] and checking if n is divisible by any of these numbers. If it's divisible by any of these numbers, then it's not prime (returns false) otherwise, it's prime (returns true).\n\nIn the `count_prime_set_bits` function, we iterate through the range [left, right]. For each number, we count the number of set bits (1's) in its binary representation using an appropriate bit counting function/method for each language. We then check if the resulting count is prime using the `is_prime` function. If it is, we increment the counter.\n\nFinally, we return the counter after iterating through the range.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

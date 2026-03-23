@@ -1,0 +1,24 @@
+{
+  "id": 653,
+  "title": "Two Sum IV - Input is a BST",
+  "slug": "two-sum-iv-input-is-a-bst",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given the root of a binary search tree and an integer k, return true _if there exist two elements in the BST such that their sum is equal to_ k, _or_ false _otherwise_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findTarget(root, k):\n    nodes = set()\n    return findNode(root, k, nodes)\n\ndef findNode(root, k, nodes):\n    if not root:\n        return False\n    if k - root.val in nodes:\n        return True\n    nodes.add(root.val)\n    return findNode(root.left, k, nodes) or findNode(root.right, k, nodes)\n```\n    \n    The function takes the root of a binary search tree and a target number `k`. The purpose is to see if there are two elements in the tree that sum up to `k`. We start by initializing a set called `nodes` to keep track of visited values. Then, we create a recursive helper function called `findNode`. \n\nIn the `findNode` function, the base case is when the current root is null, meaning we've reached the end of a branch, and we return false as no such pair of elements found yet. If `k - root.val` is found in our set, that means we've found a pair of elements that sum up to `k`, and we can return true. Otherwise, we proceed with the left and right children of the current root, passing the `nodes` set along to keep track of visited values. This is done using a depth-first search strategy. \n\nThe result is a boolean indicating whether or not two elements in the tree sum up to `k`.\n    ",
+    "javascript": "\n    ```javascript\nfunction findTarget(root, k) {\n    const nodes = new Set();\n    return findNode(root, k, nodes);\n}\n\nfunction findNode(root, k, nodes) {\n    if (!root) return false;\n    if (nodes.has(k - root.val)) return true;\n    nodes.add(root.val);\n    return findNode(root.left, k, nodes) || findNode(root.right, k, nodes);\n}\n```\n    \n    The function takes the root of a binary search tree and a target number `k`. The purpose is to see if there are two elements in the tree that sum up to `k`. We start by initializing a set called `nodes` to keep track of visited values. Then, we create a recursive helper function called `findNode`. \n\nIn the `findNode` function, the base case is when the current root is null, meaning we've reached the end of a branch, and we return false as no such pair of elements found yet. If `k - root.val` is found in our set, that means we've found a pair of elements that sum up to `k`, and we can return true. Otherwise, we proceed with the left and right children of the current root, passing the `nodes` set along to keep track of visited values. This is done using a depth-first search strategy. \n\nThe result is a boolean indicating whether or not two elements in the tree sum up to `k`.\n    ",
+    "java": "\n    ```java\npublic boolean findTarget(TreeNode root, int k) {\n    Set<Integer> nodes = new HashSet<>();\n    return findNode(root, k, nodes);\n}\n\npublic boolean findNode(TreeNode root, int k, Set<Integer> nodes) {\n    if (root == null) return false;\n    if (nodes.contains(k - root.val)) return true;\n    nodes.add(root.val);\n    return findNode(root.left, k, nodes) || findNode(root.right, k, nodes);\n}\n```\n    \n    The function takes the root of a binary search tree and a target number `k`. The purpose is to see if there are two elements in the tree that sum up to `k`. We start by initializing a set called `nodes` to keep track of visited values. Then, we create a recursive helper function called `findNode`. \n\nIn the `findNode` function, the base case is when the current root is null, meaning we've reached the end of a branch, and we return false as no such pair of elements found yet. If `k - root.val` is found in our set, that means we've found a pair of elements that sum up to `k`, and we can return true. Otherwise, we proceed with the left and right children of the current root, passing the `nodes` set along to keep track of visited values. This is done using a depth-first search strategy. \n\nThe result is a boolean indicating whether or not two elements in the tree sum up to `k`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

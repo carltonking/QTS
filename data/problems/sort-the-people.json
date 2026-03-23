@@ -1,0 +1,24 @@
+{
+  "id": 2418,
+  "title": "Sort the People",
+  "slug": "sort-the-people",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an array of strings names, and an array heights that consists of distinct positive integers. Both arrays are of length n.\n\nFor each index i, names[i] and heights[i] denote the name and height of the ith person.\n\nReturn names _sorted in descending order by the people's heights_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sort_names_by_height(names, heights):\n    name_height_pairs = sorted(zip(heights, names), reverse=True)\n    sorted_names = [pair[1] for pair in name_height_pairs]\n    return sorted_names\n```\n    \n    The algorithm starts by iterating through both input arrays (`names` and `heights`) to create an array ('name_height_pairs') of pairs (in other languages, objects with `height` and `name` properties) containing the heights and corresponding names.\n\nNext, the array of pairs is sorted in descending order (highest to lowest) based on the height values.\n\nFinally, a new array (`sorted_names`) is created containing only the names from the sorted pairs.\n\nThis process ensures that the names in the final array are sorted in descending order by the people's heights.\n    ",
+    "javascript": "\n    ```javascript\nfunction sortNamesByHeight(names, heights) {\n    let nameHeightPairs = [];\n\n    for(let i = 0; i < names.length; i++) {\n        nameHeightPairs.push({name: names[i], height: heights[i]});\n    }\n\n    nameHeightPairs.sort((a, b) => b.height - a.height);\n\n    let sortedNames = nameHeightPairs.map(pair => pair.name);\n\n    return sortedNames;\n}\n```\n    \n    The algorithm starts by iterating through both input arrays (`names` and `heights`) to create an array ('name_height_pairs') of pairs (in other languages, objects with `height` and `name` properties) containing the heights and corresponding names.\n\nNext, the array of pairs is sorted in descending order (highest to lowest) based on the height values.\n\nFinally, a new array (`sorted_names`) is created containing only the names from the sorted pairs.\n\nThis process ensures that the names in the final array are sorted in descending order by the people's heights.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Comparator;\nimport java.util.List;\n\npublic List<String> sortNamesByHeight(String[] names, int[] heights) {\n    List<Pair> nameHeightPairs = new ArrayList<>();\n\n    for(int i = 0; i < names.length; i++) {\n        nameHeightPairs.add(new Pair(heights[i], names[i]));\n    }\n\n    nameHeightPairs.sort((a, b) -> b.height - a.height);\n\n    List<String> sortedNames = new ArrayList<>();\n    for(Pair pair : nameHeightPairs) {\n        sortedNames.add(pair.name);\n    }\n\n    return sortedNames;\n}\n\nclass Pair {\n    int height;\n    String name;\n\n    public Pair(int height, String name) {\n        this.height = height;\n        this.name = name;\n    }\n}\n```\n    \n    The algorithm starts by iterating through both input arrays (`names` and `heights`) to create an array ('name_height_pairs') of pairs (in other languages, objects with `height` and `name` properties) containing the heights and corresponding names.\n\nNext, the array of pairs is sorted in descending order (highest to lowest) based on the height values.\n\nFinally, a new array (`sorted_names`) is created containing only the names from the sorted pairs.\n\nThis process ensures that the names in the final array are sorted in descending order by the people's heights.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

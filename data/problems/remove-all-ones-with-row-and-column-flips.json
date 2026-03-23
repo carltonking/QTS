@@ -1,0 +1,24 @@
+{
+  "id": 2128,
+  "title": "Remove All Ones With Row and Column Flips",
+  "slug": "remove-all-ones-with-row-and-column-flips",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an m x n binary matrix grid.\n\nIn one operation, you can choose any row or column and flip each value in that row or column (i.e., changing all 0's to 1's, and all 1's to 0's).\n\nReturn true _if it is possible to remove all_ 1_'s from_ grid using any number of operations or false otherwise.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef reverse_prefix(word: str, ch: str) -> str:\n    try:\n        index = word.index(ch)\n        return word[:index+1][::-1] + word[index+1:]\n    except ValueError:\n        return word\n```\n    \n    1. Find the index of the first occurrence of character `ch` in the given string `word`. If the character is not found, return the original string as it is.\n2. If the character exists, reverse the substring starting from index 0 to this found index (inclusive).\n3. Append the rest of the string after the reversed substring (if any).\n4. Return the modified string as the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction reversePrefix(word, ch) {\n    const index = word.indexOf(ch);\n    if (index !== -1) {\n        return word.slice(0, index + 1).split('').reverse().join('') + word.slice(index + 1);\n    }\n    return word;\n}\n```\n    \n    1. Find the index of the first occurrence of character `ch` in the given string `word`. If the character is not found, return the original string as it is.\n2. If the character exists, reverse the substring starting from index 0 to this found index (inclusive).\n3. Append the rest of the string after the reversed substring (if any).\n4. Return the modified string as the result.\n    ",
+    "java": "\n    ```java\npublic String reversePrefix(String word, char ch) {\n    int index = word.indexOf(ch);\n    if (index != -1) {\n        StringBuilder sb = new StringBuilder(word.substring(0, index + 1));\n        sb.reverse();\n        sb.append(word.substring(index + 1));\n        return sb.toString();\n    }\n    return word;\n}\n```\n    \n    1. Find the index of the first occurrence of character `ch` in the given string `word`. If the character is not found, return the original string as it is.\n2. If the character exists, reverse the substring starting from index 0 to this found index (inclusive).\n3. Append the rest of the string after the reversed substring (if any).\n4. Return the modified string as the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1950,
+  "title": "Maximum of Minimum Values in All Subarrays",
+  "slug": "maximum-of-minimum-values-in-all-subarrays",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array nums of size n. You are asked to solve n queries for each integer i in the range 0 <= i < n.\n\nTo solve the ith query:\n\n1.  Find the minimum value in each possible subarray of size i + 1 of the array nums.\n2.  Find the maximum of those minimum values. This maximum is the answer to the query.\n\nReturn _a 0-indexed integer array_ ans _of size_ n _such that_ ans[i] _is the answer to the_ ith _query_.\n\nA subarray is a contiguous sequence of elements in an array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sign_func(x):\n    if x > 0:\n        return 1\n    elif x < 0:\n        return -1\n    else:\n        return 0\n\ndef array_sign(nums):\n    product = 1\n    for x in nums:\n        product *= x\n    return sign_func(product)\n```\n    \n    1. The signFunc function is implemented to return 1 if the input number is positive, -1 if it's negative and 0 if it's zero.\n2. The arraySign function initializes the product variable with 1.\n3. It iterates the input array nums and multiplies each element with the current product.\n4. After the loop, the final product is passed to the signFunc function and its return value is returned.\n\nThe logic is the same in all the languages, only the syntax is different.\n    ",
+    "javascript": "\n    ```javascript\nfunction signFunc(x) {\n    if (x > 0) return 1;\n    if (x < 0) return -1;\n    return 0;\n}\n\nfunction arraySign(nums) {\n    let product = 1;\n    for (let x of nums) {\n        product *= x;\n    }\n    return signFunc(product);\n}\n```\n    \n    1. The signFunc function is implemented to return 1 if the input number is positive, -1 if it's negative and 0 if it's zero.\n2. The arraySign function initializes the product variable with 1.\n3. It iterates the input array nums and multiplies each element with the current product.\n4. After the loop, the final product is passed to the signFunc function and its return value is returned.\n\nThe logic is the same in all the languages, only the syntax is different.\n    ",
+    "java": "\n    ```java\npublic int signFunc(int x) {\n    if (x > 0) return 1;\n    if (x < 0) return -1;\n    return 0;\n}\n\npublic int arraySign(int[] nums) {\n    int product = 1;\n    for (int x : nums) {\n        product *= x;\n    }\n    return signFunc(product);\n}\n```\n    \n    1. The signFunc function is implemented to return 1 if the input number is positive, -1 if it's negative and 0 if it's zero.\n2. The arraySign function initializes the product variable with 1.\n3. It iterates the input array nums and multiplies each element with the current product.\n4. After the loop, the final product is passed to the signFunc function and its return value is returned.\n\nThe logic is the same in all the languages, only the syntax is different.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 88,
+  "title": "Merge Sorted Array",
+  "slug": "merge-sorted-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.\n\nMerge nums1 and nums2 into a single array sorted in non-decreasing order.\n\nThe final sorted array should not be returned by the function, but instead be _stored inside the array_ nums1. To accommodate this, nums1 has a length of m + n, where the first m elements denote the elements that should be merged, and the last n elements are set to 0 and should be ignored. nums2 has a length of n.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef merge(nums1, m, nums2, n):\n    i, j, k = m - 1, n - 1, m + n - 1\n    while i >= 0 and j >= 0:\n        if nums1[i] > nums2[j]:\n            nums1[k] = nums1[i]\n            i -= 1\n        else:\n            nums1[k] = nums2[j]\n            j -= 1\n        k -= 1\n    while j >= 0:\n        nums1[k] = nums2[j]\n        k -= 1\n        j -= 1\n```\n    \n    We use a two-pointer approach to merge nums1 and nums2 in reverse order. Initialize three pointers i, j, and k pointing to the last elements of nums1, nums2, and the merged nums1 array respectively.\n\nIterate in a while loop until i and j are both less than 0. Compare the values of nums1[i] and nums2[j]. If nums1[i] is greater, assign nums1[i] at position k in nums1, decrement i and k. Otherwise, assign nums2[j] at position k in nums1, and decrement j and k. This process continues for all elements in nums2.\n\nAfter the loop, if there are still elements remaining in nums2 (j >= 0), copy the remaining elements of nums2 to nums1. In this way, we merge nums1 and nums2 in non-decreasing order.\n    ",
+    "javascript": "\n    ```javascript\nfunction merge(nums1, m, nums2, n) {\n    let i = m - 1, j = n - 1, k = m + n - 1;\n    while (i >= 0 && j >= 0) {\n        if (nums1[i] > nums2[j])\n            nums1[k--] = nums1[i--];\n        else\n            nums1[k--] = nums2[j--];\n    }\n    while (j >= 0) {\n        nums1[k--] = nums2[j--];\n    }\n}\n```\n    \n    We use a two-pointer approach to merge nums1 and nums2 in reverse order. Initialize three pointers i, j, and k pointing to the last elements of nums1, nums2, and the merged nums1 array respectively.\n\nIterate in a while loop until i and j are both less than 0. Compare the values of nums1[i] and nums2[j]. If nums1[i] is greater, assign nums1[i] at position k in nums1, decrement i and k. Otherwise, assign nums2[j] at position k in nums1, and decrement j and k. This process continues for all elements in nums2.\n\nAfter the loop, if there are still elements remaining in nums2 (j >= 0), copy the remaining elements of nums2 to nums1. In this way, we merge nums1 and nums2 in non-decreasing order.\n    ",
+    "java": "\n    ```java\npublic void merge(int[] nums1, int m, int[] nums2, int n) {\n    int i = m - 1, j = n - 1, k = m + n - 1;\n    while (i >= 0 && j >= 0) {\n        if (nums1[i] > nums2[j])\n            nums1[k--] = nums1[i--];\n        else\n            nums1[k--] = nums2[j--];\n    }\n    while (j >= 0) {\n        nums1[k--] = nums2[j--];\n    }\n}\n```\n    \n    We use a two-pointer approach to merge nums1 and nums2 in reverse order. Initialize three pointers i, j, and k pointing to the last elements of nums1, nums2, and the merged nums1 array respectively.\n\nIterate in a while loop until i and j are both less than 0. Compare the values of nums1[i] and nums2[j]. If nums1[i] is greater, assign nums1[i] at position k in nums1, decrement i and k. Otherwise, assign nums2[j] at position k in nums1, and decrement j and k. This process continues for all elements in nums2.\n\nAfter the loop, if there are still elements remaining in nums2 (j >= 0), copy the remaining elements of nums2 to nums1. In this way, we merge nums1 and nums2 in non-decreasing order.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

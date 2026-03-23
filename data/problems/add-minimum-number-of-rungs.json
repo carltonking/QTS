@@ -1,0 +1,24 @@
+{
+  "id": 1936,
+  "title": "Add Minimum Number of Rungs",
+  "slug": "add-minimum-number-of-rungs",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a strictly increasing integer array rungs that represents the height of rungs on a ladder. You are currently on the floor at height 0, and you want to reach the last rung.\n\nYou are also given an integer dist. You can only climb to the next highest rung if the distance between where you are currently at (the floor or on a rung) and the next rung is at most dist. You are able to insert rungs at any positive integer height if a rung is not already there.\n\nReturn _the minimum number of rungs that must be added to the ladder in order for you to climb to the last rung._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef numberOfNiceDivisors(primeFactors):\n    MOD = 1000000007\n    result = 1\n    p = 2\n    while p <= primeFactors:\n        if primeFactors % p == 0:\n            count = 0\n            while primeFactors % p == 0:\n                primeFactors //= p\n                count += 1\n            result = (result * (count * 2 + 1)) % MOD\n        p += 1\n    return result\n```\n    \n    The algorithm iterates through all integers from 2 to the given positive integer `primeFactors`. For each of the divisors, it checks if it's divisible by the divisor. If it is, we increment the count and divide `primeFactors` by the divisor. We then update the result with the product of `(count * 2 + 1)` and the result modulo 10^9 + 7. Once the divisor loop is complete, we return the result as our answer.\n    ",
+    "javascript": "\n    ```javascript\nfunction numberOfNiceDivisors(primeFactors) {\n    const MOD = 1000000007;\n    let result = 1;\n    for (let p = 2; p <= primeFactors; ++p) {\n        if (primeFactors % p === 0) {\n            let count = 0;\n            while (primeFactors % p === 0) {\n                primeFactors /= p;\n                ++count;\n            }\n            result = (result * (count * 2 + 1)) % MOD;\n        }\n    }\n    return result;\n}\n```\n    \n    The algorithm iterates through all integers from 2 to the given positive integer `primeFactors`. For each of the divisors, it checks if it's divisible by the divisor. If it is, we increment the count and divide `primeFactors` by the divisor. We then update the result with the product of `(count * 2 + 1)` and the result modulo 10^9 + 7. Once the divisor loop is complete, we return the result as our answer.\n    ",
+    "java": "\n    ```java\npublic int numberOfNiceDivisors(int primeFactors) {\n    int MOD = 1000000007;\n    long result = 1;\n    for (int p = 2; p <= primeFactors; ++p) {\n        if (primeFactors % p == 0) {\n            int count = 0;\n            while (primeFactors % p == 0) {\n                primeFactors /= p;\n                ++count;\n            }\n            result = (result * (count * 2 + 1)) % MOD;\n        }\n    }\n    return (int) result;\n}\n```\n    \n    The algorithm iterates through all integers from 2 to the given positive integer `primeFactors`. For each of the divisors, it checks if it's divisible by the divisor. If it is, we increment the count and divide `primeFactors` by the divisor. We then update the result with the product of `(count * 2 + 1)` and the result modulo 10^9 + 7. Once the divisor loop is complete, we return the result as our answer.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

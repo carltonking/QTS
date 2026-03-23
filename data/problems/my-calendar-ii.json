@@ -1,0 +1,24 @@
+{
+  "id": 731,
+  "title": "My Calendar II",
+  "slug": "my-calendar-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are implementing a program to use as your calendar. We can add a new event if adding the event will not cause a triple booking.\n\nA triple booking happens when three events have some non-empty intersection (i.e., some moment is common to all the three events.).\n\nThe event can be represented as a pair of integers start and end that represents a booking on the half-open interval [start, end), the range of real numbers x such that start <= x < end.\n\nImplement the MyCalendarTwo class:\n\n*   MyCalendarTwo() Initializes the calendar object.\n*   boolean book(int start, int end) Returns true if the event can be added to the calendar successfully without causing a triple booking. Otherwise, return false and do not add the event to the calendar.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass MyCalendarTwo:\n    def __init__(self):\n        self.singles = []\n        self.doubles = []\n\n    def book(self, start: int, end: int) -> bool:\n        for d_start, d_end in self.doubles:\n            if start < d_end and end > d_start:\n                return False\n        for s_start, s_end in self.singles:\n            if start < s_end and end > s_start:\n                self.doubles.append((max(start, s_start), min(end, s_end)))\n        self.singles.append((start, end))\n        return True\n```\n\n    \n    The algorithm maintains two lists, one for single bookings and one for double bookings. When a new event is added, it first checks if the new event overlaps with any of the double events; if so, it returns false since it would cause a triple booking. Then, it checks if the new event overlaps with any single events, and if so, calculates the overlap and adds it to the list of double events. Finally, adds the new event to the list of single events and returns true. This way, we have an efficient way of avoiding triple bookings using simple iterations and checking.\n    ",
+    "javascript": "\n    ```javascript\nclass MyCalendarTwo {\n    constructor() {\n        this.singles = [];\n        this.doubles = [];\n    }\n\n    book(start, end) {\n        for (const [dStart, dEnd] of this.doubles) {\n            if (start < dEnd && end > dStart) return false;\n        }\n        for (const [sStart, sEnd] of this.singles) {\n            if (start < sEnd && end > sStart) {\n                this.doubles.push([Math.max(start, sStart), Math.min(end, sEnd)]);\n            }\n        }\n        this.singles.push([start, end]);\n        return true;\n    }\n}\n```\n\n    \n    The algorithm maintains two lists, one for single bookings and one for double bookings. When a new event is added, it first checks if the new event overlaps with any of the double events; if so, it returns false since it would cause a triple booking. Then, it checks if the new event overlaps with any single events, and if so, calculates the overlap and adds it to the list of double events. Finally, adds the new event to the list of single events and returns true. This way, we have an efficient way of avoiding triple bookings using simple iterations and checking.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\nclass MyCalendarTwo {\n    List<int[]> singles, doubles;\n\n    public MyCalendarTwo() {\n        singles = new ArrayList<>();\n        doubles = new ArrayList<>();\n    }\n\n    public boolean book(int start, int end) {\n        for (int[] d : doubles) {\n            if (start < d[1] && end > d[0]) return false;\n        }\n        for (int[] s : singles) {\n            if (start < s[1] && end > s[0]) {\n                doubles.add(new int[]{Math.max(start, s[0]), Math.min(end, s[1])});\n            }\n        }\n        singles.add(new int[]{start, end});\n        return true;\n    }\n}\n```\n\n    \n    The algorithm maintains two lists, one for single bookings and one for double bookings. When a new event is added, it first checks if the new event overlaps with any of the double events; if so, it returns false since it would cause a triple booking. Then, it checks if the new event overlaps with any single events, and if so, calculates the overlap and adds it to the list of double events. Finally, adds the new event to the list of single events and returns true. This way, we have an efficient way of avoiding triple bookings using simple iterations and checking.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

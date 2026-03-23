@@ -1,0 +1,24 @@
+{
+  "id": 1893,
+  "title": "Check if All the Integers in a Range Are Covered",
+  "slug": "check-if-all-the-integers-in-a-range-are-covered",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a 2D integer array ranges and two integers left and right. Each ranges[i] = [starti, endi] represents an inclusive interval between starti and endi.\n\nReturn true _if each integer in the inclusive range_ [left, right] _is covered by at least one interval in_ ranges. Return false _otherwise_.\n\nAn integer x is covered by an interval ranges[i] = [starti, endi] if starti <= x <= endi.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef isCovered(ranges: List[List[int]], left: int, right: int) -> bool:\n    for i in range(left, right + 1):\n        found = False\n        for _range in ranges:\n            if _range[0] <= i <= _range[1]:\n                found = True\n                break\n        if not found:\n            return False\n    return True\n```\n    \n    The algorithm iterates through the inclusive range `[left, right]` and checks if each integer is covered by at least one interval. To accomplish this, it iterates through each interval in `ranges` and checks if the current integer is within an interval in `ranges`. If the integer is within an interval, the loop breaks, and the next integer will be checked. If an integer is not within any of the intervals, the function returns `false`. Otherwise, the function returns `true` after all integers have been checked.\n    ",
+    "javascript": "\n    ```javascript\nfunction isCovered(ranges, left, right) {\n    for (let i = left; i <= right; i++) {\n        let found = false;\n        for (const range of ranges) {\n            if (i >= range[0] && i <= range[1]) {\n                found = true;\n                break;\n            }\n        }\n        if (!found) return false;\n    }\n    return true;\n}\n```\n    \n    The algorithm iterates through the inclusive range `[left, right]` and checks if each integer is covered by at least one interval. To accomplish this, it iterates through each interval in `ranges` and checks if the current integer is within an interval in `ranges`. If the integer is within an interval, the loop breaks, and the next integer will be checked. If an integer is not within any of the intervals, the function returns `false`. Otherwise, the function returns `true` after all integers have been checked.\n    ",
+    "java": "\n    ```java\npublic boolean isCovered(int[][] ranges, int left, int right) {\n    for (int i = left; i <= right; i++) {\n        boolean found = false;\n        for (int[] range : ranges) {\n            if (i >= range[0] && i <= range[1]) {\n                found = true;\n                break;\n            }\n        }\n        if (!found) return false;\n    }\n    return true;\n}\n```\n    \n    The algorithm iterates through the inclusive range `[left, right]` and checks if each integer is covered by at least one interval. To accomplish this, it iterates through each interval in `ranges` and checks if the current integer is within an interval in `ranges`. If the integer is within an interval, the loop breaks, and the next integer will be checked. If an integer is not within any of the intervals, the function returns `false`. Otherwise, the function returns `true` after all integers have been checked.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

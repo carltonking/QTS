@@ -1,0 +1,24 @@
+{
+  "id": 2536,
+  "title": "Increment Submatrices by One",
+  "slug": "increment-submatrices-by-one",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a positive integer n, indicating that we initially have an n x n 0-indexed integer matrix mat filled with zeroes.\n\nYou are also given a 2D integer array query. For each query[i] = [row1i, col1i, row2i, col2i], you should do the following operation:\n\n*   Add 1 to every element in the submatrix with the top left corner (row1i, col1i) and the bottom right corner (row2i, col2i). That is, add 1 to mat[x][y] for all row1i <= x <= row2i and col1i <= y <= col2i.\n\nReturn _the matrix_ mat _after performing every query._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef apply_queries(n, queries):\n    mat = [[0] * n for _ in range(n)]\n\n    for query in queries:\n        for i in range(query[0], query[2] + 1):\n            for j in range(query[1], query[3] + 1):\n                mat[i][j] += 1\n\n    return mat\n```\n    \n    The algorithm simply initializes an n x n matrix filled with zeroes, then iterates through the `queries` list, and for each query, updates the elements in the submatrix as described in the problem statement by incrementing them by 1 in a nested loop. After the updates are made to the matrix, it is returned as the output.\n    ",
+    "javascript": "\n    ```javascript\nfunction applyQueries(n, queries) {\n    const mat = new Array(n).fill(0).map(() => new Array(n).fill(0));\n\n    for (const query of queries) {\n        for (let i = query[0]; i <= query[2]; i++) {\n            for (let j = query[1]; j <= query[3]; j++) {\n                mat[i][j]++;\n            }\n        }\n    }\n\n    return mat;\n}\n```\n    \n    The algorithm simply initializes an n x n matrix filled with zeroes, then iterates through the `queries` list, and for each query, updates the elements in the submatrix as described in the problem statement by incrementing them by 1 in a nested loop. After the updates are made to the matrix, it is returned as the output.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic int[][] applyQueries(int n, int[][] queries) {\n    int[][] mat = new int[n][n];\n\n    for (int[] query : queries) {\n        for (int i = query[0]; i <= query[2]; i++) {\n            for (int j = query[1]; j <= query[3]; j++) {\n                mat[i][j]++;\n            }\n        }\n    }\n\n    return mat;\n}\n```\n    \n    The algorithm simply initializes an n x n matrix filled with zeroes, then iterates through the `queries` list, and for each query, updates the elements in the submatrix as described in the problem statement by incrementing them by 1 in a nested loop. After the updates are made to the matrix, it is returned as the output.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

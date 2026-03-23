@@ -1,0 +1,24 @@
+{
+  "id": 660,
+  "title": "Remove 9",
+  "slug": "remove-9",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Start from integer 1, remove any integer that contains 9 such as 9, 19, 29...\n\nNow, you will have a new integer sequence [1, 2, 3, 4, 5, 6, 7, 8, 10, 11, ...].\n\nGiven an integer n, return _the_ nth (1-indexed) integer in the new sequence.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef newInteger(n):\n    result = 0\n    base = 1\n    while n:\n        result += n % 9 * base\n        n //= 9\n        base *= 10\n    return result\n```\n    \n    The general idea is to use a radix-9 representation for the resulting numbers, ignoring the number 9. The input number `n` is first considered to be in base 9, so we divide it by 9 and calculate the remainder. The remainder corresponds to a digit position in the resulting number. The algorithm continually adds the product of the remainder and the current base (starting at 1), and updates the input number by dividing it by 9. This process continues until the input number is reduced to 0. At this point, the result contains the final number, which is then returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction newInteger(n) {\n    let result = 0, base = 1;\n    while (n > 0) {\n        result += (n % 9) * base;\n        n = Math.floor(n / 9);\n        base *= 10;\n    }\n    return result;\n}\n```\n    \n    The general idea is to use a radix-9 representation for the resulting numbers, ignoring the number 9. The input number `n` is first considered to be in base 9, so we divide it by 9 and calculate the remainder. The remainder corresponds to a digit position in the resulting number. The algorithm continually adds the product of the remainder and the current base (starting at 1), and updates the input number by dividing it by 9. This process continues until the input number is reduced to 0. At this point, the result contains the final number, which is then returned.\n    ",
+    "java": "\n    ```java\npublic int newInteger(int n) {\n    int result = 0, base = 1;\n    while (n>0) {\n        result += n % 9 * base;\n        n /= 9;\n        base *= 10;\n    }\n    return result;\n}\n```\n    \n    The general idea is to use a radix-9 representation for the resulting numbers, ignoring the number 9. The input number `n` is first considered to be in base 9, so we divide it by 9 and calculate the remainder. The remainder corresponds to a digit position in the resulting number. The algorithm continually adds the product of the remainder and the current base (starting at 1), and updates the input number by dividing it by 9. This process continues until the input number is reduced to 0. At this point, the result contains the final number, which is then returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

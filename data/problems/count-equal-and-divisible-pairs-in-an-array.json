@@ -1,0 +1,24 @@
+{
+  "id": 2176,
+  "title": "Count Equal and Divisible Pairs in an Array",
+  "slug": "count-equal-and-divisible-pairs-in-an-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a 0-indexed integer array nums of length n and an integer k, return _the number of pairs_ (i, j) _where_ 0 <= i < j < n, _such that_ nums[i] == nums[j] _and_ (i * j) _is divisible by_ k.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_months(n, relations, time):\n    order = [0] * n\n    for r in relations:\n        order[r[1] - 1] = max(order[r[1] - 1], r[0])\n    totalTime = 0\n    for i in range(n):\n        totalTime = max(totalTime, time[i] + order[i])\n    return totalTime\n```\n    \n    The algorithm starts by creating an array `order` to keep track of the maximum prerequisite course number for each course. For each relation, it updates the maximum prerequisite course number for the `nextCourse` with the `prevCourse`.\n\nNext, go through each course, and calculate the total time needed to finish that course by adding the course's time plus the time of its maximum prerequisite course. Track the maximum time across all courses as `totalTime`.\n\nFinally, return the maximum time `totalTime` as the minimum number of months needed to complete all courses.\n    ",
+    "javascript": "\n    ```javascript\nfunction minMonths(n, relations, time) {\n    const order = new Array(n).fill(0);\n    for (const r of relations)\n        order[r[1] - 1] = Math.max(order[r[1] - 1], r[0]);\n    let totalTime = 0;\n    for (let i = 0; i < n; i++)\n        totalTime = Math.max(totalTime, time[i] + order[i]);\n    return totalTime;\n}\n```\n    \n    The algorithm starts by creating an array `order` to keep track of the maximum prerequisite course number for each course. For each relation, it updates the maximum prerequisite course number for the `nextCourse` with the `prevCourse`.\n\nNext, go through each course, and calculate the total time needed to finish that course by adding the course's time plus the time of its maximum prerequisite course. Track the maximum time across all courses as `totalTime`.\n\nFinally, return the maximum time `totalTime` as the minimum number of months needed to complete all courses.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic int minMonths(int n, int[][] relations, int[] time) {\n    int[] order = new int[n];\n    for (int[] r : relations)\n        order[r[1] - 1] = Math.max(order[r[1] - 1], r[0]);\n    int totalTime = 0;\n    for (int i = 0; i < n; i++)\n        totalTime = Math.max(totalTime, time[i] + order[i]);\n    return totalTime;\n}\n```\n    \n    The algorithm starts by creating an array `order` to keep track of the maximum prerequisite course number for each course. For each relation, it updates the maximum prerequisite course number for the `nextCourse` with the `prevCourse`.\n\nNext, go through each course, and calculate the total time needed to finish that course by adding the course's time plus the time of its maximum prerequisite course. Track the maximum time across all courses as `totalTime`.\n\nFinally, return the maximum time `totalTime` as the minimum number of months needed to complete all courses.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 634,
+  "title": "Find the Derangement of An Array",
+  "slug": "find-the-derangement-of-an-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "In combinatorial mathematics, a derangement is a permutation of the elements of a set, such that no element appears in its original position.\n\nYou are given an integer n. There is originally an array consisting of n integers from 1 to n in ascending order, return _the number of derangements it can generate_. Since the answer may be huge, return it modulo 109 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findDerangement(n: int) -> int:\n    MOD = 10**9 + 7\n    dp = [0] * (n + 1)\n    dp[2] = 1\n    for i in range(3, n + 1):\n        dp[i] = (i - 1) * (dp[i - 1] + dp[i - 2]) % MOD\n    return dp[n]\n```\n    \n    To find the number of derangements, we can use the mathematical formula:\n\n    D(n) = (n - 1) * [D(n - 1) + D(n - 2)]\n\nHere, `D(n)` represents the number of derangements of length `n`. The base cases are D(1) = 0 and D(2) = 1.\n\nWe initialize a dynamic programming (DP) array `dp` where `dp[i]` represents the number of derangements of i elements.\n\nThe algorithm goes as follows:\n\n1. Start a for-loop (for C++/Java: i = 3, for Python/JavaScript: i = range(3, n + 1))\n2. For each value of i, calculate `dp[i] = (i - 1) * (dp[i - 1] + dp[i - 2]) % MOD`\n3. Return the value of `dp[n]` as the final answer.\n\nThe result will be the number of derangements with elements up to n.\n    ",
+    "javascript": "\n    ```javascript\nfunction findDerangement(n) {\n    const MOD = 1000000007;\n    let dp = new Array(n + 1).fill(0);\n    dp[2] = 1;\n    for (let i = 3; i <= n; ++i) {\n        dp[i] = (i - 1) * (dp[i - 1] + dp[i - 2]) % MOD;\n    }\n    return dp[n];\n}\n```\n    \n    To find the number of derangements, we can use the mathematical formula:\n\n    D(n) = (n - 1) * [D(n - 1) + D(n - 2)]\n\nHere, `D(n)` represents the number of derangements of length `n`. The base cases are D(1) = 0 and D(2) = 1.\n\nWe initialize a dynamic programming (DP) array `dp` where `dp[i]` represents the number of derangements of i elements.\n\nThe algorithm goes as follows:\n\n1. Start a for-loop (for C++/Java: i = 3, for Python/JavaScript: i = range(3, n + 1))\n2. For each value of i, calculate `dp[i] = (i - 1) * (dp[i - 1] + dp[i - 2]) % MOD`\n3. Return the value of `dp[n]` as the final answer.\n\nThe result will be the number of derangements with elements up to n.\n    ",
+    "java": "\n    ```java\npublic int findDerangement(int n) {\n    final int MOD = 1000000007;\n    long[] dp = new long[n + 1];\n    dp[2] = 1;\n    for (int i = 3; i <= n; ++i) {\n        dp[i] = (i - 1) * (dp[i - 1] + dp[i - 2]) % MOD;\n    }\n    return (int)dp[n];\n}\n```\n    \n    To find the number of derangements, we can use the mathematical formula:\n\n    D(n) = (n - 1) * [D(n - 1) + D(n - 2)]\n\nHere, `D(n)` represents the number of derangements of length `n`. The base cases are D(1) = 0 and D(2) = 1.\n\nWe initialize a dynamic programming (DP) array `dp` where `dp[i]` represents the number of derangements of i elements.\n\nThe algorithm goes as follows:\n\n1. Start a for-loop (for C++/Java: i = 3, for Python/JavaScript: i = range(3, n + 1))\n2. For each value of i, calculate `dp[i] = (i - 1) * (dp[i - 1] + dp[i - 2]) % MOD`\n3. Return the value of `dp[n]` as the final answer.\n\nThe result will be the number of derangements with elements up to n.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

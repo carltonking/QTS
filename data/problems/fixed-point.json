@@ -1,0 +1,24 @@
+{
+  "id": 1064,
+  "title": "Fixed Point",
+  "slug": "fixed-point",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array of distinct integers arr, where arr is sorted in ascending order, return the smallest index i that satisfies arr[i] == i. If there is no such index, return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef fixedPoint(arr: List[int]) -> int:\n    left, right = 0, len(arr) - 1\n    while left < right:\n        middle = left + (right - left) // 2\n        if arr[middle] < middle:\n            left = middle + 1\n        else:\n            right = middle\n    return left if arr[left] == left else -1\n```\n    \n    The algorithm uses binary search to efficiently find the fixed point in the sorted array of distinct integers. Since the array is sorted, when `arr[middle] < middle`, we can conclude that a fixed point (if exists) must be at `middle` or at the right side of `middle`, so we set `left` to `middle + 1`. In other cases, when `arr[middle] >= middle`, we set `right` to `middle`. This process continues until `left` < `right` is no longer true. \n\nAfter exiting the loop, we check if `arr[left]` is equal to `left`. If yes, we return `left` as the fixed point index, otherwise we return `-1`, as no fixed point exists.\n\nThe time complexity of the algorithm is O(log n), as we divide the search interval by half at each step.\n    ",
+    "javascript": "\n    ```javascript\nfunction fixedPoint(arr) {\n    let left = 0, right = arr.length - 1;\n    while (left < right) {\n        let middle = left + Math.floor((right - left) / 2);\n        if (arr[middle] < middle) {\n            left = middle + 1;\n        } else {\n            right = middle;\n        }\n    }\n    return arr[left] === left ? left : -1;\n}\n```\n    \n    The algorithm uses binary search to efficiently find the fixed point in the sorted array of distinct integers. Since the array is sorted, when `arr[middle] < middle`, we can conclude that a fixed point (if exists) must be at `middle` or at the right side of `middle`, so we set `left` to `middle + 1`. In other cases, when `arr[middle] >= middle`, we set `right` to `middle`. This process continues until `left` < `right` is no longer true. \n\nAfter exiting the loop, we check if `arr[left]` is equal to `left`. If yes, we return `left` as the fixed point index, otherwise we return `-1`, as no fixed point exists.\n\nThe time complexity of the algorithm is O(log n), as we divide the search interval by half at each step.\n    ",
+    "java": "\n    ```java\npublic int fixedPoint(int[] arr) {\n    int left = 0, right = arr.length - 1;\n    while (left < right) {\n        int middle = left + (right - left) / 2;\n        if (arr[middle] < middle) {\n            left = middle + 1;\n        } else {\n            right = middle;\n        }\n    }\n    return arr[left] == left ? left : -1;\n}\n```\n    \n    The algorithm uses binary search to efficiently find the fixed point in the sorted array of distinct integers. Since the array is sorted, when `arr[middle] < middle`, we can conclude that a fixed point (if exists) must be at `middle` or at the right side of `middle`, so we set `left` to `middle + 1`. In other cases, when `arr[middle] >= middle`, we set `right` to `middle`. This process continues until `left` < `right` is no longer true. \n\nAfter exiting the loop, we check if `arr[left]` is equal to `left`. If yes, we return `left` as the fixed point index, otherwise we return `-1`, as no fixed point exists.\n\nThe time complexity of the algorithm is O(log n), as we divide the search interval by half at each step.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

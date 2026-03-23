@@ -1,0 +1,24 @@
+{
+  "id": 2183,
+  "title": "Count Array Pairs Divisible by K",
+  "slug": "count-array-pairs-divisible-by-k",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given a 0-indexed integer array nums of length n and an integer k, return _the number of pairs_ (i, j) _such that:_\n\n*   0 <= i < j <= n - 1 _and_\n*   nums[i] * nums[j] _is divisible by_ k.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import deque\n\ndef minOperations(nums, start, goal):\n    seen = {start}\n    q = deque([start])\n    level = 0\n\n    while q:\n        size = len(q)\n        for i in range(size):\n            x = q.popleft()\n            if x == goal:\n                return level\n            for num in nums:\n                next_x = x + num\n                if 0 <= next_x <= 1000 and next_x not in seen:\n                    seen.add(next_x)\n                    q.append(next_x)\n        level += 1\n\n    return -1\n```\n    \n    The algorithm is a breadth-first search (BFS) based solution. We maintain a queue to keep track of the potential next values of `x`. Initially, `x=start`, and we perform the operation on it using each element of `nums`. We calculate the new value of `x` and add it to the queue if it meets the condition (0 <= next <= 1000) and is not in the seen set. We perform this process level-wise, incrementing the level after each iteration.\n\nIf we encounter the `goal` value during the BFS, we have reached the minimum number of operations needed, and we return the current level. If the BFS completes, and we have not found the `goal`, we return -1 as it is not possible to obtain `goal` through the provided operations.\n    ",
+    "javascript": "\n    ```javascript\nfunction minOperations(nums, start, goal) {\n    const seen = new Set([start]);\n    const queue = [start];\n    let level = 0;\n\n    while (queue.length > 0) {\n        const size = queue.length;\n        for (let i = 0; i < size; i++) {\n            const x = queue.shift();\n            if (x === goal) return level;\n            for (const num of nums) {\n                const next = x + num;\n                if (next >= 0 && next <= 1000 && !seen.has(next)) {\n                    seen.add(next);\n                    queue.push(next);\n                }\n            }\n        }\n        level++;\n    }\n    return -1;\n}\n```\n    \n    The algorithm is a breadth-first search (BFS) based solution. We maintain a queue to keep track of the potential next values of `x`. Initially, `x=start`, and we perform the operation on it using each element of `nums`. We calculate the new value of `x` and add it to the queue if it meets the condition (0 <= next <= 1000) and is not in the seen set. We perform this process level-wise, incrementing the level after each iteration.\n\nIf we encounter the `goal` value during the BFS, we have reached the minimum number of operations needed, and we return the current level. If the BFS completes, and we have not found the `goal`, we return -1 as it is not possible to obtain `goal` through the provided operations.\n    ",
+    "java": "\n    ```java\npublic int minOperations(int[] nums, int start, int goal) {\n    Set<Integer> seen = new HashSet<>();\n    Queue<Integer> queue = new LinkedList<>();\n    seen.add(start);\n    queue.offer(start);\n    int level = 0;\n\n    while (!queue.isEmpty()) {\n        int size = queue.size();\n        for (int i = 0; i < size; i++) {\n            int x = queue.poll();\n            if (x == goal) return level;\n            for (int num : nums) {\n                int next = x + num;\n                if (next >= 0 && next <= 1000 && !seen.contains(next)) {\n                    seen.add(next);\n                    queue.offer(next);\n                }\n            }\n        }\n        level++;\n    }\n    return -1;\n}\n```\n    \n    The algorithm is a breadth-first search (BFS) based solution. We maintain a queue to keep track of the potential next values of `x`. Initially, `x=start`, and we perform the operation on it using each element of `nums`. We calculate the new value of `x` and add it to the queue if it meets the condition (0 <= next <= 1000) and is not in the seen set. We perform this process level-wise, incrementing the level after each iteration.\n\nIf we encounter the `goal` value during the BFS, we have reached the minimum number of operations needed, and we return the current level. If the BFS completes, and we have not found the `goal`, we return -1 as it is not possible to obtain `goal` through the provided operations.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

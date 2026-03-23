@@ -1,0 +1,24 @@
+{
+  "id": 1319,
+  "title": "Number of Operations to Make Network Connected",
+  "slug": "number-of-operations-to-make-network-connected",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There are n computers numbered from 0 to n - 1 connected by ethernet cables connections forming a network where connections[i] = [ai, bi] represents a connection between computers ai and bi. Any computer can reach any other computer directly or indirectly through the network.\n\nYou are given an initial computer network connections. You can extract certain cables between two directly connected computers, and place them between any pair of disconnected computers to make them directly connected.\n\nReturn _the minimum number of times you need to do this in order to make all the computers connected_. If it is not possible, return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef unique_occurrences(arr):\n    counts = {}\n    for num in arr:\n        counts[num] = counts.get(num, 0) + 1\n    \n    unique_counts = set()\n    for count in counts.values():\n        if count in unique_counts:\n            return False\n        unique_counts.add(count)\n    \n    return True\n```\n    \n    The algorithm first computes a hashmap where the keys are the integers in the input array 'arr' and the values are their counts/occurrences. Then, it iterates through the hashmap's values (counts) and checks if the count already exists in a set (unique_counts). If the count exists, it returns false, as it means there is a duplicate number of occurrences. If the for-loop completes, return true, as there are no duplicate occurrences. This algorithm has a time complexity of O(n), where n is the length of the input array 'arr'.\n    ",
+    "javascript": "\n    ```javascript\nfunction uniqueOccurrences(arr) {\n    const counts = {};\n    for (let num of arr) {\n        counts[num] = (counts[num] || 0) + 1;\n    }\n\n    const uniqueCounts = new Set();\n    for (let count in counts) {\n        if (uniqueCounts.has(counts[count])) {\n            return false;\n        }\n        uniqueCounts.add(counts[count]);\n    }\n\n    return true;\n}\n```\n    \n    The algorithm first computes a hashmap where the keys are the integers in the input array 'arr' and the values are their counts/occurrences. Then, it iterates through the hashmap's values (counts) and checks if the count already exists in a set (unique_counts). If the count exists, it returns false, as it means there is a duplicate number of occurrences. If the for-loop completes, return true, as there are no duplicate occurrences. This algorithm has a time complexity of O(n), where n is the length of the input array 'arr'.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\nimport java.util.HashSet;\n\npublic boolean uniqueOccurrences(int[] arr) {\n    HashMap<Integer, Integer> counts = new HashMap<>();\n    for (int num : arr) {\n        counts.put(num, counts.getOrDefault(num, 0) + 1);\n    }\n    \n    HashSet<Integer> uniqueCounts = new HashSet<>();\n    for (int count : counts.values()) {\n        if (uniqueCounts.contains(count)) {\n            return false;\n        }\n        uniqueCounts.add(count);\n    }\n    \n    return true;\n}\n```\n    \n    The algorithm first computes a hashmap where the keys are the integers in the input array 'arr' and the values are their counts/occurrences. Then, it iterates through the hashmap's values (counts) and checks if the count already exists in a set (unique_counts). If the count exists, it returns false, as it means there is a duplicate number of occurrences. If the for-loop completes, return true, as there are no duplicate occurrences. This algorithm has a time complexity of O(n), where n is the length of the input array 'arr'.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

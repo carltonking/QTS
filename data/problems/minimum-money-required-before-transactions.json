@@ -1,0 +1,24 @@
+{
+  "id": 2412,
+  "title": "Minimum Money Required Before Transactions",
+  "slug": "minimum-money-required-before-transactions",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a 0-indexed 2D integer array transactions, where transactions[i] = [costi, cashbacki].\n\nThe array describes transactions, where each transaction must be completed exactly once in some order. At any given moment, you have a certain amount of money. In order to complete transaction i, money >= costi must hold true. After performing a transaction, money becomes money - costi + cashbacki.\n\nReturn _the minimum amount of_ money _required before any transaction so that all of the transactions can be completed regardless of the order of the transactions._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_money(transactions):\n    min_money_needed = 0\n    for transaction in transactions:\n        min_money_needed = max(min_money_needed, transaction[0] - transaction[1])\n    return min_money_needed\n```\n    \n    The algorithm is quite straightforward. It finds the minimum amount of money required by iterating through the transactions and calculating the difference between the cost and cashback for each transaction. To find the minimum amount of money needed, we track the maximum difference between the cost and cashback. At the end of the loop, the maximum difference is returned as the minimum amount of money required to perform all transactions in any order.\n    ",
+    "javascript": "\n    ```javascript\nfunction min_money(transactions) {\n    let min_money_needed = 0;\n    for (const transaction of transactions) {\n        min_money_needed = Math.max(min_money_needed, transaction[0] - transaction[1]);\n    }\n    return min_money_needed;\n}\n```\n    \n    The algorithm is quite straightforward. It finds the minimum amount of money required by iterating through the transactions and calculating the difference between the cost and cashback for each transaction. To find the minimum amount of money needed, we track the maximum difference between the cost and cashback. At the end of the loop, the maximum difference is returned as the minimum amount of money required to perform all transactions in any order.\n    ",
+    "java": "\n    ```java\npublic int min_money(int[][] transactions) {\n    int min_money_needed = 0;\n    for (int[] transaction : transactions) {\n        min_money_needed = Math.max(min_money_needed, transaction[0] - transaction[1]);\n    }\n    return min_money_needed;\n}\n```\n    \n    The algorithm is quite straightforward. It finds the minimum amount of money required by iterating through the transactions and calculating the difference between the cost and cashback for each transaction. To find the minimum amount of money needed, we track the maximum difference between the cost and cashback. At the end of the loop, the maximum difference is returned as the minimum amount of money required to perform all transactions in any order.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

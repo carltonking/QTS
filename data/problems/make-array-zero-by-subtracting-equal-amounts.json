@@ -1,0 +1,24 @@
+{
+  "id": 2357,
+  "title": "Make Array Zero by Subtracting Equal Amounts",
+  "slug": "make-array-zero-by-subtracting-equal-amounts",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a non-negative integer array nums. In one operation, you must:\n\n*   Choose a positive integer x such that x is less than or equal to the smallest non-zero element in nums.\n*   Subtract x from every positive element in nums.\n\nReturn _the minimum number of operations to make every element in_ nums _equal to_ 0.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minOperations(nums):\n    count = 0\n    nums.sort()\n    i = 0\n\n    while i < len(nums):\n        if nums[i] > 0:\n            target = nums[i]\n            while i < len(nums) and nums[i] == target:\n                i += 1\n            count += 1\n        else:\n            i += 1\n\n    return count\n```\n    \n    1. Sort the given array in non-descending order.\n2. Initialize a variable count to store the number of operations.\n3. Iterate through the sorted array.\n   - If the current element is positive, find the count of elements with the same value.\n   - Add this count to the overall count and update i to skip these elements.\n   - If the current element is not positive, just move to the next element.\n4. Return the overall count (number of operations).\n\nThis algorithm works because after sorting the array, we traverse it and count distinct positive numbers. Each distinct positive number corresponds to a unique operation that reduces it to zero while also reducing any larger numbers in the array. Since the operation only affects positive numbers, we can skip the zero elements. By the end of the algorithm, we have counted the minimum number of operations required to make all elements equal to zero.\n    ",
+    "javascript": "\n    ```javascript\nfunction minOperations(nums) {\n    let count = 0;\n    nums.sort((a, b) => a - b);\n\n    for (let i = 0; i < nums.length; i++) {\n        if (nums[i] > 0) {\n            const target = nums[i];\n            while (i < nums.length && nums[i] === target) {\n                i++;\n            }\n            count++;\n        }\n    }\n\n    return count;\n}\n```\n    \n    1. Sort the given array in non-descending order.\n2. Initialize a variable count to store the number of operations.\n3. Iterate through the sorted array.\n   - If the current element is positive, find the count of elements with the same value.\n   - Add this count to the overall count and update i to skip these elements.\n   - If the current element is not positive, just move to the next element.\n4. Return the overall count (number of operations).\n\nThis algorithm works because after sorting the array, we traverse it and count distinct positive numbers. Each distinct positive number corresponds to a unique operation that reduces it to zero while also reducing any larger numbers in the array. Since the operation only affects positive numbers, we can skip the zero elements. By the end of the algorithm, we have counted the minimum number of operations required to make all elements equal to zero.\n    ",
+    "java": "\n    ```java\npublic int minOperations(int[] nums) {\n    int count = 0;\n    Arrays.sort(nums);\n\n    for (int i = 0; i < nums.length; i++) {\n        if (nums[i] > 0) {\n            count += nums.length - (Arrays.binarySearch(nums, i, nums.length, nums[i] + 1) < 0 ? -Arrays.binarySearch(nums, i, nums.length, nums[i] + 1) - 1 : Arrays.binarySearch(nums, i, nums.length, nums[i] + 1));\n            i = (Arrays.binarySearch(nums, nums[i] + 1) < 0 ? -Arrays.binarySearch(nums, nums[i] + 1) - 2 : Arrays.binarySearch(nums, nums[i] + 1)) - 1;\n        }\n    }\n\n    return count;\n}\n```\n    \n    1. Sort the given array in non-descending order.\n2. Initialize a variable count to store the number of operations.\n3. Iterate through the sorted array.\n   - If the current element is positive, find the count of elements with the same value.\n   - Add this count to the overall count and update i to skip these elements.\n   - If the current element is not positive, just move to the next element.\n4. Return the overall count (number of operations).\n\nThis algorithm works because after sorting the array, we traverse it and count distinct positive numbers. Each distinct positive number corresponds to a unique operation that reduces it to zero while also reducing any larger numbers in the array. Since the operation only affects positive numbers, we can skip the zero elements. By the end of the algorithm, we have counted the minimum number of operations required to make all elements equal to zero.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

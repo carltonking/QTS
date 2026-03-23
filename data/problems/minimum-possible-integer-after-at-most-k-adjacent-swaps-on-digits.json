@@ -1,0 +1,24 @@
+{
+  "id": 1505,
+  "title": "Minimum Possible Integer After at Most K Adjacent Swaps On Digits",
+  "slug": "minimum-possible-integer-after-at-most-k-adjacent-swaps-on-digits",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a string num representing the digits of a very large integer and an integer k. You are allowed to swap any two adjacent digits of the integer at most k times.\n\nReturn _the minimum integer you can obtain also as a string_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef createTargetArray(nums, index):\n    target = []\n    for i in range(len(nums)):\n        target.insert(index[i], nums[i])\n    return target\n```\n    \n    The algorithm first initializes an empty target array (or ArrayList in Java). Then, it iterates through the nums and index arrays. At each iteration, it inserts the current number from the nums array at the position specified by the current value in the index array. This is done using the insert function in C++ and Python, the splice function in JavaScript, and the add function in Java. At the end, the target array is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction createTargetArray(nums, index) {\n    let target = [];\n    for (let i = 0; i < nums.length; ++i) {\n        target.splice(index[i], 0, nums[i]);\n    }\n    return target;\n}\n```\n    \n    The algorithm first initializes an empty target array (or ArrayList in Java). Then, it iterates through the nums and index arrays. At each iteration, it inserts the current number from the nums array at the position specified by the current value in the index array. This is done using the insert function in C++ and Python, the splice function in JavaScript, and the add function in Java. At the end, the target array is returned.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\n\npublic int[] createTargetArray(int[] nums, int[] index) {\n    ArrayList<Integer> target = new ArrayList<>();\n    for (int i = 0; i < nums.length; ++i) {\n        target.add(index[i], nums[i]);\n    }\n    int[] result = new int[target.size()];\n    for (int i = 0; i < target.size(); ++i) {\n        result[i] = target.get(i);\n    }\n    return result;\n}\n```\n    \n    The algorithm first initializes an empty target array (or ArrayList in Java). Then, it iterates through the nums and index arrays. At each iteration, it inserts the current number from the nums array at the position specified by the current value in the index array. This is done using the insert function in C++ and Python, the splice function in JavaScript, and the add function in Java. At the end, the target array is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

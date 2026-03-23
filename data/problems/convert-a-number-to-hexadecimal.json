@@ -1,0 +1,24 @@
+{
+  "id": 405,
+  "title": "Convert a Number to Hexadecimal",
+  "slug": "convert-a-number-to-hexadecimal",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer num, return _a string representing its hexadecimal representation_. For negative integers, [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) method is used.\n\nAll the letters in the answer string should be lowercase characters, and there should not be any leading zeros in the answer except for the zero itself.\n\nNote: You are not allowed to use any built-in library method to directly solve this problem.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef to_hex(num: int) -> str:\n    if num == 0:\n        return '0'\n    hex_str = ''\n    hex_digits = '0123456789abcdef'\n    n = num & 0xffffffff\n    while n:\n        hex_str = hex_digits[n & 0xf] + hex_str\n        n >>= 4\n    return hex_str\n```\n    \n    The algorithm for converting an integer to its hexadecimal representation follows these steps:\n\n1. Check if the input number is 0, if so, return the string \"0\".\n2. Initialize an empty string (hex) to store the hexadecimal representation of the integer.\n3. Initialize an array or string (hexDigits) containing the characters representing the hexadecimal digits from 0 to 15 (0-9 and a-f).\n4. If the input integer is negative, convert it to its unsigned 32-bit integer representation.\n5. While the integer is not 0, extract the last 4 bits using a bitwise AND operation with the value `0xf` (15 in decimal) and use the result as an index to get the corresponding hexadecimal character from hexDigits. Append this character to the left side of the hex string.\n6. Shift the integer right by 4 bits (n >>= 4) to move on to the next 4 bits.\n7. Repeat steps 5 and 6 until the integer is 0.\n8. Return the hex string as the final hexadecimal representation of the input integer.\n    ",
+    "javascript": "\n    ```javascript\nfunction toHex(num) {\n  if (num === 0) return '0';\n  const hexDigits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];\n  let hex = '';\n  let n = num >>> 0;\n  while (n) {\n    hex = hexDigits[n & 0xf] + hex;\n    n >>>= 4;\n  }\n  return hex;\n}\n```\n    \n    The algorithm for converting an integer to its hexadecimal representation follows these steps:\n\n1. Check if the input number is 0, if so, return the string \"0\".\n2. Initialize an empty string (hex) to store the hexadecimal representation of the integer.\n3. Initialize an array or string (hexDigits) containing the characters representing the hexadecimal digits from 0 to 15 (0-9 and a-f).\n4. If the input integer is negative, convert it to its unsigned 32-bit integer representation.\n5. While the integer is not 0, extract the last 4 bits using a bitwise AND operation with the value `0xf` (15 in decimal) and use the result as an index to get the corresponding hexadecimal character from hexDigits. Append this character to the left side of the hex string.\n6. Shift the integer right by 4 bits (n >>= 4) to move on to the next 4 bits.\n7. Repeat steps 5 and 6 until the integer is 0.\n8. Return the hex string as the final hexadecimal representation of the input integer.\n    ",
+    "java": "\n    ```java\npublic String toHex(int num) {\n    if (num == 0) return \"0\";\n    String hex = \"\";\n    char[] hexDigits = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};\n    for (int i = 0; num != 0 && i < 8; ++i) {\n        hex = hexDigits[num & 0xf] + hex;\n        num >>>= 4;\n    }\n    return hex;\n}\n```\n    \n    The algorithm for converting an integer to its hexadecimal representation follows these steps:\n\n1. Check if the input number is 0, if so, return the string \"0\".\n2. Initialize an empty string (hex) to store the hexadecimal representation of the integer.\n3. Initialize an array or string (hexDigits) containing the characters representing the hexadecimal digits from 0 to 15 (0-9 and a-f).\n4. If the input integer is negative, convert it to its unsigned 32-bit integer representation.\n5. While the integer is not 0, extract the last 4 bits using a bitwise AND operation with the value `0xf` (15 in decimal) and use the result as an index to get the corresponding hexadecimal character from hexDigits. Append this character to the left side of the hex string.\n6. Shift the integer right by 4 bits (n >>= 4) to move on to the next 4 bits.\n7. Repeat steps 5 and 6 until the integer is 0.\n8. Return the hex string as the final hexadecimal representation of the input integer.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

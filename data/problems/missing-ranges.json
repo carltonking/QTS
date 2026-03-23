@@ -1,0 +1,24 @@
+{
+  "id": 163,
+  "title": "Missing Ranges",
+  "slug": "missing-ranges",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an inclusive range [lower, upper] and a sorted unique integer array nums, where all elements are in the inclusive range.\n\nA number x is considered missing if x is in the range [lower, upper] and x is not in nums.\n\nReturn _the smallest sorted list of ranges that cover every missing number exactly_. That is, no element of nums is in any of the ranges, and each missing number is in one of the ranges.\n\nEach range [a,b] in the list should be output as:\n\n*   \"a->b \" if a != b\n*   \"a \" if a == b",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom typing import List\n\ndef find_missing_ranges(nums: List[int], lower: int, upper: int) -> List[str]:\n    result = []\n    prev = lower - 1\n\n    for i, num in enumerate(nums + [upper + 1]):\n        if num - prev >= 2:\n            result.append(f\"{prev + 1}\" + (\"\" if num - prev == 2 else \"->\") + f\"{num - 1}\")\n        prev = num\n\n    return result\n```\n    \n    The algorithm iterates over the nums array and keeps track of the previous number (initialized to lower - 1) keeping in mind that nums is a sorted unique array of elements in the range [lower, upper]. For each number, it checks the difference between the current number and the previous number. If the difference is greater or equal to 2, it adds a range to the result vector. Also, it checks whether the range length is equal to 2, in which case it will only print the starting value of the range, without the \"->\". At the end of the loop, it returns the list of ranges covering the missing numbers in the input range.\n    ",
+    "javascript": "\n    ```javascript\nfunction findMissingRanges(nums, lower, upper) {\n    let result = [];\n    let prev = lower - 1;\n\n    for (let i = 0; i <= nums.length; ++i) {\n        let cur = (i === nums.length) ? upper + 1 : nums[i];\n        if (cur - prev >= 2) {\n            result.push((prev + 1) + (cur - prev === 2 ? \"\" : \"->\") + (cur - 1));\n        }\n        prev = cur;\n    }\n\n    return result;\n}\n```\n    \n    The algorithm iterates over the nums array and keeps track of the previous number (initialized to lower - 1) keeping in mind that nums is a sorted unique array of elements in the range [lower, upper]. For each number, it checks the difference between the current number and the previous number. If the difference is greater or equal to 2, it adds a range to the result vector. Also, it checks whether the range length is equal to 2, in which case it will only print the starting value of the range, without the \"->\". At the end of the loop, it returns the list of ranges covering the missing numbers in the input range.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<String> findMissingRanges(int[] nums, int lower, int upper) {\n    List<String> result = new ArrayList<>();\n    long prev = (long) lower - 1;\n\n    for (int i = 0; i <= nums.length; ++i) {\n        long cur = (i == nums.length) ? (long) upper + 1 : nums[i];\n        if (cur - prev >= 2) {\n            result.add(Long.toString(prev + 1) + (cur - prev == 2 ? \"\" : \"->\") + Long.toString(cur - 1));\n        }\n        prev = cur;\n    }\n\n    return result;\n}\n```\n    \n    The algorithm iterates over the nums array and keeps track of the previous number (initialized to lower - 1) keeping in mind that nums is a sorted unique array of elements in the range [lower, upper]. For each number, it checks the difference between the current number and the previous number. If the difference is greater or equal to 2, it adds a range to the result vector. Also, it checks whether the range length is equal to 2, in which case it will only print the starting value of the range, without the \"->\". At the end of the loop, it returns the list of ranges covering the missing numbers in the input range.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

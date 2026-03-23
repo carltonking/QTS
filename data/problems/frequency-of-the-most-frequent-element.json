@@ -1,0 +1,24 @@
+{
+  "id": 1838,
+  "title": "Frequency of the Most Frequent Element",
+  "slug": "frequency-of-the-most-frequent-element",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "The frequency of an element is the number of times it occurs in an array.\n\nYou are given an integer array nums and an integer k. In one operation, you can choose an index of nums and increment the element at that index by 1.\n\nReturn _the maximum possible frequency of an element after performing at most_ k _operations_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxFrequency(nums: List[int], k: int) -> int:\n    nums.sort()\n    n, i, s, max_freq = len(nums), 0, 0, 0\n\n    for j in range(n):\n        s += nums[j]\n        while s + k < nums[j] * (j - i + 1):\n            s -= nums[i]\n            i += 1\n        max_freq = max(max_freq, j - i + 1)\n\n    return max_freq\n```\n    \n    1. Sort the input array `nums`.\n2. Initialize variables `n` as the length of `nums`, `i` as 0, `sum` as 0, and `max_freq` as 0.\n3. Iterate through the sorted array with index `j`.\n   a. Add each element to the `sum`.\n   b. In a while loop, if `sum + k` is less than `nums[j] * (j - i + 1)`, subtract `nums[i]` from `sum`, and increment `i`.\n   c. Update the `max_freq` by taking the maximum of the current `max_freq` and `j - i + 1`.\n4. Return the final `max_freq` as the answer.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxFrequency(nums, k) {\n    nums.sort((a, b) => a - b);\n    let n = nums.length, i = 0;\n    let sum = 0;\n    let max_freq = 0;\n\n    for (let j = 0; j < n; j++) {\n        sum += nums[j];\n        while (sum + k < nums[j] * (j - i + 1)) {\n            sum -= nums[i++];\n        }\n        max_freq = Math.max(max_freq, j - i + 1);\n    }\n\n    return max_freq;\n}\n```\n    \n    1. Sort the input array `nums`.\n2. Initialize variables `n` as the length of `nums`, `i` as 0, `sum` as 0, and `max_freq` as 0.\n3. Iterate through the sorted array with index `j`.\n   a. Add each element to the `sum`.\n   b. In a while loop, if `sum + k` is less than `nums[j] * (j - i + 1)`, subtract `nums[i]` from `sum`, and increment `i`.\n   c. Update the `max_freq` by taking the maximum of the current `max_freq` and `j - i + 1`.\n4. Return the final `max_freq` as the answer.\n    ",
+    "java": "\n    ```java\npublic int maxFrequency(int[] nums, int k) {\n    Arrays.sort(nums);\n    int n = nums.length, i = 0;\n    long sum = 0;\n    int max_freq = 0;\n\n    for (int j = 0; j < n; j++) {\n        sum += nums[j];\n        while (sum + k < (long) nums[j] * (j - i + 1)) {\n            sum -= nums[i++];\n        }\n        max_freq = Math.max(max_freq, j - i + 1);\n    }\n\n    return max_freq;\n}\n```\n    \n    1. Sort the input array `nums`.\n2. Initialize variables `n` as the length of `nums`, `i` as 0, `sum` as 0, and `max_freq` as 0.\n3. Iterate through the sorted array with index `j`.\n   a. Add each element to the `sum`.\n   b. In a while loop, if `sum + k` is less than `nums[j] * (j - i + 1)`, subtract `nums[i]` from `sum`, and increment `i`.\n   c. Update the `max_freq` by taking the maximum of the current `max_freq` and `j - i + 1`.\n4. Return the final `max_freq` as the answer.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

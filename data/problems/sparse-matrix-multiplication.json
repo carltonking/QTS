@@ -1,0 +1,24 @@
+{
+  "id": 311,
+  "title": "Sparse Matrix Multiplication",
+  "slug": "sparse-matrix-multiplication",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given two [sparse matrices](https://en.wikipedia.org/wiki/Sparse_matrix) mat1 of size m x k and mat2 of size k x n, return the result of mat1 x mat2. You may assume that multiplication is always possible.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef multiply(mat1, mat2):\n    m, k, n = len(mat1), len(mat1[0]), len(mat2[0])\n    result = [[0] * n for _ in range(m)]\n    for i in range(m):\n        for j in range(k):\n            if mat1[i][j] != 0:\n                for l in range(n):\n                    result[i][l] += mat1[i][j] * mat2[j][l]\n    return result\n```\n    \n    Iterate through each element of mat1, and if the element is not zero, perform the corresponding row-column multiplication and update the result in mat3. This avoids unnecessary multiplications by zero during the process.\n    ",
+    "javascript": "\n    ```javascript\nfunction multiply(mat1, mat2) {\n    const m = mat1.length;\n    const k = mat1[0].length;\n    const n = mat2[0].length;\n    const result = Array.from({ length: m }, () => Array.from({ length: n }, () => 0));\n    for (let i = 0; i < m; i++) {\n        for (let j = 0; j < k; j++) {\n            if (mat1[i][j] !== 0) {\n                for (let l = 0; l < n; l++) {\n                    result[i][l] += mat1[i][j] * mat2[j][l];\n                }\n            }\n        }\n    }\n    return result;\n}\n```\n    \n    Iterate through each element of mat1, and if the element is not zero, perform the corresponding row-column multiplication and update the result in mat3. This avoids unnecessary multiplications by zero during the process.\n    ",
+    "java": "\n    ```java\npublic int[][] multiply(int[][] mat1, int[][] mat2) {\n    int m = mat1.length;\n    int k = mat1[0].length;\n    int n = mat2[0].length;\n    int[][] result = new int[m][n];\n    for (int i = 0; i < m; i++) {\n        for (int j = 0; j < k; j++) {\n            if (mat1[i][j] != 0) {\n                for (int l = 0; l < n; l++) {\n                    result[i][l] += mat1[i][j] * mat2[j][l];\n                }\n            }\n        }\n    }\n    return result;\n}\n```\n    \n    Iterate through each element of mat1, and if the element is not zero, perform the corresponding row-column multiplication and update the result in mat3. This avoids unnecessary multiplications by zero during the process.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

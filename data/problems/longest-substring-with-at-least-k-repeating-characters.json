@@ -1,0 +1,24 @@
+{
+  "id": 395,
+  "title": "Longest Substring with At Least K Repeating Characters",
+  "slug": "longest-substring-with-at-least-k-repeating-characters",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string s and an integer k, return _the length of the longest substring of_ s _such that the frequency of each character in this substring is greater than or equal to_ k.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef longestSubstring(s: str, k: int) -> int:\n    if not s or k <= 0:\n        return 0\n\n    char_count = {}\n    for ch in s:\n        char_count[ch] = char_count.get(ch, 0) + 1\n\n    for char, count in char_count.items():\n        if count < k:\n            return max(longestSubstring(sub_s, k) for sub_s in s.split(char))\n    return len(s)\n```\n    \n    The algorithm starts by counting the frequency of each character in the input string `s`. If the count of any character is less than `k`, then that character cannot be part of any substring with characters having a frequency greater than or equal to `k`. Therefore, we split the input string around such characters and recursively apply the same logic on each substring. The longest substring's length across different recursive calls is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction longestSubstring(s, k) {\n    if (!s || k <= 0) return 0;\n\n    const charCount = {};\n    for (const ch of s)\n        charCount[ch] = (charCount[ch] || 0) + 1;\n\n    for (const key in charCount) {\n        if (charCount[key] < k) {\n            let res = 0;\n            for (const subStr of s.split(key))\n                res = Math.max(res, longestSubstring(subStr, k));\n            return res;\n        }\n    }\n    return s.length;\n}\n```\n    \n    The algorithm starts by counting the frequency of each character in the input string `s`. If the count of any character is less than `k`, then that character cannot be part of any substring with characters having a frequency greater than or equal to `k`. Therefore, we split the input string around such characters and recursively apply the same logic on each substring. The longest substring's length across different recursive calls is returned.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic int longestSubstring(String s, int k) {\n    if (s == null || s.length() == 0 || k <= 0) return 0;\n\n    Map<Character, Integer> charCount = new HashMap<>();\n    for (char ch : s.toCharArray())\n        charCount.put(ch, charCount.getOrDefault(ch, 0) + 1);\n\n    for (Map.Entry<Character, Integer> entry : charCount.entrySet()) {\n        if (entry.getValue() < k) {\n            int res = 0;\n            for (String str : s.split(Character.toString(entry.getKey())))\n                res = Math.max(res, longestSubstring(str, k));\n            return res;\n        }\n    }\n    return s.length();\n}\n```\n    \n    The algorithm starts by counting the frequency of each character in the input string `s`. If the count of any character is less than `k`, then that character cannot be part of any substring with characters having a frequency greater than or equal to `k`. Therefore, we split the input string around such characters and recursively apply the same logic on each substring. The longest substring's length across different recursive calls is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

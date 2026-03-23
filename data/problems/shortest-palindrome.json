@@ -1,0 +1,24 @@
+{
+  "id": 214,
+  "title": "Shortest Palindrome",
+  "slug": "shortest-palindrome",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a string s. You can convert s to a palindrome by adding characters in front of it.\n\nReturn _the shortest palindrome you can find by performing this transformation_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef shortest_palindrome(s: str) -> str:\n    n = len(s)\n    rev_s = s[::-1]\n    \n    for i in range(n):\n        if s[:n - i] == rev_s[i:]:\n            return rev_s[:i] + s\n    return \"\"\n```\n\n    \n    1. Take input string `s`.\n2. Get string `rev_s` by reversing the input string.\n3. Iterate through the characters in both strings.\n4. For each index `i`, compare the substring `[0, n - i)` of `s` and substring `[i, n)` of `rev_s`.\n5. If the substrings match, concatenate the non-matching substring of `rev_s` and the original input string `s`. This will result in the shortest palindromic string we can build.\n6. If not, continue with the next iteration.\n7. The function returns an empty string if an exception occurs.\n    ",
+    "javascript": "\n    ```javascript\nfunction shortestPalindrome(s) {\n    let n = s.length;\n    let rev_s = s.split('').reverse().join('');\n    \n    for (let i = 0; i < n; ++i) {\n        if (s.slice(0, n - i) === rev_s.slice(i))\n            return rev_s.slice(0, i) + s;\n    }\n    return \"\";\n}\n```\n\n    \n    1. Take input string `s`.\n2. Get string `rev_s` by reversing the input string.\n3. Iterate through the characters in both strings.\n4. For each index `i`, compare the substring `[0, n - i)` of `s` and substring `[i, n)` of `rev_s`.\n5. If the substrings match, concatenate the non-matching substring of `rev_s` and the original input string `s`. This will result in the shortest palindromic string we can build.\n6. If not, continue with the next iteration.\n7. The function returns an empty string if an exception occurs.\n    ",
+    "java": "\n    ```java\npublic String shortestPalindrome(String s) {\n    int n = s.length();\n    String rev_s = new StringBuilder(s).reverse().toString();\n    \n    for (int i = 0; i < n; ++i) {\n        if(s.substring(0, n - i).equals(rev_s.substring(i)))\n            return rev_s.substring(0, i) + s;\n    }\n    return \"\";\n}\n```\n\n    \n    1. Take input string `s`.\n2. Get string `rev_s` by reversing the input string.\n3. Iterate through the characters in both strings.\n4. For each index `i`, compare the substring `[0, n - i)` of `s` and substring `[i, n)` of `rev_s`.\n5. If the substrings match, concatenate the non-matching substring of `rev_s` and the original input string `s`. This will result in the shortest palindromic string we can build.\n6. If not, continue with the next iteration.\n7. The function returns an empty string if an exception occurs.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

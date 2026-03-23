@@ -1,0 +1,24 @@
+{
+  "id": 2149,
+  "title": "Rearrange Array Elements by Sign",
+  "slug": "rearrange-array-elements-by-sign",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums of even length consisting of an equal number of positive and negative integers.\n\nYou should rearrange the elements of nums such that the modified array follows the given conditions:\n\n1.  Every consecutive pair of integers have opposite signs.\n2.  For all integers with the same sign, the order in which they were present in nums is preserved.\n3.  The rearranged array begins with a positive integer.\n\nReturn _the modified array after rearranging the elements to satisfy the aforementioned conditions_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef solve_puzzle(colors: str) -> bool:\n    return colors.count('A') % 2 == 1\n```\n    \n    The optimal strategy for Alice and Bob is to remove pieces with the same color, since removing pieces with different colors will leave the opponent with an option to still remove pieces. With that strategy in mind, the game will only end when only pieces of different colors are left, and the player who is able to remove the last piece wins the game.\n\nTherefore, to determine the winner, we only need to count the number of 'A' pieces in the given `colors` string, and check if it's an odd number. If it is, then it means there are more 'A' pieces than 'B' pieces, and Alice (who moves first) will win. Otherwise, Bob will win the game.\n\nThus, the function returns `true` if the count of 'A's is odd, and `false` otherwise.\n    ",
+    "javascript": "\n    ```javascript\nfunction solvePuzzle(colors) {\n    let countA = 0;\n    for (let c of colors) {\n        if (c === 'A') countA++;\n    }\n    return countA % 2 === 1;\n}\n```\n    \n    The optimal strategy for Alice and Bob is to remove pieces with the same color, since removing pieces with different colors will leave the opponent with an option to still remove pieces. With that strategy in mind, the game will only end when only pieces of different colors are left, and the player who is able to remove the last piece wins the game.\n\nTherefore, to determine the winner, we only need to count the number of 'A' pieces in the given `colors` string, and check if it's an odd number. If it is, then it means there are more 'A' pieces than 'B' pieces, and Alice (who moves first) will win. Otherwise, Bob will win the game.\n\nThus, the function returns `true` if the count of 'A's is odd, and `false` otherwise.\n    ",
+    "java": "\n    ```java\npublic boolean solvePuzzle(String colors) {\n    int countA = 0;\n    for (char c : colors.toCharArray()) {\n        if (c == 'A') countA++;\n    }\n    return countA % 2 == 1;\n}\n```\n    \n    The optimal strategy for Alice and Bob is to remove pieces with the same color, since removing pieces with different colors will leave the opponent with an option to still remove pieces. With that strategy in mind, the game will only end when only pieces of different colors are left, and the player who is able to remove the last piece wins the game.\n\nTherefore, to determine the winner, we only need to count the number of 'A' pieces in the given `colors` string, and check if it's an odd number. If it is, then it means there are more 'A' pieces than 'B' pieces, and Alice (who moves first) will win. Otherwise, Bob will win the game.\n\nThus, the function returns `true` if the count of 'A's is odd, and `false` otherwise.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

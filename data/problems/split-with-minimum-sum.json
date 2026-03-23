@@ -1,0 +1,24 @@
+{
+  "id": 2578,
+  "title": "Split With Minimum Sum",
+  "slug": "split-with-minimum-sum",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a positive integer num, split it into two non-negative integers num1 and num2 such that:\n\n*   The concatenation of num1 and num2 is a permutation of num.\n    *   In other words, the sum of the number of occurrences of each digit in num1 and num2 is equal to the number of occurrences of that digit in num.\n*   num1 and num2 can contain leading zeros.\n\nReturn _the minimum possible sum of_ num1 _and_ num2.\n\nNotes:\n\n*   It is guaranteed that num does not contain any leading zeros.\n*   The order of occurrence of the digits in num1 and num2 may differ from the order of occurrence of num.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_sum_of_two_numbers(num: str) -> int:\n    cnt = [0] * 10\n    for c in num:\n        cnt[int(c)] += 1\n\n    num1, num2 = 0, 0\n    for i in range(1, 10, 2):\n        temp = cnt[i]\n        while temp > 0:\n            num1 = num1 * 10 + i\n            temp -= 1\n    for i in range(0, 10, 2):\n        temp = cnt[i]\n        while temp > 0:\n            num2 = num2 * 10 + i\n            temp -= 1\n    return num1 + num2\n```\n    \n    The algorithm first creates a frequency count of each digit in the given number. Then, it initializes two variables representing `num1` and `num2`. Next, the algorithm iterates through the frequency count array, adding all odd digits to `num1` and all even digits to `num2`. Finally, the algorithm returns the sum of `num1` and `num2`.\n\nNote that the algorithm for each language is quite similar, with minor variations in syntax or the ways to compute the counts.\n    ",
+    "javascript": "\n    ```javascript\nfunction minSumOfTwoNumbers(num) {\n    let cnt = new Array(10).fill(0);\n    for (let c of num) \n        cnt[c - '0']++;\n\n    let num1 = 0, num2 = 0;\n    for (let i = 1; i <= 9; i += 2) {\n        let temp = cnt[i];\n        while (temp--)\n            num1 = num1 * 10 + i;\n    }\n    for (let i = 0; i <= 9; i += 2) {\n        let temp = cnt[i];\n        while (temp--)\n            num2 = num2 * 10 + i;\n    }\n    return num1 + num2;\n}\n```\n    \n    The algorithm first creates a frequency count of each digit in the given number. Then, it initializes two variables representing `num1` and `num2`. Next, the algorithm iterates through the frequency count array, adding all odd digits to `num1` and all even digits to `num2`. Finally, the algorithm returns the sum of `num1` and `num2`.\n\nNote that the algorithm for each language is quite similar, with minor variations in syntax or the ways to compute the counts.\n    ",
+    "java": "\n    ```java\nint minSumOfTwoNumbers(String num) {\n    int[] cnt = new int[10];\n    for (char c : num.toCharArray()) \n        cnt[c - '0']++;\n\n    int num1 = 0, num2 = 0;\n    for (int i = 1; i <= 9; i += 2) {\n        int temp = cnt[i];\n        while (temp-- > 0)\n            num1 = num1 * 10 + i;\n    }\n    for (int i = 0; i <= 9; i += 2) {\n        int temp = cnt[i];\n        while (temp-- > 0)\n            num2 = num2 * 10 + i;\n    }\n    return num1 + num2;\n}\n```\n    \n    The algorithm first creates a frequency count of each digit in the given number. Then, it initializes two variables representing `num1` and `num2`. Next, the algorithm iterates through the frequency count array, adding all odd digits to `num1` and all even digits to `num2`. Finally, the algorithm returns the sum of `num1` and `num2`.\n\nNote that the algorithm for each language is quite similar, with minor variations in syntax or the ways to compute the counts.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

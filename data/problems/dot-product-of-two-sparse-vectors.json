@@ -1,0 +1,24 @@
+{
+  "id": 1570,
+  "title": "Dot Product of Two Sparse Vectors",
+  "slug": "dot-product-of-two-sparse-vectors",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given two sparse vectors, compute their dot product.\n\nImplement class SparseVector:\n\n*   SparseVector(nums) Initializes the object with the vector nums\n*   dotProduct(vec) Compute the dot product between the instance of _SparseVector_ and vec\n\nA sparse vector is a vector that has mostly zero values, you should store the sparse vector efficiently and compute the dot product between two _SparseVector_.\n\nFollow up: What if only one of the vectors is sparse?",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef final_prices(prices):\n    for i in range(len(prices)):\n        for j in range(i + 1, len(prices)):\n            if prices[j] <= prices[i]:\n                prices[i] -= prices[j]\n                break\n    return prices\n```\n    \n    The algorithm iterates through each element `i` in the `prices` array. For each element, it iterates through the remaining elements (from `i+1` to the end), looking for an element `j` such that `prices[j] <= prices[i]`. If such an element is found, we subtract `prices[j]` from `prices[i]` and then move on to the next element. This is done using nested loops.\n\nThe outer loop iterates through all the elements in the array, and the inner loop checks for eligible discounts. Only one discount per item is applied, hence the `break` statement after an applicable discount is found.\n\nThe running time complexity of this algorithm is O(n^2), where \"n\" is the length of the input array. This is because, in the worst case, all pairs of elements need to be checked.\n    ",
+    "javascript": "\n    ```javascript\nfunction finalPrices(prices) {\n    for(let i = 0; i < prices.length; i++) {\n        for(let j = i + 1; j < prices.length; j++) {\n            if(prices[j] <= prices[i]) {\n                prices[i] -= prices[j];\n                break;\n            }\n        }\n    }\n    return prices;\n}\n```\n    \n    The algorithm iterates through each element `i` in the `prices` array. For each element, it iterates through the remaining elements (from `i+1` to the end), looking for an element `j` such that `prices[j] <= prices[i]`. If such an element is found, we subtract `prices[j]` from `prices[i]` and then move on to the next element. This is done using nested loops.\n\nThe outer loop iterates through all the elements in the array, and the inner loop checks for eligible discounts. Only one discount per item is applied, hence the `break` statement after an applicable discount is found.\n\nThe running time complexity of this algorithm is O(n^2), where \"n\" is the length of the input array. This is because, in the worst case, all pairs of elements need to be checked.\n    ",
+    "java": "\n    ```java\npublic int[] finalPrices(int[] prices) {\n    for(int i = 0; i < prices.length; i++) {\n        for(int j = i + 1; j < prices.length; j++) {\n            if(prices[j] <= prices[i]) {\n                prices[i] -= prices[j];\n                break;\n            }\n        }\n    }\n    return prices;\n}\n```\n    \n    The algorithm iterates through each element `i` in the `prices` array. For each element, it iterates through the remaining elements (from `i+1` to the end), looking for an element `j` such that `prices[j] <= prices[i]`. If such an element is found, we subtract `prices[j]` from `prices[i]` and then move on to the next element. This is done using nested loops.\n\nThe outer loop iterates through all the elements in the array, and the inner loop checks for eligible discounts. Only one discount per item is applied, hence the `break` statement after an applicable discount is found.\n\nThe running time complexity of this algorithm is O(n^2), where \"n\" is the length of the input array. This is because, in the worst case, all pairs of elements need to be checked.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

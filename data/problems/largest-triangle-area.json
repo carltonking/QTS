@@ -1,0 +1,24 @@
+{
+  "id": 812,
+  "title": "Largest Triangle Area",
+  "slug": "largest-triangle-area",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array of points on the X-Y plane points where points[i] = [xi, yi], return _the area of the largest triangle that can be formed by any three different points_. Answers within 10-5 of the actual answer will be accepted.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_shifted(s, goal):\n    if len(s) != len(goal): return False\n\n    s = s + s\n    return goal in s\n```\n    \n    The algorithm first checks if the length of both input strings is not equal, in which case it returns false as they can't possibly be shifted versions of each other. If they are of the same length, it concatenates the string `s` with itself, which creates all possible shifted combinations of `s`. Then it checks whether the `goal` is present in this concatenated string or not. If it is present, it returns true (as `s` can be shifted to obtain the `goal`), else it returns false.\n    ",
+    "javascript": "\n    ```javascript\nfunction isShifted(s, goal) {\n    if (s.length !== goal.length) return false;\n    \n    s = s + s;\n    return s.includes(goal);\n}\n```\n    \n    The algorithm first checks if the length of both input strings is not equal, in which case it returns false as they can't possibly be shifted versions of each other. If they are of the same length, it concatenates the string `s` with itself, which creates all possible shifted combinations of `s`. Then it checks whether the `goal` is present in this concatenated string or not. If it is present, it returns true (as `s` can be shifted to obtain the `goal`), else it returns false.\n    ",
+    "java": "\n    ```java\npublic boolean isShifted(String s, String goal) {\n    if(s.length() != goal.length()) return false;\n    \n    s = s + s;\n    return s.contains(goal);\n}\n```\n    \n    The algorithm first checks if the length of both input strings is not equal, in which case it returns false as they can't possibly be shifted versions of each other. If they are of the same length, it concatenates the string `s` with itself, which creates all possible shifted combinations of `s`. Then it checks whether the `goal` is present in this concatenated string or not. If it is present, it returns true (as `s` can be shifted to obtain the `goal`), else it returns false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

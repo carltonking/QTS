@@ -1,0 +1,24 @@
+{
+  "id": 1189,
+  "title": "Maximum Number of Balloons",
+  "slug": "maximum-number-of-balloons",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a string text, you want to use the characters of text to form as many instances of the word \"balloon \" as possible.\n\nYou can use each character in text at most once. Return the maximum number of instances that can be formed.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_number_of_balloons(text: str) -> int:\n    letter_count = [0] * 5\n    for c in text:\n        if c == 'b': letter_count[0] += 1\n        if c == 'a': letter_count[1] += 1\n        if c == 'l': letter_count[2] += 1\n        if c == 'o': letter_count[3] += 1\n        if c == 'n': letter_count[4] += 1\n    letter_count[2] //= 2\n    letter_count[3] //= 2\n    return min(letter_count)\n```\n    \n    1. First, we initialize an array `letter_count` with a length of 5 to represent each character in the word \"balloon\".\n2. We then loop through each character in the input string `text`.\n3. For each character, we increment the corresponding index in the `letter_count` array if it matches one of the characters in the word \"balloon\".\n4. After the loop, we divide the count of 'l' and 'o' by 2 since they appear twice in the word \"balloon\".\n5. Finally, we return the minimum value in the `letter_count` array, which represents the maximum number of instances of the word \"balloon\" that can be formed.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxNumberOfBalloons(text) {\n    const letter_count = [0, 0, 0, 0, 0];\n    for (let c of text) {\n        if (c === 'b') letter_count[0]++;\n        if (c === 'a') letter_count[1]++;\n        if (c === 'l') letter_count[2]++;\n        if (c === 'o') letter_count[3]++;\n        if (c === 'n') letter_count[4]++;\n    }\n    letter_count[2] = Math.floor(letter_count[2] / 2);\n    letter_count[3] = Math.floor(letter_count[3] / 2);\n    return Math.min(...letter_count);\n}\n```\n    \n    1. First, we initialize an array `letter_count` with a length of 5 to represent each character in the word \"balloon\".\n2. We then loop through each character in the input string `text`.\n3. For each character, we increment the corresponding index in the `letter_count` array if it matches one of the characters in the word \"balloon\".\n4. After the loop, we divide the count of 'l' and 'o' by 2 since they appear twice in the word \"balloon\".\n5. Finally, we return the minimum value in the `letter_count` array, which represents the maximum number of instances of the word \"balloon\" that can be formed.\n    ",
+    "java": "\n    ```java\npublic int maxNumberOfBalloons(String text) {\n    int[] letter_count = new int[5];\n    for (char c : text.toCharArray()) {\n        if (c == 'b') letter_count[0]++;\n        if (c == 'a') letter_count[1]++;\n        if (c == 'l') letter_count[2]++;\n        if (c == 'o') letter_count[3]++;\n        if (c == 'n') letter_count[4]++;\n    }\n    letter_count[2] /= 2;\n    letter_count[3] /= 2;\n    return Arrays.stream(letter_count).min().getAsInt();\n}\n```\n    \n    1. First, we initialize an array `letter_count` with a length of 5 to represent each character in the word \"balloon\".\n2. We then loop through each character in the input string `text`.\n3. For each character, we increment the corresponding index in the `letter_count` array if it matches one of the characters in the word \"balloon\".\n4. After the loop, we divide the count of 'l' and 'o' by 2 since they appear twice in the word \"balloon\".\n5. Finally, we return the minimum value in the `letter_count` array, which represents the maximum number of instances of the word \"balloon\" that can be formed.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

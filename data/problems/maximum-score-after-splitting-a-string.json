@@ -1,0 +1,24 @@
+{
+  "id": 1422,
+  "title": "Maximum Score After Splitting a String",
+  "slug": "maximum-score-after-splitting-a-string",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a string s of zeros and ones, _return the maximum score after splitting the string into two non-empty substrings_ (i.e. left substring and right substring).\n\nThe score after splitting a string is the number of zeros in the left substring plus the number of ones in the right substring.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import Counter\n\ndef is_possible_divide(nums: List[int], k: int) -> bool:\n    counts = Counter(nums)\n    \n    for key in sorted(counts):\n        if counts[key] > 0:\n            for i in range(k-1, -1, -1):\n                if counts[key+i] < counts[key]:\n                    return False\n                counts[key+i] -= counts[key]\n    \n    return True\n```\n    \n    1. Create a count map that counts the occurrences of each integer in the input array.\n2. Iterate through the keys in ascending order.\n3. For each key, if its value is greater than 0, try to find k-1 integers that are consecutive to the current integer.\n4. While iterating the keys, check if the occurrences of all consecutive integers are equal to or greater than the occurrences of the current integer. If not, return false as it isn't possible to divide the array into sets of k consecutive numbers. If everything passes through, return true.\n    ",
+    "javascript": "\n    ```javascript\nfunction isPossibleDivide(nums, k) {\n    const counts = new Map();\n    for (const num of nums) counts.set(num, (counts.get(num) || 0) + 1);\n    \n    for (const [key, value] of [...counts.entries()].sort((a, b) => a[0] - b[0])) {\n        if (value > 0) {\n            for (let i = k - 1; i >= 0; --i) {\n                if ((counts.get(key + i) || 0) < value) return false;\n                counts.set(key + i, counts.get(key + i) - value);\n            }\n        }\n    }\n    \n    return true;\n}\n```\n    \n    1. Create a count map that counts the occurrences of each integer in the input array.\n2. Iterate through the keys in ascending order.\n3. For each key, if its value is greater than 0, try to find k-1 integers that are consecutive to the current integer.\n4. While iterating the keys, check if the occurrences of all consecutive integers are equal to or greater than the occurrences of the current integer. If not, return false as it isn't possible to divide the array into sets of k consecutive numbers. If everything passes through, return true.\n    ",
+    "java": "\n    ```java\nimport java.util.TreeMap;\n\npublic boolean isPossibleDivide(int[] nums, int k) {\n    TreeMap<Integer, Integer> counts = new TreeMap<>();\n    for (int num : nums) counts.put(num, counts.getOrDefault(num, 0) + 1);\n    \n    for (int key : counts.keySet()) {\n        if (counts.get(key) > 0) {\n            for (int i = k - 1; i >= 0; --i) {\n                if (!counts.containsKey(key + i) || counts.get(key + i) < counts.get(key)) return false;\n                counts.put(key + i, counts.get(key + i) - counts.get(key));\n            }\n        }\n    }\n    \n    return true;\n}\n```\n    \n    1. Create a count map that counts the occurrences of each integer in the input array.\n2. Iterate through the keys in ascending order.\n3. For each key, if its value is greater than 0, try to find k-1 integers that are consecutive to the current integer.\n4. While iterating the keys, check if the occurrences of all consecutive integers are equal to or greater than the occurrences of the current integer. If not, return false as it isn't possible to divide the array into sets of k consecutive numbers. If everything passes through, return true.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

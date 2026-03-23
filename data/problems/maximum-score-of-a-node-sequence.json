@@ -1,0 +1,24 @@
+{
+  "id": 2242,
+  "title": "Maximum Score of a Node Sequence",
+  "slug": "maximum-score-of-a-node-sequence",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "There is an undirected graph with n nodes, numbered from 0 to n - 1.\n\nYou are given a 0-indexed integer array scores of length n where scores[i] denotes the score of node i. You are also given a 2D integer array edges where edges[i] = [ai, bi] denotes that there exists an undirected edge connecting nodes ai and bi.\n\nA node sequence is valid if it meets the following conditions:\n\n*   There is an edge connecting every pair of adjacent nodes in the sequence.\n*   No node appears more than once in the sequence.\n\nThe score of a node sequence is defined as the sum of the scores of the nodes in the sequence.\n\nReturn _the maximum score of a valid node sequence with a length of_ 4_._ If no such sequence exists, return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxScore(scores, edges):\n    adj_list = [[] for _ in range(len(scores))]\n    result = -1\n\n    for edge in edges:\n        adj_list[edge[0]].append(edge[1])\n        adj_list[edge[1]].append(edge[0])\n\n    for edge in edges:\n        for neighbor in adj_list[edge[0]]:\n            for next in adj_list[edge[1]]:\n                if next != neighbor and next != edge[0]:\n                    result = max(result, scores[edge[0]] + scores[edge[1]] + scores[neighbor] + scores[next])\n\n    return result\n```\n\n    \n    The algorithm first constructs an adjacency list from the given edges. An adjacency list is a data structure where each node is associated with a list of its neighboring nodes. Then, for each edge in the given graph, it checks all possible combinations of reachable nodes and calculates the sum of their scores, updating the result with the maximum score found. If no valid combination is found, the function returns -1 as specified.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxScore(scores, edges) {\n    const adj_list = new Array(scores.length).fill(null).map(() => []);\n    let result = -1;\n\n    for (const edge of edges) {\n        adj_list[edge[0]].push(edge[1]);\n        adj_list[edge[1]].push(edge[0]);\n    }\n\n    for (const edge of edges) {\n        for (const neighbor of adj_list[edge[0]]) {\n            for (const next of adj_list[edge[1]]) {\n                if (next !== neighbor && next !== edge[0]) {\n                    result = Math.max(result, scores[edge[0]] + scores[edge[1]] + scores[neighbor] + scores[next]);\n                }\n            }\n        }\n    }\n\n    return result;\n}\n```\n\n    \n    The algorithm first constructs an adjacency list from the given edges. An adjacency list is a data structure where each node is associated with a list of its neighboring nodes. Then, for each edge in the given graph, it checks all possible combinations of reachable nodes and calculates the sum of their scores, updating the result with the maximum score found. If no valid combination is found, the function returns -1 as specified.\n    ",
+    "java": "\n    ```java\npublic int maxScore(int[] scores, int[][] edges) {\n    ArrayList<ArrayList<Integer>> adj_list = new ArrayList<>(scores.length);\n    for (int i = 0; i < scores.length; i++) {\n        adj_list.add(new ArrayList<>());\n    }\n\n    for (int[] edge : edges) {\n        adj_list.get(edge[0]).add(edge[1]);\n        adj_list.get(edge[1]).add(edge[0]);\n    }\n\n    int result = -1;\n    for (int[] edge : edges) {\n        for (int neighbor : adj_list.get(edge[0])) {\n            for (int next : adj_list.get(edge[1])) {\n                if (next != neighbor && next != edge[0]) {\n                    result = Math.max(result, scores[edge[0]] + scores[edge[1]] + scores[neighbor] + scores[next]);\n                }\n            }\n        }\n    }\n\n    return result;\n}\n```\n\n    \n    The algorithm first constructs an adjacency list from the given edges. An adjacency list is a data structure where each node is associated with a list of its neighboring nodes. Then, for each edge in the given graph, it checks all possible combinations of reachable nodes and calculates the sum of their scores, updating the result with the maximum score found. If no valid combination is found, the function returns -1 as specified.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

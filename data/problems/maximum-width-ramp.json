@@ -1,0 +1,24 @@
+{
+  "id": 962,
+  "title": "Maximum Width Ramp",
+  "slug": "maximum-width-ramp",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A ramp in an integer array nums is a pair (i, j) for which i < j and nums[i] <= nums[j]. The width of such a ramp is j - i.\n\nGiven an integer array nums, return _the maximum width of a ramp in_ nums. If there is no ramp in nums, return 0.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minFlipsMonoIncr(s: str) -> int:\n    flipCount, oneCount = 0, 0\n    for c in s:\n        if c == '1':\n            oneCount += 1\n        else:\n            flipCount = min(flipCount + 1, oneCount)\n    return flipCount\n```\n    \n    We start by initializing two variables, flipCount and oneCount, both set to 0. We iterate through the binary string `s`. If the current character `c` is a 1, we increment `oneCount`. If the current character is a 0, we increment `flipCount` by 1 and then set its value to be the minimum between the updated `flipCount` and `oneCount`. By doing this, we are effectively choosing between two possibilities — flipping the current 0 to 1 or flipping all previous 1's to 0. We return the final `flipCount` when we have processed the whole string, which is the minimum number of flips needed to make the binary string monotone increasing.\n    ",
+    "javascript": "\n    ```javascript\nfunction minFlipsMonoIncr(s) {\n    let flipCount = 0, oneCount = 0;\n    for (let c of s) {\n        if (c === '1') {\n            oneCount++;\n        } else {\n            flipCount = Math.min(flipCount + 1, oneCount);\n        }\n    }\n    return flipCount;\n}\n```\n    \n    We start by initializing two variables, flipCount and oneCount, both set to 0. We iterate through the binary string `s`. If the current character `c` is a 1, we increment `oneCount`. If the current character is a 0, we increment `flipCount` by 1 and then set its value to be the minimum between the updated `flipCount` and `oneCount`. By doing this, we are effectively choosing between two possibilities — flipping the current 0 to 1 or flipping all previous 1's to 0. We return the final `flipCount` when we have processed the whole string, which is the minimum number of flips needed to make the binary string monotone increasing.\n    ",
+    "java": "\n    ```java\npublic int minFlipsMonoIncr(String s) {\n    int flipCount = 0, oneCount = 0;\n    for (char c : s.toCharArray()) {\n        if (c == '1') {\n            oneCount++;\n        } else {\n            flipCount = Math.min(flipCount + 1, oneCount);\n        }\n    }\n    return flipCount;\n}\n```\n    \n    We start by initializing two variables, flipCount and oneCount, both set to 0. We iterate through the binary string `s`. If the current character `c` is a 1, we increment `oneCount`. If the current character is a 0, we increment `flipCount` by 1 and then set its value to be the minimum between the updated `flipCount` and `oneCount`. By doing this, we are effectively choosing between two possibilities — flipping the current 0 to 1 or flipping all previous 1's to 0. We return the final `flipCount` when we have processed the whole string, which is the minimum number of flips needed to make the binary string monotone increasing.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

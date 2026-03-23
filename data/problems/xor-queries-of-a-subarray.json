@@ -1,0 +1,24 @@
+{
+  "id": 1310,
+  "title": "XOR Queries of a Subarray",
+  "slug": "xor-queries-of-a-subarray",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array arr of positive integers. You are also given the array queries where queries[i] = [lefti, righti].\n\nFor each query i compute the XOR of elements from lefti to righti (that is, arr[lefti] XOR arr[lefti + 1] XOR ... XOR arr[righti] ).\n\nReturn an array answer where answer[i] is the answer to the ith query.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef water_plants(plants, capacity):\n    steps = 0\n    water_left = 0\n\n    for i, plant in enumerate(plants):\n        if water_left < plant:\n            steps += 2 * i + 1  # Refill the watering can\n            water_left = capacity\n        water_left -= plant\n        steps += 1  # Move to the next plant\n\n    return steps\n```\n\n    \n    The algorithm starts by initializing two variables: steps to keep track of the steps needed to water all the plants, and water_left to keep track of how much water is left in the watering can. Then, we loop through each plant in the array. At each step, we check if the amount of water left in the can is less than the water needed by the current plant. If it is, we refill the watering can by adding 2 * i + 1 to steps (i being the index of the current plant). This addition is performed because we must go to the river, located at x = -1, and then go back to the current plant at x = i. Once the can is refilled, we update the water_left to capacity.\n\nNext, we decrease the water_left by the amount needed by the current plant, and increment steps by 1 to move to the next plant. This process is repeated for every plant in the array. Finally, the algorithm returns the total number of steps.\n    ",
+    "javascript": "\n    ```javascript\nfunction waterPlants(plants, capacity) {\n    let steps = 0;\n    let waterLeft = 0;\n\n    for (let i = 0; i < plants.length; ++i) {\n        if (waterLeft < plants[i]) {\n            steps += 2 * i + 1; // Refill the watering can\n            waterLeft = capacity;\n        }\n        waterLeft -= plants[i];\n        steps++; // Move to the next plant\n    }\n\n    return steps;\n}\n```\n\n    \n    The algorithm starts by initializing two variables: steps to keep track of the steps needed to water all the plants, and water_left to keep track of how much water is left in the watering can. Then, we loop through each plant in the array. At each step, we check if the amount of water left in the can is less than the water needed by the current plant. If it is, we refill the watering can by adding 2 * i + 1 to steps (i being the index of the current plant). This addition is performed because we must go to the river, located at x = -1, and then go back to the current plant at x = i. Once the can is refilled, we update the water_left to capacity.\n\nNext, we decrease the water_left by the amount needed by the current plant, and increment steps by 1 to move to the next plant. This process is repeated for every plant in the array. Finally, the algorithm returns the total number of steps.\n    ",
+    "java": "\n    ```java\npublic int waterPlants(int[] plants, int capacity) {\n    int steps = 0;\n    int waterLeft = 0;\n\n    for (int i = 0; i < plants.length; ++i) {\n        if (waterLeft < plants[i]) {\n            steps += 2 * i + 1; // Refill the watering can\n            waterLeft = capacity;\n        }\n        waterLeft -= plants[i];\n        steps++; // Move to the next plant\n    }\n    \n    return steps;\n}\n```\n\n    \n    The algorithm starts by initializing two variables: steps to keep track of the steps needed to water all the plants, and water_left to keep track of how much water is left in the watering can. Then, we loop through each plant in the array. At each step, we check if the amount of water left in the can is less than the water needed by the current plant. If it is, we refill the watering can by adding 2 * i + 1 to steps (i being the index of the current plant). This addition is performed because we must go to the river, located at x = -1, and then go back to the current plant at x = i. Once the can is refilled, we update the water_left to capacity.\n\nNext, we decrease the water_left by the amount needed by the current plant, and increment steps by 1 to move to the next plant. This process is repeated for every plant in the array. Finally, the algorithm returns the total number of steps.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

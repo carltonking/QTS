@@ -1,0 +1,24 @@
+{
+  "id": 2593,
+  "title": "Find Score of an Array After Marking All Elements",
+  "slug": "find-score-of-an-array-after-marking-all-elements",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array nums consisting of positive integers.\n\nStarting with score = 0, apply the following algorithm:\n\n*   Choose the smallest integer of the array that is not marked. If there is a tie, choose the one with the smallest index.\n*   Add the value of the chosen integer to score.\n*   Mark the chosen element and its two adjacent elements if they exist.\n*   Repeat until all the array elements are marked.\n\nReturn _the score you get after applying the above algorithm_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef calculate_score(nums):\n    n = len(nums)\n    dp = [0] * (n + 2)\n\n    for i in range(n):\n        dp[i + 2] = max(dp[i + 1], dp[i] + nums[i])\n\n    return dp[n + 1]\n```\n    \n    This problem can be solved using dynamic programming. We create an array `dp` with length `n+2` (to handle edge cases) initialized with zeros. We iterate through the given `nums` array and for each element, we store in `dp[i+2]` the maximum value between `dp[i+1]` (if we choose not to pick the current element) and `dp[i] + nums[i]` (if we choose to pick the current element and thus mark the adjacent elements as well).\n\nThis way, by the end of the iteration, `dp[n+1]` will store the maximum score possible considering all the elements in the array `nums`.\n\nThe time complexity of the solution is O(n), where n is the length of the input array, and the space complexity is also O(n), which is used for the `dp` array.\n    ",
+    "javascript": "\n    ```javascript\nfunction calculateScore(nums) {\n    const n = nums.length;\n    const dp = new Array(n + 2).fill(0);\n\n    for (let i = 0; i < n; ++i) {\n        dp[i + 2] = Math.max(dp[i + 1], dp[i] + nums[i]);\n    }\n\n    return dp[n + 1];\n}\n```\n    \n    This problem can be solved using dynamic programming. We create an array `dp` with length `n+2` (to handle edge cases) initialized with zeros. We iterate through the given `nums` array and for each element, we store in `dp[i+2]` the maximum value between `dp[i+1]` (if we choose not to pick the current element) and `dp[i] + nums[i]` (if we choose to pick the current element and thus mark the adjacent elements as well).\n\nThis way, by the end of the iteration, `dp[n+1]` will store the maximum score possible considering all the elements in the array `nums`.\n\nThe time complexity of the solution is O(n), where n is the length of the input array, and the space complexity is also O(n), which is used for the `dp` array.\n    ",
+    "java": "\n    ```java\npublic int calculateScore(int[] nums) {\n    int n = nums.length;\n    int[] dp = new int[n + 2];\n\n    for (int i = 0; i < n; ++i) {\n        dp[i + 2] = Math.max(dp[i + 1], dp[i] + nums[i]);\n    }\n\n    return dp[n + 1];\n}\n```\n    \n    This problem can be solved using dynamic programming. We create an array `dp` with length `n+2` (to handle edge cases) initialized with zeros. We iterate through the given `nums` array and for each element, we store in `dp[i+2]` the maximum value between `dp[i+1]` (if we choose not to pick the current element) and `dp[i] + nums[i]` (if we choose to pick the current element and thus mark the adjacent elements as well).\n\nThis way, by the end of the iteration, `dp[n+1]` will store the maximum score possible considering all the elements in the array `nums`.\n\nThe time complexity of the solution is O(n), where n is the length of the input array, and the space complexity is also O(n), which is used for the `dp` array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

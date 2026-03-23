@@ -1,0 +1,24 @@
+{
+  "id": 967,
+  "title": "Numbers With Same Consecutive Differences",
+  "slug": "numbers-with-same-consecutive-differences",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given two integers n and k, return _an array of all the integers of length_ n _where the difference between every two consecutive digits is_ k. You may return the answer in any order.\n\nNote that the integers should not have leading zeros. Integers as 02 and 043 are not allowed.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minFallingPathSum(matrix):\n    n = len(matrix)\n    for i in range(1, n):\n        for j in range(n):\n            min_val = matrix[i - 1][j]\n            if j > 0: min_val = min(min_val, matrix[i - 1][j - 1])\n            if j < n - 1: min_val = min(min_val, matrix[i - 1][j + 1])\n            matrix[i][j] += min_val\n    return min(matrix[-1])\n```\n    \n    In this dynamic programming algorithm, we start by iterating over every element in the matrix (except the first row). For each element (i, j), we find the minimum value from the row above (i.e., i-1), considering the left [i-1][j-1], top [i-1][j], and right [i-1][j+1] positions (if they exist). We add the minimum value to the current element, iteratively updating the sum of each falling path as we go down the matrix. Once we reach the last row, we find the minimum element in this row, which represents the minimum sum of any falling path.\n\nThis algorithm has a time complexity of O(n^2), as it iterates over the n x n matrix once.\n    ",
+    "javascript": "\n    ```javascript\nfunction minFallingPathSum(matrix) {\n    let n = matrix.length;\n    for (let i = 1; i < n; ++i) {\n        for (let j = 0; j < n; ++j) {\n            let min_val = matrix[i - 1][j];\n            if (j > 0) min_val = Math.min(min_val, matrix[i - 1][j - 1]);\n            if (j < n - 1) min_val = Math.min(min_val, matrix[i - 1][j + 1]);\n            matrix[i][j] += min_val;\n        }\n    }\n    return Math.min(...matrix[n - 1]);\n}\n```\n    \n    In this dynamic programming algorithm, we start by iterating over every element in the matrix (except the first row). For each element (i, j), we find the minimum value from the row above (i.e., i-1), considering the left [i-1][j-1], top [i-1][j], and right [i-1][j+1] positions (if they exist). We add the minimum value to the current element, iteratively updating the sum of each falling path as we go down the matrix. Once we reach the last row, we find the minimum element in this row, which represents the minimum sum of any falling path.\n\nThis algorithm has a time complexity of O(n^2), as it iterates over the n x n matrix once.\n    ",
+    "java": "\n    ```java\npublic int minFallingPathSum(int[][] matrix) {\n    int n = matrix.length;\n    for (int i = 1; i < n; ++i) {\n        for (int j = 0; j < n; ++j) {\n            int min_val = matrix[i - 1][j];\n            if (j > 0) min_val = Math.min(min_val, matrix[i - 1][j - 1]);\n            if (j < n - 1) min_val = Math.min(min_val, matrix[i - 1][j + 1]);\n            matrix[i][j] += min_val;\n        }\n    }\n    return Arrays.stream(matrix[n - 1]).min().getAsInt();\n}\n```\n    \n    In this dynamic programming algorithm, we start by iterating over every element in the matrix (except the first row). For each element (i, j), we find the minimum value from the row above (i.e., i-1), considering the left [i-1][j-1], top [i-1][j], and right [i-1][j+1] positions (if they exist). We add the minimum value to the current element, iteratively updating the sum of each falling path as we go down the matrix. Once we reach the last row, we find the minimum element in this row, which represents the minimum sum of any falling path.\n\nThis algorithm has a time complexity of O(n^2), as it iterates over the n x n matrix once.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

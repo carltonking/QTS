@@ -1,0 +1,24 @@
+{
+  "id": 1404,
+  "title": "Number of Steps to Reduce a Number in Binary Representation to One",
+  "slug": "number-of-steps-to-reduce-a-number-in-binary-representation-to-one",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the binary representation of an integer as a string s, return _the number of steps to reduce it to_ 1 _under the following rules_:\n\n*   If the current number is even, you have to divide it by 2.\n\n*   If the current number is odd, you have to add 1 to it.\n\nIt is guaranteed that you can always reach one for all test cases.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef num_steps(s: str) -> int:\n    steps = 0\n    carry = 0\n    \n    for c in reversed(s[1:]):\n        bit = int(c)\n        if bit and carry:\n            carry = 1\n            steps += 2\n        elif bit or carry:\n            carry ^= 1\n            steps += 2\n        else:\n            steps += 1\n            \n    return steps + carry\n```\n    \n    We can start from the least significant bit (LSB) of the binary string `s` and work backwards. Initialize `steps` and `carry` counters to 0. We then iterate through the string from right to left, skipping the first character (which is always '1').\n\nFor each character, we check whether the bit is 1, carry is 1, or both are 0:\n- If the bit is 1 and carry is 1, we will set the carry to 1 and increment steps by 2 (one step for adding 1 and another step for dividing by 2).\n- If the bit is 1 or the carry is 1, we will XOR the carry with 1 (i.e., flip the carry) and increment steps by 2.\n- If both are 0, we increment steps by 1, as we only need to divide by 2.\n\nAfter iterating through the entire string, we add the carry to the steps counter and return the steps. This process ensures we account for any remaining carry, as illustrated in the given examples.\n    ",
+    "javascript": "\n    ```javascript\nfunction numSteps(s) {\n    let steps = 0, carry = 0;\n    for (let i = s.length - 1; i > 0; --i) {\n        const bit = parseInt(s[i]);\n        if (bit && carry) {\n            carry = 1;\n            steps += 2;\n        } else if (bit || carry) {\n            carry ^= 1;\n            steps += 2;\n        } else {\n            steps++;\n        }\n    }\n\n    return steps + carry;\n}\n```\n    \n    We can start from the least significant bit (LSB) of the binary string `s` and work backwards. Initialize `steps` and `carry` counters to 0. We then iterate through the string from right to left, skipping the first character (which is always '1').\n\nFor each character, we check whether the bit is 1, carry is 1, or both are 0:\n- If the bit is 1 and carry is 1, we will set the carry to 1 and increment steps by 2 (one step for adding 1 and another step for dividing by 2).\n- If the bit is 1 or the carry is 1, we will XOR the carry with 1 (i.e., flip the carry) and increment steps by 2.\n- If both are 0, we increment steps by 1, as we only need to divide by 2.\n\nAfter iterating through the entire string, we add the carry to the steps counter and return the steps. This process ensures we account for any remaining carry, as illustrated in the given examples.\n    ",
+    "java": "\n    ```java\npublic int numSteps(String s) {\n    int steps = 0, carry = 0;\n    for (int i = s.length() - 1; i > 0; --i) {\n        int bit = s.charAt(i) - '0';\n        if (bit == 1 && carry == 1) {\n            carry = 1;\n            steps += 2;\n        } else if (bit == 1 || carry == 1) {\n            carry ^= 1;\n            steps += 2;\n        } else {\n            steps++;\n        }\n    }\n\n    return steps + carry;\n}\n```\n    \n    We can start from the least significant bit (LSB) of the binary string `s` and work backwards. Initialize `steps` and `carry` counters to 0. We then iterate through the string from right to left, skipping the first character (which is always '1').\n\nFor each character, we check whether the bit is 1, carry is 1, or both are 0:\n- If the bit is 1 and carry is 1, we will set the carry to 1 and increment steps by 2 (one step for adding 1 and another step for dividing by 2).\n- If the bit is 1 or the carry is 1, we will XOR the carry with 1 (i.e., flip the carry) and increment steps by 2.\n- If both are 0, we increment steps by 1, as we only need to divide by 2.\n\nAfter iterating through the entire string, we add the carry to the steps counter and return the steps. This process ensures we account for any remaining carry, as illustrated in the given examples.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

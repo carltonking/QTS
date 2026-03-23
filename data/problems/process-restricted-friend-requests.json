@@ -1,0 +1,24 @@
+{
+  "id": 2076,
+  "title": "Process Restricted Friend Requests",
+  "slug": "process-restricted-friend-requests",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an integer n indicating the number of people in a network. Each person is labeled from 0 to n - 1.\n\nYou are also given a 0-indexed 2D integer array restrictions, where restrictions[i] = [xi, yi] means that person xi and person yi cannot become friends, either directly or indirectly through other people.\n\nInitially, no one is friends with each other. You are given a list of friend requests as a 0-indexed 2D integer array requests, where requests[j] = [uj, vj] is a friend request between person uj and person vj.\n\nA friend request is successful if uj and vj can be friends. Each friend request is processed in the given order (i.e., requests[j] occurs before requests[j + 1]), and upon a successful request, uj and vj become direct friends for all future friend requests.\n\nReturn _a boolean array_ result, _where each_ result[j] _is_ true _if the_ jth _friend request is successful or_ false _if it is not_.\n\nNote: If uj and vj are already direct friends, the request is still successful.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef alphabet_position_sum(s, k):\n    sum = 0\n    for c in s:\n        sum += ord(c) - ord('a') + 1\n    for _ in range(k):\n        new_sum = 0\n        while sum > 0:\n            new_sum += sum % 10\n            sum //= 10\n        sum = new_sum\n    return sum\n```\n    \n    1. Calculate the initial sum by iterating through each character in the string and adding the position of the letter in the alphabet to the sum. The position can be determined by subtracting the ASCII value of 'a' from the character's ASCII value and adding 1 (`c - 'a' + 1`).\n2. For `k` number of times, perform the \"transform operation\" by setting the sum to the sum of its individual digits. This is done by iterating through the number while it's greater than zero, adding the remainder of the number divided by 10 (which gives the last digit) to a new sum variable, and then dividing the number by 10 to remove the last digit. After the loop is done, set the sum variable to the new sum.\n3. Return the resulting integer.\n    ",
+    "javascript": "\n    ```javascript\nfunction alphabet_position_sum(s, k) {\n    let sum = 0;\n    for (let c of s) {\n        sum += c.charCodeAt(0) - 'a'.charCodeAt(0) + 1;\n    }\n    for (let i = 0; i < k; i++) {\n        let new_sum = 0;\n        while (sum > 0) {\n            new_sum += sum % 10;\n            sum = Math.floor(sum / 10);\n        }\n        sum = new_sum;\n    }\n    return sum;\n}\n```\n    \n    1. Calculate the initial sum by iterating through each character in the string and adding the position of the letter in the alphabet to the sum. The position can be determined by subtracting the ASCII value of 'a' from the character's ASCII value and adding 1 (`c - 'a' + 1`).\n2. For `k` number of times, perform the \"transform operation\" by setting the sum to the sum of its individual digits. This is done by iterating through the number while it's greater than zero, adding the remainder of the number divided by 10 (which gives the last digit) to a new sum variable, and then dividing the number by 10 to remove the last digit. After the loop is done, set the sum variable to the new sum.\n3. Return the resulting integer.\n    ",
+    "java": "\n    ```java\nint alphabet_position_sum(String s, int k) {\n    int sum = 0;\n    for (char c : s.toCharArray()) {\n        sum += c - 'a' + 1;\n    }\n    for (int i = 0; i < k; i++) {\n        int new_sum = 0;\n        while (sum > 0) {\n            new_sum += sum % 10;\n            sum /= 10;\n        }\n        sum = new_sum;\n    }\n    return sum;\n}\n```\n    \n    1. Calculate the initial sum by iterating through each character in the string and adding the position of the letter in the alphabet to the sum. The position can be determined by subtracting the ASCII value of 'a' from the character's ASCII value and adding 1 (`c - 'a' + 1`).\n2. For `k` number of times, perform the \"transform operation\" by setting the sum to the sum of its individual digits. This is done by iterating through the number while it's greater than zero, adding the remainder of the number divided by 10 (which gives the last digit) to a new sum variable, and then dividing the number by 10 to remove the last digit. After the loop is done, set the sum variable to the new sum.\n3. Return the resulting integer.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

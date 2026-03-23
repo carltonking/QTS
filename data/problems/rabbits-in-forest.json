@@ -1,0 +1,24 @@
+{
+  "id": 781,
+  "title": "Rabbits in Forest",
+  "slug": "rabbits-in-forest",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There is a forest with an unknown number of rabbits. We asked n rabbits \"How many rabbits have the same color as you? \" and collected the answers in an integer array answers where answers[i] is the answer of the ith rabbit.\n\nGiven the array answers, return _the minimum number of rabbits that could be in the forest_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import Counter\n\ndef numRabbits(answers):\n    count = Counter(answers)\n    rabbits = 0\n    for ans, cnt in count.items():\n        rabbits += (ans + cnt)//(ans + 1) * (ans + 1)\n    return rabbits\n```\n\n    \n    The algorithm uses a hashmap (Counter in python) to count the frequency of each answer. For each answer, because rabbits of the same color give the same answer `k`, there can be `k+1` rabbits, i.e., if they all belong to the same group, there can be `k+1` rabbits of the same color. The algorithm calculates the total number of rabbits i.e. total_rabbits = required number of rabbits in each answer group * number of groups (calculated by dividing the count of the answer by k+1) * (k + 1).\n    ",
+    "javascript": "\n    ```javascript\nfunction numRabbits(answers) {\n    const count = new Map();\n    let rabbits = 0;\n    for(let ans of answers) {\n        count.set(ans, (count.get(ans) || 0) + 1);\n    }\n    for(let [ans, cnt] of count.entries()) {\n        rabbits += Math.floor((ans + cnt) / (ans + 1)) * (ans + 1);\n    }\n    return rabbits;\n}\n```\n\n    \n    The algorithm uses a hashmap (Counter in python) to count the frequency of each answer. For each answer, because rabbits of the same color give the same answer `k`, there can be `k+1` rabbits, i.e., if they all belong to the same group, there can be `k+1` rabbits of the same color. The algorithm calculates the total number of rabbits i.e. total_rabbits = required number of rabbits in each answer group * number of groups (calculated by dividing the count of the answer by k+1) * (k + 1).\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\n\npublic int numRabbits(int[] answers) {\n    HashMap<Integer, Integer> count = new HashMap<>();\n    int rabbits = 0;\n    for(int ans : answers) {\n        count.put(ans, count.getOrDefault(ans, 0) + 1);\n    }\n    for(int key : count.keySet()) {\n        int cnt = count.get(key);\n        rabbits += (key + cnt) / (key + 1) * (key + 1);\n    }\n    return rabbits;\n}\n```\n\n    \n    The algorithm uses a hashmap (Counter in python) to count the frequency of each answer. For each answer, because rabbits of the same color give the same answer `k`, there can be `k+1` rabbits, i.e., if they all belong to the same group, there can be `k+1` rabbits of the same color. The algorithm calculates the total number of rabbits i.e. total_rabbits = required number of rabbits in each answer group * number of groups (calculated by dividing the count of the answer by k+1) * (k + 1).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2293,
+  "title": "Min Max Game",
+  "slug": "min-max-game",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums whose length is a power of 2.\n\nApply the following algorithm on nums:\n\n1.  Let n be the length of nums. If n == 1, end the process. Otherwise, create a new 0-indexed integer array newNums of length n / 2.\n2.  For every even index i where 0 <= i < n / 2, assign the value of newNums[i] as min(nums[2 * i], nums[2 * i + 1]).\n3.  For every odd index i where 0 <= i < n / 2, assign the value of newNums[i] as max(nums[2 * i], nums[2 * i + 1]).\n4.  Replace the array nums with newNums.\n5.  Repeat the entire process starting from step 1.\n\nReturn _the last number that remains in_ nums _after applying the algorithm._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_steps(s: str, t: str) -> int:\n    char_count = {}\n    for c in s:\n        char_count[c] = char_count.get(c, 0) + 1\n    for c in t:\n        char_count[c] = char_count.get(c, 0) - 1\n    \n    steps = sum(abs(count) for count in char_count.values())\n    \n    return steps // 2\n```\n\n    \n    The algorithm uses a hashmap to keep track of the character counts for both strings. For every character in string s, we increase the count in the hashmap. For every character in string t, we decrease the count in the hashmap. This way, the difference in the count will represent the disparity between the strings.\n\nAfter processing both strings, we iterate through the hashmap and sum the absolute values of the counts. This sum represents the total number of mismatches between the two strings.\n\nFinally, we divide the sum by 2 since every step can fix two mismatches. And this gives us the minimum number of steps required to make s and t anagrams.\n    ",
+    "javascript": "\n    ```javascript\nfunction minSteps(s, t) {\n    let charCount = {};\n\n    for (let c of s) charCount[c] = (charCount[c] || 0) + 1;\n    for (let c of t) charCount[c] = (charCount[c] || 0) - 1;\n\n    let steps = 0;\n    for (let count in charCount) {\n        steps += Math.abs(charCount[count]);\n    }\n\n    return steps / 2;\n}\n```\n\n    \n    The algorithm uses a hashmap to keep track of the character counts for both strings. For every character in string s, we increase the count in the hashmap. For every character in string t, we decrease the count in the hashmap. This way, the difference in the count will represent the disparity between the strings.\n\nAfter processing both strings, we iterate through the hashmap and sum the absolute values of the counts. This sum represents the total number of mismatches between the two strings.\n\nFinally, we divide the sum by 2 since every step can fix two mismatches. And this gives us the minimum number of steps required to make s and t anagrams.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\n\npublic int minSteps(String s, String t) {\n    HashMap<Character, Integer> charCount = new HashMap<>();\n\n    for (char c : s.toCharArray()) charCount.put(c, charCount.getOrDefault(c, 0) + 1);\n    for (char c : t.toCharArray()) charCount.put(c, charCount.getOrDefault(c, 0) - 1);\n\n    int steps = 0;\n    for (int count : charCount.values()) {\n        steps += Math.abs(count);\n    }\n\n    return steps / 2;\n}\n```\n\n    \n    The algorithm uses a hashmap to keep track of the character counts for both strings. For every character in string s, we increase the count in the hashmap. For every character in string t, we decrease the count in the hashmap. This way, the difference in the count will represent the disparity between the strings.\n\nAfter processing both strings, we iterate through the hashmap and sum the absolute values of the counts. This sum represents the total number of mismatches between the two strings.\n\nFinally, we divide the sum by 2 since every step can fix two mismatches. And this gives us the minimum number of steps required to make s and t anagrams.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

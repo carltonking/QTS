@@ -1,0 +1,24 @@
+{
+  "id": 532,
+  "title": "K-diff Pairs in an Array",
+  "slug": "k-diff-pairs-in-an-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of integers nums and an integer k, return _the number of unique k-diff pairs in the array_.\n\nA k-diff pair is an integer pair (nums[i], nums[j]), where the following are true:\n\n*   0 <= i, j < nums.length\n*   i != j\n*   nums[i] - nums[j] == k\n\nNotice that |val| denotes the absolute value of val.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_pairs(nums, k):\n    if k < 0:\n        return 0\n    starters = set()\n    occurrences = {}\n    for num in nums:\n        if num + k in occurrences:\n            starters.add(num)\n        if num - k in occurrences:\n            starters.add(num - k)\n        occurrences[num] = occurrences.get(num, 0) + 1\n    return len(starters)\n```\n    \n    1. If k is less than 0, return 0 as there are no pairs with a negative difference.\n2. Initialize an empty set called `starters` to store the unique starting elements of k-diff pairs.\n3. Initialize an empty map called `occurrences` to store the occurrences of each number in the input array.\n4. Iterate through the input array, and for each number, check if the number + k exists in occurrences, and the number - k exists in occurrences.\n5. If either condition is true, add the corresponding starting element of the k-diff pair to the starters set, and update the occurrences map with the current number.\n6. After iterating through the input array, return the size of the starters set, as it represents the number of unique k-diff pairs.\n    ",
+    "javascript": "\n    ```javascript\nfunction findPairs(nums, k) {\n    if (k < 0) return 0;\n    let starters = new Set();\n    let occurrences = new Map();\n    for (let num of nums) {\n        if (occurrences.has(num + k)) starters.add(num);\n        if (occurrences.has(num - k)) starters.add(num - k);\n        occurrences.set(num, (occurrences.get(num) || 0) + 1);\n    }\n    return starters.size;\n}\n```\n    \n    1. If k is less than 0, return 0 as there are no pairs with a negative difference.\n2. Initialize an empty set called `starters` to store the unique starting elements of k-diff pairs.\n3. Initialize an empty map called `occurrences` to store the occurrences of each number in the input array.\n4. Iterate through the input array, and for each number, check if the number + k exists in occurrences, and the number - k exists in occurrences.\n5. If either condition is true, add the corresponding starting element of the k-diff pair to the starters set, and update the occurrences map with the current number.\n6. After iterating through the input array, return the size of the starters set, as it represents the number of unique k-diff pairs.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\nimport java.util.HashSet;\n\npublic int findPairs(int[] nums, int k) {\n    if (k < 0) return 0;\n    HashSet<Integer> starters = new HashSet<>();\n    HashMap<Integer, Integer> occurrences = new HashMap<>();\n    for (int num : nums) {\n        if (occurrences.containsKey(num + k)) starters.add(num);\n        if (occurrences.containsKey(num - k)) starters.add(num - k);\n        occurrences.put(num, occurrences.getOrDefault(num, 0) + 1);\n    }\n    return starters.size();\n}\n```\n    \n    1. If k is less than 0, return 0 as there are no pairs with a negative difference.\n2. Initialize an empty set called `starters` to store the unique starting elements of k-diff pairs.\n3. Initialize an empty map called `occurrences` to store the occurrences of each number in the input array.\n4. Iterate through the input array, and for each number, check if the number + k exists in occurrences, and the number - k exists in occurrences.\n5. If either condition is true, add the corresponding starting element of the k-diff pair to the starters set, and update the occurrences map with the current number.\n6. After iterating through the input array, return the size of the starters set, as it represents the number of unique k-diff pairs.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

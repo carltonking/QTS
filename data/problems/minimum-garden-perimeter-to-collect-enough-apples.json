@@ -1,0 +1,24 @@
+{
+  "id": 1954,
+  "title": "Minimum Garden Perimeter to Collect Enough Apples",
+  "slug": "minimum-garden-perimeter-to-collect-enough-apples",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "In a garden represented as an infinite 2D grid, there is an apple tree planted at every integer coordinate. The apple tree planted at an integer coordinate (i, j) has |i| + |j| apples growing on it.\n\nYou will buy an axis-aligned square plot of land that is centered at (0, 0).\n\nGiven an integer neededApples, return _the minimum perimeter of a plot such that at least_ neededApples _apples are inside or on the perimeter of that plot_.\n\nThe value of |x| is defined as:\n\n*   x if x >= 0\n*   -x if x < 0",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef replace_digits(s: str) -> str:\n    s = list(s)\n    for i in range(1, len(s), 2):\n        s[i] = chr(ord(s[i - 1]) + int(s[i]))\n    return ''.join(s)\n```\n    \n    The algorithm iterates through the string characters with a step of 2, starting from index 1. During each step, it updates the current character using the `shift` function according to the problem statement. In each language, we implement this operation with slight variations:\n\n- In C++, we modify the string directly.\n- In Java, we first convert the string to a char array, modify the array and then convert it back to a new string.\n- In Python, we first convert the string to a list of characters, modify the list and then join the modified list into a new string.\n- In JavaScript, we first convert the string to an array of characters using split(), modify the array, and then join the array back into a new string using join().\n    ",
+    "javascript": "\n    ```javascript\nfunction replaceDigits(s) {\n    let arr = s.split('');\n    for (let i = 1; i < arr.length; i += 2) {\n        arr[i] = String.fromCharCode(arr[i - 1].charCodeAt() + parseInt(arr[i]));\n    }\n    return arr.join('');\n}\n```\n    \n    The algorithm iterates through the string characters with a step of 2, starting from index 1. During each step, it updates the current character using the `shift` function according to the problem statement. In each language, we implement this operation with slight variations:\n\n- In C++, we modify the string directly.\n- In Java, we first convert the string to a char array, modify the array and then convert it back to a new string.\n- In Python, we first convert the string to a list of characters, modify the list and then join the modified list into a new string.\n- In JavaScript, we first convert the string to an array of characters using split(), modify the array, and then join the array back into a new string using join().\n    ",
+    "java": "\n    ```java\npublic String replaceDigits(String s) {\n    char[] arr = s.toCharArray();\n    for (int i = 1; i < arr.length; i += 2) {\n        arr[i] = (char) (arr[i - 1] + (arr[i] - '0'));\n    }\n    return new String(arr);\n}\n```\n    \n    The algorithm iterates through the string characters with a step of 2, starting from index 1. During each step, it updates the current character using the `shift` function according to the problem statement. In each language, we implement this operation with slight variations:\n\n- In C++, we modify the string directly.\n- In Java, we first convert the string to a char array, modify the array and then convert it back to a new string.\n- In Python, we first convert the string to a list of characters, modify the list and then join the modified list into a new string.\n- In JavaScript, we first convert the string to an array of characters using split(), modify the array, and then join the array back into a new string using join().\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

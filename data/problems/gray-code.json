@@ -1,0 +1,24 @@
+{
+  "id": 89,
+  "title": "Gray Code",
+  "slug": "gray-code",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "An n-bit gray code sequence is a sequence of 2n integers where:\n\n*   Every integer is in the inclusive range [0, 2n - 1],\n*   The first integer is 0,\n*   An integer appears no more than once in the sequence,\n*   The binary representation of every pair of adjacent integers differs by exactly one bit, and\n*   The binary representation of the first and last integers differs by exactly one bit.\n\nGiven an integer n, return _any valid n-bit gray code sequence_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef grayCode(n):\n    result = []\n    for i in range(1 << n):\n        result.append(i ^ (i >> 1))\n    return result\n```\n    \n    The algorithm generates an n-bit gray code sequence by following the simple bitwise operation:\n\n1. Loop through all numbers from 0 to 2^n - 1.\n2. For each number i, calculate the gray code value by performing the bitwise XOR operation (i ^ (i >> 1))\n3. Add the gray code value to the result list or vector.\n\nThe algorithm has a time complexity of O(2^n) which is the size of the output sequence. The space complexity is also O(2^n), as we store the sequence in a list or vector.\n    ",
+    "javascript": "\n    ```javascript\nfunction grayCode(n) {\n    const result = [];\n    for (let i = 0; i < (1 << n); i++) {\n        result.push(i ^ (i >> 1));\n    }\n    return result;\n}\n```\n    \n    The algorithm generates an n-bit gray code sequence by following the simple bitwise operation:\n\n1. Loop through all numbers from 0 to 2^n - 1.\n2. For each number i, calculate the gray code value by performing the bitwise XOR operation (i ^ (i >> 1))\n3. Add the gray code value to the result list or vector.\n\nThe algorithm has a time complexity of O(2^n) which is the size of the output sequence. The space complexity is also O(2^n), as we store the sequence in a list or vector.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<Integer> grayCode(int n) {\n    List<Integer> result = new ArrayList<>();\n    for (int i = 0; i < (1 << n); i++) {\n        result.add(i ^ (i >> 1));\n    }\n    return result;\n}\n```\n    \n    The algorithm generates an n-bit gray code sequence by following the simple bitwise operation:\n\n1. Loop through all numbers from 0 to 2^n - 1.\n2. For each number i, calculate the gray code value by performing the bitwise XOR operation (i ^ (i >> 1))\n3. Add the gray code value to the result list or vector.\n\nThe algorithm has a time complexity of O(2^n) which is the size of the output sequence. The space complexity is also O(2^n), as we store the sequence in a list or vector.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 917,
+  "title": "Reverse Only Letters",
+  "slug": "reverse-only-letters",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a string s, reverse the string according to the following rules:\n\n*   All the characters that are not English letters remain in the same position.\n*   All the English letters (lowercase or uppercase) should be reversed.\n\nReturn s _after reversing it_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef num_rescue_boats(people, limit):\n    people.sort()\n    left, right = 0, len(people) - 1\n    boats = 0\n    while left <= right:\n        if people[left] + people[right] <= limit:\n            left += 1\n        right -= 1\n        boats += 1\n    return boats\n```\n    \n    The algorithm sorts the weights of the people in ascending order. Then, it uses two pointers, left, starting at the first person, and right, starting at the last person, to assign people to boats efficiently.\n\nIn each iteration, if the person pointed by left and the person pointed by right can fit in the same boat, they are assigned to one. Whether those two people can share a boat or not, we still move the right pointer to the previous person, because the heaviest person will always need a boat.\n\nThis process is repeated until the left pointer and right pointer meet, guaranteeing all people have been assigned to boats. The count of boats used during the process is returned as the minimum number of boats needed.\n    ",
+    "javascript": "\n    ```javascript\nfunction numRescueBoats(people, limit) {\n    people.sort((a, b) => a - b);\n    let left = 0, right = people.length - 1;\n    let boats = 0;\n    while (left <= right) {\n        if (people[left] + people[right] <= limit) {\n            left++;\n        }\n        right--;\n        boats++;\n    }\n    return boats;\n}\n```\n    \n    The algorithm sorts the weights of the people in ascending order. Then, it uses two pointers, left, starting at the first person, and right, starting at the last person, to assign people to boats efficiently.\n\nIn each iteration, if the person pointed by left and the person pointed by right can fit in the same boat, they are assigned to one. Whether those two people can share a boat or not, we still move the right pointer to the previous person, because the heaviest person will always need a boat.\n\nThis process is repeated until the left pointer and right pointer meet, guaranteeing all people have been assigned to boats. The count of boats used during the process is returned as the minimum number of boats needed.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int numRescueBoats(int[] people, int limit) {\n    Arrays.sort(people);\n    int left = 0, right = people.length - 1;\n    int boats = 0;\n    while (left <= right) {\n        if (people[left] + people[right] <= limit) {\n            left++;\n        }\n        right--;\n        boats++;\n    }\n    return boats;\n}\n```\n    \n    The algorithm sorts the weights of the people in ascending order. Then, it uses two pointers, left, starting at the first person, and right, starting at the last person, to assign people to boats efficiently.\n\nIn each iteration, if the person pointed by left and the person pointed by right can fit in the same boat, they are assigned to one. Whether those two people can share a boat or not, we still move the right pointer to the previous person, because the heaviest person will always need a boat.\n\nThis process is repeated until the left pointer and right pointer meet, guaranteeing all people have been assigned to boats. The count of boats used during the process is returned as the minimum number of boats needed.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

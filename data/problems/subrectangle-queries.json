@@ -1,0 +1,24 @@
+{
+  "id": 1476,
+  "title": "Subrectangle Queries",
+  "slug": "subrectangle-queries",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Implement the class SubrectangleQueries which receives a rows x cols rectangle as a matrix of integers in the constructor and supports two methods:\n\n1. updateSubrectangle(int row1, int col1, int row2, int col2, int newValue)\n\n*   Updates all values with newValue in the subrectangle whose upper left coordinate is (row1,col1) and bottom right coordinate is (row2,col2).\n\n2. getValue(int row, int col)\n\n*   Returns the current value of the coordinate (row,col) from the rectangle.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef countNegatives(grid):\n    m, n, count, i, j = len(grid), len(grid[0]), 0, 0, len(grid[0]) - 1\n    while i < m and j >= 0:\n        if grid[i][j] < 0:\n            count += j + 1\n            i += 1\n        else:\n            j -= 1\n    return count\n```\n    \n    The algorithm starts from the top-right corner of the matrix and iterates through the elements diagonally towards the bottom-left corner. At each step, if a negative number is found, we add the index (j+1) of that position to the count since all other elements in the same row to the left are also negative (because the rows are sorted in non-increasing order). Then we move down to the next row.\n\nIf a positive number (or zero) is found, no negative number can be in that column or to the right of it (because the columns are also sorted in non-increasing order), and we move to the left. The loop continues until we have covered all rows or reached the leftmost column. The count of negative numbers is returned. \n    ",
+    "javascript": "\n    ```javascript\nfunction countNegatives(grid) {\n    const m = grid.length, n = grid[0].length;\n    let count = 0, i = 0, j = n - 1;\n    while (i < m && j >= 0) {\n        if (grid[i][j] < 0) {\n            count += j + 1;\n            i++;\n        } else {\n            j--;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm starts from the top-right corner of the matrix and iterates through the elements diagonally towards the bottom-left corner. At each step, if a negative number is found, we add the index (j+1) of that position to the count since all other elements in the same row to the left are also negative (because the rows are sorted in non-increasing order). Then we move down to the next row.\n\nIf a positive number (or zero) is found, no negative number can be in that column or to the right of it (because the columns are also sorted in non-increasing order), and we move to the left. The loop continues until we have covered all rows or reached the leftmost column. The count of negative numbers is returned. \n    ",
+    "java": "\n    ```java\npublic int countNegatives(int[][] grid) {\n    int m = grid.length, n = grid[0].length, count = 0, i = 0, j = n - 1;\n    while (i < m && j >= 0) {\n        if (grid[i][j] < 0) {\n            count += j + 1;\n            i++;\n        } else {\n            j--;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm starts from the top-right corner of the matrix and iterates through the elements diagonally towards the bottom-left corner. At each step, if a negative number is found, we add the index (j+1) of that position to the count since all other elements in the same row to the left are also negative (because the rows are sorted in non-increasing order). Then we move down to the next row.\n\nIf a positive number (or zero) is found, no negative number can be in that column or to the right of it (because the columns are also sorted in non-increasing order), and we move to the left. The loop continues until we have covered all rows or reached the leftmost column. The count of negative numbers is returned. \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 554,
+  "title": "Brick Wall",
+  "slug": "brick-wall",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There is a rectangular brick wall in front of you with n rows of bricks. The ith row has some number of bricks each of the same height (i.e., one unit) but they can be of different widths. The total width of each row is the same.\n\nDraw a vertical line from the top to the bottom and cross the least bricks. If your line goes through the edge of a brick, then the brick is not considered as crossed. You cannot draw a line just along one of the two vertical edges of the wall, in which case the line will obviously cross no bricks.\n\nGiven the 2D array wall that contains the information about the wall, return _the minimum number of crossed bricks after drawing such a vertical line_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import defaultdict\n\ndef least_bricks(wall):\n    edge_count = defaultdict(int)\n    max_count = 0\n\n    for row in wall:\n        edge_position = 0\n        for i in range(len(row) - 1):\n            edge_position += row[i]\n            edge_count[edge_position] += 1\n            max_count = max(max_count, edge_count[edge_position])\n\n    return len(wall) - max_count\n```\n\n    \n    1. Create a hashmap `edge_count` to store the number of edges encountered at each position and initialize `max_count` to 0.\n2. Loop through each row in the wall.\n3. For each row, loop through its bricks (excluding the last brick) and keep track of the current brick edge position.\n4. Increment the count for the current edge position in the hashmap, then update `max_count` accordingly.\n5. After looping through all the rows, the result is the total number of rows minus the `max_count`. This gives the minimum number of crossed bricks.\n    ",
+    "javascript": "\n    ```javascript\nfunction leastBricks(wall) {\n    const edgeCount = new Map();\n    let maxCount = 0;\n\n    for (const row of wall) {\n        let edgePosition = 0;\n        for (let i = 0; i < row.length - 1; ++i) {\n            edgePosition += row[i];\n            edgeCount.set(edgePosition, (edgeCount.get(edgePosition) || 0) + 1);\n            maxCount = Math.max(maxCount, edgeCount.get(edgePosition));\n        }\n    }\n\n    return wall.length - maxCount;\n}\n```\n\n    \n    1. Create a hashmap `edge_count` to store the number of edges encountered at each position and initialize `max_count` to 0.\n2. Loop through each row in the wall.\n3. For each row, loop through its bricks (excluding the last brick) and keep track of the current brick edge position.\n4. Increment the count for the current edge position in the hashmap, then update `max_count` accordingly.\n5. After looping through all the rows, the result is the total number of rows minus the `max_count`. This gives the minimum number of crossed bricks.\n    ",
+    "java": "\n    ```java\nimport java.util.List;\nimport java.util.HashMap;\n\npublic int leastBricks(List<List<Integer>> wall) {\n    HashMap<Integer, Integer> edgeCount = new HashMap<>();\n    int maxCount = 0;\n\n    for (List<Integer> row : wall) {\n        int edgePosition = 0;\n        for (int i = 0; i < row.size() - 1; ++i) {\n            edgePosition += row.get(i);\n            edgeCount.put(edgePosition, edgeCount.getOrDefault(edgePosition, 0) + 1);\n            maxCount = Math.max(maxCount, edgeCount.get(edgePosition));\n        }\n    }\n\n    return wall.size() - maxCount;\n}\n```\n\n    \n    1. Create a hashmap `edge_count` to store the number of edges encountered at each position and initialize `max_count` to 0.\n2. Loop through each row in the wall.\n3. For each row, loop through its bricks (excluding the last brick) and keep track of the current brick edge position.\n4. Increment the count for the current edge position in the hashmap, then update `max_count` accordingly.\n5. After looping through all the rows, the result is the total number of rows minus the `max_count`. This gives the minimum number of crossed bricks.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

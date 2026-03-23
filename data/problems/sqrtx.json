@@ -1,0 +1,24 @@
+{
+  "id": 69,
+  "title": "Sqrt(x)",
+  "slug": "sqrtx",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a non-negative integer x, return _the square root of_ x _rounded down to the nearest integer_. The returned integer should be non-negative as well.\n\nYou must not use any built-in exponent function or operator.\n\n*   For example, do not use pow(x, 0.5) in c++ or x  0.5 in python.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef mySqrt(x):\n    if x == 0 or x == 1:\n        return x\n    start, end, ans = 1, x, 0\n    while start <= end:\n        mid = (start + end) // 2\n        if mid * mid == x:\n            return mid\n        if mid * mid < x:\n            start = mid + 1\n            ans = mid\n        else:\n            end = mid - 1\n    return ans\n```\n    \n    The algorithm uses a binary search approach to find the integer square root of the given number `x`. It starts with the smallest possible answer (1) and the largest possible answer (x), updating the \"start\" and \"end\" positions based on whether the current midpoint squared is smaller or larger than x. The integer square root of the number is found when `mid * mid == x`, or when the closest integer (under or equal to x) value has been located. The binary search approach keeps the time complexity at O(log(x)), making it an efficient solution.\n    ",
+    "javascript": "\n    ```javascript\nfunction mySqrt(x) {\n    if (x === 0 || x === 1) return x;\n    let start = 1, end = x, ans;\n    while (start <= end) {\n        let mid = Math.floor((start + end) / 2);\n        if (mid * mid === x) return mid;\n        if (mid * mid < x) {\n            start = mid + 1;\n            ans = mid;\n        } else {\n            end = mid - 1;\n        }\n    }\n    return ans;\n}\n```\n\n    \n    The algorithm uses a binary search approach to find the integer square root of the given number `x`. It starts with the smallest possible answer (1) and the largest possible answer (x), updating the \"start\" and \"end\" positions based on whether the current midpoint squared is smaller or larger than x. The integer square root of the number is found when `mid * mid == x`, or when the closest integer (under or equal to x) value has been located. The binary search approach keeps the time complexity at O(log(x)), making it an efficient solution.\n    ",
+    "java": "\n    ```java\npublic int mySqrt(int x) {\n    if (x == 0 || x == 1) return x;\n    int start = 1, end = x, ans = 0;\n    while (start <= end) {\n        int mid = (start + end) / 2;\n        if (mid * mid == x) return mid;\n        if (mid <= x / mid) {\n            start = mid + 1;\n            ans = mid;\n        } else {\n            end = mid - 1;\n        }\n    }\n    return ans;\n}\n```\n    \n    The algorithm uses a binary search approach to find the integer square root of the given number `x`. It starts with the smallest possible answer (1) and the largest possible answer (x), updating the \"start\" and \"end\" positions based on whether the current midpoint squared is smaller or larger than x. The integer square root of the number is found when `mid * mid == x`, or when the closest integer (under or equal to x) value has been located. The binary search approach keeps the time complexity at O(log(x)), making it an efficient solution.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

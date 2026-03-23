@@ -1,0 +1,39 @@
+{
+  "id": 13,
+  "title": "Binary Search",
+  "slug": "binary-search",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Binary Search"
+  ],
+  "description": "Given a sorted array of integers nums and a target value, return the index if the target is found, or -1 otherwise.",
+  "examples": [
+    {
+      "input": "nums = [-1,0,3,5,9,12], target = 9",
+      "output": "4"
+    }
+  ],
+  "constraints": [
+    "1 <= nums.length <= 10^4"
+  ],
+  "starterCode": {
+    "python": "from typing import List\nclass Solution:\n    def search(self, nums: List[int], target: int) -> int:\n        pass",
+    "javascript": "var search = function(nums, target) {\n    \n};",
+    "java": "class Solution {\n    public int search(int[] nums, int target) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    int search(vector<int>& nums, int target) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Binary Search\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "[-1,0,3,5,9,12]\n9",
+      "expectedOutput": "4"
+    },
+    {
+      "input": "[-1,0,3,5,9,12]\n2",
+      "expectedOutput": "-1"
+    }
+  ]
+}

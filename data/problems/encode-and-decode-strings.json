@@ -1,0 +1,24 @@
+{
+  "id": 271,
+  "title": "Encode and Decode Strings",
+  "slug": "encode-and-decode-strings",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network and is decoded back to the original list of strings.\n\nMachine 1 (sender) has the function:\n\nstring encode(vector strs) {\n  // ... your code\n  return encoded\\_string;\n}\n\nMachine 2 (receiver) has the function:\n\nvector decode(string s) {\n  //... your code\n  return strs;\n}\n\nSo Machine 1 does:\n\nstring encoded\\_string = encode(strs);\n\nand Machine 2 does:\n\nvector strs2 = decode(encoded\\_string);\n\nstrs2 in Machine 2 should be the same as strs in Machine 1.\n\nImplement the encode and decode methods.\n\nYou are not allowed to solve the problem using any serialize methods (such as eval).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef encode(strs):\n    encoded_string = \"\"\n    for s in strs:\n        encoded_string += str(len(s)) + \"#\" + s\n    return encoded_string\n\ndef decode(s):\n    strs = []\n    i = 0\n    while i < len(s):\n        delimiter_pos = s.find('#', i)\n        length = int(s[i:delimiter_pos])\n        strs.append(s[delimiter_pos + 1:delimiter_pos + 1 + length])\n        i = delimiter_pos + 1 + length\n    return strs\n```\n\n    \n    The algorithm concatenates each string with its length and a delimiter (in this case '#'). For example, [\"Hello \", \"World \"] would be encoded into \"6#Hello 6#World \" (6 is the length of both \"Hello \" and \"World \").\n\nWhen decoding, the receiving side searches for the delimiter and extracts the string's length just before each delimiter. It then uses that length to extract the original string extending from the position after the delimiter. It iterates over the received encoded string until all substrings have been extracted.\n\nThis algorithm works with any valid ASCII characters as it uses the length of the string in the encoding and decoding process.\n    ",
+    "javascript": "\n    ```javascript\nfunction encode(strs) {\n    let encodedString = \"\";\n    for (const s of strs) {\n        encodedString += s.length + \"#\" + s;\n    }\n    return encodedString;\n}\n\nfunction decode(s) {\n    let strs = [];\n    let i = 0;\n    while (i < s.length) {\n        const delimiterPos = s.indexOf('#', i);\n        const length = parseInt(s.slice(i, delimiterPos));\n        strs.push(s.slice(delimiterPos + 1, delimiterPos + 1 + length));\n        i = delimiterPos + 1 + length;\n    }\n    return strs;\n}\n```\n\n    \n    The algorithm concatenates each string with its length and a delimiter (in this case '#'). For example, [\"Hello \", \"World \"] would be encoded into \"6#Hello 6#World \" (6 is the length of both \"Hello \" and \"World \").\n\nWhen decoding, the receiving side searches for the delimiter and extracts the string's length just before each delimiter. It then uses that length to extract the original string extending from the position after the delimiter. It iterates over the received encoded string until all substrings have been extracted.\n\nThis algorithm works with any valid ASCII characters as it uses the length of the string in the encoding and decoding process.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic String encode(List<String> strs) {\n    StringBuilder encodedString = new StringBuilder();\n    for (String s : strs) {\n        encodedString.append(s.length()).append('#').append(s);\n    }\n    return encodedString.toString();\n}\n\npublic List<String> decode(String s) {\n    List<String> strs = new ArrayList<>();\n    int i = 0;\n    while (i < s.length()) {\n        int delimiterPos = s.indexOf('#', i);\n        int length = Integer.parseInt(s.substring(i, delimiterPos));\n        strs.add(s.substring(delimiterPos + 1, delimiterPos + 1 + length));\n        i = delimiterPos + 1 + length;\n    }\n    return strs;\n}\n```\n    \n    The algorithm concatenates each string with its length and a delimiter (in this case '#'). For example, [\"Hello \", \"World \"] would be encoded into \"6#Hello 6#World \" (6 is the length of both \"Hello \" and \"World \").\n\nWhen decoding, the receiving side searches for the delimiter and extracts the string's length just before each delimiter. It then uses that length to extract the original string extending from the position after the delimiter. It iterates over the received encoded string until all substrings have been extracted.\n\nThis algorithm works with any valid ASCII characters as it uses the length of the string in the encoding and decoding process.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1496,
+  "title": "Path Crossing",
+  "slug": "path-crossing",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a string path, where path[i] = 'N', 'S', 'E' or 'W', each representing moving one unit north, south, east, or west, respectively. You start at the origin (0, 0) on a 2D plane and walk on the path specified by path.\n\nReturn true _if the path crosses itself at any point, that is, if at any time you are on a location you have previously visited_. Return false otherwise.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef lucky_numbers(matrix):\n    m, n = len(matrix), len(matrix[0])\n    lucky_numbers = []\n\n    for i in range(m):\n        min_row = min(matrix[i])\n        min_row_idx = matrix[i].index(min_row)\n        is_lucky = all(matrix[k][min_row_idx] <= min_row for k in range(m))\n\n        if is_lucky:\n            lucky_numbers.append(min_row)\n\n    return lucky_numbers\n```\n    \n    1. Initialize a list `lucky_numbers` to store the final lucky numbers from the matrix.\n2. Iterate through all rows in the matrix, and for each row:\n   - Find the minimum element `min_row` in the row and its index `min_row_idx`.\n   - Check if `min_row` is the maximum element in its column `min_row_idx`. If so, add `min_row` to the list of `lucky_numbers`.\n3. Return the `lucky_numbers` list.\n    ",
+    "javascript": "\n    ```javascript\nfunction luckyNumbers(matrix) {\n    const m = matrix.length, n = matrix[0].length;\n    const luckyNumbers = [];\n\n    for (let i = 0; i < m; i++) {\n        let minRow = matrix[i][0];\n        let minRowIndex = 0;\n        for (let j = 0; j < n; j++) {\n            if (matrix[i][j] < minRow) {\n                minRow = matrix[i][j];\n                minRowIndex = j;\n            }\n        }\n\n        let isLucky = true;\n        for (let k = 0; k < m; k++) {\n            if (matrix[k][minRowIndex] > minRow) {\n                isLucky = false;\n                break;\n            }\n        }\n\n        if (isLucky)\n            luckyNumbers.push(minRow);\n    }\n\n    return luckyNumbers;\n}\n```\n    \n    1. Initialize a list `lucky_numbers` to store the final lucky numbers from the matrix.\n2. Iterate through all rows in the matrix, and for each row:\n   - Find the minimum element `min_row` in the row and its index `min_row_idx`.\n   - Check if `min_row` is the maximum element in its column `min_row_idx`. If so, add `min_row` to the list of `lucky_numbers`.\n3. Return the `lucky_numbers` list.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<Integer> luckyNumbers(int[][] matrix) {\n    int m = matrix.length, n = matrix[0].length;\n    List<Integer> luckyNumbers = new ArrayList<>();\n\n    for (int i = 0; i < m; i++) {\n        int minRow = matrix[i][0];\n        int minRowIndex = 0;\n        for (int j = 0; j < n; j++) {\n            if (matrix[i][j] < minRow) {\n                minRow = matrix[i][j];\n                minRowIndex = j;\n            }\n        }\n\n        boolean isLucky = true;\n        for (int k = 0; k < m; k++) {\n            if (matrix[k][minRowIndex] > minRow) {\n                isLucky = false;\n                break;\n            }\n        }\n\n        if (isLucky)\n            luckyNumbers.add(minRow);\n    }\n\n    return luckyNumbers;\n}\n```\n    \n    1. Initialize a list `lucky_numbers` to store the final lucky numbers from the matrix.\n2. Iterate through all rows in the matrix, and for each row:\n   - Find the minimum element `min_row` in the row and its index `min_row_idx`.\n   - Check if `min_row` is the maximum element in its column `min_row_idx`. If so, add `min_row` to the list of `lucky_numbers`.\n3. Return the `lucky_numbers` list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

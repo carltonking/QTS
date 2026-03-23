@@ -1,0 +1,24 @@
+{
+  "id": 791,
+  "title": "Custom Sort String",
+  "slug": "custom-sort-string",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two strings order and s. All the characters of order are unique and were sorted in some custom order previously.\n\nPermute the characters of s so that they match the order that order was sorted. More specifically, if a character x occurs before a character y in order, then x should occur before y in the permuted string.\n\nReturn _any permutation of_ s _that satisfies this property_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef customSortString(order, s):\n    priority = {char: idx for idx, char in enumerate(order)}\n    return \"\".join(sorted(s, key=lambda x: priority.get(x, 0)))\n```\n    \n    1. Create a hash map or dictionary `priority`, where the key is the character from the `order` string, and the value is its position.\n2. Sort the characters in the input string `s` based on the values in the `priority` hash map. If a character is not found in the map, set its priority to 0.\n3. Join the sorted characters to form the resulting string and return it.\n    ",
+    "javascript": "\n    ```javascript\nfunction customSortString(order, s) {\n    const priority = new Map();\n    for (let i = 0; i < order.length; i++) {\n        priority.set(order[i], i);\n    }\n\n    const sArr = Array.from(s);\n    sArr.sort((a, b) => (priority.has(a) ? priority.get(a) : 0) - (priority.has(b) ? priority.get(b) : 0));\n    return sArr.join('');\n}\n```\n    \n    1. Create a hash map or dictionary `priority`, where the key is the character from the `order` string, and the value is its position.\n2. Sort the characters in the input string `s` based on the values in the `priority` hash map. If a character is not found in the map, set its priority to 0.\n3. Join the sorted characters to form the resulting string and return it.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\n\npublic String customSortString(String order, String s) {\n    HashMap<Character, Integer> priority = new HashMap<>();\n    for (int i = 0; i < order.length(); i++) {\n        priority.put(order.charAt(i), i);\n    }\n\n    Character[] sChars = s.chars().mapToObj(c -> (char) c).toArray(Character[]::new);\n    Arrays.sort(sChars, (a, b) -> priority.getOrDefault(a, 0) - priority.getOrDefault(b, 0));\n    return Arrays.stream(sChars).map(String::valueOf).collect(Collectors.joining());\n}\n```\n    \n    1. Create a hash map or dictionary `priority`, where the key is the character from the `order` string, and the value is its position.\n2. Sort the characters in the input string `s` based on the values in the `priority` hash map. If a character is not found in the map, set its priority to 0.\n3. Join the sorted characters to form the resulting string and return it.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

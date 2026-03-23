@@ -1,0 +1,24 @@
+{
+  "id": 240,
+  "title": "Search a 2D Matrix II",
+  "slug": "search-a-2d-matrix-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Write an efficient algorithm that searches for a value target in an m x n integer matrix matrix. This matrix has the following properties:\n\n*   Integers in each row are sorted in ascending from left to right.\n*   Integers in each column are sorted in ascending from top to bottom.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef searchMatrix(matrix, target):\n    row, col = len(matrix) - 1, 0\n    while row >= 0 and col < len(matrix[0]):\n        if matrix[row][col] > target:\n            row -= 1\n        elif matrix[row][col] < target:\n            col += 1\n        else:\n            return True\n    return False\n```\n    \n    The algorithm starts at the bottom-left corner of the matrix. Then it follows these rules:\n1. If the current value is bigger than the target, then move up in the matrix (because all values above will be smaller).\n2. If the current value is smaller than the target, then move to the right in the matrix (because all values to the right will be bigger).\n3. If the current value is equal to the target, return true.\n\nThis algorithm is efficient as it reduces the search space in every step by either eliminating a row or a column. At most, it will take m + n steps.\n    ",
+    "javascript": "\n    ```javascript\nfunction searchMatrix(matrix, target) {\n    let row = matrix.length - 1, col = 0;\n    while(row >= 0 && col < matrix[0].length) {\n        if(matrix[row][col] > target) {\n            row--;\n        } else if(matrix[row][col] < target) {\n            col++;\n        } else {\n            return true;\n        }\n    }\n    return false;\n}\n```\n\n    \n    The algorithm starts at the bottom-left corner of the matrix. Then it follows these rules:\n1. If the current value is bigger than the target, then move up in the matrix (because all values above will be smaller).\n2. If the current value is smaller than the target, then move to the right in the matrix (because all values to the right will be bigger).\n3. If the current value is equal to the target, return true.\n\nThis algorithm is efficient as it reduces the search space in every step by either eliminating a row or a column. At most, it will take m + n steps.\n    ",
+    "java": "\n    ```java\npublic boolean searchMatrix(int[][] matrix, int target) {\n    int row = matrix.length - 1, col = 0;\n    while (row >= 0 && col < matrix[0].length) {\n        if (matrix[row][col] > target) {\n            row--;\n        } else if (matrix[row][col] < target) {\n            col++;\n        } else {\n            return true;\n        }\n    }\n    return false;\n}\n```\n    \n    The algorithm starts at the bottom-left corner of the matrix. Then it follows these rules:\n1. If the current value is bigger than the target, then move up in the matrix (because all values above will be smaller).\n2. If the current value is smaller than the target, then move to the right in the matrix (because all values to the right will be bigger).\n3. If the current value is equal to the target, return true.\n\nThis algorithm is efficient as it reduces the search space in every step by either eliminating a row or a column. At most, it will take m + n steps.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

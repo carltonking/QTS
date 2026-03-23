@@ -1,0 +1,24 @@
+{
+  "id": 1855,
+  "title": "Maximum Distance Between a Pair of Values",
+  "slug": "maximum-distance-between-a-pair-of-values",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two non-increasing 0-indexed integer arrays nums1​​​​​​ and nums2​​​​​​.\n\nA pair of indices (i, j), where 0 <= i < nums1.length and 0 <= j < nums2.length, is valid if both i <= j and nums1[i] <= nums2[j]. The distance of the pair is j - i​​​​.\n\nReturn _the maximum distance of any valid pair_ (i, j)_. If there are no valid pairs, return_ 0.\n\nAn array arr is non-increasing if arr[i-1] >= arr[i] for every 1 <= i < arr.length.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxDistance(nums1, nums2):\n    i, j, maxDist = 0, 0, 0\n    while i < len(nums1) and j < len(nums2):\n        if nums1[i] > nums2[j]:\n            i += 1\n        else:\n            maxDist = max(maxDist, j - i)\n            j += 1\n    return maxDist\n```\n    \n    The algorithm starts with setting both indices `i` and `j` to zero. A `maxDist` variable is initialized as zero as well. It uses a while loop to navigate through both arrays (nums1 and nums2) as long as the indices are within their respective array boundaries. It then checks whether the element at `nums1[i]` is greater than the element at `nums2[j]`, if true, it increments the index `i`. Otherwise, it updates the `maxDist` variable as the maximum between the existing maximum distance and the new distance (`j - i`), and increments the index `j`.\n\nThis algorithm works because it takes advantage of the non-increasing property of both arrays. It moves through the arrays checking each possible valid pair `(i, j)`. It moves index `i` right when the current pair is invalid and moves `j` right when a valid pair is found, updating the maximum distance when necessary.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxDistance(nums1, nums2) {\n    let i = 0, j = 0, maxDist = 0;\n    while (i < nums1.length && j < nums2.length) {\n        if (nums1[i] > nums2[j]) {\n            ++i;\n        } else {\n            maxDist = Math.max(maxDist, j - i);\n            ++j;\n        }\n    }\n    return maxDist;\n}\n```\n    \n    The algorithm starts with setting both indices `i` and `j` to zero. A `maxDist` variable is initialized as zero as well. It uses a while loop to navigate through both arrays (nums1 and nums2) as long as the indices are within their respective array boundaries. It then checks whether the element at `nums1[i]` is greater than the element at `nums2[j]`, if true, it increments the index `i`. Otherwise, it updates the `maxDist` variable as the maximum between the existing maximum distance and the new distance (`j - i`), and increments the index `j`.\n\nThis algorithm works because it takes advantage of the non-increasing property of both arrays. It moves through the arrays checking each possible valid pair `(i, j)`. It moves index `i` right when the current pair is invalid and moves `j` right when a valid pair is found, updating the maximum distance when necessary.\n    ",
+    "java": "\n    ```java\npublic int maxDistance(int[] nums1, int[] nums2) {\n    int i = 0, j = 0, maxDist = 0;\n    while (i < nums1.length && j < nums2.length) {\n        if (nums1[i] > nums2[j]) {\n            ++i;\n        } else {\n            maxDist = Math.max(maxDist, j - i);\n            ++j;\n        }\n    }\n    return maxDist;\n}\n```\n    \n    The algorithm starts with setting both indices `i` and `j` to zero. A `maxDist` variable is initialized as zero as well. It uses a while loop to navigate through both arrays (nums1 and nums2) as long as the indices are within their respective array boundaries. It then checks whether the element at `nums1[i]` is greater than the element at `nums2[j]`, if true, it increments the index `i`. Otherwise, it updates the `maxDist` variable as the maximum between the existing maximum distance and the new distance (`j - i`), and increments the index `j`.\n\nThis algorithm works because it takes advantage of the non-increasing property of both arrays. It moves through the arrays checking each possible valid pair `(i, j)`. It moves index `i` right when the current pair is invalid and moves `j` right when a valid pair is found, updating the maximum distance when necessary.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

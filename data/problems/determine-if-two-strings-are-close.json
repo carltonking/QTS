@@ -1,0 +1,24 @@
+{
+  "id": 1657,
+  "title": "Determine if Two Strings Are Close",
+  "slug": "determine-if-two-strings-are-close",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Two strings are considered close if you can attain one from the other using the following operations:\n\n*   Operation 1: Swap any two existing characters.\n    *   For example, abcde -> aecdb\n*   Operation 2: Transform every occurrence of one existing character into another existing character, and do the same with the other character.\n    *   For example, aacabb -> bbcbaa (all a's turn into b's, and all b's turn into a's)\n\nYou can use the operations on either string as many times as necessary.\n\nGiven two strings, word1 and word2, return true _if_ word1 _and_ word2 _are close, and_ false _otherwise._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef get_winner(arr, k):\n    winner = arr[0]\n    consecutive_wins = 0\n\n    for i in range(1, len(arr)):\n        if arr[i] > winner:\n            winner = arr[i];\n            consecutive_wins = 0\n\n        consecutive_wins += 1\n        if consecutive_wins == k:\n            break\n\n    return winner\n```\n    \n    1. Initialize the winner variable with the first element of the array and set consecutive wins to zero.\n2. Iterate through the array starting from the second element.\n3. Compare the current element with the winner. If the current element is larger, update the winner and reset consecutive wins to zero.\n4. Increment consecutive wins. If consecutive wins is equal to k, break the loop.\n5. Return the winner.\n    ",
+    "javascript": "\n    ```javascript\nfunction getWinner(arr, k) {\n    let winner = arr[0];\n    let consecutiveWins = 0;\n\n    for (let i = 1; i < arr.length; i++) {\n        if (arr[i] > winner) {\n            winner = arr[i];\n            consecutiveWins = 0;\n        }\n        if (++consecutiveWins === k) {\n            break;\n        }\n    }\n    return winner;\n}\n```\n    \n    1. Initialize the winner variable with the first element of the array and set consecutive wins to zero.\n2. Iterate through the array starting from the second element.\n3. Compare the current element with the winner. If the current element is larger, update the winner and reset consecutive wins to zero.\n4. Increment consecutive wins. If consecutive wins is equal to k, break the loop.\n5. Return the winner.\n    ",
+    "java": "\n    ```java\npublic int getWinner(int[] arr, int k) {\n    int winner = arr[0];\n    int consecutiveWins = 0;\n\n    for (int i = 1; i < arr.length; i++) {\n        if (arr[i] > winner) {\n            winner = arr[i];\n            consecutiveWins = 0;\n        }\n        if (++consecutiveWins == k) {\n            break;\n        }\n    }\n    return winner;\n}\n```\n    \n    1. Initialize the winner variable with the first element of the array and set consecutive wins to zero.\n2. Iterate through the array starting from the second element.\n3. Compare the current element with the winner. If the current element is larger, update the winner and reset consecutive wins to zero.\n4. Increment consecutive wins. If consecutive wins is equal to k, break the loop.\n5. Return the winner.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

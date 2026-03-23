@@ -1,0 +1,24 @@
+{
+  "id": 1860,
+  "title": "Incremental Memory Leak",
+  "slug": "incremental-memory-leak",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two integers memory1 and memory2 representing the available memory in bits on two memory sticks. There is currently a faulty program running that consumes an increasing amount of memory every second.\n\nAt the ith second (starting from 1), i bits of memory are allocated to the stick with more available memory (or from the first memory stick if both have the same available memory). If neither stick has at least i bits of available memory, the program crashes.\n\nReturn _an array containing_ [crashTime, memory1crash, memory2crash]_, where_ crashTime _is the time (in seconds) when the program crashed and_ memory1crash _and_ memory2crash _are the available bits of memory in the first and second sticks respectively_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nimport heapq\n\ndef kthLargestValue(matrix, k):\n    m, n = len(matrix), len(matrix[0])\n    prefix_xor = [[0] * (n + 1) for _ in range(m + 1)]\n    pq = []\n\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            prefix_xor[i][j] = matrix[i - 1][j - 1] ^ prefix_xor[i - 1][j] ^ prefix_xor[i][j - 1] ^ prefix_xor[i - 1][j - 1]\n            heapq.heappush(pq, prefix_xor[i][j])\n            if len(pq) > k:\n                heapq.heappop(pq)\n    return pq[0]\n```\n\n    \n    1. Create a prefix XOR matrix to store the XOR of all coordinates (0 <= i <= a, 0 <= j <= b).\n2. Use a min-heap (priority queue) to maintain the k largest values as we iterate through the prefix XOR matrix.\n3. For each coordinate in the prefix XOR matrix, XOR the matrix value with the other matrix elements.\n4. Push the XOR value onto the priority queue.\n5. If the size of the priority queue is more than k, pop the smallest element.\n6. After iterating through all coordinates, return the top element in the priority queue as the kth largest value.\n    ",
+    "javascript": "\n    ```javascript\nfunction kthLargestValue(matrix, k) {\n  let m = matrix.length;\n  let n = matrix[0].length;\n  let prefixXOR = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));\n  let pq = new PriorityQueue(k);\n\n  for (let i = 1; i <= m; i++) {\n    for (let j = 1; j <= n; j++) {\n      prefixXOR[i][j] = matrix[i - 1][j - 1] ^ prefixXOR[i - 1][j] ^ prefixXOR[i][j - 1] ^ prefixXOR[i - 1][j - 1];\n      pq.offer(prefixXOR[i][j]);\n      if (pq.size() > k) {\n        pq.poll();\n      }\n    }\n  }\n  return pq.peek();\n}\n\nclass PriorityQueue {\n  constructor(k) {\n    this.queue = [];\n    this.k = k;\n  }\n\n  offer(element) {\n    this.queue.push(element);\n    this.queue.sort((a, b) => a - b);\n  }\n\n  poll() {\n    return this.queue.shift();\n  }\n\n  size() {\n    return this.queue.length;\n  }\n\n  peek() {\n    return this.queue[0];\n  }\n}\n```\n\n    \n    1. Create a prefix XOR matrix to store the XOR of all coordinates (0 <= i <= a, 0 <= j <= b).\n2. Use a min-heap (priority queue) to maintain the k largest values as we iterate through the prefix XOR matrix.\n3. For each coordinate in the prefix XOR matrix, XOR the matrix value with the other matrix elements.\n4. Push the XOR value onto the priority queue.\n5. If the size of the priority queue is more than k, pop the smallest element.\n6. After iterating through all coordinates, return the top element in the priority queue as the kth largest value.\n    ",
+    "java": "\n    ```java\nimport java.util.PriorityQueue;\n\npublic int kthLargestValue(int[][] matrix, int k) {\n    int m = matrix.length;\n    int n = matrix[0].length;\n    int[][] prefixXOR = new int[m + 1][n + 1];\n    PriorityQueue<Integer> pq = new PriorityQueue<>(k);\n\n    for (int i = 1; i <= m; i++) {\n        for (int j = 1; j <= n; j++) {\n            prefixXOR[i][j] = matrix[i - 1][j - 1] ^ prefixXOR[i - 1][j] ^ prefixXOR[i][j - 1] ^ prefixXOR[i - 1][j - 1];\n            pq.offer(prefixXOR[i][j]);\n            if (pq.size() > k) {\n                pq.poll();\n            }\n        }\n    }\n    return pq.peek();\n}\n```\n\n    \n    1. Create a prefix XOR matrix to store the XOR of all coordinates (0 <= i <= a, 0 <= j <= b).\n2. Use a min-heap (priority queue) to maintain the k largest values as we iterate through the prefix XOR matrix.\n3. For each coordinate in the prefix XOR matrix, XOR the matrix value with the other matrix elements.\n4. Push the XOR value onto the priority queue.\n5. If the size of the priority queue is more than k, pop the smallest element.\n6. After iterating through all coordinates, return the top element in the priority queue as the kth largest value.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

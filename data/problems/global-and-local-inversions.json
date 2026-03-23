@@ -1,0 +1,24 @@
+{
+  "id": 775,
+  "title": "Global and Local Inversions",
+  "slug": "global-and-local-inversions",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array nums of length n which represents a permutation of all the integers in the range [0, n - 1].\n\nThe number of global inversions is the number of the different pairs (i, j) where:\n\n*   0 <= i < j < n\n*   nums[i] > nums[j]\n\nThe number of local inversions is the number of indices i where:\n\n*   0 <= i < n - 1\n*   nums[i] > nums[i + 1]\n\nReturn true _if the number of global inversions is equal to the number of local inversions_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass Node:\n    def __init__(self, val=None, children=None):\n        self.val = val\n        self.children = children if children is not None else []\n\ndef helper(root, result):\n    if not root:\n        return\n    result.append(root.val)\n    for child in root.children:\n        helper(child, result)\n\ndef preorder(root):\n    result = []\n    helper(root, result)\n    return result\n```\n    \n    The algorithm uses a helper function to perform a Depth First Search traversal on the given N-ary tree. The helper function is called recursively for each child of the current node, following a preorder traversal (i.e., visiting the current node before its children). During the traversal, the value of each node is added to the result list/array. The primary function returns this result list/array when the traversal is complete.\n    ",
+    "javascript": "\n    ```javascript\nclass Node {\n    constructor(val, children) {\n        this.val = val === undefined ? 0 : val;\n        this.children = children === undefined ? [] : children;\n    }\n}\n\nvar helper = function (root, result) {\n    if (root === null) return;\n    result.push(root.val);\n    for (let child of root.children) {\n        helper(child, result);\n    }\n}\n\nvar preorder = function (root) {\n    let result = [];\n    helper(root, result);\n    return result;\n};\n```\n    \n    The algorithm uses a helper function to perform a Depth First Search traversal on the given N-ary tree. The helper function is called recursively for each child of the current node, following a preorder traversal (i.e., visiting the current node before its children). During the traversal, the value of each node is added to the result list/array. The primary function returns this result list/array when the traversal is complete.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\nclass Node {\n    public int val;\n    public List<Node> children;\n\n    public Node() {}\n\n    public Node(int _val) { val = _val; }\n\n    public Node(int _val, List<Node> _children) {\n        val = _val;\n        children = _children;\n    }\n}\n\nclass Solution {\n    private void helper(Node root, List<Integer> result) {\n        if (root == null) return;\n        result.add(root.val);\n        for (Node child : root.children) {\n            helper(child, result);\n        }\n    }\n\n    public List<Integer> preorder(Node root) {\n        List<Integer> result = new ArrayList<>();\n        helper(root, result);\n        return result;\n    }\n}\n```\n    \n    The algorithm uses a helper function to perform a Depth First Search traversal on the given N-ary tree. The helper function is called recursively for each child of the current node, following a preorder traversal (i.e., visiting the current node before its children). During the traversal, the value of each node is added to the result list/array. The primary function returns this result list/array when the traversal is complete.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

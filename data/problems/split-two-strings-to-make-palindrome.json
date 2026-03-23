@@ -1,0 +1,24 @@
+{
+  "id": 1616,
+  "title": "Split Two Strings to Make Palindrome",
+  "slug": "split-two-strings-to-make-palindrome",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two strings a and b of the same length. Choose an index and split both strings at the same index, splitting a into two strings: aprefix and asuffix where a = aprefix + asuffix, and splitting b into two strings: bprefix and bsuffix where b = bprefix + bsuffix. Check if aprefix + bsuffix or bprefix + asuffix forms a palindrome.\n\nWhen you split a string s into sprefix and ssuffix, either ssuffix or sprefix is allowed to be empty. For example, if s = \"abc \", then \" \" + \"abc \", \"a \" + \"bc \", \"ab \" + \"c \" , and \"abc \" + \" \" are valid splits.\n\nReturn true _if it is possible to form_ _a palindrome string, otherwise return_ false.\n\nNotice that x + y denotes the concatenation of strings x and y.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_difference(nums):\n    size = len(nums)\n    if size < 5:\n        return 0\n\n    nums.sort()\n\n    return min(nums[-1] - nums[3], nums[-2] - nums[2], nums[-3] - nums[1], nums[-4] - nums[0])\n```\n    \n    1. First, we check if the array size is less than 5. If yes, we can make all elements equal in at most 3 moves, so the minimum difference will be 0.\n2. Sort the given array.\n3. We need to change at most 3 smallest or largest elements. We have four combinations of this. We could change:\n    - 3 largest elements (1 smallest)\n    - 2 largest elements and 1 smallest element (2 smallest)\n    - 1 largest element and 2 smallest elements (3 smallest)\n    - 3 smallest elements (4 smallest)\n4. Calculate the difference for all four combinations and return the minimum difference.\n    ",
+    "javascript": "\n    ```javascript\nfunction minDifference(nums) {\n    let size = nums.length;\n    if (size < 5) return 0;\n\n    nums.sort((a, b) => a - b);\n\n    return Math.min(nums[size-1] - nums[3], nums[size-2] - nums[2], nums[size-3] - nums[1], nums[size-4] - nums[0]);\n}\n```\n    \n    1. First, we check if the array size is less than 5. If yes, we can make all elements equal in at most 3 moves, so the minimum difference will be 0.\n2. Sort the given array.\n3. We need to change at most 3 smallest or largest elements. We have four combinations of this. We could change:\n    - 3 largest elements (1 smallest)\n    - 2 largest elements and 1 smallest element (2 smallest)\n    - 1 largest element and 2 smallest elements (3 smallest)\n    - 3 smallest elements (4 smallest)\n4. Calculate the difference for all four combinations and return the minimum difference.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int minDifference(int[] nums) {\n    int size = nums.length;\n    if (size < 5) return 0;\n\n    Arrays.sort(nums);\n\n    return Math.min(Math.min(nums[size-1] - nums[3], nums[size-2] - nums[2]), Math.min(nums[size-3] - nums[1], nums[size-4] - nums[0]));\n}\n```\n    \n    1. First, we check if the array size is less than 5. If yes, we can make all elements equal in at most 3 moves, so the minimum difference will be 0.\n2. Sort the given array.\n3. We need to change at most 3 smallest or largest elements. We have four combinations of this. We could change:\n    - 3 largest elements (1 smallest)\n    - 2 largest elements and 1 smallest element (2 smallest)\n    - 1 largest element and 2 smallest elements (3 smallest)\n    - 3 smallest elements (4 smallest)\n4. Calculate the difference for all four combinations and return the minimum difference.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1452,
+  "title": "People Whose List of Favorite Companies Is Not a Subset of Another List",
+  "slug": "people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the array favoriteCompanies where favoriteCompanies[i] is the list of favorites companies for the ith person (indexed from 0).\n\n_Return the indices of people whose list of favorite companies is not a subset of any other list of favorites companies_. You must return the indices in increasing order.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom typing import List\n\ndef peopleIndexes(favoriteCompanies: List[List[str]]) -> List[int]:\n    result = []\n    companySets = [set(companies) for companies in favoriteCompanies]\n\n    for i, companies in enumerate(companySets):\n        isSubset = False\n        for j, otherCompanies in enumerate(companySets):\n            if i != j and companies.issubset(otherCompanies):\n                isSubset = True\n                break\n        if not isSubset:\n            result.append(i)\n\n    return result\n```\n    \n    The algorithm first converts the favoriteCompanies array of lists to an array of sets (for faster lookups).\nThen, for each list, iterate through the lists again to find if there's any list that contains all the favorite companies of the current list. If it's a subset of any other list, then continue to the next list without adding the current index to the result. If it's not a subset of any other list, append the index to the result.\n    ",
+    "javascript": "\n    ```javascript\nvar peopleIndexes = function(favoriteCompanies) {\n    const result = [];\n    const companySets = favoriteCompanies.map(companies => new Set(companies));\n    \n    for (let i = 0; i < companySets.length; ++i) {\n        let isSubset = false;\n        for (let j = 0; j < companySets.length; ++j) {\n            if (i !== j && isSubsetOf(companySets[i], companySets[j])) {\n                isSubset = true;\n                break;\n            }\n        }\n        if (!isSubset) result.push(i);\n    }\n    \n    return result;\n};\n\nfunction isSubsetOf(setA, setB) {\n    for (let elem of setA) {\n        if (!setB.has(elem)) return false;\n    }\n    return true;\n}\n```\n    \n    The algorithm first converts the favoriteCompanies array of lists to an array of sets (for faster lookups).\nThen, for each list, iterate through the lists again to find if there's any list that contains all the favorite companies of the current list. If it's a subset of any other list, then continue to the next list without adding the current index to the result. If it's not a subset of any other list, append the index to the result.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\nclass Solution {\n    public List<Integer> peopleIndexes(List<List<String>> favoriteCompanies) {\n        List<Integer> result = new ArrayList<>();\n        List<Set<String>> companySets = new ArrayList<>();\n        \n        for (List<String> companies : favoriteCompanies) {\n            companySets.add(new HashSet<String>(companies));\n        }\n        \n        for (int i = 0; i < companySets.size(); ++i) {\n            boolean isSubset = false;\n            for (int j = 0; j < companySets.size(); ++j) {\n                if (i != j && companySets.get(j).containsAll(companySets.get(i))) {\n                    isSubset = true;\n                    break;\n                }\n            }\n            if (!isSubset) result.add(i);\n        }\n        \n        return result;\n    }\n}\n```\n    \n    The algorithm first converts the favoriteCompanies array of lists to an array of sets (for faster lookups).\nThen, for each list, iterate through the lists again to find if there's any list that contains all the favorite companies of the current list. If it's a subset of any other list, then continue to the next list without adding the current index to the result. If it's not a subset of any other list, append the index to the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

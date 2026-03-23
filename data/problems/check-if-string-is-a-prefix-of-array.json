@@ -1,0 +1,24 @@
+{
+  "id": 1961,
+  "title": "Check If String Is a Prefix of Array",
+  "slug": "check-if-string-is-a-prefix-of-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a string s and an array of strings words, determine whether s is a prefix string of words.\n\nA string s is a prefix string of words if s can be made by concatenating the first k strings in words for some positive k no larger than words.length.\n\nReturn true _if_ s _is a prefix string of_ words_, or_ false _otherwise_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_ice_cream(costs, coins):\n    costs.sort()\n    count = 0\n    for cost in costs:\n        if coins >= cost:\n            coins -= cost\n            count += 1\n        else:\n            break\n    return count\n```\n    \n    The algorithm first sorts the `costs` array in ascending order. Then, it traverses the sorted array and checks if the current cost can be covered by the remaining `coins`. If it can, the function decreases the `coins` by the cost and increments the count of bought ice cream bars. If it can't, the loop breaks, as the remaining ice creams are all more expensive. Finally, the function returns the count of bought ice cream bars.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxIceCream(costs, coins) {\n    costs.sort((a, b) => a - b);\n    let count = 0;\n    for (const cost of costs) {\n        if (coins >= cost) {\n            coins -= cost;\n            count++;\n        } else {\n            break;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm first sorts the `costs` array in ascending order. Then, it traverses the sorted array and checks if the current cost can be covered by the remaining `coins`. If it can, the function decreases the `coins` by the cost and increments the count of bought ice cream bars. If it can't, the loop breaks, as the remaining ice creams are all more expensive. Finally, the function returns the count of bought ice cream bars.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int maxIceCream(int[] costs, int coins) {\n    Arrays.sort(costs);\n    int count = 0;\n    for (int cost : costs) {\n        if (coins >= cost) {\n            coins -= cost;\n            count++;\n        } else {\n            break;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm first sorts the `costs` array in ascending order. Then, it traverses the sorted array and checks if the current cost can be covered by the remaining `coins`. If it can, the function decreases the `coins` by the cost and increments the count of bought ice cream bars. If it can't, the loop breaks, as the remaining ice creams are all more expensive. Finally, the function returns the count of bought ice cream bars.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

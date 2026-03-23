@@ -1,0 +1,24 @@
+{
+  "id": 2031,
+  "title": "Count Subarrays With More Ones Than Zeros",
+  "slug": "count-subarrays-with-more-ones-than-zeros",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a binary array nums containing only the integers 0 and 1. Return _the number of subarrays in nums that have more_ 1'_s than_ 0_'s. Since the answer may be very large, return it modulo_ 109 + 7.\n\nA subarray is a contiguous sequence of elements within an array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_moves(n):\n    dp = [0, 1] + [0] * (n - 1)\n\n    for i in range(2, n + 1):\n        dp[i] = i\n        for x in range(1, i):\n            broken = x - 1\n            unbroken = i - x\n            dp[i] = min(dp[i], 1 + max(dp[broken], dp[unbroken]))\n\n    return dp[n]\n```\n    \n    We can use dynamic programming to solve this problem. Start with two base cases: \n\n1. If there are no floors (n=0), the minimum moves required is 0.\n2. If there is only one floor (n=1), the minimum moves required is 1.\n\nCreate an array `dp` with `n+1` elements, initializing `dp[0]` to 0 and `dp[1]` to 1.\n\nFor each floor `i` from 2 to `n`, start with `dp[i]` as `i`. For each potential drop floor `x` from 1 to `i-1`, we can calculate the number of moves required as the maximum moves between when the egg breaks (`x-1`) and when the egg doesn't break (`i-x`), plus 1 for the current move. Update `dp[i]` as the minimum between its current value and the calculated number of moves.\n\nOnce we have processed all floors, `dp[n]` contains the minimum number of moves required to determine floor `f` with certainty.\n    ",
+    "javascript": "\n    ```javascript\nfunction minMoves(n) {\n    const dp = new Array(n + 1);\n    dp[0] = 0;\n    dp[1] = 1;\n\n    for (let i = 2; i <= n; i++) {\n        dp[i] = i;\n        for (let x = 1; x < i; x++) {\n            const broken = x - 1;\n            const unbroken = i - x;\n            dp[i] = Math.min(dp[i], 1 + Math.max(dp[broken], dp[unbroken]));\n        }\n    }\n\n    return dp[n];\n}\n```\n    \n    We can use dynamic programming to solve this problem. Start with two base cases: \n\n1. If there are no floors (n=0), the minimum moves required is 0.\n2. If there is only one floor (n=1), the minimum moves required is 1.\n\nCreate an array `dp` with `n+1` elements, initializing `dp[0]` to 0 and `dp[1]` to 1.\n\nFor each floor `i` from 2 to `n`, start with `dp[i]` as `i`. For each potential drop floor `x` from 1 to `i-1`, we can calculate the number of moves required as the maximum moves between when the egg breaks (`x-1`) and when the egg doesn't break (`i-x`), plus 1 for the current move. Update `dp[i]` as the minimum between its current value and the calculated number of moves.\n\nOnce we have processed all floors, `dp[n]` contains the minimum number of moves required to determine floor `f` with certainty.\n    ",
+    "java": "\n    ```java\npublic int minMoves(int n) {\n    int[] dp = new int[n + 1];\n    dp[0] = 0;\n    dp[1] = 1;\n\n    for (int i = 2; i <= n; i++) {\n        dp[i] = i;\n        for (int x = 1; x < i; x++) {\n            int broken = x - 1;\n            int unbroken = i - x;\n            dp[i] = Math.min(dp[i], 1 + Math.max(dp[broken], dp[unbroken]));\n        }\n    }\n\n    return dp[n];\n}\n```\n    \n    We can use dynamic programming to solve this problem. Start with two base cases: \n\n1. If there are no floors (n=0), the minimum moves required is 0.\n2. If there is only one floor (n=1), the minimum moves required is 1.\n\nCreate an array `dp` with `n+1` elements, initializing `dp[0]` to 0 and `dp[1]` to 1.\n\nFor each floor `i` from 2 to `n`, start with `dp[i]` as `i`. For each potential drop floor `x` from 1 to `i-1`, we can calculate the number of moves required as the maximum moves between when the egg breaks (`x-1`) and when the egg doesn't break (`i-x`), plus 1 for the current move. Update `dp[i]` as the minimum between its current value and the calculated number of moves.\n\nOnce we have processed all floors, `dp[n]` contains the minimum number of moves required to determine floor `f` with certainty.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

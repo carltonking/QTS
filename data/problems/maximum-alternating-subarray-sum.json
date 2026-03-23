@@ -1,0 +1,24 @@
+{
+  "id": 2036,
+  "title": "Maximum Alternating Subarray Sum",
+  "slug": "maximum-alternating-subarray-sum",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A subarray of a 0-indexed integer array is a contiguous non-empty sequence of elements within an array.\n\nThe alternating subarray sum of a subarray that ranges from index i to j (inclusive, 0 <= i <= j < nums.length) is nums[i] - nums[i+1] + nums[i+2] - ... +/- nums[j].\n\nGiven a 0-indexed integer array nums, return _the maximum alternating subarray sum of any subarray of_ nums.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxAlternatingSum(nums):\n    odd, even = 0, 0\n    for num in nums:\n        newOdd = max(even + num, odd)\n        even = max(odd - num, even)\n        odd = newOdd\n    return odd\n```\n    \n    We will use dynamic programming approach to solve this problem. We will keep track of two variables: `odd` and `even`, which represent the maximum alternating subarray sum ending at odd and even indices, respectively. We will loop through the input array `nums` and update `odd` and `even`. For each number in the array, the new maximum subarray sum ending at odd index is maximum of previous maximum subarray sum ending at even index plus current number, and previous maximum subarray sum ending at odd index. Similarly, the new maximum subarray sum ending at even index is maximum of previous maximum subarray sum ending at odd index minus current number, and previous maximum subarray sum ending at even index. At the end of the loop, `odd` stores the maximum alternating subarray sum of the input array.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxAlternatingSum(nums) {\n    let odd = 0, even = 0;\n    for (const num of nums) {\n        const newOdd = Math.max(even + num, odd);\n        even = Math.max(odd - num, even);\n        odd = newOdd;\n    }\n    return odd;\n}\n```\n    \n    We will use dynamic programming approach to solve this problem. We will keep track of two variables: `odd` and `even`, which represent the maximum alternating subarray sum ending at odd and even indices, respectively. We will loop through the input array `nums` and update `odd` and `even`. For each number in the array, the new maximum subarray sum ending at odd index is maximum of previous maximum subarray sum ending at even index plus current number, and previous maximum subarray sum ending at odd index. Similarly, the new maximum subarray sum ending at even index is maximum of previous maximum subarray sum ending at odd index minus current number, and previous maximum subarray sum ending at even index. At the end of the loop, `odd` stores the maximum alternating subarray sum of the input array.\n    ",
+    "java": "\n    ```java\npublic int maxAlternatingSum(int[] nums) {\n    long odd = 0, even = 0;\n    for (int num : nums) {\n        long newOdd = Math.max(even + num, odd);\n        even = Math.max(odd - num, even);\n        odd = newOdd;\n    }\n    return (int)odd;\n}\n```\n    \n    We will use dynamic programming approach to solve this problem. We will keep track of two variables: `odd` and `even`, which represent the maximum alternating subarray sum ending at odd and even indices, respectively. We will loop through the input array `nums` and update `odd` and `even`. For each number in the array, the new maximum subarray sum ending at odd index is maximum of previous maximum subarray sum ending at even index plus current number, and previous maximum subarray sum ending at odd index. Similarly, the new maximum subarray sum ending at even index is maximum of previous maximum subarray sum ending at odd index minus current number, and previous maximum subarray sum ending at even index. At the end of the loop, `odd` stores the maximum alternating subarray sum of the input array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

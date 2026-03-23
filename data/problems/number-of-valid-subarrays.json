@@ -1,0 +1,24 @@
+{
+  "id": 1063,
+  "title": "Number of Valid Subarrays",
+  "slug": "number-of-valid-subarrays",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given an integer array nums, return _the number of non-empty subarrays with the leftmost element of the subarray not larger than other elements in the subarray_.\n\nA subarray is a contiguous part of an array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxScoreSightseeingPair(values):\n    max_score = 0\n    max_score_left = values[0] + 0\n    for j in range(1, len(values)):\n        max_score = max(max_score, max_score_left + values[j] - j)\n        max_score_left = max(max_score_left, values[j] + j)\n    return max_score\n```\n    \n    We want to find the maximum score given by `values[i] + values[j] + i - j` for some `i < j`.\nWe can rewrite the formula as `values[i] + i + (values[j] - j)` for `i < j`.\nNow we can loop through the `values` array with an index `j`.\n\nFor each `j` we calculate the \"left\" score which is `values[i] + i` where `i` is in a range `[0, j-1]`.\n\nWe keep track of the maximum score before `j` (i.e. for `[0, j-1]`) in `max_score_left`.\nAlso, we keep track of the maximum score so far in `max_score`.\n\nFor each `j`, we can calculate the score for the current pair `(i, j)` with the formula `max_score_left + (values[j] - j)`. If this score is greater than our current `max_score`, then we update `max_score`.\n\nFinally, we return the `max_score` after iterating through the whole `values` array.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxScoreSightseeingPair(values) {\n    let max_score = 0, max_score_left = values[0] + 0;\n    for (let j = 1; j < values.length; ++j) {\n        max_score = Math.max(max_score, max_score_left + values[j] - j);\n        max_score_left = Math.max(max_score_left, values[j] + j);\n    }\n    return max_score;\n}\n```\n    \n    We want to find the maximum score given by `values[i] + values[j] + i - j` for some `i < j`.\nWe can rewrite the formula as `values[i] + i + (values[j] - j)` for `i < j`.\nNow we can loop through the `values` array with an index `j`.\n\nFor each `j` we calculate the \"left\" score which is `values[i] + i` where `i` is in a range `[0, j-1]`.\n\nWe keep track of the maximum score before `j` (i.e. for `[0, j-1]`) in `max_score_left`.\nAlso, we keep track of the maximum score so far in `max_score`.\n\nFor each `j`, we can calculate the score for the current pair `(i, j)` with the formula `max_score_left + (values[j] - j)`. If this score is greater than our current `max_score`, then we update `max_score`.\n\nFinally, we return the `max_score` after iterating through the whole `values` array.\n    ",
+    "java": "\n    ```java\npublic int maxScoreSightseeingPair(int[] values) {\n    int max_score = 0, max_score_left = values[0] + 0;\n    for (int j = 1; j < values.length; ++j) {\n        max_score = Math.max(max_score, max_score_left + values[j] - j);\n        max_score_left = Math.max(max_score_left, values[j] + j);\n    }\n    return max_score;\n}\n```\n    \n    We want to find the maximum score given by `values[i] + values[j] + i - j` for some `i < j`.\nWe can rewrite the formula as `values[i] + i + (values[j] - j)` for `i < j`.\nNow we can loop through the `values` array with an index `j`.\n\nFor each `j` we calculate the \"left\" score which is `values[i] + i` where `i` is in a range `[0, j-1]`.\n\nWe keep track of the maximum score before `j` (i.e. for `[0, j-1]`) in `max_score_left`.\nAlso, we keep track of the maximum score so far in `max_score`.\n\nFor each `j`, we can calculate the score for the current pair `(i, j)` with the formula `max_score_left + (values[j] - j)`. If this score is greater than our current `max_score`, then we update `max_score`.\n\nFinally, we return the `max_score` after iterating through the whole `values` array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

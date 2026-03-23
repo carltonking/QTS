@@ -1,0 +1,24 @@
+{
+  "id": 506,
+  "title": "Relative Ranks",
+  "slug": "relative-ranks",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an integer array score of size n, where score[i] is the score of the ith athlete in a competition. All the scores are guaranteed to be unique.\n\nThe athletes are placed based on their scores, where the 1st place athlete has the highest score, the 2nd place athlete has the 2nd highest score, and so on. The placement of each athlete determines their rank:\n\n*   The 1st place athlete's rank is \"Gold Medal \".\n*   The 2nd place athlete's rank is \"Silver Medal \".\n*   The 3rd place athlete's rank is \"Bronze Medal \".\n*   For the 4th place to the nth place athlete, their rank is their placement number (i.e., the xth place athlete's rank is \"x \").\n\nReturn an array answer of size n where answer[i] is the rank of the ith athlete.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_relative_ranks(score):\n    rank_sort = sorted(range(len(score)), key=lambda i: score[i], reverse=True)\n    result = [0] * len(score)\n    for i, rank in enumerate(rank_sort):\n        result[rank] = i + 1\n    return result\n```\n\n    \n    The algorithm works in the following steps:\n\n1. Create an array of indices ranging from 0 to n-1, where n is the size of the given score array.\n\n2. Sort the indices array based on their corresponding score values in descending order. So, after sorting, the first element will be the index of the highest score in the original score array.\n\n3. Create a result array of size n.\n\n4. Iterate over the sorted indices array and assign its rank (1-based) to the corresponding index in the result array.\n\n5. Return the result array that now contains the ranks of athletes.\n    ",
+    "javascript": "\n    ```javascript\nfunction findRelativeRanks(score) {\n    const rankSort = [...Array(score.length).keys()].sort((a, b) => score[b] - score[a]);\n    const result = new Array(score.length);\n    for (let i = 0; i < rankSort.length; ++i) {\n        result[rankSort[i]] = i + 1;\n    }\n    return result;\n}\n```\n\n    \n    The algorithm works in the following steps:\n\n1. Create an array of indices ranging from 0 to n-1, where n is the size of the given score array.\n\n2. Sort the indices array based on their corresponding score values in descending order. So, after sorting, the first element will be the index of the highest score in the original score array.\n\n3. Create a result array of size n.\n\n4. Iterate over the sorted indices array and assign its rank (1-based) to the corresponding index in the result array.\n\n5. Return the result array that now contains the ranks of athletes.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int[] findRelativeRanks(int[] score) {\n    Integer[] rank_sort = new Integer[score.length];\n    for(int i = 0; i < score.length; ++i) rank_sort[i] = i;\n    Arrays.sort(rank_sort, (i1, i2) -> Integer.compare(score[i2], score[i1]));\n    int[] result = new int[score.length];\n    for(int i = 0; i < rank_sort.length; ++i) result[rank_sort[i]] = i + 1;\n    return result;\n}\n```\n\n    \n    The algorithm works in the following steps:\n\n1. Create an array of indices ranging from 0 to n-1, where n is the size of the given score array.\n\n2. Sort the indices array based on their corresponding score values in descending order. So, after sorting, the first element will be the index of the highest score in the original score array.\n\n3. Create a result array of size n.\n\n4. Iterate over the sorted indices array and assign its rank (1-based) to the corresponding index in the result array.\n\n5. Return the result array that now contains the ranks of athletes.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 846,
+  "title": "Hand of Straights",
+  "slug": "hand-of-straights",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Alice has some number of cards and she wants to rearrange the cards into groups so that each group is of size groupSize, and consists of groupSize consecutive cards.\n\nGiven an integer array hand where hand[i] is the value written on the ith card and an integer groupSize, return true if she can rearrange the cards, or false otherwise.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import Counter\n\ndef is_possible_divide(hand, group_size):\n    card_count = Counter(hand)\n\n    for card in sorted(card_count):\n        if card_count[card] > 0:\n            count = card_count[card]\n            for i in range(1, group_size):\n                if card_count[card + i] < count:\n                    return False\n                card_count[card + i] -= count\n\n    return True\n```\n\n    \n    The algorithm counts the occurrence of each card value and stores it in a map. Then, it iterates through the sorted card values in the map. For each card with a count greater than 0, it checks if it can decrement the count for the next `groupSize - 1` card values by the current count without going below 0. If it's possible to do so for all card values, then the cards can be divided into groups of size `groupSize` with consecutive values.\n\nThe algorithm has a time complexity of O(n * log(n)) due to the sorting process, where n is the length of the hand array.\n    ",
+    "javascript": "\n    ```javascript\nfunction isPossibleDivide(hand, groupSize) {\n    const cardCount = new Map();\n    for (const card of hand) {\n        cardCount.set(card, (cardCount.get(card) || 0) + 1);\n    }\n\n    for (const [card, count] of Array.from(cardCount.entries()).sort((a, b) => a[0] - b[0])) {\n        if (count > 0) {\n            for (let i = 1; i < groupSize; ++i) {\n                const tmp = (cardCount.get(card + i) || 0) - count;\n                if (tmp < 0) {\n                    return false;\n                }\n                cardCount.set(card + i, tmp);\n            }\n        }\n    }\n\n    return true;\n}\n```\n\n    \n    The algorithm counts the occurrence of each card value and stores it in a map. Then, it iterates through the sorted card values in the map. For each card with a count greater than 0, it checks if it can decrement the count for the next `groupSize - 1` card values by the current count without going below 0. If it's possible to do so for all card values, then the cards can be divided into groups of size `groupSize` with consecutive values.\n\nThe algorithm has a time complexity of O(n * log(n)) due to the sorting process, where n is the length of the hand array.\n    ",
+    "java": "\n    ```java\nimport java.util.Map;\nimport java.util.TreeMap;\n\npublic boolean isPossibleDivide(int[] hand, int groupSize) {\n    Map<Integer, Integer> cardCount = new TreeMap<>();\n    for (int card : hand) {\n        cardCount.put(card, cardCount.getOrDefault(card, 0) + 1);\n    }\n\n    for (int card : cardCount.keySet()) {\n        int count = cardCount.get(card);\n        if (count > 0) {\n            for (int i = 1; i < groupSize; ++i) {\n                int tmp = cardCount.getOrDefault(card + i, 0) - count;\n                if (tmp < 0) {\n                    return false;\n                }\n                cardCount.put(card + i, tmp);\n            }\n        }\n    }\n\n    return true;\n}\n```\n\n    \n    The algorithm counts the occurrence of each card value and stores it in a map. Then, it iterates through the sorted card values in the map. For each card with a count greater than 0, it checks if it can decrement the count for the next `groupSize - 1` card values by the current count without going below 0. If it's possible to do so for all card values, then the cards can be divided into groups of size `groupSize` with consecutive values.\n\nThe algorithm has a time complexity of O(n * log(n)) due to the sorting process, where n is the length of the hand array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

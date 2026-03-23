@@ -1,0 +1,24 @@
+{
+  "id": 2459,
+  "title": "Sort Array by Moving Items to Empty Space",
+  "slug": "sort-array-by-moving-items-to-empty-space",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an integer array nums of size n containing each element from 0 to n - 1 (inclusive). Each of the elements from 1 to n - 1 represents an item, and the element 0 represents an empty space.\n\nIn one operation, you can move any item to the empty space. nums is considered to be sorted if the numbers of all the items are in ascending order and the empty space is either at the beginning or at the end of the array.\n\nFor example, if n = 4, nums is sorted if:\n\n*   nums = [0,1,2,3] or\n*   nums = [1,2,3,0]\n\n...and considered to be unsorted otherwise.\n\nReturn _the minimum number of operations needed to sort_ nums.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_operations(nums):\n    n = len(nums)\n    idx0 = -1\n\n    for i in range(n):\n        if nums[i] == 0:\n            idx0 = i\n            break\n\n    cnt1 = 0\n    cnt2 = 0\n\n    for i in range(1, n):\n        if abs(nums[i] - nums[i - 1]) != 1:\n            cnt1 += abs(nums[i] - nums[i - 1]) - 1\n\n    for i in range(idx0 + 1, n):\n        if nums[i] < nums[i - 1]:\n            cnt2 += 1\n\n    return min(cnt1, cnt2)\n```\n    \n    1. Find the position of the empty space represented by 0, store it in `idx0`\n2. Initialize two count variables as `cnt1` and `cnt2` to store the minimum number of operations\n3. Iterate through the array and calculate the difference between adjacent elements and increment the count `cnt1` by the difference minus 1.\n4. Iterate through a subarray, starting from `idx0 + 1` to the end of the array. If the current element is less than the previous element, increment the count `cnt2`.\n5. Return the minimum of `cnt1` and `cnt2`\n    ",
+    "javascript": "\n    ```javascript\nfunction min_operations(nums) {\n    const n = nums.length;\n    let idx0 = -1;\n\n    for (let i = 0; i < n; i++) {\n        if (nums[i] === 0) {\n            idx0 = i;\n            break;\n        }\n    }\n\n    let cnt1 = 0, cnt2 = 0;\n\n    for (let i = 1; i < n; i++) {\n        if (Math.abs(nums[i] - nums[i - 1]) !== 1) {\n            cnt1 += Math.abs(nums[i] - nums[i - 1]) - 1;\n        }\n    }\n\n    for (let i = idx0 + 1; i < n; i++) {\n        if (nums[i] < nums[i - 1]) {\n            cnt2++;\n        }\n    }\n\n    return Math.min(cnt1, cnt2);\n}\n```\n    \n    1. Find the position of the empty space represented by 0, store it in `idx0`\n2. Initialize two count variables as `cnt1` and `cnt2` to store the minimum number of operations\n3. Iterate through the array and calculate the difference between adjacent elements and increment the count `cnt1` by the difference minus 1.\n4. Iterate through a subarray, starting from `idx0 + 1` to the end of the array. If the current element is less than the previous element, increment the count `cnt2`.\n5. Return the minimum of `cnt1` and `cnt2`\n    ",
+    "java": "\n    ```java\npublic int min_operations(int[] nums) {\n    int n = nums.length;\n    int idx0 = -1;\n\n    for(int i = 0; i < n; i++) {\n        if(nums[i] == 0) {\n            idx0 = i;\n            break;\n        }\n    }\n\n    int cnt1 = 0, cnt2 = 0;\n\n    for(int i = 1; i < n; i++) {\n        if(Math.abs(nums[i] - nums[i - 1]) != 1) {\n            cnt1 += Math.abs(nums[i] - nums[i - 1]) - 1;\n        }\n    }\n\n    for(int i = idx0 + 1; i < n; i++) {\n        if(nums[i] < nums[i - 1]) {\n            cnt2++;\n        }\n    }\n\n    return Math.min(cnt1, cnt2);\n}\n```\n    \n    1. Find the position of the empty space represented by 0, store it in `idx0`\n2. Initialize two count variables as `cnt1` and `cnt2` to store the minimum number of operations\n3. Iterate through the array and calculate the difference between adjacent elements and increment the count `cnt1` by the difference minus 1.\n4. Iterate through a subarray, starting from `idx0 + 1` to the end of the array. If the current element is less than the previous element, increment the count `cnt2`.\n5. Return the minimum of `cnt1` and `cnt2`\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2443,
+  "title": "Sum of Number and Its Reverse",
+  "slug": "sum-of-number-and-its-reverse",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a non-negative integer num, return true _if_ num _can be expressed as the sum of any non-negative integer and its reverse, or_ false _otherwise._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sum_with_reverse(num: int) -> bool:\n    for i in range(num + 1):\n        reverse = int(str(i)[::-1])\n        if i + reverse == num:\n            return True\n    return False\n```\n    \n    The algorithm iterates through all non-negative integers from 0 to the input number. For each of these integers, it calculates the reverse by converting the integer to a string, reversing the string, and converting back to an integer. If the sum of the integer and its reverse is equal to the input number, the algorithm returns true. If no such pair is found after the iteration, the algorithm returns false.\n    ",
+    "javascript": "\n    ```javascript\nfunction sumWithReverse(num) {\n    for (let i = 0; i <= num; i++) {\n        const reverse = parseInt(i.toString().split('').reverse().join(''), 10);\n        if (i + reverse === num) {\n            return true;\n        }\n    }\n    return false;\n}\n```\n    \n    The algorithm iterates through all non-negative integers from 0 to the input number. For each of these integers, it calculates the reverse by converting the integer to a string, reversing the string, and converting back to an integer. If the sum of the integer and its reverse is equal to the input number, the algorithm returns true. If no such pair is found after the iteration, the algorithm returns false.\n    ",
+    "java": "\n    ```java\npublic boolean sumWithReverse(int num) {\n    for (int i = 0; i <= num; i++) {\n        int reverse = 0, temp = i;\n        while (temp != 0) {\n            reverse = reverse * 10 + temp % 10;\n            temp /= 10;\n        }\n        if (i + reverse == num) {\n            return true;\n        }\n    }\n    return false;\n}\n```\n    \n    The algorithm iterates through all non-negative integers from 0 to the input number. For each of these integers, it calculates the reverse by converting the integer to a string, reversing the string, and converting back to an integer. If the sum of the integer and its reverse is equal to the input number, the algorithm returns true. If no such pair is found after the iteration, the algorithm returns false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

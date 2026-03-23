@@ -1,0 +1,24 @@
+{
+  "id": 1858,
+  "title": "Longest Word With All Prefixes",
+  "slug": "longest-word-with-all-prefixes",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of strings words, find the longest string in words such that every prefix of it is also in words.\n\n*   For example, let words = [ \"a \", \"app \", \"ap \"]. The string \"app \" has prefixes \"ap \" and \"a \", all of which are in words.\n\nReturn _the string described above. If there is more than one string with the same length, return the lexicographically smallest one, and if no string exists, return_ \" \".",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maximum_time(time: str) -> str:\n    time = list(time)\n    if time[0] == \"?\":\n        time[0] = \"2\" if time[1] == \"?\" or int(time[1]) < 4 else \"1\"\n    if time[1] == \"?\":\n        time[1] = \"3\" if time[0] == \"2\" else \"9\"\n    if time[3] == \"?\":\n        time[3] = \"5\"\n    if time[4] == \"?\":\n        time[4] = \"9\"\n    return \"\".join(time)\n```\n    \n    The algorithm checks the appearance of the '?' character in each position (0, 1, 3, and 4) in the time string, replacing it with the maximum possible valid digit based on the constraints. \n\n1. If the first character of the hour is '?' and the second character is either '?' or less than 4, replace it with '2', otherwise replace it with '1'. \n2. Based on the first character, if the second character is '?', replace it with either '3' or '9'.\n3. If the character in the minutes' left position is '?', replace it with a '5' since this is the maximum valid digit.\n4. If the character in the minutes' right position is '?', replace it with a '9'.\n\nFinally, join the characters back into a string (if applicable) and return the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction maximumTime(time) {\n    let result = time.split('');\n    if (result[0] === '?') {\n        result[0] = (result[1] === '?' || parseInt(result[1]) < 4) ? '2' : '1';\n    }\n    if (result[1] === '?') {\n        result[1] = (result[0] === '2') ? '3' : '9';\n    }\n    if (result[3] === '?') {\n        result[3] = '5';\n    }\n    if (result[4] === '?') {\n        result[4] = '9';\n    }\n    return result.join('');\n}\n```\n    \n    The algorithm checks the appearance of the '?' character in each position (0, 1, 3, and 4) in the time string, replacing it with the maximum possible valid digit based on the constraints. \n\n1. If the first character of the hour is '?' and the second character is either '?' or less than 4, replace it with '2', otherwise replace it with '1'. \n2. Based on the first character, if the second character is '?', replace it with either '3' or '9'.\n3. If the character in the minutes' left position is '?', replace it with a '5' since this is the maximum valid digit.\n4. If the character in the minutes' right position is '?', replace it with a '9'.\n\nFinally, join the characters back into a string (if applicable) and return the result.\n    ",
+    "java": "\n    ```java\npublic String maximumTime(String time) {\n    char[] result = time.toCharArray();\n    if (result[0] == '?') {\n        result[0] = (result[1] == '?' || result[1] - '0' < 4) ? '2' : '1';\n    }\n    if (result[1] == '?') {\n        result[1] = (result[0] == '2') ? '3' : '9';\n    }\n    if (result[3] == '?') {\n        result[3] = '5';\n    }\n    if (result[4] == '?') {\n        result[4] = '9';\n    }\n    return new String(result);\n}\n```\n    \n    The algorithm checks the appearance of the '?' character in each position (0, 1, 3, and 4) in the time string, replacing it with the maximum possible valid digit based on the constraints. \n\n1. If the first character of the hour is '?' and the second character is either '?' or less than 4, replace it with '2', otherwise replace it with '1'. \n2. Based on the first character, if the second character is '?', replace it with either '3' or '9'.\n3. If the character in the minutes' left position is '?', replace it with a '5' since this is the maximum valid digit.\n4. If the character in the minutes' right position is '?', replace it with a '9'.\n\nFinally, join the characters back into a string (if applicable) and return the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

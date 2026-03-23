@@ -1,0 +1,24 @@
+{
+  "id": 1799,
+  "title": "Maximize Score After N Operations",
+  "slug": "maximize-score-after-n-operations",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given nums, an array of positive integers of size 2 * n. You must perform n operations on this array.\n\nIn the ith operation (1-indexed), you will:\n\n*   Choose two elements, x and y.\n*   Receive a score of i * gcd(x, y).\n*   Remove x and y from nums.\n\nReturn _the maximum score you can receive after performing_ n _operations._\n\nThe function gcd(x, y) is the greatest common divisor of x and y.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom typing import List\n\ndef minimumIncompatibility(nums: List[int], k: int) -> int:\n    n = len(nums)\n    if n % k != 0:\n        return -1\n    \n    nums.sort()\n    diffs = [nums[(i + 1) * (n // k) - 1] - nums[i * (n // k)] for i in range(k)]\n    \n    return sum(diffs)\n```\n    \n    1. Get the length of the array and check if it can be divided into k subsets equally. If not, return -1.\n\n2. Sort the array in ascending order.\n\n3. Calculate the incompatibility for each subset by the difference between the maximum and minimum elements in that subset.\n\n4. Store the incompatibilities of subsets in a multiset for C++, LinkedList for Java, list for Python, and an array for JavaScript.\n\n5. Iterate through the created data structure and add up all the incompatibilities stored in it. Return the calculated sum.\n    ",
+    "javascript": "\n    ```javascript\nfunction minimumIncompatibility(nums, k) {\n    let n = nums.length;\n    if (n % k !== 0) return -1;\n    \n    nums.sort((a, b) => a - b);\n    let diffs = [];\n    for (let i = 0; i < k; ++i) {\n        diffs.push(nums[(i + 1) * (n / k) - 1] - nums[i * (n / k)]);\n    }\n    \n    return diffs.reduce((acc, curr) => acc + curr, 0);\n}\n```\n    \n    1. Get the length of the array and check if it can be divided into k subsets equally. If not, return -1.\n\n2. Sort the array in ascending order.\n\n3. Calculate the incompatibility for each subset by the difference between the maximum and minimum elements in that subset.\n\n4. Store the incompatibilities of subsets in a multiset for C++, LinkedList for Java, list for Python, and an array for JavaScript.\n\n5. Iterate through the created data structure and add up all the incompatibilities stored in it. Return the calculated sum.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\nimport java.util.LinkedList;\n\nclass Solution {\n    public int minimumIncompatibility(int[] nums, int k) {\n        int n = nums.length;\n        if (n % k != 0) return -1;\n        \n        Arrays.sort(nums);\n        LinkedList<Integer> diffList = new LinkedList<>();\n        for (int i = 0; i < k; ++i) {\n            diffList.add(nums[(i + 1) * (n / k) - 1] - nums[i * (n / k)]);\n        }\n        \n        int sum = 0;\n        for (Integer diff : diffList) {\n            sum += diff;\n        }\n        \n        return sum;\n    }\n}\n```\n    \n    1. Get the length of the array and check if it can be divided into k subsets equally. If not, return -1.\n\n2. Sort the array in ascending order.\n\n3. Calculate the incompatibility for each subset by the difference between the maximum and minimum elements in that subset.\n\n4. Store the incompatibilities of subsets in a multiset for C++, LinkedList for Java, list for Python, and an array for JavaScript.\n\n5. Iterate through the created data structure and add up all the incompatibilities stored in it. Return the calculated sum.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

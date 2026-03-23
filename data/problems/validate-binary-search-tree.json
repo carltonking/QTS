@@ -1,0 +1,41 @@
+{
+  "id": 50,
+  "title": "Validate Binary Search Tree",
+  "slug": "validate-binary-search-tree",
+  "difficulty": "Medium",
+  "tags": [
+    "Tree",
+    "Depth-First Search",
+    "Binary Search Tree",
+    "Binary Tree"
+  ],
+  "description": "Given the root of a binary tree, determine if it is a valid binary search tree.",
+  "examples": [
+    {
+      "input": "root = [2,1,3]",
+      "output": "true"
+    }
+  ],
+  "constraints": [
+    "The number of nodes is in [1, 10^4]"
+  ],
+  "starterCode": {
+    "python": "class Solution:\n    def isValidBST(self, root) -> bool:\n        pass",
+    "javascript": "var isValidBST = function(root) {\n    \n};",
+    "java": "class Solution {\n    public boolean isValidBST(TreeNode root) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    bool isValidBST(TreeNode* root) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Validate Binary Search Tree\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "[2,1,3]",
+      "expectedOutput": "true"
+    },
+    {
+      "input": "[5,1,4,null,null,3,6]",
+      "expectedOutput": "false"
+    }
+  ]
+}

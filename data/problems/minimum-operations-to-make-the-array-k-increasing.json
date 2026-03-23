@@ -1,0 +1,24 @@
+{
+  "id": 2111,
+  "title": "Minimum Operations to Make the Array K-Increasing",
+  "slug": "minimum-operations-to-make-the-array-k-increasing",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a 0-indexed array arr consisting of n positive integers, and a positive integer k.\n\nThe array arr is called K-increasing if arr[i-k] <= arr[i] holds for every index i, where k <= i <= n-1.\n\n*   For example, arr = [4, 1, 5, 2, 6, 2] is K-increasing for k = 2 because:\n    *   arr[0] <= arr[2] (4 <= 5)\n    *   arr[1] <= arr[3] (1 <= 2)\n    *   arr[2] <= arr[4] (5 <= 6)\n    *   arr[3] <= arr[5] (2 <= 2)\n*   However, the same arr is not K-increasing for k = 1 (because arr[0] > arr[1]) or k = 3 (because arr[0] > arr[3]).\n\nIn one operation, you can choose an index i and change arr[i] into any positive integer.\n\nReturn _the minimum number of operations required to make the array K-increasing for the given_ k.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minOperations(arr, k):\n    dp = [0] * len(arr)\n    for i in range(k, len(arr)):\n        dp[i] = max(dp[i - k] + 1 - (arr[i] - arr[i - k]), 0)\n    return sum(dp)\n```\n\n    \n    First, initialize an array called `dp` with the same length as `arr`. This array will store the minimum number of operations needed for every element `arr[i]` to satisfy the K-increasing requirement.\n\nIterate from `k` to `n-1` (inclusive) through the array. In each step, update the `dp[i]` with the minimum number of operations needed to change `arr[i]` to be K-increasing. Calculate this as the maximum between (`dp[i - k]` plus `1`, minus the difference between `arr[i]` and `arr[i - k]`) and `0`. Using the maximum function ensures that we don't end up with negative values for the number of operations.\n\nFinally, return the sum of all the values in the `dp` array. This will provide the minimum number of operations required to make the entire array K-increasing.\n    ",
+    "javascript": "\n    ```javascript\nfunction minOperations(arr, k) {\n    const dp = new Array(arr.length).fill(0);\n    for (let i = k; i < arr.length; i++) {\n        dp[i] = Math.max(dp[i - k] + 1 - (arr[i] - arr[i - k]), 0);\n    }\n    return dp.reduce((a, b) => a + b, 0);\n}\n```\n\n    \n    First, initialize an array called `dp` with the same length as `arr`. This array will store the minimum number of operations needed for every element `arr[i]` to satisfy the K-increasing requirement.\n\nIterate from `k` to `n-1` (inclusive) through the array. In each step, update the `dp[i]` with the minimum number of operations needed to change `arr[i]` to be K-increasing. Calculate this as the maximum between (`dp[i - k]` plus `1`, minus the difference between `arr[i]` and `arr[i - k]`) and `0`. Using the maximum function ensures that we don't end up with negative values for the number of operations.\n\nFinally, return the sum of all the values in the `dp` array. This will provide the minimum number of operations required to make the entire array K-increasing.\n    ",
+    "java": "\n    ```java\npublic int minOperations(int[] arr, int k) {\n    int[] dp = new int[arr.length];\n    for (int i = k; i < arr.length; i++) {\n        dp[i] = Math.max(dp[i - k] + 1 - (arr[i] - arr[i - k]), 0);\n    }\n    return Arrays.stream(dp).sum();\n}\n```\n\n    \n    First, initialize an array called `dp` with the same length as `arr`. This array will store the minimum number of operations needed for every element `arr[i]` to satisfy the K-increasing requirement.\n\nIterate from `k` to `n-1` (inclusive) through the array. In each step, update the `dp[i]` with the minimum number of operations needed to change `arr[i]` to be K-increasing. Calculate this as the maximum between (`dp[i - k]` plus `1`, minus the difference between `arr[i]` and `arr[i - k]`) and `0`. Using the maximum function ensures that we don't end up with negative values for the number of operations.\n\nFinally, return the sum of all the values in the `dp` array. This will provide the minimum number of operations required to make the entire array K-increasing.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

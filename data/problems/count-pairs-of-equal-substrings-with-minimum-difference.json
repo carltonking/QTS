@@ -1,0 +1,24 @@
+{
+  "id": 1794,
+  "title": "Count Pairs of Equal Substrings With Minimum Difference",
+  "slug": "count-pairs-of-equal-substrings-with-minimum-difference",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two strings firstString and secondString that are 0-indexed and consist only of lowercase English letters. Count the number of index quadruples (i,j,a,b) that satisfy the following conditions:\n\n*   0 <= i <= j < firstString.length\n*   0 <= a <= b < secondString.length\n*   The substring of firstString that starts at the ith character and ends at the jth character (inclusive) is equal to the substring of secondString that starts at the ath character and ends at the bth character (inclusive).\n*   j - a is the minimum possible value among all quadruples that satisfy the previous conditions.\n\nReturn _the number of such quadruples_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nimport heapq\n\ndef minimum_deviation(nums):\n    pq = []\n    min_val = float(\"inf\")\n\n    for num in nums:\n        if num % 2 == 0:\n            heapq.heappush(pq, -num)\n        else:\n            heapq.heappush(pq, -(num * 2))\n        min_val = min(min_val, num)\n\n    result = float(\"inf\")\n    while True:\n        top = -heapq.heappop(pq)\n        result = min(result, top - min_val)\n\n        if top % 2 == 1:\n            break\n        heapq.heappush(pq, -(top // 2))\n        min_val = min(min_val, top // 2)\n\n    return result\n```\n\n    \n    1. Initialize a max priority queue and find the minimum value of the input array.\n2. Double the odd number elements in the array and push all the elements into the max priority queue.\n3. While the maximum value in the queue is even, divide the maximum value by 2 and push it back into the queue.\n4. Calculate the deviation as the difference between the max value and the min value and minimize the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction minimumDeviation(nums) {\n    const pq = new MaxPriorityQueue();\n    let min_val = Infinity;\n\n    for (const num of nums) {\n        if (num % 2 === 0) {\n            pq.enqueue(num);\n        } else {\n            pq.enqueue(num * 2);\n        }\n        min_val = Math.min(min_val, num);\n    }\n\n    let result = Infinity;\n    while (true) {\n        const top = pq.dequeue().element;\n        result = Math.min(result, top - min_val);\n\n        if (top % 2 === 1) break;\n        pq.enqueue(Math.floor(top / 2));\n        min_val = Math.min(min_val, Math.floor(top / 2));\n    }\n    return result;\n}\n```\n\n    \n    1. Initialize a max priority queue and find the minimum value of the input array.\n2. Double the odd number elements in the array and push all the elements into the max priority queue.\n3. While the maximum value in the queue is even, divide the maximum value by 2 and push it back into the queue.\n4. Calculate the deviation as the difference between the max value and the min value and minimize the result.\n    ",
+    "java": "\n    ```java\nimport java.util.PriorityQueue;\n\npublic int minimumDeviation(int[] nums) {\n    PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);\n    int min_val = Integer.MAX_VALUE;\n    \n    for (int num : nums) {\n        if (num % 2 == 0) {\n            pq.offer(num);\n        } else {\n            pq.offer(num * 2);\n        }\n        min_val = Math.min(min_val, num);\n    }\n    \n    int result = Integer.MAX_VALUE;\n    while (true) {\n        int top = pq.poll();\n        result = Math.min(result, top - min_val);\n        \n        if (top % 2 == 1) break;\n        pq.offer(top / 2);\n        min_val = Math.min(min_val, top / 2);\n    }\n    return result;\n}\n```\n\n    \n    1. Initialize a max priority queue and find the minimum value of the input array.\n2. Double the odd number elements in the array and push all the elements into the max priority queue.\n3. While the maximum value in the queue is even, divide the maximum value by 2 and push it back into the queue.\n4. Calculate the deviation as the difference between the max value and the min value and minimize the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

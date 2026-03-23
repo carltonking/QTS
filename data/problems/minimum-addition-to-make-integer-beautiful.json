@@ -1,0 +1,24 @@
+{
+  "id": 2457,
+  "title": "Minimum Addition to Make Integer Beautiful",
+  "slug": "minimum-addition-to-make-integer-beautiful",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two positive integers n and target.\n\nAn integer is considered beautiful if the sum of its digits is less than or equal to target.\n\nReturn the _minimum non-negative integer_ x _such that_ n + x _is beautiful_. The input will be generated such that it is always possible to make n beautiful.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef digit_sum(n):\n    return sum(int(digit) for digit in str(n))\n\ndef minimum_beautiful(n, target):\n    x = 0\n    while digit_sum(n + x) > target:\n        x += 1\n    return x\n```\n    \n    The algorithm contains two main parts: calculating the digit sum and finding the minimum non-negative integer x. The digit sum can be calculated by successively dividing the input number by 10, taking the remainder, and adding it to the sum. We can then increment x until the digit sum of n + x is less than or equal to the target value. The functions minimumBeautiful (for C++, Java, and JavaScript) or minimum_beautiful (for Python) handle this calculation and return the final value of x.\n    ",
+    "javascript": "\n    ```javascript\nfunction digitSum(n) {\n    return n.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);\n}\n\nfunction minimumBeautiful(n, target) {\n    let x = 0;\n    while (digitSum(n + x) > target) {\n        ++x;\n    }\n    return x;\n}\n```\n    \n    The algorithm contains two main parts: calculating the digit sum and finding the minimum non-negative integer x. The digit sum can be calculated by successively dividing the input number by 10, taking the remainder, and adding it to the sum. We can then increment x until the digit sum of n + x is less than or equal to the target value. The functions minimumBeautiful (for C++, Java, and JavaScript) or minimum_beautiful (for Python) handle this calculation and return the final value of x.\n    ",
+    "java": "\n    ```java\npublic int digitSum(int n) {\n    int sum = 0;\n    while (n > 0) {\n        sum += n % 10;\n        n /= 10;\n    }\n    return sum;\n}\n\npublic int minimumBeautiful(int n, int target) {\n    int x = 0;\n    while (digitSum(n + x) > target) {\n        ++x;\n    }\n    return x;\n}\n```\n    \n    The algorithm contains two main parts: calculating the digit sum and finding the minimum non-negative integer x. The digit sum can be calculated by successively dividing the input number by 10, taking the remainder, and adding it to the sum. We can then increment x until the digit sum of n + x is less than or equal to the target value. The functions minimumBeautiful (for C++, Java, and JavaScript) or minimum_beautiful (for Python) handle this calculation and return the final value of x.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

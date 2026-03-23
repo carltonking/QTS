@@ -1,0 +1,24 @@
+{
+  "id": 879,
+  "title": "Profitable Schemes",
+  "slug": "profitable-schemes",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "There is a group of n members, and a list of various crimes they could commit. The ith crime generates a profit[i] and requires group[i] members to participate in it. If a member participates in one crime, that member can't participate in another crime.\n\nLet's call a profitable scheme any subset of these crimes that generates at least minProfit profit, and the total number of members participating in that subset of crimes is at most n.\n\nReturn the number of schemes that can be chosen. Since the answer may be very large, return it modulo 109 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_dist_to_closest(seats):\n    max_dist = 0\n    last_person = -1\n    for i, seat in enumerate(seats):\n        if seat == 1:\n            max_dist = i if last_person < 0 else max(max_dist, (i - last_person) // 2)\n            last_person = i\n    return max(max_dist, len(seats) - 1 - last_person)\n```\n    \n    First, initialize `max_dist` to store the maximum distance encountered and `last_person` to store the index of the last person found in the array. Iterate through the array of `seats`, for each person encountered (seats[i] == 1), calculate the distance between the current index and the last person, divide it by 2, and update `max_dist` with the maximum of its current value, the distance calculated or the index (i) if it's the first person found. Update the last person index to the current index (i). Once the iteration is complete, return the maximum of `max_dist` and the distance between the last person and the end of the array.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxDistToClosest(seats) {\n    let maxDist = 0, lastPerson = -1;\n    for (let i = 0; i < seats.length; ++i) {\n        if (seats[i] == 1) {\n            maxDist = lastPerson < 0 ? i : Math.max(maxDist, ((i - lastPerson) / 2) | 0);\n            lastPerson = i;\n        }\n    }\n    return Math.max(maxDist, seats.length - 1 - lastPerson);\n}\n```\n    \n    First, initialize `max_dist` to store the maximum distance encountered and `last_person` to store the index of the last person found in the array. Iterate through the array of `seats`, for each person encountered (seats[i] == 1), calculate the distance between the current index and the last person, divide it by 2, and update `max_dist` with the maximum of its current value, the distance calculated or the index (i) if it's the first person found. Update the last person index to the current index (i). Once the iteration is complete, return the maximum of `max_dist` and the distance between the last person and the end of the array.\n    ",
+    "java": "\n    ```java\npublic int maxDistToClosest(int[] seats) {\n    int maxDist = 0, lastPerson = -1;\n    for (int i = 0; i < seats.length; ++i) {\n        if (seats[i] == 1) {\n            maxDist = lastPerson < 0 ? i : Math.max(maxDist, (i - lastPerson) / 2);\n            lastPerson = i;\n        }\n    }\n    return Math.max(maxDist, seats.length - 1 - lastPerson);\n}\n```\n    \n    First, initialize `max_dist` to store the maximum distance encountered and `last_person` to store the index of the last person found in the array. Iterate through the array of `seats`, for each person encountered (seats[i] == 1), calculate the distance between the current index and the last person, divide it by 2, and update `max_dist` with the maximum of its current value, the distance calculated or the index (i) if it's the first person found. Update the last person index to the current index (i). Once the iteration is complete, return the maximum of `max_dist` and the distance between the last person and the end of the array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

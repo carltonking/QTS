@@ -1,0 +1,24 @@
+{
+  "id": 1557,
+  "title": "Minimum Number of Vertices to Reach All Nodes",
+  "slug": "minimum-number-of-vertices-to-reach-all-nodes",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a directed acyclic graph, with n vertices numbered from 0 to n-1, and an array edges where edges[i] = [fromi, toi] represents a directed edge from node fromi to node toi.\n\nFind _the smallest set of vertices from which all nodes in the graph are reachable_. It's guaranteed that a unique solution exists.\n\nNotice that you can return the vertices in any order.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef has_all_codes(s, k):\n    need = 1 << k\n    got = set()\n    \n    for i in range(len(s) - k + 1):\n        got.add(s[i:i + k])\n    \n    return len(got) == need\n```\n\n    \n    We need to find all binary codes with a length of `k`. The total number of binary codes with length `k` can be obtained by `1 << k`, which is basically 2^k.\n\nWe then create a set `got` to store unique substrings of length `k` found in the input string `s`. We iterate through the string `s` with an index `i` ranging between `0` and `s.length - k`, and add the substring of length k to the set `got`.\n\nAfter iterating for all substrings, we compare the size of the `got` set with the `need`. If they match, it means that all binary codes of length `k` have been found in the input string, so we return `true`. Otherwise, we return `false`.\n    ",
+    "javascript": "\n    ```javascript\nfunction hasAllCodes(s, k) {\n    const need = 1 << k;\n    const got = new Set();\n    \n    for (let i = 0; i <= s.length - k; i++) {\n        got.add(s.slice(i, i + k));\n    }\n    \n    return got.size === need;\n}\n```\n\n    \n    We need to find all binary codes with a length of `k`. The total number of binary codes with length `k` can be obtained by `1 << k`, which is basically 2^k.\n\nWe then create a set `got` to store unique substrings of length `k` found in the input string `s`. We iterate through the string `s` with an index `i` ranging between `0` and `s.length - k`, and add the substring of length k to the set `got`.\n\nAfter iterating for all substrings, we compare the size of the `got` set with the `need`. If they match, it means that all binary codes of length `k` have been found in the input string, so we return `true`. Otherwise, we return `false`.\n    ",
+    "java": "\n    ```java\npublic boolean hasAllCodes(String s, int k) {\n    int need = 1 << k;\n    Set<String> got = new HashSet<>();\n    \n    for (int i = 0; i <= s.length() - k; i++) {\n        got.add(s.substring(i, i + k));\n    }\n    \n    return got.size() == need;\n}\n```\n    \n    We need to find all binary codes with a length of `k`. The total number of binary codes with length `k` can be obtained by `1 << k`, which is basically 2^k.\n\nWe then create a set `got` to store unique substrings of length `k` found in the input string `s`. We iterate through the string `s` with an index `i` ranging between `0` and `s.length - k`, and add the substring of length k to the set `got`.\n\nAfter iterating for all substrings, we compare the size of the `got` set with the `need`. If they match, it means that all binary codes of length `k` have been found in the input string, so we return `true`. Otherwise, we return `false`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

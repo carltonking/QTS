@@ -1,0 +1,24 @@
+{
+  "id": 932,
+  "title": "Beautiful Array",
+  "slug": "beautiful-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "An array nums of length n is beautiful if:\n\n*   nums is a permutation of the integers in the range [1, n].\n*   For every 0 <= i < j < n, there is no index k with i < k < j where 2 * nums[k] == nums[i] + nums[j].\n\nGiven the integer n, return _any beautiful array_ nums _of length_ n. There will be at least one valid answer for the given n.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef isMonotonic(nums):\n    increasing = decreasing = True\n    for i in range(1, len(nums)):\n        if nums[i] > nums[i - 1]: decreasing = False\n        if nums[i] < nums[i - 1]: increasing = False\n    return increasing or decreasing\n```\n    \n    The algorithm checks whether the given array is monotonic by iterating over the array and checking if it is monotone increasing or monotone decreasing. We use two boolean flags `increasing` and `decreasing` to track the nature of the array. While iterating through the array, if an element is greater than its predecessor, we set `decreasing` to false as it is no longer monotone decreasing. Similarly, if an element is lesser than its predecessor, we set `increasing` to false. If either of the flags remains true throughout the iteration, that means the array is monotonic, and we return true. Else, we return false.\n    ",
+    "javascript": "\n    ```javascript\nfunction isMonotonic(nums) {\n    let increasing = true, decreasing = true;\n    for (let i = 1; i < nums.length; i++) {\n        if (nums[i] > nums[i - 1]) decreasing = false;\n        if (nums[i] < nums[i - 1]) increasing = false;\n    }\n    return increasing || decreasing;\n}\n```\n    \n    The algorithm checks whether the given array is monotonic by iterating over the array and checking if it is monotone increasing or monotone decreasing. We use two boolean flags `increasing` and `decreasing` to track the nature of the array. While iterating through the array, if an element is greater than its predecessor, we set `decreasing` to false as it is no longer monotone decreasing. Similarly, if an element is lesser than its predecessor, we set `increasing` to false. If either of the flags remains true throughout the iteration, that means the array is monotonic, and we return true. Else, we return false.\n    ",
+    "java": "\n    ```java\npublic boolean isMonotonic(int[] nums) {\n    boolean increasing = true, decreasing = true;\n    for (int i = 1; i < nums.length; i++) {\n        if (nums[i] > nums[i - 1]) decreasing = false;\n        if (nums[i] < nums[i - 1]) increasing = false;\n    }\n    return increasing || decreasing;\n}\n```\n    \n    The algorithm checks whether the given array is monotonic by iterating over the array and checking if it is monotone increasing or monotone decreasing. We use two boolean flags `increasing` and `decreasing` to track the nature of the array. While iterating through the array, if an element is greater than its predecessor, we set `decreasing` to false as it is no longer monotone decreasing. Similarly, if an element is lesser than its predecessor, we set `increasing` to false. If either of the flags remains true throughout the iteration, that means the array is monotonic, and we return true. Else, we return false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

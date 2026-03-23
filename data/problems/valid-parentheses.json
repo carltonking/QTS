@@ -1,0 +1,39 @@
+{
+  "id": 11,
+  "title": "Valid Parentheses",
+  "slug": "valid-parentheses",
+  "difficulty": "Easy",
+  "tags": [
+    "String",
+    "Stack"
+  ],
+  "description": "Given a string s containing just the characters ()[]{} determine if the input string is valid.",
+  "examples": [
+    {
+      "input": "s = \"()[]{}\"",
+      "output": "true"
+    }
+  ],
+  "constraints": [
+    "1 <= s.length <= 10^4"
+  ],
+  "starterCode": {
+    "python": "class Solution:\n    def isValid(self, s: str) -> bool:\n        pass",
+    "javascript": "var isValid = function(s) {\n    \n};",
+    "java": "class Solution {\n    public boolean isValid(String s) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    bool isValid(string s) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Valid Parentheses\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "()[]{}",
+      "expectedOutput": "true"
+    },
+    {
+      "input": "(]",
+      "expectedOutput": "false"
+    }
+  ]
+}

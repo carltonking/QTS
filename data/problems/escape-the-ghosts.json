@@ -1,0 +1,24 @@
+{
+  "id": 789,
+  "title": "Escape The Ghosts",
+  "slug": "escape-the-ghosts",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are playing a simplified PAC-MAN game on an infinite 2-D grid. You start at the point [0, 0], and you are given a destination point target = [xtarget, ytarget] that you are trying to get to. There are several ghosts on the map with their starting positions given as a 2D array ghosts, where ghosts[i] = [xi, yi] represents the starting position of the ith ghost. All inputs are integral coordinates.\n\nEach turn, you and all the ghosts may independently choose to either move 1 unit in any of the four cardinal directions: north, east, south, or west, or stay still. All actions happen simultaneously.\n\nYou escape if and only if you can reach the target before any ghost reaches you. If you reach any square (including the target) at the same time as a ghost, it does not count as an escape.\n\nReturn true _if it is possible to escape regardless of how the ghosts move, otherwise return_ false_._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nimport heapq\n\nclass KthLargest:\n\n    def __init__(self, k, nums):\n        self.heap = []\n        self.k = k\n        for num in nums:\n            self.add(num)\n\n    def add(self, val):\n        heapq.heappush(self.heap, val)\n        if len(self.heap) > self.k:\n            heapq.heappop(self.heap)\n        return self.heap[0]\n```\n    \n    The algorithm uses a priority queue called a min heap to keep track of the top `k` largest elements of the stream. For each element added to the stream, it is added to the min heap. If the size of min heap exceeds `k`, then the smallest element in the min heap (which is the top of the min heap) is removed. This ensures that the min heap always contains the `k` largest elements in the stream. Finally, when we want to find the kth largest element, we simply return the smallest element in the min heap (i.e., the top of the min heap).\n    ",
+    "javascript": "\n    ```javascript\nclass KthLargest {\n    constructor(k, nums) {\n        this.minHeap = new MinHeap();\n        this.k = k;\n        for (let num of nums) {\n            this.add(num);\n        }\n    }\n\n    add(val) {\n        this.minHeap.offer(val);\n        if (this.minHeap.size() > this.k) {\n            this.minHeap.poll();\n        }\n        return this.minHeap.peek();\n    }\n}\n\nclass MinHeap {\n    constructor() {\n        this.heap = [];\n    }\n\n    offer(val) {\n        this.heap.push(val);\n        this.heap.sort((a, b) => a - b);\n    }\n\n    poll() {\n        return this.heap.shift();\n    }\n\n    peek() {\n        return this.heap[0];\n    }\n\n    size() {\n        return this.heap.length;\n    }\n}\n```\n    \n    The algorithm uses a priority queue called a min heap to keep track of the top `k` largest elements of the stream. For each element added to the stream, it is added to the min heap. If the size of min heap exceeds `k`, then the smallest element in the min heap (which is the top of the min heap) is removed. This ensures that the min heap always contains the `k` largest elements in the stream. Finally, when we want to find the kth largest element, we simply return the smallest element in the min heap (i.e., the top of the min heap).\n    ",
+    "java": "\n    ```java\nimport java.util.PriorityQueue;\n\npublic class KthLargest {\n    private PriorityQueue<Integer> minHeap;\n    private int k;\n\n    public KthLargest(int k, int[] nums) {\n        this.k = k;\n        minHeap = new PriorityQueue<>();\n        for (int num : nums) {\n            add(num);\n        }\n    }\n\n    public int add(int val) {\n        minHeap.offer(val);\n        if (minHeap.size() > k) {\n            minHeap.poll();\n        }\n        return minHeap.peek();\n    }\n}\n```\n    \n    The algorithm uses a priority queue called a min heap to keep track of the top `k` largest elements of the stream. For each element added to the stream, it is added to the min heap. If the size of min heap exceeds `k`, then the smallest element in the min heap (which is the top of the min heap) is removed. This ensures that the min heap always contains the `k` largest elements in the stream. Finally, when we want to find the kth largest element, we simply return the smallest element in the min heap (i.e., the top of the min heap).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

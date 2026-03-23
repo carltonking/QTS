@@ -1,0 +1,24 @@
+{
+  "id": 1317,
+  "title": "Convert Integer to the Sum of Two No-Zero Integers",
+  "slug": "convert-integer-to-the-sum-of-two-no-zero-integers",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "No-Zero integer is a positive integer that does not contain any 0 in its decimal representation.\n\nGiven an integer n, return _a list of two integers_ [a, b] _where_:\n\n*   a and b are No-Zero integers.\n*   a + b = n\n\nThe test cases are generated so that there is at least one valid solution. If there are many valid solutions, you can return any of them.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef no_zero_integers(n: int):\n    for a in range(1, n):\n        if '0' not in str(a) and '0' not in str(n - a):\n            return [a, n - a]\n    return [0, 0]  # never gets here\n```\n    \n    We will write a function that receives an integer `n` as the input. The algorithm then iterates over all integers from `1` to `n-1` as a candidate for value `a` in the result `[a, b]`. For each candidate `a`, we check if both `a` and `n-a` (which would be `b`) are No-Zero integers by ensuring that neither of the strings representation have a '0'. If both strings don't have a '0', we found a valid answer and return a list containing `[a, n-a]`. The loop should always find a valid answer for the given constraints.\n    ",
+    "javascript": "\n    ```javascript\nfunction noZeroIntegers(n) {\n    for (let a = 1; a < n; ++a) {\n        if (!String(a).includes('0') && !String(n - a).includes('0')) {\n            return [a, n - a];\n        }\n    }\n    return [0, 0]; // never gets here\n}\n```\n    \n    We will write a function that receives an integer `n` as the input. The algorithm then iterates over all integers from `1` to `n-1` as a candidate for value `a` in the result `[a, b]`. For each candidate `a`, we check if both `a` and `n-a` (which would be `b`) are No-Zero integers by ensuring that neither of the strings representation have a '0'. If both strings don't have a '0', we found a valid answer and return a list containing `[a, n-a]`. The loop should always find a valid answer for the given constraints.\n    ",
+    "java": "\n    ```java\npublic int[] noZeroIntegers(int n) {\n    for (int a = 1; a < n; ++a) {\n        if (Integer.toString(a).indexOf('0') == -1 &&\n            Integer.toString(n - a).indexOf('0') == -1) {\n            return new int[]{a, n - a};\n        }\n    }\n    return new int[]{0, 0}; // never gets here\n}\n```\n    \n    We will write a function that receives an integer `n` as the input. The algorithm then iterates over all integers from `1` to `n-1` as a candidate for value `a` in the result `[a, b]`. For each candidate `a`, we check if both `a` and `n-a` (which would be `b`) are No-Zero integers by ensuring that neither of the strings representation have a '0'. If both strings don't have a '0', we found a valid answer and return a list containing `[a, n-a]`. The loop should always find a valid answer for the given constraints.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

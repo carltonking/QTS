@@ -1,0 +1,24 @@
+{
+  "id": 2009,
+  "title": "Minimum Number of Operations to Make Array Continuous",
+  "slug": "minimum-number-of-operations-to-make-array-continuous",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an integer array nums. In one operation, you can replace any element in nums with any integer.\n\nnums is considered continuous if both of the following conditions are fulfilled:\n\n*   All elements in nums are unique.\n*   The difference between the maximum element and the minimum element in nums equals nums.length - 1.\n\nFor example, nums = [4, 2, 5, 3] is continuous, but nums = [1, 2, 3, 5, 6] is not continuous.\n\nReturn _the minimum number of operations to make_ nums _continuous_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_operations(nums):\n    n = len(nums)\n    s = sorted(set(nums))\n    res = float('inf')\n    j = 0\n    \n    for i in range(len(s)):\n        while j < len(s) and s[j] <= s[i] + n - 1:\n            j += 1\n        res = min(res, n - (j - i))\n        \n    return res\n```\n    \n    The algorithm first finds and sorts the unique elements in the input array. Then, it performs a two-pointer iteration through the unique elements. The first pointer, `i`, iterates from the beginning to the end of the unique elements array. The second pointer, `j`, starts at the beginning and moves forward while the difference between the currently pointed elements and `n - 1` is not exceeded. The difference between the two pointers gives us the number of elements that are already continuous in the input array. The result is the minimum number of operations required to make the input array continuous. The algorithm updates the result as the min value between the previous result and `n - (j - i)` during the iterations.\n    ",
+    "javascript": "\n    ```javascript\nfunction minOperations(nums) {\n    const n = nums.length;\n    const s = [...new Set(nums)].sort((a, b) => a - b);\n    let res = Infinity;\n    let j = 0;\n\n    for (let i = 0; i < s.length; ++i) {\n        while (j < s.length && s[j] <= s[i] + n - 1) {\n            ++j;\n        }\n        res = Math.min(res, n - (j - i));\n    }\n    return res;\n}\n```\n    \n    The algorithm first finds and sorts the unique elements in the input array. Then, it performs a two-pointer iteration through the unique elements. The first pointer, `i`, iterates from the beginning to the end of the unique elements array. The second pointer, `j`, starts at the beginning and moves forward while the difference between the currently pointed elements and `n - 1` is not exceeded. The difference between the two pointers gives us the number of elements that are already continuous in the input array. The result is the minimum number of operations required to make the input array continuous. The algorithm updates the result as the min value between the previous result and `n - (j - i)` during the iterations.\n    ",
+    "java": "\n    ```java\npublic int minOperations(int[] nums) {\n    int n = nums.length;\n    Set<Integer> set = new HashSet<>();\n    for (int num : nums) {\n        set.add(num);\n    }\n    List<Integer> list = new ArrayList<>(set);\n    Collections.sort(list);\n    int res = Integer.MAX_VALUE;\n    int j = 0;\n\n    for (int i = 0; i < list.size(); ++i) {\n        while (j < list.size() && list.get(j) <= list.get(i) + n - 1) {\n            ++j;\n        }\n        res = Math.min(res, n - (j - i));\n    }\n    return res;\n}\n```\n    \n    The algorithm first finds and sorts the unique elements in the input array. Then, it performs a two-pointer iteration through the unique elements. The first pointer, `i`, iterates from the beginning to the end of the unique elements array. The second pointer, `j`, starts at the beginning and moves forward while the difference between the currently pointed elements and `n - 1` is not exceeded. The difference between the two pointers gives us the number of elements that are already continuous in the input array. The result is the minimum number of operations required to make the input array continuous. The algorithm updates the result as the min value between the previous result and `n - (j - i)` during the iterations.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

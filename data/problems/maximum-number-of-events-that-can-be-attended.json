@@ -1,0 +1,24 @@
+{
+  "id": 1353,
+  "title": "Maximum Number of Events That Can Be Attended",
+  "slug": "maximum-number-of-events-that-can-be-attended",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array of events where events[i] = [startDayi, endDayi]. Every event i starts at startDayi and ends at endDayi.\n\nYou can attend an event i at any day d where startTimei <= d <= endTimei. You can only attend one event at any time d.\n\nReturn _the maximum number of events you can attend_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nimport heapq\n\ndef maxEvents(events: List[List[int]]) -> int:\n    events.sort(key=lambda x: x[0])\n    min_heap = []\n    event_count, day = 0, 0\n\n    for event in events:\n        while min_heap and min_heap[0] < event[0]:\n            heapq.heappop(min_heap)\n        heapq.heappush(min_heap, event[1])\n        event_count += 1\n        day += 1\n\n    return event_count\n```\n\n    \n    First, we sort the `events` array by its start day in ascending order, using a custom compare function.\nThen, we create a min-heap to store the end day of each event.\n\nWe initialize `eventCount` and `day` to 0. Then, we iterate through the events.\n\nFor each event, we check if the min-heap contains any previously attended events whose end day is less than the start day of the current event. If there are any, we remove them from the min-heap (as they have no impact on the overall count anymore).\n\nAfter that, we push the end day of the current event into the min-heap and increment both the `eventCount` and `day`.\n\nAt the end, we return the `eventCount`, which represents the maximum number of events we could attend.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxEvents(events) {\n    events.sort((a, b) => a[0] - b[0]);\n    const minHeap = [];\n    let eventCount = 0, day = 0;\n\n    for (let event of events) {\n        while (minHeap.length && minHeap[0] < event[0]) {\n            minHeap.shift();\n        }\n        minHeap.push(event[1]);\n        minHeap.sort((a, b) => a - b);\n        eventCount++;\n        day++;\n    }\n\n    return eventCount;\n}\n```\n\n    \n    First, we sort the `events` array by its start day in ascending order, using a custom compare function.\nThen, we create a min-heap to store the end day of each event.\n\nWe initialize `eventCount` and `day` to 0. Then, we iterate through the events.\n\nFor each event, we check if the min-heap contains any previously attended events whose end day is less than the start day of the current event. If there are any, we remove them from the min-heap (as they have no impact on the overall count anymore).\n\nAfter that, we push the end day of the current event into the min-heap and increment both the `eventCount` and `day`.\n\nAt the end, we return the `eventCount`, which represents the maximum number of events we could attend.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic int maxEvents(int[][] events) {\n    Arrays.sort(events, (a, b) -> a[0] - b[0]);\n    PriorityQueue<Integer> minHeap = new PriorityQueue<>();\n    int eventCount = 0, day = 0;\n\n    for (int[] event : events) {\n        while (!minHeap.isEmpty() && minHeap.peek() < event[0]) {\n            minHeap.poll();\n        }\n        minHeap.add(event[1]);\n        eventCount++;\n        day++;\n    }\n\n    return eventCount;\n}\n```\n\n    \n    First, we sort the `events` array by its start day in ascending order, using a custom compare function.\nThen, we create a min-heap to store the end day of each event.\n\nWe initialize `eventCount` and `day` to 0. Then, we iterate through the events.\n\nFor each event, we check if the min-heap contains any previously attended events whose end day is less than the start day of the current event. If there are any, we remove them from the min-heap (as they have no impact on the overall count anymore).\n\nAfter that, we push the end day of the current event into the min-heap and increment both the `eventCount` and `day`.\n\nAt the end, we return the `eventCount`, which represents the maximum number of events we could attend.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

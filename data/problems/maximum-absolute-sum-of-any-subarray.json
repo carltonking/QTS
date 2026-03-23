@@ -1,0 +1,24 @@
+{
+  "id": 1749,
+  "title": "Maximum Absolute Sum of Any Subarray",
+  "slug": "maximum-absolute-sum-of-any-subarray",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array nums. The absolute sum of a subarray [numsl, numsl+1, ..., numsr-1, numsr] is abs(numsl + numsl+1 + ... + numsr-1 + numsr).\n\nReturn _the maximum absolute sum of any (possibly empty) subarray of_ nums.\n\nNote that abs(x) is defined as follows:\n\n*   If x is a negative integer, then abs(x) = -x.\n*   If x is a non-negative integer, then abs(x) = x.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxAbsoluteSum(nums):\n    max_sum = max_end = min_sum = min_end = 0\n    for num in nums:\n        max_end = max(max_end + num, num)\n        min_end = min(min_end + num, num)\n        max_sum = max(max_sum, max_end)\n        min_sum = min(min_sum, min_end)\n    return max(max_sum, -min_sum)\n```\n    \n    We use the Kadane's algorithm to maintain both the maximum sum subarray (max_end) and the minimum sum subarray (min_end) ending at the current position.\n\n1. Iterate through the given array nums\n2. For each number in nums:\n   1. Update max_end to be the maximum of max_end + num and num\n   2. Update min_end to be the minimum of min_end + num and num\n   3. Update max_sum to be the maximum of max_sum and max_end\n   4. Update min_sum to be the minimum of min_sum and min_end\n3. Return the maximum of max_sum and -min_sum.\n\nKeep in mind that empty subarray is allowed, but in practice we won't need any additional code to handle empty subarray since the minimum absolute sum is always 0 (which can be the result of an empty subarray).\n    ",
+    "javascript": "\n    ```javascript\nfunction maxAbsoluteSum(nums) {\n    let max_sum = 0, min_sum = 0, max_end = 0, min_end = 0;\n    for (let num of nums) {\n        max_end = Math.max(max_end + num, num);\n        min_end = Math.min(min_end + num, num);\n        max_sum = Math.max(max_sum, max_end);\n        min_sum = Math.min(min_sum, min_end);\n    }\n    return Math.max(max_sum, -min_sum);\n}\n```\n    \n    We use the Kadane's algorithm to maintain both the maximum sum subarray (max_end) and the minimum sum subarray (min_end) ending at the current position.\n\n1. Iterate through the given array nums\n2. For each number in nums:\n   1. Update max_end to be the maximum of max_end + num and num\n   2. Update min_end to be the minimum of min_end + num and num\n   3. Update max_sum to be the maximum of max_sum and max_end\n   4. Update min_sum to be the minimum of min_sum and min_end\n3. Return the maximum of max_sum and -min_sum.\n\nKeep in mind that empty subarray is allowed, but in practice we won't need any additional code to handle empty subarray since the minimum absolute sum is always 0 (which can be the result of an empty subarray).\n    ",
+    "java": "\n    ```java\npublic int maxAbsoluteSum(int[] nums) {\n    int max_sum = 0, min_sum = 0, max_end = 0, min_end = 0;\n    for (int num : nums) {\n        max_end = Math.max(max_end + num, num);\n        min_end = Math.min(min_end + num, num);\n        max_sum = Math.max(max_sum, max_end);\n        min_sum = Math.min(min_sum, min_end);\n    }\n    return Math.max(max_sum, -min_sum);\n}\n```\n    \n    We use the Kadane's algorithm to maintain both the maximum sum subarray (max_end) and the minimum sum subarray (min_end) ending at the current position.\n\n1. Iterate through the given array nums\n2. For each number in nums:\n   1. Update max_end to be the maximum of max_end + num and num\n   2. Update min_end to be the minimum of min_end + num and num\n   3. Update max_sum to be the maximum of max_sum and max_end\n   4. Update min_sum to be the minimum of min_sum and min_end\n3. Return the maximum of max_sum and -min_sum.\n\nKeep in mind that empty subarray is allowed, but in practice we won't need any additional code to handle empty subarray since the minimum absolute sum is always 0 (which can be the result of an empty subarray).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

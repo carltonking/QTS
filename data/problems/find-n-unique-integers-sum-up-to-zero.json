@@ -1,0 +1,24 @@
+{
+  "id": 1304,
+  "title": "Find N Unique Integers Sum up to Zero",
+  "slug": "find-n-unique-integers-sum-up-to-zero",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer n, return any array containing n unique integers such that they add up to 0.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom heapq import heappush, heappop\n\ndef longestHappyString(a, b, c):\n    res = \"\"\n    pq = []\n    if a: heappush(pq, (-a, 'a'))\n    if b: heappush(pq, (-b, 'b'))\n    if c: heappush(pq, (-c, 'c'))\n\n    while pq:\n        curr = heappop(pq)\n        if len(res) >= 2 and res[-1] == curr[1] and res[-2] == curr[1]:\n            if not pq: break\n            next = heappop(pq)\n            res += next[1]\n            if next[0] < -1: heappush(pq, (next[0] + 1, next[1]))\n            heappush(pq, curr)\n        else:\n            res += curr[1]\n            if curr[0] < -1: heappush(pq, (curr[0] + 1, curr[1]))\n\n    return res\n```\n\n    \n    The algorithm uses a priority queue to track the count of each character, sorted in descending order. It then generates the happy string by greedily appending the character with the highest count, as long as it does not violate the \"no three consecutive characters\" rule. If this rule would be violated, it appends the character with the next highest count and puts the current character back in the queue to try later. This process is continued until the queue is empty, and the resulting string is the longest happy string.\n    ",
+    "javascript": "\n    ```javascript\nfunction longestHappyString(a, b, c) {\n    let res = \"\";\n    let pq = [];\n\n    if (a) pq.push([-a, 'a']);\n    if (b) pq.push([-b, 'b']);\n    if (c) pq.push([-c, 'c']);\n\n    pq.sort((x, y) => x[0] - y[0]);\n\n    while (pq.length) {\n        let curr = pq.pop();\n        if (res.length >= 2 && res[res.length - 1] === curr[1] && res[res.length - 2] === curr[1]) {\n            if (!pq.length) break;\n            let next = pq.pop();\n            res += next[1];\n            if (next[0] < -1) pq.push([next[0] + 1, next[1]]);\n            pq.push(curr);\n        } else {\n            res += curr[1];\n            if (curr[0] < -1) pq.push([curr[0] + 1, curr[1]]);\n        }\n        pq.sort((x, y) => x[0] - y[0]);\n    }\n\n    return res;\n}\n```\n\n    \n    The algorithm uses a priority queue to track the count of each character, sorted in descending order. It then generates the happy string by greedily appending the character with the highest count, as long as it does not violate the \"no three consecutive characters\" rule. If this rule would be violated, it appends the character with the next highest count and puts the current character back in the queue to try later. This process is continued until the queue is empty, and the resulting string is the longest happy string.\n    ",
+    "java": "\n    ```java\nimport java.util.PriorityQueue;\n\npublic String longestHappyString(int a, int b, int c) {\n    StringBuilder res = new StringBuilder();\n    PriorityQueue<int[]> pq = new PriorityQueue<>((x, y) -> y[0] - x[0]);\n\n    if (a > 0) pq.offer(new int[]{a, 'a'});\n    if (b > 0) pq.offer(new int[]{b, 'b'});\n    if (c > 0) pq.offer(new int[]{c, 'c'});\n\n    while (!pq.isEmpty()) {\n        int[] curr = pq.poll();\n        if (res.length() >= 2 && res.charAt(res.length() - 1) == curr[1] && res.charAt(res.length() - 2) == curr[1]) {\n            if (pq.isEmpty()) break;\n            int[] next = pq.poll();\n            res.append((char) next[1]);\n            if (--next[0] > 0) pq.offer(next);\n            pq.offer(curr);\n        } else {\n            res.append((char) curr[1]);\n            if (--curr[0] > 0) pq.offer(curr);\n        }\n    }\n\n    return res.toString();\n}\n```\n\n    \n    The algorithm uses a priority queue to track the count of each character, sorted in descending order. It then generates the happy string by greedily appending the character with the highest count, as long as it does not violate the \"no three consecutive characters\" rule. If this rule would be violated, it appends the character with the next highest count and puts the current character back in the queue to try later. This process is continued until the queue is empty, and the resulting string is the longest happy string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

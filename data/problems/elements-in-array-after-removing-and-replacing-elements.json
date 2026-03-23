@@ -1,0 +1,24 @@
+{
+  "id": 2113,
+  "title": "Elements in Array After Removing and Replacing Elements",
+  "slug": "elements-in-array-after-removing-and-replacing-elements",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums. Initially on minute 0, the array is unchanged. Every minute, the leftmost element in nums is removed until no elements remain. Then, every minute, one element is appended to the end of nums, in the order they were removed in, until the original array is restored. This process repeats indefinitely.\n\n*   For example, the array [0,1,2] would change as follows: [0,1,2] -> [1,2] -> [2] -> [] -> [0] -> [0,1] -> [0,1,2] -> [1,2] -> [2] -> [] -> [0] -> [0,1] -> [0,1,2] -> ...\n\nYou are also given a 2D integer array queries of size n where queries[j] = [timej, indexj]. The answer to the jth query is:\n\n*   nums[indexj] if indexj < nums.length at minute timej\n*   -1 if indexj >= nums.length at minute timej\n\nReturn _an integer array ans of size_ n _where_ ans[j] _is the answer to the_ jth _query_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef kthLargestNumber(nums, k):\n    nums.sort(key=lambda x: (len(x), x))\n    return nums[-k]\n```\n    \n    1. Sort the given nums array of strings based on their lengths (i.e., based on the number of digits). If the lengths are equal, sort the strings lexicographically.\n2. Return the element at index (length - k), as it represents the kth largest number in the sorted array.\n    ",
+    "javascript": "\n    ```javascript\nfunction kthLargestNumber(nums, k) {\n    nums.sort((a, b) => {\n        if (a.length == b.length) return a.localeCompare(b);\n        return a.length - b.length;\n    });\n    return nums[nums.length - k];\n}\n```\n    \n    1. Sort the given nums array of strings based on their lengths (i.e., based on the number of digits). If the lengths are equal, sort the strings lexicographically.\n2. Return the element at index (length - k), as it represents the kth largest number in the sorted array.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\nimport java.util.Comparator;\n\npublic String kthLargestNumber(String[] nums, int k) {\n    Arrays.sort(nums, (a, b) -> {\n        if (a.length() == b.length()) return a.compareTo(b);\n        return a.length() - b.length();\n    });\n    return nums[nums.length - k];\n}\n```\n    \n    1. Sort the given nums array of strings based on their lengths (i.e., based on the number of digits). If the lengths are equal, sort the strings lexicographically.\n2. Return the element at index (length - k), as it represents the kth largest number in the sorted array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

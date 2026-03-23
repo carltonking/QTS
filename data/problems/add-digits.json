@@ -1,0 +1,24 @@
+{
+  "id": 258,
+  "title": "Add Digits",
+  "slug": "add-digits",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer num, repeatedly add all its digits until the result has only one digit, and return it.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef addDigits(num: int) -> int:\n    return 1 + (num - 1) % 9\n```\n    \n    The idea is to find the pattern for the single digit that will be the outcome of repeatedly summing up a number's digits. Observe that for numbers 1-9, the single digit outcome is the number itself. For numbers 10-18 (i.e., 1+0, 1+1, 1+2, ..., 1+8), the single digit outcome is 1-9 again. This pattern repeats.\n\nIn the given code, we return the value computed from the formula `1 + (num - 1) % 9`. The formula derives from the observation mentioned above. Here's the explanation:\n\n- Subtracting 1 shifts the sequence to range from 0 to 8 instead of 1 to 9.\n- Taking num modulo 9 reveals the repeating 0-8 pattern.\n- Adding 1 offsets the range back to 1-9.\n\nThis algorithm works for all positive integer numbers, and the result is the single digit number that is the outcome of repeatedly summing up the original number's digits.\n    ",
+    "javascript": "\n    ```javascript\nfunction addDigits(num) {\n    return 1 + (num - 1) % 9;\n}\n```\n    \n    The idea is to find the pattern for the single digit that will be the outcome of repeatedly summing up a number's digits. Observe that for numbers 1-9, the single digit outcome is the number itself. For numbers 10-18 (i.e., 1+0, 1+1, 1+2, ..., 1+8), the single digit outcome is 1-9 again. This pattern repeats.\n\nIn the given code, we return the value computed from the formula `1 + (num - 1) % 9`. The formula derives from the observation mentioned above. Here's the explanation:\n\n- Subtracting 1 shifts the sequence to range from 0 to 8 instead of 1 to 9.\n- Taking num modulo 9 reveals the repeating 0-8 pattern.\n- Adding 1 offsets the range back to 1-9.\n\nThis algorithm works for all positive integer numbers, and the result is the single digit number that is the outcome of repeatedly summing up the original number's digits.\n    ",
+    "java": "\n    ```java\npublic int addDigits(int num) {\n    return 1 + (num - 1) % 9;\n}\n```\n    \n    The idea is to find the pattern for the single digit that will be the outcome of repeatedly summing up a number's digits. Observe that for numbers 1-9, the single digit outcome is the number itself. For numbers 10-18 (i.e., 1+0, 1+1, 1+2, ..., 1+8), the single digit outcome is 1-9 again. This pattern repeats.\n\nIn the given code, we return the value computed from the formula `1 + (num - 1) % 9`. The formula derives from the observation mentioned above. Here's the explanation:\n\n- Subtracting 1 shifts the sequence to range from 0 to 8 instead of 1 to 9.\n- Taking num modulo 9 reveals the repeating 0-8 pattern.\n- Adding 1 offsets the range back to 1-9.\n\nThis algorithm works for all positive integer numbers, and the result is the single digit number that is the outcome of repeatedly summing up the original number's digits.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

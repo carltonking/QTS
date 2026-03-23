@@ -1,0 +1,24 @@
+{
+  "id": 2265,
+  "title": "Count Nodes Equal to Average of Subtree",
+  "slug": "count-nodes-equal-to-average-of-subtree",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the root of a binary tree, return _the number of nodes where the value of the node is equal to the average of the values in its subtree_.\n\nNote:\n\n*   The average of n elements is the sum of the n elements divided by n and rounded down to the nearest integer.\n*   A subtree of root is a tree consisting of root and all of its descendants.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef rearrange_array_around_pivot(nums, pivot):\n    return sorted(nums, key=lambda x: (x >= pivot, x))\n```\n\n    \n    For all language implementations, the algorithm is to sort the input array while comparing each pair of elements with the pivot. If one of the elements is less than the pivot and the other is greater or equal, the ordering is preserved or reversed according to this relation.\n\nIn C++, `std::partition` is used on the input vector, which rearranges elements within the range based on the predicate provided (checking if the element is less than pivot). In Java and JavaScript, a custom comparator is provided for the `Arrays.sort()` and `Array.prototype.sort()` functions, respectively. In Python, we use the `sorted()` function with a custom key function that returns a tuple, making use of lexicographic ordering based on two values: whether the element is greater than or equal to the pivot, and the element itself. This approach effectively places elements less than the pivot first and maintains their order relative to each other.\n    ",
+    "javascript": "\n    ```javascript\nfunction rearrangeArrayAroundPivot(nums, pivot) {\n    return nums.sort((a, b) => (a < pivot && b >= pivot) ? -1 : (a >= pivot && b < pivot) ? 1 : 0);\n}\n```\n\n    \n    For all language implementations, the algorithm is to sort the input array while comparing each pair of elements with the pivot. If one of the elements is less than the pivot and the other is greater or equal, the ordering is preserved or reversed according to this relation.\n\nIn C++, `std::partition` is used on the input vector, which rearranges elements within the range based on the predicate provided (checking if the element is less than pivot). In Java and JavaScript, a custom comparator is provided for the `Arrays.sort()` and `Array.prototype.sort()` functions, respectively. In Python, we use the `sorted()` function with a custom key function that returns a tuple, making use of lexicographic ordering based on two values: whether the element is greater than or equal to the pivot, and the element itself. This approach effectively places elements less than the pivot first and maintains their order relative to each other.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int[] rearrangeArrayAroundPivot(int[] nums, int pivot) {\n    Arrays.sort(nums, (a, b) -> a < pivot && b >= pivot ? -1 : (a >= pivot && b < pivot ? 1 : 0));\n    return nums;\n}\n```\n\n    \n    For all language implementations, the algorithm is to sort the input array while comparing each pair of elements with the pivot. If one of the elements is less than the pivot and the other is greater or equal, the ordering is preserved or reversed according to this relation.\n\nIn C++, `std::partition` is used on the input vector, which rearranges elements within the range based on the predicate provided (checking if the element is less than pivot). In Java and JavaScript, a custom comparator is provided for the `Arrays.sort()` and `Array.prototype.sort()` functions, respectively. In Python, we use the `sorted()` function with a custom key function that returns a tuple, making use of lexicographic ordering based on two values: whether the element is greater than or equal to the pivot, and the element itself. This approach effectively places elements less than the pivot first and maintains their order relative to each other.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

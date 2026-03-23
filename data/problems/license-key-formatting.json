@@ -1,0 +1,24 @@
+{
+  "id": 482,
+  "title": "License Key Formatting",
+  "slug": "license-key-formatting",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a license key represented as a string s that consists of only alphanumeric characters and dashes. The string is separated into n + 1 groups by n dashes. You are also given an integer k.\n\nWe want to reformat the string s such that each group contains exactly k characters, except for the first group, which could be shorter than k but still must contain at least one character. Furthermore, there must be a dash inserted between two groups, and you should convert all lowercase letters to uppercase.\n\nReturn _the reformatted license key_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef license_key_formatting(s: str, k: int) -> str:\n    result = []\n    count = 0\n    for c in reversed(s):\n        if c != '-':\n            if count == k:\n                result.append('-')\n                count = 0\n            result.append(c.upper())\n            count += 1\n    return ''.join(reversed(result))\n```\n    \n    The algorithm starts by iterating the string s from the end to the beginning, skipping the dashes. During the iteration, we check whether the current group has reached k characters. If so, we append a dash to the result string. We then add the current character, converting it to uppercase, to the result string. After the iteration, we reverse the result string for C++, Java, and Python implementations (for JavaScript, we prepend characters so no need to reverse in the end). This is because we built the reformatted license key in reverse order. Finally, we return the result string.\n    ",
+    "javascript": "\n    ```javascript\nfunction licenseKeyFormatting(s, k) {\n    let result = '';\n    let count = 0;\n    for (let i = s.length - 1; i >= 0; i--) {\n        if (s[i] !== '-') {\n            if (count === k) {\n                result = '-' + result;\n                count = 0;\n            }\n            result = s[i].toUpperCase() + result;\n            count++;\n        }\n    }\n    return result;\n}\n```\n    \n    The algorithm starts by iterating the string s from the end to the beginning, skipping the dashes. During the iteration, we check whether the current group has reached k characters. If so, we append a dash to the result string. We then add the current character, converting it to uppercase, to the result string. After the iteration, we reverse the result string for C++, Java, and Python implementations (for JavaScript, we prepend characters so no need to reverse in the end). This is because we built the reformatted license key in reverse order. Finally, we return the result string.\n    ",
+    "java": "\n    ```java\npublic String licenseKeyFormatting(String s, int k) {\n    StringBuilder result = new StringBuilder();\n    int count = 0;\n    for (int i = s.length() - 1; i >= 0; i--) {\n        if (s.charAt(i) != '-') {\n            if (count == k) {\n                result.append('-');\n                count = 0;\n            }\n            result.append(Character.toUpperCase(s.charAt(i)));\n            count++;\n        }\n    }\n    return result.reverse().toString();\n}\n```\n    \n    The algorithm starts by iterating the string s from the end to the beginning, skipping the dashes. During the iteration, we check whether the current group has reached k characters. If so, we append a dash to the result string. We then add the current character, converting it to uppercase, to the result string. After the iteration, we reverse the result string for C++, Java, and Python implementations (for JavaScript, we prepend characters so no need to reverse in the end). This is because we built the reformatted license key in reverse order. Finally, we return the result string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

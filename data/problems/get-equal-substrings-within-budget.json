@@ -1,0 +1,24 @@
+{
+  "id": 1208,
+  "title": "Get Equal Substrings Within Budget",
+  "slug": "get-equal-substrings-within-budget",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two strings s and t of the same length and an integer maxCost.\n\nYou want to change s to t. Changing the ith character of s to ith character of t costs |s[i] - t[i]| (i.e., the absolute difference between the ASCII values of the characters).\n\nReturn _the maximum length of a substring of_ s _that can be changed to be the same as the corresponding substring of_ t _with a cost less than or equal to_ maxCost. If there is no substring from s that can be changed to its corresponding substring from t, return 0.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef split_string(seq: str):\n    result = [0] * len(seq)\n    count = 0\n\n    for i in range(len(seq)):\n        if seq[i] == '(':\n            result[i] = count % 2\n            count += 1\n        else:\n            count -= 1\n            result[i] = count % 2\n\n    return result\n```\n\n    \n    The algorithm works by iterating through the given sequence and counting the number of opening parentheses '(' encountered till now. The count is incremented on every opening parenthesis and decremented on every closing parenthesis. We can then determine if the current character should be assigned to subsequence A or B based on the parity of this count. If the count is even, the character is assigned to subsequence A, otherwise to subsequence B. This way, we are keeping the depth of both subsequences balanced, ensuring the minimum possible value of max(depth(A), depth(B)).\n    ",
+    "javascript": "\n    ```javascript\nfunction splitString(seq) {\n    const result = new Array(seq.length);\n    let count = 0;\n\n    for (let i = 0; i < seq.length; ++i) {\n        if (seq[i] === '(') {\n            result[i] = count % 2;\n            count++;\n        } else {\n            count--;\n            result[i] = count % 2;\n        }\n    }\n\n    return result;\n}\n```\n\n    \n    The algorithm works by iterating through the given sequence and counting the number of opening parentheses '(' encountered till now. The count is incremented on every opening parenthesis and decremented on every closing parenthesis. We can then determine if the current character should be assigned to subsequence A or B based on the parity of this count. If the count is even, the character is assigned to subsequence A, otherwise to subsequence B. This way, we are keeping the depth of both subsequences balanced, ensuring the minimum possible value of max(depth(A), depth(B)).\n    ",
+    "java": "\n    ```java\npublic int[] splitString(String seq) {\n    int[] result = new int[seq.length()];\n    int count = 0;\n\n    for (int i = 0; i < seq.length(); ++i) {\n        if (seq.charAt(i) == '(') {\n            result[i] = count % 2;\n            count++;\n        } else {\n            count--;\n            result[i] = count % 2;\n        }\n    }\n\n    return result;\n}\n```\n\n    \n    The algorithm works by iterating through the given sequence and counting the number of opening parentheses '(' encountered till now. The count is incremented on every opening parenthesis and decremented on every closing parenthesis. We can then determine if the current character should be assigned to subsequence A or B based on the parity of this count. If the count is even, the character is assigned to subsequence A, otherwise to subsequence B. This way, we are keeping the depth of both subsequences balanced, ensuring the minimum possible value of max(depth(A), depth(B)).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 946,
+  "title": "Validate Stack Sequences",
+  "slug": "validate-stack-sequences",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given two integer arrays pushed and popped each with distinct values, return true _if this could have been the result of a sequence of push and pop operations on an initially empty stack, or_ false _otherwise._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minimum_score(nums, k):\n    nums.sort()\n    n = len(nums)\n    res = nums[n - 1] - nums[0]\n\n    for i in range(n - 1):\n        high = max(nums[i] + k, nums[n - 1] - k)\n        low = min(nums[i + 1] - k, nums[0] + k)\n        res = min(res, high - low)\n\n    return res\n```\n    \n    1. First, sort the given integer array `nums` in ascending order.\n2. Initialize the result `res` to the initial difference between the maximum and the minimum elements in the array.\n3. Iterate through the array, from index 0 to index `nums.length - 2`. For each index `i`, do the following:\n   - Calculate `high` as the maximum of `(nums[i] + k)` and `(nums[nums.length - 1] - k)`.\n   - Calculate `low` as the minimum of `(nums[i + 1] - k)` and `(nums[0] + k)`.\n   - Update the result `res` to the minimum of itself and the difference between `high` and `low`.\n4. Return the final result `res` as the minimum score of nums after changing the values at each index.\n    ",
+    "javascript": "\n    ```javascript\nfunction minimumScore(nums, k) {\n    nums.sort((a, b) => a - b);\n    const n = nums.length;\n    let res = nums[n - 1] - nums[0];\n\n    for (let i = 0; i < n - 1; i++) {\n        const high = Math.max(nums[i] + k, nums[n - 1] - k);\n        const low = Math.min(nums[i + 1] - k, nums[0] + k);\n        res = Math.min(res, high - low);\n    }\n\n    return res;\n}\n```\n    \n    1. First, sort the given integer array `nums` in ascending order.\n2. Initialize the result `res` to the initial difference between the maximum and the minimum elements in the array.\n3. Iterate through the array, from index 0 to index `nums.length - 2`. For each index `i`, do the following:\n   - Calculate `high` as the maximum of `(nums[i] + k)` and `(nums[nums.length - 1] - k)`.\n   - Calculate `low` as the minimum of `(nums[i + 1] - k)` and `(nums[0] + k)`.\n   - Update the result `res` to the minimum of itself and the difference between `high` and `low`.\n4. Return the final result `res` as the minimum score of nums after changing the values at each index.\n    ",
+    "java": "\n    ```java\npublic int minimumScore(int[] nums, int k) {\n    Arrays.sort(nums);\n    int n = nums.length;\n    int res = nums[n - 1] - nums[0];\n\n    for (int i = 0; i < n - 1; i++) {\n        int high = Math.max(nums[i] + k, nums[n - 1] - k);\n        int low = Math.min(nums[i + 1] - k, nums[0] + k);\n        res = Math.min(res, high - low);\n    }\n\n    return res;\n}\n```\n    \n    1. First, sort the given integer array `nums` in ascending order.\n2. Initialize the result `res` to the initial difference between the maximum and the minimum elements in the array.\n3. Iterate through the array, from index 0 to index `nums.length - 2`. For each index `i`, do the following:\n   - Calculate `high` as the maximum of `(nums[i] + k)` and `(nums[nums.length - 1] - k)`.\n   - Calculate `low` as the minimum of `(nums[i + 1] - k)` and `(nums[0] + k)`.\n   - Update the result `res` to the minimum of itself and the difference between `high` and `low`.\n4. Return the final result `res` as the minimum score of nums after changing the values at each index.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

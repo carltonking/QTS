@@ -1,0 +1,24 @@
+{
+  "id": 2573,
+  "title": "Find the String with LCP",
+  "slug": "find-the-string-with-lcp",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "We define the lcp matrix of any 0-indexed string word of n lowercase English letters as an n x n grid such that:\n\n*   lcp[i][j] is equal to the length of the longest common prefix between the substrings word[i,n-1] and word[j,n-1].\n\nGiven an n x n matrix lcp, return the alphabetically smallest string word that corresponds to lcp. If there is no such string, return an empty string.\n\nA string a is lexicographically smaller than a string b (of the same length) if in the first position where a and b differ, string a has a letter that appears earlier in the alphabet than the corresponding letter in b. For example, \"aabd \" is lexicographically smaller than \"aaca \" because the first position they differ is at the third letter, and 'b' comes before 'c'.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef smallestWordForLCP(lcp):\n    n = len(lcp)\n    word = ['a'] * n\n    for i in range(1, n):\n        for j in range(1, n):\n            if lcp[i][j] > min(lcp[i - 1][j], lcp[i][j - 1]):\n                word[i + lcp[i][j] - 1] = max(word[i + lcp[i][j] - 1], chr(ord(word[i - 1]) + 1))\n            elif lcp[i][j] < min(lcp[i - 1][j], lcp[i][j - 1]):\n                return \"\"\n    return \"\".join(word)\n```\n    \n    The algorithm loops through the `lcp` matrix, checking for each element if it is greater or less than the minimum of its top and left neighbors. If greater, it updates the corresponding character in the `word` array or string by taking the maximum of its current value and the previous character increased by 1. If the element is less than the minimum of its top and left neighbors, we return empty string because it's an invalid `lcp` matrix.\n\nAfter the loop, the function returns the word as a string. The algorithm has a time complexity of O(n^2) and space complexity of O(n).\n    ",
+    "javascript": "\n    ```javascript\nfunction smallestWordForLCP(lcp) {\n    let n = lcp.length;\n    let word = Array(n).fill('a');\n    for (let i = 1; i < n; ++i)\n        for (let j = 1; j < n; ++j) {\n            if (lcp[i][j] > Math.min(lcp[i - 1][j], lcp[i][j - 1])) {\n                word[i + lcp[i][j] - 1] = String.fromCharCode(Math.max(\n                    word[i + lcp[i][j] - 1].charCodeAt(0),\n                    word[i - 1].charCodeAt(0) + 1\n                ));\n            } else if (lcp[i][j] < Math.min(lcp[i - 1][j], lcp[i][j - 1])) {\n                return \"\";\n            }\n        }\n    return word.join('');\n}\n```\n    \n    The algorithm loops through the `lcp` matrix, checking for each element if it is greater or less than the minimum of its top and left neighbors. If greater, it updates the corresponding character in the `word` array or string by taking the maximum of its current value and the previous character increased by 1. If the element is less than the minimum of its top and left neighbors, we return empty string because it's an invalid `lcp` matrix.\n\nAfter the loop, the function returns the word as a string. The algorithm has a time complexity of O(n^2) and space complexity of O(n).\n    ",
+    "java": "\n    ```java\npublic String smallestWordForLCP(int[][] lcp) {\n    int n = lcp.length;\n    char[] word = new char[n];\n    Arrays.fill(word, 'a');\n    for (int i = 1; i < n; ++i)\n        for (int j = 1; j < n; ++j) {\n            if (lcp[i][j] > Math.min(lcp[i - 1][j], lcp[i][j - 1])) {\n                word[i + lcp[i][j] - 1] = (char) Math.max(word[i + lcp[i][j] - 1], word[i - 1] + 1);\n            } else if (lcp[i][j] < Math.min(lcp[i - 1][j], lcp[i][j - 1])) {\n                return \"\";\n            }\n        }\n    return new String(word);\n}\n```\n    \n    The algorithm loops through the `lcp` matrix, checking for each element if it is greater or less than the minimum of its top and left neighbors. If greater, it updates the corresponding character in the `word` array or string by taking the maximum of its current value and the previous character increased by 1. If the element is less than the minimum of its top and left neighbors, we return empty string because it's an invalid `lcp` matrix.\n\nAfter the loop, the function returns the word as a string. The algorithm has a time complexity of O(n^2) and space complexity of O(n).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

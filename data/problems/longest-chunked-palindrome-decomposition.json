@@ -1,0 +1,24 @@
+{
+  "id": 1147,
+  "title": "Longest Chunked Palindrome Decomposition",
+  "slug": "longest-chunked-palindrome-decomposition",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a string text. You should split it to k substrings (subtext1, subtext2, ..., subtextk) such that:\n\n*   subtexti is a non-empty string.\n*   The concatenation of all the substrings is equal to text (i.e., subtext1 + subtext2 + ... + subtextk == text).\n*   subtexti == subtextk - i + 1 for all valid values of i (i.e., 1 <= i <= k).\n\nReturn the largest possible value of k.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import defaultdict\n\ndef maxEqualRowsAfterFlips(matrix):\n    count = defaultdict(int)\n    for row in matrix:\n        row_str = \"\".join(str(row[0] ^ val) for val in row)\n        count[row_str] += 1\n    return max(count.values())\n```\n    \n    The algorithm initializes an empty map (or dictionary) for counting rows. For each row in the matrix, the algorithm generates a string composed of the XOR of the first element in the row with every element in that row. This operation helps to represent the rows that can be flipped to be equal. The row string is stored as a key in the dictionary, and the count of such rows is incremented.\n\nFinally, the algorithm iterates through the values in the dictionary and returns the maximum count encountered. This is the maximum number of rows that become equal after some number of flips.\n\nThe time complexity of this algorithm is O(m * n), where m is the number of rows and n is the number of columns in the matrix, as it iterates through every cell of the matrix.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxEqualRowsAfterFlips(matrix) {\n    const count = new Map();\n    for (const row of matrix) {\n        const rowStr = row.map(val => row[0] ^ val).join('');\n        count.set(rowStr, (count.get(rowStr) || 0) + 1);\n    }\n    let res = 0;\n    for (const value of count.values()) {\n        res = Math.max(res, value);\n    }\n    return res;\n}\n```\n    \n    The algorithm initializes an empty map (or dictionary) for counting rows. For each row in the matrix, the algorithm generates a string composed of the XOR of the first element in the row with every element in that row. This operation helps to represent the rows that can be flipped to be equal. The row string is stored as a key in the dictionary, and the count of such rows is incremented.\n\nFinally, the algorithm iterates through the values in the dictionary and returns the maximum count encountered. This is the maximum number of rows that become equal after some number of flips.\n\nThe time complexity of this algorithm is O(m * n), where m is the number of rows and n is the number of columns in the matrix, as it iterates through every cell of the matrix.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\nimport java.util.Map;\n\npublic int maxEqualRowsAfterFlips(int[][] matrix) {\n    Map<String, Integer> count = new HashMap<>();\n    for (int[] row : matrix) {\n        StringBuilder row_str = new StringBuilder();\n        int first = row[0];\n        for (int val : row) {\n            row_str.append(first == 1 ? 1 - val : val);\n        }\n        count.put(row_str.toString(), count.getOrDefault(row_str.toString(), 0) + 1);\n    }\n    int res = 0;\n    for (int value : count.values()) {\n        res = Math.max(res, value);\n    }\n    return res;\n}\n```\n    \n    The algorithm initializes an empty map (or dictionary) for counting rows. For each row in the matrix, the algorithm generates a string composed of the XOR of the first element in the row with every element in that row. This operation helps to represent the rows that can be flipped to be equal. The row string is stored as a key in the dictionary, and the count of such rows is incremented.\n\nFinally, the algorithm iterates through the values in the dictionary and returns the maximum count encountered. This is the maximum number of rows that become equal after some number of flips.\n\nThe time complexity of this algorithm is O(m * n), where m is the number of rows and n is the number of columns in the matrix, as it iterates through every cell of the matrix.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

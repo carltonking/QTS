@@ -1,0 +1,39 @@
+{
+  "id": 20,
+  "title": "House Robber",
+  "slug": "house-robber",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "You are a professional robber planning to rob houses along a street. Determine the maximum amount of money you can rob without robbing adjacent houses.",
+  "examples": [
+    {
+      "input": "nums = [1,2,3,1]",
+      "output": "4"
+    }
+  ],
+  "constraints": [
+    "1 <= nums.length <= 100"
+  ],
+  "starterCode": {
+    "python": "from typing import List\nclass Solution:\n    def rob(self, nums: List[int]) -> int:\n        pass",
+    "javascript": "var rob = function(nums) {\n    \n};",
+    "java": "class Solution {\n    public int rob(int[] nums) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    int rob(vector<int>& nums) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for House Robber\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "[1,2,3,1]",
+      "expectedOutput": "4"
+    },
+    {
+      "input": "[2,7,9,3,1]",
+      "expectedOutput": "12"
+    }
+  ]
+}

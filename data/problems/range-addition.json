@@ -1,0 +1,24 @@
+{
+  "id": 370,
+  "title": "Range Addition",
+  "slug": "range-addition",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer length and an array updates where updates[i] = [startIdxi, endIdxi, inci].\n\nYou have an array arr of length length with all zeros, and you have some operation to apply on arr. In the ith operation, you should increment all the elements arr[startIdxi], arr[startIdxi + 1], ..., arr[endIdxi] by inci.\n\nReturn arr _after applying all the_ updates.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef get_updated_array(length, updates):\n    arr = [0] * length\n\n    for start, end, inc in updates:\n        arr[start] += inc\n        if end + 1 < length:\n            arr[end + 1] -= inc\n\n    for i in range(1, length):\n        arr[i] += arr[i - 1]\n\n    return arr\n```\n    \n    The algorithm starts by initializing an array `arr` of length `length` with all zeros. Then, it iterates over each update and simulates its effect on the array. For every update `[startIdx, endIdx, inc]`, the algorithm increases the value at index `startIdx` by `inc` and decreases the value at index `endIdx + 1` by `inc`, assuming `endIdx + 1` is within the bounds of the array. The reason behind this is that it will later make the algorithm simpler.\n\nAfter processing all the updates, the actual values of the elements in the array are calculated using cumulative sums. The idea is that, for each element in the array after the first one, the final value is the previous value plus the current value. This will properly include the increments and decrements for each range from the updates.\n\nFinally, the algorithm returns the updated array.\n    ",
+    "javascript": "\n    ```javascript\nfunction getUpdatedArray(length, updates) {\n    const arr = new Array(length).fill(0);\n\n    for (const [start, end, inc] of updates) {\n        arr[start] += inc;\n        if (end + 1 < length) {\n            arr[end + 1] -= inc;\n        }\n    }\n\n    for (let i = 1; i < length; i++) {\n        arr[i] += arr[i - 1];\n    }\n\n    return arr;\n}\n```\n    \n    The algorithm starts by initializing an array `arr` of length `length` with all zeros. Then, it iterates over each update and simulates its effect on the array. For every update `[startIdx, endIdx, inc]`, the algorithm increases the value at index `startIdx` by `inc` and decreases the value at index `endIdx + 1` by `inc`, assuming `endIdx + 1` is within the bounds of the array. The reason behind this is that it will later make the algorithm simpler.\n\nAfter processing all the updates, the actual values of the elements in the array are calculated using cumulative sums. The idea is that, for each element in the array after the first one, the final value is the previous value plus the current value. This will properly include the increments and decrements for each range from the updates.\n\nFinally, the algorithm returns the updated array.\n    ",
+    "java": "\n    ```java\npublic int[] getUpdatedArray(int length, int[][] updates) {\n    int[] arr = new int[length];\n\n    for (int[] update : updates) {\n        arr[update[0]] += update[2];\n        if (update[1] + 1 < length) {\n            arr[update[1] + 1] -= update[2];\n        }\n    }\n    \n    for (int i = 1; i < length; i++) {\n        arr[i] += arr[i - 1];\n    }\n    \n    return arr;\n}\n```\n    \n    The algorithm starts by initializing an array `arr` of length `length` with all zeros. Then, it iterates over each update and simulates its effect on the array. For every update `[startIdx, endIdx, inc]`, the algorithm increases the value at index `startIdx` by `inc` and decreases the value at index `endIdx + 1` by `inc`, assuming `endIdx + 1` is within the bounds of the array. The reason behind this is that it will later make the algorithm simpler.\n\nAfter processing all the updates, the actual values of the elements in the array are calculated using cumulative sums. The idea is that, for each element in the array after the first one, the final value is the previous value plus the current value. This will properly include the increments and decrements for each range from the updates.\n\nFinally, the algorithm returns the updated array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

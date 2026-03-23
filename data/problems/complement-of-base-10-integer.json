@@ -1,0 +1,24 @@
+{
+  "id": 1009,
+  "title": "Complement of Base 10 Integer",
+  "slug": "complement-of-base-10-integer",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "The complement of an integer is the integer you get when you flip all the 0's to 1's and all the 1's to 0's in its binary representation.\n\n*   For example, The integer 5 is \"101 \" in binary and its complement is \"010 \" which is the integer 2.\n\nGiven an integer n, return _its complement_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef pancakeSort(arr):\n    flips = []\n    for size in range(len(arr), 1, -1):\n        maxIdx = arr.index(max(arr[:size]))\n        flips.extend([maxIdx + 1, size])\n        arr[:maxIdx + 1] = reversed(arr[:maxIdx + 1])\n        arr[:size] = reversed(arr[:size])\n    return flips\n```\n    \n    The algorithm be:\n1. Iterate over the array from the last element to the first.\n2. During each iteration, find the index of the maximum element in the unsorted part of the array.\n3. Perform a pancake flip at the maximum element index, to move it to the beginning of the array.\n4. Perform a pancake flip for the whole unsorted part of the array to place the maximum element at its correct position.\n5. Add the flip positions in the list of flips.\n6. The algorithm ends when the array is completely sorted.\n\nThis guarantees that the array will be sorted within 2 * arr.length flips.\n    ",
+    "javascript": "\n    ```javascript\nfunction pancakeSort(arr) {\n    const flips = [];\n    for (let size = arr.length; size > 1; --size) {\n        const maxIdx = getMaxIdx(arr, size);\n        flips.push(maxIdx + 1);\n        flips.push(size);\n        reverse(arr, 0, maxIdx);\n        reverse(arr, 0, size - 1);\n    }\n    return flips;\n}\n\nfunction getMaxIdx(arr, size) {\n    let maxIdx = 0;\n    for (let i = 1; i < size; ++i) {\n        if (arr[i] > arr[maxIdx]) {\n            maxIdx = i;\n        }\n    }\n    return maxIdx;\n}\n\nfunction reverse(arr, start, end) {\n    while (start < end) {\n        const temp = arr[start];\n        arr[start++] = arr[end];\n        arr[end--] = temp;\n    }\n}\n```\n    \n    The algorithm be:\n1. Iterate over the array from the last element to the first.\n2. During each iteration, find the index of the maximum element in the unsorted part of the array.\n3. Perform a pancake flip at the maximum element index, to move it to the beginning of the array.\n4. Perform a pancake flip for the whole unsorted part of the array to place the maximum element at its correct position.\n5. Add the flip positions in the list of flips.\n6. The algorithm ends when the array is completely sorted.\n\nThis guarantees that the array will be sorted within 2 * arr.length flips.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<Integer> pancakeSort(int[] arr) {\n    List<Integer> flips = new ArrayList<>();\n    for (int size = arr.length; size > 1; --size) {\n        int maxIdx = getMaxIdx(arr, size);\n        flips.add(maxIdx + 1);\n        flips.add(size);\n        reverse(arr, 0, maxIdx);\n        reverse(arr, 0, size - 1);\n    }\n    return flips;\n}\n\nprivate int getMaxIdx(int[] arr, int size) {\n    int maxIdx = 0;\n    for (int i = 1; i < size; ++i) {\n        if (arr[i] > arr[maxIdx]) {\n            maxIdx = i;\n        }\n    }\n    return maxIdx;\n}\n\nprivate void reverse(int[] arr, int start, int end) {\n    while (start < end) {\n        int temp = arr[start];\n        arr[start++] = arr[end];\n        arr[end--] = temp;\n    }\n}\n```\n    \n    The algorithm be:\n1. Iterate over the array from the last element to the first.\n2. During each iteration, find the index of the maximum element in the unsorted part of the array.\n3. Perform a pancake flip at the maximum element index, to move it to the beginning of the array.\n4. Perform a pancake flip for the whole unsorted part of the array to place the maximum element at its correct position.\n5. Add the flip positions in the list of flips.\n6. The algorithm ends when the array is completely sorted.\n\nThis guarantees that the array will be sorted within 2 * arr.length flips.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

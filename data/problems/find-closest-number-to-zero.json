@@ -1,0 +1,24 @@
+{
+  "id": 2239,
+  "title": "Find Closest Number to Zero",
+  "slug": "find-closest-number-to-zero",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer array nums of size n, return _the number with the value closest to_ 0 _in_ nums. If there are multiple answers, return _the number with the largest value_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef robot_instructions(n: int, start_pos: list, s: str) -> list:\n    answer = [0] * len(s)\n\n    for idx in range(len(s)):\n        row, col = start_pos\n\n        for i in range(idx, len(s)):\n            move = s[i]\n            if move == 'L':\n                col -= 1\n            elif move == 'R':\n                col += 1\n            elif move == 'U':\n                row -= 1\n            elif move == 'D':\n                row += 1\n\n            if row < 0 or row >= n or col < 0 or col >= n:\n                break\n\n            answer[idx] += 1\n\n    return answer\n```\n\n    \n    This algorithm implements a nested loop. The outer loop iterates through each starting instruction index. In the inner loop, we execute the instructions while updating the position of the robot in terms of row and column. If a move will take the robot outside the grid, we break from the inner loop. If the robot hasn't exited the grid, we increase the number of instructions it has executed, which is stored in the answer array indexed by the starting instruction index.\n\nThe time complexity is O(m^2), where m is the length of the instructions string s. The space complexity is O(m), as we need to store the answer for each starting instruction index in an array.\n    ",
+    "javascript": "\n    ```javascript\nfunction robotInstructions(n, startPos, s) {\n    let answer = new Array(s.length).fill(0);\n\n    for (let idx = 0; idx < s.length; ++idx) {\n        let row = startPos[0];\n        let col = startPos[1];\n\n        for (let i = idx; i < s.length; ++i) {\n            let move = s[i];\n            if (move === 'L') --col;\n            else if (move === 'R') ++col;\n            else if (move === 'U') --row;\n            else if (move === 'D') ++row;\n\n            if (row < 0 || row >= n || col < 0 || col >= n) {\n                break;\n            }\n\n            answer[idx]++;\n        }\n    }\n\n    return answer;\n}\n```\n\n    \n    This algorithm implements a nested loop. The outer loop iterates through each starting instruction index. In the inner loop, we execute the instructions while updating the position of the robot in terms of row and column. If a move will take the robot outside the grid, we break from the inner loop. If the robot hasn't exited the grid, we increase the number of instructions it has executed, which is stored in the answer array indexed by the starting instruction index.\n\nThe time complexity is O(m^2), where m is the length of the instructions string s. The space complexity is O(m), as we need to store the answer for each starting instruction index in an array.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int[] robotInstructions(int n, int[] startPos, String s) {\n    int[] answer = new int[s.length()];\n\n    for (int idx = 0; idx < s.length(); ++idx) {\n        int row = startPos[0];\n        int col = startPos[1];\n\n        for (int i = idx; i < s.length(); ++i) {\n            char move = s.charAt(i);\n            if (move == 'L') --col;\n            else if (move == 'R') ++col;\n            else if (move == 'U') --row;\n            else if (move == 'D') ++row;\n\n            if (row < 0 || row >= n || col < 0 || col >= n) {\n                break;\n            }\n\n            answer[idx]++;\n        }\n    }\n\n    return answer;\n}\n```\n\n    \n    This algorithm implements a nested loop. The outer loop iterates through each starting instruction index. In the inner loop, we execute the instructions while updating the position of the robot in terms of row and column. If a move will take the robot outside the grid, we break from the inner loop. If the robot hasn't exited the grid, we increase the number of instructions it has executed, which is stored in the answer array indexed by the starting instruction index.\n\nThe time complexity is O(m^2), where m is the length of the instructions string s. The space complexity is O(m), as we need to store the answer for each starting instruction index in an array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

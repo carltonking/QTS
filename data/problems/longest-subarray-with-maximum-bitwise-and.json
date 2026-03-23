@@ -1,0 +1,24 @@
+{
+  "id": 2419,
+  "title": "Longest Subarray With Maximum Bitwise AND",
+  "slug": "longest-subarray-with-maximum-bitwise-and",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array nums of size n.\n\nConsider a non-empty subarray from nums that has the maximum possible bitwise AND.\n\n*   In other words, let k be the maximum value of the bitwise AND of any subarray of nums. Then, only subarrays with a bitwise AND equal to k should be considered.\n\nReturn _the length of the longest such subarray_.\n\nThe bitwise AND of an array is the bitwise AND of all the numbers in it.\n\nA subarray is a contiguous sequence of elements within an array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef longestSubarray(nums):\n    max_and = 0\n    for i in range(len(nums)):\n        temp_and = nums[i]\n        for j in range(i + 1, len(nums)):\n            temp_and &= nums[j]\n            max_and = max(max_and, temp_and)\n    \n    longest_subarray = 0\n    current_length = 0\n    for i in range(len(nums)):\n        temp_and = nums[i]\n        current_length = 1 if temp_and == max_and else 0\n        for j in range(i + 1, len(nums)):\n            temp_and &= nums[j];\n            if temp_and == max_and:\n                current_length += 1\n            else:\n                break\n        longest_subarray = max(longest_subarray, current_length)\n    return longest_subarray\n```\n    \n    The algorithm first calculates the maximum possible bitwise AND for the given input. Then, it calculates the length of the longest subarray with that value. For each element, the algorithm checks if its bitwise AND with the next elements equals the maximum possible bitwise AND. If yes, the length of the current subarray is incremented, else the iteration for the current element is terminated. After comparing the length of each subarray, the algorithm returns the length of the longest such subarray.\n    ",
+    "javascript": "\n    ```javascript\nfunction longestSubarray(nums) {\n    let max_and = 0;\n    for (let i = 0; i < nums.length; i++) {\n        let temp_and = nums[i];\n        for (let j = i + 1; j < nums.length; j++) {\n            temp_and &= nums[j];\n            max_and = Math.max(max_and, temp_and);\n        }\n    }\n    \n    let longest_subarray = 0;\n    let current_length = 0;\n    for (let i = 0; i < nums.length; i++) {\n        let temp_and = nums[i];\n        current_length = (temp_and === max_and) ? 1 : 0;\n        for (let j = i + 1; j < nums.length; j++) {\n            temp_and &= nums[j];\n            if (temp_and === max_and) {\n                current_length++;\n            } else {\n                break;\n            }\n        }\n        longest_subarray = Math.max(longest_subarray, current_length);\n    }\n    return longest_subarray;\n}\n```\n    \n    The algorithm first calculates the maximum possible bitwise AND for the given input. Then, it calculates the length of the longest subarray with that value. For each element, the algorithm checks if its bitwise AND with the next elements equals the maximum possible bitwise AND. If yes, the length of the current subarray is incremented, else the iteration for the current element is terminated. After comparing the length of each subarray, the algorithm returns the length of the longest such subarray.\n    ",
+    "java": "\n    ```java\npublic int longestSubarray(int[] nums) {\n    int max_and = 0;\n    for (int i = 0; i < nums.length; i++) {\n        int temp_and = nums[i];\n        for (int j = i + 1; j < nums.length; j++) {\n            temp_and &= nums[j];\n            max_and = Math.max(max_and, temp_and);\n        }\n    }\n    \n    int longest_subarray = 0, current_length = 0;\n    for (int i = 0; i < nums.length; i++) {\n        int temp_and = nums[i];\n        current_length = (temp_and == max_and) ? 1 : 0;\n        for (int j = i + 1; j < nums.length; j++) {\n            temp_and &= nums[j];\n            if (temp_and == max_and) {\n                current_length++;\n            } else {\n                break;\n            }\n        }\n        longest_subarray = Math.max(longest_subarray, current_length);\n    }\n    return longest_subarray;\n}\n```\n    \n    The algorithm first calculates the maximum possible bitwise AND for the given input. Then, it calculates the length of the longest subarray with that value. For each element, the algorithm checks if its bitwise AND with the next elements equals the maximum possible bitwise AND. If yes, the length of the current subarray is incremented, else the iteration for the current element is terminated. After comparing the length of each subarray, the algorithm returns the length of the longest such subarray.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

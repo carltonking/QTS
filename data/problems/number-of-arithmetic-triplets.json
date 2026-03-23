@@ -1,0 +1,24 @@
+{
+  "id": 2367,
+  "title": "Number of Arithmetic Triplets",
+  "slug": "number-of-arithmetic-triplets",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a 0-indexed, strictly increasing integer array nums and a positive integer diff. A triplet (i, j, k) is an arithmetic triplet if the following conditions are met:\n\n*   i < j < k,\n*   nums[j] - nums[i] == diff, and\n*   nums[k] - nums[j] == diff.\n\nReturn _the number of unique arithmetic triplets._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_arithmetic_triplets(nums, diff):\n    count = 0\n    mp = {}\n    for num in nums:\n        if num - diff in mp:\n            count += mp[num - diff]\n        mp[num] = mp.get(num, 0) + 1\n    return count\n```\n    \n    The algorithm uses a hashmap to store the number of occurrences of the elements in the given array. For each element, we check if the hashmap contains the element minus the given difference (i.e., `num - diff`). If it does, that means we have found a valid arithmetic triplet, so we increment the count by the number of occurrences of that element minus the difference. Finally, we update the number of occurrences of the current element in the hashmap. \n\nThis algorithm has a time complexity of O(n), where n is the size of the given array, since we iterate through the array once and perform lookups, insertions, and updates on the hashmap in constant time.\n\n\n    ",
+    "javascript": "\n    ```javascript\nfunction countArithmeticTriplets(nums, diff) {\n    let count = 0;\n    const mp = new Map();\n    for (const num of nums) {\n        if (mp.has(num - diff))\n            count += mp.get(num - diff);\n        mp.set(num, (mp.get(num) || 0) + 1);\n    }\n    return count;\n}\n```\n\n    \n    The algorithm uses a hashmap to store the number of occurrences of the elements in the given array. For each element, we check if the hashmap contains the element minus the given difference (i.e., `num - diff`). If it does, that means we have found a valid arithmetic triplet, so we increment the count by the number of occurrences of that element minus the difference. Finally, we update the number of occurrences of the current element in the hashmap. \n\nThis algorithm has a time complexity of O(n), where n is the size of the given array, since we iterate through the array once and perform lookups, insertions, and updates on the hashmap in constant time.\n\n\n    ",
+    "java": "\n    ```java\npublic int countArithmeticTriplets(int[] nums, int diff) {\n    int count = 0;\n    HashMap<Integer, Integer> mp = new HashMap<>();\n    for (int num : nums) {\n        if (mp.containsKey(num - diff))\n            count += mp.get(num - diff);\n        mp.put(num, mp.getOrDefault(num, 0) + 1);\n    }\n    return count;\n}\n```\n    \n    The algorithm uses a hashmap to store the number of occurrences of the elements in the given array. For each element, we check if the hashmap contains the element minus the given difference (i.e., `num - diff`). If it does, that means we have found a valid arithmetic triplet, so we increment the count by the number of occurrences of that element minus the difference. Finally, we update the number of occurrences of the current element in the hashmap. \n\nThis algorithm has a time complexity of O(n), where n is the size of the given array, since we iterate through the array once and perform lookups, insertions, and updates on the hashmap in constant time.\n\n\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

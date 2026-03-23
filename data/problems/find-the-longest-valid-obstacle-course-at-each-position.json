@@ -1,0 +1,24 @@
+{
+  "id": 1964,
+  "title": "Find the Longest Valid Obstacle Course at Each Position",
+  "slug": "find-the-longest-valid-obstacle-course-at-each-position",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You want to build some obstacle courses. You are given a 0-indexed integer array obstacles of length n, where obstacles[i] describes the height of the ith obstacle.\n\nFor every index i between 0 and n - 1 (inclusive), find the length of the longest obstacle course in obstacles such that:\n\n*   You choose any number of obstacles between 0 and i inclusive.\n*   You must include the ith obstacle in the course.\n*   You must put the chosen obstacles in the same order as they appear in obstacles.\n*   Every obstacle (except the first) is taller than or the same height as the obstacle immediately before it.\n\nReturn _an array_ ans _of length_ n, _where_ ans[i] _is the length of the longest obstacle course for index_ i _as described above_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef longest_obstacle_course(obstacles):\n    dp = []\n    ans = [0] * len(obstacles)\n\n    for obstacle in obstacles:\n        index = bisect_left(dp, obstacle)\n        ans[index] = index + 1\n        if index == len(dp):\n            dp.append(obstacle)\n        else:\n            dp[index] = obstacle\n\n    return ans\n```\n    \n    The main idea of the algorithm is to use dynamic programming to build a list of subproblems (dp), where dp[i] represents the smallest height of the i-th obstacle in a valid course of length i+1.\n\nFor each obstacle, we do a binary search in our dp list to find the index where the current obstacle should be put, updating the dp list accordingly. We save the index + 1 in our ans list, since this represents the length of the longest obstacle course including the current obstacle.\n\nFinally, the dynamic programming table is updated with the index found, and we return ans.\n    ",
+    "javascript": "\n    ```javascript\nfunction longestObstacleCourse(obstacles) {\n    const dp = [];\n    const ans = new Array(obstacles.length).fill(0);\n\n    for (let obstacle of obstacles) {\n        let index = binarySearch(dp, obstacle);\n        ans[index] = index + 1;\n        if (index === dp.length) {\n            dp.push(obstacle);\n        } else {\n            dp[index] = obstacle;\n        }\n    }\n\n    return ans;\n}\n\nfunction binarySearch(arr, target) {\n    let left = 0;\n    let right = arr.length - 1;\n\n    while (left <= right) {\n        const mid = Math.floor((left + right) / 2);\n\n        if (arr[mid] === target) {\n            return mid;\n        } else if (arr[mid] < target) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n        }\n    }\n\n    return left;\n}\n```\n    \n    The main idea of the algorithm is to use dynamic programming to build a list of subproblems (dp), where dp[i] represents the smallest height of the i-th obstacle in a valid course of length i+1.\n\nFor each obstacle, we do a binary search in our dp list to find the index where the current obstacle should be put, updating the dp list accordingly. We save the index + 1 in our ans list, since this represents the length of the longest obstacle course including the current obstacle.\n\nFinally, the dynamic programming table is updated with the index found, and we return ans.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int[] longestObstacleCourse(int[] obstacles) {\n    int[] dp = new int[obstacles.length];\n    int len = 0;\n\n    for (int obstacle : obstacles) {\n        int i = Arrays.binarySearch(dp, 0, len, obstacle);\n        if (i < 0) {\n            i = -(i + 1);\n        }\n        dp[i] = obstacle;\n        if (i == len) {\n            len++;\n        }\n    }\n\n    return dp;\n}\n```\n    \n    The main idea of the algorithm is to use dynamic programming to build a list of subproblems (dp), where dp[i] represents the smallest height of the i-th obstacle in a valid course of length i+1.\n\nFor each obstacle, we do a binary search in our dp list to find the index where the current obstacle should be put, updating the dp list accordingly. We save the index + 1 in our ans list, since this represents the length of the longest obstacle course including the current obstacle.\n\nFinally, the dynamic programming table is updated with the index found, and we return ans.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

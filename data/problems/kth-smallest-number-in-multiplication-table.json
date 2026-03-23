@@ -1,0 +1,24 @@
+{
+  "id": 668,
+  "title": "Kth Smallest Number in Multiplication Table",
+  "slug": "kth-smallest-number-in-multiplication-table",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Nearly everyone has used the [Multiplication Table](https://en.wikipedia.org/wiki/Multiplication_table). The multiplication table of size m x n is an integer matrix mat where mat[i][j] == i * j (1-indexed).\n\nGiven three integers m, n, and k, return _the_ kth _smallest element in the_ m x n _multiplication table_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findKthNumber(m, n, k):\n    low, high = 1, m * n\n    while low < high:\n        mid = low + (high - low) // 2\n        count = 0\n        for i in range(1, m+1):\n            count += min(mid // i, n)\n        if count < k:\n            low = mid + 1\n        else:\n            high = mid\n    return low\n```\n    \n    We need to find the kth smallest element in an m x n multiplication table. The table is naturally sorted, so we can use binary search to find the desired element. We start with `low` as 1 and `high` as m * n. Our search space is between these values.\n\nIn each iteration, we look for the middle value `mid`. For each row `i`, we count the number of elements that are less than or equal to `mid`. The count is the sum of either `mid // i` or `n`, whichever is smaller. Then we check if the count is less than or equal to `k`. If it is, we move `low` to `mid + 1`; otherwise, we move `high` to `mid`. Once the search space narrowed down to a single value, we return that value as the kth smallest element in the m x n multiplication table.\n    ",
+    "javascript": "\n    ```javascript\nfunction findKthNumber(m, n, k) {\n    let low = 1, high = m * n;\n    while (low < high) {\n        let mid = low + Math.floor((high - low) / 2);\n        let count = 0;\n        for (let i = 1; i <= m; i++) {\n            count += Math.min(Math.floor(mid / i), n);\n        }\n        if (count < k) {\n            low = mid + 1;\n        } else {\n            high = mid;\n        }\n    }\n    return low;\n}\n```\n    \n    We need to find the kth smallest element in an m x n multiplication table. The table is naturally sorted, so we can use binary search to find the desired element. We start with `low` as 1 and `high` as m * n. Our search space is between these values.\n\nIn each iteration, we look for the middle value `mid`. For each row `i`, we count the number of elements that are less than or equal to `mid`. The count is the sum of either `mid // i` or `n`, whichever is smaller. Then we check if the count is less than or equal to `k`. If it is, we move `low` to `mid + 1`; otherwise, we move `high` to `mid`. Once the search space narrowed down to a single value, we return that value as the kth smallest element in the m x n multiplication table.\n    ",
+    "java": "\n    ```java\npublic int findKthNumber(int m, int n, int k) {\n    int low = 1, high = m * n;\n    while (low < high) {\n        int mid = low + (high - low) / 2;\n        int count = 0;\n        for (int i = 1; i <= m; i++) {\n            count += Math.min(mid / i, n);\n        }\n        if (count < k) {\n            low = mid + 1;\n        } else {\n            high = mid;\n        }\n    }\n    return low;\n}\n```\n    \n    We need to find the kth smallest element in an m x n multiplication table. The table is naturally sorted, so we can use binary search to find the desired element. We start with `low` as 1 and `high` as m * n. Our search space is between these values.\n\nIn each iteration, we look for the middle value `mid`. For each row `i`, we count the number of elements that are less than or equal to `mid`. The count is the sum of either `mid // i` or `n`, whichever is smaller. Then we check if the count is less than or equal to `k`. If it is, we move `low` to `mid + 1`; otherwise, we move `high` to `mid`. Once the search space narrowed down to a single value, we return that value as the kth smallest element in the m x n multiplication table.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

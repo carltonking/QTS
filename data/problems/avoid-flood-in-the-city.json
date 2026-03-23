@@ -1,0 +1,24 @@
+{
+  "id": 1488,
+  "title": "Avoid Flood in The City",
+  "slug": "avoid-flood-in-the-city",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Your country has an infinite number of lakes. Initially, all the lakes are empty, but when it rains over the nth lake, the nth lake becomes full of water. If it rains over a lake that is full of water, there will be a flood. Your goal is to avoid floods in any lake.\n\nGiven an integer array rains where:\n\n*   rains[i] > 0 means there will be rains over the rains[i] lake.\n*   rains[i] == 0 means there are no rains this day and you can choose one lake this day and dry it.\n\nReturn _an array ans_ where:\n\n*   ans.length == rains.length\n*   ans[i] == -1 if rains[i] > 0.\n*   ans[i] is the lake you choose to dry in the ith day if rains[i] == 0.\n\nIf there are multiple valid answers return any of them. If it is impossible to avoid flood return an empty array.\n\nNotice that if you chose to dry a full lake, it becomes empty, but if you chose to dry an empty lake, nothing changes.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef get_power(x):\n    steps = 0\n    while x != 1:\n        if x % 2 == 0:\n            x //= 2\n        else:\n            x = 3 * x + 1\n        steps += 1\n    return steps\n\ndef sort_by_power(lo, hi, k):\n    nums = [(get_power(i), i) for i in range(lo, hi + 1)]\n    nums.sort()\n    return nums[k - 1][1]\n```\n    \n    The algorithm starts with defining a helper function `getPower(x)` that takes an integer `x` and calculates its power value by following the given steps (divide by 2 if even, multiply by 3 and add 1 if odd) until `x` becomes 1. The function returns the number of steps required to reach 1.\n\nThen, we define the main function `sort_by_power(lo, hi, k)` that generates a list of pairs (in Python, tuples) consisting of the power value and the integer itself for all integers in the range [lo, hi]. It then sorts this list in ascending order based on the power values (and the integers themselves as a tiebreaker).\n\nFinally, the kth integer in the sorted list is returned as the result. This is achieved by indexing the sorted list with `k - 1` due to zero-based indexing.\n    ",
+    "javascript": "\n    ```javascript\nfunction getPower(x) {\n    let steps = 0;\n    while (x !== 1) {\n        if (x % 2 === 0) x /= 2;\n        else x = 3 * x + 1;\n        steps++;\n    }\n    return steps;\n}\n\nfunction sortByPower(lo, hi, k) {\n    let nums = [];\n    for (let i = lo; i <= hi; i++) {\n        nums.push([getPower(i), i]);\n    }\n    nums.sort((a, b) => a[0] - b[0] || a[1] - b[1]);\n    return nums[k - 1][1];\n}\n```\n    \n    The algorithm starts with defining a helper function `getPower(x)` that takes an integer `x` and calculates its power value by following the given steps (divide by 2 if even, multiply by 3 and add 1 if odd) until `x` becomes 1. The function returns the number of steps required to reach 1.\n\nThen, we define the main function `sort_by_power(lo, hi, k)` that generates a list of pairs (in Python, tuples) consisting of the power value and the integer itself for all integers in the range [lo, hi]. It then sorts this list in ascending order based on the power values (and the integers themselves as a tiebreaker).\n\nFinally, the kth integer in the sorted list is returned as the result. This is achieved by indexing the sorted list with `k - 1` due to zero-based indexing.\n    ",
+    "java": "\n    ```java\nint getPower(int x) {\n    int steps = 0;\n    while (x != 1) {\n        if (x % 2 == 0) x /= 2;\n        else x = 3 * x + 1;\n        steps++;\n    }\n    return steps;\n}\n\nint sortByPower(int lo, int hi, int k) {\n    List<int[]> nums = new ArrayList<>();\n    for (int i = lo; i <= hi; i++) {\n        nums.add(new int[]{getPower(i), i});\n    }\n    nums.sort(Comparator.comparingInt((int[] a) -> a[0]).thenComparingInt(a -> a[1]));\n    return nums.get(k - 1)[1];\n}\n```\n    \n    The algorithm starts with defining a helper function `getPower(x)` that takes an integer `x` and calculates its power value by following the given steps (divide by 2 if even, multiply by 3 and add 1 if odd) until `x` becomes 1. The function returns the number of steps required to reach 1.\n\nThen, we define the main function `sort_by_power(lo, hi, k)` that generates a list of pairs (in Python, tuples) consisting of the power value and the integer itself for all integers in the range [lo, hi]. It then sorts this list in ascending order based on the power values (and the integers themselves as a tiebreaker).\n\nFinally, the kth integer in the sorted list is returned as the result. This is achieved by indexing the sorted list with `k - 1` due to zero-based indexing.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

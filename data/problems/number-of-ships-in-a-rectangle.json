@@ -1,0 +1,24 @@
+{
+  "id": 1274,
+  "title": "Number of Ships in a Rectangle",
+  "slug": "number-of-ships-in-a-rectangle",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "_(This problem is an interactive problem.)_\n\nEach ship is located at an integer point on the sea represented by a cartesian plane, and each integer point may contain at most 1 ship.\n\nYou have a function Sea.hasShips(topRight, bottomLeft) which takes two points as arguments and returns true If there is at least one ship in the rectangle represented by the two points, including on the boundary.\n\nGiven two points: the top right and bottom left corners of a rectangle, return the number of ships present in that rectangle. It is guaranteed that there are at most 10 ships in that rectangle.\n\nSubmissions making more than 400 calls to hasShips will be judged _Wrong Answer_. Also, any solutions that attempt to circumvent the judge will result in disqualification.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom datetime import datetime\n\ndef countDaysBetweenDates(date1, date2):\n    d1 = datetime.strptime(date1, \"%Y-%m-%d\")\n    d2 = datetime.strptime(date2, \"%Y-%m-%d\")\n    return abs((d2 - d1).days)\n```\n    \n    The algorithm to calculate the number of days between two dates is the same for all languages. First, parse the input strings into date objects. Then, calculate the time difference between the two date objects. Finally, convert the time difference into days.\n\nFor C++, we use `istringstream`, `tm`, and `get_time` for string parsing, and `mktime` and `difftime` for time calculation.\n\nFor Java, we use `LocalDate.parse` and `ChronoUnit.DAYS.between` methods from the java.time package.\n\nFor Python, we use `datetime.strptime` for string parsing and calculate the difference using the `-` (minus) operator.\n\nFor JavaScript, we parse the input strings into date objects using the `Date` constructor and calculate the time difference by subtracting them directly. Finally, we convert the time difference (in milliseconds) to days.\n    ",
+    "javascript": "\n    ```javascript\nfunction countDaysBetweenDates(date1, date2) {\n    const d1 = new Date(date1);\n    const d2 = new Date(date2);\n    const difference = Math.abs(d2 - d1);\n    return Math.floor(difference / (1000 * 3600 * 24));\n}\n```\n    \n    The algorithm to calculate the number of days between two dates is the same for all languages. First, parse the input strings into date objects. Then, calculate the time difference between the two date objects. Finally, convert the time difference into days.\n\nFor C++, we use `istringstream`, `tm`, and `get_time` for string parsing, and `mktime` and `difftime` for time calculation.\n\nFor Java, we use `LocalDate.parse` and `ChronoUnit.DAYS.between` methods from the java.time package.\n\nFor Python, we use `datetime.strptime` for string parsing and calculate the difference using the `-` (minus) operator.\n\nFor JavaScript, we parse the input strings into date objects using the `Date` constructor and calculate the time difference by subtracting them directly. Finally, we convert the time difference (in milliseconds) to days.\n    ",
+    "java": "\n    ```java\nimport java.time.LocalDate;\nimport java.time.temporal.ChronoUnit;\n\npublic int countDaysBetweenDates(String date1, String date2) {\n    LocalDate localDate1 = LocalDate.parse(date1);\n    LocalDate localDate2 = LocalDate.parse(date2);\n    return (int)ChronoUnit.DAYS.between(localDate1, localDate2);\n}\n```\n    \n    The algorithm to calculate the number of days between two dates is the same for all languages. First, parse the input strings into date objects. Then, calculate the time difference between the two date objects. Finally, convert the time difference into days.\n\nFor C++, we use `istringstream`, `tm`, and `get_time` for string parsing, and `mktime` and `difftime` for time calculation.\n\nFor Java, we use `LocalDate.parse` and `ChronoUnit.DAYS.between` methods from the java.time package.\n\nFor Python, we use `datetime.strptime` for string parsing and calculate the difference using the `-` (minus) operator.\n\nFor JavaScript, we parse the input strings into date objects using the `Date` constructor and calculate the time difference by subtracting them directly. Finally, we convert the time difference (in milliseconds) to days.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2085,
+  "title": "Count Common Words With One Occurrence",
+  "slug": "count-common-words-with-one-occurrence",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given two string arrays words1 and words2, return _the number of strings that appear exactly once in each of the two arrays._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef rearrangeArray(nums):\n    nums.sort()\n    for i in range(1, len(nums) - 1, 2):\n        nums[i], nums[i + 1] = nums[i + 1], nums[i]\n    return nums\n```\n    \n    The algorithm first sorts the array. Then, we swap every two adjacent elements starting from the first index until the end of the array. By doing this, we can ensure that no element will be equal to the average of its neighbors, as the elements are distinct integers and the property described in the problem cannot hold after swapping.\n\nFor example, let's take the following array:\n\n```\n3 1 5 9 7\n```\n\nSort the array:\n\n```\n1 3 5 7 9\n```\n\nSwap every two adjacent elements starting from the first index:\n\n```\n1 5 3 9 7\n```\n\nNow we can observe that no element in the array is equal to the average of its neighbors.\n    ",
+    "javascript": "\n    ```javascript\nfunction rearrangeArray(nums) {\n    nums.sort((a, b) => a - b);\n    for (let i = 1; i < nums.length - 1; i += 2) {\n        [nums[i], nums[i + 1]] = [nums[i + 1], nums[i]];\n    }\n    return nums;\n}\n```\n    \n    The algorithm first sorts the array. Then, we swap every two adjacent elements starting from the first index until the end of the array. By doing this, we can ensure that no element will be equal to the average of its neighbors, as the elements are distinct integers and the property described in the problem cannot hold after swapping.\n\nFor example, let's take the following array:\n\n```\n3 1 5 9 7\n```\n\nSort the array:\n\n```\n1 3 5 7 9\n```\n\nSwap every two adjacent elements starting from the first index:\n\n```\n1 5 3 9 7\n```\n\nNow we can observe that no element in the array is equal to the average of its neighbors.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int[] rearrangeArray(int[] nums) {\n    Arrays.sort(nums);\n    for (int i = 1; i < nums.length - 1; i += 2) {\n        int temp = nums[i];\n        nums[i] = nums[i + 1];\n        nums[i + 1] = temp;\n    }\n    return nums;\n}\n```\n    \n    The algorithm first sorts the array. Then, we swap every two adjacent elements starting from the first index until the end of the array. By doing this, we can ensure that no element will be equal to the average of its neighbors, as the elements are distinct integers and the property described in the problem cannot hold after swapping.\n\nFor example, let's take the following array:\n\n```\n3 1 5 9 7\n```\n\nSort the array:\n\n```\n1 3 5 7 9\n```\n\nSwap every two adjacent elements starting from the first index:\n\n```\n1 5 3 9 7\n```\n\nNow we can observe that no element in the array is equal to the average of its neighbors.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

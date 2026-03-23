@@ -1,0 +1,24 @@
+{
+  "id": 1367,
+  "title": "Linked List in Binary Tree",
+  "slug": "linked-list-in-binary-tree",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a binary tree root and a linked list with head as the first node.\n\nReturn True if all the elements in the linked list starting from the head correspond to some _downward path_ connected in the binary tree otherwise return False.\n\nIn this context downward path means a path that starts at some node and goes downwards.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxHeight(cuboids):\n    cuboids = [sorted(cuboid) for cuboid in cuboids]\n    cuboids.sort()\n\n    n = len(cuboids)\n    dp = [0] * n\n    ans = 0\n\n    for i, cuboid in enumerate(cuboids):\n        dp[i] = cuboid[2]\n        for j in range(i):\n            if all(cuboids[j][k] <= cuboid[k] for k in range(3)):\n                dp[i] = max(dp[i], dp[j] + cuboid[2])\n\n        ans = max(ans, dp[i])\n\n    return ans\n```\n\n    \n    1. Sort each cuboid in non-decreasing order of its dimensions.\n2. Sort the cuboids array based on width (the first dimension).\n3. Use dynamic programming to calculate the maximum height at each index i, by finding the maximum height that can be achieved by placing the i-th cuboid on top of previous cuboids that can be placed at positions from 0 to i-1.\n4. Update the answer by comparing the maximum height at each step with the previously computed maximum height.\n5. Return the maximum height after processing all cuboids. \n    ",
+    "javascript": "\n    ```javascript\nfunction maxHeight(cuboids) {\n    cuboids.forEach(cuboid => cuboid.sort((a, b) => a - b));\n    cuboids.sort((a, b) => a[0] - b[0]);\n\n    const n = cuboids.length;\n    const dp = new Array(n).fill(0);\n    let ans = 0;\n\n    for (let i = 0; i < n; i++) {\n        dp[i] = cuboids[i][2];\n        for (let j = 0; j < i; j++) {\n            if (cuboids[j][0] <= cuboids[i][0] && cuboids[j][1] <= cuboids[i][1] && cuboids[j][2] <= cuboids[i][2]) {\n                dp[i] = Math.max(dp[i], dp[j] + cuboids[i][2]);\n            }\n        }\n        ans = Math.max(ans, dp[i]);\n    }\n    return ans;\n}\n```\n    \n    1. Sort each cuboid in non-decreasing order of its dimensions.\n2. Sort the cuboids array based on width (the first dimension).\n3. Use dynamic programming to calculate the maximum height at each index i, by finding the maximum height that can be achieved by placing the i-th cuboid on top of previous cuboids that can be placed at positions from 0 to i-1.\n4. Update the answer by comparing the maximum height at each step with the previously computed maximum height.\n5. Return the maximum height after processing all cuboids. \n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int maxHeight(int[][] cuboids) {\n    for (int[] cuboid : cuboids) {\n        Arrays.sort(cuboid);\n    }\n    Arrays.sort(cuboids, (a, b) -> a[0] - b[0]);\n\n    int n = cuboids.length;\n    int[] dp = new int[n];\n    int ans = 0;\n\n    for (int i = 0; i < n; i++) {\n        dp[i] = cuboids[i][2];\n        for (int j = 0; j < i; j++) {\n            if (cuboids[j][0] <= cuboids[i][0] && cuboids[j][1] <= cuboids[i][1] && cuboids[j][2] <= cuboids[i][2]) {\n                dp[i] = Math.max(dp[i], dp[j] + cuboids[i][2]);\n            }\n        }\n        ans = Math.max(ans, dp[i]);\n    }\n    return ans;\n}\n```\n\n    \n    1. Sort each cuboid in non-decreasing order of its dimensions.\n2. Sort the cuboids array based on width (the first dimension).\n3. Use dynamic programming to calculate the maximum height at each index i, by finding the maximum height that can be achieved by placing the i-th cuboid on top of previous cuboids that can be placed at positions from 0 to i-1.\n4. Update the answer by comparing the maximum height at each step with the previously computed maximum height.\n5. Return the maximum height after processing all cuboids. \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

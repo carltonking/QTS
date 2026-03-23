@@ -1,0 +1,24 @@
+{
+  "id": 1207,
+  "title": "Unique Number of Occurrences",
+  "slug": "unique-number-of-occurrences",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array of integers arr, return true _if the number of occurrences of each value in the array is unique or_ false _otherwise_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, x):\n        self.val = x\n        self.left = None\n        self.right = None\n\ndef delNodes(root, to_delete):\n    forest = []\n    to_delete_set = set(to_delete)\n    helper(root, True, to_delete_set, forest)\n    return forest\n\ndef helper(node, isRoot, to_delete, forest):\n    if not node:\n        return None\n    deleted = node.val in to_delete\n    if isRoot and not deleted:\n        forest.append(node)\n    node.left = helper(node.left, deleted, to_delete, forest)\n    node.right = helper(node.right, deleted, to_delete, forest)\n    return None if deleted else node\n```\n\n    \n    The algorithm performs a post-order traversal, visiting each node of the tree. It starts with the root of the tree and checks whether it's a root node or not. If it's a root node, it adds the node to the forest; otherwise, it continues traversal. Left and right children are updated for each node. If a node's value is found in the `to_delete` list, this function returns nullptr (Python: None, JavaScript: null, Java: null) otherwise, it returns the current node. This way, the tree nodes will be combined with their new parents after the deletion, and the forest will have the roots of the disjoint trees.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(x) {\n        this.val = x;\n        this.left = null;\n        this.right = null;\n    }\n}\n\nfunction delNodes(root, to_delete) {\n    const forest = [];\n    const toDeleteSet = new Set(to_delete);\n    helper(root, true, toDeleteSet, forest);\n    return forest;\n}\n\nfunction helper(node, isRoot, toDelete, forest) {\n    if (!node) return null;\n    const deleted = toDelete.has(node.val);\n    if (isRoot && !deleted) forest.push(node);\n    node.left = helper(node.left, deleted, toDelete, forest);\n    node.right = helper(node.right, deleted, toDelete, forest);\n    return deleted ? null : node;\n}\n```\n\n    \n    The algorithm performs a post-order traversal, visiting each node of the tree. It starts with the root of the tree and checks whether it's a root node or not. If it's a root node, it adds the node to the forest; otherwise, it continues traversal. Left and right children are updated for each node. If a node's value is found in the `to_delete` list, this function returns nullptr (Python: None, JavaScript: null, Java: null) otherwise, it returns the current node. This way, the tree nodes will be combined with their new parents after the deletion, and the forest will have the roots of the disjoint trees.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\nclass TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n    TreeNode(int x) { val = x; }\n}\n\npublic List<TreeNode> delNodes(TreeNode root, int[] to_delete) {\n    List<TreeNode> forest = new ArrayList<>();\n    Set<Integer> toDelete = new HashSet<>();\n    for (int val : to_delete) {\n        toDelete.add(val);\n    }\n    helper(root, true, toDelete, forest);\n    return forest;\n}\n\nprivate TreeNode helper(TreeNode node, boolean isRoot, Set<Integer> toDelete, List<TreeNode> forest) {\n    if (node == null) return null;\n    boolean deleted = toDelete.contains(node.val);\n    if (isRoot && !deleted) forest.add(node);\n    node.left = helper(node.left, deleted, toDelete, forest);\n    node.right = helper(node.right, deleted, toDelete, forest);\n    return deleted ? null : node;\n}\n```\n\n    \n    The algorithm performs a post-order traversal, visiting each node of the tree. It starts with the root of the tree and checks whether it's a root node or not. If it's a root node, it adds the node to the forest; otherwise, it continues traversal. Left and right children are updated for each node. If a node's value is found in the `to_delete` list, this function returns nullptr (Python: None, JavaScript: null, Java: null) otherwise, it returns the current node. This way, the tree nodes will be combined with their new parents after the deletion, and the forest will have the roots of the disjoint trees.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

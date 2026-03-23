@@ -1,0 +1,24 @@
+{
+  "id": 2168,
+  "title": "Unique Substrings With Equal Digit Frequency",
+  "slug": "unique-substrings-with-equal-digit-frequency",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a digit string s, return _the number of unique substrings of_ s _where every digit appears the same number of times._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef are_numbers_increasing(s: str) -> bool:\n    tokens = s.split()\n    numbers = []\n    \n    for token in tokens:\n        if token.isdigit():\n            num = int(token)\n            if numbers and numbers[-1] >= num:\n                return False\n            numbers.append(num)\n    \n    return True\n```\n    \n    This algorithm iterates through the tokens of the input sentence (s). It checks each token to see if it is a number, using language-specific functions like isdigit for C++/Python, Scanner for Java, or isNaN for JavaScript. If the token is a number, the algorithm checks if it is strictly greater than the last number we encountered (if any). If it isn't strictly greater, the function returns `false`. At the end of the iterations, if no condition is met, it returns `true`, indicating all numbers in the sentence are in strictly increasing order.\n    ",
+    "javascript": "\n    ```javascript\nfunction areNumbersIncreasing(s) {\n    const tokens = s.split(\" \");\n    const numbers = [];\n    \n    for (const token of tokens) {\n        if (!isNaN(token)) {\n            const num = parseInt(token);\n            if (numbers.length && numbers[numbers.length - 1] >= num) {\n                return false;\n            }\n            numbers.push(num);\n        }\n    }\n\n    return true;\n}\n```\n    \n    This algorithm iterates through the tokens of the input sentence (s). It checks each token to see if it is a number, using language-specific functions like isdigit for C++/Python, Scanner for Java, or isNaN for JavaScript. If the token is a number, the algorithm checks if it is strictly greater than the last number we encountered (if any). If it isn't strictly greater, the function returns `false`. At the end of the iterations, if no condition is met, it returns `true`, indicating all numbers in the sentence are in strictly increasing order.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic boolean areNumbersIncreasing(String s) {\n    Scanner scanner = new Scanner(s);\n    ArrayList<Integer> numbers = new ArrayList<>();\n    \n    while (scanner.hasNext()) {\n        if (scanner.hasNextInt()) {\n            int num = scanner.nextInt();\n            if (!numbers.isEmpty() && numbers.get(numbers.size() - 1) >= num) {\n                return false;\n            }\n            numbers.add(num);\n        } else {\n            scanner.next();\n        }\n    }\n    \n    return true;\n}\n```\n    \n    This algorithm iterates through the tokens of the input sentence (s). It checks each token to see if it is a number, using language-specific functions like isdigit for C++/Python, Scanner for Java, or isNaN for JavaScript. If the token is a number, the algorithm checks if it is strictly greater than the last number we encountered (if any). If it isn't strictly greater, the function returns `false`. At the end of the iterations, if no condition is met, it returns `true`, indicating all numbers in the sentence are in strictly increasing order.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

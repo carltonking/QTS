@@ -1,0 +1,24 @@
+{
+  "id": 168,
+  "title": "Excel Sheet Column Title",
+  "slug": "excel-sheet-column-title",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer columnNumber, return _its corresponding column title as it appears in an Excel sheet_.\n\nFor example:\n\nA -> 1\nB -> 2\nC -> 3\n...\nZ -> 26\nAA -> 27\nAB -> 28\n...",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef convert_to_title(columnNumber: int) -> str:\n    result = \"\"\n    while columnNumber:\n        columnNumber -= 1\n        result = chr(columnNumber % 26 + ord('A')) + result\n        columnNumber //= 26\n    return result\n```\n\n    \n    The algorithm converts an integer `columnNumber` to its corresponding column title as it appears in an Excel sheet. It does so by treating the Excel sheet column headers as a Base-26 number system where the numbers are represented by the characters from A-Z.\n\n1. We start by initializing an empty string called `result` that will store the final column title.\n2. In a while loop, we continue until the `columnNumber` is greater than 0.\n3. We subtract 1 from `columnNumber`, as the base representation starts from A (1).\n4. The remainder of `columnNumber` divided by 26 is the index of the character in the A-Z range, which is added to the `result` string.\n5. `columnNumber` is then divided by 26 and the loop continues until `columnNumber` is 0.\n6. Once the loop is finished, the `result` string is returned as the corresponding column title.\n    ",
+    "javascript": "\n    ```javascript\nfunction convertToTitle(columnNumber) {\n    let result = \"\";\n    while (columnNumber) {\n        columnNumber--;\n        result = String.fromCharCode(columnNumber % 26 + 'A'.charCodeAt(0)) + result;\n        columnNumber = Math.floor(columnNumber / 26);\n    }\n    return result;\n}\n```\n\n    \n    The algorithm converts an integer `columnNumber` to its corresponding column title as it appears in an Excel sheet. It does so by treating the Excel sheet column headers as a Base-26 number system where the numbers are represented by the characters from A-Z.\n\n1. We start by initializing an empty string called `result` that will store the final column title.\n2. In a while loop, we continue until the `columnNumber` is greater than 0.\n3. We subtract 1 from `columnNumber`, as the base representation starts from A (1).\n4. The remainder of `columnNumber` divided by 26 is the index of the character in the A-Z range, which is added to the `result` string.\n5. `columnNumber` is then divided by 26 and the loop continues until `columnNumber` is 0.\n6. Once the loop is finished, the `result` string is returned as the corresponding column title.\n    ",
+    "java": "\n    ```java\npublic String convertToTitle(int columnNumber) {\n    StringBuilder result = new StringBuilder();\n    while (columnNumber > 0) {\n        columnNumber--;\n        result.insert(0, (char) ('A' + columnNumber % 26));\n        columnNumber /= 26;\n    }\n    return result.toString();\n}\n```\n\n    \n    The algorithm converts an integer `columnNumber` to its corresponding column title as it appears in an Excel sheet. It does so by treating the Excel sheet column headers as a Base-26 number system where the numbers are represented by the characters from A-Z.\n\n1. We start by initializing an empty string called `result` that will store the final column title.\n2. In a while loop, we continue until the `columnNumber` is greater than 0.\n3. We subtract 1 from `columnNumber`, as the base representation starts from A (1).\n4. The remainder of `columnNumber` divided by 26 is the index of the character in the A-Z range, which is added to the `result` string.\n5. `columnNumber` is then divided by 26 and the loop continues until `columnNumber` is 0.\n6. Once the loop is finished, the `result` string is returned as the corresponding column title.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

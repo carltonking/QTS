@@ -1,0 +1,24 @@
+{
+  "id": 318,
+  "title": "Maximum Product of Word Lengths",
+  "slug": "maximum-product-of-word-lengths",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string array words, return _the maximum value of_ length(word[i]) * length(word[j]) _where the two words do not share common letters_. If no such two words exist, return 0.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxProduct(words):\n    n = len(words)\n    mask = [0] * n\n    for i, word in enumerate(words):\n        for c in word:\n            mask[i] |= (1 << (ord(c) - ord('a')))\n    \n    max_product = 0\n    for i in range(n):\n        for j in range(i + 1, n):\n            if (mask[i] & mask[j]) == 0:\n                max_product = max(max_product, len(words[i]) * len(words[j]))\n    \n    return max_product\n```\n\n    \n    The algorithm first calculates a binary representation of each word, where each character is represented by a bit '1' in the corresponding position. For example, for the words \"abc\" and \"xyz\", the representation would be: \"abc\" = 0000..0111 and \"xyz\" = 111..0000.\n\nThen, for each pair of words, the algorithm checks if there are common characters by applying the 'and' bitwise operation. If there are no common characters, the 'and' operation will result in 0, meaning that the condition is met. In this case, the product of the lengths of the words is calculated, and the maximum product is updated if needed.\n\nThe algorithm runs in O(n^2) where 'n' is the number of words, since it checks each pair of words.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxProduct(words) {\n    const n = words.length;\n    const mask = new Array(n).fill(0);\n    for (let i = 0; i < n; i++) {\n        for (const c of words[i]) {\n            mask[i] |= (1 << (c.charCodeAt(0) - 'a'.charCodeAt(0)));\n        }\n    }\n\n    let maxProduct = 0;\n    for (let i = 0; i < n; i++) {\n        for (let j = i + 1; j < n; j++) {\n            if ((mask[i] & mask[j]) === 0) {\n                maxProduct = Math.max(maxProduct, words[i].length * words[j].length);\n            }\n        }\n    }\n\n    return maxProduct;\n}\n```\n\n    \n    The algorithm first calculates a binary representation of each word, where each character is represented by a bit '1' in the corresponding position. For example, for the words \"abc\" and \"xyz\", the representation would be: \"abc\" = 0000..0111 and \"xyz\" = 111..0000.\n\nThen, for each pair of words, the algorithm checks if there are common characters by applying the 'and' bitwise operation. If there are no common characters, the 'and' operation will result in 0, meaning that the condition is met. In this case, the product of the lengths of the words is calculated, and the maximum product is updated if needed.\n\nThe algorithm runs in O(n^2) where 'n' is the number of words, since it checks each pair of words.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\nclass Solution {\n    public int maxProduct(String[] words) {\n        int n = words.length;\n        int[] mask = new int[n];\n        for (int i = 0; i < n; i++) {\n            for (char c : words[i].toCharArray()) {\n                mask[i] |= (1 << (c - 'a'));\n            }\n        }\n\n        int maxProduct = 0;\n        for (int i = 0; i < n; i++) {\n            for (int j = i + 1; j < n; j++) {\n                if ((mask[i] & mask[j]) == 0) {\n                    maxProduct = Math.max(maxProduct, words[i].length() * words[j].length());\n                }\n            }\n        }\n\n        return maxProduct;\n    }\n}\n```\n\n    \n    The algorithm first calculates a binary representation of each word, where each character is represented by a bit '1' in the corresponding position. For example, for the words \"abc\" and \"xyz\", the representation would be: \"abc\" = 0000..0111 and \"xyz\" = 111..0000.\n\nThen, for each pair of words, the algorithm checks if there are common characters by applying the 'and' bitwise operation. If there are no common characters, the 'and' operation will result in 0, meaning that the condition is met. In this case, the product of the lengths of the words is calculated, and the maximum product is updated if needed.\n\nThe algorithm runs in O(n^2) where 'n' is the number of words, since it checks each pair of words.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

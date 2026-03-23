@@ -1,0 +1,24 @@
+{
+  "id": 1568,
+  "title": "Minimum Number of Days to Disconnect Island",
+  "slug": "minimum-number-of-days-to-disconnect-island",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an m x n binary grid grid where 1 represents land and 0 represents water. An island is a maximal 4-directionally (horizontal or vertical) connected group of 1's.\n\nThe grid is said to be connected if we have exactly one island, otherwise is said disconnected.\n\nIn one day, we are allowed to change any single land cell (1) into a water cell (0).\n\nReturn _the minimum number of days to disconnect the grid_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef pseudoPalindromicPaths(root, cnt = 0):\n    if not root:\n        return 0\n    cnt ^= 1 << (root.val - 1)\n    if not root.left and not root.right:\n        return (cnt & (cnt - 1)) == 0\n    return pseudoPalindromicPaths(root.left, cnt) + pseudoPalindromicPaths(root.right, cnt)\n```\n    \n    The algorithm takes the root of the binary tree and iterates through each path from the root to leaf nodes using recursion. For each node in the path, it toggles the bit corresponding to the node's value in the integer `cnt`. The total number of non-empty pseudo-palindrome paths is found by recursively traversing the tree.\n\nWhen encountering a leaf node, the algorithm checks if the bitwise-and between `cnt` and `(cnt - 1)` is equal to 0. If true, this means that at most one bit is set in `cnt`, which indicates a pseudo-palindrome as there are either zero or one nodes that have an odd count, and the rest of the nodes have even counts. If the condition is satisfied, return 1, otherwise, return 0.\n\nThe function then adds up the number of pseudo-palindromic paths found in all branches of the tree.\n    ",
+    "javascript": "\n    ```javascript\nfunction pseudoPalindromicPaths(root, cnt = 0) {\n    if (!root) return 0;\n    cnt ^= 1 << (root.val - 1);\n    if (!root.left && !root.right)\n        return (cnt & (cnt - 1)) == 0 ? 1 : 0;\n    return pseudoPalindromicPaths(root.left, cnt) + pseudoPalindromicPaths(root.right, cnt);\n}\n```\n\n    \n    The algorithm takes the root of the binary tree and iterates through each path from the root to leaf nodes using recursion. For each node in the path, it toggles the bit corresponding to the node's value in the integer `cnt`. The total number of non-empty pseudo-palindrome paths is found by recursively traversing the tree.\n\nWhen encountering a leaf node, the algorithm checks if the bitwise-and between `cnt` and `(cnt - 1)` is equal to 0. If true, this means that at most one bit is set in `cnt`, which indicates a pseudo-palindrome as there are either zero or one nodes that have an odd count, and the rest of the nodes have even counts. If the condition is satisfied, return 1, otherwise, return 0.\n\nThe function then adds up the number of pseudo-palindromic paths found in all branches of the tree.\n    ",
+    "java": "\n    ```java\npublic int pseudoPalindromicPaths(TreeNode root, int cnt) {\n    if (root == null) return 0;\n    cnt ^= 1 << (root.val - 1);\n    if (root.left == null && root.right == null)\n        return (cnt & (cnt - 1)) == 0 ? 1 : 0;\n    return pseudoPalindromicPaths(root.left, cnt) + pseudoPalindromicPaths(root.right, cnt);\n}\n```\n    \n    The algorithm takes the root of the binary tree and iterates through each path from the root to leaf nodes using recursion. For each node in the path, it toggles the bit corresponding to the node's value in the integer `cnt`. The total number of non-empty pseudo-palindrome paths is found by recursively traversing the tree.\n\nWhen encountering a leaf node, the algorithm checks if the bitwise-and between `cnt` and `(cnt - 1)` is equal to 0. If true, this means that at most one bit is set in `cnt`, which indicates a pseudo-palindrome as there are either zero or one nodes that have an odd count, and the rest of the nodes have even counts. If the condition is satisfied, return 1, otherwise, return 0.\n\nThe function then adds up the number of pseudo-palindromic paths found in all branches of the tree.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

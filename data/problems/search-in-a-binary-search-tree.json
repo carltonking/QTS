@@ -1,0 +1,24 @@
+{
+  "id": 700,
+  "title": "Search in a Binary Search Tree",
+  "slug": "search-in-a-binary-search-tree",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given the root of a binary search tree (BST) and an integer val.\n\nFind the node in the BST that the node's value equals val and return the subtree rooted with that node. If such a node does not exist, return null.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef searchBST(root: TreeNode, val: int) -> TreeNode:\n    if not root or root.val == val:\n        return root\n    return searchBST(root.right, val) if root.val < val else searchBST(root.left, val)\n```\n\n    \n    We use a recursive search function for searching the BST. The basic logic is as follows:\n1. Check if the current node is `null` or its value equals the target value. If so, return the node itself.\n2. If the target value is greater than the current node's value, search the right child.\n3. If the target value is less than the current node's value, search the left child.\n\nIn all four programming languages, the implementation is pretty much the same:\n\n1. Define a TreeNode structure/class with value, left child, and right child properties.\n2. Apply the algorithm logic in the `searchBST` function.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(val, left = null, right = null) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\nfunction searchBST(root, val) {\n    if (!root || root.val === val) {\n        return root;\n    }\n    return (root.val < val) ? searchBST(root.right, val) : searchBST(root.left, val);\n}\n```\n\n    \n    We use a recursive search function for searching the BST. The basic logic is as follows:\n1. Check if the current node is `null` or its value equals the target value. If so, return the node itself.\n2. If the target value is greater than the current node's value, search the right child.\n3. If the target value is less than the current node's value, search the left child.\n\nIn all four programming languages, the implementation is pretty much the same:\n\n1. Define a TreeNode structure/class with value, left child, and right child properties.\n2. Apply the algorithm logic in the `searchBST` function.\n    ",
+    "java": "\n    ```java\nclass TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n}\n\npublic TreeNode searchBST(TreeNode root, int val) {\n    if (root == null || root.val == val)\n        return root;\n    return (root.val < val) ? searchBST(root.right, val) : searchBST(root.left, val);\n}\n```\n\n    \n    We use a recursive search function for searching the BST. The basic logic is as follows:\n1. Check if the current node is `null` or its value equals the target value. If so, return the node itself.\n2. If the target value is greater than the current node's value, search the right child.\n3. If the target value is less than the current node's value, search the left child.\n\nIn all four programming languages, the implementation is pretty much the same:\n\n1. Define a TreeNode structure/class with value, left child, and right child properties.\n2. Apply the algorithm logic in the `searchBST` function.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

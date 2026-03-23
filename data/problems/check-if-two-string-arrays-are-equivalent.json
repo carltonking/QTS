@@ -1,0 +1,24 @@
+{
+  "id": 1662,
+  "title": "Check If Two String Arrays are Equivalent",
+  "slug": "check-if-two-string-arrays-are-equivalent",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given two string arrays word1 and word2, return true _if the two arrays represent the same string, and_ false _otherwise._\n\nA string is represented by an array if the array elements concatenated in order forms the string.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_num_operations(nums):\n    result = 0\n    highest_bit = [0] * 32\n    for num in nums:\n        for j in range(32):\n            if num & (1 << j):\n                highest_bit[j] += 1\n    for count in highest_bit:\n        result = max(result, count)\n    return result + 31\n```\n    \n    The algorithm starts by initializing a result variable to 0 and an array called highestBit of size 32 with all elements set to 0. Then, for each number in the input nums array, we perform bitwise operations to check if a specific bit is turned on (1). If so, we increment the corresponding element in the highestBit array by 1. After processing all the numbers in the input array, we loop through the highestBit array and update the result variable to the maximum value found plus 31. Finally, we return the result. The algorithm tries to find the highest bit set in any of the input numbers to determine the minimum number of calls needed to make nums from arr.\n    ",
+    "javascript": "\n    ```javascript\nfunction minNumOperations(nums) {\n    let result = 0;\n    let highestBit = new Array(32).fill(0);\n    for (let num of nums) {\n        for (let j = 0; j < 32; ++j) {\n            if (num & (1 << j)) {\n                highestBit[j]++;\n            }\n        }\n    }\n    for (let count of highestBit) {\n        result = Math.max(result, count);\n    }\n    return result + 31;\n}\n```\n    \n    The algorithm starts by initializing a result variable to 0 and an array called highestBit of size 32 with all elements set to 0. Then, for each number in the input nums array, we perform bitwise operations to check if a specific bit is turned on (1). If so, we increment the corresponding element in the highestBit array by 1. After processing all the numbers in the input array, we loop through the highestBit array and update the result variable to the maximum value found plus 31. Finally, we return the result. The algorithm tries to find the highest bit set in any of the input numbers to determine the minimum number of calls needed to make nums from arr.\n    ",
+    "java": "\n    ```java\npublic int minNumOperations(int[] nums) {\n    int result = 0;\n    int[] highestBit = new int[32];\n    for (int num : nums) {\n        for (int j = 0; j < 32; j++) {\n            if ((num & (1 << j)) != 0) {\n                highestBit[j]++;\n            }\n        }\n    }\n    for (int count : highestBit) {\n        result = Math.max(result, count);\n    }\n    return result + 31;\n}\n```\n    \n    The algorithm starts by initializing a result variable to 0 and an array called highestBit of size 32 with all elements set to 0. Then, for each number in the input nums array, we perform bitwise operations to check if a specific bit is turned on (1). If so, we increment the corresponding element in the highestBit array by 1. After processing all the numbers in the input array, we loop through the highestBit array and update the result variable to the maximum value found plus 31. Finally, we return the result. The algorithm tries to find the highest bit set in any of the input numbers to determine the minimum number of calls needed to make nums from arr.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2508,
+  "title": "Add Edges to Make Degrees of All Nodes Even",
+  "slug": "add-edges-to-make-degrees-of-all-nodes-even",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "There is an undirected graph consisting of n nodes numbered from 1 to n. You are given the integer n and a 2D array edges where edges[i] = [ai, bi] indicates that there is an edge between nodes ai and bi. The graph can be disconnected.\n\nYou can add at most two additional edges (possibly none) to this graph so that there are no repeated edges and no self-loops.\n\nReturn true _if it is possible to make the degree of each node in the graph even, otherwise return_ false_._\n\nThe degree of a node is the number of edges connected to it.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import defaultdict\n\ndef possible_degree_even(n, edges):\n    degrees = defaultdict(int)\n    for a, b in edges:\n        degrees[a] += 1\n        degrees[b] += 1\n\n    odd_degrees = sum(1 for d in range(1, n + 1) if degrees[d] % 2 != 0)\n    return odd_degrees == 0 or odd_degrees == 2\n```\n    \n    The algorithm is as follows:\n1. Create a degrees list to store the degree of each node (number of edges connected to the node).\n2. Iterate through the edges list and increment the degree of both nodes (a and b) in each edge.\n3. Count the number of nodes with odd degrees.\n4. If the number of nodes with odd degrees is either 0 or 2, it is possible to add at most 2 edges to make the degree of each node even. Otherwise, it's not possible.\n\nThe solution is in O(n) time complexity, where n is the number of nodes.\n    ",
+    "javascript": "\n    ```javascript\nfunction possibleDegreeEven(n, edges) {\n    let degrees = {};\n    for (let edge of edges) {\n        degrees[edge[0]] = (degrees[edge[0]] || 0) + 1;\n        degrees[edge[1]] = (degrees[edge[1]] || 0) + 1;\n    }\n    let odd_degrees = 0;\n    for (let i = 1; i <= n; i++) {\n        if ((degrees[i] || 0) % 2 != 0) odd_degrees++;\n    }\n    return (odd_degrees == 0 || odd_degrees == 2);\n}\n```\n    \n    The algorithm is as follows:\n1. Create a degrees list to store the degree of each node (number of edges connected to the node).\n2. Iterate through the edges list and increment the degree of both nodes (a and b) in each edge.\n3. Count the number of nodes with odd degrees.\n4. If the number of nodes with odd degrees is either 0 or 2, it is possible to add at most 2 edges to make the degree of each node even. Otherwise, it's not possible.\n\nThe solution is in O(n) time complexity, where n is the number of nodes.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\n\npublic boolean possibleDegreeEven(int n, int[][] edges) {\n    HashMap<Integer, Integer> degrees = new HashMap<>();\n    for (int[] edge : edges) {\n        degrees.put(edge[0], degrees.getOrDefault(edge[0], 0) + 1);\n        degrees.put(edge[1], degrees.getOrDefault(edge[1], 0) + 1);\n    }\n    \n    int odd_degrees = 0;\n    for (int i = 1; i <= n; i++) {\n        if (degrees.getOrDefault(i, 0) % 2 != 0) odd_degrees++;\n    }\n    \n    return (odd_degrees == 0 || odd_degrees == 2);\n}\n```\n    \n    The algorithm is as follows:\n1. Create a degrees list to store the degree of each node (number of edges connected to the node).\n2. Iterate through the edges list and increment the degree of both nodes (a and b) in each edge.\n3. Count the number of nodes with odd degrees.\n4. If the number of nodes with odd degrees is either 0 or 2, it is possible to add at most 2 edges to make the degree of each node even. Otherwise, it's not possible.\n\nThe solution is in O(n) time complexity, where n is the number of nodes.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

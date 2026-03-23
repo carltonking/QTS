@@ -1,0 +1,24 @@
+{
+  "id": 2021,
+  "title": "Brightest Position on Street",
+  "slug": "brightest-position-on-street",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A perfectly straight street is represented by a number line. The street has street lamp(s) on it and is represented by a 2D integer array lights. Each lights[i] = [positioni, rangei] indicates that there is a street lamp at position positioni that lights up the area from [positioni - rangei, positioni + rangei] (inclusive).\n\nThe brightness of a position p is defined as the number of street lamp that light up the position p.\n\nGiven lights, return _the brightest position on the_ _street. If there are multiple brightest positions, return the smallest one._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef remove_occurrences(s, part):\n    while part in s:\n        s = s.replace(part, '', 1)\n    return s\n```\n    \n    The algorithm for this problem is simple and straightforward. We'll use a loop to keep checking if the given substring `part` is present in the main string `s` or not. If it is, we remove it from the string.\n\nIn each language implementation, we perform the following steps:\n\n1. Use a loop to keep checking if the string `s` contains the substring `part`.\n2. If it does, remove the first occurrence of `part` from the string `s`.\n3. Repeat this process until there are no more occurrences of `part` in the string `s`.\n\nThese steps are common for all the languages. However, the syntax for checking the presence of a substring, and to replace the substring with an empty string, may vary slightly between different languages as shown in the code samples above.\n    ",
+    "javascript": "\n    ```javascript\nfunction removeOccurrences(s, part) {\n    while (s.includes(part)) {\n        s = s.replace(part, '');\n    }\n    return s;\n}\n```\n    \n    The algorithm for this problem is simple and straightforward. We'll use a loop to keep checking if the given substring `part` is present in the main string `s` or not. If it is, we remove it from the string.\n\nIn each language implementation, we perform the following steps:\n\n1. Use a loop to keep checking if the string `s` contains the substring `part`.\n2. If it does, remove the first occurrence of `part` from the string `s`.\n3. Repeat this process until there are no more occurrences of `part` in the string `s`.\n\nThese steps are common for all the languages. However, the syntax for checking the presence of a substring, and to replace the substring with an empty string, may vary slightly between different languages as shown in the code samples above.\n    ",
+    "java": "\n    ```java\npublic String removeOccurrences(String s, String part) {\n    while (s.contains(part)) {\n        s = s.replaceFirst(part, \"\");\n    }\n    return s;\n}\n```\n    \n    The algorithm for this problem is simple and straightforward. We'll use a loop to keep checking if the given substring `part` is present in the main string `s` or not. If it is, we remove it from the string.\n\nIn each language implementation, we perform the following steps:\n\n1. Use a loop to keep checking if the string `s` contains the substring `part`.\n2. If it does, remove the first occurrence of `part` from the string `s`.\n3. Repeat this process until there are no more occurrences of `part` in the string `s`.\n\nThese steps are common for all the languages. However, the syntax for checking the presence of a substring, and to replace the substring with an empty string, may vary slightly between different languages as shown in the code samples above.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

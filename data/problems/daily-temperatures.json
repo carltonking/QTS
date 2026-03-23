@@ -1,0 +1,24 @@
+{
+  "id": 739,
+  "title": "Daily Temperatures",
+  "slug": "daily-temperatures",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of integers temperatures represents the daily temperatures, return _an array_ answer _such that_ answer[i] _is the number of days you have to wait after the_ ith _day to get a warmer temperature_. If there is no future day for which this is possible, keep answer[i] == 0 instead.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef daily_temperatures(temperatures):\n    result = [0] * len(temperatures)\n    stack = []\n\n    for i, temp in enumerate(temperatures):\n        while stack and temp > temperatures[stack[-1]]:\n            idx = stack.pop()\n            result[idx] = i - idx\n        stack.append(i)\n\n    return result\n```\n    \n    The algorithm uses a stack that stores indices of the temperatures array. We iterate through the temperatures checking if the current temperature is greater than the temperature at the top of the stack. If it is, we pop the stack, and update the result array with the difference of the current index and the popped index, which represents the number of days to wait.\n\nIf the current temperature is not greater than the top of the stack, or the stack is empty, we push the current index onto the stack.\n\nAt the end, any remaining indices in the stack represent days without a warmer day, and their values in the result array will remain as 0 (initialized earlier).\n\nThe time complexity of the algorithm is O(N), since each index will be pushed and popped only once throughout the entire loop.\n    ",
+    "javascript": "\n    ```javascript\nfunction dailyTemperatures(temperatures) {\n    const result = new Array(temperatures.length).fill(0);\n    const stack = [];\n\n    for (let i = 0; i < temperatures.length; i++) {\n        while (stack.length > 0 && temperatures[i] > temperatures[stack[stack.length - 1]]) {\n            const idx = stack.pop();\n            result[idx] = i - idx;\n        }\n        stack.push(i);\n    }\n\n    return result;\n}\n```\n    \n    The algorithm uses a stack that stores indices of the temperatures array. We iterate through the temperatures checking if the current temperature is greater than the temperature at the top of the stack. If it is, we pop the stack, and update the result array with the difference of the current index and the popped index, which represents the number of days to wait.\n\nIf the current temperature is not greater than the top of the stack, or the stack is empty, we push the current index onto the stack.\n\nAt the end, any remaining indices in the stack represent days without a warmer day, and their values in the result array will remain as 0 (initialized earlier).\n\nThe time complexity of the algorithm is O(N), since each index will be pushed and popped only once throughout the entire loop.\n    ",
+    "java": "\n    ```java\nimport java.util.Stack;\n\npublic int[] dailyTemperatures(int[] temperatures) {\n    int[] result = new int[temperatures.length];\n    Stack<Integer> stack = new Stack<>();\n\n    for (int i = 0; i < temperatures.length; i++) {\n        while (!stack.isEmpty() && temperatures[i] > temperatures[stack.peek()]) {\n            int idx = stack.pop();\n            result[idx] = i - idx;\n        }\n        stack.push(i);\n    }\n\n    return result;\n}\n```\n    \n    The algorithm uses a stack that stores indices of the temperatures array. We iterate through the temperatures checking if the current temperature is greater than the temperature at the top of the stack. If it is, we pop the stack, and update the result array with the difference of the current index and the popped index, which represents the number of days to wait.\n\nIf the current temperature is not greater than the top of the stack, or the stack is empty, we push the current index onto the stack.\n\nAt the end, any remaining indices in the stack represent days without a warmer day, and their values in the result array will remain as 0 (initialized earlier).\n\nThe time complexity of the algorithm is O(N), since each index will be pushed and popped only once throughout the entire loop.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

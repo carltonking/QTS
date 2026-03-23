@@ -1,0 +1,24 @@
+{
+  "id": 1580,
+  "title": "Put Boxes Into the Warehouse II",
+  "slug": "put-boxes-into-the-warehouse-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two arrays of positive integers, boxes and warehouse, representing the heights of some boxes of unit width and the heights of n rooms in a warehouse respectively. The warehouse's rooms are labeled from 0 to n - 1 from left to right where warehouse[i] (0-indexed) is the height of the ith room.\n\nBoxes are put into the warehouse by the following rules:\n\n*   Boxes cannot be stacked.\n*   You can rearrange the insertion order of the boxes.\n*   Boxes can be pushed into the warehouse from either side (left or right)\n*   If the height of some room in the warehouse is less than the height of a box, then that box and all other boxes behind it will be stopped before that room.\n\nReturn _the maximum number of boxes you can put into the warehouse._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef shuffle(nums, n):\n    shuffled = []\n    for i in range(n):\n        shuffled.append(nums[i])\n        shuffled.append(nums[i+n])\n    return shuffled\n```\n    \n    The algorithm for solving this problem is quite simple:\n1. Initialize an empty array called \"shuffled\" to store the shuffled elements.\n2. Iterate through the first n elements of the input array (nums).\n3. For each element at index i, add nums[i] and nums[i+n] to the \"shuffled\" array in that order.\n4. Return the \"shuffled\" array.\n    ",
+    "javascript": "\n    ```javascript\nfunction shuffle(nums, n) {\n    const shuffled = [];\n    for(let i = 0; i < n; i++) {\n        shuffled.push(nums[i]);\n        shuffled.push(nums[i+n]);\n    }\n    return shuffled;\n}\n```\n    \n    The algorithm for solving this problem is quite simple:\n1. Initialize an empty array called \"shuffled\" to store the shuffled elements.\n2. Iterate through the first n elements of the input array (nums).\n3. For each element at index i, add nums[i] and nums[i+n] to the \"shuffled\" array in that order.\n4. Return the \"shuffled\" array.\n    ",
+    "java": "\n    ```java\npublic int[] shuffle(int[] nums, int n) {\n    int[] shuffled = new int[nums.length];\n    for(int i = 0; i < n; i++) {\n        shuffled[2*i] = nums[i];\n        shuffled[2*i+1] = nums[i+n];\n    }\n    return shuffled;\n}\n```\n\n    \n    The algorithm for solving this problem is quite simple:\n1. Initialize an empty array called \"shuffled\" to store the shuffled elements.\n2. Iterate through the first n elements of the input array (nums).\n3. For each element at index i, add nums[i] and nums[i+n] to the \"shuffled\" array in that order.\n4. Return the \"shuffled\" array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

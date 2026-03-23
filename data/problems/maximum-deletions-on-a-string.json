@@ -1,0 +1,24 @@
+{
+  "id": 2430,
+  "title": "Maximum Deletions on a String",
+  "slug": "maximum-deletions-on-a-string",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a string s consisting of only lowercase English letters. In one operation, you can:\n\n*   Delete the entire string s, or\n*   Delete the first i letters of s if the first i letters of s are equal to the following i letters in s, for any i in the range 1 <= i <= s.length / 2.\n\nFor example, if s = \"ababc \", then in one operation, you could delete the first two letters of s to get \"abc \", since the first two letters of s and the following two letters of s are both equal to \"ab \".\n\nReturn _the maximum number of operations needed to delete all of_ s.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxOperations(s: str) -> int:\n    count = 0\n    while s:\n        for i in range(len(s) // 2, 0, -1):\n            if s[:i] == s[i:2*i]:\n                s = s[i:]\n                count += 1\n                break\n            elif i == 1:\n                s = s[1:]\n                count += 1\n    return count\n```\n    \n    The algorithm repeatedly performs the delete operation until the input string `s` becomes empty. In each iteration, the algorithm checks if the first `i` letters are equal to the following `i` letters in `s`. If it finds such `i`, it erases the first `i` letters and increments the `count`. Else, it erases the first letter and increments the `count` if no such `i` is found in the previous step.\n\nThe time complexity of the algorithm is O(n^2) where n is the length of the input string `s`.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxOperations(s) {\n    let count = 0;\n    while (s.length > 0) {\n        for (let i = Math.floor(s.length / 2); i > 0; i--) {\n            if (s.slice(0, i) === s.slice(i, 2 * i)) {\n                s = s.slice(i);\n                count++;\n                break;\n            } else if (i === 1) {\n                s = s.slice(1);\n                count++;\n            }\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm repeatedly performs the delete operation until the input string `s` becomes empty. In each iteration, the algorithm checks if the first `i` letters are equal to the following `i` letters in `s`. If it finds such `i`, it erases the first `i` letters and increments the `count`. Else, it erases the first letter and increments the `count` if no such `i` is found in the previous step.\n\nThe time complexity of the algorithm is O(n^2) where n is the length of the input string `s`.\n    ",
+    "java": "\n    ```java\npublic int maxOperations(String s) {\n    int count = 0;\n    while (!s.isEmpty()) {\n        for (int i = s.length() / 2; i > 0; i--) {\n            if (s.substring(0, i).equals(s.substring(i, 2 * i))) {\n                s = s.substring(i);\n                count++;\n                break;\n            } else if (i == 1) {\n                s = s.substring(1);\n                count++;\n            }\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm repeatedly performs the delete operation until the input string `s` becomes empty. In each iteration, the algorithm checks if the first `i` letters are equal to the following `i` letters in `s`. If it finds such `i`, it erases the first `i` letters and increments the `count`. Else, it erases the first letter and increments the `count` if no such `i` is found in the previous step.\n\nThe time complexity of the algorithm is O(n^2) where n is the length of the input string `s`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

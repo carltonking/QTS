@@ -1,0 +1,40 @@
+{
+  "id": 8,
+  "title": "3Sum",
+  "slug": "3sum",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Sorting"
+  ],
+  "description": "Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, j != k, and nums[i] + nums[j] + nums[k] == 0.",
+  "examples": [
+    {
+      "input": "nums = [-1,0,1,2,-1,-4]",
+      "output": "[[-1,-1,2],[-1,0,1]]"
+    }
+  ],
+  "constraints": [
+    "3 <= nums.length <= 3000"
+  ],
+  "starterCode": {
+    "python": "from typing import List\nclass Solution:\n    def threeSum(self, nums: List[int]) -> List[List[int]]:\n        pass",
+    "javascript": "var threeSum = function(nums) {\n    \n};",
+    "java": "class Solution {\n    public List<List<Integer>> threeSum(int[] nums) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    vector<vector<int>> threeSum(vector<int>& nums) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for 3Sum\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "[-1,0,1,2,-1,-4]",
+      "expectedOutput": "[[-1,-1,2],[-1,0,1]]"
+    },
+    {
+      "input": "[0,1,1]",
+      "expectedOutput": "[]"
+    }
+  ]
+}

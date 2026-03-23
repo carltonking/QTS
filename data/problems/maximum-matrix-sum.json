@@ -1,0 +1,24 @@
+{
+  "id": 1975,
+  "title": "Maximum Matrix Sum",
+  "slug": "maximum-matrix-sum",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an n x n integer matrix. You can do the following operation any number of times:\n\n*   Choose any two adjacent elements of matrix and multiply each of them by -1.\n\nTwo elements are considered adjacent if and only if they share a border.\n\nYour goal is to maximize the summation of the matrix's elements. Return _the maximum sum of the matrix's elements using the operation mentioned above._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_target_distance(nums, target, start):\n    min_distance = float('inf')\n    for i, num in enumerate(nums):\n        if num == target:\n            distance = abs(i - start)\n            min_distance = min(min_distance, distance)\n    return min_distance\n```\n    \n    The algorithm iterates through the input array `nums`, and for each element, it checks if it is equal to the target. If it is, the algorithm computes the absolute difference between the current index `i` and the `start` index. It keeps track of the minimum distance found so far and updates it whenever it finds a smaller distance. Finally, it returns the minimum distance.\n\nThis approach has a time complexity of O(n), where n is the length of the `nums` array, as it iterates through the entire array once. There are no additional memory requirements other than a few variables, so its space complexity is O(1).\n    ",
+    "javascript": "\n    ```javascript\nfunction findTargetDistance(nums, target, start) {\n    let minDistance = Infinity;\n    for(let i = 0; i < nums.length; i++) {\n        if(nums[i] === target) {\n            const distance = Math.abs(i - start);\n            minDistance = Math.min(minDistance, distance);\n        }\n    }\n    return minDistance;\n}\n```\n    \n    The algorithm iterates through the input array `nums`, and for each element, it checks if it is equal to the target. If it is, the algorithm computes the absolute difference between the current index `i` and the `start` index. It keeps track of the minimum distance found so far and updates it whenever it finds a smaller distance. Finally, it returns the minimum distance.\n\nThis approach has a time complexity of O(n), where n is the length of the `nums` array, as it iterates through the entire array once. There are no additional memory requirements other than a few variables, so its space complexity is O(1).\n    ",
+    "java": "\n    ```java\npublic int findTargetDistance(int[] nums, int target, int start) {\n    int minDistance = Integer.MAX_VALUE;\n    for(int i = 0; i < nums.length; i++) {\n        if(nums[i] == target) {\n            int distance = Math.abs(i - start);\n            minDistance = Math.min(minDistance, distance);\n        }\n    }\n    return minDistance;\n}\n```\n    \n    The algorithm iterates through the input array `nums`, and for each element, it checks if it is equal to the target. If it is, the algorithm computes the absolute difference between the current index `i` and the `start` index. It keeps track of the minimum distance found so far and updates it whenever it finds a smaller distance. Finally, it returns the minimum distance.\n\nThis approach has a time complexity of O(n), where n is the length of the `nums` array, as it iterates through the entire array once. There are no additional memory requirements other than a few variables, so its space complexity is O(1).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

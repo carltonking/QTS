@@ -1,0 +1,24 @@
+{
+  "id": 2452,
+  "title": "Words Within Two Edits of Dictionary",
+  "slug": "words-within-two-edits-of-dictionary",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two string arrays, queries and dictionary. All words in each array comprise of lowercase English letters and have the same length.\n\nIn one edit you can take a word from queries, and change any letter in it to any other letter. Find all words from queries that, after a maximum of two edits, equal some word from dictionary.\n\nReturn _a list of all words from_ queries_,_ _that match with some word from_ dictionary _after a maximum of two edits_. Return the words in the same order they appear in queries.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_differences(a, b):\n    return sum(c1 != c2 for c1, c2 in zip(a, b))\n\ndef find_matching_words(queries, dictionary):\n    result = []\n    for query in queries:\n        for dict_word in dictionary:\n            if count_differences(query, dict_word) <= 2:\n                result.append(query)\n                break\n    return result\n```\n\n    \n    The algorithm works as follows:\n\n1. Define a helper function `countDifferences` that takes in two strings and returns the number of differences between them.\n2. Iterate through the `queries` array, and for each word in the `queries` array, iterate through the `dictionary` array.\n3. For each pair of query and dictionary words, call `countDifferences` to determine if the number of differences is less than or equal to 2.\n4. If the number of differences is less than or equal to 2 for any dictionary word, add the query word to the result list and stop checking for this query.\n5. At the end, return the result list that contains all the matching words.\n\nNote that the code will be the same for each language, except for language-specific syntax differences.\n    ",
+    "javascript": "\n    ```javascript\nfunction countDifferences(a, b) {\n    let diff = 0;\n    for (let i = 0; i < a.length; ++i) {\n        if (a[i] !== b[i]) {\n            ++diff;\n        }\n    }\n    return diff;\n}\n\nfunction findMatchingWords(queries, dictionary) {\n    const result = [];\n    for (const query of queries) {\n        for (const dictWord of dictionary) {\n            if (countDifferences(query, dictWord) <= 2) {\n                result.push(query);\n                break;\n            }\n        }\n    }\n    return result;\n}\n```\n\n    \n    The algorithm works as follows:\n\n1. Define a helper function `countDifferences` that takes in two strings and returns the number of differences between them.\n2. Iterate through the `queries` array, and for each word in the `queries` array, iterate through the `dictionary` array.\n3. For each pair of query and dictionary words, call `countDifferences` to determine if the number of differences is less than or equal to 2.\n4. If the number of differences is less than or equal to 2 for any dictionary word, add the query word to the result list and stop checking for this query.\n5. At the end, return the result list that contains all the matching words.\n\nNote that the code will be the same for each language, except for language-specific syntax differences.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic int countDifferences(String a, String b) {\n    int diff = 0;\n    for (int i = 0; i < a.length(); ++i) {\n        if (a.charAt(i) != b.charAt(i)) {\n            ++diff;\n        }\n    }\n    return diff;\n}\n\npublic List<String> findMatchingWords(String[] queries, String[] dictionary) {\n    ArrayList<String> result = new ArrayList<>();\n    for (String query : queries) {\n        for (String dictWord : dictionary) {\n            if (countDifferences(query, dictWord) <= 2) {\n                result.add(query);\n                break;\n            }\n        }\n    }\n    return result;\n}\n```\n\n    \n    The algorithm works as follows:\n\n1. Define a helper function `countDifferences` that takes in two strings and returns the number of differences between them.\n2. Iterate through the `queries` array, and for each word in the `queries` array, iterate through the `dictionary` array.\n3. For each pair of query and dictionary words, call `countDifferences` to determine if the number of differences is less than or equal to 2.\n4. If the number of differences is less than or equal to 2 for any dictionary word, add the query word to the result list and stop checking for this query.\n5. At the end, return the result list that contains all the matching words.\n\nNote that the code will be the same for each language, except for language-specific syntax differences.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

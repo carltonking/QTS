@@ -1,0 +1,24 @@
+{
+  "id": 2170,
+  "title": "Minimum Operations to Make the Array Alternating",
+  "slug": "minimum-operations-to-make-the-array-alternating",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed array nums consisting of n positive integers.\n\nThe array nums is called alternating if:\n\n*   nums[i - 2] == nums[i], where 2 <= i <= n - 1.\n*   nums[i - 1] != nums[i], where 1 <= i <= n - 1.\n\nIn one operation, you can choose an index i and change nums[i] into any positive integer.\n\nReturn _the minimum number of operations required to make the array alternating_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_max_or_subsets(nums):\n    max_OR = 0\n    for num in nums:\n        max_OR |= num\n\n    OR_subsets = {0}\n    for num in nums:\n        tmp = OR_subsets.copy()\n        for x in OR_subsets:\n            tmp.add(x | num)\n        OR_subsets = tmp\n\n    return OR_subsets.count(max_OR)\n```\n\n    \n    1. First, we calculate the maximum bitwise OR `max_OR` of the input array by using OR operation on all the elements of the array.\n2. We will use a set `OR_subsets` to store the possible OR results.\n3. We initialize the `OR_subsets` with the value 0 to start the OR combination.\n4. In a loop over the input array, we create a temporary set `tmp` that is initialized with the previous calculated OR set `OR_subsets`.\n5. Then for each element of nums, we perform OR operation with each element in the `OR_subsets`, and add that value to the temporary set `tmp`.\n6. After calculating all possible subsets, we need to count the number of max_OR values that we have in the `OR_subsets`.\n7. We return the count of different subsets with the maximum bitwise OR value.\n    ",
+    "javascript": "\n    ```javascript\nfunction countMaxOrSubsets(nums) {\n    let max_OR = 0;\n    for(let num of nums) {\n        max_OR |= num;\n    }\n    \n    let OR_subsets = new Set([0]);\n    \n    for(let num of nums) {\n        let tmp = new Set(OR_subsets);\n        for(let x of OR_subsets) {\n            tmp.add(x | num);\n        }\n        OR_subsets = tmp;\n    }\n    \n    let count = 0;\n    for(let x of OR_subsets) {\n        if(x === max_OR) {\n            count++;\n        }\n    }\n    return count;\n}\n```\n\n    \n    1. First, we calculate the maximum bitwise OR `max_OR` of the input array by using OR operation on all the elements of the array.\n2. We will use a set `OR_subsets` to store the possible OR results.\n3. We initialize the `OR_subsets` with the value 0 to start the OR combination.\n4. In a loop over the input array, we create a temporary set `tmp` that is initialized with the previous calculated OR set `OR_subsets`.\n5. Then for each element of nums, we perform OR operation with each element in the `OR_subsets`, and add that value to the temporary set `tmp`.\n6. After calculating all possible subsets, we need to count the number of max_OR values that we have in the `OR_subsets`.\n7. We return the count of different subsets with the maximum bitwise OR value.\n    ",
+    "java": "\n    ```java\nimport java.util.HashSet;\nimport java.util.Set;\n\npublic int countMaxOrSubsets(int[] nums) {\n    int max_OR = 0;\n    for(int num : nums) {\n        max_OR |= num;\n    }\n    \n    Set<Integer> OR_subsets = new HashSet<>();\n    OR_subsets.add(0);\n    \n    for(int num : nums) {\n        Set<Integer> tmp = new HashSet<>(OR_subsets);\n        for(int x : OR_subsets) {\n            tmp.add(x | num);\n        }\n        OR_subsets = tmp;\n    }\n    \n    int count = 0;\n    for(int x : OR_subsets) {\n        if(x == max_OR) {\n            count++;\n        }\n    }\n    return count;\n}\n```\n\n    \n    1. First, we calculate the maximum bitwise OR `max_OR` of the input array by using OR operation on all the elements of the array.\n2. We will use a set `OR_subsets` to store the possible OR results.\n3. We initialize the `OR_subsets` with the value 0 to start the OR combination.\n4. In a loop over the input array, we create a temporary set `tmp` that is initialized with the previous calculated OR set `OR_subsets`.\n5. Then for each element of nums, we perform OR operation with each element in the `OR_subsets`, and add that value to the temporary set `tmp`.\n6. After calculating all possible subsets, we need to count the number of max_OR values that we have in the `OR_subsets`.\n7. We return the count of different subsets with the maximum bitwise OR value.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

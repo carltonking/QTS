@@ -1,0 +1,24 @@
+{
+  "id": 1544,
+  "title": "Make The String Great",
+  "slug": "make-the-string-great",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a string s of lower and upper case English letters.\n\nA good string is a string which doesn't have two adjacent characters s[i] and s[i + 1] where:\n\n*   0 <= i <= s.length - 2\n*   s[i] is a lower-case letter and s[i + 1] is the same letter but in upper-case or vice-versa.\n\nTo make the string good, you can choose two adjacent characters that make the string bad and remove them. You can keep doing this until the string becomes good.\n\nReturn _the string_ after making it good. The answer is guaranteed to be unique under the given constraints.\n\nNotice that an empty string is also good.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef goodNodes(root, maxVal=float('-inf')):\n    if not root:\n        return 0\n    result = 0\n    if root.val >= maxVal:\n        result = 1\n        maxVal = root.val\n    return result + goodNodes(root.left, maxVal) + goodNodes(root.right, maxVal)\n```\n    \n    The algorithm performs a depth-first search on the given binary tree. In order to traverse the tree and count the good nodes, the recursive `goodNodes` function is called, passing the current node and the maximum value found up to the current node.\n\n1. If the current root is null, return 0 (no good nodes found).\n2. Initialize a `result` variable to store the number of good nodes.\n3. Check if the current node's value is greater or equal to the maximum value found so far. If it is, increment `result` by 1 and set `maxVal` to the current node's value.\n4. Return the `result` plus the sum of the good nodes found in both the left and right child subtrees.\n\nThe base case for the recursion is when the root is null, in which case the function returns 0. This ensures that the function eventually terminates.\n\nWhen all nodes of the binary tree have been visited, the function returns the total number of good nodes.\n    ",
+    "javascript": "\n    ```javascript\nfunction goodNodes(root, maxVal = Number.MIN_SAFE_INTEGER) {\n    if (!root) return 0;\n    let result = 0;\n    if (root.val >= maxVal) {\n        result = 1;\n        maxVal = root.val;\n    }\n    return result + goodNodes(root.left, maxVal) + goodNodes(root.right, maxVal);\n}\n```\n    \n    The algorithm performs a depth-first search on the given binary tree. In order to traverse the tree and count the good nodes, the recursive `goodNodes` function is called, passing the current node and the maximum value found up to the current node.\n\n1. If the current root is null, return 0 (no good nodes found).\n2. Initialize a `result` variable to store the number of good nodes.\n3. Check if the current node's value is greater or equal to the maximum value found so far. If it is, increment `result` by 1 and set `maxVal` to the current node's value.\n4. Return the `result` plus the sum of the good nodes found in both the left and right child subtrees.\n\nThe base case for the recursion is when the root is null, in which case the function returns 0. This ensures that the function eventually terminates.\n\nWhen all nodes of the binary tree have been visited, the function returns the total number of good nodes.\n    ",
+    "java": "\n    ```java\npublic int goodNodes(TreeNode root) {\n    return goodNodes(root, Integer.MIN_VALUE);\n}\n\nprivate int goodNodes(TreeNode root, int maxVal) {\n    if (root == null) return 0;\n    int result = 0;\n    if (root.val >= maxVal) {\n        result = 1;\n        maxVal = root.val;\n    }\n    return result + goodNodes(root.left, maxVal) + goodNodes(root.right, maxVal);\n}\n```\n    \n    The algorithm performs a depth-first search on the given binary tree. In order to traverse the tree and count the good nodes, the recursive `goodNodes` function is called, passing the current node and the maximum value found up to the current node.\n\n1. If the current root is null, return 0 (no good nodes found).\n2. Initialize a `result` variable to store the number of good nodes.\n3. Check if the current node's value is greater or equal to the maximum value found so far. If it is, increment `result` by 1 and set `maxVal` to the current node's value.\n4. Return the `result` plus the sum of the good nodes found in both the left and right child subtrees.\n\nThe base case for the recursion is when the root is null, in which case the function returns 0. This ensures that the function eventually terminates.\n\nWhen all nodes of the binary tree have been visited, the function returns the total number of good nodes.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

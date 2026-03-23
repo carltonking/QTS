@@ -1,0 +1,14 @@
+:root {
+  --bg: #000000;
+  --surface-1: #0a0a0a;
+  --surface-2: #111111;
+  --border: #222222;
+  --border-hi: #444444;
+  --text-1: #ffffff;
+  --text-2: #888888;
+  --text-3: #444444;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+  --radius: 0px;
+  --transition: all 0.15s ease;
+}

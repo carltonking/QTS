@@ -1,0 +1,24 @@
+{
+  "id": 2338,
+  "title": "Count the Number of Ideal Arrays",
+  "slug": "count-the-number-of-ideal-arrays",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given two integers n and maxValue, which are used to describe an ideal array.\n\nA 0-indexed integer array arr of length n is considered ideal if the following conditions hold:\n\n*   Every arr[i] is a value from 1 to maxValue, for 0 <= i < n.\n*   Every arr[i] is divisible by arr[i - 1], for 0 < i < n.\n\nReturn _the number of distinct ideal arrays of length_ n. Since the answer may be very large, return it modulo 109 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef numOfArrays(n: int, maxValue: int) -> int:\n    mod = 10**9 + 7\n    dp = [0] * (maxValue + 1)\n    \n    for i in range(1, maxValue + 1):\n        dp[i] = i\n        \n    for i in range(1, n):\n        for j in range(maxValue, 0, -1):\n            dp[j] = (dp[j] + dp[j - 1]) % mod\n            \n    return dp[maxValue]\n```\n\n    \n    The problem can be solved using dynamic programming, where we maintain an array `dp` of length `maxValue + 1`.\n\n1. Initialize the `dp` array by assigning `i` to `dp[i]` for `i` in the range `[1, maxValue]`.\n2. We need to find the number of ideal arrays of length `n`. So, we iterate from `1` to `n - 1`. In each iteration, we update the `dp` array.\n3. For updating the `dp` array, we iterate from `maxValue` to `1`, and we update `dp[j]` as `(dp[j] + dp[j - 1]) % mod`, where `mod` is `10^9 + 7`.\n4. The result of the function is the value at `dp[maxValue]`.\n\nThe time complexity of this algorithm is O(n * maxValue) and the space complexity is O(maxValue).\n    ",
+    "javascript": "\n    ```javascript\nfunction numOfArrays(n, maxValue) {\n    const mod = 1e9 + 7;\n    const dp = Array(maxValue + 1).fill(0);\n    \n    for (let i = 1; i <= maxValue; i++) {\n        dp[i] = i;\n    }\n    \n    for (let i = 1; i < n; i++) {\n        for (let j = maxValue; j > 0; j--) {\n            dp[j] = (dp[j] + dp[j - 1]) % mod;\n        }\n    }\n    \n    return dp[maxValue];\n}\n```\n\n    \n    The problem can be solved using dynamic programming, where we maintain an array `dp` of length `maxValue + 1`.\n\n1. Initialize the `dp` array by assigning `i` to `dp[i]` for `i` in the range `[1, maxValue]`.\n2. We need to find the number of ideal arrays of length `n`. So, we iterate from `1` to `n - 1`. In each iteration, we update the `dp` array.\n3. For updating the `dp` array, we iterate from `maxValue` to `1`, and we update `dp[j]` as `(dp[j] + dp[j - 1]) % mod`, where `mod` is `10^9 + 7`.\n4. The result of the function is the value at `dp[maxValue]`.\n\nThe time complexity of this algorithm is O(n * maxValue) and the space complexity is O(maxValue).\n    ",
+    "java": "\n    ```java\npublic int numOfArrays(int n, int maxValue) {\n    final int mod = 1_000_000_007;\n    int[] dp = new int[maxValue + 1];\n    \n    for (int i = 1; i <= maxValue; i++) {\n        dp[i] = i;\n    }\n    \n    for (int i = 1; i < n; i++) {\n        for (int j = maxValue; j > 0; j--) {\n            dp[j] = (dp[j] + dp[j - 1]) % mod;\n        }\n    }\n    \n    return dp[maxValue];\n}\n```\n\n    \n    The problem can be solved using dynamic programming, where we maintain an array `dp` of length `maxValue + 1`.\n\n1. Initialize the `dp` array by assigning `i` to `dp[i]` for `i` in the range `[1, maxValue]`.\n2. We need to find the number of ideal arrays of length `n`. So, we iterate from `1` to `n - 1`. In each iteration, we update the `dp` array.\n3. For updating the `dp` array, we iterate from `maxValue` to `1`, and we update `dp[j]` as `(dp[j] + dp[j - 1]) % mod`, where `mod` is `10^9 + 7`.\n4. The result of the function is the value at `dp[maxValue]`.\n\nThe time complexity of this algorithm is O(n * maxValue) and the space complexity is O(maxValue).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

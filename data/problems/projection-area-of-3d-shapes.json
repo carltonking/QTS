@@ -1,0 +1,24 @@
+{
+  "id": 883,
+  "title": "Projection Area of 3D Shapes",
+  "slug": "projection-area-of-3d-shapes",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an n x n grid where we place some 1 x 1 x 1 cubes that are axis-aligned with the x, y, and z axes.\n\nEach value v = grid[i][j] represents a tower of v cubes placed on top of the cell (i, j).\n\nWe view the projection of these cubes onto the xy, yz, and zx planes.\n\nA projection is like a shadow, that maps our 3-dimensional figure to a 2-dimensional plane. We are viewing the \"shadow \" when looking at the cubes from the top, the front, and the side.\n\nReturn _the total area of all three projections_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef carFleet(target: int, position: List[int], speed: List[int]) -> int:\n    cars = sorted(zip(position, speed), reverse=True)\n    fleets = 0\n    last_arrival = -1\n\n    for pos, sp in cars:\n        arrival = (target - pos) / sp\n        if arrival > last_arrival:\n            fleets += 1\n            last_arrival = arrival\n\n    return fleets\n```\n\n    \n    First, we create a `cars` data structure containing the car's position and speed, sorted in descending order by position. This ensures that we examine the cars from the front of the road (i.e., closest to the target) to the back.\n\nNext, we initialize a `fleets` counter and a `last_arrival` variable to keep track of the last car's arrival time at the destination.\n\nThen, we iterate through the sorted cars. For each car, we calculate its arrival time as `(target - position) / speed`. If this car's arrival time is greater than the last car's arrival time (i.e., `arrival > last_arrival`), then it is considered a new car fleet, and we will increment the `fleets` counter. We update the `last_arrival` variable for the next iteration.\n\nFinally, we return the total number of car fleets that will arrive at the destination.\n    ",
+    "javascript": "\n    ```javascript\nfunction carFleet(target, position, speed) {\n  const n = position.length;\n  const cars = position.map((pos, i) => [pos, speed[i]]).sort((a, b) => b[0] - a[0]);\n\n  let fleets = 0;\n  let lastArrival = -1;\n\n  for (let i = 0; i < n; i++) {\n    const arrival = (target - cars[i][0]) / cars[i][1];\n    if (arrival > lastArrival) {\n      fleets++;\n      lastArrival = arrival;\n    }\n  }\n\n  return fleets;\n}\n```\n\n    \n    First, we create a `cars` data structure containing the car's position and speed, sorted in descending order by position. This ensures that we examine the cars from the front of the road (i.e., closest to the target) to the back.\n\nNext, we initialize a `fleets` counter and a `last_arrival` variable to keep track of the last car's arrival time at the destination.\n\nThen, we iterate through the sorted cars. For each car, we calculate its arrival time as `(target - position) / speed`. If this car's arrival time is greater than the last car's arrival time (i.e., `arrival > last_arrival`), then it is considered a new car fleet, and we will increment the `fleets` counter. We update the `last_arrival` variable for the next iteration.\n\nFinally, we return the total number of car fleets that will arrive at the destination.\n    ",
+    "java": "\n    ```java\npublic int carFleet(int target, int[] position, int[] speed) {\n    int n = position.length;\n    Integer[] indices = new Integer[n];\n    for (int i = 0; i < n; i++) {\n        indices[i] = i;\n    }\n\n    Arrays.sort(indices, (a, b) -> position[b] - position[a]);\n\n    int fleets = 0;\n    double lastArrival = -1;\n    for (int i : indices) {\n        double arrival = (double) (target - position[i]) / speed[i];\n        if (arrival > lastArrival) {\n            fleets++;\n            lastArrival = arrival;\n        }\n    }\n\n    return fleets;\n}\n```\n\n    \n    First, we create a `cars` data structure containing the car's position and speed, sorted in descending order by position. This ensures that we examine the cars from the front of the road (i.e., closest to the target) to the back.\n\nNext, we initialize a `fleets` counter and a `last_arrival` variable to keep track of the last car's arrival time at the destination.\n\nThen, we iterate through the sorted cars. For each car, we calculate its arrival time as `(target - position) / speed`. If this car's arrival time is greater than the last car's arrival time (i.e., `arrival > last_arrival`), then it is considered a new car fleet, and we will increment the `fleets` counter. We update the `last_arrival` variable for the next iteration.\n\nFinally, we return the total number of car fleets that will arrive at the destination.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2256,
+  "title": "Minimum Average Difference",
+  "slug": "minimum-average-difference",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums of length n.\n\nThe average difference of the index i is the absolute difference between the average of the first i + 1 elements of nums and the average of the last n - i - 1 elements. Both averages should be rounded down to the nearest integer.\n\nReturn _the index with the minimum average difference_. If there are multiple such indices, return the smallest one.\n\nNote:\n\n*   The absolute difference of two numbers is the absolute value of their difference.\n*   The average of n elements is the sum of the n elements divided (integer division) by n.\n*   The average of 0 elements is considered to be 0.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_convertible_words(start_words, target_words):\n    count = 0\n    for target in target_words:\n        for start in start_words:\n            if len(start) + 1 == len(target) and target.startswith(start):\n                count += 1\n                break\n    return count\n```\n    \n    The algorithm consists of iterating through the list of targetWords while also iterating through the list of startWords. We check if the length of the current startWord plus one is equal to the length of the current targetWord, which indicates that we can add an English letter to startWord to make it equal to the targetWord. Additionally, we check if targetWord starts with the startWord. If both conditions are met, we increase the count and break out of the inner loop. Finally, we return the count.\n    ",
+    "javascript": "\n    ```javascript\nfunction countConvertibleWords(startWords, targetWords) {\n    let count = 0;\n    for (const target of targetWords) {\n        for (const start of startWords) {\n            if (start.length + 1 === target.length && target.startsWith(start)) {\n                count++;\n                break;\n            }\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm consists of iterating through the list of targetWords while also iterating through the list of startWords. We check if the length of the current startWord plus one is equal to the length of the current targetWord, which indicates that we can add an English letter to startWord to make it equal to the targetWord. Additionally, we check if targetWord starts with the startWord. If both conditions are met, we increase the count and break out of the inner loop. Finally, we return the count.\n    ",
+    "java": "\n    ```java\nimport java.util.List;\n\npublic int countConvertibleWords(List<String> startWords, List<String> targetWords) {\n    int count = 0;\n    for (String target : targetWords) {\n        for (String start : startWords) {\n            if (start.length() + 1 == target.length() && target.startsWith(start)) {\n                count++;\n                break;\n            }\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm consists of iterating through the list of targetWords while also iterating through the list of startWords. We check if the length of the current startWord plus one is equal to the length of the current targetWord, which indicates that we can add an English letter to startWord to make it equal to the targetWord. Additionally, we check if targetWord starts with the startWord. If both conditions are met, we increase the count and break out of the inner loop. Finally, we return the count.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

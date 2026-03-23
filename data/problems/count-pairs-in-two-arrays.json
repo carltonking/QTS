@@ -1,0 +1,24 @@
+{
+  "id": 1885,
+  "title": "Count Pairs in Two Arrays",
+  "slug": "count-pairs-in-two-arrays",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given two integer arrays nums1 and nums2 of length n, count the pairs of indices (i, j) such that i < j and nums1[i] + nums1[j] > nums2[i] + nums2[j].\n\nReturn _the number of pairs satisfying the condition._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_homogenous(s: str) -> int:\n    res, count, mod = 0, 1, 10**9 + 7\n    for i in range(1, len(s)):\n        count = count + 1 if s[i] == s[i - 1] else 1\n        res = (res + count) % mod\n    return res\n```\n    \n    The algorithm to solve this problem involves iterating through the given string and keeping track of counts for similar contiguous characters. Initialize a result variable, a count variable and the modulo for 10^9 + 7 to avoid large number problems.\n\nLoop through the string starting from the second character. Compare the current character to the previous character. If the characters are the same, increment the count, otherwise reset it to 1. Add the count value to the result and perform modulo on the result after the addition.\n\nAfter looping through the entire string, return the result. This approach has a time complexity of O(n), where n is the length of the input string.\n    ",
+    "javascript": "\n    ```javascript\nfunction countHomogenous(s) {\n    let res = 0, count = 1, mod = 1e9 + 7;\n    for (let i = 1; i < s.length; ++i) {\n        count = (s[i] === s[i - 1]) ? count + 1 : 1;\n        res = (res + count) % mod;\n    }\n    return res;\n}\n```\n    \n    The algorithm to solve this problem involves iterating through the given string and keeping track of counts for similar contiguous characters. Initialize a result variable, a count variable and the modulo for 10^9 + 7 to avoid large number problems.\n\nLoop through the string starting from the second character. Compare the current character to the previous character. If the characters are the same, increment the count, otherwise reset it to 1. Add the count value to the result and perform modulo on the result after the addition.\n\nAfter looping through the entire string, return the result. This approach has a time complexity of O(n), where n is the length of the input string.\n    ",
+    "java": "\n    ```java\nint countHomogenous(String s) {\n    int res = 0, count = 1, mod = 1000000007;\n    for (int i = 1; i < s.length(); ++i) {\n        count = (s.charAt(i) == s.charAt(i - 1)) ? count + 1 : 1;\n        res = (res + count) % mod;\n    }\n    return res;\n}\n```\n    \n    The algorithm to solve this problem involves iterating through the given string and keeping track of counts for similar contiguous characters. Initialize a result variable, a count variable and the modulo for 10^9 + 7 to avoid large number problems.\n\nLoop through the string starting from the second character. Compare the current character to the previous character. If the characters are the same, increment the count, otherwise reset it to 1. Add the count value to the result and perform modulo on the result after the addition.\n\nAfter looping through the entire string, return the result. This approach has a time complexity of O(n), where n is the length of the input string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1140,
+  "title": "Stone Game II",
+  "slug": "stone-game-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Alice and Bob continue their games with piles of stones. There are a number of piles arranged in a row, and each pile has a positive integer number of stones piles[i]. The objective of the game is to end with the most stones.\n\nAlice and Bob take turns, with Alice starting first. Initially, M = 1.\n\nOn each player's turn, that player can take all the stones in the first X remaining piles, where 1 <= X <= 2M. Then, we set M = max(M, X).\n\nThe game continues until all the stones have been taken.\n\nAssuming Alice and Bob play optimally, return the maximum number of stones Alice can get.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom heapq import heappush, heappop\n\ndef rearrange_barcodes(barcodes):\n    count = {}\n    for barcode in barcodes:\n        if barcode not in count:\n            count[barcode] = 0\n        count[barcode] += 1\n\n    pq = []\n    for key, value in count.items():\n        heappush(pq, (-value, key))\n\n    idx = 0\n    while pq:\n        curr = heappop(pq)\n        while curr[0] < 0:\n            barcodes[idx] = curr[1]\n            curr = (curr[0] + 1, curr[1])\n            idx += 2\n            if idx >= len(barcodes):\n                idx = 1\n    return barcodes\n```\n    \n    1. Count the occurrences of each barcode.\n2. Create a max-heap based on the count of occurrences (in descending order).\n3. Iterate through the priority queue, and assign the barcode to every second position (even positions first, odd positions next) while keeping track of counts. This ensures that no two adjacent barcodes are equal.\n4. Return the rearranged barcodes.\n    ",
+    "javascript": "\n    ```javascript\nfunction rearrangeBarcodes(barcodes) {\n    const count = new Map();\n    for (const barcode of barcodes) {\n        count.set(barcode, (count.get(barcode) || 0) + 1);\n    }\n\n    const pq = Array.from(count.entries());\n    pq.sort((a, b) => b[1] - a[1]);\n\n    let index = 0;\n    while (pq.length) {\n        const curr = pq.shift();\n        while (curr[1] > 0) {\n            barcodes[index] = curr[0];\n            curr[1]--;\n            index += 2;\n            if (index >= barcodes.length) {\n                index = 1;\n            }\n        }\n    }\n    return barcodes;\n}\n```\n    \n    1. Count the occurrences of each barcode.\n2. Create a max-heap based on the count of occurrences (in descending order).\n3. Iterate through the priority queue, and assign the barcode to every second position (even positions first, odd positions next) while keeping track of counts. This ensures that no two adjacent barcodes are equal.\n4. Return the rearranged barcodes.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic int[] rearrangeBarcodes(int[] barcodes) {\n    int n = barcodes.length;\n    int[] count = new int[10001];\n    for (int i = 0; i < n; i++) {\n        count[barcodes[i]]++;\n    }\n\n    PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> b[1] - a[1]);\n    for (int i = 1; i <= 10000; i++) {\n        if (count[i] > 0) {\n            pq.offer(new int[]{i, count[i]});\n        }\n    }\n\n    int index = 0;\n    while (!pq.isEmpty()) {\n        int[] curr = pq.poll();\n        while (curr[1] > 0) {\n            barcodes[index] = curr[0];\n            curr[1]--;\n            index += 2;\n            if (index >= n) {\n                index = 1;\n            }\n        }\n    }\n    return barcodes;\n}\n```\n    \n    1. Count the occurrences of each barcode.\n2. Create a max-heap based on the count of occurrences (in descending order).\n3. Iterate through the priority queue, and assign the barcode to every second position (even positions first, odd positions next) while keeping track of counts. This ensures that no two adjacent barcodes are equal.\n4. Return the rearranged barcodes.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

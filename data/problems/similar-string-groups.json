@@ -1,0 +1,24 @@
+{
+  "id": 839,
+  "title": "Similar String Groups",
+  "slug": "similar-string-groups",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Two strings X and Y are similar if we can swap two letters (in different positions) of X, so that it equals Y. Also two strings X and Y are similar if they are equal.\n\nFor example, \"tars \" and \"rats \" are similar (swapping at positions 0 and 2), and \"rats \" and \"arts \" are similar, but \"star \" is not similar to \"tars \", \"rats \", or \"arts \".\n\nTogether, these form two connected groups by similarity: { \"tars \", \"rats \", \"arts \"} and { \"star \"}. Notice that \"tars \" and \"arts \" are in the same group even though they are not similar. Formally, each group is such that a word is in the group if and only if it is similar to at least one other word in the group.\n\nWe are given a list strs of strings where every string in strs is an anagram of every other string in strs. How many groups are there?",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minimal_length_encoding(words):\n    word_set = set(words)\n\n    for word in words:\n        for i in range(1, len(word)):\n            word_set.discard(word[i:])\n\n    return sum(len(word) + 1 for word in word_set)\n```\n    \n    The algorithm starts by initializing a set, `wordSet`, containing all unique words in the input array `words`. Next, for each word in the input array, we iterate over its suffixes (i.e., the substring from a given index to the end of the string) and remove them from the set.\n\nAt the end of the iterations, the set `wordSet` will contain only the shortest unique suffix of each word. We then calculate the total length of the elements in the set plus the special character ('#') that separates them, which results in the length of the shortest reference string.\n\nThe algorithm's time complexity is O(N * M²), where N is the number of words and M is the max length of a word, and its space complexity is O(N * M).\n    ",
+    "javascript": "\n    ```javascript\nfunction minimalLengthEncoding(words) {\n    const wordSet = new Set(words);\n\n    for (const word of words) {\n        for (let i = 1; i < word.length; i++) {\n            wordSet.delete(word.slice(i));\n        }\n    }\n\n    let len = 0;\n    for (const word of wordSet) {\n        len += word.length + 1;\n    }\n    return len;\n}\n```\n    \n    The algorithm starts by initializing a set, `wordSet`, containing all unique words in the input array `words`. Next, for each word in the input array, we iterate over its suffixes (i.e., the substring from a given index to the end of the string) and remove them from the set.\n\nAt the end of the iterations, the set `wordSet` will contain only the shortest unique suffix of each word. We then calculate the total length of the elements in the set plus the special character ('#') that separates them, which results in the length of the shortest reference string.\n\nThe algorithm's time complexity is O(N * M²), where N is the number of words and M is the max length of a word, and its space complexity is O(N * M).\n    ",
+    "java": "\n    ```java\nimport java.util.HashSet;\nimport java.util.Set;\n\npublic int minimalLengthEncoding(String[] words) {\n    Set<String> wordSet = new HashSet<>();\n    for (String word : words) {\n        wordSet.add(word);\n    }\n\n    for (String word : words) {\n        for (int i = 1; i < word.length(); i++) {\n            wordSet.remove(word.substring(i));\n        }\n    }\n\n    int len = 0;\n    for (String word : wordSet) {\n        len += word.length() + 1;\n    }\n    return len;\n}\n```\n    \n    The algorithm starts by initializing a set, `wordSet`, containing all unique words in the input array `words`. Next, for each word in the input array, we iterate over its suffixes (i.e., the substring from a given index to the end of the string) and remove them from the set.\n\nAt the end of the iterations, the set `wordSet` will contain only the shortest unique suffix of each word. We then calculate the total length of the elements in the set plus the special character ('#') that separates them, which results in the length of the shortest reference string.\n\nThe algorithm's time complexity is O(N * M²), where N is the number of words and M is the max length of a word, and its space complexity is O(N * M).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

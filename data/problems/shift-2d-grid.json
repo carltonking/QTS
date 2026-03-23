@@ -1,0 +1,24 @@
+{
+  "id": 1260,
+  "title": "Shift 2D Grid",
+  "slug": "shift-2d-grid",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a 2D grid of size m x n and an integer k. You need to shift the grid k times.\n\nIn one shift operation:\n\n*   Element at grid[i][j] moves to grid[i][j + 1].\n*   Element at grid[i][n - 1] moves to grid[i + 1][0].\n*   Element at grid[m - 1][n - 1] moves to grid[0][0].\n\nReturn the _2D grid_ after applying shift operation k times.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef dayOfYear(date: str) -> int:\n    year, month, day = map(int, date.split('-'))\n\n    daysInMonth = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]\n    if year % 4 == 0 and (year % 100 != 0 or year % 400 == 0):\n        daysInMonth[2] = 29\n\n    dayOfYear = sum(daysInMonth[:month]) + day\n    return dayOfYear\n```\n    \n    1. Parse the input string to extract the year, month, and day as integers.\n2. Create an array `daysInMonth` representing the days in each month, with a special case for February in leap years.\n3. Iterate through the `daysInMonth` array up to the given month, accumulating the days in each month.\n4. Add the given day to the accumulated days to get the day number of the year.\n5. Return the resulting day number of the year.\n    ",
+    "javascript": "\n    ```javascript\nfunction dayOfYear(date) {\n    let [year, month, day] = date.split('-').map(x => parseInt(x, 10));\n\n    let daysInMonth = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];\n    if (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) {\n        daysInMonth[2] = 29;\n    }\n\n    let dayOfYear = 0;\n    for (let i = 1; i < month; i++) {\n        dayOfYear += daysInMonth[i];\n    }\n    dayOfYear += day;\n\n    return dayOfYear;\n}\n```\n    \n    1. Parse the input string to extract the year, month, and day as integers.\n2. Create an array `daysInMonth` representing the days in each month, with a special case for February in leap years.\n3. Iterate through the `daysInMonth` array up to the given month, accumulating the days in each month.\n4. Add the given day to the accumulated days to get the day number of the year.\n5. Return the resulting day number of the year.\n    ",
+    "java": "\n    ```java\npublic int dayOfYear(String date) {\n    int year = Integer.parseInt(date.substring(0, 4));\n    int month = Integer.parseInt(date.substring(5, 7));\n    int day = Integer.parseInt(date.substring(8, 10));\n\n    int[] daysInMonth = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};\n    if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {\n        daysInMonth[2] = 29;\n    }\n\n    int dayOfYear = 0;\n    for (int i = 1; i < month; i++) {\n        dayOfYear += daysInMonth[i];\n    }\n    dayOfYear += day;\n\n    return dayOfYear;\n}\n```\n    \n    1. Parse the input string to extract the year, month, and day as integers.\n2. Create an array `daysInMonth` representing the days in each month, with a special case for February in leap years.\n3. Iterate through the `daysInMonth` array up to the given month, accumulating the days in each month.\n4. Add the given day to the accumulated days to get the day number of the year.\n5. Return the resulting day number of the year.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

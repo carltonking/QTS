@@ -1,0 +1,24 @@
+{
+  "id": 774,
+  "title": "Minimize Max Distance to Gas Station",
+  "slug": "minimize-max-distance-to-gas-station",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an integer array stations that represents the positions of the gas stations on the x-axis. You are also given an integer k.\n\nYou should add k new gas stations. You can add the stations anywhere on the x-axis, and not necessarily on an integer position.\n\nLet penalty() be the maximum distance between adjacent gas stations after adding the k new stations.\n\nReturn _the smallest possible value of_ penalty(). Answers within 10-6 of the actual answer will be accepted.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass Node:\n    def __init__(self, val=None, children=None):\n        self.val = val\n        self.children = children if children is not None else []\n \ndef max_depth(root):\n    if root is None:\n        return 0\n    depth = 0\n    for child in root.children:\n        depth = max(depth, max_depth(child))\n    return 1 + depth\n```\n    \n    The algorithm works by recursively traversing the n-ary tree. It visits each node in the tree and calculates the maximum depth for each of its children. To find the maximum depth for the entire tree, it takes the maximum depth of all children and adds 1, representing the current root node. If the root is `null` or `None`, the maximum depth is 0.\n\nEach language implementation utilizes a `Node` class with a constructor to store the node value and children. It also has a `maxDepth` function that carries out the algorithm mentioned above. The difference among the languages lies only in the syntax for the class definitions and function calls.\n    ",
+    "javascript": "\n    ```javascript\nclass Node {\n    constructor(val, children = []) {\n        this.val = val;\n        this.children = children;\n    }\n}\n\nfunction maxDepth(root) {\n    if (root === null) {\n        return 0;\n    }\n    let depth = 0;\n    for (const child of root.children) {\n        depth = Math.max(depth, maxDepth(child));\n    }\n    return 1 + depth;\n}\n```\n    \n    The algorithm works by recursively traversing the n-ary tree. It visits each node in the tree and calculates the maximum depth for each of its children. To find the maximum depth for the entire tree, it takes the maximum depth of all children and adds 1, representing the current root node. If the root is `null` or `None`, the maximum depth is 0.\n\nEach language implementation utilizes a `Node` class with a constructor to store the node value and children. It also has a `maxDepth` function that carries out the algorithm mentioned above. The difference among the languages lies only in the syntax for the class definitions and function calls.\n    ",
+    "java": "\n    ```java\nimport java.util.List;\n\nclass Node {\n    public int val;\n    public List<Node> children;\n\n    public Node() {}\n\n    public Node(int _val) {\n        val = _val;\n    }\n}\n \npublic int maxDepth(Node root) {\n    if (root == null) {\n        return 0;\n    }\n    int depth = 0;\n    for (Node child : root.children) {\n        depth = Math.max(depth, maxDepth(child));\n    }\n    return 1 + depth;\n}\n```\n    \n    The algorithm works by recursively traversing the n-ary tree. It visits each node in the tree and calculates the maximum depth for each of its children. To find the maximum depth for the entire tree, it takes the maximum depth of all children and adds 1, representing the current root node. If the root is `null` or `None`, the maximum depth is 0.\n\nEach language implementation utilizes a `Node` class with a constructor to store the node value and children. It also has a `maxDepth` function that carries out the algorithm mentioned above. The difference among the languages lies only in the syntax for the class definitions and function calls.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

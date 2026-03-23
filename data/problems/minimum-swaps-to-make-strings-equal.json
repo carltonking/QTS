@@ -1,0 +1,24 @@
+{
+  "id": 1247,
+  "title": "Minimum Swaps to Make Strings Equal",
+  "slug": "minimum-swaps-to-make-strings-equal",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two strings s1 and s2 of equal length consisting of letters \"x \" and \"y \" only. Your task is to make these two strings equal to each other. You can swap any two characters that belong to different strings, which means: swap s1[i] and s2[j].\n\nReturn the minimum number of swaps required to make s1 and s2 equal, or return -1 if it is impossible to do so.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef moves_to_make_zigzag(nums):\n    moves1, moves2 = 0, 0\n    for i in range(len(nums)):\n        left = nums[i - 1] if i > 0 else float('inf')\n        right = nums[i + 1] if i + 1 < len(nums) else float('inf')\n        diff1 = nums[i] - min(left, right) + 1\n        diff2 = nums[i] - min(left, right) + 1\n        if i % 2 == 0:\n            moves1 += max(0, diff1)\n        else:\n            moves2 += max(0, diff2)\n    return min(moves1, moves2)\n```\n    \n    The algorithm iterates through the input array and calculates the number of moves required to create a zigzag pattern for both even and odd positions. At each position i, it calculates the minimum value between the left and right neighbors and then the difference between the current value and the minimum neighbor value. The difference is added to the total moves for even and odd positions depending on the index. Finally, the minimum of the total moves for both even and odd positions is returned as the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction movesToMakeZigzag(nums) {\n    let moves1 = 0, moves2 = 0;\n    for (let i = 0; i < nums.length; i++) {\n        let left = i > 0 ? nums[i - 1] : Number.MAX_VALUE;\n        let right = i + 1 < nums.length ? nums[i + 1] : Number.MAX_VALUE;\n        let diff1 = nums[i] - Math.min(left, right) + 1;\n        let diff2 = nums[i] - Math.min(left, right) + 1;\n        if (i % 2 === 0) {\n            moves1 += Math.max(0, diff1);\n        } else {\n            moves2 += Math.max(0, diff2);\n        }\n    }\n    return Math.min(moves1, moves2);\n}\n```\n    \n    The algorithm iterates through the input array and calculates the number of moves required to create a zigzag pattern for both even and odd positions. At each position i, it calculates the minimum value between the left and right neighbors and then the difference between the current value and the minimum neighbor value. The difference is added to the total moves for even and odd positions depending on the index. Finally, the minimum of the total moves for both even and odd positions is returned as the result.\n    ",
+    "java": "\n    ```java\nint movesToMakeZigzag(int[] nums) {\n    int moves1 = 0, moves2 = 0;\n    for (int i = 0; i < nums.length; i++) {\n        int left = i > 0 ? nums[i - 1] : Integer.MAX_VALUE;\n        int right = i + 1 < nums.length ? nums[i + 1] : Integer.MAX_VALUE;\n        int diff1 = nums[i] - Math.min(left, right) + 1;\n        int diff2 = nums[i] - Math.min(left, right) + 1;\n        if (i % 2 == 0) {\n            moves1 += Math.max(0, diff1);\n        } else {\n            moves2 += Math.max(0, diff2);\n        }\n    }\n    return Math.min(moves1, moves2);\n}\n```\n    \n    The algorithm iterates through the input array and calculates the number of moves required to create a zigzag pattern for both even and odd positions. At each position i, it calculates the minimum value between the left and right neighbors and then the difference between the current value and the minimum neighbor value. The difference is added to the total moves for even and odd positions depending on the index. Finally, the minimum of the total moves for both even and odd positions is returned as the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

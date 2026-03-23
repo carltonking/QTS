@@ -1,0 +1,24 @@
+{
+  "id": 479,
+  "title": "Largest Palindrome Product",
+  "slug": "largest-palindrome-product",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given an integer n, return _the largest palindromic integer that can be represented as the product of two n\\-digits integers_. Since the answer can be very large, return it modulo 1337.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef largestPalindrome(n):\n    if n == 1: \n        return 9\n    upper_limit = 10**n - 1\n    lower_limit = upper_limit // 10\n    for i in range(upper_limit, lower_limit, -1):\n        temp = i\n        reverse = 0\n        while temp != 0:\n            reverse = reverse * 10 + temp % 10\n            temp //= 10\n        palindrome = i * (10**n) + reverse\n        for j in range(upper_limit, lower_limit, -1):\n            product = palindrome // j\n            if palindrome % j == 0 and product <= upper_limit:\n                return palindrome % 1337\n    return -1\n```\n    \n    1. If n is 1, return 9 (the largest palindromic product of two 1-digit numbers is 9).\n2. Calculate the upper and lower limits for the n-digit numbers.\n3. Loop through the numbers in reverse order, starting from the upper limit down to the lower limit.\n4. Within the loop, find the reverse of the current iteration number.\n5. Calculate the possible palindrome by concatenating the current number and its reverse.\n6. Loop through the numbers again to find the two factors of the palindrome.\n7. If a palindrome with valid factors is found, return the palindrome modulo 1337.\n8. If no such palindrome is found, return -1.\n    ",
+    "javascript": "\n    ```javascript\nfunction largestPalindrome(n) {\n    if (n === 1) return 9; // Handle 1-digit numbers\n    let upper_limit = Math.pow(10, n) - 1;\n    let lower_limit = Math.floor(upper_limit / 10);\n    for (let i = upper_limit; i > lower_limit; i--) {\n        let temp = i;\n        let reverse = 0;\n        while (temp !== 0) {\n            reverse = reverse * 10 + temp % 10;\n            temp = Math.floor(temp / 10);\n        }\n        let palindrome = i * Math.pow(10, n) + reverse;\n        for (let j = upper_limit; j > lower_limit; j--) {\n            let product = Math.floor(palindrome / j);\n            if (palindrome % j === 0 && product <= upper_limit) {\n                return palindrome % 1337;\n            }\n        }\n    }\n    return -1;\n}\n```\n\n    \n    1. If n is 1, return 9 (the largest palindromic product of two 1-digit numbers is 9).\n2. Calculate the upper and lower limits for the n-digit numbers.\n3. Loop through the numbers in reverse order, starting from the upper limit down to the lower limit.\n4. Within the loop, find the reverse of the current iteration number.\n5. Calculate the possible palindrome by concatenating the current number and its reverse.\n6. Loop through the numbers again to find the two factors of the palindrome.\n7. If a palindrome with valid factors is found, return the palindrome modulo 1337.\n8. If no such palindrome is found, return -1.\n    ",
+    "java": "\n    ```java\nint largestPalindrome(int n) {\n    if (n == 1) return 9;\n    int upper_limit = (int) Math.pow(10, n) - 1;\n    int lower_limit = upper_limit / 10;\n    for (int i = upper_limit; i > lower_limit; --i) {\n        long temp = i;\n        long reverse = 0;\n        while (temp != 0) {\n            reverse = reverse * 10 + temp % 10;\n            temp /= 10;\n        }\n        long palindrome = i * (long) Math.pow(10, n) + reverse;\n        for (long j = upper_limit; j > lower_limit; --j) {\n            long product = palindrome / j;\n            if (palindrome % j == 0 && product <= upper_limit) {\n                return (int) (palindrome % 1337);\n            }\n        }\n    }\n    return -1;\n}\n```\n    \n    1. If n is 1, return 9 (the largest palindromic product of two 1-digit numbers is 9).\n2. Calculate the upper and lower limits for the n-digit numbers.\n3. Loop through the numbers in reverse order, starting from the upper limit down to the lower limit.\n4. Within the loop, find the reverse of the current iteration number.\n5. Calculate the possible palindrome by concatenating the current number and its reverse.\n6. Loop through the numbers again to find the two factors of the palindrome.\n7. If a palindrome with valid factors is found, return the palindrome modulo 1337.\n8. If no such palindrome is found, return -1.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

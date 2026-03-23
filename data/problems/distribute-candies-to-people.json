@@ -1,0 +1,24 @@
+{
+  "id": 1103,
+  "title": "Distribute Candies to People",
+  "slug": "distribute-candies-to-people",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "We distribute some number of candies, to a row of n = num_people people in the following way:\n\nWe then give 1 candy to the first person, 2 candies to the second person, and so on until we give n candies to the last person.\n\nThen, we go back to the start of the row, giving n + 1 candies to the first person, n + 2 candies to the second person, and so on until we give 2 * n candies to the last person.\n\nThis process repeats (with us giving one more candy each time, and moving to the start of the row after we reach the end) until we run out of candies. The last person will receive all of our remaining candies (not necessarily one more than the previous gift).\n\nReturn an array (of length num_people and sum candies) that represents the final distribution of candies.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef distribute_candies(candies, num_people):\n    result = [0] * num_people\n    i = 0\n    count = 1\n\n    while candies > 0:\n        result[i % num_people] += min(candies, count)\n        candies -= count\n        count += 1\n        i += 1\n\n    return result\n```\n\n    \n    The algorithm proceeds as follows:\n\n1. Initialize an array `result` of length `num_people` with 0's.\n2. Initialize two variables `i` and `count`, both with value 0. `i` will iterate through the people and `count` will store how many candies should be given at each step.\n3. Loop until there are no more `candies` left.\n    1. To distribute `candies` among people:\n        - If the remaining `candies` are more than the current `count`, give `count` candies to the current person.\n        - If the remaining `candies` are less than or equal to the current `count`, give the remaining `candies` to the current person and stop the loop.\n    2. Update the remaining `candies` by subtracting the current `count`.\n    3. Increment the current `count` and `i`.\n4. After the loop, return the `result` array as the final distribution of candies.\n    ",
+    "javascript": "\n    ```javascript\nfunction distributeCandies(candies, num_people) {\n    const result = new Array(num_people).fill(0);\n    let i = 0, count = 1;\n\n    while (candies > 0) {\n        result[i % num_people] += Math.min(candies, count);\n        candies -= count;\n        count++;\n        i++;\n    }\n\n    return result;\n}\n```\n\n    \n    The algorithm proceeds as follows:\n\n1. Initialize an array `result` of length `num_people` with 0's.\n2. Initialize two variables `i` and `count`, both with value 0. `i` will iterate through the people and `count` will store how many candies should be given at each step.\n3. Loop until there are no more `candies` left.\n    1. To distribute `candies` among people:\n        - If the remaining `candies` are more than the current `count`, give `count` candies to the current person.\n        - If the remaining `candies` are less than or equal to the current `count`, give the remaining `candies` to the current person and stop the loop.\n    2. Update the remaining `candies` by subtracting the current `count`.\n    3. Increment the current `count` and `i`.\n4. After the loop, return the `result` array as the final distribution of candies.\n    ",
+    "java": "\n    ```java\npublic int[] distributeCandies(int candies, int num_people) {\n    int[] result = new int[num_people];\n    int i = 0, count = 1;\n\n    while (candies > 0) {\n        result[i % num_people] += Math.min(candies, count);\n        candies -= count;\n        count++;\n        i++;\n    }\n\n    return result;\n}\n```\n\n    \n    The algorithm proceeds as follows:\n\n1. Initialize an array `result` of length `num_people` with 0's.\n2. Initialize two variables `i` and `count`, both with value 0. `i` will iterate through the people and `count` will store how many candies should be given at each step.\n3. Loop until there are no more `candies` left.\n    1. To distribute `candies` among people:\n        - If the remaining `candies` are more than the current `count`, give `count` candies to the current person.\n        - If the remaining `candies` are less than or equal to the current `count`, give the remaining `candies` to the current person and stop the loop.\n    2. Update the remaining `candies` by subtracting the current `count`.\n    3. Increment the current `count` and `i`.\n4. After the loop, return the `result` array as the final distribution of candies.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

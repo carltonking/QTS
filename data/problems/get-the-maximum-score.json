@@ -1,0 +1,24 @@
+{
+  "id": 1537,
+  "title": "Get the Maximum Score",
+  "slug": "get-the-maximum-score",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given two sorted arrays of distinct integers nums1 and nums2.\n\nA valid path is defined as follows:\n\n*   Choose array nums1 or nums2 to traverse (from index-0).\n*   Traverse the current array from left to right.\n*   If you are reading any value that is present in nums1 and nums2 you are allowed to change your path to the other array. (Only one repeated value is considered in the valid path).\n\nThe score is defined as the sum of uniques values in a valid path.\n\nReturn _the maximum score you can obtain of all possible valid paths_. Since the answer may be too large, return it modulo 109 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxScore(s):\n    left_zeros, right_ones, max_score = 0, s.count('1'), 0\n    for i in range(len(s) - 1):\n        if s[i] == '0': left_zeros += 1\n        else: right_ones -= 1\n        max_score = max(max_score, left_zeros + right_ones)\n    return max_score\n```\n    \n    The algorithm works as follows:\n1. Initialize three variables: `left_zeros` to count zeros in the left substring, `right_ones` to count ones in the right substring, and `max_score` to store the maximum score after checking all possible splits.\n2. Count the total number of ones in the whole string and store it in `right_ones`.\n3. Iterate through the string (excluding the last character since both substrings should be non-empty) and for each character i, do the following:\n   a. If the character is '0', increment `left_zeros`. Else, decrement `right_ones` as the character '1' is moving from the right substring to the left substring.\n   b. Calculate the score by adding `left_zeros` and `right_ones`, and update `max_score` if it is less than the current score.\n4. Return the `max_score` after the iteration is complete.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxScore(s) {\n    let left_zeros = 0, right_ones = 0, max_score = 0;\n    for(let c of s) if(c === '1') right_ones++;\n        \n    for(let i = 0; i < s.length - 1; i++) {\n        if(s[i] === '0') left_zeros++;\n        else right_ones--;\n        max_score = Math.max(max_score, left_zeros + right_ones);\n    }\n    return max_score;\n}\n```\n    \n    The algorithm works as follows:\n1. Initialize three variables: `left_zeros` to count zeros in the left substring, `right_ones` to count ones in the right substring, and `max_score` to store the maximum score after checking all possible splits.\n2. Count the total number of ones in the whole string and store it in `right_ones`.\n3. Iterate through the string (excluding the last character since both substrings should be non-empty) and for each character i, do the following:\n   a. If the character is '0', increment `left_zeros`. Else, decrement `right_ones` as the character '1' is moving from the right substring to the left substring.\n   b. Calculate the score by adding `left_zeros` and `right_ones`, and update `max_score` if it is less than the current score.\n4. Return the `max_score` after the iteration is complete.\n    ",
+    "java": "\n    ```java\npublic int maxScore(String s) {\n    int left_zeros = 0, right_ones = 0, max_score = 0;\n    for(char c : s.toCharArray()) if(c == '1') right_ones++;      \n        \n    for(int i = 0; i < s.length() - 1; i++) {\n        if(s.charAt(i) == '0') left_zeros++;\n        else right_ones--;\n        max_score = Math.max(max_score, left_zeros + right_ones);\n    }\n    return max_score;\n}\n```\n    \n    The algorithm works as follows:\n1. Initialize three variables: `left_zeros` to count zeros in the left substring, `right_ones` to count ones in the right substring, and `max_score` to store the maximum score after checking all possible splits.\n2. Count the total number of ones in the whole string and store it in `right_ones`.\n3. Iterate through the string (excluding the last character since both substrings should be non-empty) and for each character i, do the following:\n   a. If the character is '0', increment `left_zeros`. Else, decrement `right_ones` as the character '1' is moving from the right substring to the left substring.\n   b. Calculate the score by adding `left_zeros` and `right_ones`, and update `max_score` if it is less than the current score.\n4. Return the `max_score` after the iteration is complete.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

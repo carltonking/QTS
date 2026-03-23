@@ -1,0 +1,24 @@
+{
+  "id": 1133,
+  "title": "Largest Unique Number",
+  "slug": "largest-unique-number",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer array nums, return _the largest integer that only occurs once_. If no integer occurs once, return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef last_substring(s: str) -> str:\n    i, j, k, n = 0, 1, 0, len(s)\n    while j + k < n:\n        if s[i + k] == s[j + k]:\n            k += 1\n        elif s[i + k] < s[j + k]:\n            i = j\n            j += 1\n            k = 0\n        else:\n            j += 1\n            k = 0\n    return s[i:]\n```\n    \n    Iterate through the string using three pointers i, j, and k. At each step, compare s[i+k] and s[j+k]. If s[i+k] < s[j+k], set i=j and increment j. If s[i+k] == s[j+k], increment k to continue comparing the next characters. If s[i+k] > s[j+k], just increment j. When j+k reaches the end of the string, the last substring in lexicographical order will start at index i.\n    ",
+    "javascript": "\n    ```javascript\nfunction lastSubstring(s) {\n    let i = 0, j = 1, k = 0, n = s.length;\n    while (j + k < n) {\n        if (s.charAt(i + k) === s.charAt(j + k)) {\n            k++;\n        } else if (s.charAt(i + k) < s.charAt(j + k)) {\n            i = j;\n            j++;\n            k = 0;\n        } else {\n            j++;\n            k = 0;\n        }\n    }\n    return s.substring(i);\n}\n```\n    \n    Iterate through the string using three pointers i, j, and k. At each step, compare s[i+k] and s[j+k]. If s[i+k] < s[j+k], set i=j and increment j. If s[i+k] == s[j+k], increment k to continue comparing the next characters. If s[i+k] > s[j+k], just increment j. When j+k reaches the end of the string, the last substring in lexicographical order will start at index i.\n    ",
+    "java": "\n    ```java\nString lastSubstring(String s) {\n    int i = 0, j = 1, k = 0, n = s.length();\n    while (j + k < n) {\n        if (s.charAt(i + k) == s.charAt(j + k)) {\n            k++;\n        } else if (s.charAt(i + k) < s.charAt(j + k)) {\n            i = j;\n            j++;\n            k = 0;\n        } else {\n            j++;\n            k = 0;\n        }\n    }\n    return s.substring(i);\n}\n```\n    \n    Iterate through the string using three pointers i, j, and k. At each step, compare s[i+k] and s[j+k]. If s[i+k] < s[j+k], set i=j and increment j. If s[i+k] == s[j+k], increment k to continue comparing the next characters. If s[i+k] > s[j+k], just increment j. When j+k reaches the end of the string, the last substring in lexicographical order will start at index i.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

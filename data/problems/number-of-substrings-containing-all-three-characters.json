@@ -1,0 +1,24 @@
+{
+  "id": 1358,
+  "title": "Number of Substrings Containing All Three Characters",
+  "slug": "number-of-substrings-containing-all-three-characters",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string s consisting only of characters _a_, _b_ and _c_.\n\nReturn the number of substrings containing at least one occurrence of all these characters _a_, _b_ and _c_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_pairs(z):\n    pairs = []\n    \n    def f(x, y):\n        return x + y\n    \n    for x in range(1, z+1):\n        for y in range(1, z+1):\n            if f(x, y) == z:\n                pairs.append((x, y))\n    return pairs\n```\n    \n    The algorithm iterates through all pairs of positive integers x and y in the range (1, z), and checks whether their result when passed through the callable function f(x, y) is equal to the given value z. If the result is equal to z, the pair (x, y) is added to the list of pairs. The function returns the list of pairs that satisfy the given condition. As mentioned earlier, the actual formula for the function f(x, y) is not provided, so a simple addition formula is included for demonstration purposes. Make sure to replace it with the correct formula.\n    ",
+    "javascript": "\n    ```javascript\nfunction findPairs(z) {\n    let pairs = [];\n\n    function f(x, y) {\n        return x + y;\n    }\n    \n    for (let x = 1; x <= z; x++) {\n        for (let y = 1; y <= z; y++) {\n            if (f(x, y) === z) {\n                pairs.push([x, y]);\n            }\n        }\n    }\n    return pairs;\n}\n```\n    \n    The algorithm iterates through all pairs of positive integers x and y in the range (1, z), and checks whether their result when passed through the callable function f(x, y) is equal to the given value z. If the result is equal to z, the pair (x, y) is added to the list of pairs. The function returns the list of pairs that satisfy the given condition. As mentioned earlier, the actual formula for the function f(x, y) is not provided, so a simple addition formula is included for demonstration purposes. Make sure to replace it with the correct formula.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\nimport java.util.AbstractMap.SimpleEntry;\n\npublic List<SimpleEntry<Integer, Integer>> findPairs(int z) {\n    List<SimpleEntry<Integer, Integer>> pairs = new ArrayList<>();\n\n    int f(int x, int y) {\n        return x + y;\n    }\n\n    for (int x = 1; x <= z; x++) {\n        for (int y = 1; y <= z; y++) {\n            if (f(x, y) == z) {\n                pairs.add(new SimpleEntry<>(x, y));\n            }\n        }\n    }\n    return pairs;\n}\n```\n    \n    The algorithm iterates through all pairs of positive integers x and y in the range (1, z), and checks whether their result when passed through the callable function f(x, y) is equal to the given value z. If the result is equal to z, the pair (x, y) is added to the list of pairs. The function returns the list of pairs that satisfy the given condition. As mentioned earlier, the actual formula for the function f(x, y) is not provided, so a simple addition formula is included for demonstration purposes. Make sure to replace it with the correct formula.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 551,
+  "title": "Student Attendance Record I",
+  "slug": "student-attendance-record-i",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a string s representing an attendance record for a student where each character signifies whether the student was absent, late, or present on that day. The record only contains the following three characters:\n\n*   'A': Absent.\n*   'L': Late.\n*   'P': Present.\n\nThe student is eligible for an attendance award if they meet both of the following criteria:\n\n*   The student was absent ('A') for strictly fewer than 2 days total.\n*   The student was never late ('L') for 3 or more consecutive days.\n\nReturn true _if the student is eligible for an attendance award, or_ false _otherwise_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef checkRecord(s: str) -> bool:\n    late, absent = 0, 0\n    for c in s:\n        if c == 'A':\n            absent += 1\n            late = 0\n        elif c == 'L':\n            late += 1\n        else:\n            late = 0\n\n        if absent >= 2 or late >= 3:\n            return False\n    return True\n```\n    \n    The algorithm initializes variables `late` and `absent` as counters for late and absent days, respectively. \n1. Iterate through each character of the string `s`.\n2. If the current character is 'A', increment the `absent` counter and set `late` counter to zero.\n3. If the current character is 'L', increment the `late` counter.\n4. If the current character is 'P', set the `late` counter to zero.\n5. After processing each character, check if `absent` is greater or equal to 2, or if `late` is greater or equal to 3. If either condition is met, return false (ineligible for an attendance award).\n6. If the entire string has been processed without meeting the conditions, return true (eligible for an attendance award). \n    ",
+    "javascript": "\n    ```javascript\nfunction checkRecord(s) {\n    let late = 0, absent = 0;\n    for (let i = 0; i < s.length; i++) {\n        if (s[i] === 'A') {\n            absent++;\n            late = 0;\n        } else if (s[i] === 'L') {\n            late++;\n        } else {\n            late = 0;\n        }\n\n        if (absent >= 2 || late >= 3) return false;\n    }\n    return true;\n}\n```\n    \n    The algorithm initializes variables `late` and `absent` as counters for late and absent days, respectively. \n1. Iterate through each character of the string `s`.\n2. If the current character is 'A', increment the `absent` counter and set `late` counter to zero.\n3. If the current character is 'L', increment the `late` counter.\n4. If the current character is 'P', set the `late` counter to zero.\n5. After processing each character, check if `absent` is greater or equal to 2, or if `late` is greater or equal to 3. If either condition is met, return false (ineligible for an attendance award).\n6. If the entire string has been processed without meeting the conditions, return true (eligible for an attendance award). \n    ",
+    "java": "\n    ```java\npublic boolean checkRecord(String s) {\n    int late = 0, absent = 0;\n    for (int i = 0; i < s.length(); i++) {\n        if (s.charAt(i) == 'A') {\n            absent++;\n            late = 0;\n        } else if (s.charAt(i) == 'L') {\n            late++;\n        } else {\n            late = 0;\n        }\n\n        if (absent >= 2 || late >= 3) return false;\n    }\n    return true;\n}\n```\n    \n    The algorithm initializes variables `late` and `absent` as counters for late and absent days, respectively. \n1. Iterate through each character of the string `s`.\n2. If the current character is 'A', increment the `absent` counter and set `late` counter to zero.\n3. If the current character is 'L', increment the `late` counter.\n4. If the current character is 'P', set the `late` counter to zero.\n5. After processing each character, check if `absent` is greater or equal to 2, or if `late` is greater or equal to 3. If either condition is met, return false (ineligible for an attendance award).\n6. If the entire string has been processed without meeting the conditions, return true (eligible for an attendance award). \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

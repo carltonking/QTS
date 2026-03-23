@@ -1,0 +1,24 @@
+{
+  "id": 1862,
+  "title": "Sum of Floored Pairs",
+  "slug": "sum-of-floored-pairs",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given an integer array nums, return the sum of floor(nums[i] / nums[j]) for all pairs of indices 0 <= i, j < nums.length in the array. Since the answer may be too large, return it modulo 109 + 7.\n\nThe floor() function returns the integer part of the division.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sum_of_floored_pairs(nums):\n    MOD = 10**9 + 7\n    n = len(nums)\n    max_element = max(nums)\n    cnt = [0] * (max_element + 1)\n    for num in nums:\n        cnt[num] += 1\n    for i in range(1, max_element + 1):\n        cnt[i] += cnt[i - 1]\n\n    res = 0\n    for num in nums:\n        j, k = 1, 1\n        while k <= max_element:\n            res += j * (cnt[min(k + num - 1, max_element)] - cnt[k - 1])\n            res %= MOD\n            j += 1\n            k += num\n\n    return res\n```\n    \n    First, we count the occurrence of each element in the given array and store those counts in a new array `cnt`. Then we calculate the prefix sum array of `cnt`. After that, we iterate through each element in the input array, and for each element `num`, we iterate through integer `j` and `k` with a step of `num` that ranges from `1` to the `max_element`. In each iteration, we calculate `j * (cnt[min(k + num - 1, max_element)] - cnt[k - 1])` and add it to the result. Finally, we return the result modulo 10^9 + 7.\n    ",
+    "javascript": "\n    ```javascript\nfunction sumOfFlooredPairs(nums) {\n    const MOD = 1e9 + 7;\n    const n = nums.length;\n    const maxElement = Math.max(...nums);\n    const cnt = new Array(maxElement + 1).fill(0);\n    for (const num of nums)\n        cnt[num]++;\n    for (let i = 1; i <= maxElement; i++)\n        cnt[i] += cnt[i - 1];\n    \n    let res = 0;\n    for (const num of nums) {\n        for (let j = 1, k = 1; k <= maxElement; j++, k += num) {\n            res += j * (cnt[Math.min(k + num - 1, maxElement)] - cnt[k - 1]);\n            res %= MOD;\n        }\n    }\n    \n    return res;\n}\n```\n    \n    First, we count the occurrence of each element in the given array and store those counts in a new array `cnt`. Then we calculate the prefix sum array of `cnt`. After that, we iterate through each element in the input array, and for each element `num`, we iterate through integer `j` and `k` with a step of `num` that ranges from `1` to the `max_element`. In each iteration, we calculate `j * (cnt[min(k + num - 1, max_element)] - cnt[k - 1])` and add it to the result. Finally, we return the result modulo 10^9 + 7.\n    ",
+    "java": "\n    ```java\npublic int sumOfFlooredPairs(int[] nums) {\n    final int MOD = 1000000007;\n    int n = nums.length;\n    int maxElement = Arrays.stream(nums).max().getAsInt();\n    long[] cnt = new long[maxElement + 1];\n    for (int num : nums)\n        cnt[num]++;\n    for (int i = 1; i <= maxElement; i++)\n        cnt[i] += cnt[i - 1];\n    \n    long res = 0;\n    for (int num : nums) {\n        for (int j = 1, k = 1; k <= maxElement; j++, k += num) {\n            res += j * (cnt[Math.min(k + num - 1, maxElement)] - cnt[k - 1]);\n            res %= MOD;\n        }\n    }\n    \n    return (int) res;\n}\n```\n    \n    First, we count the occurrence of each element in the given array and store those counts in a new array `cnt`. Then we calculate the prefix sum array of `cnt`. After that, we iterate through each element in the input array, and for each element `num`, we iterate through integer `j` and `k` with a step of `num` that ranges from `1` to the `max_element`. In each iteration, we calculate `j * (cnt[min(k + num - 1, max_element)] - cnt[k - 1])` and add it to the result. Finally, we return the result modulo 10^9 + 7.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

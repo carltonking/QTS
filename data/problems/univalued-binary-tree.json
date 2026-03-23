@@ -1,0 +1,24 @@
+{
+  "id": 965,
+  "title": "Univalued Binary Tree",
+  "slug": "univalued-binary-tree",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "A binary tree is uni-valued if every node in the tree has the same value.\n\nGiven the root of a binary tree, return true _if the given tree is uni-valued, or_ false _otherwise._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef num_unique_emails(emails):\n    unique_emails = set()\n\n    for email in emails:\n        local_name, domain_name = email.split(\"@\")\n        local_name = local_name.split(\"+\")[0]\n        local_name = local_name.replace(\".\", \"\")\n\n        unique_emails.add(local_name + \"@\" + domain_name)\n\n    return len(unique_emails)\n```\n    \n    The algorithm iterates through each email in the input array/list. For each email, the local name and domain name are separated based on the '@' sign. Next, the '+' sign is considered, and everything after the first '+' sign is ignored in the local name. Then, all the '.' characters in the local name are removed. Finally, the processed local name and domain name are combined and added to a set, which will hold unique email addresses. After processing all the email addresses, the size of the set represents the number of unique email addresses that actually receive mails.\n    ",
+    "javascript": "\n    ```javascript\nfunction numUniqueEmails(emails) {\n    let unique_emails = new Set();\n\n    emails.forEach((email) => {\n        let [local_name, domain_name] = email.split(\"@\");\n        local_name = local_name.split(\"+\")[0];\n        local_name = local_name.replace(/\\./g, \"\");\n\n        unique_emails.add(local_name + \"@\" + domain_name);\n    });\n\n    return unique_emails.size;\n}\n```\n    \n    The algorithm iterates through each email in the input array/list. For each email, the local name and domain name are separated based on the '@' sign. Next, the '+' sign is considered, and everything after the first '+' sign is ignored in the local name. Then, all the '.' characters in the local name are removed. Finally, the processed local name and domain name are combined and added to a set, which will hold unique email addresses. After processing all the email addresses, the size of the set represents the number of unique email addresses that actually receive mails.\n    ",
+    "java": "\n    ```java\nimport java.util.HashSet;\nimport java.util.Set;\n\npublic int numUniqueEmails(String[] emails) {\n    Set<String> unique_emails = new HashSet<>();\n\n    for (String email : emails) {\n        String[] parts = email.split(\"@\");\n        String local_name = parts[0], domain_name = parts[1];\n\n        local_name = local_name.replaceAll(\"\\\\+\", \"@\").split(\"@\")[0];\n        local_name = local_name.replaceAll(\"\\\\.\", \"\");\n\n        unique_emails.add(local_name + \"@\" + domain_name);\n    }\n\n    return unique_emails.size();\n}\n```\n    \n    The algorithm iterates through each email in the input array/list. For each email, the local name and domain name are separated based on the '@' sign. Next, the '+' sign is considered, and everything after the first '+' sign is ignored in the local name. Then, all the '.' characters in the local name are removed. Finally, the processed local name and domain name are combined and added to a set, which will hold unique email addresses. After processing all the email addresses, the size of the set represents the number of unique email addresses that actually receive mails.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

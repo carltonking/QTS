@@ -1,0 +1,24 @@
+{
+  "id": 1305,
+  "title": "All Elements in Two Binary Search Trees",
+  "slug": "all-elements-in-two-binary-search-trees",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given two binary search trees root1 and root2, return _a list containing all the integers from both trees sorted in ascending order_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef people_can_see(heights):\n    n = len(heights)\n    ans = [0] * n\n    st = []\n\n    for i in range(n - 1, -1, -1):\n        while st and heights[st[-1]] < heights[i]:\n            idx = st.pop()\n            ans[i] += 1\n            ans[i] += ans[idx]\n        st.append(i)\n\n    return ans\n```\n\n    \n    The algorithm uses a stack to keep track of people whose visible right neighbors are not yet determined. \n\nWe iterate through the people from right to left, comparing the height of the current person with the height of the person on top of the stack. If the person on top of the stack is shorter than the current person, we pop that person from the stack since their neighbor has been found, incrementing the visible count for the current person (ans[i]) and adding the previous count of the top person from the stack.\n\nWe then push the current person onto the stack to check for their visible neighbors on their right. The time complexity is O(n) as each person is pushed and popped only once.\n    ",
+    "javascript": "\n    ```javascript\nfunction peopleCanSee(heights) {\n    const n = heights.length;\n    const ans = new Array(n).fill(0);\n    const st = [];\n\n    for (let i = n - 1; i >= 0; --i) {\n        while (st.length > 0 && heights[st[st.length - 1]] < heights[i]) {\n            const idx = st.pop();\n            ans[i]++;\n            ans[i] += ans[idx];\n        }\n        st.push(i);\n    }\n\n    return ans;\n}\n```\n\n    \n    The algorithm uses a stack to keep track of people whose visible right neighbors are not yet determined. \n\nWe iterate through the people from right to left, comparing the height of the current person with the height of the person on top of the stack. If the person on top of the stack is shorter than the current person, we pop that person from the stack since their neighbor has been found, incrementing the visible count for the current person (ans[i]) and adding the previous count of the top person from the stack.\n\nWe then push the current person onto the stack to check for their visible neighbors on their right. The time complexity is O(n) as each person is pushed and popped only once.\n    ",
+    "java": "\n    ```java\nimport java.util.Stack;\n\npublic int[] peopleCanSee(int[] heights) {\n    int n = heights.length;\n    int[] ans = new int[n];\n    Stack<Integer> st = new Stack<>();\n\n    for (int i = n - 1; i >= 0; --i) {\n        while (!st.isEmpty() && heights[st.peek()] < heights[i]) {\n            int idx = st.pop();\n            ans[i]++;\n            ans[i] += ans[idx];\n        }\n        st.push(i);\n    }\n\n    return ans;\n}\n```\n\n    \n    The algorithm uses a stack to keep track of people whose visible right neighbors are not yet determined. \n\nWe iterate through the people from right to left, comparing the height of the current person with the height of the person on top of the stack. If the person on top of the stack is shorter than the current person, we pop that person from the stack since their neighbor has been found, incrementing the visible count for the current person (ans[i]) and adding the previous count of the top person from the stack.\n\nWe then push the current person onto the stack to check for their visible neighbors on their right. The time complexity is O(n) as each person is pushed and popped only once.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

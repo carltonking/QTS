@@ -1,0 +1,24 @@
+{
+  "id": 1153,
+  "title": "String Transforms Into Another String",
+  "slug": "string-transforms-into-another-string",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given two strings str1 and str2 of the same length, determine whether you can transform str1 into str2 by doing zero or more _conversions_.\n\nIn one conversion you can convert all occurrences of one character in str1 to any other lowercase English character.\n\nReturn true if and only if you can transform str1 into str2.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef canConvert(str1, str2):\n    if str1 == str2: return True;\n    conversion = {}\n    for c1, c2 in zip(str1, str2):\n        if c1 in conversion and conversion[c1] != c2: return False\n        conversion[c1] = c2\n    return len(set(str2)) < 26\n```\n\n    \n    The algorithm first checks if the given strings `str1` and `str2` are already equal or not. If yes, then it returns true, else it checks for the conversion map. \n\nInitially, create a hash map to store the character conversions from `str1` to `str2`. Iterate through both the strings character by character.\n\nWhenever a new character in `str1` is found, add it to the hash map with its corresponding character in `str2`. If the character from `str1` already exists as a key in the hash map, and its value does not match the corresponding character in `str2`, return false.\n\nFinally, find the number of unique characters in `str2`. If it is less than 26, then return true. Else, return false. The reason for this check is that we cannot perform any more conversions on `str1` if all 26 English lowercase characters are already used in `str2`.\n    ",
+    "javascript": "\n    ```javascript\nfunction canConvert(str1, str2) {\n    if (str1 === str2) return true;\n    const conversion = new Map();\n    for (let i = 0; i < str1.length; ++i) {\n        if (conversion.has(str1[i]) && conversion.get(str1[i]) !== str2[i]) return false;\n        conversion.set(str1[i], str2[i]);\n    }\n    return new Set(str2).size < 26;\n}\n```\n\n    \n    The algorithm first checks if the given strings `str1` and `str2` are already equal or not. If yes, then it returns true, else it checks for the conversion map. \n\nInitially, create a hash map to store the character conversions from `str1` to `str2`. Iterate through both the strings character by character.\n\nWhenever a new character in `str1` is found, add it to the hash map with its corresponding character in `str2`. If the character from `str1` already exists as a key in the hash map, and its value does not match the corresponding character in `str2`, return false.\n\nFinally, find the number of unique characters in `str2`. If it is less than 26, then return true. Else, return false. The reason for this check is that we cannot perform any more conversions on `str1` if all 26 English lowercase characters are already used in `str2`.\n    ",
+    "java": "\n    ```java\nboolean canConvert(String str1, String str2) {\n    if (str1.equals(str2)) return true;\n    HashMap<Character, Character> conversion = new HashMap<>();\n    for (int i = 0; i < str1.length(); ++i) {\n        if (conversion.containsKey(str1.charAt(i)) && conversion.get(str1.charAt(i)) != str2.charAt(i)) {\n            return false;\n        }\n        conversion.put(str1.charAt(i), str2.charAt(i));\n    }\n    return new HashSet<Character>(Arrays.asList(str2.toCharArray())).size() < 26;\n}\n```\n\n    \n    The algorithm first checks if the given strings `str1` and `str2` are already equal or not. If yes, then it returns true, else it checks for the conversion map. \n\nInitially, create a hash map to store the character conversions from `str1` to `str2`. Iterate through both the strings character by character.\n\nWhenever a new character in `str1` is found, add it to the hash map with its corresponding character in `str2`. If the character from `str1` already exists as a key in the hash map, and its value does not match the corresponding character in `str2`, return false.\n\nFinally, find the number of unique characters in `str2`. If it is less than 26, then return true. Else, return false. The reason for this check is that we cannot perform any more conversions on `str1` if all 26 English lowercase characters are already used in `str2`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

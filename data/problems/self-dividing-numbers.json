@@ -1,0 +1,24 @@
+{
+  "id": 728,
+  "title": "Self Dividing Numbers",
+  "slug": "self-dividing-numbers",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "A self-dividing number is a number that is divisible by every digit it contains.\n\n*   For example, 128 is a self-dividing number because 128 % 1 == 0, 128 % 2 == 0, and 128 % 8 == 0.\n\nA self-dividing number is not allowed to contain the digit zero.\n\nGiven two integers left and right, return _a list of all the self-dividing numbers in the range_ [left, right].",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_self_dividing(num):\n    n = num\n    while n:\n        digit = n % 10\n        if digit == 0 or num % digit != 0:\n            return False\n        n //= 10\n    return True\n\ndef self_dividing_numbers(left, right):\n    return [i for i in range(left, right+1) if is_self_dividing(i)]\n```\n    \n    The algorithm consists of two functions: `isSelfDividing` and `selfDividingNumbers`. The first function, `isSelfDividing`, takes an integer as input and returns true if it is a self-dividing number and false otherwise. It does this by checking each digit of the number and verifying that they're nonzero and that the number is divisible by that digit. The checking is done by repeatedly dividing the number by 10 and finding the remainder.\n\nThe second function, `selfDividingNumbers`, takes `left` and `right` as input, and returns a list of self-dividing numbers in the given range. It iterates through all the numbers between `left` and `right` (inclusive) and checks if the number is a self-dividing number using the `isSelfDividing` function. If it is, the number is added to the result list. Finally, the result list is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction isSelfDividing(num) {\n    let n = num;\n    while (n) {\n        const digit = n % 10;\n        if (digit === 0 || num % digit !== 0)\n            return false;\n        n = Math.floor(n / 10);\n    }\n    return true;\n}\n\nfunction selfDividingNumbers(left, right) {\n    const result = [];\n    for (let i = left; i <= right; ++i) {\n        if (isSelfDividing(i))\n            result.push(i);\n    }\n    return result;\n}\n```\n    \n    The algorithm consists of two functions: `isSelfDividing` and `selfDividingNumbers`. The first function, `isSelfDividing`, takes an integer as input and returns true if it is a self-dividing number and false otherwise. It does this by checking each digit of the number and verifying that they're nonzero and that the number is divisible by that digit. The checking is done by repeatedly dividing the number by 10 and finding the remainder.\n\nThe second function, `selfDividingNumbers`, takes `left` and `right` as input, and returns a list of self-dividing numbers in the given range. It iterates through all the numbers between `left` and `right` (inclusive) and checks if the number is a self-dividing number using the `isSelfDividing` function. If it is, the number is added to the result list. Finally, the result list is returned.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic class Solution {\n    public static boolean isSelfDividing(int num) {\n        int n = num;\n        while (n != 0) {\n            int digit = n % 10;\n            if (digit == 0 || num % digit != 0)\n                return false;\n            n /= 10;\n        }\n        return true;\n    }\n\n    public static List<Integer> selfDividingNumbers(int left, int right) {\n        List<Integer> result = new ArrayList<>();\n        for (int i = left; i <= right; ++i) {\n            if (isSelfDividing(i))\n                result.add(i);\n        }\n        return result;\n    }\n}\n```\n    \n    The algorithm consists of two functions: `isSelfDividing` and `selfDividingNumbers`. The first function, `isSelfDividing`, takes an integer as input and returns true if it is a self-dividing number and false otherwise. It does this by checking each digit of the number and verifying that they're nonzero and that the number is divisible by that digit. The checking is done by repeatedly dividing the number by 10 and finding the remainder.\n\nThe second function, `selfDividingNumbers`, takes `left` and `right` as input, and returns a list of self-dividing numbers in the given range. It iterates through all the numbers between `left` and `right` (inclusive) and checks if the number is a self-dividing number using the `isSelfDividing` function. If it is, the number is added to the result list. Finally, the result list is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

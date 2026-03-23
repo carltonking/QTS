@@ -1,0 +1,24 @@
+{
+  "id": 2150,
+  "title": "Find All Lonely Numbers in the Array",
+  "slug": "find-all-lonely-numbers-in-the-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array nums. A number x is lonely when it appears only once, and no adjacent numbers (i.e. x + 1 and x - 1) appear in the array.\n\nReturn _all lonely numbers in_ nums. You may return the answer in any order.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    \n```javascript\nfunction lonelyNumbers(nums) {\n    const count = {};\n    const result = [];\n\n    for (const num of nums) {\n        if (count[num] === undefined) {\n            count[num] = 1;\n        } else {\n            count[num]++;\n        }\n    }\n\n    for (const key in count) {\n        const k = parseInt(key);\n        if (count[k] === 1 && count[k - 1] === undefined && count[k + 1] === undefined) {\n            result.push(k);\n        }\n    }\n\n    return result;\n}\n```\n    \n    \nFor this problem, we start by counting the occurrences of each number in the input list/array. This can be done using either a hash map (C++/Java/JavaScript) or a Counter (Python). This will allow us to easily check if a number appears only once and if its adjacent numbers are in the input.\n\nNext, we iterate through the counted numbers, and for each number, we check if the count is 1 (appears only once) and if the adjacent numbers (x-1) and (x+1) are not present. If these conditions are met, the number is considered \"lonely\" and added to the result list/array.\n\nFinally, we return the result list/array containing all the lonely numbers found during the iteration.\n    ",
+    "javascript": "\n    \n```python\nfrom collections import Counter\n\ndef lonelyNumbers(nums):\n    count = Counter(nums)\n    result = []\n\n    for k, v in count.items():\n        if v == 1 and k - 1 not in count and k + 1 not in count:\n            result.append(k)\n\n    return result\n```\n    \n    \nFor this problem, we start by counting the occurrences of each number in the input list/array. This can be done using either a hash map (C++/Java/JavaScript) or a Counter (Python). This will allow us to easily check if a number appears only once and if its adjacent numbers are in the input.\n\nNext, we iterate through the counted numbers, and for each number, we check if the count is 1 (appears only once) and if the adjacent numbers (x-1) and (x+1) are not present. If these conditions are met, the number is considered \"lonely\" and added to the result list/array.\n\nFinally, we return the result list/array containing all the lonely numbers found during the iteration.\n    ",
+    "java": "\n    \n```java\nimport java.util.ArrayList;\nimport java.util.HashMap;\nimport java.util.List;\nimport java.util.Map;\n\npublic List<Integer> lonelyNumbers(int[] nums) {\n    Map<Integer, Integer> count = new HashMap<>();\n    List<Integer> result = new ArrayList<>();\n\n    for (int num : nums) {\n        count.put(num, count.getOrDefault(num, 0) + 1);\n    }\n\n    for (Map.Entry<Integer, Integer> entry : count.entrySet()) {\n        if (entry.getValue() == 1 && !count.containsKey(entry.getKey() - 1) && !count.containsKey(entry.getKey() + 1)) {\n            result.add(entry.getKey());\n        }\n    }\n\n    return result;\n}\n```\n    \n    \nFor this problem, we start by counting the occurrences of each number in the input list/array. This can be done using either a hash map (C++/Java/JavaScript) or a Counter (Python). This will allow us to easily check if a number appears only once and if its adjacent numbers are in the input.\n\nNext, we iterate through the counted numbers, and for each number, we check if the count is 1 (appears only once) and if the adjacent numbers (x-1) and (x+1) are not present. If these conditions are met, the number is considered \"lonely\" and added to the result list/array.\n\nFinally, we return the result list/array containing all the lonely numbers found during the iteration.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

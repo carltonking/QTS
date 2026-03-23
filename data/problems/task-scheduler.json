@@ -1,0 +1,24 @@
+{
+  "id": 621,
+  "title": "Task Scheduler",
+  "slug": "task-scheduler",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a characters array tasks, representing the tasks a CPU needs to do, where each letter represents a different task. Tasks could be done in any order. Each task is done in one unit of time. For each unit of time, the CPU could complete either one task or just be idle.\n\nHowever, there is a non-negative integer n that represents the cooldown period between two same tasks (the same letter in the array), that is that there must be at least n units of time between any two same tasks.\n\nReturn _the least number of units of times that the CPU will take to finish all the given tasks_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import Counter\n\ndef least_interval(tasks, n):\n    task_freq = Counter(tasks)\n\n    max_f = max(task_freq.values())\n    max_count = sum(1 for count in task_freq.values() if count == max_f)\n\n    return max(len(tasks), (max_f - 1) * (n + 1) + max_count)\n```\n\n    \n    1. Count the frequency of each task using a HashMap, and store these frequencies in a sorted array or list (sorted in descending order).\n2. Calculate the maximum frequency (max_f) of a task, and the total number of idle slots required between tasks with this frequency. This is done by multiplying (max_f - 1) by the cooldown time (n).\n3. Iterate through the remaining task frequencies, decrementing the idle slots by the minimum of the current task frequency and max_f.\n4. If there are remaining idle slots, add this value to the total number of tasks to get the least number of units of time needed to complete all tasks. Otherwise, just return the total number of tasks, as there is no need for any idle time.\n    ",
+    "javascript": "\n    ```javascript\nfunction leastInterval(tasks, n) {\n    const taskFreq = {};\n    tasks.forEach(task => {\n        taskFreq[task] = (taskFreq[task] || 0) + 1;\n    });\n\n    const frequencies = Object.values(taskFreq).sort((a, b) => b - a);\n\n    const maxF = frequencies[0] - 1;\n    let idleSlots = maxF * n;\n\n    for (let i = 1; i < frequencies.length; i++) {\n        idleSlots -= Math.min(frequencies[i], maxF);\n    }\n\n    return idleSlots > 0 ? idleSlots + tasks.length : tasks.length;\n}\n```\n\n    \n    1. Count the frequency of each task using a HashMap, and store these frequencies in a sorted array or list (sorted in descending order).\n2. Calculate the maximum frequency (max_f) of a task, and the total number of idle slots required between tasks with this frequency. This is done by multiplying (max_f - 1) by the cooldown time (n).\n3. Iterate through the remaining task frequencies, decrementing the idle slots by the minimum of the current task frequency and max_f.\n4. If there are remaining idle slots, add this value to the total number of tasks to get the least number of units of time needed to complete all tasks. Otherwise, just return the total number of tasks, as there is no need for any idle time.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\nimport java.util.PriorityQueue;\n\npublic int leastInterval(char[] tasks, int n) {\n    HashMap<Character, Integer> taskFreq = new HashMap<>();\n    for (char task : tasks) {\n        taskFreq.put(task, taskFreq.getOrDefault(task, 0) + 1);\n    }\n\n    PriorityQueue<Integer> maxHeap = new PriorityQueue<>((a, b) -> b - a);\n    maxHeap.addAll(taskFreq.values());\n\n    int cycles = 0;\n\n    while (!maxHeap.isEmpty()) {\n        List<Integer> temp = new ArrayList<>();\n        for (int i = 0; i < n + 1; i++) {\n            if (!maxHeap.isEmpty()) {\n                temp.add(maxHeap.remove());\n            }\n        }\n\n        for (int freq : temp) {\n            if (--freq > 0) {\n                maxHeap.add(freq);\n            }\n        }\n\n        cycles += maxHeap.isEmpty() ? temp.size() : n + 1;\n    }\n\n    return cycles;\n}\n```\n\n    \n    1. Count the frequency of each task using a HashMap, and store these frequencies in a sorted array or list (sorted in descending order).\n2. Calculate the maximum frequency (max_f) of a task, and the total number of idle slots required between tasks with this frequency. This is done by multiplying (max_f - 1) by the cooldown time (n).\n3. Iterate through the remaining task frequencies, decrementing the idle slots by the minimum of the current task frequency and max_f.\n4. If there are remaining idle slots, add this value to the total number of tasks to get the least number of units of time needed to complete all tasks. Otherwise, just return the total number of tasks, as there is no need for any idle time.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

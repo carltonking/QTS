@@ -1,0 +1,24 @@
+{
+  "id": 303,
+  "title": "Range Sum Query - Immutable",
+  "slug": "range-sum-query-immutable",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer array nums, handle multiple queries of the following type:\n\n1.  Calculate the sum of the elements of nums between indices left and right inclusive where left <= right.\n\nImplement the NumArray class:\n\n*   NumArray(int[] nums) Initializes the object with the integer array nums.\n*   int sumRange(int left, int right) Returns the sum of the elements of nums between indices left and right inclusive (i.e. nums[left] + nums[left + 1] + ... + nums[right]).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass NumArray:\n\n    def __init__(self, nums: List[int]):\n        self.pSum = [0] * (len(nums) + 1)\n        for i, num in enumerate(nums):\n            self.pSum[i + 1] = self.pSum[i] + num\n\n    def sumRange(self, left: int, right: int) -> int:\n        return self.pSum[right + 1] - self.pSum[left]\n```\n    \n    The algorithm uses the concept of prefix-sum to answer range-sum queries efficiently. In the constructor, we iterate through the input `nums` array and build an additional `pSum` array, which stores the prefix sum for each position i, i.e., sum of all elements from index 0 to index i (inclusive) of `nums`.\n\nThe `sumRange` method is simply a matter of taking the difference between two elements in the prefix-sum array. This difference will be the sum of elements between the given `left` and `right` indices (inclusive) in the input array.\n\nThe algorithm has a time complexity of O(1) for `sumRange` queries after the O(n) pre-processing of the input array during the constructor call. The space complexity is O(n) for the `pSum` array.\n    ",
+    "javascript": "\n    ```javascript\nclass NumArray {\n    constructor(nums) {\n        this.pSum = new Array(nums.length + 1).fill(0);\n        for (let i = 0; i < nums.length; i++) {\n            this.pSum[i + 1] = this.pSum[i] + nums[i];\n        }\n    }\n\n    sumRange(left, right) {\n        return this.pSum[right + 1] - this.pSum[left];\n    }\n}\n```\n    \n    The algorithm uses the concept of prefix-sum to answer range-sum queries efficiently. In the constructor, we iterate through the input `nums` array and build an additional `pSum` array, which stores the prefix sum for each position i, i.e., sum of all elements from index 0 to index i (inclusive) of `nums`.\n\nThe `sumRange` method is simply a matter of taking the difference between two elements in the prefix-sum array. This difference will be the sum of elements between the given `left` and `right` indices (inclusive) in the input array.\n\nThe algorithm has a time complexity of O(1) for `sumRange` queries after the O(n) pre-processing of the input array during the constructor call. The space complexity is O(n) for the `pSum` array.\n    ",
+    "java": "\n    ```java\nclass NumArray {\n    int[] pSum;\n\n    public NumArray(int[] nums) {\n        pSum = new int[nums.length + 1];\n        for (int i = 0; i < nums.length; i++) {\n            pSum[i + 1] = pSum[i] + nums[i];\n        }\n    }\n\n    public int sumRange(int left, int right) {\n        return pSum[right + 1] - pSum[left];\n    }\n}\n```\n    \n    The algorithm uses the concept of prefix-sum to answer range-sum queries efficiently. In the constructor, we iterate through the input `nums` array and build an additional `pSum` array, which stores the prefix sum for each position i, i.e., sum of all elements from index 0 to index i (inclusive) of `nums`.\n\nThe `sumRange` method is simply a matter of taking the difference between two elements in the prefix-sum array. This difference will be the sum of elements between the given `left` and `right` indices (inclusive) in the input array.\n\nThe algorithm has a time complexity of O(1) for `sumRange` queries after the O(n) pre-processing of the input array during the constructor call. The space complexity is O(n) for the `pSum` array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

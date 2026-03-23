@@ -1,0 +1,24 @@
+{
+  "id": 1163,
+  "title": "Last Substring in Lexicographical Order",
+  "slug": "last-substring-in-lexicographical-order",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given a string s, return _the last substring of_ s _in lexicographical order_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef lastSubstring(s: str) -> str:\n    maxIndex = 0\n    curIndex = 1\n    while curIndex < len(s):\n        i = 0\n        while curIndex + i < len(s) and s[maxIndex + i] == s[curIndex + i]:\n            i += 1\n        if curIndex + i == len(s):\n            break\n        if s[maxIndex + i] < s[curIndex + i]:\n            maxIndex = curIndex\n        curIndex += 1\n    return s[maxIndex:]\n```\n    \n    The algorithm initializes two indices, `maxIndex` and `curIndex`, both starting at the beginning of the string. We use a while loop to scan the input string until `curIndex` reaches the end.\n\nInside the loop, we check if both substrings - made with the current `maxIndex` and current `curIndex` - are lexicographically equal. If they are, we increment the \"equality\" index, `i`, until they are no longer equal or the end of the string is encountered. If the endIndex (curIndex + i) reaches the string's length, the loop ends since it's the end of the string.\n\nOtherwise, we compare `s[maxIndex + i]` and `s[curIndex + i]`. If `s[curIndex + i]` is lexicographically greater, we update `maxIndex` to the value of `curIndex`. Then, increment `curIndex`.\n\nFinally, we return the last lexicographically greater substring using the `maxIndex`.\n\nThe complexity of this solution is O(N) where N is the length of the input string.\n    ",
+    "javascript": "\n    ```javascript\nfunction lastSubstring(s) {\n    let maxIndex = 0;\n    let curIndex = 1;\n    while (curIndex < s.length) {\n        let i = 0;\n        while (curIndex + i < s.length && s[maxIndex + i] === s[curIndex + i]) {\n            i++;\n        }\n        if (curIndex + i === s.length) break;\n        if (s[maxIndex + i] < s[curIndex + i]) {\n            maxIndex = curIndex;\n        }\n        curIndex++;\n    }\n    return s.slice(maxIndex);\n}\n```\n    \n    The algorithm initializes two indices, `maxIndex` and `curIndex`, both starting at the beginning of the string. We use a while loop to scan the input string until `curIndex` reaches the end.\n\nInside the loop, we check if both substrings - made with the current `maxIndex` and current `curIndex` - are lexicographically equal. If they are, we increment the \"equality\" index, `i`, until they are no longer equal or the end of the string is encountered. If the endIndex (curIndex + i) reaches the string's length, the loop ends since it's the end of the string.\n\nOtherwise, we compare `s[maxIndex + i]` and `s[curIndex + i]`. If `s[curIndex + i]` is lexicographically greater, we update `maxIndex` to the value of `curIndex`. Then, increment `curIndex`.\n\nFinally, we return the last lexicographically greater substring using the `maxIndex`.\n\nThe complexity of this solution is O(N) where N is the length of the input string.\n    ",
+    "java": "\n    ```java\npublic String lastSubstring(String s) {\n    int maxIndex = 0;\n    int curIndex = 1;\n    while (curIndex < s.length()) {\n        int i = 0;\n        while (curIndex + i < s.length() && s.charAt(maxIndex + i) == s.charAt(curIndex + i)) {\n            i++;\n        }\n        if (curIndex + i == s.length()) break;\n        if (s.charAt(maxIndex + i) < s.charAt(curIndex + i)) {\n            maxIndex = curIndex;\n        }\n        curIndex++;\n    }\n    return s.substring(maxIndex);\n}\n```\n    \n    The algorithm initializes two indices, `maxIndex` and `curIndex`, both starting at the beginning of the string. We use a while loop to scan the input string until `curIndex` reaches the end.\n\nInside the loop, we check if both substrings - made with the current `maxIndex` and current `curIndex` - are lexicographically equal. If they are, we increment the \"equality\" index, `i`, until they are no longer equal or the end of the string is encountered. If the endIndex (curIndex + i) reaches the string's length, the loop ends since it's the end of the string.\n\nOtherwise, we compare `s[maxIndex + i]` and `s[curIndex + i]`. If `s[curIndex + i]` is lexicographically greater, we update `maxIndex` to the value of `curIndex`. Then, increment `curIndex`.\n\nFinally, we return the last lexicographically greater substring using the `maxIndex`.\n\nThe complexity of this solution is O(N) where N is the length of the input string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

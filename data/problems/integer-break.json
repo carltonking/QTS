@@ -1,0 +1,24 @@
+{
+  "id": 343,
+  "title": "Integer Break",
+  "slug": "integer-break",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer n, break it into the sum of k positive integers, where k >= 2, and maximize the product of those integers.\n\nReturn _the maximum product you can get_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef integer_break(n):\n    if n <= 3:\n        return n - 1\n    product = 1\n    while n > 4:\n        product *= 3\n        n -= 3\n    return product * n\n```\n    \n    The algorithm is based on the fact that the optimal factorization for the integer n consists of as many 3s as possible, and maybe a 2 or a 4. If we have a factor composed of five 1s, we can always break it into two 2s and a 3, which has a larger product (2 * 2 * 3 > 1 * 1 * 1 * 1 * 1). This means that the factors included in the final product will never be smaller than 2.\n\nThe solution is to repeatedly subtract 3 from the given number `n` and multiply the product by 3. If we end up with `n` being 2, 3, or 4 after this process, we multiply the product by `n` and return it.\n\nThis solution runs in O(n) time complexity.\n    ",
+    "javascript": "\n    ```javascript\nfunction integerBreak(n) {\n    if (n <= 3) return n - 1;\n    let product = 1;\n    while (n > 4) {\n        product *= 3;\n        n -= 3;\n    }\n    return product * n;\n}\n```\n    \n    The algorithm is based on the fact that the optimal factorization for the integer n consists of as many 3s as possible, and maybe a 2 or a 4. If we have a factor composed of five 1s, we can always break it into two 2s and a 3, which has a larger product (2 * 2 * 3 > 1 * 1 * 1 * 1 * 1). This means that the factors included in the final product will never be smaller than 2.\n\nThe solution is to repeatedly subtract 3 from the given number `n` and multiply the product by 3. If we end up with `n` being 2, 3, or 4 after this process, we multiply the product by `n` and return it.\n\nThis solution runs in O(n) time complexity.\n    ",
+    "java": "\n    ```java\npublic int integerBreak(int n) {\n    if (n <= 3) return n - 1;\n    int product = 1;\n    while (n > 4) {\n        product *= 3;\n        n -= 3;\n    }\n    return product * n;\n}\n```\n    \n    The algorithm is based on the fact that the optimal factorization for the integer n consists of as many 3s as possible, and maybe a 2 or a 4. If we have a factor composed of five 1s, we can always break it into two 2s and a 3, which has a larger product (2 * 2 * 3 > 1 * 1 * 1 * 1 * 1). This means that the factors included in the final product will never be smaller than 2.\n\nThe solution is to repeatedly subtract 3 from the given number `n` and multiply the product by 3. If we end up with `n` being 2, 3, or 4 after this process, we multiply the product by `n` and return it.\n\nThis solution runs in O(n) time complexity.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

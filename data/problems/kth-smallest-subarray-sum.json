@@ -1,0 +1,24 @@
+{
+  "id": 1918,
+  "title": "Kth Smallest Subarray Sum",
+  "slug": "kth-smallest-subarray-sum",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums of length n and an integer k, return _the_ kth _smallest subarray sum._\n\nA subarray is defined as a non-empty contiguous sequence of elements in an array. A subarray sum is the sum of all elements in the subarray.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxScore(nums: List[int], k: int) -> int:\n    n = len(nums)\n    result = 0\n    for i in range(k, -1, -1):\n        for j in range(k, n):\n            min_val = min(nums[i:j+1])\n            result = max(result, min_val * (j - i + 1))\n    return result\n```\n    \n    1. Loop through i from k to 0 (inclusive) in reverse order because we want subarrays containing the k-th index.\n2. Iterate through j from k to the end of the array (nums.size() in C++ and nums.length in Java/JavaScript, len(nums) in Python).\n3. Calculate the minimum element in the subarray (i, j) using a loop, increment variable x from i up to j, and keep track of the minimum element encountered.\n4. Calculate the current subarray score by multiplying the min_val with the length of the subarray (j - i + 1).\n5. Keep track of the maximum score encountered in the variable \"result\".\n6. After all loops have completed, return the result as the maximum score of the good subarray.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxScore(nums, k) {\n    const n = nums.length;\n    let result = 0;\n    for (let i = k; i >= 0; i--) {\n        for (let j = k; j < n; j++) {\n            let minVal = nums[i];\n            for (let x = i; x <= j; x++)\n                minVal = Math.min(minVal, nums[x]);\n            result = Math.max(result, minVal * (j - i + 1));\n        }\n    }\n    return result;\n}\n```\n    \n    1. Loop through i from k to 0 (inclusive) in reverse order because we want subarrays containing the k-th index.\n2. Iterate through j from k to the end of the array (nums.size() in C++ and nums.length in Java/JavaScript, len(nums) in Python).\n3. Calculate the minimum element in the subarray (i, j) using a loop, increment variable x from i up to j, and keep track of the minimum element encountered.\n4. Calculate the current subarray score by multiplying the min_val with the length of the subarray (j - i + 1).\n5. Keep track of the maximum score encountered in the variable \"result\".\n6. After all loops have completed, return the result as the maximum score of the good subarray.\n    ",
+    "java": "\n    ```java\npublic int maxScore(int[] nums, int k) {\n    int n = nums.length;\n    int result = 0;\n    for (int i = k; i >= 0; i--) {\n        for (int j = k; j < n; j++) {\n            int minVal = nums[i];\n            for (int x = i; x <= j; x++)\n                minVal = Math.min(minVal, nums[x]);\n            result = Math.max(result, minVal * (j - i + 1));\n        }\n    }\n    return result;\n}\n```\n    \n    1. Loop through i from k to 0 (inclusive) in reverse order because we want subarrays containing the k-th index.\n2. Iterate through j from k to the end of the array (nums.size() in C++ and nums.length in Java/JavaScript, len(nums) in Python).\n3. Calculate the minimum element in the subarray (i, j) using a loop, increment variable x from i up to j, and keep track of the minimum element encountered.\n4. Calculate the current subarray score by multiplying the min_val with the length of the subarray (j - i + 1).\n5. Keep track of the maximum score encountered in the variable \"result\".\n6. After all loops have completed, return the result as the maximum score of the good subarray.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

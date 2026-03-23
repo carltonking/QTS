@@ -1,0 +1,24 @@
+{
+  "id": 705,
+  "title": "Design HashSet",
+  "slug": "design-hashset",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Design a HashSet without using any built-in hash table libraries.\n\nImplement MyHashSet class:\n\n*   void add(key) Inserts the value key into the HashSet.\n*   bool contains(key) Returns whether the value key exists in the HashSet or not.\n*   void remove(key) Removes the value key in the HashSet. If key does not exist in the HashSet, do nothing.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass MyHashSet:\n\n    def __init__(self):\n        self.storage = [False] * 1000001\n\n    def add(self, key: int):\n        self.storage[key] = True\n\n    def remove(self, key: int):\n        self.storage[key] = False\n\n    def contains(self, key: int) -> bool:\n        return self.storage[key]\n```\n\n    \n    The simplest way to implement a HashSet without using any built-in hash table libraries is to use an array of boolean values. The index of the array represents the key and the value at that index represents whether the key is present in the HashSet or not. In this case, we know the key range is `0 <= key <= 10^6`, so we can create an array with a length of `1000001`.\n\nFor the `add(key)` method, we set the value at the index of the key to be `true`.\nFor the `remove(key)` method, we set the value at the index of the key to be `false`.\nFor the `contains(key)` method, we check the value at the index of the key and return it.\n\nThe implementations of these methods are straightforward, and they are similar in each language. We create a storage array (vector in C++, boolean array in Java, list in Python, and array in JavaScript), and then we use simple array operations to manipulate the data.\n    ",
+    "javascript": "\n    ```javascript\nclass MyHashSet {\n    constructor() {\n        this.storage = new Array(1000001).fill(false);\n    }\n\n    add(key) {\n        this.storage[key] = true;\n    }\n\n    remove(key) {\n        this.storage[key] = false;\n    }\n\n    contains(key) {\n        return this.storage[key];\n    }\n}\n```\n\n    \n    The simplest way to implement a HashSet without using any built-in hash table libraries is to use an array of boolean values. The index of the array represents the key and the value at that index represents whether the key is present in the HashSet or not. In this case, we know the key range is `0 <= key <= 10^6`, so we can create an array with a length of `1000001`.\n\nFor the `add(key)` method, we set the value at the index of the key to be `true`.\nFor the `remove(key)` method, we set the value at the index of the key to be `false`.\nFor the `contains(key)` method, we check the value at the index of the key and return it.\n\nThe implementations of these methods are straightforward, and they are similar in each language. We create a storage array (vector in C++, boolean array in Java, list in Python, and array in JavaScript), and then we use simple array operations to manipulate the data.\n    ",
+    "java": "\n    ```java\nclass MyHashSet {\n    boolean[] storage;\n\n    public MyHashSet() {\n        storage = new boolean[1000001];\n    }\n\n    public void add(int key) {\n        storage[key] = true;\n    }\n\n    public void remove(int key) {\n        storage[key] = false;\n    }\n\n    public boolean contains(int key) {\n        return storage[key];\n    }\n}\n```\n\n    \n    The simplest way to implement a HashSet without using any built-in hash table libraries is to use an array of boolean values. The index of the array represents the key and the value at that index represents whether the key is present in the HashSet or not. In this case, we know the key range is `0 <= key <= 10^6`, so we can create an array with a length of `1000001`.\n\nFor the `add(key)` method, we set the value at the index of the key to be `true`.\nFor the `remove(key)` method, we set the value at the index of the key to be `false`.\nFor the `contains(key)` method, we check the value at the index of the key and return it.\n\nThe implementations of these methods are straightforward, and they are similar in each language. We create a storage array (vector in C++, boolean array in Java, list in Python, and array in JavaScript), and then we use simple array operations to manipulate the data.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

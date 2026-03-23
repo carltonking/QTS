@@ -1,0 +1,24 @@
+{
+  "id": 524,
+  "title": "Longest Word in Dictionary through Deleting",
+  "slug": "longest-word-in-dictionary-through-deleting",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string s and a string array dictionary, return _the longest string in the dictionary that can be formed by deleting some of the given string characters_. If there is more than one possible result, return the longest word with the smallest lexicographical order. If there is no possible result, return the empty string.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findLongestWord(s, dictionary):\n    def is_subsequence(target, source):\n        iter_source = iter(source)\n        return all(char in iter_source for char in target)\n\n    dictionary = sorted(dictionary)\n    longest = ''\n    for word in dictionary:\n        if is_subsequence(word, s) and len(word) > len(longest):\n            longest = word\n    return longest\n```\n\n    \n    1. First, sort the dictionary so that word comparison will be in lexicographical order.\n2. Define a helper function `isSubsequence` which checks if a given word can be formed by deleting some of the given string characters.\n3. Iterate through the dictionary and for each word, check if it can be formed using the helper function. If a word can be formed and its length is longer than the current longest word, set it as the new longest word.\n4. Return the longest word found, or an empty string if no match was found.\n    ",
+    "javascript": "\n    ```javascript\nfunction findLongestWord(s, dictionary) {\n    function isSubsequence(s, word) {\n        let i = 0, j = 0;\n        while (i < s.length && j < word.length) {\n            if (s[i] === word[j]) {\n                j++;\n            }\n            i++;\n        }\n        return j === word.length;\n    }\n\n    dictionary.sort();\n    let longest = '';\n    for (let word of dictionary) {\n        if (isSubsequence(s, word)) {\n            if (word.length > longest.length) {\n                longest = word;\n            }\n        }\n    }\n    return longest;\n}\n```\n\n    \n    1. First, sort the dictionary so that word comparison will be in lexicographical order.\n2. Define a helper function `isSubsequence` which checks if a given word can be formed by deleting some of the given string characters.\n3. Iterate through the dictionary and for each word, check if it can be formed using the helper function. If a word can be formed and its length is longer than the current longest word, set it as the new longest word.\n4. Return the longest word found, or an empty string if no match was found.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic String findLongestWord(String s, String[] dictionary) {\n    String longest = \"\";\n    Arrays.sort(dictionary);\n    for (String word : dictionary) {\n        if (isSubsequence(s, word)) {\n            if (word.length() > longest.length()) {\n                longest = word;\n            }\n        }\n    }\n    return longest;\n}\n\nprivate boolean isSubsequence(String s, String word) {\n    int i = 0, j = 0;\n    while (i < s.length() && j < word.length()) {\n        if (s.charAt(i) == word.charAt(j)) {\n            j++;\n        }\n        i++;\n    }\n    return j == word.length();\n}\n```\n\n    \n    1. First, sort the dictionary so that word comparison will be in lexicographical order.\n2. Define a helper function `isSubsequence` which checks if a given word can be formed by deleting some of the given string characters.\n3. Iterate through the dictionary and for each word, check if it can be formed using the helper function. If a word can be formed and its length is longer than the current longest word, set it as the new longest word.\n4. Return the longest word found, or an empty string if no match was found.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

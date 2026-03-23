@@ -1,0 +1,24 @@
+{
+  "id": 533,
+  "title": "Lonely Pixel II",
+  "slug": "lonely-pixel-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an m x n picture consisting of black 'B' and white 'W' pixels and an integer target, return _the number of black lonely pixels_.\n\nA black lonely pixel is a character 'B' that located at a specific position (r, c) where:\n\n*   Row r and column c both contain exactly target black pixels.\n*   For all rows that have a black pixel at column c, they should be exactly the same as row r.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findBlackPixel(picture, target):\n    m, n = len(picture), len(picture[0])\n    rows = [0] * m\n    cols = [0] * n\n    rowCounts = {}\n    for i in range(m):\n        row = \"\"\n        for j in range(n):\n            if picture[i][j] == 'B':\n                rows[i] += 1\n                cols[j] += 1\n            row += picture[i][j]\n        if rows[i] == target:\n            rowCounts[row] = rowCounts.get(row, 0) + 1\n    ans = 0\n    for row, count in rowCounts.items():\n        if count == target:\n            for j in range(n):\n                if row[j] == 'B' and cols[j] == target:\n                    ans += count\n    return ans\n```\n    \n    1. Count the number of 'B' pixels in each row and column, and store the string representation of each valid row (rows containing `target` 'B' pixels) with a count in a hashmap.\n2. Iterate over the valid rows with their counts, and for each of them check the columns where 'B' is present. If that column also has exactly `target` 'B' pixels, increment the answer by the count of that row.\n3. Return the answer (total number of lonely black pixels).\n    ",
+    "javascript": "\n    ```javascript\nfunction findBlackPixel(picture, target) {\n    const m = picture.length;\n    const n = picture[0].length;\n    const rows = new Array(m).fill(0);\n    const cols = new Array(n).fill(0);\n    const rowCounts = new Map();\n    for (let i = 0; i < m; ++i) {\n        let row = \"\";\n        for (let j = 0; j < n; ++j) {\n            if (picture[i][j] === 'B') {\n                rows[i]++;\n                cols[j]++;\n            }\n            row += picture[i][j];\n        }\n        if (rows[i] === target)\n            rowCounts.set(row, (rowCounts.get(row) || 0) + 1);\n    }\n    let ans = 0;\n    for (let [row, count] of rowCounts.entries()) {\n        if (count === target) {\n            for (let j = 0; j < n; ++j) {\n                if (row[j] === 'B' && cols[j] === target)\n                    ans += count;\n            }\n        }\n    }\n    return ans;\n}\n```\n    \n    1. Count the number of 'B' pixels in each row and column, and store the string representation of each valid row (rows containing `target` 'B' pixels) with a count in a hashmap.\n2. Iterate over the valid rows with their counts, and for each of them check the columns where 'B' is present. If that column also has exactly `target` 'B' pixels, increment the answer by the count of that row.\n3. Return the answer (total number of lonely black pixels).\n    ",
+    "java": "\n    ```java\npublic int findBlackPixel(char[][] picture, int target) {\n    int m = picture.length;\n    int n = picture[0].length;\n    int[] rows = new int[m];\n    int[] cols = new int[n];\n    Map<String, Integer> rowCounts = new HashMap<>();\n    for (int i = 0; i < m; ++i) {\n        StringBuilder row = new StringBuilder();\n        for (int j = 0; j < n; ++j) {\n            if (picture[i][j] == 'B') {\n                rows[i]++;\n                cols[j]++;\n            }\n            row.append(picture[i][j]);\n        }\n        String rowStr = row.toString();\n        if (rows[i] == target)\n            rowCounts.put(rowStr, rowCounts.getOrDefault(rowStr, 0) + 1);\n    }\n    int ans = 0;\n    for (Map.Entry<String, Integer> entry : rowCounts.entrySet()) {\n        String row = entry.getKey();\n        int count = entry.getValue();\n        if (count == target) {\n            for (int j = 0; j < n; ++j) {\n                if (row.charAt(j) == 'B' && cols[j] == target)\n                    ans += count;\n            }\n        }\n    }\n    return ans;\n}\n```\n    \n    1. Count the number of 'B' pixels in each row and column, and store the string representation of each valid row (rows containing `target` 'B' pixels) with a count in a hashmap.\n2. Iterate over the valid rows with their counts, and for each of them check the columns where 'B' is present. If that column also has exactly `target` 'B' pixels, increment the answer by the count of that row.\n3. Return the answer (total number of lonely black pixels).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

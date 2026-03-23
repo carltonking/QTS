@@ -1,0 +1,235 @@
+import type { Question } from './types';
+
+export const QUESTIONS: Question[] = [
+  {
+    id: 'q001',
+    title: 'Expected Coin Flips for HHH',
+    body: 'A fair coin is flipped repeatedly. What is the expected number of flips required to see three consecutive heads $HHH$ for the first time?',
+    category: 'PROBABILITY',
+    difficulty: 'HARD',
+    hint: 'Let $E_0,E_1,E_2$ denote the expected remaining flips from states with $0,1,2$ consecutive heads.',
+    solution:
+      'Let $E_0,E_1,E_2$ be the expected remaining flips from states of $0,1,2$ consecutive heads.\n\n$$E_0 = 1 + \\frac{1}{2} E_1 + \\frac{1}{2} E_0$$\n$$E_1 = 1 + \\frac{1}{2} E_2 + \\frac{1}{2} E_0$$\n$$E_2 = 1 + \\frac{1}{2}\\cdot 0 + \\frac{1}{2} E_0$$\n\nFrom the first equation, $E_0=2+E_1$. From the third, $E_2=1+\\frac{1}{2} E_0$. Substitute into the second:\n\n$$E_1 = 1 + \\frac{1}{2}\\left(1+\\frac{1}{2}E_0\\right)+\\frac{1}{2}E_0 = \\frac{3}{2} + \\frac{3}{4} E_0.$$ \n\nThen\n\n$$E_0 = 2 + \\frac{3}{2} + \\frac{3}{4} E_0$$\n$$\\frac{1}{4} E_0 = \\frac{7}{2}$$\n$$E_0 = 14.$$ \n\nSo the expected number of flips is $\\boxed{14}$.',
+    tags: ['expectation', 'markov', 'streaks'],
+  },
+  {
+    id: 'q002',
+    title: 'Expected Rolls Given 6 Before 5',
+    body: 'A fair die is rolled until either a $5$ or a $6$ appears. Given that a $6$ appears before any $5$, what is the expected number of rolls?',
+    category: 'PROBABILITY',
+    difficulty: 'HARD',
+    hint: 'The waiting time to see either $5$ or $6$ is geometric with success probability $2/6$. Conditioning on which of the two faces wins does not change that waiting-time law.',
+    solution:
+      'Let $T$ be the time to the first occurrence of either $5$ or $6$. On each roll, the process stops with probability\n\n$$P(5 \\text{ or } 6)=\\frac26=\\frac13.$$ \n\nTherefore\n\n$$T \\sim \\text{Geom}(1/3)$$\nwith mean\n\n$$E[T]=\\frac{1}{1/3}=3.$$ \n\nNow condition on the event $A=\\{6 \\text{ appears before } 5\\}$. The value of the terminal face changes, but the stopping rule “first hit one of the two absorbing faces” does not. Hence the waiting-time distribution remains geometric with the same parameter.\n\nSo\n\n$$E[T\\mid A]=3.$$ \n\nThus the expected number of rolls is $\\boxed{3}$.',
+    tags: ['conditional-expectation', 'dice', 'geometric'],
+  },
+  {
+    id: 'q003',
+    title: 'Eigenvalues of a 2x2 Matrix',
+    body: 'For a general matrix $A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$, derive a closed-form expression for its eigenvalues.',
+    category: 'MATH',
+    difficulty: 'MEDIUM',
+    hint: 'Solve the characteristic equation $\\det(A-\\lambda I)=0$.',
+    solution:
+      'We solve\n\n$$\\det\\left(\\begin{pmatrix} a-\\lambda & b \\\\ c & d-\\lambda \\end{pmatrix}\\right)=0.$$ \n\nThis gives\n\n$$(a-\\lambda)(d-\\lambda)-bc = 0,$$\nso\n\n$$\\lambda^2-(a+d)\\lambda+(ad-bc)=0.$$ \n\nApplying the quadratic formula,\n\n$$\\lambda = \\frac{(a+d)\\pm\\sqrt{(a+d)^2-4(ad-bc)}}{2}.$$ \n\nUsing trace and determinant notation,\n\n$$\\boxed{\\lambda_{1,2}=\\frac{\\operatorname{tr}(A)\\pm\\sqrt{\\operatorname{tr}(A)^2-4\\det(A)}}{2}}.$$',
+    tags: ['linear-algebra', 'eigenvalues', 'matrix'],
+  },
+  {
+    id: 'q004',
+    title: 'Expected Draws Before First Ace',
+    body: 'A standard $52$-card deck is shuffled uniformly. What is the expected number of cards drawn until the first ace appears?',
+    category: 'PROBABILITY',
+    difficulty: 'MEDIUM',
+    hint: 'Use symmetry for the minimum of the four ace positions.',
+    solution:
+      'Think of the four ace positions as an ordered random subset of $\\{1,2,\\dots,52\\}$. The expected minimum order statistic of $k$ uniformly placed special items among $n$ positions is\n\n$$\\frac{n+1}{k+1}.$$ \n\nHere $n=52$ and $k=4$, so\n\n$$E[T]=\\frac{53}{5}=10.6.$$ \n\nTherefore the expected draw index of the first ace is $\\boxed{\\frac{53}{5}}$.',
+    tags: ['cards', 'order-statistics', 'expectation'],
+  },
+  {
+    id: 'q005',
+    title: 'Three Points on Distinct Edges of a Square',
+    body: 'Three points are chosen independently and uniformly on the perimeter of a square. What is the probability that they lie on three distinct edges?',
+    category: 'PROBABILITY',
+    difficulty: 'HARD',
+    hint: 'Reduce the problem to assigning each point to one of four equally likely edges.',
+    solution:
+      'Each point lands on each edge with probability $1/4$, independently. So the problem is equivalent to placing three labeled balls into four boxes uniformly.\n\nWe want all three points on distinct edges. The number of favorable assignments is\n\n$$4\\cdot 3\\cdot 2 = 24,$$\nwhile the total number of assignments is\n\n$$4^3=64.$$ \n\nHence\n\n$$P(\\text{three distinct edges}) = \\frac{24}{64}=\\frac{3}{8}.$$ \n\nSo the probability is $\\boxed{\\frac{3}{8}}$.',
+    tags: ['geometry', 'occupancy', 'combinatorics'],
+  },
+  {
+    id: 'q006',
+    title: 'Geometric Series Closed Form',
+    body: 'Derive the closed form of the geometric series $\\sum_{k=0}^{\\infty} r^k$ for $|r|<1$.',
+    category: 'MATH',
+    difficulty: 'EASY',
+    hint: 'Work first with the finite sum $S_n = 1+r+\\cdots+r^n$ and then take $n\\to\\infty$.',
+    solution:
+      'Let\n\n$$S_n = 1+r+r^2+\\cdots+r^n.$$ \n\nThen\n\n$$rS_n = r+r^2+\\cdots+r^{n+1}.$$ \n\nSubtract:\n\n$$S_n-rS_n = 1-r^{n+1},$$\nso\n\n$$S_n = \\frac{1-r^{n+1}}{1-r}.$$ \n\nIf $|r|<1$, then $r^{n+1}\\to 0$, hence\n\n$$\\sum_{k=0}^{\\infty} r^k = \\lim_{n\\to\\infty} S_n = \\frac{1}{1-r}.$$ \n\nTherefore the closed form is $\\boxed{\\frac{1}{1-r}}$.',
+    tags: ['series', 'algebra', 'limits'],
+  },
+  {
+    id: 'q007',
+    title: 'Bayes Disease Test',
+    body: 'A disease prevalence is $1\\%$. A test has sensitivity $95\\%$ and specificity $90\\%$. If a patient tests positive, what is the posterior probability they have the disease?',
+    category: 'PROBABILITY',
+    difficulty: 'EASY',
+    hint: 'Use $P(D\\mid +)=\\dfrac{P(+\\mid D)P(D)}{P(+\\mid D)P(D)+P(+\\mid D^c)P(D^c)}$.',
+    solution:
+      'Let $D$ be the event of disease. Then\n\n$$P(D)=0.01,\\quad P(+\\mid D)=0.95,\\quad P(+\\mid D^c)=0.10.$$ \n\nSo\n\n$$P(D\\mid +)=\\frac{0.95\\cdot 0.01}{0.95\\cdot 0.01 + 0.10\\cdot 0.99} = \\frac{0.0095}{0.1085}\\approx 0.0876.$$ \n\nThus the probability the patient actually has the disease is about $\\boxed{8.76\\%}$.',
+    tags: ['bayes', 'diagnostics', 'posterior'],
+  },
+  {
+    id: 'q008',
+    title: 'Secretary Problem Threshold',
+    body: 'In the classical secretary problem with $n$ candidates arriving in random order, what asymptotic fraction should be skipped before accepting the next record candidate?',
+    category: 'MATH',
+    difficulty: 'HARD',
+    hint: 'If you skip the first $r$ candidates, the success probability is approximately $\\dfrac{r}{n}\\log\\dfrac{n}{r}$.',
+    solution:
+      'Skip the first $r$ candidates and then accept the first one better than all previous candidates. For large $n$, the success probability is approximately\n\n$$f(r)=\\frac{r}{n}\\log\\frac{n}{r}.$$ \n\nSet $x=r/n$. Then maximize\n\n$$g(x)=x\\log(1/x).$$ \n\nDifferentiate:\n\n$$g\'(x)=\\log(1/x)-1.$$ \n\nThe optimum solves $g\'(x)=0$, so\n\n$$\\log(1/x)=1 \\implies x=e^{-1}.$$ \n\nHence the optimal threshold is to skip about the first $\\boxed{\\frac{n}{e}}$ candidates, i.e. approximately $\\boxed{36.8\\%}$.',
+    tags: ['optimal-stopping', 'secretary', 'asymptotics'],
+  },
+  {
+    id: 'q009',
+    title: 'Expected Maximum of Two Dice',
+    body: 'Two fair six-sided dice are rolled. Compute $E[\\max(D_1,D_2)]$.',
+    category: 'PROBABILITY',
+    difficulty: 'EASY',
+    hint: 'Use $P(\\max\\le k)=(k/6)^2$ to derive the pmf of the maximum.',
+    solution:
+      'For $k=1,\\dots,6$,\n\n$$P(\\max\\le k)=\\left(\\frac{k}{6}\\right)^2.$$ \n\nTherefore\n\n$$P(\\max=k)=\\left(\\frac{k}{6}\\right)^2-\\left(\\frac{k-1}{6}\\right)^2 = \\frac{2k-1}{36}.$$ \n\nNow compute\n\n$$E[\\max] = \\sum_{k=1}^{6} k\\frac{2k-1}{36} = \\frac{161}{36}. $$\n\nSo the answer is $\\boxed{\\frac{161}{36}}$.',
+    tags: ['dice', 'expectation', 'max'],
+  },
+  {
+    id: 'q010',
+    title: 'Gambler Ruin Hitting Probability',
+    body: 'A gambler starts with wealth $i$ and moves to $i+1$ with probability $p$ and to $i-1$ with probability $q=1-p$. What is the probability of hitting $N$ before $0$?',
+    category: 'PROBABILITY',
+    difficulty: 'MEDIUM',
+    hint: 'Solve the recurrence $h_i = ph_{i+1}+qh_{i-1}$ with $h_0=0,h_N=1$.',
+    solution:
+      'Let $h_i=P_i(\\tau_N<\\tau_0)$. Then\n\n$$h_i = ph_{i+1}+qh_{i-1}, \\qquad h_0=0,\\; h_N=1.$$ \n\nFor $p\\neq q$, solve the linear recurrence to get\n\n$$h_i = \\frac{1-(q/p)^i}{1-(q/p)^N}. $$\n\nIf $p=q=1/2$, the solution is linear:\n\n$$h_i=\\frac{i}{N}. $$\n\nThus\n\n$$\\boxed{h_i = \\begin{cases}\n\\frac{1-(q/p)^i}{1-(q/p)^N}, & p\\neq q,\\\\[6pt]\n\\frac{i}{N}, & p=q=\\frac{1}{2}.\n\\end{cases}}$$',
+    tags: ['random-walk', 'markov', 'difference-equations'],
+  },
+  {
+    id: 'q011',
+    title: 'Expected Cards Until a Pair',
+    body: 'Cards are drawn without replacement from a standard deck. What is the expected number of cards drawn until you first observe a repeated rank?',
+    category: 'PROBABILITY',
+    difficulty: 'MEDIUM',
+    hint: 'Use $E[T]=\\sum_{k\\ge 0}P(T>k)$ and note that $T>k$ means the first $k$ cards have distinct ranks.',
+    solution:
+      'Let $T$ be the first draw on which a repeated rank appears. Then\n\n$$E[T]=\\sum_{k\\ge 0} P(T>k).$$ \n\nFor $k\\le 13$, the first $k$ cards have distinct ranks with probability\n\n$$P(T>k)=\\prod_{j=0}^{k-1}\\frac{4(13-j)}{52-j}. $$\n\nSo\n\n$$E[T]=\\sum_{k=0}^{13} \\prod_{j=0}^{k-1}\\frac{4(13-j)}{52-j}. $$\n\nEvaluating this sum numerically yields approximately\n\n$$E[T]\\approx 5.39.$$ \n\nHence the expected draw count is about $\\boxed{5.39}$.',
+    tags: ['cards', 'birthday-paradox', 'expectation'],
+  },
+  {
+    id: 'q012',
+    title: 'Integral of x e^{-x}',
+    body: 'Evaluate $$\\int_0^{\\infty} x e^{-x}\\,dx.$$',
+    category: 'MATH',
+    difficulty: 'EASY',
+    hint: 'Apply integration by parts with $u=x$ and $dv=e^{-x}\\,dx$.',
+    solution:
+      'Take\n\n$$u=x,\\quad dv=e^{-x}\\,dx,\\quad du=dx,\\quad v=-e^{-x}. $$\n\nThen\n\n$$\\int_0^{\\infty} xe^{-x}\\,dx = \\left[-xe^{-x}\\right]_0^{\\infty} + \\int_0^{\\infty} e^{-x}\\,dx.$$ \n\nThe boundary term is $0$, so\n\n$$\\int_0^{\\infty} xe^{-x}\\,dx = \\left[-e^{-x}\\right]_0^{\\infty}=1.$$ \n\nTherefore the value is $\\boxed{1}$.',
+    tags: ['calculus', 'integration', 'gamma'],
+  },
+  {
+    id: 'q013',
+    title: 'Coupon Collector Expectation',
+    body: 'There are $N$ equally likely coupon types. Derive the expected number of draws needed to collect all $N$ types.',
+    category: 'PROBABILITY',
+    difficulty: 'MEDIUM',
+    hint: 'Break the problem into stages from $k$ collected types to $k+1$ collected types.',
+    solution:
+      'If you already have $k$ distinct coupon types, the probability the next draw produces a new type is\n\n$$\\frac{N-k}{N}. $$\n\nSo the waiting time for a new type has mean\n\n$$\\frac{N}{N-k}. $$\n\nSumming over stages $k=0,1,\\dots,N-1$:\n\n$$E[T]=\\sum_{k=0}^{N-1}\\frac{N}{N-k}=N\\sum_{j=1}^{N}\\frac{1}{j} = NH_N.$$ \n\nThus the expected number of draws is\n\n$$\\boxed{NH_N},$$\nwhere $H_N$ is the $N$th harmonic number.',
+    tags: ['coupon-collector', 'harmonic', 'expectation'],
+  },
+  {
+    id: 'q014',
+    title: 'Kelly Criterion Derivation',
+    body: 'A bettor repeatedly wagers a fraction $f$ of wealth on a binary gamble that wins with probability $p$ and pays $b:1$ odds. Derive the Kelly-optimal fraction.',
+    category: 'FINANCE',
+    difficulty: 'HARD',
+    hint: 'Maximize expected log-growth $g(f)=p\\log(1+bf)+(1-p)\\log(1-f)$.',
+    solution:
+      'The expected log-growth is\n\n$$g(f)=p\\log(1+bf)+(1-p)\\log(1-f).$$ \n\nDifferentiate:\n\n$$g\'(f)=\\frac{pb}{1+bf}-\\frac{1-p}{1-f}. $$\n\nSet this equal to zero:\n\n$$\\frac{pb}{1+bf}=\\frac{1-p}{1-f}. $$\n\nCross-multiplying and simplifying,\n\n$$pb(1-f)=(1-p)(1+bf)$$\n$$pb-pbf = 1-p + bf - pbf$$\n$$pb = 1-p + bf$$\n$$f^* = \\frac{pb-(1-p)}{b}. $$\n\nEquivalently,\n\n$$\\boxed{f^* = \\frac{p(b+1)-1}{b}}.$$',
+    tags: ['kelly', 'log-utility', 'growth'],
+  },
+  {
+    id: 'q015',
+    title: 'Black-Scholes Term Intuition',
+    body: 'For a European call, the Black-Scholes price is $$C=S_0N(d_1)-Ke^{-rT}N(d_2).$$ Explain the intuition for each term and what $d_1,d_2$ represent.',
+    category: 'FINANCE',
+    difficulty: 'MEDIUM',
+    hint: 'Interpret the formula under risk-neutral pricing as stock-leg minus discounted strike-leg.',
+    solution:
+      'The formula\n\n$$C=S_0N(d_1)-Ke^{-rT}N(d_2)$$\ncan be read as the value of the stock exposure in the replicating portfolio minus the present value of the strike payment in exercised states.\n\nThe term $S_0N(d_1)$ is linked to the option delta and represents the stock component of the hedge.\n\nThe term $Ke^{-rT}N(d_2)$ is the discounted strike, weighted by the risk-neutral probability of exercise.\n\nThe quantities\n\n$$d_1=\\frac{\\ln(S_0/K)+(r+\\tfrac12\\sigma^2)T}{\\sigma\\sqrt{T}}, \\qquad d_2=d_1-\\sigma\\sqrt{T}$$\nmeasure moneyness in standard deviation units.\n\nA useful intuition is that $N(d_2)$ acts like the risk-neutral exercise probability, while $N(d_1)$ reflects the hedge ratio on the stock side.',
+    tags: ['options', 'black-scholes', 'intuition'],
+  },
+  {
+    id: 'q016',
+    title: 'VaR versus CVaR',
+    body: 'Define Value at Risk (VaR) and Conditional Value at Risk (CVaR), and compare them.',
+    category: 'FINANCE',
+    difficulty: 'EASY',
+    hint: 'VaR is a tail quantile; CVaR is the average loss beyond that quantile.',
+    solution:
+      'For a loss variable $L$, the $\\alpha$-VaR is the quantile\n\n$$\\operatorname{VaR}_\\alpha = \\inf\\{\\ell : P(L\\le \\ell)\\ge \\alpha\\}. $$\n\nIt tells you the loss threshold you do not exceed with probability $\\alpha$.\n\nThe corresponding CVaR or Expected Shortfall is the expected loss in the worst tail:\n\n$$\\operatorname{CVaR}_\\alpha = E[L\\mid L\\ge \\operatorname{VaR}_\\alpha]$$\nfor continuous distributions.\n\nVaR gives a cutoff; CVaR measures the severity beyond the cutoff. In practice, CVaR captures tail magnitude and is often preferred for coherent risk management.',
+    tags: ['risk', 'var', 'expected-shortfall'],
+  },
+  {
+    id: 'q017',
+    title: 'Expected Return Time to Origin',
+    body: 'A simple symmetric random walk on $\\mathbb Z$ starts at $0$. What is the expected time to return to the origin?',
+    category: 'MATH',
+    difficulty: 'HARD',
+    hint: 'The walk is recurrent, but the tail of the first-return distribution is heavy enough to make the mean diverge.',
+    solution:
+      'For the one-dimensional simple symmetric random walk, the probability of ever returning to the origin is $1$, so the walk is recurrent.\n\nHowever, the first return time $T_0$ has tail behavior\n\n$$P(T_0=2n)\\sim c n^{-3/2}$$\nfor some constant $c>0$.\n\nThen\n\n$$E[T_0] = \\sum_{n=1}^{\\infty} 2n\\,P(T_0=2n)$$\nbehaves like a constant multiple of\n\n$$\\sum_{n=1}^{\\infty} n\\cdot n^{-3/2} = \\sum_{n=1}^{\\infty} n^{-1/2},$$\nwhich diverges.\n\nTherefore the expected return time is $\\boxed{\\infty}$.',
+    tags: ['random-walk', 'recurrence', 'first-return'],
+  },
+  {
+    id: 'q018',
+    title: 'Two-Asset Portfolio Variance',
+    body: 'A two-asset portfolio has weights $w_1,w_2$, volatilities $\\sigma_1,\\sigma_2$, and correlation $\\rho$. What is the portfolio variance?',
+    category: 'FINANCE',
+    difficulty: 'EASY',
+    hint: 'Use the variance identity for $w_1R_1+w_2R_2$ and substitute $\\operatorname{Cov}(R_1,R_2)=\\rho\\sigma_1\\sigma_2$.',
+    solution:
+      'If portfolio return is $R_p = w_1R_1+w_2R_2$, then\n\n$$\\operatorname{Var}(R_p)=w_1^2\\sigma_1^2+w_2^2\\sigma_2^2+2w_1w_2\\operatorname{Cov}(R_1,R_2).$$ \n\nSince\n\n$$\\operatorname{Cov}(R_1,R_2)=\\rho\\sigma_1\\sigma_2,$$\nwe get\n\n$$\\boxed{\\sigma_p^2 = w_1^2\\sigma_1^2+w_2^2\\sigma_2^2+2\\rho w_1w_2\\sigma_1\\sigma_2}. $$',
+    tags: ['portfolio', 'variance', 'correlation'],
+  },
+  {
+    id: 'q019',
+    title: 'Monty Hall Full Derivation',
+    body: 'In the Monty Hall problem, there are three doors, one prize, and a host who always opens a goat door after your initial choice. Show formally why switching is optimal.',
+    category: 'PROBABILITY',
+    difficulty: 'EASY',
+    hint: 'Your first choice is correct with probability $1/3$, so the other two doors collectively hold probability $2/3$. After the host opens a goat door, that mass concentrates on the remaining unopened door.',
+    solution:
+      'Initially, your chosen door contains the prize with probability\n\n$$\\frac13.$$ \n\nTherefore the event “the prize is behind one of the other two doors” has probability\n\n$$\\frac23.$$ \n\nMonty opens one of those other two doors, but he is constrained to reveal a goat and never opens the prize door. So his action provides information: it eliminates a goat door while preserving the full $2/3$ probability on the single remaining unopened alternative.\n\nThus staying wins with probability $\\boxed{1/3}$ and switching wins with probability $\\boxed{2/3}$. Hence switching is optimal.',
+    tags: ['monty-hall', 'conditional-probability', 'bayes'],
+  },
+  {
+    id: 'q020',
+    title: 'Expected Local Maxima in a Random Permutation',
+    body: 'If $\\pi$ is a uniformly random permutation of $\\{1,2,\\dots,n\\}$, what is the expected number of local maxima, where interior position $i$ is a local maximum if $\\pi_i$ exceeds both neighbors?',
+    category: 'MATH',
+    difficulty: 'HARD',
+    hint: 'Use indicators. For interior positions, each of the three neighboring values is equally likely to be the largest.',
+    solution:
+      'Let $I_i$ indicate that position $i$ is a local maximum. Then\n\n$$E\\left[\\sum_{i=1}^{n} I_i\\right] = \\sum_{i=1}^{n} E[I_i].$$ \n\nFor an interior position $2\\le i\\le n-1$, among the three values $\\pi_{i-1},\\pi_i,\\pi_{i+1}$, each is equally likely to be largest, so\n\n$$P(I_i=1)=\\frac{1}{3}. $$ \n\nAt each endpoint, only one comparison is needed, so\n\n$$P(I_1=1)=P(I_n=1)=\\frac{1}{2}. $$ \n\nHence\n\n$$E[\\#\\text{ local maxima}] = \\frac{1}{2} + (n-2)\\frac{1}{3} + \\frac{1}{2} = 1 + \\frac{n-2}{3} = \\frac{n+1}{3}. $$\n\nSo the expected number is $\\boxed{\\frac{n+1}{3}}$.',
+    tags: ['permutations', 'indicators', 'expectation'],
+  },
+  {
+    id: 'q021',
+    title: 'Expected Value of a Geometric Variable',
+    body: 'If $X\\sim \\mathrm{Geom}(p)$ counts the number of trials until the first success, derive $E[X]$.',
+    category: 'PROBABILITY',
+    difficulty: 'MEDIUM',
+    hint: 'Use the tail-sum formula $E[X]=\\sum_{k\\ge 1}P(X\\ge k)$.',
+    solution:
+      'For the geometric distribution on $\\{1,2,3,\\dots\\}$,\n\n$$P(X=k)=(1-p)^{k-1}p.$$ \n\nUsing the tail-sum formula,\n\n$$E[X]=\\sum_{k=1}^{\\infty}P(X\\ge k)=\\sum_{k=1}^{\\infty}(1-p)^{k-1}. $$\n\nThis is a geometric series with sum\n\n$$\\frac{1}{1-(1-p)}=\\frac{1}{p}. $$ \n\nTherefore\n\n$$\\boxed{E[X]=\\frac{1}{p}}. $$',
+    tags: ['geometric', 'expectation', 'series'],
+  },
+];

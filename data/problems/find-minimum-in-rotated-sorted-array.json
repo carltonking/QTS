@@ -1,0 +1,24 @@
+{
+  "id": 153,
+  "title": "Find Minimum in Rotated Sorted Array",
+  "slug": "find-minimum-in-rotated-sorted-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Suppose an array of length n sorted in ascending order is rotated between 1 and n times. For example, the array nums = [0,1,2,4,5,6,7] might become:\n\n*   [4,5,6,7,0,1,2] if it was rotated 4 times.\n*   [0,1,2,4,5,6,7] if it was rotated 7 times.\n\nNotice that rotating an array [a[0], a[1], a[2], ..., a[n-1]] 1 time results in the array [a[n-1], a[0], a[1], a[2], ..., a[n-2]].\n\nGiven the sorted rotated array nums of unique elements, return _the minimum element of this array_.\n\nYou must write an algorithm that runs in O(log n) time.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_min(nums):\n    left, right = 0, len(nums) - 1\n\n    while left < right:\n        mid = left + (right - left) // 2\n        if nums[mid] > nums[right]:\n            left = mid + 1\n        else:\n            right = mid\n    return nums[left]\n```\n    \n    The algorithm uses a binary search approach to find the minimum element in the sorted rotated array. Initially, pointers `left` and `right` are set to the start and end of the array. The midpoint `mid` is calculated as the average of `left` and `right`. The main idea is that whenever `nums[mid]` is greater than `nums[right]`, the minimum element must be in the right half of the array; otherwise, we search in the left half. This ensures that the algorithm runs in O(log n) time, as the search space is reduced by half each iteration. When `left` and `right` meet, the minimum element is found at `left`.\n    ",
+    "javascript": "\n    ```javascript\nfunction findMin(nums) {\n    let left = 0, right = nums.length - 1;\n\n    while (left < right) {\n        let mid = left + Math.floor((right - left) / 2);\n        if (nums[mid] > nums[right]) {\n            left = mid + 1;\n        } else {\n            right = mid;\n        }\n    }\n    return nums[left];\n}\n```\n    \n    The algorithm uses a binary search approach to find the minimum element in the sorted rotated array. Initially, pointers `left` and `right` are set to the start and end of the array. The midpoint `mid` is calculated as the average of `left` and `right`. The main idea is that whenever `nums[mid]` is greater than `nums[right]`, the minimum element must be in the right half of the array; otherwise, we search in the left half. This ensures that the algorithm runs in O(log n) time, as the search space is reduced by half each iteration. When `left` and `right` meet, the minimum element is found at `left`.\n    ",
+    "java": "\n    ```java\npublic int findMin(int[] nums) {\n    int left = 0, right = nums.length - 1;\n\n    while (left < right) {\n        int mid = left + (right - left) / 2;\n        if (nums[mid] > nums[right]) {\n            left = mid + 1;\n        } else {\n            right = mid;\n        }\n    }\n    return nums[left];\n}\n```\n    \n    The algorithm uses a binary search approach to find the minimum element in the sorted rotated array. Initially, pointers `left` and `right` are set to the start and end of the array. The midpoint `mid` is calculated as the average of `left` and `right`. The main idea is that whenever `nums[mid]` is greater than `nums[right]`, the minimum element must be in the right half of the array; otherwise, we search in the left half. This ensures that the algorithm runs in O(log n) time, as the search space is reduced by half each iteration. When `left` and `right` meet, the minimum element is found at `left`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

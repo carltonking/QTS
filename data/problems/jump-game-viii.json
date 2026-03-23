@@ -1,0 +1,24 @@
+{
+  "id": 2297,
+  "title": "Jump Game VIII",
+  "slug": "jump-game-viii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums of length n. You are initially standing at index 0. You can jump from index i to index j where i < j if:\n\n*   nums[i] <= nums[j] and nums[k] < nums[i] for all indexes k in the range i < k < j, or\n*   nums[i] > nums[j] and nums[k] >= nums[i] for all indexes k in the range i < k < j.\n\nYou are also given an integer array costs of length n where costs[i] denotes the cost of jumping to index i.\n\nReturn _the minimum cost to jump to the index_ n - 1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minHeightJump(nums, costs):\n    n = len(nums)\n    dp = [float('inf')] * n\n\n    dp[0] = 0\n    for i in range(1, n):\n        for j in range(i - 1, -1, -1):\n            if ((nums[j] <= nums[i] and (j == 0 or nums[j - 1] < nums[i])) or (nums[j] > nums[i] and (j == 0 or nums[j - 1] >= nums[i]))):\n                dp[i] = min(dp[i], dp[j] + costs[i])\n\n    return dp[n - 1]\n```\n    \n    The algorithm uses dynamic programming to find the minimum cost to reach index `n-1`. We create a `dp` array of length `n` that stores the minimum cost to reach each index. We initialize the first element of `dp` to `0`, as we're already at index `0` and it has no cost. For each `i` from `1` to `n-1`, we iterate from `j = i-1` to `0`. If either of the given conditions are true `(nums[j] <= nums[i] && (j == 0 || nums[j - 1] < nums[i]))` or `(nums[j] > nums[i] && (j == 0 || nums[j - 1] >= nums[i]))`, update `dp[i]` with the minimum of its current value and `dp[j] + costs[i]`. After iterating through all elements, the last element `dp[n - 1]` contains the minimum cost to reach index `n-1`.\n    ",
+    "javascript": "\n    ```javascript\nfunction minHeightJump(nums, costs) {\n    const n = nums.length;\n    const dp = new Array(n).fill(Infinity);\n\n    dp[0] = 0;\n    for (let i = 1; i < n; ++i) {\n        for (let j = i - 1; j >= 0; --j) {\n            if ((nums[j] <= nums[i] && (j === 0 || nums[j - 1] < nums[i])) || (nums[j] > nums[i] && (j === 0 || nums[j - 1] >= nums[i]))) {\n                dp[i] = Math.min(dp[i], dp[j] + costs[i]);\n            }\n        }\n    }\n    return dp[n - 1];\n}\n```\n    \n    The algorithm uses dynamic programming to find the minimum cost to reach index `n-1`. We create a `dp` array of length `n` that stores the minimum cost to reach each index. We initialize the first element of `dp` to `0`, as we're already at index `0` and it has no cost. For each `i` from `1` to `n-1`, we iterate from `j = i-1` to `0`. If either of the given conditions are true `(nums[j] <= nums[i] && (j == 0 || nums[j - 1] < nums[i]))` or `(nums[j] > nums[i] && (j == 0 || nums[j - 1] >= nums[i]))`, update `dp[i]` with the minimum of its current value and `dp[j] + costs[i]`. After iterating through all elements, the last element `dp[n - 1]` contains the minimum cost to reach index `n-1`.\n    ",
+    "java": "\n    ```java\npublic int minHeightJump(int[] nums, int[] costs) {\n    int n = nums.length;\n    int[] dp = new int[n];\n\n    dp[0] = 0;\n    for (int i = 1; i < n; ++i) {\n        dp[i] = Integer.MAX_VALUE;\n        for (int j = i - 1; j >= 0; --j) {\n            if ((nums[j] <= nums[i] && (j == 0 || nums[j - 1] < nums[i])) || (nums[j] > nums[i] && (j == 0 || nums[j - 1] >= nums[i]))) {\n                dp[i] = Math.min(dp[i], dp[j] + costs[i]);\n            }\n        }\n    }\n    return dp[n - 1];\n}\n```\n    \n    The algorithm uses dynamic programming to find the minimum cost to reach index `n-1`. We create a `dp` array of length `n` that stores the minimum cost to reach each index. We initialize the first element of `dp` to `0`, as we're already at index `0` and it has no cost. For each `i` from `1` to `n-1`, we iterate from `j = i-1` to `0`. If either of the given conditions are true `(nums[j] <= nums[i] && (j == 0 || nums[j - 1] < nums[i]))` or `(nums[j] > nums[i] && (j == 0 || nums[j - 1] >= nums[i]))`, update `dp[i]` with the minimum of its current value and `dp[j] + costs[i]`. After iterating through all elements, the last element `dp[n - 1]` contains the minimum cost to reach index `n-1`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

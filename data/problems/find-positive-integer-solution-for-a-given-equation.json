@@ -1,0 +1,24 @@
+{
+  "id": 1237,
+  "title": "Find Positive Integer Solution for a Given Equation",
+  "slug": "find-positive-integer-solution-for-a-given-equation",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a callable function f(x, y) with a hidden formula and a value z, reverse engineer the formula and return _all positive integer pairs_ x _and_ y _where_ f(x,y) == z. You may return the pairs in any order.\n\nWhile the exact formula is hidden, the function is monotonically increasing, i.e.:\n\n*   f(x, y) < f(x + 1, y)\n*   f(x, y) < f(x, y + 1)\n\nThe function interface is defined like this:\n\ninterface CustomFunction {\npublic:\n  // Returns some positive integer f(x, y) for two positive integers x and y based on a formula.\n  int f(int x, int y);\n};\n\nWe will judge your solution as follows:\n\n*   The judge has a list of 9 hidden implementations of CustomFunction, along with a way to generate an answer key of all valid pairs for a specific z.\n*   The judge will receive two inputs: a function_id (to determine which implementation to test your code with), and the target z.\n*   The judge will call your findSolution and compare your results with the answer key.\n*   If your results match the answer key, your solution will be Accepted.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findSolution(customfunction: 'CustomFunction', z: int) -> List[List[int]]:\n    results = []\n    for x in range(1, 1001):\n        for y in range(1, 1001):\n            if customfunction.f(x, y) == z:\n                results.append([x, y])\n            elif customfunction.f(x, y) > z:\n                break\n    return results\n```\n    \n    To solve the given problem, we need to iterate through all positive integers `x` and `y` between 1 and 1000. For each pair of `x` and `y`, we will call the custom function `f(x, y)` and check if it returns the desired value `z`. If so, we will add the pair `[x, y]` to the result list. If the function returns a value greater than `z`, we will break the inner loop as we know that for this `x`, the values of `y` will only increase the result further, which can't be equal to `z`. Thus we will move on to the next iteration of `x`. Once all pairs of x and y have been tested, we return the resulting pairs list.\n    ",
+    "javascript": "\n    ```javascript\nvar findSolution = function(customFunction, z) {\n    let results = [];\n    for (let x = 1; x <= 1000; x++) {\n        for (let y = 1; y <= 1000; y++) {\n            if (customFunction.f(x, y) === z) {\n                results.push([x, y]);\n            } else if (customFunction.f(x, y) > z) {\n                break;\n            }\n        }\n    }\n    return results;\n};\n```\n    \n    To solve the given problem, we need to iterate through all positive integers `x` and `y` between 1 and 1000. For each pair of `x` and `y`, we will call the custom function `f(x, y)` and check if it returns the desired value `z`. If so, we will add the pair `[x, y]` to the result list. If the function returns a value greater than `z`, we will break the inner loop as we know that for this `x`, the values of `y` will only increase the result further, which can't be equal to `z`. Thus we will move on to the next iteration of `x`. Once all pairs of x and y have been tested, we return the resulting pairs list.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<List<Integer>> findSolution(CustomFunction customfunction, int z) {\n    List<List<Integer>> results = new ArrayList<>();\n    for (int x = 1; x <= 1000; x++) {\n        for (int y = 1; y <= 1000; y++) {\n            if (customfunction.f(x, y) == z) {\n                List<Integer> pair = new ArrayList<>();\n                pair.add(x);\n                pair.add(y);\n                results.add(pair);\n            } else if (customfunction.f(x, y) > z) {\n                break;\n            }\n        }\n    }\n    return results;\n}\n```\n    \n    To solve the given problem, we need to iterate through all positive integers `x` and `y` between 1 and 1000. For each pair of `x` and `y`, we will call the custom function `f(x, y)` and check if it returns the desired value `z`. If so, we will add the pair `[x, y]` to the result list. If the function returns a value greater than `z`, we will break the inner loop as we know that for this `x`, the values of `y` will only increase the result further, which can't be equal to `z`. Thus we will move on to the next iteration of `x`. Once all pairs of x and y have been tested, we return the resulting pairs list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

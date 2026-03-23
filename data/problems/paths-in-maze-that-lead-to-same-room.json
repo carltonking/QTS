@@ -1,0 +1,24 @@
+{
+  "id": 2077,
+  "title": "Paths in Maze That Lead to Same Room",
+  "slug": "paths-in-maze-that-lead-to-same-room",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A maze consists of n rooms numbered from 1 to n, and some rooms are connected by corridors. You are given a 2D integer array corridors where corridors[i] = [room1i, room2i] indicates that there is a corridor connecting room1i and room2i, allowing a person in the maze to go from room1i to room2i and vice versa.\n\nThe designer of the maze wants to know how confusing the maze is. The confusion score of the maze is the number of different cycles of length 3.\n\n*   For example, 1 -> 2 -> 3 -> 1 is a cycle of length 3, but 1 -> 2 -> 3 -> 4 and 1 -> 2 -> 3 -> 2 -> 1 are not.\n\nTwo cycles are considered to be different if one or more of the rooms visited in the first cycle is not in the second cycle.\n\nReturn _the_ _confusion score of the maze._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maximumNumber(num: str, change: List[int]) -> str:\n    num = list(num)\n    mutatable = False\n    for i in range(len(num)):\n        digit = int(num[i])\n        if digit < change[digit]:\n            if not mutatable: mutatable = True\n            num[i] = str(change[digit])\n        elif digit > change[digit] and mutatable:\n            break\n    return \"\".join(num)\n```\n    \n    1. Convert the input string to a mutable data structure (C++: string, Java: char array, Python: list of characters, JavaScript: array of characters).\n2. Initialize a boolean variable `mutatable` to keep track of whether we have started mutating or not.\n3. Iterate through the digits of input string `num`.\n4. For each digit, compare it to the corresponding value in the `change` array. \n5. If the digit is smaller than its corresponding change value and mutatable is false, set mutatable to true, and replace the digit with the change value.\n6. If the digit is larger than its corresponding change value and mutatable is true, break the loop because the string is now non-increasing.\n7. Convert the mutable data structure back to the string and return it.\n    ",
+    "javascript": "\n    ```javascript\nfunction maximumNumber(num, change) {\n    let mutatable = false;\n    let numArray = num.split('');\n    for (let i = 0; i < numArray.length; i++) {\n        let digit = numArray[i] - '0';\n        if (digit < change[digit]) {\n            if (!mutatable) mutatable = true;\n            numArray[i] = change[digit] + '0';\n        } else if (digit > change[digit] && mutatable) {\n            break;\n        }\n    }\n    return numArray.join('');\n}\n```\n    \n    1. Convert the input string to a mutable data structure (C++: string, Java: char array, Python: list of characters, JavaScript: array of characters).\n2. Initialize a boolean variable `mutatable` to keep track of whether we have started mutating or not.\n3. Iterate through the digits of input string `num`.\n4. For each digit, compare it to the corresponding value in the `change` array. \n5. If the digit is smaller than its corresponding change value and mutatable is false, set mutatable to true, and replace the digit with the change value.\n6. If the digit is larger than its corresponding change value and mutatable is true, break the loop because the string is now non-increasing.\n7. Convert the mutable data structure back to the string and return it.\n    ",
+    "java": "\n    ```java\npublic String maximumNumber(String num, int[] change) {\n    boolean mutatable = false;\n    char[] numArray = num.toCharArray();\n    for (int i = 0; i < numArray.length; i++) {\n        int digit = numArray[i] - '0';\n        if (digit < change[digit]) {\n            if (!mutatable) mutatable = true;\n            numArray[i] = (char) (change[digit] + '0');\n        } else if (digit > change[digit] && mutatable) {\n            break;\n        }\n    }\n    return new String(numArray);\n}\n```\n    \n    1. Convert the input string to a mutable data structure (C++: string, Java: char array, Python: list of characters, JavaScript: array of characters).\n2. Initialize a boolean variable `mutatable` to keep track of whether we have started mutating or not.\n3. Iterate through the digits of input string `num`.\n4. For each digit, compare it to the corresponding value in the `change` array. \n5. If the digit is smaller than its corresponding change value and mutatable is false, set mutatable to true, and replace the digit with the change value.\n6. If the digit is larger than its corresponding change value and mutatable is true, break the loop because the string is now non-increasing.\n7. Convert the mutable data structure back to the string and return it.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

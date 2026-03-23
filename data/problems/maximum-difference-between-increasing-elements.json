@@ -1,0 +1,24 @@
+{
+  "id": 2016,
+  "title": "Maximum Difference Between Increasing Elements",
+  "slug": "maximum-difference-between-increasing-elements",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a 0-indexed integer array nums of size n, find the maximum difference between nums[i] and nums[j] (i.e., nums[j] - nums[i]), such that 0 <= i < j < n and nums[i] < nums[j].\n\nReturn _the maximum difference._ If no such i and j exists, return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_steps_to_equal_elements(nums):\n    min_elem = min(nums)\n    steps = 0\n    for num in nums:\n        steps += (num - min_elem)\n    return steps\n```\n    \n    The algorithm you use to minimize the number of operations is as follows:\n\n1. Find the minimum element in the array. This can be done using a built-in function (e.g., in C++, std::min_element; in Python, min(); or in JavaScript, Math.min()) or by iterating through the array and keeping track of the minimum element encountered.\n2. Initialize a variable named `steps` to store the total number of operations needed.\n3. Iterate through the array again, and for each element, subtract the minimum element from the current element, and add the result to `steps`.\n4. Return `steps`. The variable `steps` will store the minimum number of operations required to make all elements equal in the input array.\n\nThe idea behind this approach is that we can perform multiple subtractions on each element until they all reach the same value as the minimum element in the array. This guarantees the minimum number of operations possible because making all values equal necessarily means having them all equal to the minimum element in the array. Otherwise, additional operations would be needed to decrease the value of at least one element further.\n    ",
+    "javascript": "\n    ```javascript\nfunction min_steps_to_equal_elements(nums) {\n    let min_elem = Math.min(...nums);\n    let steps = 0;\n    for(let num of nums) {\n        steps += (num - min_elem);\n    }\n    return steps;\n}\n```\n    \n    The algorithm you use to minimize the number of operations is as follows:\n\n1. Find the minimum element in the array. This can be done using a built-in function (e.g., in C++, std::min_element; in Python, min(); or in JavaScript, Math.min()) or by iterating through the array and keeping track of the minimum element encountered.\n2. Initialize a variable named `steps` to store the total number of operations needed.\n3. Iterate through the array again, and for each element, subtract the minimum element from the current element, and add the result to `steps`.\n4. Return `steps`. The variable `steps` will store the minimum number of operations required to make all elements equal in the input array.\n\nThe idea behind this approach is that we can perform multiple subtractions on each element until they all reach the same value as the minimum element in the array. This guarantees the minimum number of operations possible because making all values equal necessarily means having them all equal to the minimum element in the array. Otherwise, additional operations would be needed to decrease the value of at least one element further.\n    ",
+    "java": "\n    ```java\npublic int min_steps_to_equal_elements(int[] nums) {\n    int min_elem = Arrays.stream(nums).min().getAsInt();\n    int steps = 0;\n    for(int num : nums) {\n        steps += (num - min_elem);\n    }\n    return steps;\n}\n```\n    \n    The algorithm you use to minimize the number of operations is as follows:\n\n1. Find the minimum element in the array. This can be done using a built-in function (e.g., in C++, std::min_element; in Python, min(); or in JavaScript, Math.min()) or by iterating through the array and keeping track of the minimum element encountered.\n2. Initialize a variable named `steps` to store the total number of operations needed.\n3. Iterate through the array again, and for each element, subtract the minimum element from the current element, and add the result to `steps`.\n4. Return `steps`. The variable `steps` will store the minimum number of operations required to make all elements equal in the input array.\n\nThe idea behind this approach is that we can perform multiple subtractions on each element until they all reach the same value as the minimum element in the array. This guarantees the minimum number of operations possible because making all values equal necessarily means having them all equal to the minimum element in the array. Otherwise, additional operations would be needed to decrease the value of at least one element further.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

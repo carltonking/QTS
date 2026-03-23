@@ -1,0 +1,24 @@
+{
+  "id": 2099,
+  "title": "Find Subsequence of Length K With the Largest Sum",
+  "slug": "find-subsequence-of-length-k-with-the-largest-sum",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an integer array nums and an integer k. You want to find a subsequence of nums of length k that has the largest sum.\n\nReturn _any such subsequence as an integer array of length_ k.\n\nA subsequence is an array that can be derived from another array by deleting some or no elements without changing the order of the remaining elements.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_patterns_in_word(patterns, word):\n    count = 0\n    for pattern in patterns:\n        if pattern in word:\n            count += 1\n    return count\n```\n    \n    The algorithm iterates through each string in the given `patterns` array. In each iteration, it checks if the current pattern is a substring of the given `word`. If it is, it increases the count.\n\nFor C++, we use the `find` method of the `std::string` class and compare the result to `std::string::npos` to check if the pattern is present.\n\nFor Java, we use the `contains` method of the `String` class to check if the pattern is present.\n\nFor Python, we use the `in` operator to check if the pattern is present in the word.\n\nFor JavaScript, we use the `includes` method of the `String` class to check if the pattern is present.\n\nAt the end of the loop, the function returns the count of the patterns that are substrings of the given word.\n    ",
+    "javascript": "\n    ```javascript\nfunction countPatternsInWord(patterns, word) {\n    let count = 0;\n    for (const pattern of patterns) {\n        if (word.includes(pattern)) {\n            count++;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm iterates through each string in the given `patterns` array. In each iteration, it checks if the current pattern is a substring of the given `word`. If it is, it increases the count.\n\nFor C++, we use the `find` method of the `std::string` class and compare the result to `std::string::npos` to check if the pattern is present.\n\nFor Java, we use the `contains` method of the `String` class to check if the pattern is present.\n\nFor Python, we use the `in` operator to check if the pattern is present in the word.\n\nFor JavaScript, we use the `includes` method of the `String` class to check if the pattern is present.\n\nAt the end of the loop, the function returns the count of the patterns that are substrings of the given word.\n    ",
+    "java": "\n    ```java\npublic int countPatternsInWord(String[] patterns, String word) {\n    int count = 0;\n    for (String pattern : patterns) {\n        if (word.contains(pattern)) {\n            count++;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm iterates through each string in the given `patterns` array. In each iteration, it checks if the current pattern is a substring of the given `word`. If it is, it increases the count.\n\nFor C++, we use the `find` method of the `std::string` class and compare the result to `std::string::npos` to check if the pattern is present.\n\nFor Java, we use the `contains` method of the `String` class to check if the pattern is present.\n\nFor Python, we use the `in` operator to check if the pattern is present in the word.\n\nFor JavaScript, we use the `includes` method of the `String` class to check if the pattern is present.\n\nAt the end of the loop, the function returns the count of the patterns that are substrings of the given word.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2197,
+  "title": "Replace Non-Coprime Numbers in Array",
+  "slug": "replace-non-coprime-numbers-in-array",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an array of integers nums. Perform the following steps:\n\n1.  Find any two adjacent numbers in nums that are non-coprime.\n2.  If no such numbers are found, stop the process.\n3.  Otherwise, delete the two numbers and replace them with their LCM (Least Common Multiple).\n4.  Repeat this process as long as you keep finding two adjacent non-coprime numbers.\n\nReturn _the final modified array._ It can be shown that replacing adjacent non-coprime numbers in any arbitrary order will lead to the same result.\n\nThe test cases are generated such that the values in the final array are less than or equal to 108.\n\nTwo values x and y are non-coprime if GCD(x, y) > 1 where GCD(x, y) is the Greatest Common Divisor of x and y.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef decode_slanted_cipher(encoded_text, rows):\n    matrix = ['' for _ in range(rows)]\n    index = 0\n\n    for diagonal in range(2 * (rows - 1)):\n        for row in range(max(0, diagonal - rows + 1), min(diagonal, rows - 1) + 1):\n            if index < len(encoded_text):\n                matrix[row] += encoded_text[index]\n                index += 1\n\n    return ''.join(matrix)\n```\n    \n    The algorithm basically follows these steps:\n\n1. Create a matrix with the given number of rows and columns equal to the length of the encoded text divided by the number of rows plus 1, filled with spaces.\n2. Iterate through each diagonal of the matrix with a nested loop for each row.\n3. If the current index of the encoded text is within the bounds of the text, place the current character from encoded text into the corresponding position of the matrix.\n4. Finally, join the matrix rows into a single string to create the original text without trailing spaces.\n    ",
+    "javascript": "\n    ```javascript\nfunction decodeSlantedCipher(encodedText, rows) {\n    let matrix = new Array(rows).fill(\"\");\n\n    let index = 0;\n    for(let diagonal = 0; diagonal < 2 * (rows - 1); diagonal++) {\n        for(let row = Math.max(0, diagonal - rows + 1); row <= Math.min(diagonal, rows - 1); row++) {\n            if(index < encodedText.length) {\n                matrix[row] += encodedText[index++];\n            }\n        }\n    }\n\n    return matrix.join(\"\");\n}\n```\n    \n    The algorithm basically follows these steps:\n\n1. Create a matrix with the given number of rows and columns equal to the length of the encoded text divided by the number of rows plus 1, filled with spaces.\n2. Iterate through each diagonal of the matrix with a nested loop for each row.\n3. If the current index of the encoded text is within the bounds of the text, place the current character from encoded text into the corresponding position of the matrix.\n4. Finally, join the matrix rows into a single string to create the original text without trailing spaces.\n    ",
+    "java": "\n    ```java\npublic String decodeSlantedCipher(String encodedText, int rows) {\n    StringBuilder[] matrix = new StringBuilder[rows];\n    for(int i = 0; i < rows; i++) {\n        matrix[i] = new StringBuilder(\"\");\n    }\n\n    int index = 0;\n    for(int diagonal = 0; diagonal < 2 * (rows - 1); diagonal++) {\n        for(int row = Math.max(0, diagonal - rows + 1); row <= Math.min(diagonal, rows - 1); row++) {\n            if(index < encodedText.length()) {\n                matrix[row].append(encodedText.charAt(index++));\n            }\n        }\n    }\n\n    StringBuilder originalText = new StringBuilder();\n    for(int i = 0; i < rows; i++) {\n        originalText.append(matrix[i]);\n    }\n    return originalText.toString();\n}\n```\n    \n    The algorithm basically follows these steps:\n\n1. Create a matrix with the given number of rows and columns equal to the length of the encoded text divided by the number of rows plus 1, filled with spaces.\n2. Iterate through each diagonal of the matrix with a nested loop for each row.\n3. If the current index of the encoded text is within the bounds of the text, place the current character from encoded text into the corresponding position of the matrix.\n4. Finally, join the matrix rows into a single string to create the original text without trailing spaces.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

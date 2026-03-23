@@ -1,0 +1,24 @@
+{
+  "id": 99,
+  "title": "Recover Binary Search Tree",
+  "slug": "recover-binary-search-tree",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given the root of a binary search tree (BST), where the values of exactly two nodes of the tree were swapped by mistake. _Recover the tree without changing its structure_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef inorder(node, nodes):\n    if not node: return\n    inorder(node.left, nodes)\n    if nodes[1] and nodes[1].val > node.val:\n        if not nodes[0]: nodes[0] = nodes[1]\n        nodes[2] = node\n    nodes[1] = node\n    inorder(node.right, nodes)\n\ndef recoverTree(root):\n    nodes = [None, None, None]\n    inorder(root, nodes)\n    nodes[0].val, nodes[2].val = nodes[2].val, nodes[0].val\n```\n    \n    We will solve this problem using the Inorder traversal of the binary search tree.\n\n1. Traverse the BST using Inorder traversal, and at each node, compare its value with the previous node.\n2. If the previous node's value is greater than the current node's value, it means they are swapped. So, mark the first such node as `first` and the second such node as `second`.\n3. After completing the Inorder traversal, swap the values of the `first` and `second` nodes.\n4. This approach is implemented in all four languages: C++, Java, Python, and JavaScript.\n\nNote that the TreeNode class should be defined for each implementation as it's not provided in the problem statement.\n    ",
+    "javascript": "\n    ```javascript\nfunction inorder(node, nodes) {\n    if (!node) return;\n    inorder(node.left, nodes);\n    if (nodes[1] && nodes[1].val > node.val) {\n        if (!nodes[0]) nodes[0] = nodes[1];\n        nodes[2] = node;\n    }\n    nodes[1] = node;\n    inorder(node.right, nodes);\n}\n\nfunction recoverTree(root) {\n    const nodes = [null, null, null];\n    inorder(root, nodes);\n    const temp = nodes[0].val;\n    nodes[0].val = nodes[2].val;\n    nodes[2].val = temp;\n}\n```\n    \n    We will solve this problem using the Inorder traversal of the binary search tree.\n\n1. Traverse the BST using Inorder traversal, and at each node, compare its value with the previous node.\n2. If the previous node's value is greater than the current node's value, it means they are swapped. So, mark the first such node as `first` and the second such node as `second`.\n3. After completing the Inorder traversal, swap the values of the `first` and `second` nodes.\n4. This approach is implemented in all four languages: C++, Java, Python, and JavaScript.\n\nNote that the TreeNode class should be defined for each implementation as it's not provided in the problem statement.\n    ",
+    "java": "\n    ```java\nvoid inorder(TreeNode node, TreeNode[] nodes) {\n    if (node == null) return;\n    inorder(node.left, nodes);\n    if (nodes[1] != null && nodes[1].val > node.val) {\n        if (nodes[0] == null) nodes[0] = nodes[1];\n        nodes[2] = node;\n    }\n    nodes[1] = node;\n    inorder(node.right, nodes);\n}\n\npublic void recoverTree(TreeNode root) {\n    TreeNode[] nodes = new TreeNode[3];\n    inorder(root, nodes);\n    int temp = nodes[0].val;\n    nodes[0].val = nodes[2].val;\n    nodes[2].val = temp;\n}\n```\n    \n    We will solve this problem using the Inorder traversal of the binary search tree.\n\n1. Traverse the BST using Inorder traversal, and at each node, compare its value with the previous node.\n2. If the previous node's value is greater than the current node's value, it means they are swapped. So, mark the first such node as `first` and the second such node as `second`.\n3. After completing the Inorder traversal, swap the values of the `first` and `second` nodes.\n4. This approach is implemented in all four languages: C++, Java, Python, and JavaScript.\n\nNote that the TreeNode class should be defined for each implementation as it's not provided in the problem statement.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

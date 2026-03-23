@@ -1,0 +1,24 @@
+{
+  "id": 2312,
+  "title": "Selling Pieces of Wood",
+  "slug": "selling-pieces-of-wood",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given two integers m and n that represent the height and width of a rectangular piece of wood. You are also given a 2D integer array prices, where prices[i] = [hi, wi, pricei] indicates you can sell a rectangular piece of wood of height hi and width wi for pricei dollars.\n\nTo cut a piece of wood, you must make a vertical or horizontal cut across the entire height or width of the piece to split it into two smaller pieces. After cutting a piece of wood into some number of smaller pieces, you can sell pieces according to prices. You may sell multiple pieces of the same shape, and you do not have to sell all the shapes. The grain of the wood makes a difference, so you cannot rotate a piece to swap its height and width.\n\nReturn _the maximum money you can earn after cutting an_ m x n _piece of wood_.\n\nNote that you can cut the piece of wood as many times as you want.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_count_target(nums, key):\n    count = {}\n    max_count = 0\n    max_target = -1\n    for i in range(1, len(nums)):\n        if nums[i - 1] == key:\n            count[nums[i]] = count.get(nums[i], 0) + 1\n            if count[nums[i]] > max_count:\n                max_count = count[nums[i]]\n                max_target = nums[i]\n    return max_target\n```\n    \n    1. Create a hash map (called `count`) to store the count of unique integers following the key.\n2. Initialize `max_count` to 0 and `max_target` to -1.\n3. Iterate through the array from index 1 to the end.\n4. In each iteration, check if the element at the previous index is equal to the key.\n5. If the previous element is equal to the key, increment the count of the current element in the hash map.\n6. If the incremented count is greater than the current `max_count`, update `max_count` to the incremented count and `max_target` to the current element.\n7. Return `max_target`.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxCountTarget(nums, key) {\n    let count = new Map();\n    let maxCount = 0;\n    let maxTarget = -1;\n    for (let i = 1; i < nums.length; ++i) {\n        if (nums[i - 1] === key) {\n            count.set(nums[i], (count.get(nums[i]) || 0) + 1);\n            if (count.get(nums[i]) > maxCount) {\n                maxCount = count.get(nums[i]);\n                maxTarget = nums[i];\n            }\n        }\n    }\n    return maxTarget;\n}\n```\n    \n    1. Create a hash map (called `count`) to store the count of unique integers following the key.\n2. Initialize `max_count` to 0 and `max_target` to -1.\n3. Iterate through the array from index 1 to the end.\n4. In each iteration, check if the element at the previous index is equal to the key.\n5. If the previous element is equal to the key, increment the count of the current element in the hash map.\n6. If the incremented count is greater than the current `max_count`, update `max_count` to the incremented count and `max_target` to the current element.\n7. Return `max_target`.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\n\npublic int maxCountTarget(int[] nums, int key) {\n    HashMap<Integer, Integer> count = new HashMap<>();\n    int max_count = 0;\n    int max_target = -1;\n    for (int i = 1; i < nums.length; ++i) {\n        if (nums[i - 1] == key) {\n            count.put(nums[i], count.getOrDefault(nums[i], 0) + 1);\n            if (count.get(nums[i]) > max_count) {\n                max_count = count.get(nums[i]);\n                max_target = nums[i];\n            }\n        }\n    }\n    return max_target;\n}\n```\n    \n    1. Create a hash map (called `count`) to store the count of unique integers following the key.\n2. Initialize `max_count` to 0 and `max_target` to -1.\n3. Iterate through the array from index 1 to the end.\n4. In each iteration, check if the element at the previous index is equal to the key.\n5. If the previous element is equal to the key, increment the count of the current element in the hash map.\n6. If the incremented count is greater than the current `max_count`, update `max_count` to the incremented count and `max_target` to the current element.\n7. Return `max_target`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

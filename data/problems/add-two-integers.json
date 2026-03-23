@@ -1,0 +1,24 @@
+{
+  "id": 2235,
+  "title": "Add Two Integers",
+  "slug": "add-two-integers",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given two integers num1 and num2, return _the sum of the two integers_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef capitalize_title(title):\n    return ' '.join([word.capitalize() for word in title.split(' ')])\n```\n\n    \n    The algorithm loops through each character of the string `title`. If it encounters a new word edge (either beginning of the title or previous character was a space), the current character is capitalized. In all other cases, the character is converted to lower case. In Python, we use the built-in `.capitalize()` method to capitalize each word in the title. We split the string into words, apply the capitalize method on each word, and join the words by spaces.\n    ",
+    "javascript": "\n    ```javascript\nfunction capitalizeTitle(title) {\n    const words = title.split(' ');\n\n    for (let i = 0; i < words.length; i++) {\n        words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();\n    }\n\n    return words.join(' ');\n}\n```\n\n    \n    The algorithm loops through each character of the string `title`. If it encounters a new word edge (either beginning of the title or previous character was a space), the current character is capitalized. In all other cases, the character is converted to lower case. In Python, we use the built-in `.capitalize()` method to capitalize each word in the title. We split the string into words, apply the capitalize method on each word, and join the words by spaces.\n    ",
+    "java": "\n    ```java\npublic String capitalizeTitle(String title) {\n    StringBuilder result = new StringBuilder();\n    boolean newWord = true;\n    \n    for (int i = 0; i < title.length(); ++i) {\n        char character = title.charAt(i);\n        if (newWord && Character.isLetter(character)) {\n            result.append(Character.toUpperCase(character));\n            newWord = false;\n        } else if (character == ' ') {\n            result.append(character);\n            newWord = true;\n        } else {\n            result.append(Character.toLowerCase(character));\n        }\n    }\n    return result.toString();\n}\n```\n\n    \n    The algorithm loops through each character of the string `title`. If it encounters a new word edge (either beginning of the title or previous character was a space), the current character is capitalized. In all other cases, the character is converted to lower case. In Python, we use the built-in `.capitalize()` method to capitalize each word in the title. We split the string into words, apply the capitalize method on each word, and join the words by spaces.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

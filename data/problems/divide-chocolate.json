@@ -1,0 +1,24 @@
+{
+  "id": 1231,
+  "title": "Divide Chocolate",
+  "slug": "divide-chocolate",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You have one chocolate bar that consists of some chunks. Each chunk has its own sweetness given by the array sweetness.\n\nYou want to share the chocolate with your k friends so you start cutting the chocolate bar into k + 1 pieces using k cuts, each piece consists of some consecutive chunks.\n\nBeing generous, you will eat the piece with the minimum total sweetness and give the other pieces to your friends.\n\nFind the maximum total sweetness of the piece you can get by cutting the chocolate bar optimally.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef replaceElements(arr):\n    n = len(arr)\n    maxElement = -1\n    for i in range(n - 1, -1, -1):\n        temp = arr[i]\n        arr[i] = maxElement\n        maxElement = max(maxElement, temp)\n    return arr\n```\n    \n    The algorithm works by iterating through the array in reverse order. It keeps track of the maximum element found so far as it iterates through the array. In each iteration, the current element in the array is replaced with the maximum element found so far (initially set as -1, following the problem statement). The iteration then continues to the next element in reverse order and keeps updating the maximum element found. Finally, the modified array is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction replaceElements(arr) {\n    let n = arr.length;\n    let maxElement = -1;\n    for (let i = n - 1; i >= 0; i--) {\n        let temp = arr[i];\n        arr[i] = maxElement;\n        maxElement = Math.max(maxElement, temp);\n    }\n    return arr;\n}\n```\n    \n    The algorithm works by iterating through the array in reverse order. It keeps track of the maximum element found so far as it iterates through the array. In each iteration, the current element in the array is replaced with the maximum element found so far (initially set as -1, following the problem statement). The iteration then continues to the next element in reverse order and keeps updating the maximum element found. Finally, the modified array is returned.\n    ",
+    "java": "\n    ```java\npublic int[] replaceElements(int[] arr) {\n    int n = arr.length;\n    int maxElement = -1;\n    for (int i = n - 1; i >= 0; i--) {\n        int temp = arr[i];\n        arr[i] = maxElement;\n        maxElement = Math.max(maxElement, temp);\n    }\n    return arr;\n}\n```\n    \n    The algorithm works by iterating through the array in reverse order. It keeps track of the maximum element found so far as it iterates through the array. In each iteration, the current element in the array is replaced with the maximum element found so far (initially set as -1, following the problem statement). The iteration then continues to the next element in reverse order and keeps updating the maximum element found. Finally, the modified array is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

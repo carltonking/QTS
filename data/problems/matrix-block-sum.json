@@ -1,0 +1,24 @@
+{
+  "id": 1314,
+  "title": "Matrix Block Sum",
+  "slug": "matrix-block-sum",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a m x n matrix mat and an integer k, return _a matrix_ answer _where each_ answer[i][j] _is the sum of all elements_ mat[r][c] _for_:\n\n*   i - k <= r <= i + k,\n*   j - k <= c <= j + k, and\n*   (r, c) is a valid position in the matrix.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef matrix_block_sum(mat, k):\n    m, n = len(mat), len(mat[0])\n    answer = [[0 for _ in range(n)] for _ in range(m)]\n\n    for i in range(m):\n        for j in range(n):\n            for r in range(max(0, i - k), min(m, i + k + 1)):\n                for c in range(max(0, j - k), min(n, j + k + 1)):\n                    answer[i][j] += mat[r][c]\n                    \n    return answer\n```\n    \n    This algorithm iterates through each cell of the input matrix `mat`. For each cell, it calculates the sum of all elements in the given sub-matrix range. The sub-matrix `mat[r][c]` is represented by the conditions `i - k <= r <= i + k` and `j - k <= c <= j + k`. It checks if `(r, c)` is a valid position. If it's valid, the sum will be stored in the `answer` matrix at the same index (i, j). The complexity of this algorithm is O(m * n * k^2), where m is the number of rows, n is the number of columns, and k is the range.\n    ",
+    "javascript": "\n    ```javascript\nfunction matrixBlockSum(mat, k) {\n    const m = mat.length;\n    const n = mat[0].length;\n    const answer = new Array(m).fill(null).map(() => new Array(n).fill(0));\n\n    for (let i = 0; i < m; i++) {\n        for (let j = 0; j < n; j++) {\n            for (let r = Math.max(0, i - k); r <= Math.min(m - 1, i + k); r++) {\n                for (let c = Math.max(0, j - k); c <= Math.min(n - 1, j + k); c++) {\n                    answer[i][j] += mat[r][c];\n                }\n            }\n        }\n    }\n\n    return answer;\n}\n```\n    \n    This algorithm iterates through each cell of the input matrix `mat`. For each cell, it calculates the sum of all elements in the given sub-matrix range. The sub-matrix `mat[r][c]` is represented by the conditions `i - k <= r <= i + k` and `j - k <= c <= j + k`. It checks if `(r, c)` is a valid position. If it's valid, the sum will be stored in the `answer` matrix at the same index (i, j). The complexity of this algorithm is O(m * n * k^2), where m is the number of rows, n is the number of columns, and k is the range.\n    ",
+    "java": "\n    ```java\npublic int[][] matrixBlockSum(int[][] mat, int k) {\n    int m = mat.length;\n    int n = mat[0].length;\n    int[][] answer = new int[m][n];\n\n    for (int i = 0; i < m; i++) {\n        for (int j = 0; j < n; j++) {\n            for (int r = Math.max(0, i - k); r <= Math.min(m - 1, i + k); r++) {\n                for (int c = Math.max(0, j - k); c <= Math.min(n - 1, j + k); c++) {\n                    answer[i][j] += mat[r][c];\n                }\n            }\n        }\n    }\n\n    return answer;\n}\n```\n    \n    This algorithm iterates through each cell of the input matrix `mat`. For each cell, it calculates the sum of all elements in the given sub-matrix range. The sub-matrix `mat[r][c]` is represented by the conditions `i - k <= r <= i + k` and `j - k <= c <= j + k`. It checks if `(r, c)` is a valid position. If it's valid, the sum will be stored in the `answer` matrix at the same index (i, j). The complexity of this algorithm is O(m * n * k^2), where m is the number of rows, n is the number of columns, and k is the range.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

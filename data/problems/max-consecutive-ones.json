@@ -1,0 +1,24 @@
+{
+  "id": 485,
+  "title": "Max Consecutive Ones",
+  "slug": "max-consecutive-ones",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a binary array nums, return _the maximum number of consecutive_ 1_'s in the array_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findMaxConsecutiveOnes(nums):\n    max_consecutive, current_consecutive = 0, 0\n    for num in nums:\n        current_consecutive = current_consecutive + 1 if num == 1 else 0\n        max_consecutive = max(max_consecutive, current_consecutive)\n    return max_consecutive\n```\n    \n    The algorithm iterates through the given binary array `nums`. For each element, it checks if the current number is 1, then it increments the `current_consecutive` counter; otherwise, it resets the counter to 0. After updating the counter, it compares the current value of `current_consecutive` with the current maximum consecutive ones count (`max_consecutive`) and updates the maximum count if the current count is higher. After iterating through the entire array, the algorithm returns the maximum number of consecutive 1's found.\n    ",
+    "javascript": "\n    ```javascript\nfunction findMaxConsecutiveOnes(nums) {\n    let maxConsecutive = 0, currentConsecutive = 0;\n    for (let num of nums) {\n        currentConsecutive = (num === 1) ? currentConsecutive + 1 : 0;\n        maxConsecutive = Math.max(maxConsecutive, currentConsecutive);\n    }\n    return maxConsecutive;\n}\n```\n    \n    The algorithm iterates through the given binary array `nums`. For each element, it checks if the current number is 1, then it increments the `current_consecutive` counter; otherwise, it resets the counter to 0. After updating the counter, it compares the current value of `current_consecutive` with the current maximum consecutive ones count (`max_consecutive`) and updates the maximum count if the current count is higher. After iterating through the entire array, the algorithm returns the maximum number of consecutive 1's found.\n    ",
+    "java": "\n    ```java\npublic int findMaxConsecutiveOnes(int[] nums) {\n    int maxConsecutive = 0, currentConsecutive = 0;\n    for (int num : nums) {\n        currentConsecutive = (num == 1) ? currentConsecutive + 1 : 0;\n        maxConsecutive = Math.max(maxConsecutive, currentConsecutive);\n    }\n    return maxConsecutive;\n}\n```\n    \n    The algorithm iterates through the given binary array `nums`. For each element, it checks if the current number is 1, then it increments the `current_consecutive` counter; otherwise, it resets the counter to 0. After updating the counter, it compares the current value of `current_consecutive` with the current maximum consecutive ones count (`max_consecutive`) and updates the maximum count if the current count is higher. After iterating through the entire array, the algorithm returns the maximum number of consecutive 1's found.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

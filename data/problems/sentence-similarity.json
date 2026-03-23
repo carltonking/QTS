@@ -1,0 +1,24 @@
+{
+  "id": 734,
+  "title": "Sentence Similarity",
+  "slug": "sentence-similarity",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "We can represent a sentence as an array of words, for example, the sentence \"I am happy with leetcode \" can be represented as arr = [ \"I \", \"am \",happy \", \"with \", \"leetcode \"].\n\nGiven two sentences sentence1 and sentence2 each represented as a string array and given an array of string pairs similarPairs where similarPairs[i] = [xi, yi] indicates that the two words xi and yi are similar.\n\nReturn _true if sentence1 and sentence2 are similar, or false if they are not similar_.\n\nTwo sentences are similar if:\n\n*   They have the same length (i.e., the same number of words)\n*   sentence1[i] and sentence2[i] are similar.\n\nNotice that a word is always similar to itself, also notice that the similarity relation is not transitive. For example, if the words a and b are similar, and the words b and c are similar, a and c are not necessarily similar.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import defaultdict\n\ndef areSentencesSimilar(sentence1, sentence2, similarPairs):\n    if len(sentence1) != len(sentence2): return False\n    similarityMap = defaultdict(set)\n    for pair in similarPairs:\n        similarityMap[pair[0]].add(pair[1])\n        similarityMap[pair[1]].add(pair[0])\n    for i in range(len(sentence1)):\n        if sentence1[i] != sentence2[i] and sentence2[i] not in similarityMap[sentence1[i]]:\n            return False\n    return True\n```\n\n    \n    1. If the lengths of the given sentences are unequal, the sentences cannot be similar, hence return false.\n2. Create a mapping from each word in similarPairs to its set of similar words.\n3. Iterate over each word in both sentences and check whether they are similar. If not, return false.\n4. If all words in sentence1 are similar to words at same indices in sentence2, return true.\n    ",
+    "javascript": "\n    ```javascript\nfunction areSentencesSimilar(sentence1, sentence2, similarPairs) {\n    if (sentence1.length !== sentence2.length) return false;\n    const similarityMap = new Map();\n    for (const pair of similarPairs) {\n        if (!similarityMap.has(pair[0])) similarityMap.set(pair[0], new Set());\n        if (!similarityMap.has(pair[1])) similarityMap.set(pair[1], new Set());\n        similarityMap.get(pair[0]).add(pair[1]);\n        similarityMap.get(pair[1]).add(pair[0]);\n    }\n    for (let i = 0; i < sentence1.length; ++i) {\n        if (sentence1[i] !== sentence2[i] && !similarityMap.get(sentence1[i])?.has(sentence2[i]))\n            return false;\n    }\n    return true;\n}\n```\n\n    \n    1. If the lengths of the given sentences are unequal, the sentences cannot be similar, hence return false.\n2. Create a mapping from each word in similarPairs to its set of similar words.\n3. Iterate over each word in both sentences and check whether they are similar. If not, return false.\n4. If all words in sentence1 are similar to words at same indices in sentence2, return true.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic boolean areSentencesSimilar(String[] sentence1, String[] sentence2, List<List<String>> similarPairs) {\n    if (sentence1.length != sentence2.length) return false;\n    Map<String, Set<String>> similarityMap = new HashMap<>();\n    for (List<String> pair : similarPairs) {\n        similarityMap.putIfAbsent(pair.get(0), new HashSet<>());\n        similarityMap.putIfAbsent(pair.get(1), new HashSet<>());\n        similarityMap.get(pair.get(0)).add(pair.get(1));\n        similarityMap.get(pair.get(1)).add(pair.get(0));\n    }\n    for (int i = 0; i < sentence1.length; ++i) {\n        if (!sentence1[i].equals(sentence2[i]) && !similarityMap.getOrDefault(sentence1[i], Collections.emptySet()).contains(sentence2[i]))\n            return false;\n    }\n    return true;\n}\n```\n\n    \n    1. If the lengths of the given sentences are unequal, the sentences cannot be similar, hence return false.\n2. Create a mapping from each word in similarPairs to its set of similar words.\n3. Iterate over each word in both sentences and check whether they are similar. If not, return false.\n4. If all words in sentence1 are similar to words at same indices in sentence2, return true.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

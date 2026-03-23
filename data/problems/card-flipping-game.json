@@ -1,0 +1,24 @@
+{
+  "id": 822,
+  "title": "Card Flipping Game",
+  "slug": "card-flipping-game",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two 0-indexed integer arrays fronts and backs of length n, where the ith card has the positive integer fronts[i] printed on the front and backs[i] printed on the back. Initially, each card is placed on a table such that the front number is facing up and the other is facing down. You may flip over any number of cards (possibly zero).\n\nAfter flipping the cards, an integer is considered good if it is facing down on some card and not facing up on any card.\n\nReturn _the minimum possible good integer after flipping the cards_. If there are no good integers, return 0.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef uniqueMorseRepresentations(words):\n    morse = [\".-\",\"-...\",\"-.-.\",\"-..\",\".\",\"..-.\",\"--.\",\"....\",\"..\",\".---\",\"-.-\",\".-..\",\"--\",\"-.\",\"---\",\".--.\",\"--.-\",\".-.\",\"...\",\"-\",\"..-\",\"...-\",\".--\",\"-..-\",\"-.--\",\"--..\"]\n    transformations = set()\n\n    for word in words:\n        morseCode = ''.join(morse[ord(c) - ord('a')] for c in word)\n        transformations.add(morseCode)\n\n    return len(transformations)\n```\n    \n    We first create a `morse` array which contains the Morse code for each letter of the English alphabet. For each word in the `words` array, we loop through each character and translate it to Morse code using the corresponding index in the `morse` array. We then build the Morse code representation of the word and store it in a hash set (unordered_set, Set, or python set) named `transformations`. Using a set ensures that duplicate Morse code representations are not counted. Finally, we return the size of the transformations set which represents the number of unique Morse code representations. \n    ",
+    "javascript": "\n    ```javascript\nfunction uniqueMorseRepresentations(words) {\n    const morse = [\".-\",\"-...\",\"-.-.\",\"-..\",\".\",\"..-.\",\"--.\",\"....\",\"..\",\".---\",\"-.-\",\".-..\",\"--\",\"-.\",\"---\",\".--.\",\"--.-\",\".-.\",\"...\",\"-\",\"..-\",\"...-\",\".--\",\"-..-\",\"-.--\",\"--..\"];\n    const transformations = new Set();\n\n    for (const word of words) {\n        let morseCode = '';\n        for (const c of word) {\n            morseCode += morse[c.charCodeAt(0) - 'a'.charCodeAt(0)];\n        }\n        transformations.add(morseCode);\n    }\n\n    return transformations.size;\n}\n```\n    \n    We first create a `morse` array which contains the Morse code for each letter of the English alphabet. For each word in the `words` array, we loop through each character and translate it to Morse code using the corresponding index in the `morse` array. We then build the Morse code representation of the word and store it in a hash set (unordered_set, Set, or python set) named `transformations`. Using a set ensures that duplicate Morse code representations are not counted. Finally, we return the size of the transformations set which represents the number of unique Morse code representations. \n    ",
+    "java": "\n    ```java\nimport java.util.HashSet;\nimport java.util.Set;\n\npublic int uniqueMorseRepresentations(String[] words) {\n    String[] morse = {\".-\",\"-...\",\"-.-.\",\"-..\",\".\",\"..-.\",\"--.\",\"....\",\"..\",\".---\",\"-.-\",\".-..\",\"--\",\"-.\",\"---\",\".--.\",\"--.-\",\".-.\",\"...\",\"-\",\"..-\",\"...-\",\".--\",\"-..-\",\"-.--\",\"--..\"};\n    Set<String> transformations = new HashSet<>();\n\n    for (String word : words) {\n        StringBuilder morseCode = new StringBuilder();\n        for (char c : word.toCharArray()) {\n            morseCode.append(morse[c - 'a']);\n        }\n        transformations.add(morseCode.toString());\n    }\n\n    return transformations.size();\n}\n```\n    \n    We first create a `morse` array which contains the Morse code for each letter of the English alphabet. For each word in the `words` array, we loop through each character and translate it to Morse code using the corresponding index in the `morse` array. We then build the Morse code representation of the word and store it in a hash set (unordered_set, Set, or python set) named `transformations`. Using a set ensures that duplicate Morse code representations are not counted. Finally, we return the size of the transformations set which represents the number of unique Morse code representations. \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

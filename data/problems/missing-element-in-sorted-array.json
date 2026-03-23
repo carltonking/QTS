@@ -1,0 +1,24 @@
+{
+  "id": 1060,
+  "title": "Missing Element in Sorted Array",
+  "slug": "missing-element-in-sorted-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums which is sorted in ascending order and all of its elements are unique and given also an integer k, return the kth missing number starting from the leftmost number of the array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findKthPositive(nums, k):\n    left, right = 0, len(nums)\n    while left < right:\n        mid = left + (right - left) // 2\n        if nums[mid] - mid - 1 < k:\n            left = mid + 1\n        else:\n            right = mid\n    return left + k\n```\n    \n    The algorithm starts by defining two pointers, `left` and `right`, initially set to 0 and the length of the `nums` array, respectively. It then enters a while loop where it continues iterating until the `left` pointer is no longer less than `right`. Inside the loop, we calculate the midpoint index between the two pointers.\n\nBased on the difference between the value stored at the midpoint index and the current midpoint index (subtracted by 1), we update our pointers. If the difference is less than `k`, then we set `left` to midpoint + 1, otherwise, we set `right` to midpoint. This is because we know the missing number should be either to the right or to the left of midpoint.\n\nThe loop terminates when we narrow down the search to one element. Finally, it returns the value of `left + k`, which gives us the kth missing number. This solution has a logarithmic time complexity, i.e., O(log n).\n    ",
+    "javascript": "\n    ```javascript\nfunction findKthPositive(nums, k) {\n    let left = 0, right = nums.length;\n    while (left < right) {\n        let mid = Math.floor(left + (right - left) / 2);\n        if (nums[mid] - mid - 1 < k) {\n            left = mid + 1;\n        } else {\n            right = mid;\n        }\n    }\n    return left + k;\n}\n```\n\n    \n    The algorithm starts by defining two pointers, `left` and `right`, initially set to 0 and the length of the `nums` array, respectively. It then enters a while loop where it continues iterating until the `left` pointer is no longer less than `right`. Inside the loop, we calculate the midpoint index between the two pointers.\n\nBased on the difference between the value stored at the midpoint index and the current midpoint index (subtracted by 1), we update our pointers. If the difference is less than `k`, then we set `left` to midpoint + 1, otherwise, we set `right` to midpoint. This is because we know the missing number should be either to the right or to the left of midpoint.\n\nThe loop terminates when we narrow down the search to one element. Finally, it returns the value of `left + k`, which gives us the kth missing number. This solution has a logarithmic time complexity, i.e., O(log n).\n    ",
+    "java": "\n    ```java\npublic int findKthPositive(int[] nums, int k) {\n    int left = 0, right = nums.length;\n    while (left < right) {\n        int mid = left + (right - left) / 2;\n        if (nums[mid] - mid - 1 < k) {\n            left = mid + 1;\n        } else {\n            right = mid;\n        }\n    }\n    return left + k;\n}\n```\n    \n    The algorithm starts by defining two pointers, `left` and `right`, initially set to 0 and the length of the `nums` array, respectively. It then enters a while loop where it continues iterating until the `left` pointer is no longer less than `right`. Inside the loop, we calculate the midpoint index between the two pointers.\n\nBased on the difference between the value stored at the midpoint index and the current midpoint index (subtracted by 1), we update our pointers. If the difference is less than `k`, then we set `left` to midpoint + 1, otherwise, we set `right` to midpoint. This is because we know the missing number should be either to the right or to the left of midpoint.\n\nThe loop terminates when we narrow down the search to one element. Finally, it returns the value of `left + k`, which gives us the kth missing number. This solution has a logarithmic time complexity, i.e., O(log n).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

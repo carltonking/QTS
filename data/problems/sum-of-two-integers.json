@@ -1,0 +1,24 @@
+{
+  "id": 371,
+  "title": "Sum of Two Integers",
+  "slug": "sum-of-two-integers",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given two integers a and b, return _the sum of the two integers without using the operators_ + _and_ -.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef add(a, b):\n    MAX = 0x7FFFFFFF\n    MASK = 0xFFFFFFFF\n    while b:\n        a, b = (a ^ b) & MASK, ((a & b) << 1) & MASK\n    return a if a <= MAX else ~(a ^ MASK)\n```\n    \n    The algorithm uses bitwise operations to add the two integers without using + or - operators. The addition process can be divided into two parts: addition without considering a carry and handling the carry generated. \n\n1. XOR (^) can be used for adding without carrying, as it sets the bit at a position if the bits in the two numbers being added are different at that position.\n2. AND (&) operation, followed by left shift (<<), is used to find the carry. With this operation, we find the bits which are set in both numbers, and they represent the carry. Then, we shift these bits to the left by one position, which is the correct position of the carry bit.\n\nFinally, we keep looping until there is no carry, at which point we have the sum of the two integers. In the Python implementation, extra steps are required due to the lack of fixed-size integers.\n    ",
+    "javascript": "\n    ```javascript\nfunction add(a, b) {\n    while (b) {\n        let carry = a & b;\n        a = a ^ b;\n        b = carry << 1;\n    }\n    return a;\n}\n```\n    \n    The algorithm uses bitwise operations to add the two integers without using + or - operators. The addition process can be divided into two parts: addition without considering a carry and handling the carry generated. \n\n1. XOR (^) can be used for adding without carrying, as it sets the bit at a position if the bits in the two numbers being added are different at that position.\n2. AND (&) operation, followed by left shift (<<), is used to find the carry. With this operation, we find the bits which are set in both numbers, and they represent the carry. Then, we shift these bits to the left by one position, which is the correct position of the carry bit.\n\nFinally, we keep looping until there is no carry, at which point we have the sum of the two integers. In the Python implementation, extra steps are required due to the lack of fixed-size integers.\n    ",
+    "java": "\n    ```java\npublic int add(int a, int b) {\n    while (b != 0) {\n        int carry = a & b;\n        a = a ^ b;\n        b = carry << 1;\n    }\n    return a;\n}\n```\n    \n    The algorithm uses bitwise operations to add the two integers without using + or - operators. The addition process can be divided into two parts: addition without considering a carry and handling the carry generated. \n\n1. XOR (^) can be used for adding without carrying, as it sets the bit at a position if the bits in the two numbers being added are different at that position.\n2. AND (&) operation, followed by left shift (<<), is used to find the carry. With this operation, we find the bits which are set in both numbers, and they represent the carry. Then, we shift these bits to the left by one position, which is the correct position of the carry bit.\n\nFinally, we keep looping until there is no carry, at which point we have the sum of the two integers. In the Python implementation, extra steps are required due to the lack of fixed-size integers.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

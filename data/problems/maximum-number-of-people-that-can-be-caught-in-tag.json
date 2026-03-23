@@ -1,0 +1,24 @@
+{
+  "id": 1989,
+  "title": "Maximum Number of People That Can Be Caught in Tag",
+  "slug": "maximum-number-of-people-that-can-be-caught-in-tag",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are playing a game of tag with your friends. In tag, people are divided into two teams: people who are \"it \", and people who are not \"it \". The people who are \"it \" want to catch as many people as possible who are not \"it \".\n\nYou are given a 0-indexed integer array team containing only zeros (denoting people who are not \"it \") and ones (denoting people who are \"it \"), and an integer dist. A person who is \"it \" at index i can catch any one person whose index is in the range [i - dist, i + dist] (inclusive) and is not \"it \".\n\nReturn _the maximum number of people that the people who are \"it \" can catch_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minimum_xor_sum(nums1, nums2):\n    nums2.sort()\n    xor_sum = 0\n    for i in range(len(nums1)):\n        xor_sum += nums1[i] ^ nums2[i]\n    return xor_sum\n```\n    \n    The algorithm to minimize XOR sum works as follows:\n\n1. Sort the array nums2 in ascending order.\n2. Calculate the XOR sum between elements of array nums1 and nums2, iterating through both arrays simultaneously.\n3. Return the XOR sum of the two arrays.\n\nBy sorting the nums2 array, we are effectively minimizing the XOR sum because when doing bitwise XOR, if the corresponding bit is 1 in one number and 0 in the other number, the resultant bit will be 1. Sorting nums2 guarantees that we minimize the number of 1's in the resultant XOR operation.\n    ",
+    "javascript": "\n    ```javascript\nfunction minimumXorSum(nums1, nums2) {\n    nums2.sort((a, b) => a - b);\n    let xorSum = 0;\n    for (let i = 0; i < nums1.length; i++) {\n        xorSum += nums1[i] ^ nums2[i];\n    }\n    return xorSum;\n}\n```\n    \n    The algorithm to minimize XOR sum works as follows:\n\n1. Sort the array nums2 in ascending order.\n2. Calculate the XOR sum between elements of array nums1 and nums2, iterating through both arrays simultaneously.\n3. Return the XOR sum of the two arrays.\n\nBy sorting the nums2 array, we are effectively minimizing the XOR sum because when doing bitwise XOR, if the corresponding bit is 1 in one number and 0 in the other number, the resultant bit will be 1. Sorting nums2 guarantees that we minimize the number of 1's in the resultant XOR operation.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int minimumXorSum(int[] nums1, int[] nums2) {\n    Arrays.sort(nums2);\n    int xorSum = 0;\n    for (int i = 0; i < nums1.length; i++) {\n        xorSum += nums1[i] ^ nums2[i];\n    }\n    return xorSum;\n}\n```\n    \n    The algorithm to minimize XOR sum works as follows:\n\n1. Sort the array nums2 in ascending order.\n2. Calculate the XOR sum between elements of array nums1 and nums2, iterating through both arrays simultaneously.\n3. Return the XOR sum of the two arrays.\n\nBy sorting the nums2 array, we are effectively minimizing the XOR sum because when doing bitwise XOR, if the corresponding bit is 1 in one number and 0 in the other number, the resultant bit will be 1. Sorting nums2 guarantees that we minimize the number of 1's in the resultant XOR operation.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 422,
+  "title": "Valid Word Square",
+  "slug": "valid-word-square",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array of strings words, return true _if it forms a valid word square_.\n\nA sequence of strings forms a valid word square if the kth row and column read the same string, where 0 <= k < max(numRows, numColumns).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef valid_word_square(words):\n    for i in range(len(words)):\n        for j in range(len(words[i])):\n            if j >= len(words) or i >= len(words[j]) or words[i][j] != words[j][i]:\n                return False\n    return True\n```\n\n    \n    This solution is based on validating the elements of an array in place. Loop through each row `i` and column `j` of the given array. In the inner loop, check if the condition `j >= words.size() || i >= words[j].size() || words[i][j] != words[j][i]` is true. If the condition is true, that means it's not a valid word square, so return false. If the loop completes without returning false, then it's a valid word square, so return true.\n    ",
+    "javascript": "\n    ```javascript\nfunction validWordSquare(words) {\n    for (let i = 0; i < words.length; i++) {\n        for (let j = 0; j < words[i].length; j++) {\n            if (j >= words.length || i >= words[j].length || words[i][j] !== words[j][i]) {\n                return false;\n            }\n        }\n    }\n    return true;\n}\n```\n\n    \n    This solution is based on validating the elements of an array in place. Loop through each row `i` and column `j` of the given array. In the inner loop, check if the condition `j >= words.size() || i >= words[j].size() || words[i][j] != words[j][i]` is true. If the condition is true, that means it's not a valid word square, so return false. If the loop completes without returning false, then it's a valid word square, so return true.\n    ",
+    "java": "\n    ```java\npublic boolean validWordSquare(List<String> words) {\n    for (int i = 0; i < words.size(); i++) {\n        for (int j = 0; j < words.get(i).length(); j++) {\n            if (j >= words.size() || i >= words.get(j).length() || words.get(i).charAt(j) != words.get(j).charAt(i)) {\n                return false;\n            }\n        }\n    }\n    return true;\n}\n```\n\n    \n    This solution is based on validating the elements of an array in place. Loop through each row `i` and column `j` of the given array. In the inner loop, check if the condition `j >= words.size() || i >= words[j].size() || words[i][j] != words[j][i]` is true. If the condition is true, that means it's not a valid word square, so return false. If the loop completes without returning false, then it's a valid word square, so return true.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

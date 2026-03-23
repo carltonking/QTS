@@ -1,0 +1,24 @@
+{
+  "id": 263,
+  "title": "Ugly Number",
+  "slug": "ugly-number",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "An ugly number is a positive integer whose prime factors are limited to 2, 3, and 5.\n\nGiven an integer n, return true _if_ n _is an ugly number_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_ugly(n: int) -> bool:\n    if n <= 0:\n        return False\n    for factor in [2, 3, 5]:\n        while n % factor == 0:\n            n //= factor\n    return n == 1\n```\n    \n    The algorithm checks if the number is less than or equal to 0 because only positive integers can be ugly. If the input number is divisible by 2, 3, or 5, we keep dividing it by the respective factor in a loop until it's no longer divisible by that factor. After processing all factors (2, 3, 5), if the remaining number is 1, then the input number had only prime factors of 2, 3, and 5, hence it is an ugly number. Otherwise, it's not an ugly number.\n    ",
+    "javascript": "\n    ```javascript\nfunction isUgly(n) {\n    if (n <= 0) return false;\n    while (n % 2 === 0) n /= 2;\n    while (n % 3 === 0) n /= 3;\n    while (n % 5 === 0) n /= 5;\n    return n === 1;\n}\n```\n    \n    The algorithm checks if the number is less than or equal to 0 because only positive integers can be ugly. If the input number is divisible by 2, 3, or 5, we keep dividing it by the respective factor in a loop until it's no longer divisible by that factor. After processing all factors (2, 3, 5), if the remaining number is 1, then the input number had only prime factors of 2, 3, and 5, hence it is an ugly number. Otherwise, it's not an ugly number.\n    ",
+    "java": "\n    ```java\npublic boolean isUgly(int n) {\n    if (n <= 0) return false;\n    while (n % 2 == 0) n /= 2;\n    while (n % 3 == 0) n /= 3;\n    while (n % 5 == 0) n /= 5;\n    return n == 1;\n}\n```\n    \n    The algorithm checks if the number is less than or equal to 0 because only positive integers can be ugly. If the input number is divisible by 2, 3, or 5, we keep dividing it by the respective factor in a loop until it's no longer divisible by that factor. After processing all factors (2, 3, 5), if the remaining number is 1, then the input number had only prime factors of 2, 3, and 5, hence it is an ugly number. Otherwise, it's not an ugly number.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2364,
+  "title": "Count Number of Bad Pairs",
+  "slug": "count-number-of-bad-pairs",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums. A pair of indices (i, j) is a bad pair if i < j and j - i != nums[j] - nums[i].\n\nReturn _the total number of bad pairs in_ nums.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef bad_pairs(nums):\n    count = 0\n    for i in range(len(nums)):\n        for j in range(i + 1, len(nums)):\n            if j - i != nums[j] - nums[i]:\n                count += 1\n    return count\n```\n    \n    The algorithm iterates through all possible pairs of indices (i, j) in the given array `nums`, where i < j. For each pair, it checks if the condition `(j - i) != (nums[j] - nums[i])` is true. If it is, it increments the counter `count`. The algorithm has a nested loop structure and its time complexity is O(n^2). Finally, it returns the total count of bad pairs found.\n    ",
+    "javascript": "\n    ```javascript\nfunction badPairs(nums) {\n    let count = 0;\n    for (let i = 0; i < nums.length; i++) {\n        for (let j = i + 1; j < nums.length; j++) {\n            if (j - i !== nums[j] - nums[i]) {\n                count++;\n            }\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm iterates through all possible pairs of indices (i, j) in the given array `nums`, where i < j. For each pair, it checks if the condition `(j - i) != (nums[j] - nums[i])` is true. If it is, it increments the counter `count`. The algorithm has a nested loop structure and its time complexity is O(n^2). Finally, it returns the total count of bad pairs found.\n    ",
+    "java": "\n    ```java\npublic int badPairs(int[] nums) {\n    int count = 0;\n    for (int i = 0; i < nums.length; i++) {\n        for (int j = i + 1; j < nums.length; j++) {\n            if (j - i != nums[j] - nums[i]) {\n                count++;\n            }\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm iterates through all possible pairs of indices (i, j) in the given array `nums`, where i < j. For each pair, it checks if the condition `(j - i) != (nums[j] - nums[i])` is true. If it is, it increments the counter `count`. The algorithm has a nested loop structure and its time complexity is O(n^2). Finally, it returns the total count of bad pairs found.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

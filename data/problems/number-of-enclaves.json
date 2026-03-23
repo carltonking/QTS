@@ -1,0 +1,24 @@
+{
+  "id": 1020,
+  "title": "Number of Enclaves",
+  "slug": "number-of-enclaves",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an m x n binary matrix grid, where 0 represents a sea cell and 1 represents a land cell.\n\nA move consists of walking from one land cell to another adjacent (4-directionally) land cell or walking off the boundary of the grid.\n\nReturn _the number of land cells in_ grid _for which we cannot walk off the boundary of the grid in any number of moves_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxTurbulenceSize(arr):\n    n = len(arr)\n    result = 1\n    i = 0\n\n    while i < n - 1:\n        if arr[i] == arr[i + 1]:\n            i += 1\n            continue\n\n        j = i + 1\n        while j < n - 1 and ((arr[j] > arr[j + 1]) != (arr[j - 1] > arr[j])):\n            j += 1\n        \n        result = max(result, j - i + 1)\n        i = j\n\n    return result\n```\n\n    \n    1. Initialize the result to 1, as a single element subarray is always a turbulent subarray.\n2. Iterate through the input array using two pointers, i and j, as two ends of a subarray.\n3. If arr[i] is equal to arr[i+1], increment i and skip the inner steps (this subarray is not turbulent).\n4. If arr[i] is not equal to arr[i+1], set j to i+1.\n5. Move j along the array until it reaches the end or the comparison sign does not flip.\n6. Update the result as the maximum between the current result and the new turbulent subarray length found.\n7. Set i to j, so that we continue searching from the end of the found turbulent subarray.\n8. Continue looking for the next turbulent subarray.\n9. Return the result when the entire array has been examined.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxTurbulenceSize(arr) {\n    const n = arr.length;\n    let result = 1;\n    let i = 0;\n\n    while (i < n - 1) {\n        if (arr[i] === arr[i + 1]) {\n            i++;\n            continue;\n        }\n\n        let j = i + 1;\n        while (j < n - 1 && ((arr[j] > arr[j + 1]) !== (arr[j - 1] > arr[j])))\n            j++;\n        \n        result = Math.max(result, j - i + 1);\n        i = j;\n    }\n\n    return result;\n}\n```\n\n    \n    1. Initialize the result to 1, as a single element subarray is always a turbulent subarray.\n2. Iterate through the input array using two pointers, i and j, as two ends of a subarray.\n3. If arr[i] is equal to arr[i+1], increment i and skip the inner steps (this subarray is not turbulent).\n4. If arr[i] is not equal to arr[i+1], set j to i+1.\n5. Move j along the array until it reaches the end or the comparison sign does not flip.\n6. Update the result as the maximum between the current result and the new turbulent subarray length found.\n7. Set i to j, so that we continue searching from the end of the found turbulent subarray.\n8. Continue looking for the next turbulent subarray.\n9. Return the result when the entire array has been examined.\n    ",
+    "java": "\n    ```java\npublic int maxTurbulenceSize(int[] arr) {\n    int n = arr.length;\n    int result = 1;\n    int i = 0;\n\n    while (i < n - 1) {\n        if (arr[i] == arr[i + 1]) {\n            i++;\n            continue;\n        }\n\n        int j = i + 1;\n        while (j < n - 1 && ((arr[j] > arr[j + 1]) != (arr[j - 1] > arr[j])))\n            j++;\n        \n        result = Math.max(result, j - i + 1);\n        i = j;\n    }\n\n    return result;\n}\n```\n\n    \n    1. Initialize the result to 1, as a single element subarray is always a turbulent subarray.\n2. Iterate through the input array using two pointers, i and j, as two ends of a subarray.\n3. If arr[i] is equal to arr[i+1], increment i and skip the inner steps (this subarray is not turbulent).\n4. If arr[i] is not equal to arr[i+1], set j to i+1.\n5. Move j along the array until it reaches the end or the comparison sign does not flip.\n6. Update the result as the maximum between the current result and the new turbulent subarray length found.\n7. Set i to j, so that we continue searching from the end of the found turbulent subarray.\n8. Continue looking for the next turbulent subarray.\n9. Return the result when the entire array has been examined.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

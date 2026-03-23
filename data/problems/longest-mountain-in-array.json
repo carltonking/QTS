@@ -1,0 +1,24 @@
+{
+  "id": 845,
+  "title": "Longest Mountain in Array",
+  "slug": "longest-mountain-in-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You may recall that an array arr is a mountain array if and only if:\n\n*   arr.length >= 3\n*   There exists some index i (0-indexed) with 0 < i < arr.length - 1 such that:\n    *   arr[0] < arr[1] < ... < arr[i - 1] < arr[i]\n    *   arr[i] > arr[i + 1] > ... > arr[arr.length - 1]\n\nGiven an integer array arr, return _the length of the longest subarray, which is a mountain_. Return 0 if there is no mountain subarray.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef longestMountain(arr):\n    n = len(arr)\n    res = up = down = 0\n\n    for i in range(1, n):\n        if (down and arr[i - 1] < arr[i]) or arr[i - 1] == arr[i]:\n            up = down = 0\n\n        up += arr[i - 1] < arr[i]\n        down += arr[i - 1] > arr[i]\n\n        if up and down:\n            res = max(res, up + down + 1)\n\n    return res\n```\n    \n    The algorithm uses one pass with two pointers and maintains two counters, \"up\" and \"down\". It begins at the 1st index, iterating through the array. If the current element is greater than the previous, it increases the \"up\" counter; otherwise, if it's less than the previous, it increases the \"down\" counter. Every time a mountain is identified (when both \"up\" and \"down\" are non-zero), the maximum length is updated. If some conditions are met, such as a new ascending sequence interruption or equal adjacent elements, reset the \"up\" and \"down\" counters to zero. Finally, return the maximum length of a mountain subarray found.\n\nThis solution executes in O(n) time with O(1) space complexity.\n    ",
+    "javascript": "\n    ```javascript\nfunction longestMountain(arr) {\n    let n = arr.length, res = 0, up = 0, down = 0;\n\n    for (let i = 1; i < n; ++i) {\n        if (down && arr[i - 1] < arr[i] || arr[i - 1] == arr[i]) {\n            up = down = 0;\n        }\n\n        if (arr[i - 1] < arr[i]) up++;\n        if (arr[i - 1] > arr[i]) down++;\n\n        if (up && down) {\n            res = Math.max(res, up + down + 1);\n        }\n    }\n    return res;\n}\n```\n    \n    The algorithm uses one pass with two pointers and maintains two counters, \"up\" and \"down\". It begins at the 1st index, iterating through the array. If the current element is greater than the previous, it increases the \"up\" counter; otherwise, if it's less than the previous, it increases the \"down\" counter. Every time a mountain is identified (when both \"up\" and \"down\" are non-zero), the maximum length is updated. If some conditions are met, such as a new ascending sequence interruption or equal adjacent elements, reset the \"up\" and \"down\" counters to zero. Finally, return the maximum length of a mountain subarray found.\n\nThis solution executes in O(n) time with O(1) space complexity.\n    ",
+    "java": "\n    ```java\npublic int longestMountain(int[] arr) {\n    int n = arr.length;\n    int res = 0, up = 0, down = 0;\n\n    for (int i = 1; i < n; ++i) {\n        if ((down != 0 && arr[i - 1] < arr[i]) || arr[i - 1] == arr[i]) {\n            up = down = 0;\n        }\n\n        if (arr[i - 1] < arr[i]) up++;\n        if (arr[i - 1] > arr[i]) down++;\n\n        if (up != 0 && down != 0) {\n            res = Math.max(res, up + down + 1);\n        }\n    }\n    return res;\n}\n```\n    \n    The algorithm uses one pass with two pointers and maintains two counters, \"up\" and \"down\". It begins at the 1st index, iterating through the array. If the current element is greater than the previous, it increases the \"up\" counter; otherwise, if it's less than the previous, it increases the \"down\" counter. Every time a mountain is identified (when both \"up\" and \"down\" are non-zero), the maximum length is updated. If some conditions are met, such as a new ascending sequence interruption or equal adjacent elements, reset the \"up\" and \"down\" counters to zero. Finally, return the maximum length of a mountain subarray found.\n\nThis solution executes in O(n) time with O(1) space complexity.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 172,
+  "title": "Factorial Trailing Zeroes",
+  "slug": "factorial-trailing-zeroes",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer n, return _the number of trailing zeroes in_ n!.\n\nNote that n! = n * (n - 1) * (n - 2) * ... * 3 * 2 * 1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef trailing_zeroes(n: int) -> int:\n    count = 0\n    while n > 0:\n        n //= 5\n        count += n\n    return count\n```\n\n    \n    The given problem requires us to calculate the number of trailing zeroes in n! (factorial of n). Trailing zeroes are formed by the product of 2 and 5. For example, 20! has 4 trailing zeroes as there are 4 instances of 2 * 5 (10, 20, 30, and 50). We know there are plenty of even factors in a factorial, so we just need to count how many times the factor 5 appears.\n\nThe algorithm we use here is dividing n by 5 iteratively until n becomes 0. In each step, we divide n by 5 and add the quotient to the count. Finally, we return the count as the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction trailingZeroes(n) {\n    let count = 0;\n    while (n > 0) {\n        n = Math.floor(n / 5);\n        count += n;\n    }\n    return count;\n}\n```\n\n    \n    The given problem requires us to calculate the number of trailing zeroes in n! (factorial of n). Trailing zeroes are formed by the product of 2 and 5. For example, 20! has 4 trailing zeroes as there are 4 instances of 2 * 5 (10, 20, 30, and 50). We know there are plenty of even factors in a factorial, so we just need to count how many times the factor 5 appears.\n\nThe algorithm we use here is dividing n by 5 iteratively until n becomes 0. In each step, we divide n by 5 and add the quotient to the count. Finally, we return the count as the result.\n    ",
+    "java": "\n    ```java\npublic int trailingZeroes(int n) {\n    int count = 0;\n    while (n > 0) {\n        n = n / 5;\n        count += n;\n    }\n    return count;\n}\n```\n\n    \n    The given problem requires us to calculate the number of trailing zeroes in n! (factorial of n). Trailing zeroes are formed by the product of 2 and 5. For example, 20! has 4 trailing zeroes as there are 4 instances of 2 * 5 (10, 20, 30, and 50). We know there are plenty of even factors in a factorial, so we just need to count how many times the factor 5 appears.\n\nThe algorithm we use here is dividing n by 5 iteratively until n becomes 0. In each step, we divide n by 5 and add the quotient to the count. Finally, we return the count as the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

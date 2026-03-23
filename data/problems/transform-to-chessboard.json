@@ -1,0 +1,24 @@
+{
+  "id": 782,
+  "title": "Transform to Chessboard",
+  "slug": "transform-to-chessboard",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an n x n binary grid board. In each move, you can swap any two rows with each other, or any two columns with each other.\n\nReturn _the minimum number of moves to transform the board into a chessboard board_. If the task is impossible, return -1.\n\nA chessboard board is a board where no 0's and no 1's are 4-directionally adjacent.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef numJewelsInStones(jewels, stones):\n    count = 0\n    for s in stones:\n        if s in jewels:\n            count += 1\n    return count\n```\n    \n    The algorithm takes two strings as input, `jewels` and `stones`. For each character `s` in the `stones` string, check whether the character `s` exists in the `jewels` string. If it exists, that means the stone is a jewel, so we increment the count. After iterating through all characters in the `stones` string, we return the count, which represents the total number of jewels in the stones.\n\nEach respective implementation in C++, Java, Python, and JavaScript showcases the same algorithm adjusted for language-specific syntax differences. In all cases, the key aspect is to loop through the `stones` and check for membership within the string `jewels`, incrementing the count for each found jewel.\n    ",
+    "javascript": "\n    ```javascript\nfunction numJewelsInStones(jewels, stones) {\n    let count = 0;\n    for (let s of stones) {\n        if (jewels.includes(s)) {\n            count++;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm takes two strings as input, `jewels` and `stones`. For each character `s` in the `stones` string, check whether the character `s` exists in the `jewels` string. If it exists, that means the stone is a jewel, so we increment the count. After iterating through all characters in the `stones` string, we return the count, which represents the total number of jewels in the stones.\n\nEach respective implementation in C++, Java, Python, and JavaScript showcases the same algorithm adjusted for language-specific syntax differences. In all cases, the key aspect is to loop through the `stones` and check for membership within the string `jewels`, incrementing the count for each found jewel.\n    ",
+    "java": "\n    ```java\npublic int numJewelsInStones(String jewels, String stones) {\n    int count = 0;\n    for (char s : stones.toCharArray()) {\n        if (jewels.indexOf(s) != -1) {\n            count++;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm takes two strings as input, `jewels` and `stones`. For each character `s` in the `stones` string, check whether the character `s` exists in the `jewels` string. If it exists, that means the stone is a jewel, so we increment the count. After iterating through all characters in the `stones` string, we return the count, which represents the total number of jewels in the stones.\n\nEach respective implementation in C++, Java, Python, and JavaScript showcases the same algorithm adjusted for language-specific syntax differences. In all cases, the key aspect is to loop through the `stones` and check for membership within the string `jewels`, incrementing the count for each found jewel.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

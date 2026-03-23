@@ -1,0 +1,24 @@
+{
+  "id": 1859,
+  "title": "Sorting the Sentence",
+  "slug": "sorting-the-sentence",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "A sentence is a list of words that are separated by a single space with no leading or trailing spaces. Each word consists of lowercase and uppercase English letters.\n\nA sentence can be shuffled by appending the 1-indexed word position to each word then rearranging the words in the sentence.\n\n*   For example, the sentence \"This is a sentence \" can be shuffled as \"sentence4 a3 is2 This1 \" or \"is2 sentence4 This1 a3 \".\n\nGiven a shuffled sentence s containing no more than 9 words, reconstruct and return _the original sentence_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_operations_to_satisfy_conditions(a: str, b: str) -> int:\n    same, less, greater = 0, 0, 0\n\n    for i in range(len(a)):\n        if a[i] == b[i]:\n            same += 1\n        elif a[i] < b[i]:\n            less += 1\n        else:\n            greater += 1\n\n    return min(same + max(less, greater), less, greater)\n```\n    \n    The algorithm keeps track of three counts: 'same', 'less', and 'greater'. These counts store the number of characters that are the same, less, and greater in string a compared to string b, respectively. Iterate through the characters in a and b simultaneously, comparing each character and updating the counts accordingly. The minimum number of operations needed to satisfy one of the three conditions is then calculated as the minimum of the sum of 'same' and the maximum of 'less' and 'greater', as well as 'less' and 'greater' individually. This is because you can either change all 'same' characters and one of 'less' or 'greater', or change only one of 'less' or 'greater' while keeping the other characters in the same order.\n\nThe time complexity of the algorithm is O(n) where n is the length of input strings a and b, as it iterates through each character pair in the strings once.\n    ",
+    "javascript": "\n    ```javascript\nfunction minOperationsToSatisfyConditions(a, b) {\n    let same = 0, less = 0, greater = 0;\n\n    for (let i = 0; i < a.length; i++) {\n        if (a[i] === b[i]) same++;\n        else if (a[i] < b[i]) less++;\n        else greater++;\n    }\n\n    return Math.min(same + Math.max(less, greater), Math.min(less, greater));\n}\n```\n    \n    The algorithm keeps track of three counts: 'same', 'less', and 'greater'. These counts store the number of characters that are the same, less, and greater in string a compared to string b, respectively. Iterate through the characters in a and b simultaneously, comparing each character and updating the counts accordingly. The minimum number of operations needed to satisfy one of the three conditions is then calculated as the minimum of the sum of 'same' and the maximum of 'less' and 'greater', as well as 'less' and 'greater' individually. This is because you can either change all 'same' characters and one of 'less' or 'greater', or change only one of 'less' or 'greater' while keeping the other characters in the same order.\n\nThe time complexity of the algorithm is O(n) where n is the length of input strings a and b, as it iterates through each character pair in the strings once.\n    ",
+    "java": "\n    ```java\nint minOperationsToSatisfyConditions(String a, String b) {\n    int same = 0, less = 0, greater = 0;\n\n    for (int i = 0; i < a.length(); i++) {\n        if (a.charAt(i) == b.charAt(i)) same++;\n        else if (a.charAt(i) < b.charAt(i)) less++;\n        else greater++;\n    }\n\n    return Math.min(same + Math.max(less, greater), Math.min(less, greater));\n}\n```\n    \n    The algorithm keeps track of three counts: 'same', 'less', and 'greater'. These counts store the number of characters that are the same, less, and greater in string a compared to string b, respectively. Iterate through the characters in a and b simultaneously, comparing each character and updating the counts accordingly. The minimum number of operations needed to satisfy one of the three conditions is then calculated as the minimum of the sum of 'same' and the maximum of 'less' and 'greater', as well as 'less' and 'greater' individually. This is because you can either change all 'same' characters and one of 'less' or 'greater', or change only one of 'less' or 'greater' while keeping the other characters in the same order.\n\nThe time complexity of the algorithm is O(n) where n is the length of input strings a and b, as it iterates through each character pair in the strings once.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

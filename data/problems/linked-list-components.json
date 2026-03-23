@@ -1,0 +1,24 @@
+{
+  "id": 817,
+  "title": "Linked List Components",
+  "slug": "linked-list-components",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given the head of a linked list containing unique integer values and an integer array nums that is a subset of the linked list values.\n\nReturn _the number of connected components in_ nums _where two values are connected if they appear consecutively in the linked list_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass MyHashMap:\n\n    def __init__(self):\n        self.data = [-1] * 1000001\n\n    def put(self, key: int, value: int) -> None:\n        self.data[key] = value\n\n    def get(self, key: int) -> int:\n        return self.data[key]\n\n    def remove(self, key: int) -> None:\n        self.data[key] = -1\n```\n\n    \n    The implemented MyHashMap class uses an array (vector or list) of fixed size 1000001 filled with the initial value -1. The hash function used is simply the identity function, i.e., hashing the key is trivial and no colliding will happen as each key maps to an unique array index within 0 and 1000000. \n\nThe put method assigns the value at the corresponding key (index) in the data array without any hash computation. The get method retrieves the value located at the key (index) in the data array, and the remove method sets the value at the key (index) in the data array to -1. There is no need for resizing or handling of collisions in this implementation. Note that this hashmap implementation is extremely inefficient in terms of memory usage and should not be used in real applications.\n    ",
+    "javascript": "\n    ```javascript\nclass MyHashMap {\n    constructor() {\n        this.data = new Array(1000001).fill(-1);\n    }\n\n    put(key, value) {\n        this.data[key] = value;\n    }\n\n    get(key) {\n        return this.data[key];\n    }\n  \n    remove(key) {\n        this.data[key] = -1;\n    }\n}\n```\n\n    \n    The implemented MyHashMap class uses an array (vector or list) of fixed size 1000001 filled with the initial value -1. The hash function used is simply the identity function, i.e., hashing the key is trivial and no colliding will happen as each key maps to an unique array index within 0 and 1000000. \n\nThe put method assigns the value at the corresponding key (index) in the data array without any hash computation. The get method retrieves the value located at the key (index) in the data array, and the remove method sets the value at the key (index) in the data array to -1. There is no need for resizing or handling of collisions in this implementation. Note that this hashmap implementation is extremely inefficient in terms of memory usage and should not be used in real applications.\n    ",
+    "java": "\n    ```java\nclass MyHashMap {\n    int[] data;\n    public MyHashMap() {\n        data = new int[1000001];\n        Arrays.fill(data, -1);\n    }\n\n    public void put(int key, int value) {\n        data[key] = value;\n    }\n    \n    public int get(int key) {\n        return data[key];\n    }\n    \n    public void remove(int key) {\n        data[key] = -1;\n    }\n}\n```\n\n    \n    The implemented MyHashMap class uses an array (vector or list) of fixed size 1000001 filled with the initial value -1. The hash function used is simply the identity function, i.e., hashing the key is trivial and no colliding will happen as each key maps to an unique array index within 0 and 1000000. \n\nThe put method assigns the value at the corresponding key (index) in the data array without any hash computation. The get method retrieves the value located at the key (index) in the data array, and the remove method sets the value at the key (index) in the data array to -1. There is no need for resizing or handling of collisions in this implementation. Note that this hashmap implementation is extremely inefficient in terms of memory usage and should not be used in real applications.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

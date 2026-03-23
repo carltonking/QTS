@@ -1,0 +1,24 @@
+{
+  "id": 1791,
+  "title": "Find Center of Star Graph",
+  "slug": "find-center-of-star-graph",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "There is an undirected star graph consisting of n nodes labeled from 1 to n. A star graph is a graph where there is one center node and exactly n - 1 edges that connect the center node with every other node.\n\nYou are given a 2D integer array edges where each edges[i] = [ui, vi] indicates that there is an edge between the nodes ui and vi. Return the center of the given star graph.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maximum_wealth(accounts):\n    return max(sum(customer) for customer in accounts)\n```\n\n    \n    Iterate through each customer's accounts in the grid. For each customer, calculate the total wealth by summing the values of all their bank accounts. Compare the total wealth of each customer with the previously calculated maximum wealth, and set the maximum wealth to the current customer's wealth if it is greater. Continue this process for all customers and return the final maximum wealth value when finished. \n\nThe implementations in C++, Java, and JavaScript use loops or built-in functions to iterate through the grid and calculate the sums. Python uses a small one-liner to achieve the same result with a generator expression.\n    ",
+    "javascript": "\n    ```javascript\nfunction maximumWealth(accounts) {\n    return accounts.reduce((maxWealth, customer) =>\n        Math.max(maxWealth, customer.reduce((wealth, account) => wealth + account, 0)), 0);\n}\n```\n\n    \n    Iterate through each customer's accounts in the grid. For each customer, calculate the total wealth by summing the values of all their bank accounts. Compare the total wealth of each customer with the previously calculated maximum wealth, and set the maximum wealth to the current customer's wealth if it is greater. Continue this process for all customers and return the final maximum wealth value when finished. \n\nThe implementations in C++, Java, and JavaScript use loops or built-in functions to iterate through the grid and calculate the sums. Python uses a small one-liner to achieve the same result with a generator expression.\n    ",
+    "java": "\n    ```java\npublic int maximumWealth(int[][] accounts) {\n    int maxWealth = 0;\n    for (int[] customer : accounts) {\n        int wealth = 0;\n        for (int account : customer) {\n            wealth += account;\n        }\n        maxWealth = Math.max(maxWealth, wealth);\n    }\n    return maxWealth;\n}\n```\n\n    \n    Iterate through each customer's accounts in the grid. For each customer, calculate the total wealth by summing the values of all their bank accounts. Compare the total wealth of each customer with the previously calculated maximum wealth, and set the maximum wealth to the current customer's wealth if it is greater. Continue this process for all customers and return the final maximum wealth value when finished. \n\nThe implementations in C++, Java, and JavaScript use loops or built-in functions to iterate through the grid and calculate the sums. Python uses a small one-liner to achieve the same result with a generator expression.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

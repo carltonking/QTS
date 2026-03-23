@@ -1,0 +1,24 @@
+{
+  "id": 1660,
+  "title": "Correct a Binary Tree",
+  "slug": "correct-a-binary-tree",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You have a binary tree with a small defect. There is exactly one invalid node where its right child incorrectly points to another node at the same depth but to the invalid node's right.\n\nGiven the root of the binary tree with this defect, root, return _the root of the binary tree after removing this invalid node and every node underneath it (minus the node it incorrectly points to)._\n\nCustom testing:\n\nThe test input is read as 3 lines:\n\n*   TreeNode root\n*   int fromNode (not available to correctBinaryTree)\n*   int toNode (not available to correctBinaryTree)\n\nAfter the binary tree rooted at root is parsed, the TreeNode with value of fromNode will have its right child pointer pointing to the TreeNode with a value of toNode. Then, root is passed to correctBinaryTree.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef thousand_separator(n: int) -> str:\n    result = str(n)\n    count = 0\n    for i in range(len(result) - 1, 0, -1):\n        count += 1\n        if count % 3 == 0:\n            result = result[:i] + '.' + result[i:]\n    return result\n```\n    \n    The algorithm first converts the given integer `n` into a string format. We'll be iterating through the string in reverse order (from last to first character) to insert dots at the thousands positions. \n\nWe keep a count initialized to 0. During the iteration, we increment the count until it's divisible by 3 (meaning we reached a thousands position). At this point, we insert the dot in the string at position `i`. The insertion process is slightly different for each programming language, but the overall idea is the same.\n\nAfter the iteration is complete, we return the modified string with dots as thousands separators. This solution works for each of the mentioned programming languages using similar logic and some language-specific syntax adjustments.\n    ",
+    "javascript": "\n    ```javascript\nfunction thousandSeparator(n) {\n    let result = String(n);\n    let count = 0;\n    for (let i = result.length - 1; i > 0; --i) {\n        count++;\n        if (count % 3 === 0) {\n            result = result.slice(0, i) + '.' + result.slice(i);\n        }\n    }\n    return result;\n}\n```\n    \n    The algorithm first converts the given integer `n` into a string format. We'll be iterating through the string in reverse order (from last to first character) to insert dots at the thousands positions. \n\nWe keep a count initialized to 0. During the iteration, we increment the count until it's divisible by 3 (meaning we reached a thousands position). At this point, we insert the dot in the string at position `i`. The insertion process is slightly different for each programming language, but the overall idea is the same.\n\nAfter the iteration is complete, we return the modified string with dots as thousands separators. This solution works for each of the mentioned programming languages using similar logic and some language-specific syntax adjustments.\n    ",
+    "java": "\n    ```java\npublic String thousandSeparator(int n) {\n    String result = Integer.toString(n);\n    int count = 0;\n    for (int i = result.length() - 1; i > 0; --i) {\n        count++;\n        if (count % 3 == 0) {\n            result = result.substring(0, i) + \".\" + result.substring(i);\n        }\n    }\n    return result;\n}\n```\n    \n    The algorithm first converts the given integer `n` into a string format. We'll be iterating through the string in reverse order (from last to first character) to insert dots at the thousands positions. \n\nWe keep a count initialized to 0. During the iteration, we increment the count until it's divisible by 3 (meaning we reached a thousands position). At this point, we insert the dot in the string at position `i`. The insertion process is slightly different for each programming language, but the overall idea is the same.\n\nAfter the iteration is complete, we return the modified string with dots as thousands separators. This solution works for each of the mentioned programming languages using similar logic and some language-specific syntax adjustments.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

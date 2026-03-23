@@ -1,0 +1,39 @@
+{
+  "id": 31,
+  "title": "Min Cost Climbing Stairs",
+  "slug": "min-cost-climbing-stairs",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "You are given an integer array cost where cost[i] is the cost of ith step. Once you pay the cost, you can climb one or two steps.",
+  "examples": [
+    {
+      "input": "cost = [10,15,20]",
+      "output": "15"
+    }
+  ],
+  "constraints": [
+    "2 <= cost.length <= 1000"
+  ],
+  "starterCode": {
+    "python": "from typing import List\nclass Solution:\n    def minCostClimbingStairs(self, cost: List[int]) -> int:\n        pass",
+    "javascript": "var minCostClimbingStairs = function(cost) {\n    \n};",
+    "java": "class Solution {\n    public int minCostClimbingStairs(int[] cost) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    int minCostClimbingStairs(vector<int>& cost) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Min Cost Climbing Stairs\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "[10,15,20]",
+      "expectedOutput": "15"
+    },
+    {
+      "input": "[1,100,1,1,1,100,1,1,100,1]",
+      "expectedOutput": "6"
+    }
+  ]
+}

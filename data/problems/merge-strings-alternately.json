@@ -1,0 +1,24 @@
+{
+  "id": 1768,
+  "title": "Merge Strings Alternately",
+  "slug": "merge-strings-alternately",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given two strings word1 and word2. Merge the strings by adding letters in alternating order, starting with word1. If a string is longer than the other, append the additional letters onto the end of the merged string.\n\nReturn _the merged string._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef mergeAlternately(word1: str, word2: str) -> str:\n    result = []\n    i, j = 0, 0\n    while i < len(word1) and j < len(word2):\n        result.append(word1[i])\n        result.append(word2[j])\n        i += 1\n        j += 1\n    result += word1[i:]\n    result += word2[j:]\n    return \"\".join(result)\n```\n    \n    The algorithm initializes the result as an empty string (or an empty list in Python) and two pointers `i` and `j` to track the index of the current element in `word1` and `word2`, respectively. Then, it iterates through the words, adding one character from each of the input words alternatively to the result. The loop stops when one of the words run out of characters.\n\nAfter the loop, the remaining characters in the input strings (if any) are appended to the result. In Python, the result is converted back to a string using the `join()` method.\n    ",
+    "javascript": "\n    ```javascript\nfunction mergeAlternately(word1, word2) {\n    let result = \"\";\n    let i = 0, j = 0;\n    while (i < word1.length && j < word2.length) {\n        result += word1[i++];\n        result += word2[j++];\n    }\n    while (i < word1.length) result += word1[i++];\n    while (j < word2.length) result += word2[j++];\n    return result;\n}\n```\n    \n    The algorithm initializes the result as an empty string (or an empty list in Python) and two pointers `i` and `j` to track the index of the current element in `word1` and `word2`, respectively. Then, it iterates through the words, adding one character from each of the input words alternatively to the result. The loop stops when one of the words run out of characters.\n\nAfter the loop, the remaining characters in the input strings (if any) are appended to the result. In Python, the result is converted back to a string using the `join()` method.\n    ",
+    "java": "\n    ```java\npublic String mergeAlternately(String word1, String word2) {\n    StringBuilder result = new StringBuilder();\n    int i = 0, j = 0;\n    while (i < word1.length() && j < word2.length()) {\n        result.append(word1.charAt(i++));\n        result.append(word2.charAt(j++));\n    }\n    while (i < word1.length()) result.append(word1.charAt(i++));\n    while (j < word2.length()) result.append(word2.charAt(j++));\n    return result.toString();\n}\n```\n    \n    The algorithm initializes the result as an empty string (or an empty list in Python) and two pointers `i` and `j` to track the index of the current element in `word1` and `word2`, respectively. Then, it iterates through the words, adding one character from each of the input words alternatively to the result. The loop stops when one of the words run out of characters.\n\nAfter the loop, the remaining characters in the input strings (if any) are appended to the result. In Python, the result is converted back to a string using the `join()` method.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

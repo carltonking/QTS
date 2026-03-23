@@ -1,0 +1,24 @@
+{
+  "id": 2073,
+  "title": "Time Needed to Buy Tickets",
+  "slug": "time-needed-to-buy-tickets",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "There are n people in a line queuing to buy tickets, where the 0th person is at the front of the line and the (n - 1)th person is at the back of the line.\n\nYou are given a 0-indexed integer array tickets of length n where the number of tickets that the ith person would like to buy is tickets[i].\n\nEach person takes exactly 1 second to buy a ticket. A person can only buy 1 ticket at a time and has to go back to the end of the line (which happens instantaneously) in order to buy more tickets. If a person does not have any tickets left to buy, the person will leave the line.\n\nReturn _the time taken for the person at position_ k _(0-indexed)_ _to finish buying tickets_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef time_to_buy_tickets(tickets, k):\n    time = 0\n    while tickets[k] > 0:\n        for i in range(len(tickets)):\n            if tickets[i] > 0:\n                tickets[i] -= 1\n                time += 1\n                if i == k and tickets[k] == 0:\n                    break\n    return time\n```\n    \n    The algorithm starts with a variable `time` set to 0. It then enters into a loop that will continue until the person at position `k` has bought all their tickets (`tickets[k] > 0`). \n\nInside the loop, we iterate through each person in the queue. If the person has remaining tickets to buy, we decrement the number of tickets they need to buy (`tickets[i]`), increment the `time` variable, and check if the person is the one at position `k` and has finished buying all their tickets. If so, we break out of the inner loop.\n\nAfter the person at position `k` has bought all their tickets, the algorithm will exit the outer loop and return the `time` variable.\n    ",
+    "javascript": "\n    ```javascript\nfunction timeToBuyTickets(tickets, k) {\n    let time = 0;\n    while (tickets[k] > 0) {\n        for (let i = 0; i < tickets.length; ++i) {\n            if (tickets[i] > 0) {\n                --tickets[i];\n                ++time;\n                if (i === k && tickets[k] === 0) {\n                    break;\n                }\n            }\n        }\n    }\n    return time;\n}\n```\n\n    \n    The algorithm starts with a variable `time` set to 0. It then enters into a loop that will continue until the person at position `k` has bought all their tickets (`tickets[k] > 0`). \n\nInside the loop, we iterate through each person in the queue. If the person has remaining tickets to buy, we decrement the number of tickets they need to buy (`tickets[i]`), increment the `time` variable, and check if the person is the one at position `k` and has finished buying all their tickets. If so, we break out of the inner loop.\n\nAfter the person at position `k` has bought all their tickets, the algorithm will exit the outer loop and return the `time` variable.\n    ",
+    "java": "\n    ```java\npublic int timeToBuyTickets(int[] tickets, int k) {\n    int time = 0;\n    while (tickets[k] > 0) {\n        for (int i = 0; i < tickets.length; ++i) {\n            if (tickets[i] > 0) {\n                --tickets[i];\n                ++time;\n                if (i == k && tickets[k] == 0) {\n                    break;\n                }\n            }\n        }\n    }\n    return time;\n}\n```\n    \n    The algorithm starts with a variable `time` set to 0. It then enters into a loop that will continue until the person at position `k` has bought all their tickets (`tickets[k] > 0`). \n\nInside the loop, we iterate through each person in the queue. If the person has remaining tickets to buy, we decrement the number of tickets they need to buy (`tickets[i]`), increment the `time` variable, and check if the person is the one at position `k` and has finished buying all their tickets. If so, we break out of the inner loop.\n\nAfter the person at position `k` has bought all their tickets, the algorithm will exit the outer loop and return the `time` variable.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

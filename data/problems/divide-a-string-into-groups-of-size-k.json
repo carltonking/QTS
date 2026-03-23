@@ -1,0 +1,24 @@
+{
+  "id": 2138,
+  "title": "Divide a String Into Groups of Size k",
+  "slug": "divide-a-string-into-groups-of-size-k",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "A string s can be partitioned into groups of size k using the following procedure:\n\n*   The first group consists of the first k characters of the string, the second group consists of the next k characters of the string, and so on. Each character can be a part of exactly one group.\n*   For the last group, if the string does not have k characters remaining, a character fill is used to complete the group.\n\nNote that the partition is done so that after removing the fill character from the last group (if it exists) and concatenating all the groups in order, the resultant string should be s.\n\nGiven the string s, the size of each group k and the character fill, return _a string array denoting the composition of every group_ s _has been divided into, using the above procedure_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sum_of_beauties(nums: List[int]) -> int:\n    n = len(nums)\n    result = 0\n\n    left_max = [0] * n\n    left_max[0] = nums[0]\n    right_min = [0] * n\n    right_min[n - 1] = nums[n - 1]\n\n    for i in range(1, n):\n        left_max[i] = max(left_max[i - 1], nums[i])\n\n    for i in range(n - 2, -1, -1):\n        right_min[i] = min(right_min[i + 1], nums[i])\n\n    for i in range(1, n - 1):\n        if nums[i] > left_max[i - 1] and nums[i] < right_min[i + 1]:\n            result += 1\n\n    return result\n```\n    \n    To solve this problem, we first create two arrays, `leftMax` and `rightMin`. `leftMax` stores the maximum value to the left of each index i, and `rightMin` stores the minimum value to the right of each index i. We then iterate through the input array `nums` from index 1 to index n - 2 (inclusive) and check if the current value is greater than the maximum to its left and less than the minimum to its right. If both conditions are fulfilled, we increase the result by 1. Finally, we return the result as the sum of the beauty of all `nums[i]` where 1 <= i <= nums.length - 2.\n    ",
+    "javascript": "\n    ```javascript\nfunction sumOfBeauties(nums) {\n    const n = nums.length;\n    let result = 0;\n\n    const leftMax = new Array(n);\n    leftMax[0] = nums[0];\n    const rightMin = new Array(n);\n    rightMin[n - 1] = nums[n - 1];\n\n    for (let i = 1; i < n; i++) {\n        leftMax[i] = Math.max(leftMax[i - 1], nums[i]);\n    }\n\n    for (let i = n - 2; i >= 0; i--) {\n        rightMin[i] = Math.min(rightMin[i + 1], nums[i]);\n    }\n\n    for (let i = 1; i <= n - 2; i++) {\n        if (nums[i] > leftMax[i - 1] && nums[i] < rightMin[i + 1]) {\n            result += 1;\n        }\n    }\n\n    return result;\n}\n```\n    \n    To solve this problem, we first create two arrays, `leftMax` and `rightMin`. `leftMax` stores the maximum value to the left of each index i, and `rightMin` stores the minimum value to the right of each index i. We then iterate through the input array `nums` from index 1 to index n - 2 (inclusive) and check if the current value is greater than the maximum to its left and less than the minimum to its right. If both conditions are fulfilled, we increase the result by 1. Finally, we return the result as the sum of the beauty of all `nums[i]` where 1 <= i <= nums.length - 2.\n    ",
+    "java": "\n    ```java\npublic int sumOfBeauties(int[] nums) {\n    int n = nums.length;\n    int result = 0;\n\n    int[] leftMax = new int[n];\n    leftMax[0] = nums[0];\n    int[] rightMin = new int[n];\n    rightMin[n - 1] = nums[n - 1];\n\n    for (int i = 1; i < n; i++) {\n        leftMax[i] = Math.max(leftMax[i - 1], nums[i]);\n    }\n\n    for (int i = n - 2; i >= 0; i--) {\n        rightMin[i] = Math.min(rightMin[i + 1], nums[i]);\n    }\n\n    for (int i = 1; i <= n - 2; i++) {\n        if (nums[i] > leftMax[i - 1] && nums[i] < rightMin[i + 1]) {\n            result += 1;\n        }\n    }\n\n    return result;\n}\n```\n    \n    To solve this problem, we first create two arrays, `leftMax` and `rightMin`. `leftMax` stores the maximum value to the left of each index i, and `rightMin` stores the minimum value to the right of each index i. We then iterate through the input array `nums` from index 1 to index n - 2 (inclusive) and check if the current value is greater than the maximum to its left and less than the minimum to its right. If both conditions are fulfilled, we increase the result by 1. Finally, we return the result as the sum of the beauty of all `nums[i]` where 1 <= i <= nums.length - 2.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

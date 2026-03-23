@@ -1,0 +1,24 @@
+{
+  "id": 2410,
+  "title": "Maximum Matching of Players With Trainers",
+  "slug": "maximum-matching-of-players-with-trainers",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array players, where players[i] represents the ability of the ith player. You are also given a 0-indexed integer array trainers, where trainers[j] represents the training capacity of the jth trainer.\n\nThe ith player can match with the jth trainer if the player's ability is less than or equal to the trainer's training capacity. Additionally, the ith player can be matched with at most one trainer, and the jth trainer can be matched with at most one player.\n\nReturn _the maximum number of matchings between_ players _and_ trainers _that satisfy these conditions._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_matchings(players, trainers):\n    players.sort()\n    trainers.sort()\n\n    player_index, trainer_index, match_count = 0, 0, 0\n    while (player_index < len(players)) and (trainer_index < len(trainers)):\n        if players[player_index] <= trainers[trainer_index]:\n            match_count += 1\n            player_index += 1\n            trainer_index += 1\n        else:\n            trainer_index += 1\n\n    return match_count\n```\n\n    \n    1. Sort the `players` and `trainers` arrays in ascending order.\n2. Initialize variables `playerIndex`, `trainerIndex`, and `matchCount` to 0.\n3. Loop through the `players` and `trainers` arrays while `playerIndex` is less than the `players` length and `trainerIndex` is less than the `trainers` length.\n   a. If the current `player`'s ability is less than or equal to the current `trainer`'s training capacity, increase the `matchCount`, increment both `playerIndex` and `trainerIndex`.\n   b. If not, increment `trainerIndex` only.\n4. After the loop, the final `matchCount` value is the maximum number of matchings that satisfy the conditions.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxMatchings(players, trainers) {\n    players.sort((a, b) => a - b);\n    trainers.sort((a, b) => a - b);\n\n    let playerIndex = 0, trainerIndex = 0, matchCount = 0;\n    while (playerIndex < players.length && trainerIndex < trainers.length) {\n        if (players[playerIndex] <= trainers[trainerIndex]) {\n            matchCount++;\n            playerIndex++;\n            trainerIndex++;\n        } else {\n            trainerIndex++;\n        }\n    }\n\n    return matchCount;\n}\n```\n\n    \n    1. Sort the `players` and `trainers` arrays in ascending order.\n2. Initialize variables `playerIndex`, `trainerIndex`, and `matchCount` to 0.\n3. Loop through the `players` and `trainers` arrays while `playerIndex` is less than the `players` length and `trainerIndex` is less than the `trainers` length.\n   a. If the current `player`'s ability is less than or equal to the current `trainer`'s training capacity, increase the `matchCount`, increment both `playerIndex` and `trainerIndex`.\n   b. If not, increment `trainerIndex` only.\n4. After the loop, the final `matchCount` value is the maximum number of matchings that satisfy the conditions.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int maxMatchings(int[] players, int[] trainers) {\n    Arrays.sort(players);\n    Arrays.sort(trainers);\n\n    int playerIndex = 0, trainerIndex = 0, matchCount = 0;\n    while (playerIndex < players.length && trainerIndex < trainers.length) {\n        if (players[playerIndex] <= trainers[trainerIndex]) {\n            matchCount++;\n            playerIndex++;\n            trainerIndex++;\n        } else {\n            trainerIndex++;\n        }\n    }\n\n    return matchCount;\n}\n```\n\n    \n    1. Sort the `players` and `trainers` arrays in ascending order.\n2. Initialize variables `playerIndex`, `trainerIndex`, and `matchCount` to 0.\n3. Loop through the `players` and `trainers` arrays while `playerIndex` is less than the `players` length and `trainerIndex` is less than the `trainers` length.\n   a. If the current `player`'s ability is less than or equal to the current `trainer`'s training capacity, increase the `matchCount`, increment both `playerIndex` and `trainerIndex`.\n   b. If not, increment `trainerIndex` only.\n4. After the loop, the final `matchCount` value is the maximum number of matchings that satisfy the conditions.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

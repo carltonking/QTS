@@ -1,0 +1,24 @@
+{
+  "id": 160,
+  "title": "Intersection of Two Linked Lists",
+  "slug": "intersection-of-two-linked-lists",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given the heads of two singly linked-lists headA and headB, return _the node at which the two lists intersect_. If the two linked lists have no intersection at all, return null.\n\nFor example, the following two linked lists begin to intersect at node c1:\n\nThe test cases are generated such that there are no cycles anywhere in the entire linked structure.\n\nNote that the linked lists must retain their original structure after the function returns.\n\nCustom Judge:\n\nThe inputs to the judge are given as follows (your program is not given these inputs):\n\n*   intersectVal - The value of the node where the intersection occurs. This is 0 if there is no intersected node.\n*   listA - The first linked list.\n*   listB - The second linked list.\n*   skipA - The number of nodes to skip ahead in listA (starting from the head) to get to the intersected node.\n*   skipB - The number of nodes to skip ahead in listB (starting from the head) to get to the intersected node.\n\nThe judge will then create the linked structure based on these inputs and pass the two heads, headA and headB to your program. If you correctly return the intersected node, then your solution will be accepted.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass ListNode:\n    def __init__(self, x):\n        self.val = x\n        self.next = None\n\ndef getIntersectionNode(headA, headB):\n    pA, pB = headA, headB\n    while pA is not pB:\n        pA = pA.next if pA else headB\n        pB = pB.next if pB else headA\n    return pA\n```\n\n    \n    The algorithm uses two pointers, one for each linked list head (headA and headB). The pointers traverse through the lists such that they traverse the sum of the node count of both lists. If the lists intersect at a node, the pointers will eventually meet at this intersection node because they will have traversed the same number of total nodes. If the lists do not intersect, the pointers will meet at the end of the lists, resulting in both pointers being null, and the function will return null.\n    ",
+    "javascript": "\n    ```javascript\nclass ListNode {\n    constructor(val, next = null) {\n        this.val = val;\n        this.next = next;\n    }\n}\n\nfunction getIntersectionNode(headA, headB) {\n    let pA = headA, pB = headB;\n    while (pA !== pB) {\n        pA = pA !== null ? pA.next : headB;\n        pB = pB !== null ? pB.next : headA;\n    }\n    return pA;\n}\n```\n\n    \n    The algorithm uses two pointers, one for each linked list head (headA and headB). The pointers traverse through the lists such that they traverse the sum of the node count of both lists. If the lists intersect at a node, the pointers will eventually meet at this intersection node because they will have traversed the same number of total nodes. If the lists do not intersect, the pointers will meet at the end of the lists, resulting in both pointers being null, and the function will return null.\n    ",
+    "java": "\n    ```java\npublic class ListNode {\n    int val;\n    ListNode next;\n    ListNode(int x) {\n        val = x;\n        next = null;\n    }\n}\n\npublic ListNode getIntersectionNode(ListNode headA, ListNode headB) {\n    ListNode pA = headA, pB = headB;\n    while (pA != pB) {\n        pA = pA != null ? pA.next : headB;\n        pB = pB != null ? pB.next : headA;\n    }\n    return pA;\n}\n```\n\n    \n    The algorithm uses two pointers, one for each linked list head (headA and headB). The pointers traverse through the lists such that they traverse the sum of the node count of both lists. If the lists intersect at a node, the pointers will eventually meet at this intersection node because they will have traversed the same number of total nodes. If the lists do not intersect, the pointers will meet at the end of the lists, resulting in both pointers being null, and the function will return null.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

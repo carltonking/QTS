@@ -1,0 +1,24 @@
+{
+  "id": 41,
+  "title": "First Missing Positive",
+  "slug": "first-missing-positive",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given an unsorted integer array nums, return the smallest missing positive integer.\n\nYou must implement an algorithm that runs in O(n) time and uses constant extra space.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef firstMissingPositive(nums):\n    n = len(nums)\n    for i in range(n):\n        while 1 <= nums[i] <= n and nums[nums[i] - 1] != nums[i]:\n            nums[nums[i] - 1], nums[i] = nums[i], nums[nums[i] - 1]\n\n    for i in range(n):\n        if nums[i] != i + 1:\n            return i + 1\n    return n + 1\n```\n    \n    In this algorithm, the elements are swapped with the values at their correct index if they are positive, in range, and not equal to the value already at that index. After the first loop, the array will have correct values at correct indices where possible (1-based), so we just need to find the index `i` where `nums[i] != i+1`. If not found, return the next positive integer `n + 1`. The loop has O(n) complexity, because each time at least one element gets placed at its correct position, so we need a max of n iterations on average.\n    ",
+    "javascript": "\n    ```javascript\nfunction firstMissingPositive(nums) {\n    let n = nums.length;\n    for(let i = 0; i < n; i++) {\n        while(nums[i] > 0 && nums[i] <= n && nums[nums[i] - 1] !== nums[i]) {\n            let temp = nums[i];\n            nums[i] = nums[temp - 1];\n            nums[temp - 1] = temp;\n        }\n    }\n\n    for(let i = 0; i < n; i++) {\n        if(nums[i] !== i + 1) {\n            return i + 1;\n        }\n    }\n    return n + 1;\n}\n```\n    \n    In this algorithm, the elements are swapped with the values at their correct index if they are positive, in range, and not equal to the value already at that index. After the first loop, the array will have correct values at correct indices where possible (1-based), so we just need to find the index `i` where `nums[i] != i+1`. If not found, return the next positive integer `n + 1`. The loop has O(n) complexity, because each time at least one element gets placed at its correct position, so we need a max of n iterations on average.\n    ",
+    "java": "\n    ```java\npublic int firstMissingPositive(int[] nums) {\n    int n = nums.length;\n    for(int i = 0; i < n; i++) {\n        while(nums[i] > 0 && nums[i] <= n && nums[nums[i] - 1] != nums[i]) {\n            int temp = nums[i];\n            nums[i] = nums[temp - 1];\n            nums[temp - 1] = temp;\n        }\n    }\n\n    for(int i = 0; i < n; i++) {\n        if(nums[i] != i + 1) {\n            return i + 1;\n        }\n    }\n    return n + 1;\n}\n```\n    \n    In this algorithm, the elements are swapped with the values at their correct index if they are positive, in range, and not equal to the value already at that index. After the first loop, the array will have correct values at correct indices where possible (1-based), so we just need to find the index `i` where `nums[i] != i+1`. If not found, return the next positive integer `n + 1`. The loop has O(n) complexity, because each time at least one element gets placed at its correct position, so we need a max of n iterations on average.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

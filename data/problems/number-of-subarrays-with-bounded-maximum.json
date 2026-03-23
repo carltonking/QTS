@@ -1,0 +1,24 @@
+{
+  "id": 795,
+  "title": "Number of Subarrays with Bounded Maximum",
+  "slug": "number-of-subarrays-with-bounded-maximum",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums and two integers left and right, return _the number of contiguous non-empty subarrays such that the value of the maximum array element in that subarray is in the range_ [left, right].\n\nThe test cases are generated so that the answer will fit in a 32-bit integer.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef kthSymbolInGrammar(n, k):\n    if n == 1:\n        return 0\n    if k % 2 == 0:\n        return 1 - kthSymbolInGrammar(n - 1, k // 2)\n    else:\n        return kthSymbolInGrammar(n - 1, (k + 1) // 2)\n```\n    \n    The algorithm is based on the observation that each row is formed by concatenating the previous row with its complement:\n- Row 1: 0\n- Row 2: 01\n- Row 3: 0110\n- Row 4: 01101001\n- and so on...\n\nSo the idea is to find out the kth element in the nth row by checking the k/2 th element in the (n-1)th row. If k is even, we take the complement of the (k/2)th element in the (n-1)th row, otherwise we simply take the same (k+1)/2 th element in the (n-1)th row.\n\nWe continue this process until we reach the first row, and return the kth symbol in the nth row.\n\nNote: For C++ and Python, integer division operator is used (//), while for Java and Javascript, we use regular division and apply the floor function. This is done to ensure that k remains an integer while performing the division.\n    ",
+    "javascript": "\n    ```javascript\nfunction kthSymbolInGrammar(n, k) {\n    if (n === 1) return 0;\n    if (k % 2 === 0) return 1 - kthSymbolInGrammar(n - 1, Math.floor(k / 2));\n    else return kthSymbolInGrammar(n - 1, Math.floor((k + 1) / 2));\n}\n```\n    \n    The algorithm is based on the observation that each row is formed by concatenating the previous row with its complement:\n- Row 1: 0\n- Row 2: 01\n- Row 3: 0110\n- Row 4: 01101001\n- and so on...\n\nSo the idea is to find out the kth element in the nth row by checking the k/2 th element in the (n-1)th row. If k is even, we take the complement of the (k/2)th element in the (n-1)th row, otherwise we simply take the same (k+1)/2 th element in the (n-1)th row.\n\nWe continue this process until we reach the first row, and return the kth symbol in the nth row.\n\nNote: For C++ and Python, integer division operator is used (//), while for Java and Javascript, we use regular division and apply the floor function. This is done to ensure that k remains an integer while performing the division.\n    ",
+    "java": "\n    ```java\npublic int kthSymbolInGrammar(int n, int k) {\n    if (n == 1) return 0;\n    if (k % 2 == 0) return 1 - kthSymbolInGrammar(n - 1, k / 2);\n    else return kthSymbolInGrammar(n - 1, (k + 1) / 2);\n}\n```\n    \n    The algorithm is based on the observation that each row is formed by concatenating the previous row with its complement:\n- Row 1: 0\n- Row 2: 01\n- Row 3: 0110\n- Row 4: 01101001\n- and so on...\n\nSo the idea is to find out the kth element in the nth row by checking the k/2 th element in the (n-1)th row. If k is even, we take the complement of the (k/2)th element in the (n-1)th row, otherwise we simply take the same (k+1)/2 th element in the (n-1)th row.\n\nWe continue this process until we reach the first row, and return the kth symbol in the nth row.\n\nNote: For C++ and Python, integer division operator is used (//), while for Java and Javascript, we use regular division and apply the floor function. This is done to ensure that k remains an integer while performing the division.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

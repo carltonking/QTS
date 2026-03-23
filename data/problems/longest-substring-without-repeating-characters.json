@@ -1,0 +1,44 @@
+{
+  "id": 10,
+  "title": "Longest Substring Without Repeating Characters",
+  "slug": "longest-substring-without-repeating-characters",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Sliding Window"
+  ],
+  "description": "Given a string s, find the length of the longest substring without repeating characters.",
+  "examples": [
+    {
+      "input": "s = \"abcabcbb\"",
+      "output": "3"
+    }
+  ],
+  "constraints": [
+    "0 <= s.length <= 5 * 10^4"
+  ],
+  "starterCode": {
+    "python": "class Solution:\n    def lengthOfLongestSubstring(self, s: str) -> int:\n        pass",
+    "javascript": "var lengthOfLongestSubstring = function(s) {\n    \n};",
+    "java": "class Solution {\n    public int lengthOfLongestSubstring(String s) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    int lengthOfLongestSubstring(string s) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Longest Substring Without Repeating Characters\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "abcabcbb",
+      "expectedOutput": "3"
+    },
+    {
+      "input": "bbbbb",
+      "expectedOutput": "1"
+    },
+    {
+      "input": "pwwkew",
+      "expectedOutput": "3"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": 757,
+  "title": "Set Intersection Size At Least Two",
+  "slug": "set-intersection-size-at-least-two",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a 2D integer array intervals where intervals[i] = [starti, endi] represents all the integers from starti to endi inclusively.\n\nA containing set is an array nums where each interval from intervals has at least two integers in nums.\n\n*   For example, if intervals = [[1,3], [3,7], [8,9]], then [1,2,4,7,8,9] and [2,3,4,8,9] are containing sets.\n\nReturn _the minimum possible size of a containing set_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import defaultdict\n\ndef pyramidTransition(bottom, allowed):\n    mapping = defaultdict(list)\n    for s in allowed:\n        mapping[s[:2]].append(s[2])\n    return dfs(\"\", bottom, mapping)\n\ndef dfs(curr, bottom, mapping):\n    if len(bottom) == 1:\n        return True\n    for i in range(len(bottom) - 1):\n        if bottom[i:i+2] not in mapping:\n            return False\n    curr = \"\".join(mapping[bottom[i:i + 2]][0] for i in range(len(bottom) - 1))\n    return dfs(curr, curr, mapping)\n```\n\n    \n    1. Create a mapping, with the allowed patterns, which maps bottom two characters of allowed string to their respective top character.\n2. Define a function dfs, which loops through the current bottom to find the mapping for the subsequent row.\n3. If it can create a subsequent row fully from the mappings without any error, it calls the dfs again recursively with the new row as the bottom row.\n4. If, finally, a single character row(bottom.length==1) is formed at the top, it returns true; otherwise, it returns false.\n5. Call dfs with the original bottom row and return the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction pyramidTransition(bottom, allowed) {\n    const mapping = {};\n    for (const s of allowed) {\n        const key = s.slice(0, 2);\n        if (!(key in mapping)) {\n            mapping[key] = [];\n        }\n        mapping[key].push(s[2]);\n    }\n    return dfs(\"\", bottom, mapping);\n}\n\nfunction dfs(curr, bottom, mapping) {\n    if (bottom.length === 1) {\n        return true;\n    }\n    for (let i = 0; i < bottom.length - 1; ++i) {\n        if (!(bottom.slice(i, i + 2) in mapping)) {\n            return false;\n        }\n    }\n    curr = \"\";\n    for (let i = 0; i < bottom.length - 1; ++i) {\n        curr += mapping[bottom.slice(i, i + 2)][0];\n    }\n    return dfs(curr, curr, mapping);\n}\n```\n\n    \n    1. Create a mapping, with the allowed patterns, which maps bottom two characters of allowed string to their respective top character.\n2. Define a function dfs, which loops through the current bottom to find the mapping for the subsequent row.\n3. If it can create a subsequent row fully from the mappings without any error, it calls the dfs again recursively with the new row as the bottom row.\n4. If, finally, a single character row(bottom.length==1) is formed at the top, it returns true; otherwise, it returns false.\n5. Call dfs with the original bottom row and return the result.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic boolean pyramidTransition(String bottom, List<String> allowed) {\n    Map<String, List<Character>> mapping = new HashMap<>();\n    for (String s : allowed) {\n        String key = s.substring(0, 2);\n        if (!mapping.containsKey(key)) {\n            mapping.put(key, new ArrayList<>());\n        }\n        mapping.get(key).add(s.charAt(2));\n    }\n    return dfs(\"\", bottom, mapping);\n}\n\npublic boolean dfs(String curr, String bottom, Map<String, List<Character>> mapping) {\n    if (bottom.length() == 1) return true;\n    for (int i = 0; i < bottom.length() - 1; ++i) {\n        if (!mapping.containsKey(bottom.substring(i, i + 2))) return false;\n    }\n    curr = \"\";\n    for (int i = 0; i < bottom.length() - 1; ++i) {\n        curr += mapping.get(bottom.substring(i, i + 2)).get(0);\n    }\n    return dfs(curr, curr, mapping);\n}\n```\n\n    \n    1. Create a mapping, with the allowed patterns, which maps bottom two characters of allowed string to their respective top character.\n2. Define a function dfs, which loops through the current bottom to find the mapping for the subsequent row.\n3. If it can create a subsequent row fully from the mappings without any error, it calls the dfs again recursively with the new row as the bottom row.\n4. If, finally, a single character row(bottom.length==1) is formed at the top, it returns true; otherwise, it returns false.\n5. Call dfs with the original bottom row and return the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

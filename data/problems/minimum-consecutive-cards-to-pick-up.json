@@ -1,0 +1,24 @@
+{
+  "id": 2260,
+  "title": "Minimum Consecutive Cards to Pick Up",
+  "slug": "minimum-consecutive-cards-to-pick-up",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array cards where cards[i] represents the value of the ith card. A pair of cards are matching if the cards have the same value.\n\nReturn _the minimum number of consecutive cards you have to pick up to have a pair of matching cards among the picked cards._ If it is impossible to have matching cards, return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef partition_string(s, k, fill):\n    partitions = []\n    current_partition = ''\n    for c in s:\n        current_partition += c\n        if len(current_partition) == k:\n            partitions.append(current_partition)\n            current_partition = ''\n    if current_partition:\n        current_partition += fill * (k - len(current_partition))\n        partitions.append(current_partition)\n    return partitions\n```\n    \n    The algorithm follows this procedure:\n1. Initialize an empty list to store the partitioned groups.\n2. Initialize an empty string to represent the current partition.\n3. Iterate through each character in the input string:\n   a. Append the character to the current partition.\n   b. If the current partition reaches the specified size `k`, add it to the list of partitioned groups and reset the current partition.\n4. After the iteration, if the current partition is not empty, fill it with the fill character until it reaches the specified size `k`, then add to the list of partitioned groups.\n5. Return the final list of partitioned groups.\n    ",
+    "javascript": "\n    ```javascript\nfunction partitionString(s, k, fill) {\n    const partitions = [];\n    let currentPartition = '';\n    for (const c of s) {\n        currentPartition += c;\n        if (currentPartition.length === k) {\n            partitions.push(currentPartition);\n            currentPartition = '';\n        }\n    }\n    if (currentPartition.length > 0) {\n        currentPartition += fill.repeat(k - currentPartition.length);\n        partitions.push(currentPartition);\n    }\n    return partitions;\n}\n```\n    \n    The algorithm follows this procedure:\n1. Initialize an empty list to store the partitioned groups.\n2. Initialize an empty string to represent the current partition.\n3. Iterate through each character in the input string:\n   a. Append the character to the current partition.\n   b. If the current partition reaches the specified size `k`, add it to the list of partitioned groups and reset the current partition.\n4. After the iteration, if the current partition is not empty, fill it with the fill character until it reaches the specified size `k`, then add to the list of partitioned groups.\n5. Return the final list of partitioned groups.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\n\npublic ArrayList<String> partitionString(String s, int k, char fill) {\n    ArrayList<String> partitions = new ArrayList<>();\n    StringBuilder currentPartition = new StringBuilder();\n    for(char c : s.toCharArray()) {\n        currentPartition.append(c);\n        if(currentPartition.length() == k) {\n            partitions.add(currentPartition.toString());\n            currentPartition.setLength(0); // clear the contents\n        }\n    }\n    if(currentPartition.length() != 0) {\n        while(currentPartition.length() < k) {\n            currentPartition.append(fill);\n        }\n        partitions.add(currentPartition.toString());\n    }\n    return partitions;\n}\n```\n    \n    The algorithm follows this procedure:\n1. Initialize an empty list to store the partitioned groups.\n2. Initialize an empty string to represent the current partition.\n3. Iterate through each character in the input string:\n   a. Append the character to the current partition.\n   b. If the current partition reaches the specified size `k`, add it to the list of partitioned groups and reset the current partition.\n4. After the iteration, if the current partition is not empty, fill it with the fill character until it reaches the specified size `k`, then add to the list of partitioned groups.\n5. Return the final list of partitioned groups.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

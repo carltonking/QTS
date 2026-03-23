@@ -1,0 +1,24 @@
+{
+  "id": 970,
+  "title": "Powerful Integers",
+  "slug": "powerful-integers",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given three integers x, y, and bound, return _a list of all the powerful integers that have a value less than or equal to_ bound.\n\nAn integer is powerful if it can be represented as xi + yj for some integers i >= 0 and j >= 0.\n\nYou may return the answer in any order. In your answer, each value should occur at most once.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef powerfulIntegers(x, y, bound):\n    max_i = 0 if x == 1 else int(math.log(bound, x))\n    max_j = 0 if y == 1 else int(math.log(bound, y))\n    result_set = set()\n    \n    for i in range(max_i + 1):\n        for j in range(max_j + 1):\n            powerful_num = x ** i + y ** j\n            if powerful_num <= bound:\n                result_set.add(powerful_num)\n                \n    return list(result_set)\n```\n    \n    1. Calculate max_i and max_j for the given x, y, and bound.\n2. Create an empty set called resultSet to store unique powerful integers.\n3. Iterate through i from 0 to max_i, and j from 0 to max_j.\n4. For each i and j, calculate the powerful number using x^i + y^j.\n5. If the powerful number is less than or equal to bound, add it into resultSet.\n6. Return resultSet converted into a vector (C++), ArrayList (Java), list (Python), or array (JavaScript).\n    ",
+    "javascript": "\n    ```javascript\nfunction powerfulIntegers(x, y, bound) {\n    const max_i = x === 1 ? 0 : Math.floor(Math.log(bound) / Math.log(x));\n    const max_j = y === 1 ? 0 : Math.floor(Math.log(bound) / Math.log(y));\n    const resultSet = new Set();\n    \n    for (let i = 0; i <= max_i; i++) {\n        for (let j = 0; j <= max_j; j++) {\n            const powerfulNum = Math.pow(x, i) + Math.pow(y, j);\n            if (powerfulNum <= bound) {\n                resultSet.add(powerfulNum);\n            }\n        }\n    }\n    \n    return Array.from(resultSet);\n}\n```\n    \n    1. Calculate max_i and max_j for the given x, y, and bound.\n2. Create an empty set called resultSet to store unique powerful integers.\n3. Iterate through i from 0 to max_i, and j from 0 to max_j.\n4. For each i and j, calculate the powerful number using x^i + y^j.\n5. If the powerful number is less than or equal to bound, add it into resultSet.\n6. Return resultSet converted into a vector (C++), ArrayList (Java), list (Python), or array (JavaScript).\n    ",
+    "java": "\n    ```java\nimport java.util.HashSet;\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<Integer> powerfulIntegers(int x, int y, int bound) {\n    int max_i = x == 1 ? 0 : (int) (Math.log(bound) / Math.log(x));\n    int max_j = y == 1 ? 0 : (int) (Math.log(bound) / Math.log(y));\n    HashSet<Integer> resultSet = new HashSet<>();\n    \n    for (int i = 0; i <= max_i; i++) {\n        for (int j = 0; j <= max_j; j++) {\n            int powerfulNum = (int) (Math.pow(x, i) + Math.pow(y, j));\n            if (powerfulNum <= bound) {\n                resultSet.add(powerfulNum);\n            }\n        }\n    }\n    \n    return new ArrayList<>(resultSet);\n}\n```\n    \n    1. Calculate max_i and max_j for the given x, y, and bound.\n2. Create an empty set called resultSet to store unique powerful integers.\n3. Iterate through i from 0 to max_i, and j from 0 to max_j.\n4. For each i and j, calculate the powerful number using x^i + y^j.\n5. If the powerful number is less than or equal to bound, add it into resultSet.\n6. Return resultSet converted into a vector (C++), ArrayList (Java), list (Python), or array (JavaScript).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

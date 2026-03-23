@@ -1,0 +1,24 @@
+{
+  "id": 1556,
+  "title": "Thousand Separator",
+  "slug": "thousand-separator",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer n, add a dot ( \". \") as the thousands separator and return it in string format.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef can_be_equal(target, arr):\n    target.sort()\n    arr.sort()\n    return target == arr\n```\n\n    \n    The basic idea behind the solution is to compare the sorted versions of the input arrays `target` and `arr`. If they are equal after sorting, it means that we can obtain `target` from `arr` by reversing any number of sub-arrays, since we can sort `arr` by reversing sub-arrays of length 2.\n\n1. Sort the input arrays `target` and `arr`.\n2. Compare the sorted arrays for equality.\n3. If the sorted arrays are equal, return `true`; otherwise, return `false`.\n\nThe time complexity is O(n log n) as the solution involves sorting the arrays, and the space complexity is O(log n) for the sorting operations.\n    ",
+    "javascript": "\n    ```javascript\nfunction canBeEqual(target, arr) {\n    target.sort((a, b) => a - b);\n    arr.sort((a, b) => a - b);\n    return JSON.stringify(target) === JSON.stringify(arr);\n}\n```\n\n    \n    The basic idea behind the solution is to compare the sorted versions of the input arrays `target` and `arr`. If they are equal after sorting, it means that we can obtain `target` from `arr` by reversing any number of sub-arrays, since we can sort `arr` by reversing sub-arrays of length 2.\n\n1. Sort the input arrays `target` and `arr`.\n2. Compare the sorted arrays for equality.\n3. If the sorted arrays are equal, return `true`; otherwise, return `false`.\n\nThe time complexity is O(n log n) as the solution involves sorting the arrays, and the space complexity is O(log n) for the sorting operations.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic boolean canBeEqual(int[] target, int[] arr) {\n    Arrays.sort(target);\n    Arrays.sort(arr);\n    return Arrays.equals(target, arr);\n}\n```\n\n    \n    The basic idea behind the solution is to compare the sorted versions of the input arrays `target` and `arr`. If they are equal after sorting, it means that we can obtain `target` from `arr` by reversing any number of sub-arrays, since we can sort `arr` by reversing sub-arrays of length 2.\n\n1. Sort the input arrays `target` and `arr`.\n2. Compare the sorted arrays for equality.\n3. If the sorted arrays are equal, return `true`; otherwise, return `false`.\n\nThe time complexity is O(n log n) as the solution involves sorting the arrays, and the space complexity is O(log n) for the sorting operations.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

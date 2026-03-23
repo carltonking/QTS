@@ -1,0 +1,24 @@
+{
+  "id": 2304,
+  "title": "Minimum Path Cost in a Grid",
+  "slug": "minimum-path-cost-in-a-grid",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed m x n integer matrix grid consisting of distinct integers from 0 to m * n - 1. You can move in this matrix from a cell to any other cell in the next row. That is, if you are in cell (x, y) such that x < m - 1, you can move to any of the cells (x + 1, 0), (x + 1, 1), ..., (x + 1, n - 1). Note that it is not possible to move from cells in the last row.\n\nEach possible move has a cost given by a 0-indexed 2D array moveCost of size (m * n) x n, where moveCost[i][j] is the cost of moving from a cell with value i to a cell in column j of the next row. The cost of moving from cells in the last row of grid can be ignored.\n\nThe cost of a path in grid is the sum of all values of cells visited plus the sum of costs of all the moves made. Return _the minimum cost of a path that starts from any cell in the first row and ends at any cell in the last row._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef excel_sheet_cells(s: str):\n    c1, r1, c2, r2 = s.split(':')\n    r1, r2 = int(r1[1:]), int(r2[1:])\n    c1, c2 = ord(c1[0]), ord(c2[0])\n    result = []\n\n    for c in range(c1, c2 + 1):\n        for r in range(r1, r2 + 1):\n            result.append(chr(c) + str(r))\n\n    return result\n```\n    \n    1. First, parse the input string `s` to extract the column and row values for c1, r1, c2, and r2.\n2. Initialize an empty result list to store the cells.\n3. Loop through the columns from c1 to c2.\n  a. Loop through the rows from r1 to r2. \n    i. Append the cell string formed by concatenating the current column and row to the result list.\n4. Return the result list with all the created cells.\n    ",
+    "javascript": "\n    ```javascript\nfunction excelSheetCells(s) {\n    const [part1, part2] = s.split(':');\n    const [c1, r1] = [part1.charCodeAt(0), parseInt(part1.slice(1))];\n    const [c2, r2] = [part2.charCodeAt(0), parseInt(part2.slice(1))];\n\n    const result = [];\n\n    for (let c = c1; c <= c2; c++) {\n        for (let r = r1; r <= r2; r++) {\n            result.push(String.fromCharCode(c) + r);\n        }\n    }\n    return result;\n}\n```\n    \n    1. First, parse the input string `s` to extract the column and row values for c1, r1, c2, and r2.\n2. Initialize an empty result list to store the cells.\n3. Loop through the columns from c1 to c2.\n  a. Loop through the rows from r1 to r2. \n    i. Append the cell string formed by concatenating the current column and row to the result list.\n4. Return the result list with all the created cells.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic List<String> excelSheetCells(String s) {\n    int r1, r2;\n    char c1, c2;\n\n    String[] parts = s.split(\"[:]\");\n    c1 = parts[0].charAt(0);\n    r1 = Integer.parseInt(parts[0].substring(1));\n    c2 = parts[1].charAt(0);\n    r2 = Integer.parseInt(parts[1].substring(1));\n\n    List<String> result = new ArrayList<>();\n\n    for (char c = c1; c <= c2; c++) {\n        for (int r = r1; r <= r2; r++) {\n            result.add(String.valueOf(c) + r);\n        }\n    }\n    return result;\n}\n```\n    \n    1. First, parse the input string `s` to extract the column and row values for c1, r1, c2, and r2.\n2. Initialize an empty result list to store the cells.\n3. Loop through the columns from c1 to c2.\n  a. Loop through the rows from r1 to r2. \n    i. Append the cell string formed by concatenating the current column and row to the result list.\n4. Return the result list with all the created cells.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

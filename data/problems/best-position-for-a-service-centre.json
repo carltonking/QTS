@@ -1,0 +1,24 @@
+{
+  "id": 1515,
+  "title": "Best Position for a Service Centre",
+  "slug": "best-position-for-a-service-centre",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "A delivery company wants to build a new service center in a new city. The company knows the positions of all the customers in this city on a 2D-Map and wants to build the new center in a position such that the sum of the euclidean distances to all customers is minimum.\n\nGiven an array positions where positions[i] = [xi, yi] is the position of the ith customer on the map, return _the minimum sum of the euclidean distances_ to all customers.\n\nIn other words, you need to choose the position of the service center [xcentre, ycentre] such that the following formula is minimized:\n\nAnswers within 10-5 of the actual value will be accepted.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_min_fibonacci_numbers(k):\n    if k == 0:\n        return 0\n    a, b = 0, 1\n    while b <= k:\n        a, b = b, a + b\n    return 1 + find_min_fibonacci_numbers(k - a)\n```\n    \n    The algorithm starts by initializing two variables to represent the Fibonacci sequence, a and b, initialized as 0 and 1 respectively. The algorithm then iterates through the Fibonacci sequence until it reaches a number greater than k, which will be stored in b. During iteration, a and b are swapped, and then, b is updated by adding the current value of a to the current value of b. Once the loop is done, the algorithm calls itself recursively by passing (k - a) as an input, which will deduct the last Fibonacci number found from k. Finally, the count returned from this recursive call is incremented by 1 (because we found one Fibonacci number in the current call), and the result is returned.\n\nThis process continues recursively until k reaches 0, which means we've found the minimum number of Fibonacci numbers that sum up to k.\n    ",
+    "javascript": "\n    ```javascript\nfunction findMinFibonacciNumbers(k) {\n    if (k === 0) return 0;\n    let a = 0, b = 1;\n    while (b <= k) {\n        [a, b] = [b, a + b];\n    }\n    return 1 + findMinFibonacciNumbers(k - a);\n}\n```\n    \n    The algorithm starts by initializing two variables to represent the Fibonacci sequence, a and b, initialized as 0 and 1 respectively. The algorithm then iterates through the Fibonacci sequence until it reaches a number greater than k, which will be stored in b. During iteration, a and b are swapped, and then, b is updated by adding the current value of a to the current value of b. Once the loop is done, the algorithm calls itself recursively by passing (k - a) as an input, which will deduct the last Fibonacci number found from k. Finally, the count returned from this recursive call is incremented by 1 (because we found one Fibonacci number in the current call), and the result is returned.\n\nThis process continues recursively until k reaches 0, which means we've found the minimum number of Fibonacci numbers that sum up to k.\n    ",
+    "java": "\n    ```java\npublic int findMinFibonacciNumbers(int k) {\n    if (k == 0) return 0;\n    int a = 0, b = 1;\n    while (b <= k) {\n        int temp = a;\n        a = b;\n        b = temp + a;\n    }\n    return 1 + findMinFibonacciNumbers(k - a);\n}\n```\n    \n    The algorithm starts by initializing two variables to represent the Fibonacci sequence, a and b, initialized as 0 and 1 respectively. The algorithm then iterates through the Fibonacci sequence until it reaches a number greater than k, which will be stored in b. During iteration, a and b are swapped, and then, b is updated by adding the current value of a to the current value of b. Once the loop is done, the algorithm calls itself recursively by passing (k - a) as an input, which will deduct the last Fibonacci number found from k. Finally, the count returned from this recursive call is incremented by 1 (because we found one Fibonacci number in the current call), and the result is returned.\n\nThis process continues recursively until k reaches 0, which means we've found the minimum number of Fibonacci numbers that sum up to k.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

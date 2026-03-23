@@ -1,0 +1,24 @@
+{
+  "id": 2218,
+  "title": "Maximum Value of K Coins From Piles",
+  "slug": "maximum-value-of-k-coins-from-piles",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "There are n piles of coins on a table. Each pile consists of a positive number of coins of assorted denominations.\n\nIn one move, you can choose any coin on top of any pile, remove it, and add it to your wallet.\n\nGiven a list piles, where piles[i] is a list of integers denoting the composition of the ith pile from top to bottom, and a positive integer k, return _the maximum total value of coins you can have in your wallet if you choose exactly_ k _coins optimally_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nimport heapq\n\ndef maxCoins(piles, k):\n    pq = []\n    for pile in piles:\n        for coin in pile:\n            heapq.heappush(pq, -coin)\n    \n    max_value = 0\n    while k > 0:\n        max_value += -heapq.heappop(pq)\n        k -= 1\n    return max_value\n```\n    \n    1. We use a priority queue (max heap) to keep track of the top coins in each pile. The priority queue will store all the coins from the piles, sorted in descending order.\n2. Iterate through each pile in `piles`. For each coin in the pile, add it to the priority queue.\n3. Initialize `max_value` to 0. While there are still moves allowed (k > 0), pop the top coin (max value coin) from the priority queue, add it to `max_value`, and decrement k.\n4. Return `max_value` as the final result after k moves.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxCoins(piles, k) {\n    let pq = new PriorityQueue((a, b) => b - a);\n    for (let pile of piles) {\n        for (let coin of pile) {\n            pq.enqueue(coin);\n        }\n    }\n    \n    let maxValue = 0;\n    while (k > 0) {\n        maxValue += pq.dequeue();\n        k--;\n    }\n    return maxValue;\n}\n\nclass PriorityQueue {\n    constructor(comparator) {\n        this.data = [];\n        this.comparator = comparator;\n    }\n\n    enqueue(element) {\n        this.data.push(element);\n        this.data.sort(this.comparator);\n    }\n\n    dequeue() {\n        return this.data.shift();\n    }\n\n    isEmpty() {\n        return this.data.length === 0;\n    }\n}\n```\n    \n    1. We use a priority queue (max heap) to keep track of the top coins in each pile. The priority queue will store all the coins from the piles, sorted in descending order.\n2. Iterate through each pile in `piles`. For each coin in the pile, add it to the priority queue.\n3. Initialize `max_value` to 0. While there are still moves allowed (k > 0), pop the top coin (max value coin) from the priority queue, add it to `max_value`, and decrement k.\n4. Return `max_value` as the final result after k moves.\n    ",
+    "java": "\n    ```java\nimport java.util.PriorityQueue;\nimport java.util.List;\n\npublic int maxCoins(List<List<Integer>> piles, int k) {\n    PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);\n    for (List<Integer> pile : piles) {\n        for (Integer coin : pile) {\n            pq.offer(coin);\n        }\n    }\n    \n    int maxValue = 0;\n    while (k > 0) {\n        maxValue += pq.poll();\n        k--;\n    }\n    return maxValue;\n}\n```\n    \n    1. We use a priority queue (max heap) to keep track of the top coins in each pile. The priority queue will store all the coins from the piles, sorted in descending order.\n2. Iterate through each pile in `piles`. For each coin in the pile, add it to the priority queue.\n3. Initialize `max_value` to 0. While there are still moves allowed (k > 0), pop the top coin (max value coin) from the priority queue, add it to `max_value`, and decrement k.\n4. Return `max_value` as the final result after k moves.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

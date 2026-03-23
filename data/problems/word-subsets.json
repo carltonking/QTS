@@ -1,0 +1,24 @@
+{
+  "id": 916,
+  "title": "Word Subsets",
+  "slug": "word-subsets",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two string arrays words1 and words2.\n\nA string b is a subset of string a if every letter in b occurs in a including multiplicity.\n\n*   For example, \"wrr \" is a subset of \"warrior \" but is not a subset of \"world \".\n\nA string a from words1 is universal if for every string b in words2, b is a subset of a.\n\nReturn an array of all the universal strings in words1. You may return the answer in any order.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_kth_character(s: str, k: int) -> str:\n    n = len(s)\n    size = 0\n\n    for c in s:\n        if c.isdigit():\n            size = size * int(c)\n        else:\n            size += 1\n\n    for i in range(n - 1, -1, -1):\n        c = s[i]\n        k %= size\n        if k == 0 and not c.isdigit():\n            return c\n\n        if c.isdigit():\n            size //= int(c)\n        else:\n            size -= 1\n\n    return '-'\n```\n    \n    The algorithm initializes a `size` variable to keep track of the length of the decoded tape. It then iterates through the given string `s` and multiplies the size by the digit (if the current character is a digit) or increments the size by 1 (if the current character is not a digit).\n\nNext, it iterates through the string in reverse, updating the `k` and `size` variables based on the current character. If `k` becomes zero and the current character is not a digit, then it returns the current character as the kth letter in the decoded string. If the current character is a digit, it divides the `size` by the digit; otherwise, it decrements the `size`.\n\nIf the algorithm doesn't find the kth character, it returns a '-' character as a placeholder.\n    ",
+    "javascript": "\n    ```javascript\nfunction findKthCharacter(s, k) {\n    const n = s.length;\n    let size = 0;\n\n    for (const c of s) {\n        if (/\\d/.test(c)) {\n            size = size * Number(c);\n        } else {\n            size++;\n        }\n    }\n\n    for (let i = n - 1; i >= 0; i--) {\n        const c = s.charAt(i);\n        k %= size;\n        if (k === 0 && !/\\d/.test(c)) {\n            return c;\n        }\n\n        if (/\\d/.test(c)) {\n            size /= Number(c);\n        } else {\n            size--;\n        }\n    }\n\n    return '-';\n}\n```\n    \n    The algorithm initializes a `size` variable to keep track of the length of the decoded tape. It then iterates through the given string `s` and multiplies the size by the digit (if the current character is a digit) or increments the size by 1 (if the current character is not a digit).\n\nNext, it iterates through the string in reverse, updating the `k` and `size` variables based on the current character. If `k` becomes zero and the current character is not a digit, then it returns the current character as the kth letter in the decoded string. If the current character is a digit, it divides the `size` by the digit; otherwise, it decrements the `size`.\n\nIf the algorithm doesn't find the kth character, it returns a '-' character as a placeholder.\n    ",
+    "java": "\n    ```java\npublic char findKthCharacter(String s, int k) {\n    int n = s.length();\n    long size = 0;\n\n    for (char c : s.toCharArray()) {\n        if (Character.isDigit(c)) {\n            size = size * (c - '0');\n        } else {\n            size++;\n        }\n    }\n\n    for (int i = n - 1; i >= 0; i--) {\n        char c = s.charAt(i);\n        k %= size;\n        if (k == 0 && !Character.isDigit(c)) {\n            return c;\n        }\n\n        if (Character.isDigit(c)) {\n            size /= (c - '0');\n        } else {\n            size--;\n        }\n    }\n\n    return '-';\n}\n```\n    \n    The algorithm initializes a `size` variable to keep track of the length of the decoded tape. It then iterates through the given string `s` and multiplies the size by the digit (if the current character is a digit) or increments the size by 1 (if the current character is not a digit).\n\nNext, it iterates through the string in reverse, updating the `k` and `size` variables based on the current character. If `k` becomes zero and the current character is not a digit, then it returns the current character as the kth letter in the decoded string. If the current character is a digit, it divides the `size` by the digit; otherwise, it decrements the `size`.\n\nIf the algorithm doesn't find the kth character, it returns a '-' character as a placeholder.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

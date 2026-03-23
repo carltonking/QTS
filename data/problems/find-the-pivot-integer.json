@@ -1,0 +1,24 @@
+{
+  "id": 2485,
+  "title": "Find the Pivot Integer",
+  "slug": "find-the-pivot-integer",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a positive integer n, find the pivot integer x such that:\n\n*   The sum of all elements between 1 and x inclusively equals the sum of all elements between x and n inclusively.\n\nReturn _the pivot integer_ x. If no such integer exists, return -1. It is guaranteed that there will be at most one pivot index for the given input.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_pivot(n: int) -> int:\n    total = n * (n + 1) // 2\n    left_sum = 0\n    for x in range(1, n + 1):\n        left_sum += x\n        if 2 * left_sum == total:\n            return x\n    return -1\n```\n    \n    The algorithm iterates through all the integers between 1 and n (inclusive), calculating the left_sum as it goes. On each iteration, it checks if the left_sum * 2 equals the total sum (calculated as n * (n + 1) / 2). If it does, the algorithm returns the current integer as the pivot integer. If the loop ends without finding a pivot integer, it returns -1.\n    ",
+    "javascript": "\n    ```javascript\nfunction findPivot(n) {\n    const sum = n * (n + 1) / 2;\n    let left_sum = 0;\n    for (let x = 1; x <= n; x++) {\n        left_sum += x;\n        if (left_sum * 2 == sum) {\n            return x;\n        }\n    }\n    return -1;\n}\n```\n    \n    The algorithm iterates through all the integers between 1 and n (inclusive), calculating the left_sum as it goes. On each iteration, it checks if the left_sum * 2 equals the total sum (calculated as n * (n + 1) / 2). If it does, the algorithm returns the current integer as the pivot integer. If the loop ends without finding a pivot integer, it returns -1.\n    ",
+    "java": "\n    ```java\npublic int findPivot(int n) {\n    int sum = n * (n + 1) / 2;\n    int left_sum = 0;\n    for (int x = 1; x <= n; x++) {\n        left_sum += x;\n        if (left_sum * 2 == sum) {\n            return x;\n        }\n    }\n    return -1;\n}\n```\n    \n    The algorithm iterates through all the integers between 1 and n (inclusive), calculating the left_sum as it goes. On each iteration, it checks if the left_sum * 2 equals the total sum (calculated as n * (n + 1) / 2). If it does, the algorithm returns the current integer as the pivot integer. If the loop ends without finding a pivot integer, it returns -1.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

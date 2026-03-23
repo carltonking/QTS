@@ -1,0 +1,193 @@
+@import 'katex/dist/katex.min.css';
+
+.quant-module {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.quant-card {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.quant-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.quant-subtle {
+  color: var(--text-2);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+}
+
+.quant-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.quant-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.quant-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.quant-metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.7rem;
+}
+
+.quant-metric-row:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.quant-metric-label {
+  color: var(--text-2);
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.quant-metric-value {
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+}
+
+.quant-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.quant-table th,
+.quant-table td {
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  padding: 0.9rem 0.5rem;
+  font-size: 0.86rem;
+  letter-spacing: 0.04em;
+}
+
+.quant-table th {
+  color: var(--text-2);
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+}
+
+.quant-click-row {
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.quant-click-row:hover {
+  background: var(--surface-2);
+}
+
+.quant-filters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.quant-field {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--text-2);
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+.quant-select,
+.quant-textarea {
+  width: 100%;
+  border: 1px solid var(--text-1);
+  background: var(--bg);
+  color: var(--text-1);
+  padding: 0.75rem 0.9rem;
+  font-family: var(--font-mono);
+  border-radius: 0;
+  outline: none;
+  transition: var(--transition);
+}
+
+.quant-textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+.quant-body {
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  padding: 1.1rem;
+  line-height: 1.7;
+  overflow-x: auto;
+}
+
+.quant-body p {
+  font-family: var(--font-mono);
+  color: var(--text-1);
+}
+
+.quant-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.quant-toggle-block {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.quant-rating-change {
+  border: 2px solid var(--text-1);
+  padding: 0.85rem;
+  font-size: 0.88rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.quant-empty {
+  border: 1px dashed var(--text-1);
+  padding: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.quant-nav-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.quant-history-wrap {
+  overflow-x: auto;
+}
+
+@media (max-width: 840px) {
+  .quant-grid-2,
+  .quant-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .quant-metric-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2248,
+  "title": "Intersection of Multiple Arrays",
+  "slug": "intersection-of-multiple-arrays",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a 2D integer array nums where nums[i] is a non-empty array of distinct positive integers, return _the list of integers that are present in each array of_ nums _sorted in ascending order_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_cost(cost):\n    cost.sort(reverse=True)\n    n = len(cost)\n    min_cost = 0\n\n    for i in range(0, n, 3):\n        min_cost += cost[i]\n        if i+1 < n:\n            min_cost += cost[i+1]\n\n    return min_cost\n```\n    \n    The algorithm sorts all the candies in the array in descending order of cost, so that the most expensive candies are bought first. Then, it loops over the array, taking two candies at a time (the loop increments 3 positions each iteration) and adding their cost to the total `min_cost`. The choice of the third free candy will always be one of the two already chosen, so its cost is already included in `min_cost`. After iterating through the entire array, the function returns the minimum cost. \n    ",
+    "javascript": "\n    ```javascript\nfunction minCost(cost) {\n    cost.sort((a, b) => b - a);\n    const n = cost.length;\n    let min_cost = 0;\n\n    for(let i = 0; i < n; i += 3) {\n        min_cost += cost[i];\n        if(i+1 < n) min_cost += cost[i+1];\n    }\n\n    return min_cost;\n}\n```\n    \n    The algorithm sorts all the candies in the array in descending order of cost, so that the most expensive candies are bought first. Then, it loops over the array, taking two candies at a time (the loop increments 3 positions each iteration) and adding their cost to the total `min_cost`. The choice of the third free candy will always be one of the two already chosen, so its cost is already included in `min_cost`. After iterating through the entire array, the function returns the minimum cost. \n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int minCost(int[] cost) {\n    Arrays.sort(cost);\n    int n = cost.length;\n    int min_cost = 0;\n\n    for(int i = n - 1; i >= 0; i -= 3) {\n        min_cost += cost[i];\n        if(i - 1 >= 0) min_cost += cost[i - 1];\n    }\n\n    return min_cost;\n}\n```\n    \n    The algorithm sorts all the candies in the array in descending order of cost, so that the most expensive candies are bought first. Then, it loops over the array, taking two candies at a time (the loop increments 3 positions each iteration) and adding their cost to the total `min_cost`. The choice of the third free candy will always be one of the two already chosen, so its cost is already included in `min_cost`. After iterating through the entire array, the function returns the minimum cost. \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

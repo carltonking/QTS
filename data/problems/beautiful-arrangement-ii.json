@@ -1,0 +1,24 @@
+{
+  "id": 667,
+  "title": "Beautiful Arrangement II",
+  "slug": "beautiful-arrangement-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given two integers n and k, construct a list answer that contains n different positive integers ranging from 1 to n and obeys the following requirement:\n\n*   Suppose this list is answer = [a1, a2, a3, ... , an], then the list [|a1 - a2|, |a2 - a3|, |a3 - a4|, ... , |an-1 - an|] has exactly k distinct integers.\n\nReturn _the list_ answer. If there multiple valid answers, return any of them.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef constructArray(n: int, k: int) -> List[int]:\n    answer = [0] * n\n    for i in range(n):\n        if i % 2 == 0:\n            answer[i] = i // 2 + 1\n        else:\n            answer[i] = n - (i - 1) // 2\n            k -= 1\n    if k > 0:\n        for i in range(n - 2, -1, -1):\n            if k > 0:\n                answer[i] = answer[i + 1] - answer[i]\n                k -= 1\n    return answer\n```\n    \n    1. Initialize an answer list of size n.\n2. Loop through the range from 0 to n:\n   a. If the index is even, place the value i / 2 + 1 at the current index.\n   b. If the index is odd, place the value n - (i - 1) / 2 at the current index, then decrement k.\n3. If k is still greater than 0, loop through the range from n - 2 to 0 (in reverse order):\n   a. If k is greater than 0, update the value at the current index to the difference between the values at the indices i + 1 and i, then decrement k.\n4. Return the answer list.\n    ",
+    "javascript": "\n    ```javascript\nfunction constructArray(n, k) {\n    let answer = new Array(n);\n    for (let i = 0; i < n; i++) {\n        if (i % 2 === 0) {\n            answer[i] = i / 2 + 1;\n        } else {\n            answer[i] = n - ((i - 1) / 2);\n            k--;\n        }\n    }\n    if (k > 0) {\n        for (let i = n - 2; i >= 0 && k > 0; i--) {\n            answer[i] = answer[i + 1] - answer[i];\n            k--;\n        }\n    }\n    return answer;\n}\n```\n    \n    1. Initialize an answer list of size n.\n2. Loop through the range from 0 to n:\n   a. If the index is even, place the value i / 2 + 1 at the current index.\n   b. If the index is odd, place the value n - (i - 1) / 2 at the current index, then decrement k.\n3. If k is still greater than 0, loop through the range from n - 2 to 0 (in reverse order):\n   a. If k is greater than 0, update the value at the current index to the difference between the values at the indices i + 1 and i, then decrement k.\n4. Return the answer list.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\n\nclass Solution {\n    public List<Integer> constructArray(int n, int k) {\n        ArrayList<Integer> answer = new ArrayList<>(n);\n        for (int i = 0; i < n; i++) {\n            if (i % 2 == 0) {\n                answer.add(i / 2 + 1);\n            } else {\n                answer.add(n - (i - 1) / 2);\n                k--;\n            }\n        }\n        if (k > 0) {\n            for (int i = n - 2; i >= 0 && k > 0; i--) {\n                answer.set(i, answer.get(i + 1) - answer.get(i));\n                k--;\n            }\n        }\n        return answer;\n    }\n}\n```\n    \n    1. Initialize an answer list of size n.\n2. Loop through the range from 0 to n:\n   a. If the index is even, place the value i / 2 + 1 at the current index.\n   b. If the index is odd, place the value n - (i - 1) / 2 at the current index, then decrement k.\n3. If k is still greater than 0, loop through the range from n - 2 to 0 (in reverse order):\n   a. If k is greater than 0, update the value at the current index to the difference between the values at the indices i + 1 and i, then decrement k.\n4. Return the answer list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

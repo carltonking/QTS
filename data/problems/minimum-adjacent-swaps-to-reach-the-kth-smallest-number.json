@@ -1,0 +1,24 @@
+{
+  "id": 1850,
+  "title": "Minimum Adjacent Swaps to Reach the Kth Smallest Number",
+  "slug": "minimum-adjacent-swaps-to-reach-the-kth-smallest-number",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a string num, representing a large integer, and an integer k.\n\nWe call some integer wonderful if it is a permutation of the digits in num and is greater in value than num. There can be many wonderful integers. However, we only care about the smallest-valued ones.\n\n*   For example, when num = \"5489355142 \":\n    *   The 1st smallest wonderful integer is \"5489355214 \".\n    *   The 2nd smallest wonderful integer is \"5489355241 \".\n    *   The 3rd smallest wonderful integer is \"5489355412 \".\n    *   The 4th smallest wonderful integer is \"5489355421 \".\n\nReturn _the minimum number of adjacent digit swaps that needs to be applied to_ num _to reach the_ kth _smallest wonderful integer_.\n\nThe tests are generated in such a way that kth smallest wonderful integer exists.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_length_after_operations(s: str) -> int:\n    a_count = s.count('a')\n    b_count = s.count('b')\n    c_count = s.count('c')\n\n    if a_count % 2 == b_count % 2 and b_count % 2 == c_count % 2:\n        return len(s) % 2\n    return (len(s) + 1) % 2\n```\n    \n    The algorithm counts the occurrences of each character ('a', 'b', 'c') in the given string. Then, it checks if the counts are all even or all odd, which means that the count of the three characters has the same parity. In this case, the minimum length of the string after performing the operations would be the length of the string modulo 2. Otherwise, the minimum length would be the length of the string plus 1 modulo 2. This is because one character will always remain after performing the operations if the parities of the character counts aren't the same.\n    ",
+    "javascript": "\n    ```javascript\nfunction minLengthAfterOperations(s) {\n    const aCount = s.split('a').length - 1;\n    const bCount = s.split('b').length - 1;\n    const cCount = s.split('c').length - 1;\n\n    if (aCount % 2 === bCount % 2 && bCount % 2 === cCount % 2) {\n        return s.length % 2;\n    }\n    return (s.length + 1) % 2;\n}\n```\n    \n    The algorithm counts the occurrences of each character ('a', 'b', 'c') in the given string. Then, it checks if the counts are all even or all odd, which means that the count of the three characters has the same parity. In this case, the minimum length of the string after performing the operations would be the length of the string modulo 2. Otherwise, the minimum length would be the length of the string plus 1 modulo 2. This is because one character will always remain after performing the operations if the parities of the character counts aren't the same.\n    ",
+    "java": "\n    ```java\npublic int minLengthAfterOperations(String s) {\n    int aCount = s.length() - s.replace(\"a\", \"\").length();\n    int bCount = s.length() - s.replace(\"b\", \"\").length();\n    int cCount = s.length() - s.replace(\"c\", \"\").length();\n\n    if (aCount % 2 == bCount % 2 && bCount % 2 == cCount % 2) {\n        return s.length() % 2;\n    }\n    return (s.length() + 1) % 2;\n}\n```\n    \n    The algorithm counts the occurrences of each character ('a', 'b', 'c') in the given string. Then, it checks if the counts are all even or all odd, which means that the count of the three characters has the same parity. In this case, the minimum length of the string after performing the operations would be the length of the string modulo 2. Otherwise, the minimum length would be the length of the string plus 1 modulo 2. This is because one character will always remain after performing the operations if the parities of the character counts aren't the same.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

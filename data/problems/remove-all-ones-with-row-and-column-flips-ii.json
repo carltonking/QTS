@@ -1,0 +1,24 @@
+{
+  "id": 2174,
+  "title": "Remove All Ones With Row and Column Flips II",
+  "slug": "remove-all-ones-with-row-and-column-flips-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed m x n binary matrix grid.\n\nIn one operation, you can choose any i and j that meet the following conditions:\n\n*   0 <= i < m\n*   0 <= j < n\n*   grid[i][j] == 1\n\nand change the values of all cells in row i and column j to zero.\n\nReturn _the minimum number of operations needed to remove all_ 1_'s from_ grid_._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef next_balanced(n):\n    while True:\n        n += 1\n        digit_count = {}\n        temp = n\n        while temp:\n            digit = temp % 10\n            digit_count[digit] = digit_count.get(digit, 0) + 1\n            temp //= 10\n        balanced = all(k == v for k, v in digit_count.items())\n        if balanced:\n            return n\n```\n    \n    The algorithm iterates through each number greater than the given number `n`, analyzes the count of each digit in the number, and checks its balance status. \n\nIn each iteration, we do the following steps:\n\n1. Increment the number `n` by 1.\n2. Count the occurrences of each digit using a map or dictionary to store the count.\n3. Iterate through each key-value pair in the map, and if the key is equal to the value, it indicates that the digit count is balanced. If all pairs have this property, return the number as the result.\n\nThis algorithm will continue until it finds a numerically balanced integer, which it will return as a result. Note that it uses integer division, dictionaries or maps, and iteration over key-value pairs, which have small language-specific differences.\n    ",
+    "javascript": "\n    ```javascript\nfunction nextBalanced(n) {\n    while (true) {\n        n++;\n        const digitCount = new Map();\n        let temp = n;\n        while (temp !== 0) {\n            const digit = temp % 10;\n            digitCount.set(digit, (digitCount.get(digit) || 0) + 1);\n            temp = Math.floor(temp / 10);\n        }\n        const balanced = [...digitCount.entries()].every(([k, v]) => k === v );\n        if (balanced) return n;\n    }\n}\n```\n    \n    The algorithm iterates through each number greater than the given number `n`, analyzes the count of each digit in the number, and checks its balance status. \n\nIn each iteration, we do the following steps:\n\n1. Increment the number `n` by 1.\n2. Count the occurrences of each digit using a map or dictionary to store the count.\n3. Iterate through each key-value pair in the map, and if the key is equal to the value, it indicates that the digit count is balanced. If all pairs have this property, return the number as the result.\n\nThis algorithm will continue until it finds a numerically balanced integer, which it will return as a result. Note that it uses integer division, dictionaries or maps, and iteration over key-value pairs, which have small language-specific differences.\n    ",
+    "java": "\n    ```java\nint nextBalanced(int n) {\n    while (true) {\n        n++;\n        Map<Integer, Integer> digitCount = new HashMap<>();\n        int temp = n;\n        while (temp != 0) {\n            digitCount.put(temp % 10, digitCount.getOrDefault(temp % 10, 0) + 1);\n            temp /= 10;\n        }\n        boolean balanced = true;\n        for (Map.Entry<Integer, Integer> entry : digitCount.entrySet()) {\n            if (!entry.getKey().equals(entry.getValue())) {\n                balanced = false;\n                break;\n            }\n        }\n        if (balanced) return n;\n    }\n}\n```\n    \n    The algorithm iterates through each number greater than the given number `n`, analyzes the count of each digit in the number, and checks its balance status. \n\nIn each iteration, we do the following steps:\n\n1. Increment the number `n` by 1.\n2. Count the occurrences of each digit using a map or dictionary to store the count.\n3. Iterate through each key-value pair in the map, and if the key is equal to the value, it indicates that the digit count is balanced. If all pairs have this property, return the number as the result.\n\nThis algorithm will continue until it finds a numerically balanced integer, which it will return as a result. Note that it uses integer division, dictionaries or maps, and iteration over key-value pairs, which have small language-specific differences.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,43 @@
+{
+  "id": 40,
+  "title": "Missing Number",
+  "slug": "missing-number",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Math",
+    "Binary Search",
+    "Bit Manipulation",
+    "Sorting"
+  ],
+  "description": "Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing.",
+  "examples": [
+    {
+      "input": "nums = [3,0,1]",
+      "output": "2"
+    }
+  ],
+  "constraints": [
+    "n == nums.length"
+  ],
+  "starterCode": {
+    "python": "from typing import List\nclass Solution:\n    def missingNumber(self, nums: List[int]) -> int:\n        pass",
+    "javascript": "var missingNumber = function(nums) {\n    \n};",
+    "java": "class Solution {\n    public int missingNumber(int[] nums) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    int missingNumber(vector<int>& nums) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Missing Number\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "[3,0,1]",
+      "expectedOutput": "2"
+    },
+    {
+      "input": "[9,6,4,2,3,5,7,0,1]",
+      "expectedOutput": "8"
+    }
+  ]
+}

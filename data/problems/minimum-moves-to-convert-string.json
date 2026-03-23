@@ -1,0 +1,24 @@
+{
+  "id": 2027,
+  "title": "Minimum Moves to Convert String",
+  "slug": "minimum-moves-to-convert-string",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a string s consisting of n characters which are either 'X' or 'O'.\n\nA move is defined as selecting three consecutive characters of s and converting them to 'O'. Note that if a move is applied to the character 'O', it will stay the same.\n\nReturn _the minimum number of moves required so that all the characters of_ s _are converted to_ 'O'.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maximumRemovals(s: str, p: str, removable: List[int]) -> int:\n    low, high = 0, len(removable)\n    while low < high:\n        mid = low + (high - low + 1) // 2\n        ss = list(s)\n        for i in range(mid):\n            ss[removable[i]] = '-'\n        j, i = 0, 0\n        while i < len(ss) and j < len(p):\n            if ss[i] == p[j]:\n                j += 1\n            i += 1\n        if j == len(p):\n            low = mid\n        else:\n            high = mid - 1\n    return low\n```\n\n    \n    The algorithm is basically binary search. We iterate through the removable array and start by removing `mid` (the middle element) number of characters from `s`. Then, we check if `p` is still a subsequence of the modified string. If it's a subsequence, it means we can try removing more characters, hence updating the lower bound `low` to `mid`. If it's not a subsequence, we update the upper bound `high` to `mid - 1`, meaning we have to try removing fewer characters. We do this until `low < high`, and then return the maximum value of `k = low` which will give us the maximum removable characters where `p` is still a subsequence of `s`.\n    ",
+    "javascript": "\n    ```javascript\nfunction maximumRemovals(s, p, removable) {\n    let low = 0, high = removable.length;\n    while (low < high) {\n        let mid = low + Math.floor((high - low + 1) / 2);\n        let ss = [...s];\n        for (let i = 0; i < mid; ++i) {\n            ss[removable[i]] = '-';\n        }\n        let j = 0, i = 0;\n        while (i < ss.length && j < p.length) {\n            if (ss[i] === p[j]) {\n                ++j;\n            }\n            ++i;\n        }\n        if (j === p.length) {\n            low = mid;\n        } else {\n            high = mid - 1;\n        }\n    }\n    return low;\n}\n```\n\n    \n    The algorithm is basically binary search. We iterate through the removable array and start by removing `mid` (the middle element) number of characters from `s`. Then, we check if `p` is still a subsequence of the modified string. If it's a subsequence, it means we can try removing more characters, hence updating the lower bound `low` to `mid`. If it's not a subsequence, we update the upper bound `high` to `mid - 1`, meaning we have to try removing fewer characters. We do this until `low < high`, and then return the maximum value of `k = low` which will give us the maximum removable characters where `p` is still a subsequence of `s`.\n    ",
+    "java": "\n    ```java\npublic int maximumRemovals(String s, String p, int[] removable) {\n    int low = 0, high = removable.length;\n    while (low < high) {\n        int mid = low + (high - low + 1) / 2;\n        char[] ss = s.toCharArray();\n        for (int i = 0; i < mid; ++i) {\n            ss[removable[i]] = '-';\n        }\n        int j = 0, i = 0;\n        while (i < ss.length && j < p.length()) {\n            if (ss[i] == p.charAt(j)) {\n                ++j;\n            }\n            ++i;\n        }\n        if (j == p.length()) {\n            low = mid;\n        } else {\n            high = mid - 1;\n        }\n    }\n    return low;\n}\n```\n\n    \n    The algorithm is basically binary search. We iterate through the removable array and start by removing `mid` (the middle element) number of characters from `s`. Then, we check if `p` is still a subsequence of the modified string. If it's a subsequence, it means we can try removing more characters, hence updating the lower bound `low` to `mid`. If it's not a subsequence, we update the upper bound `high` to `mid - 1`, meaning we have to try removing fewer characters. We do this until `low < high`, and then return the maximum value of `k = low` which will give us the maximum removable characters where `p` is still a subsequence of `s`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

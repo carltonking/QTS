@@ -1,0 +1,24 @@
+{
+  "id": 144,
+  "title": "Binary Tree Preorder Traversal",
+  "slug": "binary-tree-preorder-traversal",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given the root of a binary tree, return _the preorder traversal of its nodes' values_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef preorderTraversal(root):\n    if root is None:\n        return []\n        \n    return [root.val] + preorderTraversal(root.left) + preorderTraversal(root.right)\n```\n    \n    The algorithm performs a preorder traversal of the binary tree, which involves visiting the root node, then the left subtree, and finally the right subtree. This is a simple recursive algorithm: \n\n1. If the binary tree is empty (i.e., the root is `null`), return an empty list.\n2. For a non-empty binary tree with root `r`, left subtree `left`, and right subtree `right`, return a list containing:\n\n    - `r.val`\n    - The elements of the list returned by the call `preorderTraversal(left)`.\n    - The elements of the list returned by the call `preorderTraversal(right)`.\n\nNote that this algorithm can be implemented in each language using similar concepts, but the syntax for concatenating lists in each language may differ.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(val, left = null, right = null) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\nfunction preorderTraversal(root) {\n    if (!root) {\n        return [];\n    }\n    \n    let result = [root.val];\n    result = result.concat(preorderTraversal(root.left));\n    result = result.concat(preorderTraversal(root.right));\n    \n    return result;\n}\n```\n    \n    The algorithm performs a preorder traversal of the binary tree, which involves visiting the root node, then the left subtree, and finally the right subtree. This is a simple recursive algorithm: \n\n1. If the binary tree is empty (i.e., the root is `null`), return an empty list.\n2. For a non-empty binary tree with root `r`, left subtree `left`, and right subtree `right`, return a list containing:\n\n    - `r.val`\n    - The elements of the list returned by the call `preorderTraversal(left)`.\n    - The elements of the list returned by the call `preorderTraversal(right)`.\n\nNote that this algorithm can be implemented in each language using similar concepts, but the syntax for concatenating lists in each language may differ.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic class TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n    TreeNode() {}\n    TreeNode(int val) { this.val = val; }\n    TreeNode(int val, TreeNode left, TreeNode right) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\npublic List<Integer> preorderTraversal(TreeNode root) {\n    List<Integer> result = new ArrayList<>();\n    \n    if (root == null) {\n        return result;\n    }\n    \n    result.add(root.val);\n    result.addAll(preorderTraversal(root.left));\n    result.addAll(preorderTraversal(root.right));\n \n    return result;\n}\n```\n    \n    The algorithm performs a preorder traversal of the binary tree, which involves visiting the root node, then the left subtree, and finally the right subtree. This is a simple recursive algorithm: \n\n1. If the binary tree is empty (i.e., the root is `null`), return an empty list.\n2. For a non-empty binary tree with root `r`, left subtree `left`, and right subtree `right`, return a list containing:\n\n    - `r.val`\n    - The elements of the list returned by the call `preorderTraversal(left)`.\n    - The elements of the list returned by the call `preorderTraversal(right)`.\n\nNote that this algorithm can be implemented in each language using similar concepts, but the syntax for concatenating lists in each language may differ.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

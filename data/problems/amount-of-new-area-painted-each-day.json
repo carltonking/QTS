@@ -1,0 +1,24 @@
+{
+  "id": 2158,
+  "title": "Amount of New Area Painted Each Day",
+  "slug": "amount-of-new-area-painted-each-day",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "There is a long and thin painting that can be represented by a number line. You are given a 0-indexed 2D integer array paint of length n, where paint[i] = [starti, endi]. This means that on the ith day you need to paint the area between starti and endi.\n\nPainting the same area multiple times will create an uneven painting so you only want to paint each area of the painting at most once.\n\nReturn _an integer array_ worklog _of length_ n_, where_ worklog[i] _is the amount of new area that you painted on the_ ith _day._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef painting_plan(paint):\n    worklog = [0] * len(paint)\n    painted = set()\n\n    for i in range(len(paint)):\n        start, end = paint[i]\n\n        for j in range(start, end):\n            if j not in painted:\n                painted.add(j)\n                worklog[i] += 1\n\n    return worklog\n```\n    \n    The algorithm follows these steps:\n1. Create an array or vector `worklog` which will store the new painted areas on each day, and set all the initial values to 0.\n2. Create a set `painted` which will store the areas (integer points) that have already been painted.\n3. Iterate through the given `paint` array, for each day:\n   1. Extract the start and end points of the painting area.\n   2. Iterate through the points between the start and end.\n   3. If the point is not in the `painted` set, add it to the set and increment the counter for the current day in the `worklog` array.\n4. Return the `worklog` array.\n    ",
+    "javascript": "\n    ```javascript\nfunction paintingPlan(paint) {\n    const worklog = new Array(paint.length).fill(0);\n    const painted = new Set();\n\n    for (let i = 0; i < paint.length; i++) {\n        const [start, end] = paint[i];\n\n        for (let j = start; j < end; j++) {\n            if (!painted.has(j)) {\n                painted.add(j);\n                worklog[i]++;\n            }\n        }\n    }\n\n    return worklog;\n}\n```\n    \n    The algorithm follows these steps:\n1. Create an array or vector `worklog` which will store the new painted areas on each day, and set all the initial values to 0.\n2. Create a set `painted` which will store the areas (integer points) that have already been painted.\n3. Iterate through the given `paint` array, for each day:\n   1. Extract the start and end points of the painting area.\n   2. Iterate through the points between the start and end.\n   3. If the point is not in the `painted` set, add it to the set and increment the counter for the current day in the `worklog` array.\n4. Return the `worklog` array.\n    ",
+    "java": "\n    ```java\nimport java.util.HashSet;\nimport java.util.Set;\nimport java.util.Vector;\n\npublic Vector<Integer> paintingPlan(int[][] paint) {\n    Vector<Integer> worklog = new Vector<>(paint.length);\n    Set<Integer> painted = new HashSet<>();\n\n    for (int i = 0; i < paint.length; i++) {\n        int start = paint[i][0];\n        int end = paint[i][1];\n        int day_work = 0;\n\n        for (int j = start; j < end; j++) {\n            if (!painted.contains(j)) {\n                painted.add(j);\n                day_work++;\n            }\n        }\n\n        worklog.add(day_work);\n    }\n\n    return worklog;\n}\n```\n    \n    The algorithm follows these steps:\n1. Create an array or vector `worklog` which will store the new painted areas on each day, and set all the initial values to 0.\n2. Create a set `painted` which will store the areas (integer points) that have already been painted.\n3. Iterate through the given `paint` array, for each day:\n   1. Extract the start and end points of the painting area.\n   2. Iterate through the points between the start and end.\n   3. If the point is not in the `painted` set, add it to the set and increment the counter for the current day in the `worklog` array.\n4. Return the `worklog` array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

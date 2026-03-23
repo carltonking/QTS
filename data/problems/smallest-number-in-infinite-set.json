@@ -1,0 +1,24 @@
+{
+  "id": 2336,
+  "title": "Smallest Number in Infinite Set",
+  "slug": "smallest-number-in-infinite-set",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You have a set which contains all positive integers [1, 2, 3, 4, 5, ...].\n\nImplement the SmallestInfiniteSet class:\n\n*   SmallestInfiniteSet() Initializes the SmallestInfiniteSet object to contain all positive integers.\n*   int popSmallest() Removes and returns the smallest integer contained in the infinite set.\n*   void addBack(int num) Adds a positive integer num back into the infinite set, if it is not already in the infinite set.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass SmallestInfiniteSet:\n    def __init__(self):\n        self.available = set(range(1, 1001))\n        self.counter = 1\n\n    def popSmallest(self):\n        smallest = self.counter\n        if self.counter in self.available:\n            self.available.remove(self.counter)\n        else:\n            self.counter += 1\n        return smallest\n\n    def addBack(self, num):\n        self.available.add(num)\n```\n    \n    The algorithm initializes the class by creating a set containing all integers from 1 to 1000 and setting a counter to 1. When `popSmallest` is called, it checks if the value of the counter is in the available set. If it is, it removes it from the set; if not, the counter is incremented. In both cases, the previous value of the counter is returned. When `addBack` is called, the number is simply added to the available set.\n    ",
+    "javascript": "\n    ```javascript\nclass SmallestInfiniteSet {\n    constructor() {\n        this.available = new Set();\n        for (let i = 1; i <= 1000; i++) {\n            this.available.add(i);\n        }\n        this.counter = 1;\n    }\n\n    popSmallest() {\n        const smallest = this.counter;\n        if (this.available.has(this.counter)) {\n            this.available.delete(this.counter);\n        } else {\n            this.counter++;\n        }\n        return smallest;\n    }\n\n    addBack(num) {\n        this.available.add(num);\n    }\n}\n```\n    \n    The algorithm initializes the class by creating a set containing all integers from 1 to 1000 and setting a counter to 1. When `popSmallest` is called, it checks if the value of the counter is in the available set. If it is, it removes it from the set; if not, the counter is incremented. In both cases, the previous value of the counter is returned. When `addBack` is called, the number is simply added to the available set.\n    ",
+    "java": "\n    ```java\nimport java.util.TreeSet;\n\nclass SmallestInfiniteSet {\n    TreeSet<Integer> available;\n    int counter;\n\n    SmallestInfiniteSet() {\n        available = new TreeSet<>();\n        counter = 1;\n        for (int i = 1; i <= 1000; i++) {\n            available.add(i);\n        }\n    }\n\n    int popSmallest() {\n        int smallest = counter;\n        if (available.contains(counter)) {\n            available.remove(counter);\n        } else {\n            counter++;\n        }\n        return smallest;\n    }\n\n    void addBack(int num) {\n        available.add(num);\n    }\n}\n```\n    \n    The algorithm initializes the class by creating a set containing all integers from 1 to 1000 and setting a counter to 1. When `popSmallest` is called, it checks if the value of the counter is in the available set. If it is, it removes it from the set; if not, the counter is incremented. In both cases, the previous value of the counter is returned. When `addBack` is called, the number is simply added to the available set.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

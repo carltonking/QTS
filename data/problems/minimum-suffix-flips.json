@@ -1,0 +1,24 @@
+{
+  "id": 1529,
+  "title": "Minimum Suffix Flips",
+  "slug": "minimum-suffix-flips",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed binary string target of length n. You have another binary string s of length n that is initially set to all zeros. You want to make s equal to target.\n\nIn one operation, you can pick an index i where 0 <= i < n and flip all bits in the inclusive range [i, n - 1]. Flip means changing '0' to '1' and '1' to '0'.\n\nReturn _the minimum number of operations needed to make_ s _equal to_ target.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_difference(num):\n    a = num + 9 - (num % 10)\n    b = num - (num // 1000 % 10) * 111\n\n    return a - b\n```\n    \n    The problem states that there are two operations applied to the given integer `num`. Let's find out the logic for determining the maximum difference between two numbers when these operations are applied to the given `num` twice:\n\n1. In the first operation, try to increase the smallest digit of `num` to `9`. This will result in a new number `a`. Calculate `a` by adding `9` and subtracting the lowest digit (obtained using `num % 10`).\n2. In the second operation, try to decrease the largest digit of `num` to `0`. This will result in a new number `b`. Calculate `b` by subtracting the highest digit multiplied by 111 (as it is a 4 digit number, so for each digit place the value is 1000s, 100s, 10s, and 1 respectively).\n\nFinally, find the maximum difference between `a` and `b` by subtracting `b` from `a`.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxDifference(num) {\n    const a = num + 9 - (num % 10);\n    const b = num - (Math.floor(num / 1000) % 10) * 111;\n\n    return a - b;\n}\n```\n    \n    The problem states that there are two operations applied to the given integer `num`. Let's find out the logic for determining the maximum difference between two numbers when these operations are applied to the given `num` twice:\n\n1. In the first operation, try to increase the smallest digit of `num` to `9`. This will result in a new number `a`. Calculate `a` by adding `9` and subtracting the lowest digit (obtained using `num % 10`).\n2. In the second operation, try to decrease the largest digit of `num` to `0`. This will result in a new number `b`. Calculate `b` by subtracting the highest digit multiplied by 111 (as it is a 4 digit number, so for each digit place the value is 1000s, 100s, 10s, and 1 respectively).\n\nFinally, find the maximum difference between `a` and `b` by subtracting `b` from `a`.\n    ",
+    "java": "\n    ```java\npublic int maxDifference(int num) {\n    int a = num + 9 - (num % 10);\n    int b = num - (num / 1000 % 10) * 111;\n\n    return a - b;\n}\n```\n    \n    The problem states that there are two operations applied to the given integer `num`. Let's find out the logic for determining the maximum difference between two numbers when these operations are applied to the given `num` twice:\n\n1. In the first operation, try to increase the smallest digit of `num` to `9`. This will result in a new number `a`. Calculate `a` by adding `9` and subtracting the lowest digit (obtained using `num % 10`).\n2. In the second operation, try to decrease the largest digit of `num` to `0`. This will result in a new number `b`. Calculate `b` by subtracting the highest digit multiplied by 111 (as it is a 4 digit number, so for each digit place the value is 1000s, 100s, 10s, and 1 respectively).\n\nFinally, find the maximum difference between `a` and `b` by subtracting `b` from `a`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 871,
+  "title": "Minimum Number of Refueling Stops",
+  "slug": "minimum-number-of-refueling-stops",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "A car travels from a starting position to a destination which is target miles east of the starting position.\n\nThere are gas stations along the way. The gas stations are represented as an array stations where stations[i] = [positioni, fueli] indicates that the ith gas station is positioni miles east of the starting position and has fueli liters of gas.\n\nThe car starts with an infinite tank of gas, which initially has startFuel liters of fuel in it. It uses one liter of gas per one mile that it drives. When the car reaches a gas station, it may stop and refuel, transferring all the gas from the station into the car.\n\nReturn _the minimum number of refueling stops the car must make in order to reach its destination_. If it cannot reach the destination, return -1.\n\nNote that if the car reaches a gas station with 0 fuel left, the car can still refuel there. If the car reaches the destination with 0 fuel left, it is still considered to have arrived.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef can_visit_all_rooms(rooms):\n    visited = set()\n    stack = [0]\n\n    while stack:\n        current_room = stack.pop()\n\n        visited.add(current_room)\n\n        for key in rooms[current_room]:\n            if key not in visited:\n                stack.append(key)\n\n    return len(visited) == len(rooms)\n```\n    \n    The algorithm uses a depth-first search approach to visit all the rooms. It starts with room 0 and adds it to the visited set and also adds it to the stack. Then it enters a loop and keeps visiting the rooms till the stack is empty.\n\nInside the loop, it pops a room from the stack, adds it to the visited set, and iterates through the keys in the room. If a key (i.e., a room) is not in the visited set, it adds that key to the stack to visit the respective room.\n\nAt the end, if the size of the visited set is equal to the number of rooms, it returns true, indicating that all the rooms can be visited. Otherwise, it returns false.\n    ",
+    "javascript": "\n    ```javascript\nfunction canVisitAllRooms(rooms) {\n    const visited = new Set();\n    const stack = [0];\n\n    while (stack.length > 0) {\n        const currentRoom = stack.pop();\n\n        visited.add(currentRoom);\n\n        for (const key of rooms[currentRoom]) {\n            if (!visited.has(key)) {\n                stack.push(key);\n            }\n        }\n    }\n\n    return visited.size === rooms.length;\n}\n```\n    \n    The algorithm uses a depth-first search approach to visit all the rooms. It starts with room 0 and adds it to the visited set and also adds it to the stack. Then it enters a loop and keeps visiting the rooms till the stack is empty.\n\nInside the loop, it pops a room from the stack, adds it to the visited set, and iterates through the keys in the room. If a key (i.e., a room) is not in the visited set, it adds that key to the stack to visit the respective room.\n\nAt the end, if the size of the visited set is equal to the number of rooms, it returns true, indicating that all the rooms can be visited. Otherwise, it returns false.\n    ",
+    "java": "\n    ```java\nimport java.util.HashSet;\nimport java.util.List;\nimport java.util.Stack;\n\npublic boolean canVisitAllRooms(List<List<Integer>> rooms) {\n    HashSet<Integer> visited = new HashSet<>();\n    Stack<Integer> stack = new Stack<>();\n    stack.push(0);\n\n    while (!stack.isEmpty()) {\n        int currentRoom = stack.pop();\n\n        visited.add(currentRoom);\n\n        for (int key : rooms.get(currentRoom)) {\n            if (!visited.contains(key)) {\n                stack.push(key);\n            }\n        }\n    }\n\n    return visited.size() == rooms.size();\n}\n```\n    \n    The algorithm uses a depth-first search approach to visit all the rooms. It starts with room 0 and adds it to the visited set and also adds it to the stack. Then it enters a loop and keeps visiting the rooms till the stack is empty.\n\nInside the loop, it pops a room from the stack, adds it to the visited set, and iterates through the keys in the room. If a key (i.e., a room) is not in the visited set, it adds that key to the stack to visit the respective room.\n\nAt the end, if the size of the visited set is equal to the number of rooms, it returns true, indicating that all the rooms can be visited. Otherwise, it returns false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

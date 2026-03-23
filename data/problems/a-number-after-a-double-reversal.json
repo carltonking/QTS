@@ -1,0 +1,24 @@
+{
+  "id": 2119,
+  "title": "A Number After a Double Reversal",
+  "slug": "a-number-after-a-double-reversal",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Reversing an integer means to reverse all its digits.\n\n*   For example, reversing 2021 gives 1202. Reversing 12300 gives 321 as the leading zeros are not retained.\n\nGiven an integer num, reverse num to get reversed1, then reverse reversed1 to get reversed2. Return true _if_ reversed2 _equals_ num. Otherwise return false.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minOperations(nums):\n    nums = sorted(set(nums))\n    n = len(nums)\n    ans = n\n    for i in range(n):\n        j = 0\n        while j < n and nums[j] <= nums[i] + n - 1:\n            j += 1\n        ans = min(ans, n - (j - i))\n    return ans\n```\n    \n    The algorithm first sorts the input array `nums` and removes duplicates. Then, for each element in the sorted array, it calculates the upper bound position (`j`) of the elements that can be included in a continuous range with the given element. The difference between the positions `j` and `i` is the number of elements in the continuous range. Subtracting this difference from the total number of unique elements in `nums` gives the number of operations required for this particular range. The final answer is the minimum number of operations required for all possible ranges.\n    ",
+    "javascript": "\n    ```javascript\nfunction minOperations(nums) {\n    const sortedNums = [...new Set(nums)].sort((a, b) => a - b);\n    const n = sortedNums.length;\n    let ans = n;\n    for (let i = 0; i < n; ++i) {\n        let j = 0;\n        while (j < n && sortedNums[j] <= sortedNums[i] + n - 1) {\n            ++j;\n        }\n        ans = Math.min(ans, n - (j - i));\n    }\n    return ans;\n}\n```\n    \n    The algorithm first sorts the input array `nums` and removes duplicates. Then, for each element in the sorted array, it calculates the upper bound position (`j`) of the elements that can be included in a continuous range with the given element. The difference between the positions `j` and `i` is the number of elements in the continuous range. Subtracting this difference from the total number of unique elements in `nums` gives the number of operations required for this particular range. The final answer is the minimum number of operations required for all possible ranges.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\nimport java.util.stream.Collectors;\n\npublic int minOperations(int[] nums) {\n    int[] sortedNums = Arrays.stream(nums).distinct().sorted().toArray();\n    int n = sortedNums.length;\n    int ans = n;\n    for (int i = 0; i < n; ++i) {\n        int j = 0;\n        while (j < n && sortedNums[j] <= sortedNums[i] + n - 1) {\n            ++j;\n        }\n        ans = Math.min(ans, n - (j - i));\n    }\n    return ans;\n}\n```\n    \n    The algorithm first sorts the input array `nums` and removes duplicates. Then, for each element in the sorted array, it calculates the upper bound position (`j`) of the elements that can be included in a continuous range with the given element. The difference between the positions `j` and `i` is the number of elements in the continuous range. Subtracting this difference from the total number of unique elements in `nums` gives the number of operations required for this particular range. The final answer is the minimum number of operations required for all possible ranges.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

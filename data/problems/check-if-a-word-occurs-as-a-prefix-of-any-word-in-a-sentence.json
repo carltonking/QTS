@@ -1,0 +1,24 @@
+{
+  "id": 1455,
+  "title": "Check If a Word Occurs As a Prefix of Any Word in a Sentence",
+  "slug": "check-if-a-word-occurs-as-a-prefix-of-any-word-in-a-sentence",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a sentence that consists of some words separated by a single space, and a searchWord, check if searchWord is a prefix of any word in sentence.\n\nReturn _the index of the word in_ sentence _(1-indexed) where_ searchWord _is a prefix of this word_. If searchWord is a prefix of more than one word, return the index of the first word (minimum index). If there is no such word return -1.\n\nA prefix of a string s is any leading contiguous substring of s.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef filter_restaurants(restaurants, vegan_friendly, max_price, max_distance):\n    def custom_compare(a, b):\n        if a[1] == b[1]:\n            return b[0] - a[0]\n        return b[1] - a[1]\n\n    filtered_restaurants = [\n        r for r in restaurants\n        if (vegan_friendly == 0 or r[2] == vegan_friendly) and r[3] <= max_price and r[4] <= max_distance\n    ]\n\n    filtered_restaurants.sort(key=lambda r: (r[1], r[0]), reverse=True)\n\n    return [r[0] for r in filtered_restaurants]\n```\n    \n    The algorithm filters the given restaurants by checking each restaurant's vegan-friendly status, price, and distance. If the veganFriendly input is 0, the restaurant is considered regardless of its vegan-friendly status. If it is 1, only those restaurants with a vegan-friendly status of 1 are considered. Additionally, the restaurant's price and distance must be less than or equal to the given maxPrice and maxDistance, respectively. After filtering, the restaurants are sorted based on their ratings in descending order, and if two restaurants have the same rating, they are sorted by their IDs in descending order. Finally, the list of restaurant IDs is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction filterRestaurants(restaurants, veganFriendly, maxPrice, maxDistance) {\n    const filteredRestaurants = restaurants.filter(r => (veganFriendly === 0 || r[2] === veganFriendly) && r[3] <= maxPrice && r[4] <= maxDistance);\n    filteredRestaurants.sort((a, b) => a[1] === b[1] ? b[0] - a[0] : b[1] - a[1]);\n\n    return filteredRestaurants.map(r => r[0]);\n}\n```\n    \n    The algorithm filters the given restaurants by checking each restaurant's vegan-friendly status, price, and distance. If the veganFriendly input is 0, the restaurant is considered regardless of its vegan-friendly status. If it is 1, only those restaurants with a vegan-friendly status of 1 are considered. Additionally, the restaurant's price and distance must be less than or equal to the given maxPrice and maxDistance, respectively. After filtering, the restaurants are sorted based on their ratings in descending order, and if two restaurants have the same rating, they are sorted by their IDs in descending order. Finally, the list of restaurant IDs is returned.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.Collections;\nimport java.util.Comparator;\nimport java.util.List;\n\npublic List<Integer> filterRestaurants(int[][] restaurants, int veganFriendly, int maxPrice, int maxDistance) {\n    List<int[]> filteredRestaurants = new ArrayList<>();\n    for (int[] r : restaurants) {\n        if ((veganFriendly == 0 || r[2] == veganFriendly) && r[3] <= maxPrice && r[4] <= maxDistance) {\n            filteredRestaurants.add(r);\n        }\n    }\n    Collections.sort(filteredRestaurants, (a, b) -> a[1] == b[1] ? b[0] - a[0] : b[1] - a[1]);\n    List<Integer> ids = new ArrayList<>();\n    for (int[] r : filteredRestaurants) {\n        ids.add(r[0]);\n    }\n    return ids;\n}\n```\n    \n    The algorithm filters the given restaurants by checking each restaurant's vegan-friendly status, price, and distance. If the veganFriendly input is 0, the restaurant is considered regardless of its vegan-friendly status. If it is 1, only those restaurants with a vegan-friendly status of 1 are considered. Additionally, the restaurant's price and distance must be less than or equal to the given maxPrice and maxDistance, respectively. After filtering, the restaurants are sorted based on their ratings in descending order, and if two restaurants have the same rating, they are sorted by their IDs in descending order. Finally, the list of restaurant IDs is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

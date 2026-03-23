@@ -1,0 +1,24 @@
+{
+  "id": 2396,
+  "title": "Strictly Palindromic Number",
+  "slug": "strictly-palindromic-number",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "An integer n is strictly palindromic if, for every base b between 2 and n - 2 (inclusive), the string representation of the integer n in base b is palindromic.\n\nGiven an integer n, return true _if_ n _is strictly palindromic and_ false _otherwise_.\n\nA string is palindromic if it reads the same forward and backward.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_palindrome(s: str) -> bool:\n    return s == s[::-1]\n\ndef to_base_str(n: int, base: int) -> str:\n    s = []\n    while n > 0:\n        s.append(str(n % base))\n        n //= base\n    return \"\".join(reversed(s))\n\ndef is_strictly_palindromic(n: int) -> bool:\n    for b in range(2, n - 1):\n        if not is_palindrome(to_base_str(n, b)):\n            return False\n    return True\n```\n    \n    The algorithm first defines two helper functions: `is_palindrome` and `to_base_str`. `is_palindrome` checks if the input string is palindrome and `to_base_str` converts an integer `n` to its string representation in the given base.\n\nThe main algorithm follows these steps:\n1. Loop through all bases `b` between 2 and `n - 2`.\n2. For each base `b`, convert the integer `n` to its string representation using the `to_base_str` function.\n3. Check if the resulting string is palindrome using the `is_palindrome` function.\n4. If any string from step 3 is not palindrome, return `false`.\n5. If all strings from step 3 are palindrome, return `true` after completing the loop.\n\nThis approach effectively checks if the given number is strictly palindromic for all required bases.\n    ",
+    "javascript": "\n    ```javascript\nfunction isPalindrome(s) {\n    return s === s.split(\"\").reverse().join(\"\")\n}\n\nfunction toBaseString(n, base) {\n    let s = [];\n    while (n > 0) {\n        s.push(n % base);\n        n = Math.floor(n / base);\n    }\n    return s.reverse().join(\"\");\n}\n\nfunction isStrictlyPalindromic(n) {\n    for (let b = 2; b <= n - 2; b++) {\n        if (!isPalindrome(toBaseString(n, b))) {\n            return false;\n        }\n    }\n    return true;\n}\n```\n    \n    The algorithm first defines two helper functions: `is_palindrome` and `to_base_str`. `is_palindrome` checks if the input string is palindrome and `to_base_str` converts an integer `n` to its string representation in the given base.\n\nThe main algorithm follows these steps:\n1. Loop through all bases `b` between 2 and `n - 2`.\n2. For each base `b`, convert the integer `n` to its string representation using the `to_base_str` function.\n3. Check if the resulting string is palindrome using the `is_palindrome` function.\n4. If any string from step 3 is not palindrome, return `false`.\n5. If all strings from step 3 are palindrome, return `true` after completing the loop.\n\nThis approach effectively checks if the given number is strictly palindromic for all required bases.\n    ",
+    "java": "\n    ```java\npublic boolean isPalindrome(String s) {\n    int start = 0;\n    int end = s.length() - 1;\n    while (start < end) {\n        if (s.charAt(start) != s.charAt(end)) {\n            return false;\n        }\n        start++;\n        end--;\n    }\n    return true;\n}\n\npublic String toBaseString(int n, int base) {\n    StringBuilder sb = new StringBuilder();\n    while (n > 0) {\n        sb.append(n % base);\n        n /= base;\n    }\n    return sb.reverse().toString();\n}\n\npublic boolean isStrictlyPalindromic(int n) {\n    for (int b = 2; b <= n - 2; b++) {\n        if (!isPalindrome(toBaseString(n, b))) {\n            return false;\n        }\n    }\n    return true;\n}\n```\n    \n    The algorithm first defines two helper functions: `is_palindrome` and `to_base_str`. `is_palindrome` checks if the input string is palindrome and `to_base_str` converts an integer `n` to its string representation in the given base.\n\nThe main algorithm follows these steps:\n1. Loop through all bases `b` between 2 and `n - 2`.\n2. For each base `b`, convert the integer `n` to its string representation using the `to_base_str` function.\n3. Check if the resulting string is palindrome using the `is_palindrome` function.\n4. If any string from step 3 is not palindrome, return `false`.\n5. If all strings from step 3 are palindrome, return `true` after completing the loop.\n\nThis approach effectively checks if the given number is strictly palindromic for all required bases.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1372,
+  "title": "Longest ZigZag Path in a Binary Tree",
+  "slug": "longest-zigzag-path-in-a-binary-tree",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given the root of a binary tree.\n\nA ZigZag path for a binary tree is defined as follow:\n\n*   Choose any node in the binary tree and a direction (right or left).\n*   If the current direction is right, move to the right child of the current node; otherwise, move to the left child.\n*   Change the direction from right to left or from left to right.\n*   Repeat the second and third steps until you can't move in the tree.\n\nZigzag length is defined as the number of nodes visited - 1. (A single node has a length of 0).\n\nReturn _the longest ZigZag path contained in that tree_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom math import gcd\nfrom functools import reduce\n\ndef is_good_array(nums):\n    gcd_value = reduce(gcd, nums)\n    return gcd_value == 1\n```\n\n    \n    The algorithm checks if it is possible to get a sum of 1 from the given array by using any possible subset and multiplicand. It can be achieved by finding out the greatest common divisor (GCD) among the array elements. If the GCD is 1, it means the array is good, and we return true; otherwise, we return false. For efficiency, we use __gcd() function and std namespace in C++, reduce() and gcd() function in Python, and user-defined gcd() function (recursive) in Java and JavaScript. The algorithm's complexity is O(n), where n is the number of elements in the given array.\n    ",
+    "javascript": "\n    ```javascript\nfunction isGoodArray(nums) {\n    let gcd = (a, b) => b === 0 ? a : gcd(b, a % b);\n    let gcdValue = nums.reduce((a, b) => gcd(a, b));\n    return gcdValue === 1;\n}\n```\n\n    \n    The algorithm checks if it is possible to get a sum of 1 from the given array by using any possible subset and multiplicand. It can be achieved by finding out the greatest common divisor (GCD) among the array elements. If the GCD is 1, it means the array is good, and we return true; otherwise, we return false. For efficiency, we use __gcd() function and std namespace in C++, reduce() and gcd() function in Python, and user-defined gcd() function (recursive) in Java and JavaScript. The algorithm's complexity is O(n), where n is the number of elements in the given array.\n    ",
+    "java": "\n    ```java\npublic class Main {\n    public boolean isGoodArray(int[] nums) {\n        int gcd = nums[0];\n        for (int num : nums) {\n            gcd = gcd(gcd, num);\n            if (gcd == 1) {\n                return true;\n            }\n        }\n        return gcd == 1;\n    }\n    private int gcd(int a, int b) {\n        return b == 0 ? a : gcd(b, a % b);\n    }\n}\n```\n\n    \n    The algorithm checks if it is possible to get a sum of 1 from the given array by using any possible subset and multiplicand. It can be achieved by finding out the greatest common divisor (GCD) among the array elements. If the GCD is 1, it means the array is good, and we return true; otherwise, we return false. For efficiency, we use __gcd() function and std namespace in C++, reduce() and gcd() function in Python, and user-defined gcd() function (recursive) in Java and JavaScript. The algorithm's complexity is O(n), where n is the number of elements in the given array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

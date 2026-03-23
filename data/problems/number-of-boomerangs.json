@@ -1,0 +1,24 @@
+{
+  "id": 447,
+  "title": "Number of Boomerangs",
+  "slug": "number-of-boomerangs",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given n points in the plane that are all distinct, where points[i] = [xi, yi]. A boomerang is a tuple of points (i, j, k) such that the distance between i and j equals the distance between i and k (the order of the tuple matters).\n\nReturn _the number of boomerangs_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef numberOfBoomerangs(points):\n    count = 0\n\n    for i in points:\n        group_count = {}\n        for j in points:\n            dx, dy = i[0] - j[0], i[1] - j[1]\n            dist = dx * dx + dy * dy\n            group_count[dist] = group_count.get(dist, 0) + 1\n\n        for g in group_count.values():\n            count += g * (g - 1)\n\n    return count\n```\n    \n    1. For every point `i` in the input, we create a hash map called `group_count` to store the count of points with the same distance from point `i`.\n2. For every point `j`, we calculate the squared distance from `i` to `j`. We use the squared distance to avoid using a square root function, as it's not necessary for this problem.\n3. Increment the count of the squared distance in `group_count`.\n4. To calculate the number of boomerangs, iterate through the values of `group_count`. For every count `g`, we have `g * (g - 1)` boomerangs because there are `g` choices for the second point and `g - 1` choices for the third point.\n5. Return the total number of boomerangs.\n    ",
+    "javascript": "\n    ```javascript\nfunction numberOfBoomerangs(points) {\n    let count = 0;\n\n    for (let i of points) {\n        let group_count = new Map();\n        for (let j of points) {\n            let dx = i[0] - j[0], dy = i[1] - j[1];\n            let dist = dx * dx + dy * dy;\n            group_count.set(dist, (group_count.get(dist) || 0) + 1);\n        }\n\n        for (let g of group_count.values()) {\n            count += g * (g - 1);\n        }\n    }\n\n    return count;\n}\n```\n    \n    1. For every point `i` in the input, we create a hash map called `group_count` to store the count of points with the same distance from point `i`.\n2. For every point `j`, we calculate the squared distance from `i` to `j`. We use the squared distance to avoid using a square root function, as it's not necessary for this problem.\n3. Increment the count of the squared distance in `group_count`.\n4. To calculate the number of boomerangs, iterate through the values of `group_count`. For every count `g`, we have `g * (g - 1)` boomerangs because there are `g` choices for the second point and `g - 1` choices for the third point.\n5. Return the total number of boomerangs.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\n\npublic int numberOfBoomerangs(int[][] points) {\n    int count = 0;\n\n    for (int[] i : points) {\n        HashMap<Integer, Integer> group_count = new HashMap<>();\n        for (int[] j : points) {\n            int dx = i[0] - j[0], dy = i[1] - j[1];\n            int dist = dx * dx + dy * dy;\n\n            group_count.put(dist, group_count.getOrDefault(dist, 0) + 1);\n        }\n\n        for (int g : group_count.values()) {\n            count += g * (g - 1);\n        }\n    }\n\n    return count;\n}\n```\n    \n    1. For every point `i` in the input, we create a hash map called `group_count` to store the count of points with the same distance from point `i`.\n2. For every point `j`, we calculate the squared distance from `i` to `j`. We use the squared distance to avoid using a square root function, as it's not necessary for this problem.\n3. Increment the count of the squared distance in `group_count`.\n4. To calculate the number of boomerangs, iterate through the values of `group_count`. For every count `g`, we have `g * (g - 1)` boomerangs because there are `g` choices for the second point and `g - 1` choices for the third point.\n5. Return the total number of boomerangs.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

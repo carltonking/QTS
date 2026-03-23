@@ -1,0 +1,24 @@
+{
+  "id": 1469,
+  "title": "Find All The Lonely Nodes",
+  "slug": "find-all-the-lonely-nodes",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "In a binary tree, a lonely node is a node that is the only child of its parent node. The root of the tree is not lonely because it does not have a parent node.\n\nGiven the root of a binary tree, return _an array containing the values of all lonely nodes_ in the tree. Return the list in any order.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_steps(s, t):\n    count_s = [0] * 26\n    count_t = [0] * 26\n    steps = 0\n    \n    for c in s:\n        count_s[ord(c) - ord('a')] += 1\n    for c in t:\n        count_t[ord(c) - ord('a')] += 1\n    \n    for i in range(26):\n        steps += abs(count_s[i] - count_t[i])\n    \n    return steps // 2\n```\n    \n    1. Initialize two frequency count arrays `countS` and `countT` of size 26 (to represent the English alphabet) and fill it with zeros.\n2. Loop through the string `s` and increment the count of each character in `countS`.\n3. Loop through the string `t` and increment the count of each character in `countT`.\n4. Loop through the frequency arrays from 0 to 25, calculate the absolute difference of the count of each character in `countS` and `countT`, and add the differences to a variable `steps`.\n5. Return half of the `steps` since the question asks for the minimum number of steps to make `t` an anagram of `s`. All differences in characters count are double-accounted when calculating the absolute difference (e.g., one less of a character in `t` also counts as one more of the same character in `s`).\n    ",
+    "javascript": "\n    ```javascript\nfunction minSteps(s, t) {\n    const countS = new Array(26).fill(0);\n    const countT = new Array(26).fill(0);\n    let steps = 0;\n\n    for (let c of s) countS[c.charCodeAt() - 'a'.charCodeAt()]++;\n    for (let c of t) countT[c.charCodeAt() - 'a'.charCodeAt()]++;\n\n    for (let i = 0; i < 26; i++) {\n        steps += Math.abs(countS[i] - countT[i]);\n    }\n\n    return steps / 2;\n}\n```\n    \n    1. Initialize two frequency count arrays `countS` and `countT` of size 26 (to represent the English alphabet) and fill it with zeros.\n2. Loop through the string `s` and increment the count of each character in `countS`.\n3. Loop through the string `t` and increment the count of each character in `countT`.\n4. Loop through the frequency arrays from 0 to 25, calculate the absolute difference of the count of each character in `countS` and `countT`, and add the differences to a variable `steps`.\n5. Return half of the `steps` since the question asks for the minimum number of steps to make `t` an anagram of `s`. All differences in characters count are double-accounted when calculating the absolute difference (e.g., one less of a character in `t` also counts as one more of the same character in `s`).\n    ",
+    "java": "\n    ```java\npublic int minSteps(String s, String t) {\n    int[] countS = new int[26];\n    int[] countT = new int[26];\n    int steps = 0;\n\n    for (char c : s.toCharArray()) countS[c - 'a']++;\n    for (char c : t.toCharArray()) countT[c - 'a']++;\n\n    for (int i = 0; i < 26; i++) {\n        steps += Math.abs(countS[i] - countT[i]);\n    }\n\n    return steps / 2;\n}\n```\n    \n    1. Initialize two frequency count arrays `countS` and `countT` of size 26 (to represent the English alphabet) and fill it with zeros.\n2. Loop through the string `s` and increment the count of each character in `countS`.\n3. Loop through the string `t` and increment the count of each character in `countT`.\n4. Loop through the frequency arrays from 0 to 25, calculate the absolute difference of the count of each character in `countS` and `countT`, and add the differences to a variable `steps`.\n5. Return half of the `steps` since the question asks for the minimum number of steps to make `t` an anagram of `s`. All differences in characters count are double-accounted when calculating the absolute difference (e.g., one less of a character in `t` also counts as one more of the same character in `s`).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

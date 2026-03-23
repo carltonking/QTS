@@ -1,0 +1,24 @@
+{
+  "id": 563,
+  "title": "Binary Tree Tilt",
+  "slug": "binary-tree-tilt",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given the root of a binary tree, return _the sum of every tree node's tilt._\n\nThe tilt of a tree node is the absolute difference between the sum of all left subtree node values and all right subtree node values. If a node does not have a left child, then the sum of the left subtree node values is treated as 0. The rule is similar if the node does not have a right child.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findTilt(self, root):\n    def findTiltUtil(node):\n        if not node: return 0, 0\n        \n        leftSum, leftTilt = findTiltUtil(node.left)\n        rightSum, rightTilt = findTiltUtil(node.right)\n    \n        return (node.val + leftSum + rightSum, abs(leftSum - rightSum) + leftTilt + rightTilt)\n\n    return findTiltUtil(root)[1]\n```\n\n    \n    The problem can be solved using a bottom-uprecursive algorithm. The helper function `findTiltUtil` should return two values: the sum of the current node and its descendants and the tilt value of the current node and its descendants.\n\nThe base case is when the current node is null, in this case, return [0, 0].\n\nIf the current node is not null, recursively call the `findTiltUtil` for left and right children. Then add the sum of the left child and the right child's sum, plus the value of the current node to get the new sum. For the new tilt value, add the absolute difference between the left and right child's sum to the tilt value of both children.\n\nFinally, return the new sum and tilt value as a tuple or a list. When calling this helper function for the root, the tilt value of the whole tree will be in the second element of the result list.\n    ",
+    "javascript": "\n    ```javascript\nfunction findTilt(root) {\n    function findTiltUtil(node) {\n        if (!node) return [0, 0];\n        \n        let [leftSum, leftTilt] = findTiltUtil(node.left);\n        let [rightSum, rightTilt] = findTiltUtil(node.right);\n    \n        return [node.val + leftSum + rightSum, Math.abs(leftSum - rightSum) + leftTilt + rightTilt];\n    }\n\n    return findTiltUtil(root)[1];\n};\n```\n\n    \n    The problem can be solved using a bottom-uprecursive algorithm. The helper function `findTiltUtil` should return two values: the sum of the current node and its descendants and the tilt value of the current node and its descendants.\n\nThe base case is when the current node is null, in this case, return [0, 0].\n\nIf the current node is not null, recursively call the `findTiltUtil` for left and right children. Then add the sum of the left child and the right child's sum, plus the value of the current node to get the new sum. For the new tilt value, add the absolute difference between the left and right child's sum to the tilt value of both children.\n\nFinally, return the new sum and tilt value as a tuple or a list. When calling this helper function for the root, the tilt value of the whole tree will be in the second element of the result list.\n    ",
+    "java": "\n    ```java\npublic int findTilt(TreeNode root) {\n    int[] tiltSum = new int[] {0};\n    findTiltUtil(root, tiltSum);\n    return tiltSum[0];\n}\n\nprivate int findTiltUtil(TreeNode root, int[] tiltSum) {\n    if (root == null) {\n        return 0;\n    }\n\n    int leftSum = findTiltUtil(root.left, tiltSum);\n    int rightSum = findTiltUtil(root.right, tiltSum);\n\n    tiltSum[0] += Math.abs(leftSum - rightSum);\n    return root.val + leftSum + rightSum;\n}\n```\n\n    \n    The problem can be solved using a bottom-uprecursive algorithm. The helper function `findTiltUtil` should return two values: the sum of the current node and its descendants and the tilt value of the current node and its descendants.\n\nThe base case is when the current node is null, in this case, return [0, 0].\n\nIf the current node is not null, recursively call the `findTiltUtil` for left and right children. Then add the sum of the left child and the right child's sum, plus the value of the current node to get the new sum. For the new tilt value, add the absolute difference between the left and right child's sum to the tilt value of both children.\n\nFinally, return the new sum and tilt value as a tuple or a list. When calling this helper function for the root, the tilt value of the whole tree will be in the second element of the result list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

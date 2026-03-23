@@ -1,0 +1,24 @@
+{
+  "id": 566,
+  "title": "Reshape the Matrix",
+  "slug": "reshape-the-matrix",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "In MATLAB, there is a handy function called reshape which can reshape an m x n matrix into a new one with a different size r x c keeping its original data.\n\nYou are given an m x n matrix mat and two integers r and c representing the number of rows and the number of columns of the wanted reshaped matrix.\n\nThe reshaped matrix should be filled with all the elements of the original matrix in the same row-traversing order as they were.\n\nIf the reshape operation with given parameters is possible and legal, output the new reshaped matrix; Otherwise, output the original matrix.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef matrixReshape(mat, r, c):\n    m, n = len(mat), len(mat[0])\n    if m * n != r * c:\n        return mat\n\n    reshaped = [[0] * c for _ in range(r)]\n    for i in range(m * n):\n        reshaped[i // c][i % c] = mat[i // n][i % n]\n\n    return reshaped\n```\n    \n    The algorithm works by first checking if the reshape operation is possible. If the total number of elements in the original matrix (m * n) is not equal to the number of elements the reshaped matrix should have (r * c), the original matrix is returned.\n\nIf the reshape operation is possible, we create a new matrix of size r x c. We then iterate through each element index (i) of the original matrix and calculate the corresponding row and column in the reshaped matrix (i / c and i % c), assigning the value from the original matrix (mat[i / n][i % n]) to its position in the reshaped matrix.\n\nFinally, we return the reshaped matrix.\n    ",
+    "javascript": "\n    ```javascript\nfunction matrixReshape(mat, r, c) {\n    const m = mat.length;\n    const n = mat[0].length;\n    if (m * n !== r * c) {\n        return mat;\n    }\n\n    const reshaped = new Array(r).fill(null).map(() => new Array(c));\n    for (let i = 0; i < m * n; ++i) {\n        reshaped[Math.floor(i / c)][i % c] = mat[Math.floor(i / n)][i % n];\n    }\n\n    return reshaped;\n}\n```\n    \n    The algorithm works by first checking if the reshape operation is possible. If the total number of elements in the original matrix (m * n) is not equal to the number of elements the reshaped matrix should have (r * c), the original matrix is returned.\n\nIf the reshape operation is possible, we create a new matrix of size r x c. We then iterate through each element index (i) of the original matrix and calculate the corresponding row and column in the reshaped matrix (i / c and i % c), assigning the value from the original matrix (mat[i / n][i % n]) to its position in the reshaped matrix.\n\nFinally, we return the reshaped matrix.\n    ",
+    "java": "\n    ```java\npublic int[][] matrixReshape(int[][] mat, int r, int c) {\n    int m = mat.length;\n    int n = mat[0].length;\n    if (m * n != r * c) {\n        return mat;\n    }\n\n    int[][] reshaped = new int[r][c];\n    for (int i = 0; i < m * n; ++i) {\n        reshaped[i / c][i % c] = mat[i / n][i % n];\n    }\n\n    return reshaped;\n}\n```\n    \n    The algorithm works by first checking if the reshape operation is possible. If the total number of elements in the original matrix (m * n) is not equal to the number of elements the reshaped matrix should have (r * c), the original matrix is returned.\n\nIf the reshape operation is possible, we create a new matrix of size r x c. We then iterate through each element index (i) of the original matrix and calculate the corresponding row and column in the reshaped matrix (i / c and i % c), assigning the value from the original matrix (mat[i / n][i % n]) to its position in the reshaped matrix.\n\nFinally, we return the reshaped matrix.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

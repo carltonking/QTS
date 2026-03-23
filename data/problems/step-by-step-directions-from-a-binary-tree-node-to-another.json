@@ -1,0 +1,24 @@
+{
+  "id": 2096,
+  "title": "Step-By-Step Directions From a Binary Tree Node to Another",
+  "slug": "step-by-step-directions-from-a-binary-tree-node-to-another",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given the root of a binary tree with n nodes. Each node is uniquely assigned a value from 1 to n. You are also given an integer startValue representing the value of the start node s, and a different integer destValue representing the value of the destination node t.\n\nFind the shortest path starting from node s and ending at node t. Generate step-by-step directions of such path as a string consisting of only the uppercase letters 'L', 'R', and 'U'. Each letter indicates a specific direction:\n\n*   'L' means to go from a node to its left child node.\n*   'R' means to go from a node to its right child node.\n*   'U' means to go from a node to its parent node.\n\nReturn _the step-by-step directions of the shortest path from node_ s _to node_ t.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom bisect import bisect_right\n\ndef longest_obstacle_course(obstacles):\n    ans, active = [0] * len(obstacles), []\n    for i, obstacle in enumerate(obstacles):\n        idx = bisect_right(active, obstacle)\n        ans[i] = idx + 1\n        if idx == len(active):\n            active.append(obstacle)\n        else:\n            active[idx] = obstacle\n    return ans\n```\n    \n    The algorithm uses a dynamic programming approach to calculate the longest obstacle course. It keeps track of the active obstacle heights. \n\n1. Iterate through the input array from 0 to n-1.\n2. For each obstacle, find its position (idx) in the active sequence using binary search.\n3. Update the length of the longest obstacle course for the index i as (idx + 1).\n4. If the idx is equal to the length of the active sequence, push the obstacle height to the active sequence, else update the active sequence at position idx with the current obstacle height.\n\nThis approach makes it possible to find the longest obstacle course in O(n log n) complexity.\n    ",
+    "javascript": "\n    ```javascript\nfunction longestObstacleCourse(obstacles) {\n    const ans = new Array(obstacles.length), active = [];\n    for (let i = 0; i < obstacles.length; i++) {\n        const idx = upperBound(active, obstacles[i]);\n        ans[i] = idx + 1;\n        if (idx === active.length) {\n            active.push(obstacles[i]);\n        } else {\n            active[idx] = obstacles[i];\n        }\n    }\n    return ans;\n}\n\nfunction upperBound(arr, x) {\n    let l = 0, r = arr.length;\n    while (l < r) {\n        const m = l + Math.floor((r - l) / 2);\n        if (arr[m] <= x) {\n            l = m + 1;\n        } else {\n            r = m;\n        }\n    }\n    return l;\n}\n```\n    \n    The algorithm uses a dynamic programming approach to calculate the longest obstacle course. It keeps track of the active obstacle heights. \n\n1. Iterate through the input array from 0 to n-1.\n2. For each obstacle, find its position (idx) in the active sequence using binary search.\n3. Update the length of the longest obstacle course for the index i as (idx + 1).\n4. If the idx is equal to the length of the active sequence, push the obstacle height to the active sequence, else update the active sequence at position idx with the current obstacle height.\n\nThis approach makes it possible to find the longest obstacle course in O(n log n) complexity.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int[] longestObstacleCourse(int[] obstacles) {\n    int[] ans = new int[obstacles.length], active = new int[obstacles.length];\n    int activeLen = 0;\n    for (int i = 0; i < obstacles.length; i++) {\n        int idx = Arrays.binarySearch(active, 0, activeLen, obstacles[i] + 1);\n        idx = idx < 0 ? -idx - 1 : idx;\n        ans[i] = idx + 1;\n        if (idx == activeLen) {\n            active[activeLen++] = obstacles[i];\n        } else {\n            active[idx] = obstacles[i];\n        }\n    }\n    return ans;\n}\n```\n    \n    The algorithm uses a dynamic programming approach to calculate the longest obstacle course. It keeps track of the active obstacle heights. \n\n1. Iterate through the input array from 0 to n-1.\n2. For each obstacle, find its position (idx) in the active sequence using binary search.\n3. Update the length of the longest obstacle course for the index i as (idx + 1).\n4. If the idx is equal to the length of the active sequence, push the obstacle height to the active sequence, else update the active sequence at position idx with the current obstacle height.\n\nThis approach makes it possible to find the longest obstacle course in O(n log n) complexity.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 593,
+  "title": "Valid Square",
+  "slug": "valid-square",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the coordinates of four points in 2D space p1, p2, p3 and p4, return true _if the four points construct a square_.\n\nThe coordinate of a point pi is represented as [xi, yi]. The input is not given in any order.\n\nA valid square has four equal sides with positive length and four equal angles (90-degree angles).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef validSquare(p1, p2, p3, p4):\n    def dist_sq(p, q):\n        return (p[0] - q[0])**2 + (p[1] - q[1])**2\n\n    points = [p1, p2, p3, p4]\n    dists = set()\n\n    for i in range(4):\n        for j in range(i + 1, 4):\n            dists.add(dist_sq(points[i], points[j]))\n\n    return len(dists) == 2 and 0 not in dists\n```\n    \n    1. Create a function to calculate the distance between two points in 2D space.\n2. Create a set to store unique distances between points.\n3. Iterate through all distinct pairs of points, calculating the distance between them and adding the result to the set.\n4. Check if the size of the set is 2, meaning that there are exactly two unique distances, and that the smallest distance is not 0, indicating that no two points are the same.\n5. If the above conditions are met, the four points form a square. Otherwise, they do not.\n    ",
+    "javascript": "\n    ```javascript\nfunction validSquare(p1, p2, p3, p4) {\n    function distSq(p, q) {\n        return (p[0] - q[0]) ** 2 + (p[1] - q[1]) ** 2;\n    }\n\n    let points = [p1, p2, p3, p4];\n    let dists = new Set();\n\n    for (let i = 0; i < 4; i++) {\n        for (let j = i + 1; j < 4; j++) {\n            dists.add(distSq(points[i], points[j]));\n        }\n    }\n\n    return dists.size === 2 && !dists.has(0);\n}\n```\n    \n    1. Create a function to calculate the distance between two points in 2D space.\n2. Create a set to store unique distances between points.\n3. Iterate through all distinct pairs of points, calculating the distance between them and adding the result to the set.\n4. Check if the size of the set is 2, meaning that there are exactly two unique distances, and that the smallest distance is not 0, indicating that no two points are the same.\n5. If the above conditions are met, the four points form a square. Otherwise, they do not.\n    ",
+    "java": "\n    ```java\npublic boolean validSquare(int[] p1, int[] p2, int[] p3, int[] p4) {\n    Set<Integer> dist = new HashSet<>();\n    int[][] points = {p1, p2, p3, p4};\n\n    for (int i = 0; i < 4; i++) {\n        for (int j = i + 1; j < 4; j++) {\n            dist.add((points[i][0] - points[j][0]) * (points[i][0] - points[j][0]) + (points[i][1] - points[j][1]) * (points[i][1] - points[j][1]));\n        }\n    }\n\n    return dist.size() == 2 && !dist.contains(0);\n}\n```\n    \n    1. Create a function to calculate the distance between two points in 2D space.\n2. Create a set to store unique distances between points.\n3. Iterate through all distinct pairs of points, calculating the distance between them and adding the result to the set.\n4. Check if the size of the set is 2, meaning that there are exactly two unique distances, and that the smallest distance is not 0, indicating that no two points are the same.\n5. If the above conditions are met, the four points form a square. Otherwise, they do not.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

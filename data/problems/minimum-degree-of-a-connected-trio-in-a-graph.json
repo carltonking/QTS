@@ -1,0 +1,24 @@
+{
+  "id": 1761,
+  "title": "Minimum Degree of a Connected Trio in a Graph",
+  "slug": "minimum-degree-of-a-connected-trio-in-a-graph",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an undirected graph. You are given an integer n which is the number of nodes in the graph and an array edges, where each edges[i] = [ui, vi] indicates that there is an undirected edge between ui and vi.\n\nA connected trio is a set of three nodes where there is an edge between every pair of them.\n\nThe degree of a connected trio is the number of edges where one endpoint is in the trio, and the other is not.\n\nReturn _the minimum degree of a connected trio in the graph, or_ -1 _if the graph has no connected trios._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_vowel_strings(n):\n    dp = [1, 1, 1, 1, 1]\n\n    for i in range(1, n):\n        for j in range(3, -1, -1):\n            dp[j] += dp[j + 1]\n\n    return sum(dp)\n```\n    \n    We use dynamic programming to efficiently count the number of valid strings. Here, we maintain an array `dp` with 5 elements, each representing the count of strings ending with each vowel (a, e, i, o, u). \n\nWe loop through `1` to `n`, and for each step, we iterate through the `dp` array from the end to the beginning (from 'u' to 'a'). We update the count of strings ending in the current vowel by adding the number of strings ending in the next vowel. This ensures that the strings are lexicographically sorted. Finally, we return the sum of all elements in the `dp` array.\n    ",
+    "javascript": "\n    ```javascript\nfunction countVowelStrings(n) {\n    const dp = [1, 1, 1, 1, 1];\n\n    for (let i = 1; i < n; i++) {\n        for (let j = 3; j >= 0; j--) {\n            dp[j] += dp[j + 1];\n        }\n    }\n\n    return dp.reduce((a, b) => a + b, 0);\n}\n```\n    \n    We use dynamic programming to efficiently count the number of valid strings. Here, we maintain an array `dp` with 5 elements, each representing the count of strings ending with each vowel (a, e, i, o, u). \n\nWe loop through `1` to `n`, and for each step, we iterate through the `dp` array from the end to the beginning (from 'u' to 'a'). We update the count of strings ending in the current vowel by adding the number of strings ending in the next vowel. This ensures that the strings are lexicographically sorted. Finally, we return the sum of all elements in the `dp` array.\n    ",
+    "java": "\n    ```java\npublic int countVowelStrings(int n) {\n    int[] dp = {1, 1, 1, 1, 1};\n\n    for (int i = 1; i < n; i++) {\n        for (int j = 3; j >= 0; j--) {\n            dp[j] += dp[j + 1];\n        }\n    }\n\n    return dp[0] + dp[1] + dp[2] + dp[3] + dp[4];\n}\n```\n    \n    We use dynamic programming to efficiently count the number of valid strings. Here, we maintain an array `dp` with 5 elements, each representing the count of strings ending with each vowel (a, e, i, o, u). \n\nWe loop through `1` to `n`, and for each step, we iterate through the `dp` array from the end to the beginning (from 'u' to 'a'). We update the count of strings ending in the current vowel by adding the number of strings ending in the next vowel. This ensures that the strings are lexicographically sorted. Finally, we return the sum of all elements in the `dp` array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

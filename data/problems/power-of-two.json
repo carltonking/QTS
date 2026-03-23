@@ -1,0 +1,24 @@
+{
+  "id": 231,
+  "title": "Power of Two",
+  "slug": "power-of-two",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer n, return _true if it is a power of two. Otherwise, return false_.\n\nAn integer n is a power of two, if there exists an integer x such that n == 2x.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_power_of_two(n):\n    if n <= 0:\n        return False\n    return (n & (n - 1)) == 0\n```\n    \n    The algorithm checks if the given integer n is a power of two. First, we check if n is a negative number or zero, in which case it cannot be a power of two, so we return false. \n\nIf n is positive, we can use bitwise manipulation to check if it's a power of two. A power of two in binary representation has only one bit set to 1 (e.g., 1: 001, 2: 010, 4: 100, 8: 1000). When we subtract 1 from a power of two, all the bits from the right of the set bit become 1 (e.g., 1-1: 000, 2-1: 001, 4-1: 011, 8-1: 0111). \n\nBy performing bitwise AND operation (n & (n-1)) between n and (n-1), we can check if there is only one bit set in n. If the result is 0, that means there is no overlapping bit between n and (n-1), indicating that n is a power of two; returning true. Otherwise, return false.\n    ",
+    "javascript": "\n    ```javascript\nfunction isPowerOfTwo(n) {\n    if (n <= 0) {\n        return false;\n    }\n    return (n & (n - 1)) == 0;\n}\n```\n    \n    The algorithm checks if the given integer n is a power of two. First, we check if n is a negative number or zero, in which case it cannot be a power of two, so we return false. \n\nIf n is positive, we can use bitwise manipulation to check if it's a power of two. A power of two in binary representation has only one bit set to 1 (e.g., 1: 001, 2: 010, 4: 100, 8: 1000). When we subtract 1 from a power of two, all the bits from the right of the set bit become 1 (e.g., 1-1: 000, 2-1: 001, 4-1: 011, 8-1: 0111). \n\nBy performing bitwise AND operation (n & (n-1)) between n and (n-1), we can check if there is only one bit set in n. If the result is 0, that means there is no overlapping bit between n and (n-1), indicating that n is a power of two; returning true. Otherwise, return false.\n    ",
+    "java": "\n    ```java\nboolean isPowerOfTwo(int n) {\n    if (n <= 0) {\n        return false;\n    }\n    return (n & (n - 1)) == 0;\n}\n```\n    \n    The algorithm checks if the given integer n is a power of two. First, we check if n is a negative number or zero, in which case it cannot be a power of two, so we return false. \n\nIf n is positive, we can use bitwise manipulation to check if it's a power of two. A power of two in binary representation has only one bit set to 1 (e.g., 1: 001, 2: 010, 4: 100, 8: 1000). When we subtract 1 from a power of two, all the bits from the right of the set bit become 1 (e.g., 1-1: 000, 2-1: 001, 4-1: 011, 8-1: 0111). \n\nBy performing bitwise AND operation (n & (n-1)) between n and (n-1), we can check if there is only one bit set in n. If the result is 0, that means there is no overlapping bit between n and (n-1), indicating that n is a power of two; returning true. Otherwise, return false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

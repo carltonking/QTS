@@ -1,0 +1,24 @@
+{
+  "id": 302,
+  "title": "Smallest Rectangle Enclosing Black Pixels",
+  "slug": "smallest-rectangle-enclosing-black-pixels",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an m x n binary matrix image where 0 represents a white pixel and 1 represents a black pixel.\n\nThe black pixels are connected (i.e., there is only one black region). Pixels are connected horizontally and vertically.\n\nGiven two integers x and y that represents the location of one of the black pixels, return _the area of the smallest (axis-aligned) rectangle that encloses all black pixels_.\n\nYou must write an algorithm with less than O(mn) runtime complexity",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minArea(image, x, y):\n    top, bottom, left, right = x, x, y, y\n    for i, row in enumerate(image):\n        for j, cell in enumerate(row):\n            if cell == '1':\n                top, bottom = min(top, i), max(bottom, i)\n                left, right = min(left, j), max(right, j)\n    return (bottom - top + 1) * (right - left + 1)\n```\n    \n    For each language, we first initialize the `top`, `bottom`, `left`, and `right` variables to the starting point `x` and `y`. Then, we iterate through the cells of the `image` matrix. If the cell value is `'1'` (a black pixel), we update the `top,` `bottom`, `left`, and `right` variables by taking the minimum and/or maximum value depending on the variables, respectively. Once the iteration is complete, we return the product of the difference of `bottom` and `top` (plus 1) and the difference of `right` and `left` (plus 1). This gives us the area of the smallest rectangle that encloses all the black pixels.\n\nThe complexity of the algorithm would be `O(mn)` if we were not given the starting point `(x, Y)`; however, since we have the starting point, the complexity will be smaller in practice.\n    ",
+    "javascript": "\n    ```javascript\nfunction minArea(image, x, y) {\n    let top = x, bottom = x, left = y, right = y;\n    for (let i = 0; i < image.length; ++i) {\n        for (let j = 0; j < image[i].length; ++j) {\n            if (image[i][j] === '1') {\n                top = Math.min(top, i);\n                bottom = Math.max(bottom, i);\n                left = Math.min(left, j);\n                right = Math.max(right, j);\n            }\n        }\n    }\n    return (bottom - top + 1) * (right - left + 1);\n}\n```\n    \n    For each language, we first initialize the `top`, `bottom`, `left`, and `right` variables to the starting point `x` and `y`. Then, we iterate through the cells of the `image` matrix. If the cell value is `'1'` (a black pixel), we update the `top,` `bottom`, `left`, and `right` variables by taking the minimum and/or maximum value depending on the variables, respectively. Once the iteration is complete, we return the product of the difference of `bottom` and `top` (plus 1) and the difference of `right` and `left` (plus 1). This gives us the area of the smallest rectangle that encloses all the black pixels.\n\nThe complexity of the algorithm would be `O(mn)` if we were not given the starting point `(x, Y)`; however, since we have the starting point, the complexity will be smaller in practice.\n    ",
+    "java": "\n    ```java\npublic int minArea(char[][] image, int x, int y) {\n    int top = x, bottom = x, left = y, right = y;\n    for (int i = 0; i < image.length; ++i) {\n        for (int j = 0; j < image[i].length; ++j) {\n            if (image[i][j] == '1') {\n                top = Math.min(top, i);\n                bottom = Math.max(bottom, i);\n                left = Math.min(left, j);\n                right = Math.max(right, j);\n            }\n        }\n    }\n    return (bottom - top + 1) * (right - left + 1);\n}\n```\n    \n    For each language, we first initialize the `top`, `bottom`, `left`, and `right` variables to the starting point `x` and `y`. Then, we iterate through the cells of the `image` matrix. If the cell value is `'1'` (a black pixel), we update the `top,` `bottom`, `left`, and `right` variables by taking the minimum and/or maximum value depending on the variables, respectively. Once the iteration is complete, we return the product of the difference of `bottom` and `top` (plus 1) and the difference of `right` and `left` (plus 1). This gives us the area of the smallest rectangle that encloses all the black pixels.\n\nThe complexity of the algorithm would be `O(mn)` if we were not given the starting point `(x, Y)`; however, since we have the starting point, the complexity will be smaller in practice.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

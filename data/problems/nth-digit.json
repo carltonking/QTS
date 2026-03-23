@@ -1,0 +1,24 @@
+{
+  "id": 400,
+  "title": "Nth Digit",
+  "slug": "nth-digit",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer n, return the nth digit of the infinite integer sequence [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ...].",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findNthDigit(n):\n    size = 1\n    length = 9\n    start = 1\n\n    while n > length * size:\n        n -= length * size\n        size += 1\n        length *= 10\n        start *= 10\n\n    start += (n - 1) // size\n    s = str(start)\n    return int(s[(n - 1) % size])\n```\n    \n    The solution works as follows:\n1. Initialize the `size` of each number at `1` (single-digit numbers), the `length` of numbers of that size at 9 (there are 9 single-digit numbers), and the `start` number of size `1` as `1`.\n2. Keep subtracting the total length of numbers of the current size from `n` as long as `n` is greater than the total length of numbers of that size.\n3. Increment `size` and multiply `length` and `start` by `10` when moving to the next size.\n4. Add `(n - 1) / size` to `start` (adjusted for index 0) to find the number in the sequence that contains the nth digit.\n5. Convert the found number to a string, and return the digit at position `(n - 1) % size`. In C++ and JavaScript, subtract '0' or use `parseInt` to convert the character back to an integer.\n    ",
+    "javascript": "\n    ```javascript\nfunction findNthDigit(n) {\n    let size = 1;\n    let length = 9;\n    let start = 1;\n\n    while (n > length * size) {\n        n -= length * size;\n        size++;\n        length *= 10;\n        start *= 10;\n    }\n\n    start += Math.floor((n - 1) / size);\n    const s = start.toString();\n    return parseInt(s.charAt((n - 1) % size));\n}\n```\n    \n    The solution works as follows:\n1. Initialize the `size` of each number at `1` (single-digit numbers), the `length` of numbers of that size at 9 (there are 9 single-digit numbers), and the `start` number of size `1` as `1`.\n2. Keep subtracting the total length of numbers of the current size from `n` as long as `n` is greater than the total length of numbers of that size.\n3. Increment `size` and multiply `length` and `start` by `10` when moving to the next size.\n4. Add `(n - 1) / size` to `start` (adjusted for index 0) to find the number in the sequence that contains the nth digit.\n5. Convert the found number to a string, and return the digit at position `(n - 1) % size`. In C++ and JavaScript, subtract '0' or use `parseInt` to convert the character back to an integer.\n    ",
+    "java": "\n    ```java\npublic int findNthDigit(int n) {\n    int size = 1;\n    long length = 9;\n    int start = 1;\n\n    while (n > length * size) {\n        n -= length * size;\n        size++;\n        length *= 10;\n        start *= 10;\n    }\n\n    start += (n - 1) / size;\n    String s = Integer.toString(start);\n    return Character.getNumericValue(s.charAt((n - 1) % size));\n}\n```\n    \n    The solution works as follows:\n1. Initialize the `size` of each number at `1` (single-digit numbers), the `length` of numbers of that size at 9 (there are 9 single-digit numbers), and the `start` number of size `1` as `1`.\n2. Keep subtracting the total length of numbers of the current size from `n` as long as `n` is greater than the total length of numbers of that size.\n3. Increment `size` and multiply `length` and `start` by `10` when moving to the next size.\n4. Add `(n - 1) / size` to `start` (adjusted for index 0) to find the number in the sequence that contains the nth digit.\n5. Convert the found number to a string, and return the digit at position `(n - 1) % size`. In C++ and JavaScript, subtract '0' or use `parseInt` to convert the character back to an integer.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

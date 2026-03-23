@@ -1,0 +1,24 @@
+{
+  "id": 387,
+  "title": "First Unique Character in a String",
+  "slug": "first-unique-character-in-a-string",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a string s, _find the first non-repeating character in it and return its index_. If it does not exist, return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef firstUniqChar(s):\n    char_count = {}\n    for c in s:\n        char_count[c] = char_count.get(c, 0) + 1\n    for i in range(len(s)):\n        if char_count[s[i]] == 1:\n            return i\n    return -1\n```\n\n    \n    The algorithm first creates a dictionary to store the count of each character in the input string 's'. Then, it iterates through the string, counting the occurrences of each character and updating the dictionary accordingly. \n\nAfter that, the algorithm iterates through the input string 's' again, and it checks if the count of the current character in the dictionary is 1. If it is, the algorithm returns the index of the current character as the answer. If no such character is found, the algorithm returns -1 as the answer.\n\nThe time complexity of this algorithm is O(n), where n is the length of the input string 's'.\n    ",
+    "javascript": "\n    ```javascript\nfunction firstUniqChar(s) {\n    let charCount = {};\n    for (let c of s)\n        charCount[c] = (charCount[c] || 0) + 1;\n    for (let i = 0; i < s.length; i++)\n        if (charCount[s[i]] === 1)\n            return i;\n    return -1;\n}\n```\n\n    \n    The algorithm first creates a dictionary to store the count of each character in the input string 's'. Then, it iterates through the string, counting the occurrences of each character and updating the dictionary accordingly. \n\nAfter that, the algorithm iterates through the input string 's' again, and it checks if the count of the current character in the dictionary is 1. If it is, the algorithm returns the index of the current character as the answer. If no such character is found, the algorithm returns -1 as the answer.\n\nThe time complexity of this algorithm is O(n), where n is the length of the input string 's'.\n    ",
+    "java": "\n    ```java\npublic int firstUniqChar(String s) {\n    HashMap<Character, Integer> charCount = new HashMap<>();\n    for (char c : s.toCharArray())\n        charCount.put(c, charCount.getOrDefault(c, 0) + 1);\n    for (int i = 0; i < s.length(); i++)\n        if (charCount.get(s.charAt(i)) == 1)\n            return i;\n    return -1;\n}\n```\n\n    \n    The algorithm first creates a dictionary to store the count of each character in the input string 's'. Then, it iterates through the string, counting the occurrences of each character and updating the dictionary accordingly. \n\nAfter that, the algorithm iterates through the input string 's' again, and it checks if the count of the current character in the dictionary is 1. If it is, the algorithm returns the index of the current character as the answer. If no such character is found, the algorithm returns -1 as the answer.\n\nThe time complexity of this algorithm is O(n), where n is the length of the input string 's'.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

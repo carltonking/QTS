@@ -1,0 +1,24 @@
+{
+  "id": 2389,
+  "title": "Longest Subsequence With Limited Sum",
+  "slug": "longest-subsequence-with-limited-sum",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an integer array nums of length n, and an integer array queries of length m.\n\nReturn _an array_ answer _of length_ m _where_ answer[i] _is the maximum size of a subsequence that you can take from_ nums _such that the sum of its elements is less than or equal to_ queries[i].\n\nA subsequence is an array that can be derived from another array by deleting some or no elements without changing the order of the remaining elements.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom bisect import bisect\n\ndef maxSizeSubsequenceSumQueries(nums, queries):\n    nums.sort()\n    prefixSums = [0] * (len(nums) + 1)\n    for i, x in enumerate(nums):\n        prefixSums[i + 1] = prefixSums[i] + x\n\n    answer = []\n    for q in queries:\n        idx = bisect(prefixSums, q)\n        answer.append(idx - 1)\n\n    return answer\n```\n    \n    The algorithm sorts the `nums` array in ascending order, then calculates the prefix sums for easy sum checks. For each query, it finds the position for the query in the prefix sums array using binary search, and the index of that position minus one represents the maximum size of a subsequence whose sum is less than or equal to the query. It adds that value to the answer array.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxSizeSubsequenceSumQueries(nums, queries) {\n    nums.sort((a, b) => a - b);\n    const prefixSums = Array(nums.length + 1).fill(0);\n    for (let i = 0; i < nums.length; ++i) {\n        prefixSums[i + 1] = prefixSums[i] + nums[i];\n    }\n\n    const answer = [];\n    for (const query of queries) {\n        const idx = prefixSums.upperBound(query);\n        answer.push(idx - 1);\n    }\n\n    if (!Array.prototype.upperBound) {\n        Array.prototype.upperBound = function(val) {\n            let left = 0;\n            let right = this.length;\n            while (left < right) {\n                const mid = (left + right) >>> 1;\n                if (this[mid] <= val) {\n                    left = mid + 1;\n                } else {\n                    right = mid;\n                }\n            }\n            return left;\n        };\n    }\n\n    return answer;\n}\n```\n    \n    The algorithm sorts the `nums` array in ascending order, then calculates the prefix sums for easy sum checks. For each query, it finds the position for the query in the prefix sums array using binary search, and the index of that position minus one represents the maximum size of a subsequence whose sum is less than or equal to the query. It adds that value to the answer array.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int[] maxSizeSubsequenceSumQueries(int[] nums, int[] queries) {\n    Arrays.sort(nums);\n    int[] prefixSums = new int[nums.length + 1];\n    for (int i = 0; i < nums.length; ++i) {\n        prefixSums[i + 1] = prefixSums[i] + nums[i];\n    }\n\n    int[] answer = new int[queries.length];\n    for (int i = 0; i < queries.length; ++i) {\n        int idx = Arrays.binarySearch(prefixSums, queries[i]);\n        if (idx < 0) {\n            idx = -idx - 1;\n        }\n        answer[i] = idx - 1;\n    }\n\n    return answer;\n}\n```\n    \n    The algorithm sorts the `nums` array in ascending order, then calculates the prefix sums for easy sum checks. For each query, it finds the position for the query in the prefix sums array using binary search, and the index of that position minus one represents the maximum size of a subsequence whose sum is less than or equal to the query. It adds that value to the answer array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

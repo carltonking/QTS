@@ -1,0 +1,24 @@
+{
+  "id": 2574,
+  "title": "Left and Right Sum Differences",
+  "slug": "left-and-right-sum-differences",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a 0-indexed integer array nums, find a 0-indexed integer array answer where:\n\n*   answer.length == nums.length.\n*   answer[i] = |leftSum[i] - rightSum[i]|.\n\nWhere:\n\n*   leftSum[i] is the sum of elements to the left of the index i in the array nums. If there is no such element, leftSum[i] = 0.\n*   rightSum[i] is the sum of elements to the right of the index i in the array nums. If there is no such element, rightSum[i] = 0.\n\nReturn _the array_ answer.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef get_answer(nums):\n    n = len(nums)\n    left_sum, right_sum, answer = [0] * n, [0] * n, [0] * n\n\n    for i in range(1, n):\n        left_sum[i] = left_sum[i - 1] + nums[i - 1]\n\n    for i in range(n - 2, -1, -1):\n        right_sum[i] = right_sum[i + 1] + nums[i + 1]\n\n    for i in range(n):\n        answer[i] = abs(left_sum[i] - right_sum[i])\n\n    return answer\n```\n\n    \n    We create three arrays of the same length as `nums` called `leftSum`, `rightSum`, and `answer`. \n\nWe then iterate over the `nums` array starting from 1 and populate the `leftSum` array with the sums of elements to the left of the index i.\n\nSimilarly, we iterate over the `nums` array in reverse order (starting from the second last element) and populate the `rightSum` array with the sums of elements to the right of the index i.\n\nFinally, we iterate over the `leftSum` and `rightSum` arrays and compute the absolute difference between the corresponding elements, storing the result in the `answer` array.\n    ",
+    "javascript": "\n    ```javascript\nfunction getAnswer(nums) {\n    let n = nums.length;\n    let leftSum = new Array(n).fill(0);\n    let rightSum = new Array(n).fill(0);\n    let answer = new Array(n).fill(0);\n\n    for (let i = 1; i < n; i++) {\n        leftSum[i] = leftSum[i - 1] + nums[i - 1];\n    }\n\n    for (let i = n - 2; i >= 0; i--) {\n        rightSum[i] = rightSum[i + 1] + nums[i + 1];\n    }\n\n    for (let i = 0; i < n; i++) {\n        answer[i] = Math.abs(leftSum[i] - rightSum[i]);\n    }\n\n    return answer;\n}\n```\n\n    \n    We create three arrays of the same length as `nums` called `leftSum`, `rightSum`, and `answer`. \n\nWe then iterate over the `nums` array starting from 1 and populate the `leftSum` array with the sums of elements to the left of the index i.\n\nSimilarly, we iterate over the `nums` array in reverse order (starting from the second last element) and populate the `rightSum` array with the sums of elements to the right of the index i.\n\nFinally, we iterate over the `leftSum` and `rightSum` arrays and compute the absolute difference between the corresponding elements, storing the result in the `answer` array.\n    ",
+    "java": "\n    ```java\npublic int[] getAnswer(int[] nums) {\n    int n = nums.length;\n    int[] leftSum = new int[n];\n    int[] rightSum = new int[n];\n    int[] answer = new int[n];\n\n    for (int i = 1; i < n; i++) {\n        leftSum[i] = leftSum[i - 1] + nums[i - 1];\n    }\n\n    for (int i = n - 2; i >= 0; i--) {\n        rightSum[i] = rightSum[i + 1] + nums[i + 1];\n    }\n\n    for (int i = 0; i < n; i++) {\n        answer[i] = Math.abs(leftSum[i] - rightSum[i]);\n    }\n\n    return answer;\n}\n```\n\n    \n    We create three arrays of the same length as `nums` called `leftSum`, `rightSum`, and `answer`. \n\nWe then iterate over the `nums` array starting from 1 and populate the `leftSum` array with the sums of elements to the left of the index i.\n\nSimilarly, we iterate over the `nums` array in reverse order (starting from the second last element) and populate the `rightSum` array with the sums of elements to the right of the index i.\n\nFinally, we iterate over the `leftSum` and `rightSum` arrays and compute the absolute difference between the corresponding elements, storing the result in the `answer` array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2345,
+  "title": "Finding the Number of Visible Mountains",
+  "slug": "finding-the-number-of-visible-mountains",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed 2D integer array peaks where peaks[i] = [xi, yi] states that mountain i has a peak at coordinates (xi, yi). A mountain can be described as a right-angled isosceles triangle, with its base along the x\\-axis and a right angle at its peak. More formally, the gradients of ascending and descending the mountain are 1 and -1 respectively.\n\nA mountain is considered visible if its peak does not lie within another mountain (including the border of other mountains).\n\nReturn _the number of visible mountains_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_operations(current, correct):\n    current_mins = int(current[:2]) * 60 + int(current[3:])\n    correct_mins = int(correct[:2]) * 60 + int(correct[3:])\n    if current_mins > correct_mins:\n        correct_mins += 24 * 60\n\n    diff = correct_mins - current_mins\n    count = diff // 60 + (diff % 60) // 15 + ((diff % 60) % 15) // 5 + (((diff % 60) % 15) % 5)\n\n    return count\n```\n    \n    1. Convert both `current` and `correct` strings into minutes (HH * 60 + MM).\n2. If `currentMins` is greater than `correctMins`, increment `correctMins` by the number of minutes in a day (24 * 60) to account for potential timezone crossing.\n3. Calculate the difference between `correctMins` and `currentMins`.\n4. Count the minimum operations needed to cover the difference by dividing it by the largest possible operation (60) and updating the remaining difference for smaller operations such as 15, 5, and 1. Add the result of each calculation to `count`.\n5. Return the minimum number of operations as `count`.\n    ",
+    "javascript": "\n    ```javascript\nfunction minOperations(current, correct) {\n    let currentMins = parseInt(current.substring(0, 2)) * 60 + parseInt(current.substring(3, 5));\n    let correctMins = parseInt(correct.substring(0, 2)) * 60 + parseInt(correct.substring(3, 5));\n    if (currentMins > correctMins) correctMins += 24 * 60;\n\n    let diff = correctMins - currentMins;\n    let count = Math.floor(diff / 60) + Math.floor((diff % 60) / 15) + Math.floor(((diff % 60) % 15) / 5) + Math.floor((((diff % 60) % 15) % 5));\n\n    return count;\n}\n```\n    \n    1. Convert both `current` and `correct` strings into minutes (HH * 60 + MM).\n2. If `currentMins` is greater than `correctMins`, increment `correctMins` by the number of minutes in a day (24 * 60) to account for potential timezone crossing.\n3. Calculate the difference between `correctMins` and `currentMins`.\n4. Count the minimum operations needed to cover the difference by dividing it by the largest possible operation (60) and updating the remaining difference for smaller operations such as 15, 5, and 1. Add the result of each calculation to `count`.\n5. Return the minimum number of operations as `count`.\n    ",
+    "java": "\n    ```java\npublic int minOperations(String current, String correct) {\n    int currentMins = Integer.parseInt(current.substring(0, 2)) * 60 + Integer.parseInt(current.substring(3, 5));\n    int correctMins = Integer.parseInt(correct.substring(0, 2)) * 60 + Integer.parseInt(correct.substring(3, 5));\n    if(currentMins > correctMins) correctMins += 24 * 60;\n    \n    int diff = correctMins - currentMins;\n    int count = diff / 60 + (diff % 60) / 15 + ((diff % 60) % 15) / 5 + (((diff % 60) % 15) % 5);\n\n    return count;\n}\n```\n    \n    1. Convert both `current` and `correct` strings into minutes (HH * 60 + MM).\n2. If `currentMins` is greater than `correctMins`, increment `correctMins` by the number of minutes in a day (24 * 60) to account for potential timezone crossing.\n3. Calculate the difference between `correctMins` and `currentMins`.\n4. Count the minimum operations needed to cover the difference by dividing it by the largest possible operation (60) and updating the remaining difference for smaller operations such as 15, 5, and 1. Add the result of each calculation to `count`.\n5. Return the minimum number of operations as `count`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

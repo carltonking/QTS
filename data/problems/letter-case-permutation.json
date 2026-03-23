@@ -1,0 +1,24 @@
+{
+  "id": 784,
+  "title": "Letter Case Permutation",
+  "slug": "letter-case-permutation",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string s, you can transform every letter individually to be lowercase or uppercase to create another string.\n\nReturn _a list of all possible strings we could create_. Return the output in any order.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, x):\n        self.val = x\n        self.left = None\n        self.right = None\n\ndef insertIntoBST(root, val):\n    if root is None:\n        return TreeNode(val)\n\n    if val < root.val:\n        root.left = insertIntoBST(root.left, val)\n    else:\n        root.right = insertIntoBST(root.right, val)\n\n    return root\n```\n\n    \n    The algorithm inserts a value into a Binary Search Tree (BST). We begin by checking if the root node exists. If it does not exist, we create a new node with the given value and return it as the new root.\n\nIf the root exists, we check if the given value is less than the root node's value. If it is, we then recursively insert the value into the left subtree. Otherwise, we insert it into the right subtree.\n\nFinally, we return the root of the updated BST. This algorithm works for all the languages specified, as the logic remains the same across them. The only difference is the syntax and TreeNode class/struct declarations. The time complexity is O(h), where h is the height of the BST.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(x) {\n        this.val = x;\n        this.left = null;\n        this.right = null;\n    }\n}\n\nfunction insertIntoBST(root, val) {\n    if (root === null) {\n        return new TreeNode(val);\n    }\n\n    if (val < root.val) {\n        root.left = insertIntoBST(root.left, val);\n    } else {\n        root.right = insertIntoBST(root.right, val);\n    }\n\n    return root;\n}\n```\n\n    \n    The algorithm inserts a value into a Binary Search Tree (BST). We begin by checking if the root node exists. If it does not exist, we create a new node with the given value and return it as the new root.\n\nIf the root exists, we check if the given value is less than the root node's value. If it is, we then recursively insert the value into the left subtree. Otherwise, we insert it into the right subtree.\n\nFinally, we return the root of the updated BST. This algorithm works for all the languages specified, as the logic remains the same across them. The only difference is the syntax and TreeNode class/struct declarations. The time complexity is O(h), where h is the height of the BST.\n    ",
+    "java": "\n    ```java\npublic class TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n    TreeNode(int x) { val = x; }\n}\n\npublic TreeNode insertIntoBST(TreeNode root, int val) {\n    if (root == null) {\n        return new TreeNode(val);\n    }\n\n    if (val < root.val) {\n        root.left = insertIntoBST(root.left, val);\n    } else {\n        root.right = insertIntoBST(root.right, val);\n    }\n\n    return root;\n}\n```\n\n    \n    The algorithm inserts a value into a Binary Search Tree (BST). We begin by checking if the root node exists. If it does not exist, we create a new node with the given value and return it as the new root.\n\nIf the root exists, we check if the given value is less than the root node's value. If it is, we then recursively insert the value into the left subtree. Otherwise, we insert it into the right subtree.\n\nFinally, we return the root of the updated BST. This algorithm works for all the languages specified, as the logic remains the same across them. The only difference is the syntax and TreeNode class/struct declarations. The time complexity is O(h), where h is the height of the BST.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 903,
+  "title": "Valid Permutations for DI Sequence",
+  "slug": "valid-permutations-for-di-sequence",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a string s of length n where s[i] is either:\n\n*   'D' means decreasing, or\n*   'I' means increasing.\n\nA permutation perm of n + 1 integers of all the integers in the range [0, n] is called a valid permutation if for all valid i:\n\n*   If s[i] == 'D', then perm[i] > perm[i + 1], and\n*   If s[i] == 'I', then perm[i] < perm[i + 1].\n\nReturn _the number of valid permutations_ perm. Since the answer may be large, return it modulo 109 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef rand7(): # Given API\n    pass\n\ndef rand10():\n    result = 41\n    while result > 40:\n        result = (rand7() - 1) * 7 + rand7()\n    return result % 10 + 1\n```\n    \n    The algorithm is based on generating a uniform random integer in the range of [1, 49] using the given rand7() API by the following formula:\n\n`result = (rand7() - 1) * 7 + rand7()`\n\nSince rand7() generates a number between 1 and 7, `(rand7() - 1) * 7` generates multiples of 7 ranging from 0 to 42. By adding another rand7(), we fill in the gaps to create a uniformly random number between 1 and 49.\n\nHowever, we need to generate a number in the range of [1, 10]. To do this, we can discard any numbers greater than 40 (since 40 is the largest multiple of 10 within the generated range) and use the modulo operator to convert the range from [1, 40] to [1, 10].\n\n`result % 10 + 1`\n\nWe repeat the process in a loop until we get a number in the range of [1, 40], following which we apply the modulo operator and return the final result. This ensures a uniform distribution of random integers in the [1, 10] range.\n    ",
+    "javascript": "\n    ```javascript\nfunction rand7() {} // Given API\n\nfunction rand10() {\n    let result;\n    do {\n        result = (rand7() - 1) * 7 + rand7();\n    } while (result > 40);\n    return result % 10 + 1;\n}\n```\n    \n    The algorithm is based on generating a uniform random integer in the range of [1, 49] using the given rand7() API by the following formula:\n\n`result = (rand7() - 1) * 7 + rand7()`\n\nSince rand7() generates a number between 1 and 7, `(rand7() - 1) * 7` generates multiples of 7 ranging from 0 to 42. By adding another rand7(), we fill in the gaps to create a uniformly random number between 1 and 49.\n\nHowever, we need to generate a number in the range of [1, 10]. To do this, we can discard any numbers greater than 40 (since 40 is the largest multiple of 10 within the generated range) and use the modulo operator to convert the range from [1, 40] to [1, 10].\n\n`result % 10 + 1`\n\nWe repeat the process in a loop until we get a number in the range of [1, 40], following which we apply the modulo operator and return the final result. This ensures a uniform distribution of random integers in the [1, 10] range.\n    ",
+    "java": "\n    ```java\npublic int rand7(); // Given API\n\npublic int rand10() {\n    int result;\n    do {\n        result = (rand7() - 1) * 7 + rand7();\n    } while (result > 40);\n    return result % 10 + 1;\n}\n```\n    \n    The algorithm is based on generating a uniform random integer in the range of [1, 49] using the given rand7() API by the following formula:\n\n`result = (rand7() - 1) * 7 + rand7()`\n\nSince rand7() generates a number between 1 and 7, `(rand7() - 1) * 7` generates multiples of 7 ranging from 0 to 42. By adding another rand7(), we fill in the gaps to create a uniformly random number between 1 and 49.\n\nHowever, we need to generate a number in the range of [1, 10]. To do this, we can discard any numbers greater than 40 (since 40 is the largest multiple of 10 within the generated range) and use the modulo operator to convert the range from [1, 40] to [1, 10].\n\n`result % 10 + 1`\n\nWe repeat the process in a loop until we get a number in the range of [1, 40], following which we apply the modulo operator and return the final result. This ensures a uniform distribution of random integers in the [1, 10] range.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1899,
+  "title": "Merge Triplets to Form Target Triplet",
+  "slug": "merge-triplets-to-form-target-triplet",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A triplet is an array of three integers. You are given a 2D integer array triplets, where triplets[i] = [ai, bi, ci] describes the ith triplet. You are also given an integer array target = [x, y, z] that describes the triplet you want to obtain.\n\nTo obtain target, you may apply the following operation on triplets any number of times (possibly zero):\n\n*   Choose two indices (0-indexed) i and j (i != j) and update triplets[j] to become [max(ai, aj), max(bi, bj), max(ci, cj)].\n    *   For example, if triplets[i] = [2, 5, 3] and triplets[j] = [1, 7, 5], triplets[j] will be updated to [max(2, 1), max(5, 7), max(3, 5)] = [2, 7, 5].\n\nReturn true _if it is possible to obtain the_ target _triplet_ [x, y, z] _as an element of_ triplets_, or_ false _otherwise_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_matches(items, rule_key, rule_value):\n    rule = {\"type\": 0, \"color\": 1, \"name\": 2}\n    count = 0\n\n    for item in items:\n        if item[rule[rule_key]] == rule_value:\n            count += 1\n\n    return count\n```\n    \n    The function first initializes a dictionary called `rule` which maps `ruleKey` strings to the corresponding index in the items list. This helps in getting the correct index for the item property based on the given ruleKey. Then, a `count` variable is initialized to 0 to keep track of the number of items that match the rule.\n\nThe function then iterates through the `items` list and checks if the item property (type, color, or name) at the index found in the `rule` dictionary matches the given `ruleValue`. If they match, the `count` variable is incremented by 1.\n\nFinally, the `count` variable is returned as the number of items that match the given rule.\n    ",
+    "javascript": "\n    ```javascript\nfunction countMatches(items, ruleKey, ruleValue) {\n    const rule = {\"type\": 0, \"color\": 1, \"name\": 2};\n    let count = 0;\n\n    for (const item of items) {\n        if (item[rule[ruleKey]] === ruleValue) {\n            count++;\n        }\n    }\n\n    return count;\n}\n```\n    \n    The function first initializes a dictionary called `rule` which maps `ruleKey` strings to the corresponding index in the items list. This helps in getting the correct index for the item property based on the given ruleKey. Then, a `count` variable is initialized to 0 to keep track of the number of items that match the rule.\n\nThe function then iterates through the `items` list and checks if the item property (type, color, or name) at the index found in the `rule` dictionary matches the given `ruleValue`. If they match, the `count` variable is incremented by 1.\n\nFinally, the `count` variable is returned as the number of items that match the given rule.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\nimport java.util.List;\nimport java.util.Map;\n\npublic int countMatches(List<List<String>> items, String ruleKey, String ruleValue) {\n    Map<String, Integer> rule = new HashMap<>();\n    rule.put(\"type\", 0);\n    rule.put(\"color\", 1);\n    rule.put(\"name\", 2);\n    int count = 0;\n\n    for (List<String> item : items) {\n        if (item.get(rule.get(ruleKey)).equals(ruleValue)) {\n            count++;\n        }\n    }\n\n    return count;\n}\n```\n    \n    The function first initializes a dictionary called `rule` which maps `ruleKey` strings to the corresponding index in the items list. This helps in getting the correct index for the item property based on the given ruleKey. Then, a `count` variable is initialized to 0 to keep track of the number of items that match the rule.\n\nThe function then iterates through the `items` list and checks if the item property (type, color, or name) at the index found in the `rule` dictionary matches the given `ruleValue`. If they match, the `count` variable is incremented by 1.\n\nFinally, the `count` variable is returned as the number of items that match the given rule.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

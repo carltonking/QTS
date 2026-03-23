@@ -1,0 +1,24 @@
+{
+  "id": 2599,
+  "title": "Make the Prefix Sum Non-negative",
+  "slug": "make-the-prefix-sum-non-negative",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums. You can apply the following operation any number of times:\n\n*   Pick any element from nums and put it at the end of nums.\n\nThe prefix sum array of nums is an array prefix of the same length as nums such that prefix[i] is the sum of all the integers nums[j] where j is in the inclusive range [0, i].\n\nReturn _the minimum number of operations such that the prefix sum array does not contain negative integers_. The test cases are generated such that it is always possible to make the prefix sum array non-negative.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_operations(nums):\n    min_prefix = 0\n    prefix = 0\n    for num in nums:\n        prefix += num\n        min_prefix = min(min_prefix, prefix)\n    return -min_prefix if min_prefix < 0 else 0\n```\n    \n    We initialize two variables `min_prefix` and `prefix` both set to 0. We iterate over the elements in the `nums` array, adding each element to the `prefix`. At each iteration, we compare and store the minimum value between `min_prefix` and `prefix`.\n\nAfter the loop, we check if `min_prefix` is less than 0. If it is, return the negation of `min_prefix`. Otherwise, return 0.\n\nThe logic behind this algorithm is to find the minimum prefix sum that appears in the array. If this minimum prefix sum is negative, we need to perform operations to \"shift\" the array values so that the minimum prefix sum becomes non-negative. The minimum number of operations required to do this is equal to the absolute value of the minimum prefix sum found. If the minimum prefix sum is non-negative, there is no need to perform any operations.\n    ",
+    "javascript": "\n    ```javascript\nfunction minOperations(nums) {\n    let minPrefix = 0;\n    let prefix = 0;\n    for (let num of nums) {\n        prefix += num;\n        minPrefix = Math.min(minPrefix, prefix);\n    }\n    return minPrefix < 0 ? -minPrefix : 0;\n}\n```\n    \n    We initialize two variables `min_prefix` and `prefix` both set to 0. We iterate over the elements in the `nums` array, adding each element to the `prefix`. At each iteration, we compare and store the minimum value between `min_prefix` and `prefix`.\n\nAfter the loop, we check if `min_prefix` is less than 0. If it is, return the negation of `min_prefix`. Otherwise, return 0.\n\nThe logic behind this algorithm is to find the minimum prefix sum that appears in the array. If this minimum prefix sum is negative, we need to perform operations to \"shift\" the array values so that the minimum prefix sum becomes non-negative. The minimum number of operations required to do this is equal to the absolute value of the minimum prefix sum found. If the minimum prefix sum is non-negative, there is no need to perform any operations.\n    ",
+    "java": "\n    ```java\npublic int minOperations(int[] nums) {\n    int minPrefix = 0;\n    int prefix = 0;\n    for (int num : nums) {\n        prefix += num;\n        minPrefix = Math.min(minPrefix, prefix);\n    }\n    return minPrefix < 0 ? -minPrefix : 0;\n}\n```\n    \n    We initialize two variables `min_prefix` and `prefix` both set to 0. We iterate over the elements in the `nums` array, adding each element to the `prefix`. At each iteration, we compare and store the minimum value between `min_prefix` and `prefix`.\n\nAfter the loop, we check if `min_prefix` is less than 0. If it is, return the negation of `min_prefix`. Otherwise, return 0.\n\nThe logic behind this algorithm is to find the minimum prefix sum that appears in the array. If this minimum prefix sum is negative, we need to perform operations to \"shift\" the array values so that the minimum prefix sum becomes non-negative. The minimum number of operations required to do this is equal to the absolute value of the minimum prefix sum found. If the minimum prefix sum is non-negative, there is no need to perform any operations.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

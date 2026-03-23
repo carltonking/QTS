@@ -1,0 +1,24 @@
+{
+  "id": 1002,
+  "title": "Find Common Characters",
+  "slug": "find-common-characters",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a string array words, return _an array of all characters that show up in all strings within the_ words _(including duplicates)_. You may return the answer in any order.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    \r\n```javascript\r\nfunction maxWidthRamp(nums) {\r\n    const indices = [...Array(nums.length).keys()].sort((i, j) => {\r\n        return nums[i] === nums[j] ? i - j : nums[i] - nums[j];\r\n    });\r\n    \r\n    let maxWidth = 0;\r\n    let minIndex = Infinity;\r\n    for (const index of indices) {\r\n        maxWidth = Math.max(maxWidth, index - minIndex);\r\n        minIndex = Math.min(minIndex, index);\r\n    }\r\n    \r\n    return maxWidth;\r\n}\r\n```\r\n\r\n    \n    \r\n1. First, create an array of indices of the input array.\r\n2. Sort the indices based on its corresponding value in the input array. In case of equal values, sort based on the index itself.\r\n3. Initialize maxWidth (maximum width of ramp) with 0 and minIndex (smallest index encountered so far) with maximum integer value.\r\n4. Iterate through the sorted indices array. Each iteration, calculate the width between the current index and minIndex, and update maxWidth if the calculated width is greater than the current max width. Update minIndex with the smallest value between the current index and minIndex.\r\n5. At the end of the iteration, maxWidth will hold the maximum width of a ramp in the nums array, and this value is returned.\n    ",
+    "javascript": "\n    \r\n```python\r\ndef maxWidthRamp(nums):\r\n    indices = sorted(range(len(nums)), key=lambda i: (nums[i], i))\r\n    \r\n    maxWidth = 0\r\n    minIndex = float('inf')\r\n    for index in indices:\r\n        maxWidth = max(maxWidth, index - minIndex)\r\n        minIndex = min(minIndex, index)\r\n    \r\n    return maxWidth\r\n```\r\n\r\n    \n    \r\n1. First, create an array of indices of the input array.\r\n2. Sort the indices based on its corresponding value in the input array. In case of equal values, sort based on the index itself.\r\n3. Initialize maxWidth (maximum width of ramp) with 0 and minIndex (smallest index encountered so far) with maximum integer value.\r\n4. Iterate through the sorted indices array. Each iteration, calculate the width between the current index and minIndex, and update maxWidth if the calculated width is greater than the current max width. Update minIndex with the smallest value between the current index and minIndex.\r\n5. At the end of the iteration, maxWidth will hold the maximum width of a ramp in the nums array, and this value is returned.\n    ",
+    "java": "\n    \r\n```java\r\nimport java.util.*;\r\n\r\npublic int maxWidthRamp(int[] nums) {\r\n    Integer[] indices = new Integer[nums.length];\r\n    for (int i = 0; i < nums.length; i++) {\r\n        indices[i] = i;\r\n    }\r\n    \r\n    Arrays.sort(indices, (i, j) -> nums[i] == nums[j] ? i - j : nums[i] - nums[j]);\r\n    \r\n    int maxWidth = 0;\r\n    int minIndex = Integer.MAX_VALUE;\r\n    for (int index : indices) {\r\n        maxWidth = Math.max(maxWidth, index - minIndex);\r\n        minIndex = Math.min(minIndex, index);\r\n    }\r\n    \r\n    return maxWidth;\r\n}\r\n```\r\n\r\n    \n    \r\n1. First, create an array of indices of the input array.\r\n2. Sort the indices based on its corresponding value in the input array. In case of equal values, sort based on the index itself.\r\n3. Initialize maxWidth (maximum width of ramp) with 0 and minIndex (smallest index encountered so far) with maximum integer value.\r\n4. Iterate through the sorted indices array. Each iteration, calculate the width between the current index and minIndex, and update maxWidth if the calculated width is greater than the current max width. Update minIndex with the smallest value between the current index and minIndex.\r\n5. At the end of the iteration, maxWidth will hold the maximum width of a ramp in the nums array, and this value is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

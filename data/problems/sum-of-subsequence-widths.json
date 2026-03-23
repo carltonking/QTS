@@ -1,0 +1,24 @@
+{
+  "id": 891,
+  "title": "Sum of Subsequence Widths",
+  "slug": "sum-of-subsequence-widths",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "The width of a sequence is the difference between the maximum and minimum elements in the sequence.\n\nGiven an array of integers nums, return _the sum of the widths of all the non-empty subsequences of_ nums. Since the answer may be very large, return it modulo 109 + 7.\n\nA subsequence is a sequence that can be derived from an array by deleting some or no elements without changing the order of the remaining elements. For example, [3,6,2,7] is a subsequence of the array [0,3,1,6,2,2,7].",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef matrixScore(grid):\n    m, n = len(grid), len(grid[0])\n    for i in range(m):\n        if grid[i][0] == 0:\n            for j in range(n):\n                grid[i][j] = 1 - grid[i][j]\n    for j in range(1, n):\n        count = sum(grid[i][j] for i in range(m))\n        if count <= m // 2:\n            for i in range(m):\n                grid[i][j] = 1 - grid[i][j]\n    return sum(sum(grid[i][j]*(1 << (n - 1 - j)) for j in range(n)) for i in range(m))\n```\n    \n    The algorithm begins by looping through each row and checking if the first element is 0. If it is, we toggle the row values to ensure the row starts with 1. This way, we maximize the values of the binary numbers represented by each row.\n\nNext, we loop through the columns (starting with the second), and for each column, we calculate the count of 1s. If the count is less than or equal to half the number of rows, we toggle the entire column.\n\nFinally, we loop through the modified grid again, summing up the binary numbers represented by each row to get the highest possible score.\n    ",
+    "javascript": "\n    ```javascript\nfunction matrixScore(grid) {\n    const m = grid.length, n = grid[0].length;\n    for (let i = 0; i < m; i++) {\n        if (grid[i][0] === 0) {\n            for (let j = 0; j < n; j++) {\n                grid[i][j] = 1 - grid[i][j];\n            }\n        }\n    }\n    for (let j = 1; j < n; j++) {\n        let count = 0;\n        for (let i = 0; i < m; i++) {\n            count += grid[i][j];\n        }\n        if (count <= m / 2) {\n            for (let i = 0; i < m; i++) {\n                grid[i][j] = 1 - grid[i][j];\n            }\n        }\n    }\n    let sum = 0;\n    for (let i = 0; i < m; i++) {\n        let num = 0;\n        for (let j = 0; j < n; j++) {\n            num = num * 2 + grid[i][j];\n        }\n        sum += num;\n    }\n    return sum;\n}\n```\n    \n    The algorithm begins by looping through each row and checking if the first element is 0. If it is, we toggle the row values to ensure the row starts with 1. This way, we maximize the values of the binary numbers represented by each row.\n\nNext, we loop through the columns (starting with the second), and for each column, we calculate the count of 1s. If the count is less than or equal to half the number of rows, we toggle the entire column.\n\nFinally, we loop through the modified grid again, summing up the binary numbers represented by each row to get the highest possible score.\n    ",
+    "java": "\n    ```java\npublic int matrixScore(int[][] grid) {\n    int m = grid.length, n = grid[0].length;\n    for (int i = 0; i < m; i++) {\n        if (grid[i][0] == 0) {\n            for (int j = 0; j < n; j++) {\n                grid[i][j] = 1 - grid[i][j];\n            }\n        }\n    }\n    for (int j = 1; j < n; j++) {\n        int count = 0;\n        for (int i = 0; i < m; i++) {\n            count += grid[i][j];\n        }\n        if (count <= m / 2) {\n            for (int i = 0; i < m; i++) {\n                grid[i][j] = 1 - grid[i][j];\n            }\n        }\n    }\n    int sum = 0;\n    for (int i = 0; i < m; i++) {\n        int num = 0;\n        for (int j = 0; j < n; j++) {\n            num = num * 2 + grid[i][j];\n        }\n        sum += num;\n    }\n    return sum;\n}\n```\n    \n    The algorithm begins by looping through each row and checking if the first element is 0. If it is, we toggle the row values to ensure the row starts with 1. This way, we maximize the values of the binary numbers represented by each row.\n\nNext, we loop through the columns (starting with the second), and for each column, we calculate the count of 1s. If the count is less than or equal to half the number of rows, we toggle the entire column.\n\nFinally, we loop through the modified grid again, summing up the binary numbers represented by each row to get the highest possible score.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1388,
+  "title": "Pizza With 3n Slices",
+  "slug": "pizza-with-3n-slices",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "There is a pizza with 3n slices of varying size, you and your friends will take slices of pizza as follows:\n\n*   You will pick any pizza slice.\n*   Your friend Alice will pick the next slice in the anti-clockwise direction of your pick.\n*   Your friend Bob will pick the next slice in the clockwise direction of your pick.\n*   Repeat until there are no more slices of pizzas.\n\nGiven an integer array slices that represent the sizes of the pizza slices in a clockwise direction, return _the maximum possible sum of slice sizes that you can pick_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxSumDivThree(nums):\n    dp = [0, 0, 0]\n    for num in nums:\n        temp = dp[:]\n        for s in temp:\n            dp[(s + num) % 3] = max(dp[(s + num) % 3], s + num)\n    return dp[0]\n```\n    \n    1. Initialize a dynamic programming array `dp` having 3 elements with all 0's. This will store the maximum sum for % 3 == 0, % 3 == 1, and % 3 == 2.\n2. Iterate through the input array `nums`.\n3. For each number, create a temporary copy of the current `dp` state, as we want to make changes to the original `dp` array based on the original state.\n4. For each number, iterate through the temporary copy of `dp` (temp). Calculate `(s + num) % 3` for the current number and the sum, and update the respective position in `dp` array with the maximum sum.\n5. The answer will be stored at `dp[0]`, which is the maximum sum that is divisible by three.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxSumDivThree(nums) {\n    let dp = [0, 0, 0];\n    for (let num of nums) {\n        let temp = [...dp];\n        for (let s of temp) {\n            dp[(s + num) % 3] = Math.max(dp[(s + num) % 3], s + num);\n        }\n    }\n    return dp[0];\n}\n```\n    \n    1. Initialize a dynamic programming array `dp` having 3 elements with all 0's. This will store the maximum sum for % 3 == 0, % 3 == 1, and % 3 == 2.\n2. Iterate through the input array `nums`.\n3. For each number, create a temporary copy of the current `dp` state, as we want to make changes to the original `dp` array based on the original state.\n4. For each number, iterate through the temporary copy of `dp` (temp). Calculate `(s + num) % 3` for the current number and the sum, and update the respective position in `dp` array with the maximum sum.\n5. The answer will be stored at `dp[0]`, which is the maximum sum that is divisible by three.\n    ",
+    "java": "\n    ```java\npublic int maxSumDivThree(int[] nums) {\n    int[] dp = new int[3];\n    for (int num : nums) {\n        int[] temp = Arrays.copyOf(dp, 3);\n        for (int s : temp) {\n            dp[(s + num) % 3] = Math.max(dp[(s + num) % 3], s + num);\n        }\n    }\n    return dp[0];\n}\n```\n    \n    1. Initialize a dynamic programming array `dp` having 3 elements with all 0's. This will store the maximum sum for % 3 == 0, % 3 == 1, and % 3 == 2.\n2. Iterate through the input array `nums`.\n3. For each number, create a temporary copy of the current `dp` state, as we want to make changes to the original `dp` array based on the original state.\n4. For each number, iterate through the temporary copy of `dp` (temp). Calculate `(s + num) % 3` for the current number and the sum, and update the respective position in `dp` array with the maximum sum.\n5. The answer will be stored at `dp[0]`, which is the maximum sum that is divisible by three.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

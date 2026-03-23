@@ -1,0 +1,24 @@
+{
+  "id": 2002,
+  "title": "Maximum Product of the Length of Two Palindromic Subsequences",
+  "slug": "maximum-product-of-the-length-of-two-palindromic-subsequences",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string s, find two disjoint palindromic subsequences of s such that the product of their lengths is maximized. The two subsequences are disjoint if they do not both pick a character at the same index.\n\nReturn _the maximum possible product of the lengths of the two palindromic subsequences_.\n\nA subsequence is a string that can be derived from another string by deleting some or no characters without changing the order of the remaining characters. A string is palindromic if it reads the same forward and backward.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef stoneGameVII(stones):\n    n = len(stones)\n    dp = [[0] * n for _ in range(n)]\n\n    for i in range(n - 1, -1, -1):\n        for j in range(i + 1, n):\n            dp[i][j] = max(stones[i] - dp[i + 1][j], stones[j] - dp[i][j - 1])\n\n    return dp[0][n - 1]\n```\n    \n    The solution uses dynamic programming. We consider the difference in score at any given range [i, j] in the stones array as the max of two possibilities:\n\n1. The value of the leftmost stone (stones[i]) minus the difference in the remaining range [i + 1, j].\n2. The value of the rightmost stone (stones[j]) minus the difference in the remaining range [i, j - 1].\n\nWe fill up the dp[i][j] matrix with the maximum difference for each range [i, j], starting from the bottom right and moving towards the top left. Once the entire dp matrix is filled, the value in dp[0][n - 1] represents the maximum score difference between Alice and Bob.\n\nAll implementations work with a time complexity of O(n^2) since we iterate through all pairs of (i, j) possible in the array.\n    ",
+    "javascript": "\n    ```javascript\nfunction stoneGameVII(stones) {\n    const n = stones.length;\n    const dp = Array.from({ length: n }, () => new Array(n).fill(0));\n\n    for (let i = n - 1; i >= 0; i--) {\n        for (let j = i + 1; j < n; j++) {\n            dp[i][j] = Math.max(stones[i] - dp[i + 1][j], stones[j] - dp[i][j - 1]);\n        }\n    }\n\n    return dp[0][n - 1];\n}\n```\n    \n    The solution uses dynamic programming. We consider the difference in score at any given range [i, j] in the stones array as the max of two possibilities:\n\n1. The value of the leftmost stone (stones[i]) minus the difference in the remaining range [i + 1, j].\n2. The value of the rightmost stone (stones[j]) minus the difference in the remaining range [i, j - 1].\n\nWe fill up the dp[i][j] matrix with the maximum difference for each range [i, j], starting from the bottom right and moving towards the top left. Once the entire dp matrix is filled, the value in dp[0][n - 1] represents the maximum score difference between Alice and Bob.\n\nAll implementations work with a time complexity of O(n^2) since we iterate through all pairs of (i, j) possible in the array.\n    ",
+    "java": "\n    ```java\npublic int stoneGameVII(int[] stones) {\n    int n = stones.length;\n    int[][] dp = new int[n][n];\n\n    for (int i = n - 1; i >= 0; i--)\n        for (int j = i + 1; j < n; j++)\n            dp[i][j] = Math.max(stones[i] - dp[i + 1][j], stones[j] - dp[i][j - 1]);\n\n    return dp[0][n - 1];\n}\n```\n    \n    The solution uses dynamic programming. We consider the difference in score at any given range [i, j] in the stones array as the max of two possibilities:\n\n1. The value of the leftmost stone (stones[i]) minus the difference in the remaining range [i + 1, j].\n2. The value of the rightmost stone (stones[j]) minus the difference in the remaining range [i, j - 1].\n\nWe fill up the dp[i][j] matrix with the maximum difference for each range [i, j], starting from the bottom right and moving towards the top left. Once the entire dp matrix is filled, the value in dp[0][n - 1] represents the maximum score difference between Alice and Bob.\n\nAll implementations work with a time complexity of O(n^2) since we iterate through all pairs of (i, j) possible in the array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1390,
+  "title": "Four Divisors",
+  "slug": "four-divisors",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums, return _the sum of divisors of the integers in that array that have exactly four divisors_. If there is no such integer in the array, return 0.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sum_of_four_divisors(nums):\n    total_sum = 0\n    for num in nums:\n        count = 0\n        div_sum = 0\n        i = 1\n        while i * i <= num:\n            if num % i == 0:\n                count += 1 if i * i == num else 2\n                div_sum += i + (num // i)\n                if count > 4:\n                    break\n            i += 1\n        if count == 4:\n            total_sum += div_sum\n    return total_sum\n```\n    \n    The algorithm iterates through each number in the `nums` array. For each number, it calculates the number of divisors and their sum. If a number has a square root, the count of divisors is incremented once, instead of twice, and the divisor sum is incremented by that number and its corresponding divisor, except when the loop finds a square root divisor. When the count of divisors exceeds 4, the loop breaks. If a number has exactly 4 divisors, the sum of its divisors is added to the final answer. The result is returned after processing all the numbers in the input array.\n    ",
+    "javascript": "\n    ```javascript\nfunction sumOfFourDivisors(nums) {\n    let sum = 0;\n    for (let num of nums) {\n        let count = 0;\n        let div_sum = 0;\n        for (let i = 1; i * i <= num; ++i) {\n            if (num % i === 0) {\n                count += (i * i === num) ? 1 : 2;\n                div_sum += i + (num / i);\n                if (count > 4) break;\n            }\n        }\n        if (count === 4) sum += div_sum;\n    }\n    return sum;\n}\n```\n    \n    The algorithm iterates through each number in the `nums` array. For each number, it calculates the number of divisors and their sum. If a number has a square root, the count of divisors is incremented once, instead of twice, and the divisor sum is incremented by that number and its corresponding divisor, except when the loop finds a square root divisor. When the count of divisors exceeds 4, the loop breaks. If a number has exactly 4 divisors, the sum of its divisors is added to the final answer. The result is returned after processing all the numbers in the input array.\n    ",
+    "java": "\n    ```java\npublic int sumOfFourDivisors(int[] nums) {\n    int sum = 0;\n    for (int num : nums) {\n        int count = 0;\n        int div_sum = 0;\n        for (int i = 1; i * i <= num; ++i) {\n            if (num % i == 0) {\n                count += (i * i == num) ? 1 : 2;\n                div_sum += i + (num / i);\n                if (count > 4) break;\n            }\n        }\n        if (count == 4) sum += div_sum;\n    }\n    return sum;\n}\n```\n    \n    The algorithm iterates through each number in the `nums` array. For each number, it calculates the number of divisors and their sum. If a number has a square root, the count of divisors is incremented once, instead of twice, and the divisor sum is incremented by that number and its corresponding divisor, except when the loop finds a square root divisor. When the count of divisors exceeds 4, the loop breaks. If a number has exactly 4 divisors, the sum of its divisors is added to the final answer. The result is returned after processing all the numbers in the input array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1026,
+  "title": "Maximum Difference Between Node and Ancestor",
+  "slug": "maximum-difference-between-node-and-ancestor",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the root of a binary tree, find the maximum value v for which there exist different nodes a and b where v = |a.val - b.val| and a is an ancestor of b.\n\nA node a is an ancestor of b if either: any child of a is equal to b or any child of a is an ancestor of b.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef maxAncestorDiff(root: TreeNode) -> int:\n    def helper(node, mn, mx):\n        if node is None:\n            return mx - mn\n\n        mx = max(mx, node.val)\n        mn = min(mn, node.val)\n\n        left_diff = helper(node.left, mn, mx)\n        right_diff = helper(node.right, mn, mx)\n\n        return max(left_diff, right_diff)\n\n    return helper(root, root.val, root.val)\n```\n    \n    The algorithm uses a DFS (Depth-First Search) approach to traverse the tree once. The helper function receives the current node and maintains the minimum and maximum values encountered along the path from the root to that node. If the node is a leaf node, the helper function returns the absolute difference between the maximum and minimum values encountered. If not, the maximum difference value between left and right subtrees is returned.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(val, left=null, right=null) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\nfunction maxAncestorDiff(root) {\n    function helper(node, mn, mx) {\n        if (node === null) {\n            return mx - mn;\n        }\n\n        mx = Math.max(mx, node.val);\n        mn = Math.min(mn, node.val);\n\n        const leftDiff = helper(node.left, mn, mx);\n        const rightDiff = helper(node.right, mn, mx);\n\n        return Math.max(leftDiff, rightDiff);\n    }\n\n    return helper(root, root.val, root.val);\n}\n```\n    \n    The algorithm uses a DFS (Depth-First Search) approach to traverse the tree once. The helper function receives the current node and maintains the minimum and maximum values encountered along the path from the root to that node. If the node is a leaf node, the helper function returns the absolute difference between the maximum and minimum values encountered. If not, the maximum difference value between left and right subtrees is returned.\n    ",
+    "java": "\n    ```java\npublic class TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n\n    TreeNode() {}\n\n    TreeNode(int val) { this.val = val; }\n\n    TreeNode(int val, TreeNode left, TreeNode right) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\npublic int maxAncestorDiff(TreeNode root) {\n    return helper(root, root.val, root.val);\n}\n\nprivate int helper(TreeNode node, int mn, int mx) {\n    if (node == null) {\n        return mx - mn;\n    }\n\n    mx = Math.max(mx, node.val);\n    mn = Math.min(mn, node.val);\n\n    int left_diff = helper(node.left, mn, mx);\n    int right_diff = helper(node.right, mn, mx);\n\n    return Math.max(left_diff, right_diff);\n}\n```\n    \n    The algorithm uses a DFS (Depth-First Search) approach to traverse the tree once. The helper function receives the current node and maintains the minimum and maximum values encountered along the path from the root to that node. If the node is a leaf node, the helper function returns the absolute difference between the maximum and minimum values encountered. If not, the maximum difference value between left and right subtrees is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

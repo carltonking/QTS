@@ -1,0 +1,24 @@
+{
+  "id": 1737,
+  "title": "Change Minimum Characters to Satisfy One of Three Conditions",
+  "slug": "change-minimum-characters-to-satisfy-one-of-three-conditions",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two strings a and b that consist of lowercase letters. In one operation, you can change any character in a or b to any lowercase letter.\n\nYour goal is to satisfy one of the following three conditions:\n\n*   Every letter in a is strictly less than every letter in b in the alphabet.\n*   Every letter in b is strictly less than every letter in a in the alphabet.\n*   Both a and b consist of only one distinct letter.\n\nReturn _the minimum number of operations needed to achieve your goal._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxDepth(s: str) -> int:\n    depth, max_depth = 0, 0\n    for ch in s:\n        if ch == '(':\n            depth += 1\n        elif ch == ')':\n            depth -= 1\n        max_depth = max(max_depth, depth)\n    return max_depth\n```\n    \n    We initialize two variables, `depth` and `maxDepth`, both with an initial value of zero. We then iterate through the given string `s`. For each character in the string:\n- If the character is an opening parenthesis '(', we increment the `depth` by 1.\n- If the character is a closing parenthesis ')', we decrement the `depth` by 1.\n- At each step, we update the `maxDepth` by taking the maximum of the current `maxDepth` and the current `depth`.\nAfter the iteration, we return the `maxDepth` as the nesting depth of the given VPS `s`.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxDepth(s) {\n    let depth = 0, maxDepth = 0;\n    for (const ch of s) {\n        if (ch === '(') depth++;\n        else if (ch === ')') depth--;\n        maxDepth = Math.max(maxDepth, depth);\n    }\n    return maxDepth;\n}\n```\n    \n    We initialize two variables, `depth` and `maxDepth`, both with an initial value of zero. We then iterate through the given string `s`. For each character in the string:\n- If the character is an opening parenthesis '(', we increment the `depth` by 1.\n- If the character is a closing parenthesis ')', we decrement the `depth` by 1.\n- At each step, we update the `maxDepth` by taking the maximum of the current `maxDepth` and the current `depth`.\nAfter the iteration, we return the `maxDepth` as the nesting depth of the given VPS `s`.\n    ",
+    "java": "\n    ```java\nint maxDepth(String s) {\n    int depth = 0, maxDepth = 0;\n    for (char ch : s.toCharArray()) {\n        if (ch == '(') depth++;\n        else if (ch == ')') depth--;\n        maxDepth = Math.max(maxDepth, depth);\n    }\n    return maxDepth;\n}\n```\n    \n    We initialize two variables, `depth` and `maxDepth`, both with an initial value of zero. We then iterate through the given string `s`. For each character in the string:\n- If the character is an opening parenthesis '(', we increment the `depth` by 1.\n- If the character is a closing parenthesis ')', we decrement the `depth` by 1.\n- At each step, we update the `maxDepth` by taking the maximum of the current `maxDepth` and the current `depth`.\nAfter the iteration, we return the `maxDepth` as the nesting depth of the given VPS `s`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 646,
+  "title": "Maximum Length of Pair Chain",
+  "slug": "maximum-length-of-pair-chain",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array of n pairs pairs where pairs[i] = [lefti, righti] and lefti < righti.\n\nA pair p2 = [c, d] follows a pair p1 = [a, b] if b < c. A chain of pairs can be formed in this fashion.\n\nReturn _the length longest chain which can be formed_.\n\nYou do not need to use up all the given intervals. You can select pairs in any order.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findLongestChain(pairs):\n    pairs.sort(key=lambda x: x[1])\n\n    max_chain_length = 0\n    last_right = float('-inf')\n    for pair in pairs:\n        if pair[0] > last_right:\n            last_right = pair[1]\n            max_chain_length += 1\n\n    return max_chain_length\n```\n\n    \n    The algorithm first sorts the array of pairs based on their second element. It then iterates through the pairs checking if the first element of the current pair is larger than the second element of the previous pair (i.e., if the current pair can follow the previous pair in the chain). If it can, it updates `last_right` to be the second element of the current pair and increments the max_chain_length. The time complexity of the algorithm is O(n*log(n)) due to sorting. In the worst case, it might create a chain of length n.\n    ",
+    "javascript": "\n    ```javascript\nfunction findLongestChain(pairs) {\n    pairs.sort((a, b) => a[1] - b[1]);\n\n    let max_chain_length = 0, last_right = Number.MIN_SAFE_INTEGER;\n    for (const pair of pairs) {\n        if (pair[0] > last_right) {\n            last_right = pair[1];\n            max_chain_length++;\n        }\n    }\n\n    return max_chain_length;\n}\n```\n\n    \n    The algorithm first sorts the array of pairs based on their second element. It then iterates through the pairs checking if the first element of the current pair is larger than the second element of the previous pair (i.e., if the current pair can follow the previous pair in the chain). If it can, it updates `last_right` to be the second element of the current pair and increments the max_chain_length. The time complexity of the algorithm is O(n*log(n)) due to sorting. In the worst case, it might create a chain of length n.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\nimport java.util.Comparator;\n\npublic int findLongestChain(int[][] pairs) {\n    Arrays.sort(pairs, Comparator.comparingInt(a -> a[1]));\n\n    int max_chain_length = 0, last_right = Integer.MIN_VALUE;\n    for (int[] pair : pairs) {\n        if (pair[0] > last_right) {\n            last_right = pair[1];\n            max_chain_length++;\n        }\n    }\n    \n    return max_chain_length;\n}\n```\n\n    \n    The algorithm first sorts the array of pairs based on their second element. It then iterates through the pairs checking if the first element of the current pair is larger than the second element of the previous pair (i.e., if the current pair can follow the previous pair in the chain). If it can, it updates `last_right` to be the second element of the current pair and increments the max_chain_length. The time complexity of the algorithm is O(n*log(n)) due to sorting. In the worst case, it might create a chain of length n.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

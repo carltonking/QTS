@@ -1,0 +1,24 @@
+{
+  "id": 1338,
+  "title": "Reduce Array Size to The Half",
+  "slug": "reduce-array-size-to-the-half",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array arr. You can choose a set of integers and remove all the occurrences of these integers in the array.\n\nReturn _the minimum size of the set so that at least half of the integers of the array are removed_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import Counter\nimport heapq\n\ndef minSetSize(arr):\n    freq_map = Counter(arr)\n    max_heap = [-cnt for cnt in freq_map.values()]\n    heapq.heapify(max_heap)\n    half = len(arr) // 2\n    cnt = 0\n    size = 0\n    while size < half:\n        size -= heapq.heappop(max_heap)\n        cnt += 1\n    return cnt\n```\n    \n    To solve this problem, we need to count the occurrences of each integer in the array. We can then calculate the minimum set size by greedily selecting the most frequent integers until at least half of the elements are removed.\n\n1. Construct a frequency map for each integer, i.e., count how many times each integer appears in the array.\n2. Create a max heap (priority queue) from the frequency map values.\n3. Initialize two counters: one for the total removed elements and one for the set size.\n4. While the total removed elements are less than half of the array's length, pop elements from the max heap and add their frequency to the total removed elements. Increment the set size each time.\n5. Return the minimum set size.\n\nThis algorithm has a time complexity of O(n + k * log(k)) and a space complexity of O(k), where n is the length of the given array and k is the number of distinct integers in the array.\n    ",
+    "javascript": "\n    ```javascript\nfunction minSetSize(arr) {\n    let freq_map = new Map();\n    for (let x of arr)\n        freq_map.set(x, (freq_map.get(x) || 0) + 1);\n    let max_heap = Array.from(freq_map.values());\n    max_heap.sort((a, b) => b - a);\n    let half = arr.length / 2;\n    let cnt = 0;\n    let size = 0;\n    for (let i = 0; size < half; i++) {\n        size += max_heap[i];\n        cnt++;\n    }\n    return cnt;\n}\n```\n    \n    To solve this problem, we need to count the occurrences of each integer in the array. We can then calculate the minimum set size by greedily selecting the most frequent integers until at least half of the elements are removed.\n\n1. Construct a frequency map for each integer, i.e., count how many times each integer appears in the array.\n2. Create a max heap (priority queue) from the frequency map values.\n3. Initialize two counters: one for the total removed elements and one for the set size.\n4. While the total removed elements are less than half of the array's length, pop elements from the max heap and add their frequency to the total removed elements. Increment the set size each time.\n5. Return the minimum set size.\n\nThis algorithm has a time complexity of O(n + k * log(k)) and a space complexity of O(k), where n is the length of the given array and k is the number of distinct integers in the array.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\nimport java.util.Map;\nimport java.util.PriorityQueue;\n\npublic int minSetSize(int[] arr) {\n    Map<Integer, Integer> freq_map = new HashMap<>();\n    PriorityQueue<Integer> max_heap = new PriorityQueue<>((a, b) -> b - a);\n    for (int x : arr)\n        freq_map.put(x, freq_map.getOrDefault(x, 0) + 1);\n    for (int cnt : freq_map.values())\n        max_heap.offer(cnt);\n    int half = arr.length / 2;\n    int cnt = 0;\n    int size = 0;\n    while (size < half) {\n        size += max_heap.poll();\n        cnt++;\n    }\n    return cnt;\n}\n```\n    \n    To solve this problem, we need to count the occurrences of each integer in the array. We can then calculate the minimum set size by greedily selecting the most frequent integers until at least half of the elements are removed.\n\n1. Construct a frequency map for each integer, i.e., count how many times each integer appears in the array.\n2. Create a max heap (priority queue) from the frequency map values.\n3. Initialize two counters: one for the total removed elements and one for the set size.\n4. While the total removed elements are less than half of the array's length, pop elements from the max heap and add their frequency to the total removed elements. Increment the set size each time.\n5. Return the minimum set size.\n\nThis algorithm has a time complexity of O(n + k * log(k)) and a space complexity of O(k), where n is the length of the given array and k is the number of distinct integers in the array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

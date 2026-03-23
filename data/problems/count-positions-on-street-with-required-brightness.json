@@ -1,0 +1,24 @@
+{
+  "id": 2237,
+  "title": "Count Positions on Street With Required Brightness",
+  "slug": "count-positions-on-street-with-required-brightness",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer n. A perfectly straight street is represented by a number line ranging from 0 to n - 1. You are given a 2D integer array lights representing the street lamp(s) on the street. Each lights[i] = [positioni, rangei] indicates that there is a street lamp at position positioni that lights up the area from [max(0, positioni - rangei), min(n - 1, positioni + rangei)] (inclusive).\n\nThe brightness of a position p is defined as the number of street lamps that light up the position p. You are given a 0-indexed integer array requirement of size n where requirement[i] is the minimum brightness of the ith position on the street.\n\nReturn _the number of positions_ i _on the street between_ 0 _and_ n - 1 _that have a brightness_ _of at least_ requirement[i]_._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef longest_palindrome(words):\n    from collections import defaultdict\n    dict = defaultdict(int)\n    result = 0\n    has_odd = False\n\n    for word in words:\n        dict[word[0]] += 1\n        dict[word[1]] += 1\n\n    for count in dict.values():\n        result += count // 2 * 2\n        has_odd |= count % 2\n\n    return result + has_odd\n```\n    \n    1. Create an empty dictionary `dict` to store counts of characters.\n2. Initialize `result` to 0 and set `has_odd` to false.\n3. Iterate through the input `words` and count the occurrences of characters by updating the `dict`.\n4. Iterate through the values of the `dict`. For each value, add the largest even number less than or equal to the value to `result`. If the current value is odd, set `has_odd` to true.\n5. If `has_odd` is true, increment `result` by 1.\n6. Return `result` as the length of the longest palindrome.\n    ",
+    "javascript": "\n    ```javascript\nfunction longestPalindrome(words) {\n    let dict = {};\n    let result = 0;\n    let hasOdd = false;\n\n    for (let word of words) {\n        dict[word[0]] = (dict[word[0]] || 0) + 1;\n        dict[word[1]] = (dict[word[1]] || 0) + 1;\n    }\n\n    for (let count of Object.values(dict)) {\n        result += Math.floor(count / 2) * 2;\n        hasOdd |= count % 2;\n    }\n\n    return result + (hasOdd ? 1 : 0);\n}\n```\n\n    \n    1. Create an empty dictionary `dict` to store counts of characters.\n2. Initialize `result` to 0 and set `has_odd` to false.\n3. Iterate through the input `words` and count the occurrences of characters by updating the `dict`.\n4. Iterate through the values of the `dict`. For each value, add the largest even number less than or equal to the value to `result`. If the current value is odd, set `has_odd` to true.\n5. If `has_odd` is true, increment `result` by 1.\n6. Return `result` as the length of the longest palindrome.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\nimport java.util.Map;\n\npublic int longestPalindrome(String[] words) {\n    HashMap<Character, Integer> dict = new HashMap<>();\n    int result = 0;\n    boolean hasOdd = false;\n\n    for (String word : words) {\n        dict.put(word.charAt(0), dict.getOrDefault(word.charAt(0), 0) + 1);\n        dict.put(word.charAt(1), dict.getOrDefault(word.charAt(1), 0) + 1);\n    }\n\n    for (Map.Entry<Character, Integer> entry : dict.entrySet()) {\n        result += entry.getValue() / 2 * 2;\n        hasOdd |= entry.getValue() % 2 == 1;\n    }\n\n    return result + (hasOdd ? 1 : 0);\n}\n```\n    \n    1. Create an empty dictionary `dict` to store counts of characters.\n2. Initialize `result` to 0 and set `has_odd` to false.\n3. Iterate through the input `words` and count the occurrences of characters by updating the `dict`.\n4. Iterate through the values of the `dict`. For each value, add the largest even number less than or equal to the value to `result`. If the current value is odd, set `has_odd` to true.\n5. If `has_odd` is true, increment `result` by 1.\n6. Return `result` as the length of the longest palindrome.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

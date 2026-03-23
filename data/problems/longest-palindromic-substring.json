@@ -1,0 +1,39 @@
+{
+  "id": 33,
+  "title": "Longest Palindromic Substring",
+  "slug": "longest-palindromic-substring",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Dynamic Programming"
+  ],
+  "description": "Given a string s, return the longest palindromic substring in s.",
+  "examples": [
+    {
+      "input": "s = \"babad\"",
+      "output": "\"bab\""
+    }
+  ],
+  "constraints": [
+    "1 <= s.length <= 1000"
+  ],
+  "starterCode": {
+    "python": "class Solution:\n    def longestPalindrome(self, s: str) -> str:\n        pass",
+    "javascript": "var longestPalindrome = function(s) {\n    \n};",
+    "java": "class Solution {\n    public String longestPalindrome(String s) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    string longestPalindrome(string s) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Longest Palindromic Substring\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "babad",
+      "expectedOutput": "bab"
+    },
+    {
+      "input": "cbbd",
+      "expectedOutput": "bb"
+    }
+  ]
+}

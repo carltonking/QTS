@@ -1,0 +1,24 @@
+{
+  "id": 2611,
+  "title": "Mice and Cheese",
+  "slug": "mice-and-cheese",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There are two mice and n different types of cheese, each type of cheese should be eaten by exactly one mouse.\n\nA point of the cheese with index i (0-indexed) is:\n\n*   reward1[i] if the first mouse eats it.\n*   reward2[i] if the second mouse eats it.\n\nYou are given a positive integer array reward1, a positive integer array reward2, and a non-negative integer k.\n\nReturn _the maximum points the mice can achieve if the first mouse eats exactly_ k _types of cheese._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxPoints(reward1, reward2, k):\n    gap = sorted([(reward2[i] - reward1[i], i) for i in range(len(reward1))], reverse=True)\n    firstMousePoints = sum(reward1[gap[i][1]] for i in range(k))\n    secondMousePoints = sum(reward2[gap[i][1]] for i in range(k, len(reward1)))\n    return firstMousePoints + secondMousePoints\n```\n    \n    1. For each type of cheese, calculate the difference between reward2 and reward1. Store it as `gap` as (difference, index) pairs in a list.\n2. Sort the `gap` list in descending order based on the difference values.\n3. Initialize variables `firstMousePoints` and `secondMousePoints` to store the points earned by the first and second mouse.\n4. Iterate over the first `k` elements in the sorted `gap` list and increment `firstMousePoints` by the corresponding reward1 value at the index taken from the pair.\n5. Iterate over the remaining `n-k` elements in the sorted `gap` list and increment `secondMousePoints` by the corresponding reward2 value at the index taken from the pair.\n6. Return the sum of `firstMousePoints` and `secondMousePoints` as the final answer.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxPoints(reward1, reward2, k) {\n    let gap = reward1.map((value, index) => ({ diff: reward2[index] - value, index })).sort((a, b) => b.diff - a.diff);\n    let firstMousePoints = 0;\n    let secondMousePoints = 0;\n    for (let i = 0; i < k; ++i) {\n        firstMousePoints += reward1[gap[i].index];\n    }\n    for (let i = k; i < reward1.length; ++i) {\n        secondMousePoints += reward2[gap[i].index];\n    }\n    return firstMousePoints + secondMousePoints;\n}\n```\n    \n    1. For each type of cheese, calculate the difference between reward2 and reward1. Store it as `gap` as (difference, index) pairs in a list.\n2. Sort the `gap` list in descending order based on the difference values.\n3. Initialize variables `firstMousePoints` and `secondMousePoints` to store the points earned by the first and second mouse.\n4. Iterate over the first `k` elements in the sorted `gap` list and increment `firstMousePoints` by the corresponding reward1 value at the index taken from the pair.\n5. Iterate over the remaining `n-k` elements in the sorted `gap` list and increment `secondMousePoints` by the corresponding reward2 value at the index taken from the pair.\n6. Return the sum of `firstMousePoints` and `secondMousePoints` as the final answer.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.Collections;\nimport java.util.Comparator;\nimport java.util.List;\n\npublic int maxPoints(int[] reward1, int[] reward2, int k) {\n    List<Pair<Integer, Integer>> gap = new ArrayList<>();\n    for (int i = 0; i < reward1.length; ++i) {\n        gap.add(new Pair<>(reward2[i] - reward1[i], i));\n    }\n    Collections.sort(gap, Comparator.reverseOrder());\n    int firstMousePoints = 0;\n    int secondMousePoints = 0;\n    for (int i = 0; i < k; ++i) {\n        firstMousePoints += reward1[gap.get(i).getValue()];\n    }\n    for (int i = k; i < reward1.length; ++i) {\n        secondMousePoints += reward2[gap.get(i).getValue()];\n    }\n    return firstMousePoints + secondMousePoints;\n}\n```\n    \n    1. For each type of cheese, calculate the difference between reward2 and reward1. Store it as `gap` as (difference, index) pairs in a list.\n2. Sort the `gap` list in descending order based on the difference values.\n3. Initialize variables `firstMousePoints` and `secondMousePoints` to store the points earned by the first and second mouse.\n4. Iterate over the first `k` elements in the sorted `gap` list and increment `firstMousePoints` by the corresponding reward1 value at the index taken from the pair.\n5. Iterate over the remaining `n-k` elements in the sorted `gap` list and increment `secondMousePoints` by the corresponding reward2 value at the index taken from the pair.\n6. Return the sum of `firstMousePoints` and `secondMousePoints` as the final answer.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

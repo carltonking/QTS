@@ -1,0 +1,24 @@
+{
+  "id": 2520,
+  "title": "Count the Digits That Divide a Number",
+  "slug": "count-the-digits-that-divide-a-number",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer num, return _the number of digits in num that divide_ num.\n\nAn integer val divides nums if nums % val == 0.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef digits_dividing_num(num):\n    count = 0\n    temp = num\n    while temp > 0:\n        digit = temp % 10\n        if num % digit == 0:\n            count += 1\n        temp //= 10\n    return count\n```\n\n    \n    The algorithm for counting the number of digits in `num` that divide `num` is as follows:\n\n1. Create a variable `count` to store the count of such digits, and set it to 0.\n2. Create a temporary variable `temp` equal to the given `num`.\n3. While `temp` is greater than 0, follow these steps:\n    a. Find the last digit of `temp` by calculating the remainder of the division `temp % 10`.\n    b. Check if `num % digit` is equal to 0; if so, increment the `count` by 1.\n    c. Remove the last digit of `temp` by integer dividing it by 10 (i.e., `temp /= 10` in C++ and Java, `temp //= 10` in Python, or `temp = Math.floor(temp / 10)` in JavaScript).\n4. Return the `count`.\n\nEach language implements these steps in a fairly similar way, with only minor syntax differences between them.\n    ",
+    "javascript": "\n    ```javascript\nfunction digitsDividingNum(num) {\n    let count = 0, temp = num;\n    while (temp > 0) {\n        let digit = temp % 10;\n        if (num % digit === 0) {\n            count++;\n        }\n        temp = Math.floor(temp / 10);\n    }\n    return count;\n}\n```\n\n    \n    The algorithm for counting the number of digits in `num` that divide `num` is as follows:\n\n1. Create a variable `count` to store the count of such digits, and set it to 0.\n2. Create a temporary variable `temp` equal to the given `num`.\n3. While `temp` is greater than 0, follow these steps:\n    a. Find the last digit of `temp` by calculating the remainder of the division `temp % 10`.\n    b. Check if `num % digit` is equal to 0; if so, increment the `count` by 1.\n    c. Remove the last digit of `temp` by integer dividing it by 10 (i.e., `temp /= 10` in C++ and Java, `temp //= 10` in Python, or `temp = Math.floor(temp / 10)` in JavaScript).\n4. Return the `count`.\n\nEach language implements these steps in a fairly similar way, with only minor syntax differences between them.\n    ",
+    "java": "\n    ```java\npublic int digitsDividingNum(int num) {\n    int count = 0, temp = num;\n    while (temp > 0) {\n        int digit = temp % 10;\n        if (num % digit == 0) {\n            count++;\n        }\n        temp /= 10;\n    }\n    return count;\n}\n```\n\n    \n    The algorithm for counting the number of digits in `num` that divide `num` is as follows:\n\n1. Create a variable `count` to store the count of such digits, and set it to 0.\n2. Create a temporary variable `temp` equal to the given `num`.\n3. While `temp` is greater than 0, follow these steps:\n    a. Find the last digit of `temp` by calculating the remainder of the division `temp % 10`.\n    b. Check if `num % digit` is equal to 0; if so, increment the `count` by 1.\n    c. Remove the last digit of `temp` by integer dividing it by 10 (i.e., `temp /= 10` in C++ and Java, `temp //= 10` in Python, or `temp = Math.floor(temp / 10)` in JavaScript).\n4. Return the `count`.\n\nEach language implements these steps in a fairly similar way, with only minor syntax differences between them.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

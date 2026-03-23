@@ -1,0 +1,24 @@
+{
+  "id": 1983,
+  "title": "Widest Pair of Indices With Equal Range Sum",
+  "slug": "widest-pair-of-indices-with-equal-range-sum",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two 0-indexed binary arrays nums1 and nums2. Find the widest pair of indices (i, j) such that i <= j and nums1[i] + nums1[i+1] + ... + nums1[j] == nums2[i] + nums2[i+1] + ... + nums2[j].\n\nThe widest pair of indices is the pair with the largest distance between i and j. The distance between a pair of indices is defined as j - i + 1.\n\nReturn _the distance of the widest pair of indices. If no pair of indices meets the conditions, return_ 0.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_alive_year(logs):\n    years = [0] * 2051\n    \n    for log in logs:\n        years[log[0]] += 1\n        years[log[1]] -= 1\n    \n    max_population = 0\n    max_year = 0\n    population = 0\n    for i in range(1950, 2051):\n        population += years[i]\n        if population > max_population:\n            max_population = population\n            max_year = i\n\n    return max_year\n```\n\n    \n    For every person in the `logs` array, we increment the birth year index in the `years` array and decrement the death year index in the same `years` array. This essentially keeps track of the net population change for each year.\n\nNext, we iterate through the `years` array from 1950 to 2050, calculating the cumulative population at each year. If the population of a given year is greater than the maximum population found so far, we update the max_population value and the max_year. Finally, we return the `max_year` which has the maximum population.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxAliveYear(logs) {\n    const years = new Array(2051).fill(0);\n    \n    logs.forEach(log => {\n        years[log[0]]++;\n        years[log[1]]--;\n    });\n    \n    let max_population = 0;\n    let max_year = 0;\n    let population = 0;\n    for(let i = 1950; i < 2051; i++) {\n        population += years[i];\n        if(population > max_population) {\n            max_population = population;\n            max_year = i;\n        }\n    }\n    \n    return max_year;\n}\n```\n\n    \n    For every person in the `logs` array, we increment the birth year index in the `years` array and decrement the death year index in the same `years` array. This essentially keeps track of the net population change for each year.\n\nNext, we iterate through the `years` array from 1950 to 2050, calculating the cumulative population at each year. If the population of a given year is greater than the maximum population found so far, we update the max_population value and the max_year. Finally, we return the `max_year` which has the maximum population.\n    ",
+    "java": "\n    ```java\npublic int maxAliveYear(int[][] logs) {\n    int[] years = new int[2051];\n    \n    for(int[] log : logs) {\n        years[log[0]]++;\n        years[log[1]]--;\n    }\n    \n    int max_population = 0;\n    int max_year = 0;\n    int population = 0;\n    for(int i = 1950; i < 2051; i++) {\n        population += years[i];\n        if(population > max_population) {\n            max_population = population;\n            max_year = i;\n        }\n    }\n    \n    return max_year;\n}\n```\n\n    \n    For every person in the `logs` array, we increment the birth year index in the `years` array and decrement the death year index in the same `years` array. This essentially keeps track of the net population change for each year.\n\nNext, we iterate through the `years` array from 1950 to 2050, calculating the cumulative population at each year. If the population of a given year is greater than the maximum population found so far, we update the max_population value and the max_year. Finally, we return the `max_year` which has the maximum population.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

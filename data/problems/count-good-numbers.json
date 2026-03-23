@@ -1,0 +1,24 @@
+{
+  "id": 1922,
+  "title": "Count Good Numbers",
+  "slug": "count-good-numbers",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A digit string is good if the digits (0-indexed) at even indices are even and the digits at odd indices are prime (2, 3, 5, or 7).\n\n*   For example, \"2582 \" is good because the digits (2 and 8) at even positions are even and the digits (5 and 2) at odd positions are prime. However, \"3245 \" is not good because 3 is at an even index but is not even.\n\nGiven an integer n, return _the total number of good digit strings of length_ n. Since the answer may be large, return it modulo 109 + 7.\n\nA digit string is a string consisting of digits 0 through 9 that may contain leading zeros.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef goodDigitStrings(n: int) -> int:\n    MOD = 1000000007\n    even_count, prime_count = 1, 1\n    for i in range(n):\n        if i % 2 == 0:\n            even_count = (even_count * 5) % MOD\n        else:\n            prime_count = (prime_count * 4) % MOD\n    return (even_count * prime_count) % MOD\n```\n    \n    The provided algorithm works by noticing that in a good digit string, the even indices need to have the values {0, 2, 4, 6, 8} (5 elements), and odd indices must have {2, 3, 5, 7} (4 elements). For each pair of adjacent indices (i.e., an even index i and an odd index i+1), there are 5 * 4 = 20 combinations, so the result can be calculated as the product of the number of even indices and the number of odd indices modulo the given value (10^9 + 7).\n    ",
+    "javascript": "\n    ```javascript\nfunction goodDigitStrings(n) {\n    const mod = 1000000007;\n    let evenCount = 1, primeCount = 1;\n    for (let i = 0; i < n; ++i) {\n        if (i % 2 === 0) evenCount = (evenCount * 5) % mod;\n        else primeCount = (primeCount * 4) % mod;\n    }\n    return (evenCount * primeCount) % mod;\n}\n```\n    \n    The provided algorithm works by noticing that in a good digit string, the even indices need to have the values {0, 2, 4, 6, 8} (5 elements), and odd indices must have {2, 3, 5, 7} (4 elements). For each pair of adjacent indices (i.e., an even index i and an odd index i+1), there are 5 * 4 = 20 combinations, so the result can be calculated as the product of the number of even indices and the number of odd indices modulo the given value (10^9 + 7).\n    ",
+    "java": "\n    ```java\npublic long goodDigitStrings(int n) {\n    final int mod = 1000000007;\n    long evenCount = 1, primeCount = 1;\n    for (int i = 0; i < n; ++i) {\n        if (i % 2 == 0) evenCount = (evenCount * 5) % mod;\n        else primeCount = (primeCount * 4) % mod;\n    }\n    return (evenCount * primeCount) % mod;\n}\n```\n    \n    The provided algorithm works by noticing that in a good digit string, the even indices need to have the values {0, 2, 4, 6, 8} (5 elements), and odd indices must have {2, 3, 5, 7} (4 elements). For each pair of adjacent indices (i.e., an even index i and an odd index i+1), there are 5 * 4 = 20 combinations, so the result can be calculated as the product of the number of even indices and the number of odd indices modulo the given value (10^9 + 7).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

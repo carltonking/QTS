@@ -1,0 +1,24 @@
+{
+  "id": 2482,
+  "title": "Difference Between Ones and Zeros in Row and Column",
+  "slug": "difference-between-ones-and-zeros-in-row-and-column",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed m x n binary matrix grid.\n\nA 0-indexed m x n difference matrix diff is created with the following procedure:\n\n*   Let the number of ones in the ith row be onesRowi.\n*   Let the number of ones in the jth column be onesColj.\n*   Let the number of zeros in the ith row be zerosRowi.\n*   Let the number of zeros in the jth column be zerosColj.\n*   diff[i][j] = onesRowi + onesColj - zerosRowi - zerosColj\n\nReturn _the difference matrix_ diff.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef create_difference_matrix(grid):\n    m, n = len(grid), len(grid[0])\n    ones_row, ones_col = [0] * m, [0] * n\n    diff = [[0] * n for _ in range(m)]\n\n    for i in range(m):\n        for j in range(n):\n            ones_row[i] += grid[i][j]\n            ones_col[j] += grid[i][j]\n\n    for i in range(m):\n        for j in range(n):\n            diff[i][j] = ones_row[i] + ones_col[j] - (n - ones_row[i]) - (m - ones_col[j])\n\n    return diff\n```\n    \n    The algorithm consists of three main steps:\n\n1. Iterate through each cell in the input `grid`, and count the number of ones in each row and column. Store these counts in respective arrays `onesRow` and `onesCol`.\n\n2. Calculate the difference matrix `diff` by iterating through each cell in the input `grid`, and applying the formula `diff[i][j] = onesRow[i] + onesCol[j] - (n - onesRow[i]) - (m - onesCol[j])`. \n\n3. Return the `diff` matrix.\n\nThe algorithm iterates through the input grid twice, and has O(m * n) time complexity. It requires additional storage for the `diff` matrix, `onesRow`, and `onesCol`, making the space complexity O(m + n + m * n).\n    ",
+    "javascript": "\n    ```javascript\nfunction createDifferenceMatrix(grid) {\n    const m = grid.length, n = grid[0].length;\n    const onesRow = Array(m).fill(0), onesCol = Array(n).fill(0);\n    const diff = Array.from({ length: m }, () => Array(n).fill(0));\n\n    for (let i = 0; i < m; ++i) {\n        for (let j = 0; j < n; ++j) {\n            onesRow[i] += grid[i][j];\n            onesCol[j] += grid[i][j];\n        }\n    }\n\n    for (let i = 0; i < m; ++i) {\n        for (let j = 0; j < n; ++j) {\n            diff[i][j] = onesRow[i] + onesCol[j] - (n - onesRow[i]) - (m - onesCol[j]);\n        }\n    }\n\n    return diff;\n}\n```\n    \n    The algorithm consists of three main steps:\n\n1. Iterate through each cell in the input `grid`, and count the number of ones in each row and column. Store these counts in respective arrays `onesRow` and `onesCol`.\n\n2. Calculate the difference matrix `diff` by iterating through each cell in the input `grid`, and applying the formula `diff[i][j] = onesRow[i] + onesCol[j] - (n - onesRow[i]) - (m - onesCol[j])`. \n\n3. Return the `diff` matrix.\n\nThe algorithm iterates through the input grid twice, and has O(m * n) time complexity. It requires additional storage for the `diff` matrix, `onesRow`, and `onesCol`, making the space complexity O(m + n + m * n).\n    ",
+    "java": "\n    ```java\npublic int[][] createDifferenceMatrix(int[][] grid) {\n    int m = grid.length, n = grid[0].length;\n    int[] onesRow = new int[m], onesCol = new int[n];\n    int[][] diff = new int[m][n];\n\n    for (int i = 0; i < m; ++i) {\n        for (int j = 0; j < n; ++j) {\n            onesRow[i] += grid[i][j];\n            onesCol[j] += grid[i][j];\n        }\n    }\n\n    for (int i = 0; i < m; ++i) {\n        for (int j = 0; j < n; ++j) {\n            diff[i][j] = onesRow[i] + onesCol[j] - (n - onesRow[i]) - (m - onesCol[j]);\n        }\n    }\n\n    return diff;\n}\n```\n    \n    The algorithm consists of three main steps:\n\n1. Iterate through each cell in the input `grid`, and count the number of ones in each row and column. Store these counts in respective arrays `onesRow` and `onesCol`.\n\n2. Calculate the difference matrix `diff` by iterating through each cell in the input `grid`, and applying the formula `diff[i][j] = onesRow[i] + onesCol[j] - (n - onesRow[i]) - (m - onesCol[j])`. \n\n3. Return the `diff` matrix.\n\nThe algorithm iterates through the input grid twice, and has O(m * n) time complexity. It requires additional storage for the `diff` matrix, `onesRow`, and `onesCol`, making the space complexity O(m + n + m * n).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

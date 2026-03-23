@@ -1,0 +1,24 @@
+{
+  "id": 2245,
+  "title": "Maximum Trailing Zeros in a Cornered Path",
+  "slug": "maximum-trailing-zeros-in-a-cornered-path",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 2D integer array grid of size m x n, where each cell contains a positive integer.\n\nA cornered path is defined as a set of adjacent cells with at most one turn. More specifically, the path should exclusively move either horizontally or vertically up to the turn (if there is one), without returning to a previously visited cell. After the turn, the path will then move exclusively in the alternate direction: move vertically if it moved horizontally, and vice versa, also without returning to a previously visited cell.\n\nThe product of a path is defined as the product of all the values in the path.\n\nReturn _the maximum number of trailing zeros in the product of a cornered path found in_ grid.\n\nNote:\n\n*   Horizontal movement means moving in either the left or right direction.\n*   Vertical movement means moving in either the up or down direction.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef can_destroy_all_asteroids(mass, asteroids):\n    asteroids.sort()\n    for asteroid in asteroids:\n        if mass >= asteroid:\n            mass += asteroid\n        else:\n            return False\n    return True\n```\n\n    \n    1. Sort the `asteroids` array in ascending order. This ensures that we arrange the collision of the planet with the smaller asteroid masses first, which maximizes the chances of destroying all asteroids.\n2. Iterate through the sorted `asteroids` array.\n3. For each asteroid mass, check if the planet's mass is greater than or equal to the asteroid's mass.\n   - If it is, add the asteroid mass to the planet's mass (the planet gains the mass of the asteroid after a successful collision).\n   - If not, then the planet is destroyed and we return `false` as not all asteroids can be destroyed.\n4. If the loop completes without returning `false`, this means we successfully destroyed all asteroids and we return `true`.\n    ",
+    "javascript": "\n    ```javascript\nfunction canDestroyAllAsteroids(mass, asteroids) {\n    asteroids.sort((a, b) => a - b);\n    for (const asteroid of asteroids) {\n        if (mass >= asteroid) {\n            mass += asteroid;\n        } else {\n            return false;\n        }\n    }\n    return true;\n}\n```\n\n    \n    1. Sort the `asteroids` array in ascending order. This ensures that we arrange the collision of the planet with the smaller asteroid masses first, which maximizes the chances of destroying all asteroids.\n2. Iterate through the sorted `asteroids` array.\n3. For each asteroid mass, check if the planet's mass is greater than or equal to the asteroid's mass.\n   - If it is, add the asteroid mass to the planet's mass (the planet gains the mass of the asteroid after a successful collision).\n   - If not, then the planet is destroyed and we return `false` as not all asteroids can be destroyed.\n4. If the loop completes without returning `false`, this means we successfully destroyed all asteroids and we return `true`.\n    ",
+    "java": "\n    ```java\npublic boolean canDestroyAllAsteroids(int mass, int[] asteroids) {\n    Arrays.sort(asteroids);\n    for (int asteroid : asteroids) {\n        if (mass >= asteroid) {\n            mass += asteroid;\n        } else {\n            return false;\n        }\n    }\n    return true;\n}\n```\n\n    \n    1. Sort the `asteroids` array in ascending order. This ensures that we arrange the collision of the planet with the smaller asteroid masses first, which maximizes the chances of destroying all asteroids.\n2. Iterate through the sorted `asteroids` array.\n3. For each asteroid mass, check if the planet's mass is greater than or equal to the asteroid's mass.\n   - If it is, add the asteroid mass to the planet's mass (the planet gains the mass of the asteroid after a successful collision).\n   - If not, then the planet is destroyed and we return `false` as not all asteroids can be destroyed.\n4. If the loop completes without returning `false`, this means we successfully destroyed all asteroids and we return `true`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

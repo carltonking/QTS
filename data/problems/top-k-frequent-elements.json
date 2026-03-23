@@ -1,0 +1,41 @@
+{
+  "id": 5,
+  "title": "Top K Frequent Elements",
+  "slug": "top-k-frequent-elements",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Bucket Sort",
+    "Heap"
+  ],
+  "description": "Given an integer array nums and an integer k, return the k most frequent elements.",
+  "examples": [
+    {
+      "input": "nums = [1,1,1,2,2,3], k = 2",
+      "output": "[1,2]"
+    }
+  ],
+  "constraints": [
+    "1 <= nums.length <= 10^5"
+  ],
+  "starterCode": {
+    "python": "from typing import List\nclass Solution:\n    def topKFrequent(self, nums: List[int], k: int) -> List[int]:\n        pass",
+    "javascript": "var topKFrequent = function(nums, k) {\n    \n};",
+    "java": "class Solution {\n    public int[] topKFrequent(int[] nums, int k) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    vector<int> topKFrequent(vector<int>& nums, int k) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Top K Frequent Elements\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "[1,1,1,2,2,3]\n2",
+      "expectedOutput": "[1,2]"
+    },
+    {
+      "input": "[1]\n1",
+      "expectedOutput": "[1]"
+    }
+  ]
+}

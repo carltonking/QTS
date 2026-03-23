@@ -1,0 +1,24 @@
+{
+  "id": 759,
+  "title": "Employee Free Time",
+  "slug": "employee-free-time",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "We are given a list schedule of employees, which represents the working time for each employee.\n\nEach employee has a list of non-overlapping Intervals, and these intervals are in sorted order.\n\nReturn the list of finite intervals representing common, positive-length free time for _all_ employees, also in sorted order.\n\n(Even though we are representing Intervals in the form [x, y], the objects inside are Intervals, not lists or arrays. For example, schedule[0][0].start = 1, schedule[0][0].end = 2, and schedule[0][0][0] is not defined). Also, we wouldn't include intervals like [5, 5] in our answer, as they have zero length.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_set_size(intervals):\n    intervals.sort()\n    n = len(intervals)\n    end = intervals[0][1]\n    count = 1\n\n    for i in range(1, n):\n        if end < intervals[i][0]:\n            end = intervals[i][1]\n            count += 1\n        else:\n            end = min(end, intervals[i][1])\n    return count * 2\n```\n    \n    1. Sort the intervals by their starting point.\n2. Initialize `end` to the end of the first interval and set `count` to 1.\n3. Loop through the intervals from the second interval onwards.\n   - If the current `end` is less than the starting point of the current interval, set `end` to the end of the current interval and increment `count`.\n   - Otherwise, set `end` to the minimum of the current `end` and the end of the current interval.\n4. Return `count * 2` to ensure that the intersection of S with A has a size of at least two.\n    ",
+    "javascript": "\n    ```javascript\nfunction minSetSize(intervals) {\n    intervals.sort((a, b) => a[0] - b[0]);\n    const n = intervals.length;\n    let end = intervals[0][1];\n    let count = 1;\n\n    for (let i = 1; i < n; i++) {\n        if (end < intervals[i][0]) {\n            end = intervals[i][1];\n            count++;\n        } else {\n            end = Math.min(end, intervals[i][1]);\n        }\n    }\n    return count * 2;\n}\n```\n    \n    1. Sort the intervals by their starting point.\n2. Initialize `end` to the end of the first interval and set `count` to 1.\n3. Loop through the intervals from the second interval onwards.\n   - If the current `end` is less than the starting point of the current interval, set `end` to the end of the current interval and increment `count`.\n   - Otherwise, set `end` to the minimum of the current `end` and the end of the current interval.\n4. Return `count * 2` to ensure that the intersection of S with A has a size of at least two.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\nimport java.util.Comparator;\n\npublic int minSetSize(int[][] intervals) {\n    Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));\n    int n = intervals.length;\n    int end = intervals[0][1];\n    int count = 1;\n\n    for (int i = 1; i < n; i++) {\n        if (end < intervals[i][0]) {\n            end = intervals[i][1];\n            count++;\n        } else {\n            end = Math.min(end, intervals[i][1]);\n        }\n    }\n    return count * 2;\n}\n```\n    \n    1. Sort the intervals by their starting point.\n2. Initialize `end` to the end of the first interval and set `count` to 1.\n3. Loop through the intervals from the second interval onwards.\n   - If the current `end` is less than the starting point of the current interval, set `end` to the end of the current interval and increment `count`.\n   - Otherwise, set `end` to the minimum of the current `end` and the end of the current interval.\n4. Return `count * 2` to ensure that the intersection of S with A has a size of at least two.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

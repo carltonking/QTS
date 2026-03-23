@@ -1,0 +1,24 @@
+{
+  "id": 403,
+  "title": "Frog Jump",
+  "slug": "frog-jump",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "A frog is crossing a river. The river is divided into some number of units, and at each unit, there may or may not exist a stone. The frog can jump on a stone, but it must not jump into the water.\n\nGiven a list of stones' positions (in units) in sorted ascending order, determine if the frog can cross the river by landing on the last stone. Initially, the frog is on the first stone and assumes the first jump must be 1 unit.\n\nIf the frog's last jump was k units, its next jump must be either k - 1, k, or k + 1 units. The frog can only jump in the forward direction.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef can_cross(stones):\n    dp = {stone: set() for stone in stones}\n    dp[0].add(0)\n\n    for stone in stones:\n        for k in dp[stone]:\n            for jump in (k - 1, k, k + 1):\n                if jump > 0 and stone + jump in dp:\n                    dp[stone + jump].add(jump)\n\n    return bool(dp[stones[-1]])\n```\n\n    \n    The algorithm initializes an empty hash map `dp` with a key for each stone position and the values set to be an empty set. We then add the initial jump (0) to the first stone in the `dp` hash map. The algorithm proceeds iteratively for each of the stones. For each stone, the algorithm checks all possible jump lengths (`k`) in the `dp` hash map for the stone. The next possible jumps are then calculated (k - 1, k, and k + 1) and added to their respective stone positions in the `dp` map. This process continues until all stones are traversed. At the end, if the last stone in `dp` map contains any elements, it means the frog can reach the last stone, and the function returns True/True or False. Otherwise, the function returns False/false.\n    ",
+    "javascript": "\n    ```javascript\nfunction canCross(stones) {\n    const dp = new Map();\n    stones.forEach(stone => dp.set(stone, new Set()));\n    dp.get(0).add(0);\n\n    for (const stone of stones) {\n        for (const k of dp.get(stone)) {\n            for (const jump of [k - 1, k, k + 1]) {\n                if (jump > 0 && dp.has(stone + jump))\n                    dp.get(stone + jump).add(jump);\n            }\n        }\n    }\n    return dp.get(stones[stones.length - 1]).size > 0;\n}\n```\n\n    \n    The algorithm initializes an empty hash map `dp` with a key for each stone position and the values set to be an empty set. We then add the initial jump (0) to the first stone in the `dp` hash map. The algorithm proceeds iteratively for each of the stones. For each stone, the algorithm checks all possible jump lengths (`k`) in the `dp` hash map for the stone. The next possible jumps are then calculated (k - 1, k, and k + 1) and added to their respective stone positions in the `dp` map. This process continues until all stones are traversed. At the end, if the last stone in `dp` map contains any elements, it means the frog can reach the last stone, and the function returns True/True or False. Otherwise, the function returns False/false.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic boolean canCross(int[] stones) {\n    Map<Integer, Set<Integer>> dp = new HashMap<>();\n    for (int stone : stones)\n        dp.put(stone, new HashSet<>());\n    dp.get(0).add(0);\n\n    for (int stone : stones) {\n        for (int k : dp.get(stone)) {\n            for (int jump : new int[]{k - 1, k, k + 1}) {\n                if (jump > 0 && dp.containsKey(stone + jump))\n                    dp.get(stone + jump).add(jump);\n            }\n        }\n    }\n    return !dp.get(stones[stones.length - 1]).isEmpty();\n}\n```\n\n    \n    The algorithm initializes an empty hash map `dp` with a key for each stone position and the values set to be an empty set. We then add the initial jump (0) to the first stone in the `dp` hash map. The algorithm proceeds iteratively for each of the stones. For each stone, the algorithm checks all possible jump lengths (`k`) in the `dp` hash map for the stone. The next possible jumps are then calculated (k - 1, k, and k + 1) and added to their respective stone positions in the `dp` map. This process continues until all stones are traversed. At the end, if the last stone in `dp` map contains any elements, it means the frog can reach the last stone, and the function returns True/True or False. Otherwise, the function returns False/false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

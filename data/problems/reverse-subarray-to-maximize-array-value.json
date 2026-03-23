@@ -1,0 +1,24 @@
+{
+  "id": 1330,
+  "title": "Reverse Subarray To Maximize Array Value",
+  "slug": "reverse-subarray-to-maximize-array-value",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an integer array nums. The _value_ of this array is defined as the sum of |nums[i] - nums[i + 1]| for all 0 <= i < nums.length - 1.\n\nYou are allowed to select any subarray of the given array and reverse it. You can perform this operation only once.\n\nFind maximum possible value of the final array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef longestSubsequence(arr, difference):\n    dp = {}\n    maxLength = 0\n    for num in arr:\n        dp[num] = dp.get(num - difference, 0) + 1\n        maxLength = max(maxLength, dp[num])\n    return maxLength\n```\n\n    \n    The algorithm creates a hashmap to store the maximum length of the arithmetic subsequence with difference \"difference\" ending at each element of the array. We iterate through each element in the array, calculate the length of the arithmetic subsequence ending at the current number, and update the hashmap accordingly. During the loop, we also keep track of the maximum length of the arithmetic subsequence seen so far. At the end of the loop, we return the maxLength.\n\nThe time complexity of this algorithm is O(n), where n is the length of the array \"arr\".\n    ",
+    "javascript": "\n    ```javascript\nfunction longestSubsequence(arr, difference) {\n    const dp = new Map();\n    let maxLength = 0;\n    for (let num of arr) {\n        dp.set(num, (dp.get(num - difference) || 0) + 1);\n        maxLength = Math.max(maxLength, dp.get(num));\n    }\n    return maxLength;\n}\n```\n\n    \n    The algorithm creates a hashmap to store the maximum length of the arithmetic subsequence with difference \"difference\" ending at each element of the array. We iterate through each element in the array, calculate the length of the arithmetic subsequence ending at the current number, and update the hashmap accordingly. During the loop, we also keep track of the maximum length of the arithmetic subsequence seen so far. At the end of the loop, we return the maxLength.\n\nThe time complexity of this algorithm is O(n), where n is the length of the array \"arr\".\n    ",
+    "java": "\n    ```java\npublic int longestSubsequence(int[] arr, int difference) {\n    HashMap<Integer, Integer> dp = new HashMap<>();\n    int maxLength = 0;\n    for (int num : arr) {\n        dp.put(num, dp.getOrDefault(num - difference, 0) + 1);\n        maxLength = Math.max(maxLength, dp.get(num));\n    }\n    return maxLength;\n}\n```\n\n    \n    The algorithm creates a hashmap to store the maximum length of the arithmetic subsequence with difference \"difference\" ending at each element of the array. We iterate through each element in the array, calculate the length of the arithmetic subsequence ending at the current number, and update the hashmap accordingly. During the loop, we also keep track of the maximum length of the arithmetic subsequence seen so far. At the end of the loop, we return the maxLength.\n\nThe time complexity of this algorithm is O(n), where n is the length of the array \"arr\".\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

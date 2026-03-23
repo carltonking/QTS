@@ -1,0 +1,24 @@
+{
+  "id": 213,
+  "title": "House Robber II",
+  "slug": "house-robber-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed. All houses at this place are arranged in a circle. That means the first house is the neighbor of the last one. Meanwhile, adjacent houses have a security system connected, and it will automatically contact the police if two adjacent houses were broken into on the same night.\n\nGiven an integer array nums representing the amount of money of each house, return _the maximum amount of money you can rob tonight without alerting the police_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef rob(nums):\n    if len(nums) == 1:\n        return nums[0]\n    prev, curr = 0, 0\n    for i in range(len(nums) - 1):\n        temp = max(curr, prev + nums[i])\n        prev, curr = curr, temp\n    res = curr\n    prev, curr = 0, 0\n    for i in range(1, len(nums)):\n        temp = max(curr, prev + nums[i])\n        prev, curr = curr, temp\n    return max(res, curr)\n```\n    \n    The main idea here is to divide the problem into two subproblems: rob houses from the first to the second last, and rob houses from the second to the last. First, initialize two variables prev and curr to store the maximum amount obtained till the current house. Then, loop through the houses from the first to the second last, and at each step, update the maximum amount till the current house by choosing between two options: rob the current house (prev + nums[i]) or skip it (curr). Repeat the process for houses from the second to the last. Finally, return the maximum amount among both subproblems.\n    ",
+    "javascript": "\n    ```javascript\nfunction rob(nums) {\n    if (nums.length === 1) return nums[0];\n    let prev = 0, curr = 0;\n    for (let i = 0; i < nums.length - 1; i++) {\n        let temp = Math.max(curr, prev + nums[i]);\n        prev = curr;\n        curr = temp;\n    }\n    let res = curr;\n    prev = 0;\n    curr = 0;\n    for (let i = 1; i < nums.length; i++) {\n        let temp = Math.max(curr, prev + nums[i]);\n        prev = curr;\n        curr = temp;\n    }\n    return Math.max(res, curr);\n}\n```\n    \n    The main idea here is to divide the problem into two subproblems: rob houses from the first to the second last, and rob houses from the second to the last. First, initialize two variables prev and curr to store the maximum amount obtained till the current house. Then, loop through the houses from the first to the second last, and at each step, update the maximum amount till the current house by choosing between two options: rob the current house (prev + nums[i]) or skip it (curr). Repeat the process for houses from the second to the last. Finally, return the maximum amount among both subproblems.\n    ",
+    "java": "\n    ```java\npublic int rob(int[] nums) {\n    if (nums.length == 1) return nums[0];\n    int prev = 0, curr = 0;\n    for (int i = 0; i < nums.length - 1; i++) {\n        int temp = Math.max(curr, prev + nums[i]);\n        prev = curr;\n        curr = temp;\n    }\n    int res = curr;\n    prev = 0;\n    curr = 0;\n    for (int i = 1; i < nums.length; i++) {\n        int temp = Math.max(curr, prev + nums[i]);\n        prev = curr;\n        curr = temp;\n    }\n    return Math.max(res, curr);\n}\n```\n    \n    The main idea here is to divide the problem into two subproblems: rob houses from the first to the second last, and rob houses from the second to the last. First, initialize two variables prev and curr to store the maximum amount obtained till the current house. Then, loop through the houses from the first to the second last, and at each step, update the maximum amount till the current house by choosing between two options: rob the current house (prev + nums[i]) or skip it (curr). Repeat the process for houses from the second to the last. Finally, return the maximum amount among both subproblems.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 594,
+  "title": "Longest Harmonious Subsequence",
+  "slug": "longest-harmonious-subsequence",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "We define a harmonious array as an array where the difference between its maximum value and its minimum value is exactly 1.\n\nGiven an integer array nums, return _the length of its longest harmonious subsequence among all its possible subsequences_.\n\nA subsequence of array is a sequence that can be derived from the array by deleting some or no elements without changing the order of the remaining elements.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findLHS(nums):\n    count = {}\n    for num in nums:\n        count[num] = count.get(num, 0) + 1\n\n    longest_sequence = 0\n    for key in count:\n        if key + 1 in count:\n            longest_sequence = max(longest_sequence, count[key] + count[key + 1])\n\n    return longest_sequence\n```\n    \n    1. Create a hashmap to count the occurrences of each number in the input array.\n2. Iterate through the uniquq elements in the hashmap.\n3. For each element, check if there exists an element that is 1 greater, and if so, record the sum of the element count and the count of the element 1 greater.\n4. Keep track of the maximum harmony sequence found during this iteration.\n5. Return the length of the longest harmonious sequence found.\n    ",
+    "javascript": "\n    ```javascript\nfunction findLHS(nums) {\n    const count = new Map();\n    for (const num of nums) {\n        count.set(num, (count.get(num) || 0) + 1);\n    }\n\n    let longest_sequence = 0;\n    for (const key of count.keys()) {\n        if (count.has(key + 1)) {\n            longest_sequence = Math.max(longest_sequence, count.get(key) + count.get(key + 1));\n        }\n    }\n\n    return longest_sequence;\n}\n```\n    \n    1. Create a hashmap to count the occurrences of each number in the input array.\n2. Iterate through the uniquq elements in the hashmap.\n3. For each element, check if there exists an element that is 1 greater, and if so, record the sum of the element count and the count of the element 1 greater.\n4. Keep track of the maximum harmony sequence found during this iteration.\n5. Return the length of the longest harmonious sequence found.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\n\npublic int findLHS(int[] nums) {\n    HashMap<Integer, Integer> count = new HashMap<>();\n    for (int num : nums)\n        count.put(num, count.getOrDefault(num, 0) + 1);\n\n    int longest_sequence = 0;\n    for (int key : count.keySet()) {\n        if (count.containsKey(key + 1))\n            longest_sequence = Math.max(longest_sequence, count.get(key) + count.get(key + 1));\n    }\n    \n    return longest_sequence;\n}\n```\n    \n    1. Create a hashmap to count the occurrences of each number in the input array.\n2. Iterate through the uniquq elements in the hashmap.\n3. For each element, check if there exists an element that is 1 greater, and if so, record the sum of the element count and the count of the element 1 greater.\n4. Keep track of the maximum harmony sequence found during this iteration.\n5. Return the length of the longest harmonious sequence found.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

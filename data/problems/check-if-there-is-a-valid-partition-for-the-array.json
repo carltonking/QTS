@@ -1,0 +1,24 @@
+{
+  "id": 2369,
+  "title": "Check if There is a Valid Partition For The Array",
+  "slug": "check-if-there-is-a-valid-partition-for-the-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums. You have to partition the array into one or more contiguous subarrays.\n\nWe call a partition of the array valid if each of the obtained subarrays satisfies one of the following conditions:\n\n1.  The subarray consists of exactly 2 equal elements. For example, the subarray [2,2] is good.\n2.  The subarray consists of exactly 3 equal elements. For example, the subarray [4,4,4] is good.\n3.  The subarray consists of exactly 3 consecutive increasing elements, that is, the difference between adjacent elements is 1. For example, the subarray [3,4,5] is good, but the subarray [1,3,5] is not.\n\nReturn true _if the array has at least one valid partition_. Otherwise, return false.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef valid_partition(nums):\n    count = {}\n    for num in nums:\n        count[num] = count.get(num, 0) + 1\n    for num, cnt in count.items():\n        if cnt == 2 or cnt == 3 or (num - 1 in count and num + 1 in count):\n            return True\n    return False\n```\n    \n    The function first counts the frequency of each element in the given array. After that, it iterates through the counted elements map, checking whether there's a valid partition by checking the conditions: the count of the element must be exactly 2 or 3, or the element should be in the middle of a consecutive sequence (i.e., the current element minus 1 and the current element plus 1 should be present in the counted elements map as well). If at least one valid partition is found, the function returns true, otherwise false.\n    ",
+    "javascript": "\n    ```javascript\nfunction valid_partition(nums) {\n    let count = new Map();\n    for (let num of nums) {\n        if (count.has(num)) {\n            count.set(num, count.get(num) + 1);\n        } else {\n            count.set(num, 1);\n        }\n    }\n    for (let [num, cnt] of count.entries()) {\n        if (cnt === 2 || cnt === 3 || (count.has(num - 1) && count.has(num + 1))) {\n            return true;\n        }\n    }\n    return false;\n}\n```\n    \n    The function first counts the frequency of each element in the given array. After that, it iterates through the counted elements map, checking whether there's a valid partition by checking the conditions: the count of the element must be exactly 2 or 3, or the element should be in the middle of a consecutive sequence (i.e., the current element minus 1 and the current element plus 1 should be present in the counted elements map as well). If at least one valid partition is found, the function returns true, otherwise false.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\n\npublic static boolean valid_partition(int[] nums) {\n    HashMap<Integer, Integer> count = new HashMap<>();\n    for (int num : nums) {\n        count.put(num, count.getOrDefault(num, 0) + 1);\n    }\n    for (int num : count.keySet()) {\n        int cnt = count.get(num);\n        if (cnt == 2 || cnt == 3 || (count.containsKey(num - 1) && count.containsKey(num + 1))) {\n            return true;\n        }\n    }\n    return false;\n}\n```\n    \n    The function first counts the frequency of each element in the given array. After that, it iterates through the counted elements map, checking whether there's a valid partition by checking the conditions: the count of the element must be exactly 2 or 3, or the element should be in the middle of a consecutive sequence (i.e., the current element minus 1 and the current element plus 1 should be present in the counted elements map as well). If at least one valid partition is found, the function returns true, otherwise false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2475,
+  "title": "Number of Unequal Triplets in Array",
+  "slug": "number-of-unequal-triplets-in-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a 0-indexed array of positive integers nums. Find the number of triplets (i, j, k) that meet the following conditions:\n\n*   0 <= i < j < k < nums.length\n*   nums[i], nums[j], and nums[k] are pairwise distinct.\n    *   In other words, nums[i] != nums[j], nums[i] != nums[k], and nums[j] != nums[k].\n\nReturn _the number of triplets that meet the conditions._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef countTriplets(nums):\n    count = 0\n    n = len(nums)\n    \n    for i in range(n):\n        for j in range(i + 1, n):\n            for k in range(j + 1, n):\n                if nums[i] != nums[j] and nums[i] != nums[k] and nums[j] != nums[k]:\n                    count += 1\n    \n    return count\n```\n    \n    The given problem can be solved by iterating over each possible triplet (i, j, k), with the range 0 <= i < j < k < nums.length, and checking if the elements at indices i, j, and k are distinct. The algorithm runs in O(n^3) time due to the nested loops, where n is the size of the input array. If the elements at i, j, and k are distinct, we increment the count by 1. Finally, we return the total count of the triplets after iterating through all possible combinations.\n\nThe algorithm remains the same across all languages; the only difference is the syntax in each language.\n    ",
+    "javascript": "\n    ```javascript\nfunction countTriplets(nums) {\n    let count = 0;\n    let n = nums.length;\n\n    for(let i = 0; i < n; i++) {\n        for(let j = i + 1; j < n; j++) {\n            for(let k = j + 1; k < n; k++) {\n                if(nums[i] !== nums[j] && nums[i] !== nums[k] && nums[j] !== nums[k]) {\n                    count++;\n                }\n            }\n        }\n    }\n\n    return count;\n}\n```\n    \n    The given problem can be solved by iterating over each possible triplet (i, j, k), with the range 0 <= i < j < k < nums.length, and checking if the elements at indices i, j, and k are distinct. The algorithm runs in O(n^3) time due to the nested loops, where n is the size of the input array. If the elements at i, j, and k are distinct, we increment the count by 1. Finally, we return the total count of the triplets after iterating through all possible combinations.\n\nThe algorithm remains the same across all languages; the only difference is the syntax in each language.\n    ",
+    "java": "\n    ```java\npublic int countTriplets(int[] nums) {\n    int count = 0;\n    int n = nums.length;\n\n    for(int i = 0; i < n; i++) {\n        for(int j = i + 1; j < n; j++) {\n            for(int k = j + 1; k < n; k++) {\n                if(nums[i] != nums[j] && nums[i] != nums[k] && nums[j] != nums[k]) {\n                    count++;\n                }\n            }\n        }\n    }\n\n    return count;\n}\n```\n    \n    The given problem can be solved by iterating over each possible triplet (i, j, k), with the range 0 <= i < j < k < nums.length, and checking if the elements at indices i, j, and k are distinct. The algorithm runs in O(n^3) time due to the nested loops, where n is the size of the input array. If the elements at i, j, and k are distinct, we increment the count by 1. Finally, we return the total count of the triplets after iterating through all possible combinations.\n\nThe algorithm remains the same across all languages; the only difference is the syntax in each language.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

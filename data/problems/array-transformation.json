@@ -1,0 +1,24 @@
+{
+  "id": 1243,
+  "title": "Array Transformation",
+  "slug": "array-transformation",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an initial array arr, every day you produce a new array using the array of the previous day.\n\nOn the i\\-th day, you do the following operations on the array of day i-1 to produce the array of day i:\n\n1.  If an element is smaller than both its left neighbor and its right neighbor, then this element is incremented.\n2.  If an element is bigger than both its left neighbor and its right neighbor, then this element is decremented.\n3.  The first and last elements never change.\n\nAfter some days, the array does not change. Return that final array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sumEvenGrandparent(root, parent=None, grandparent=None):\n    if not root:\n        return 0\n    sum = 0\n    if grandparent and grandparent.val % 2 == 0:\n        sum += root.val\n    sum += sumEvenGrandparent(root.left, root, parent) + sumEvenGrandparent(root.right, root, parent)\n    return sum\n```\n    \n    We perform a depth-first search traversal of the binary tree. \nFor each node, we maintain the current node's parent and grandparent in the traversal.\nWhile traversing the tree, we check if the current node's grandparent has an even value.\nIf yes, we add the current node's value to the sum.\nThe algorithm is the same for all languages, with only syntax differences. \n    ",
+    "javascript": "\n    ```javascript\nfunction sumEvenGrandparent(root, parent = null, grandparent = null) {\n    if (!root) return 0;\n    let sum = 0;\n    if (grandparent && grandparent.val % 2 === 0) {\n        sum += root.val;\n    }\n    sum += sumEvenGrandparent(root.left, root, parent) + sumEvenGrandparent(root.right, root, parent);\n    return sum;\n}\n```\n\n    \n    We perform a depth-first search traversal of the binary tree. \nFor each node, we maintain the current node's parent and grandparent in the traversal.\nWhile traversing the tree, we check if the current node's grandparent has an even value.\nIf yes, we add the current node's value to the sum.\nThe algorithm is the same for all languages, with only syntax differences. \n    ",
+    "java": "\n    ```java\npublic int sumEvenGrandparent(TreeNode root) {\n    return sumEvenGrandparent(root, null, null);\n}\n\nprivate int sumEvenGrandparent(TreeNode root, TreeNode parent, TreeNode grandparent) {\n    if (root == null) return 0;\n    int sum = 0;\n    if (grandparent != null && grandparent.val % 2 == 0) {\n        sum += root.val;\n    }\n    sum += sumEvenGrandparent(root.left, root, parent) + sumEvenGrandparent(root.right, root, parent);\n    return sum;\n}\n```\n    \n    We perform a depth-first search traversal of the binary tree. \nFor each node, we maintain the current node's parent and grandparent in the traversal.\nWhile traversing the tree, we check if the current node's grandparent has an even value.\nIf yes, we add the current node's value to the sum.\nThe algorithm is the same for all languages, with only syntax differences. \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

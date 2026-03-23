@@ -1,0 +1,24 @@
+{
+  "id": 1041,
+  "title": "Robot Bounded In Circle",
+  "slug": "robot-bounded-in-circle",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "On an infinite plane, a robot initially stands at (0, 0) and faces north. Note that:\n\n*   The north direction is the positive direction of the y-axis.\n*   The south direction is the negative direction of the y-axis.\n*   The east direction is the positive direction of the x-axis.\n*   The west direction is the negative direction of the x-axis.\n\nThe robot can receive one of three instructions:\n\n*   \"G \": go straight 1 unit.\n*   \"L \": turn 90 degrees to the left (i.e., anti-clockwise direction).\n*   \"R \": turn 90 degrees to the right (i.e., clockwise direction).\n\nThe robot performs the instructions given in order, and repeats them forever.\n\nReturn true if and only if there exists a circle in the plane such that the robot never leaves the circle.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef numRookCaptures(board):\n    x, y, captures = 0, 0, 0\n\n    for i in range(8):\n        for j in range(8):\n            if board[i][j] == 'R':\n                x, y = i, j\n                break\n        if board[x][y] == 'R':\n            break\n\n    dirs = [(1, 0), (-1, 0), (0, 1), (0, -1)]\n    for dx, dy in dirs:\n        nx, ny = x + dx, y + dy\n        while 0 <= nx < 8 and 0 <= ny < 8:\n            if board[nx][ny] == 'p':\n                captures += 1\n                break\n            elif board[nx][ny] == 'B':\n                break\n            nx += dx\n            ny += dy\n\n    return captures\n```\n\n    \n    The algorithm first iterates through the chessboard to find the position of the white rook. After finding the rook, the algorithm iterates through the four cardinal directions (north, east, south, and west) and checks if the rook can capture a black pawn in that direction. If the rook can capture the pawn, the variable `captures` is incremented. If the rook encounters a white bishop in a direction, it stops searching further in that direction. Finally, the function returns the number of captures.\n    ",
+    "javascript": "\n    ```javascript\nfunction numRookCaptures(board) {\n    let x = 0, y = 0, captures = 0;\n\n    outer: for (x = 0; x < 8; x++) {\n        for (y = 0; y < 8; y++) {\n            if (board[x][y] === 'R') {\n                break outer;\n            }\n        }\n    }\n\n    let dirs = [[1, 0], [-1, 0], [0, 1], [0, -1]];\n    for (let dir of dirs) {\n        let nx = x + dir[0];\n        let ny = y + dir[1];\n        while (nx >= 0 && nx < 8 && ny >= 0 && ny < 8) {\n            if (board[nx][ny] === 'p') {\n                captures++;\n                break;\n            } else if (board[nx][ny] === 'B') {\n                break;\n            }\n            nx += dir[0];\n            ny += dir[1];\n        }\n    }\n    \n    return captures;\n}\n```\n\n    \n    The algorithm first iterates through the chessboard to find the position of the white rook. After finding the rook, the algorithm iterates through the four cardinal directions (north, east, south, and west) and checks if the rook can capture a black pawn in that direction. If the rook can capture the pawn, the variable `captures` is incremented. If the rook encounters a white bishop in a direction, it stops searching further in that direction. Finally, the function returns the number of captures.\n    ",
+    "java": "\n    ```java\npublic int numRookCaptures(char[][] board) {\n    int x = 0, y = 0, captures = 0;\n    outer: for (x = 0; x < 8; x++) {\n        for (y = 0; y < 8; y++) {\n            if (board[x][y] == 'R') {\n                break outer;\n            }\n        }\n    }\n\n    int[][] dirs = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};\n    for (int[] dir : dirs) {\n        int nx = x + dir[0];\n        int ny = y + dir[1];\n        while (nx >= 0 && nx < 8 && ny >= 0 && ny < 8) {\n            if (board[nx][ny] == 'p') {\n                captures++;\n                break;\n            } else if (board[nx][ny] == 'B') {\n                break;\n            }\n            nx += dir[0];\n            ny += dir[1];\n        }\n    }\n    \n    return captures;\n}\n```\n\n    \n    The algorithm first iterates through the chessboard to find the position of the white rook. After finding the rook, the algorithm iterates through the four cardinal directions (north, east, south, and west) and checks if the rook can capture a black pawn in that direction. If the rook can capture the pawn, the variable `captures` is incremented. If the rook encounters a white bishop in a direction, it stops searching further in that direction. Finally, the function returns the number of captures.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

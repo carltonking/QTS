@@ -1,0 +1,24 @@
+{
+  "id": 2187,
+  "title": "Minimum Time to Complete Trips",
+  "slug": "minimum-time-to-complete-trips",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array time where time[i] denotes the time taken by the ith bus to complete one trip.\n\nEach bus can make multiple trips successively; that is, the next trip can start immediately after completing the current trip. Also, each bus operates independently; that is, the trips of one bus do not influence the trips of any other bus.\n\nYou are also given an integer totalTrips, which denotes the number of trips all buses should make in total. Return _the minimum time required for all buses to complete at least_ totalTrips _trips_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sum_of_vowels_in_the_substrings(word: str) -> int:\n    total_sum = 0\n    n = len(word)\n\n    for i, char in enumerate(word):\n        if char in {'a', 'e', 'i', 'o', 'u'}:\n            total_sum += (i + 1) * (n - i)\n\n    return total_sum\n```\n    \n    The algorithm performs the following steps:\n\n1. Initialize a variable `sum` to store the sum of vowels.\n2. Calculate the length `n` of the input string.\n3. Iterate through each character in the input string.\n4. If the character is a vowel ('a', 'e', 'i', 'o', 'u'), add the product `(i + 1) * (n - i)` to the `sum`. The expression `(i + 1) * (n - i)` calculates the number of times the vowel appears in all the substrings, where `i + 1` is the number of substrings starting at the vowel and `n - i` is the number of substrings ending at the vowel.\n5. Return the sum.\n\nThis algorithm iterates through the input string once, so the time complexity is O(n), where n is the length of the input string.\n    ",
+    "javascript": "\n    ```javascript\nfunction sumOfVowelsInTheSubstrings(word) {\n    let sum = 0;\n    let n = word.length;\n    \n    for (let i = 0; i < n; i++) {\n        if (word[i] === 'a' || word[i] === 'e' || word[i] === 'i'\n          || word[i] === 'o' || word[i] === 'u') {\n            sum += (i + 1) * (n - i);\n        }\n    }\n    return sum;\n}\n```\n    \n    The algorithm performs the following steps:\n\n1. Initialize a variable `sum` to store the sum of vowels.\n2. Calculate the length `n` of the input string.\n3. Iterate through each character in the input string.\n4. If the character is a vowel ('a', 'e', 'i', 'o', 'u'), add the product `(i + 1) * (n - i)` to the `sum`. The expression `(i + 1) * (n - i)` calculates the number of times the vowel appears in all the substrings, where `i + 1` is the number of substrings starting at the vowel and `n - i` is the number of substrings ending at the vowel.\n5. Return the sum.\n\nThis algorithm iterates through the input string once, so the time complexity is O(n), where n is the length of the input string.\n    ",
+    "java": "\n    ```java\npublic long sumOfVowelsInTheSubstrings(String word) {\n    long sum = 0;\n    int n = word.length();\n    \n    for (int i = 0; i < n; i++) {\n        if (word.charAt(i) == 'a' || word.charAt(i) == 'e' || word.charAt(i) == 'i'\n          || word.charAt(i) == 'o' || word.charAt(i) == 'u') {\n            sum += (long)(i + 1) * (n - i);\n        }\n    }\n    return sum;\n}\n```\n    \n    The algorithm performs the following steps:\n\n1. Initialize a variable `sum` to store the sum of vowels.\n2. Calculate the length `n` of the input string.\n3. Iterate through each character in the input string.\n4. If the character is a vowel ('a', 'e', 'i', 'o', 'u'), add the product `(i + 1) * (n - i)` to the `sum`. The expression `(i + 1) * (n - i)` calculates the number of times the vowel appears in all the substrings, where `i + 1` is the number of substrings starting at the vowel and `n - i` is the number of substrings ending at the vowel.\n5. Return the sum.\n\nThis algorithm iterates through the input string once, so the time complexity is O(n), where n is the length of the input string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

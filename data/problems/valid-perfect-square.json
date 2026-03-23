@@ -1,0 +1,24 @@
+{
+  "id": 367,
+  "title": "Valid Perfect Square",
+  "slug": "valid-perfect-square",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a positive integer num, return true _if_ num _is a perfect square or_ false _otherwise_.\n\nA perfect square is an integer that is the square of an integer. In other words, it is the product of some integer with itself.\n\nYou must not use any built-in library function, such as sqrt.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_perfect_square(num: int) -> bool:\n    if num < 2:\n        return True\n    left, right = 2, num // 2\n    while left <= right:\n        mid = left + (right - left) // 2\n        square = mid * mid\n        if square == num:\n            return True\n        if square > num:\n            right = mid - 1\n        else:\n            left = mid + 1\n    return False\n```\n    \n    The algorithm uses a binary search approach to find the square root of the given number. It starts with left at 2 and right at half of the input number. It calculates the middle value and squares it. If the squared middle value is equal to the input number, the function returns True; the number is a perfect square. If the squared middle value is greater than the input number, it updates the right to mid - 1; otherwise, it updates the left to mid + 1. The function repeats until the left value is greater than the right value. In that case, the function returns False, indicating that the input number is not a perfect square.\n    ",
+    "javascript": "\n    ```javascript\nfunction isPerfectSquare(num) {\n    if (num < 2) return true;\n    let left = 2, right = Math.floor(num / 2), mid, square;\n    while (left <= right) {\n        mid = left + Math.floor((right - left) / 2);\n        square = mid * mid;\n        if (square === num) return true;\n        if (square > num) right = mid - 1;\n        else left = mid + 1;\n    }\n    return false;\n}\n```\n    \n    The algorithm uses a binary search approach to find the square root of the given number. It starts with left at 2 and right at half of the input number. It calculates the middle value and squares it. If the squared middle value is equal to the input number, the function returns True; the number is a perfect square. If the squared middle value is greater than the input number, it updates the right to mid - 1; otherwise, it updates the left to mid + 1. The function repeats until the left value is greater than the right value. In that case, the function returns False, indicating that the input number is not a perfect square.\n    ",
+    "java": "\n    ```java\nboolean isPerfectSquare(int num) {\n    if (num < 2) return true;\n    long left = 2, right = num / 2, mid, square;\n    while (left <= right) {\n        mid = left + (right - left) / 2;\n        square = mid * mid;\n        if (square == num) return true;\n        if (square > num) right = mid - 1;\n        else left = mid + 1;\n    }\n    return false;\n}\n```\n    \n    The algorithm uses a binary search approach to find the square root of the given number. It starts with left at 2 and right at half of the input number. It calculates the middle value and squares it. If the squared middle value is equal to the input number, the function returns True; the number is a perfect square. If the squared middle value is greater than the input number, it updates the right to mid - 1; otherwise, it updates the left to mid + 1. The function repeats until the left value is greater than the right value. In that case, the function returns False, indicating that the input number is not a perfect square.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

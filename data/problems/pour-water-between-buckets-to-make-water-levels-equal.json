@@ -1,0 +1,24 @@
+{
+  "id": 2137,
+  "title": "Pour Water Between Buckets to Make Water Levels Equal",
+  "slug": "pour-water-between-buckets-to-make-water-levels-equal",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You have n buckets each containing some gallons of water in it, represented by a 0-indexed integer array buckets, where the ith bucket contains buckets[i] gallons of water. You are also given an integer loss.\n\nYou want to make the amount of water in each bucket equal. You can pour any amount of water from one bucket to another bucket (not necessarily an integer). However, every time you pour k gallons of water, you spill loss percent of k.\n\nReturn _the maximum amount of water in each bucket after making the amount of water equal._ Answers within 10-5 of the actual answer will be accepted.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef perform_operations(operations):\n    X = 0\n    for op in operations:\n        if op == \"++X\" or op == \"X++\":\n            X += 1\n        elif op == \"--X\" or op == \"X--\":\n            X -= 1\n    return X\n```\n    \n    We initialize the variable `X` to 0. Then, we loop through the given list of operations. If an operation is either \"++X\" or \"X++\", we increment the value of `X`. If an operation is either \"--X\" or \"X--\", we decrement the value of `X`. At the end of the loop, we return the final value of `X`. The implementation in each language is very similar, with only small differences in syntax.\n    ",
+    "javascript": "\n    ```javascript\nfunction performOperations(operations) {\n    let X = 0;\n    for (let op of operations) {\n        if (op === \"++X\" || op === \"X++\") {\n            X++;\n        } else if (op === \"--X\" || op === \"X--\") {\n            X--;\n        }\n    }\n    return X;\n}\n```\n    \n    We initialize the variable `X` to 0. Then, we loop through the given list of operations. If an operation is either \"++X\" or \"X++\", we increment the value of `X`. If an operation is either \"--X\" or \"X--\", we decrement the value of `X`. At the end of the loop, we return the final value of `X`. The implementation in each language is very similar, with only small differences in syntax.\n    ",
+    "java": "\n    ```java\npublic int performOperations(String[] operations) {\n    int X = 0;\n    for (String op : operations) {\n        if (op.equals(\"++X\") || op.equals(\"X++\")) {\n            X++;\n        } else if (op.equals(\"--X\") || op.equals(\"X--\")) {\n            X--;\n        }\n    }\n    return X;\n}\n```\n    \n    We initialize the variable `X` to 0. Then, we loop through the given list of operations. If an operation is either \"++X\" or \"X++\", we increment the value of `X`. If an operation is either \"--X\" or \"X--\", we decrement the value of `X`. At the end of the loop, we return the final value of `X`. The implementation in each language is very similar, with only small differences in syntax.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

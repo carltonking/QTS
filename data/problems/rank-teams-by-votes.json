@@ -1,0 +1,24 @@
+{
+  "id": 1366,
+  "title": "Rank Teams by Votes",
+  "slug": "rank-teams-by-votes",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "In a special ranking system, each voter gives a rank from highest to lowest to all teams participating in the competition.\n\nThe ordering of teams is decided by who received the most position-one votes. If two or more teams tie in the first position, we consider the second position to resolve the conflict, if they tie again, we continue this process until the ties are resolved. If two or more teams are still tied after considering all positions, we rank them alphabetically based on their team letter.\n\nYou are given an array of strings votes which is the votes of all voters in the ranking systems. Sort all teams according to the ranking system described above.\n\nReturn _a string of all teams sorted by the ranking system_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef rankTeams(votes):\n    n, m = len(votes), len(votes[0])\n    count = [[0] * m for _ in range(26)]\n    res = votes[0]\n\n    for vote in votes:\n        for j, team in enumerate(vote):\n            count[ord(team) - ord('A')][j] += 1\n\n    return ''.join(sorted(res, key=lambda x: (-count[ord(x) - ord('A')][:m], x)))\n```\n\n    \n    1. Initialize count matrix that keeps track of the frequency of each team's position in the ranking (26 x number of teams).\n2. Fill the count matrix with the frequency of each team's position in the ranking.\n3. Define a comparison function that sorts teams first by frequency of their position in the ranking (in reverse order) and then, if frequency is the same, by alphabetical order.\n4. Sort the first vote using the previously defined comparison function.\n5. Return the sorted vote as a string.\n    ",
+    "javascript": "\n    ```javascript\nfunction rankTeams(votes) {\n    const n = votes.length;\n    const m = votes[0].length;\n    const count = Array.from({ length: 26 }, () => Array(m).fill(0));\n    let res = votes[0];\n\n    for (let i = 0; i < n; i++) {\n        for (let j = 0; j < m; j++) {\n            count[votes[i].charCodeAt(j) - 'A'.charCodeAt(0)][j]++;\n        }\n    }\n\n    res = res.split('').sort((a, b) => {\n        for (let i = 0; i < m; i++) {\n            if (count[a.charCodeAt(0) - 'A'.charCodeAt(0)][i]\n                !== count[b.charCodeAt(0) - 'A'.charCodeAt(0)][i]) {\n                return count[b.charCodeAt(0) - 'A'.charCodeAt(0)][i]\n                    - count[a.charCodeAt(0) - 'A'.charCodeAt(0)][i];\n            }\n        }\n        return a < b ? -1 : 1;\n    });\n\n    return res.join('');\n}\n```\n\n    \n    1. Initialize count matrix that keeps track of the frequency of each team's position in the ranking (26 x number of teams).\n2. Fill the count matrix with the frequency of each team's position in the ranking.\n3. Define a comparison function that sorts teams first by frequency of their position in the ranking (in reverse order) and then, if frequency is the same, by alphabetical order.\n4. Sort the first vote using the previously defined comparison function.\n5. Return the sorted vote as a string.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\nclass Solution {\n    public String rankTeams(String[] votes) {\n        int n = votes.length, m = votes[0].length();\n        int[][] count = new int[26][m];\n        String res = votes[0];\n        \n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < m; j++) {\n                count[votes[i].charAt(j) - 'A'][j]++;\n            }\n        }\n        \n        Character[] chars = new Character[m];\n        for (int i = 0; i < m; i++) {\n            chars[i] = res.charAt(i);\n        }\n        Arrays.sort(chars, (a, b) -> {\n            for (int i = 0; i < m; i++) {\n                if (count[a - 'A'][i] != count[b - 'A'][i]) {\n                    return count[b - 'A'][i] - count[a - 'A'][i];\n                }\n            }\n            return a - b;\n        });\n        \n        StringBuilder sb = new StringBuilder();\n        for(char c : chars) {\n            sb.append(c);\n        }\n        return sb.toString();\n    }\n}\n```\n\n    \n    1. Initialize count matrix that keeps track of the frequency of each team's position in the ranking (26 x number of teams).\n2. Fill the count matrix with the frequency of each team's position in the ranking.\n3. Define a comparison function that sorts teams first by frequency of their position in the ranking (in reverse order) and then, if frequency is the same, by alphabetical order.\n4. Sort the first vote using the previously defined comparison function.\n5. Return the sorted vote as a string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

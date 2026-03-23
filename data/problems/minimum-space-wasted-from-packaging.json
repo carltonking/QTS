@@ -1,0 +1,24 @@
+{
+  "id": 1889,
+  "title": "Minimum Space Wasted From Packaging",
+  "slug": "minimum-space-wasted-from-packaging",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You have n packages that you are trying to place in boxes, one package in each box. There are m suppliers that each produce boxes of different sizes (with infinite supply). A package can be placed in a box if the size of the package is less than or equal to the size of the box.\n\nThe package sizes are given as an integer array packages, where packages[i] is the size of the ith package. The suppliers are given as a 2D integer array boxes, where boxes[j] is an array of box sizes that the jth supplier produces.\n\nYou want to choose a single supplier and use boxes from them such that the total wasted space is minimized. For each package in a box, we define the space wasted to be size of the box - size of the package. The total wasted space is the sum of the space wasted in all the boxes.\n\n*   For example, if you have to fit packages with sizes [2,3,5] and the supplier offers boxes of sizes [4,8], you can fit the packages of size-2 and size-3 into two boxes of size-4 and the package with size-5 into a box of size-8. This would result in a waste of (4-2) + (4-3) + (8-5) = 6.\n\nReturn _the minimum total wasted space by choosing the box supplier optimally, or_ -1 _if it is impossible to fit all the packages inside boxes._ Since the answer may be large, return it modulo 109 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef check_powers_of_three(n: int) -> bool:\n    while n > 0:\n        if n % 3 == 2:\n            return False\n        n //= 3\n    return True\n```\n    \n    The algorithm iteratively checks if it's possible to represent the given integer `n` as the sum of distinct powers of three. It does this by performing the following steps:\n1. While `n` is greater than 0, perform steps 2 and 3.\n2. If `n % 3` equals 2, return false. This means that the current integer cannot be represented as a distinct power of three since a power of 3 can only have a remainder of 0 or 1 when divided by 3.\n3. Set `n` to `n / 3`, effectively testing the next power of 3.\n\nIf the function didn't return in step 2 during the loop, the given integer could be represented as the sum of distinct powers of three, and the function should return true.\n    ",
+    "javascript": "\n    ```javascript\nfunction checkPowersOfThree(n) {\n    while (n > 0) {\n        if (n % 3 === 2) return false;\n        n = Math.floor(n / 3);\n    }\n    return true;\n}\n```\n\n    \n    The algorithm iteratively checks if it's possible to represent the given integer `n` as the sum of distinct powers of three. It does this by performing the following steps:\n1. While `n` is greater than 0, perform steps 2 and 3.\n2. If `n % 3` equals 2, return false. This means that the current integer cannot be represented as a distinct power of three since a power of 3 can only have a remainder of 0 or 1 when divided by 3.\n3. Set `n` to `n / 3`, effectively testing the next power of 3.\n\nIf the function didn't return in step 2 during the loop, the given integer could be represented as the sum of distinct powers of three, and the function should return true.\n    ",
+    "java": "\n    ```java\npublic boolean checkPowersOfThree(int n) {\n    while (n > 0) {\n        if (n % 3 == 2) return false;\n        n /= 3;\n    }\n    return true;\n}\n```\n    \n    The algorithm iteratively checks if it's possible to represent the given integer `n` as the sum of distinct powers of three. It does this by performing the following steps:\n1. While `n` is greater than 0, perform steps 2 and 3.\n2. If `n % 3` equals 2, return false. This means that the current integer cannot be represented as a distinct power of three since a power of 3 can only have a remainder of 0 or 1 when divided by 3.\n3. Set `n` to `n / 3`, effectively testing the next power of 3.\n\nIf the function didn't return in step 2 during the loop, the given integer could be represented as the sum of distinct powers of three, and the function should return true.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

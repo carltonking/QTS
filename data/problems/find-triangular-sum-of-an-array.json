@@ -1,0 +1,24 @@
+{
+  "id": 2221,
+  "title": "Find Triangular Sum of an Array",
+  "slug": "find-triangular-sum-of-an-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums, where nums[i] is a digit between 0 and 9 (inclusive).\n\nThe triangular sum of nums is the value of the only element present in nums after the following process terminates:\n\n1.  Let nums comprise of n elements. If n == 1, end the process. Otherwise, create a new 0-indexed integer array newNums of length n - 1.\n2.  For each index i, where 0 <= i < n - 1, assign the value of newNums[i] as (nums[i] + nums[i+1]) % 10, where % denotes modulo operator.\n3.  Replace the array nums with newNums.\n4.  Repeat the entire process starting from step 1.\n\nReturn _the triangular sum of_ nums.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_valid_parentheses_string(s: str, locked: str) -> bool:\n    balance = 0\n    for i in range(len(s)):\n        if locked[i] == '0':\n            balance += 1 if s[i] == '(' else -1\n            if balance < 0:\n                return False\n    return balance == 0\n```\n    \n    The algorithm iterates through both the `s` and `locked` strings simultaneously. It keeps track of the balance of open and close parentheses. If the current character of `locked` is '0', it means the current character of `s` can be toggled. Depending on its value, either increment or decrement the balance. If balance becomes negative at any point, it means there is an unmatched ')' so we return false. After the iteration, if the balance is 0, it implies that we have an equal number of '(' and ')' and thus a valid parentheses string, so we return true. Otherwise, we return false.\n    ",
+    "javascript": "\n    ```javascript\nfunction isValidParenthesesString(s, locked) {\n    let balance = 0;\n    for (let i = 0; i < s.length; i++) {\n        if (locked[i] === '0') {\n            balance += s[i] === '(' ? 1 : -1;\n            if (balance < 0) return false;\n        }\n    }\n    return balance === 0;\n}\n```\n    \n    The algorithm iterates through both the `s` and `locked` strings simultaneously. It keeps track of the balance of open and close parentheses. If the current character of `locked` is '0', it means the current character of `s` can be toggled. Depending on its value, either increment or decrement the balance. If balance becomes negative at any point, it means there is an unmatched ')' so we return false. After the iteration, if the balance is 0, it implies that we have an equal number of '(' and ')' and thus a valid parentheses string, so we return true. Otherwise, we return false.\n    ",
+    "java": "\n    ```java\nboolean isValidParenthesesString(String s, String locked) {\n    int balance = 0;\n    for (int i = 0; i < s.length(); i++) {\n        if (locked.charAt(i) == '0') {\n            balance += s.charAt(i) == '(' ? 1 : -1;\n            if (balance < 0) return false;\n        }\n    }\n    return balance == 0;\n}\n```\n    \n    The algorithm iterates through both the `s` and `locked` strings simultaneously. It keeps track of the balance of open and close parentheses. If the current character of `locked` is '0', it means the current character of `s` can be toggled. Depending on its value, either increment or decrement the balance. If balance becomes negative at any point, it means there is an unmatched ')' so we return false. After the iteration, if the balance is 0, it implies that we have an equal number of '(' and ')' and thus a valid parentheses string, so we return true. Otherwise, we return false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

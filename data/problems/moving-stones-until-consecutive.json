@@ -1,0 +1,24 @@
+{
+  "id": 1033,
+  "title": "Moving Stones Until Consecutive",
+  "slug": "moving-stones-until-consecutive",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There are three stones in different positions on the X-axis. You are given three integers a, b, and c, the positions of the stones.\n\nIn one move, you pick up a stone at an endpoint (i.e., either the lowest or highest position stone), and move it to an unoccupied position between those endpoints. Formally, let's say the stones are currently at positions x, y, and z with x < y < z. You pick up the stone at either position x or position z, and move that stone to an integer position k, with x < k < z and k != y.\n\nThe game ends when you cannot make any more moves (i.e., the stones are in three consecutive positions).\n\nReturn _an integer array_ answer _of length_ 2 _where_:\n\n*   answer[0] _is the minimum number of moves you can play, and_\n*   answer[1] _is the maximum number of moves you can play_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef broken_calc(startValue: int, target: int) -> int:\n    operations = 0\n    while target > startValue:\n        target = target // 2 if target % 2 == 0 else target + 1\n        operations += 1\n    return operations + startValue - target\n```\n    \n    The algorithm starts by initializing the operation counter to 0. Then, while the target value is greater than the start value, the algorithm checks if the target value is even. If it's even, we divide the target value by 2, otherwise, we increment the target value before updating the operation counter. The algorithm continues iterating until the target value is less than or equal to the start value. The final result is obtained by adding the current operation counter to the difference between the start value and the target value.\n    ",
+    "javascript": "\n    ```javascript\nfunction brokenCalc(startValue, target) {\n    let operations = 0;\n    while (target > startValue) {\n        target = (target % 2 === 0) ? target / 2 : target + 1;\n        operations++;\n    }\n    return operations + startValue - target;\n}\n```\n    \n    The algorithm starts by initializing the operation counter to 0. Then, while the target value is greater than the start value, the algorithm checks if the target value is even. If it's even, we divide the target value by 2, otherwise, we increment the target value before updating the operation counter. The algorithm continues iterating until the target value is less than or equal to the start value. The final result is obtained by adding the current operation counter to the difference between the start value and the target value.\n    ",
+    "java": "\n    ```java\npublic int brokenCalc(int startValue, int target) {\n    int operations = 0;\n    while (target > startValue) {\n        target = (target % 2 == 0) ? target / 2 : target + 1;\n        operations++;\n    }\n    return operations + startValue - target;\n}\n```\n    \n    The algorithm starts by initializing the operation counter to 0. Then, while the target value is greater than the start value, the algorithm checks if the target value is even. If it's even, we divide the target value by 2, otherwise, we increment the target value before updating the operation counter. The algorithm continues iterating until the target value is less than or equal to the start value. The final result is obtained by adding the current operation counter to the difference between the start value and the target value.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

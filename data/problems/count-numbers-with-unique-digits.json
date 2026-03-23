@@ -1,0 +1,24 @@
+{
+  "id": 357,
+  "title": "Count Numbers with Unique Digits",
+  "slug": "count-numbers-with-unique-digits",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer n, return the count of all numbers with unique digits, x, where 0 <= x < 10n.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef countNumbersWithUniqueDigits(n):\n    if n == 0:\n        return 1\n    \n    total = 10\n    unique_digits = 9\n    current_available_digits = 9\n    \n    while n > 1 and current_available_digits > 0:\n        unique_digits *= current_available_digits\n        total += unique_digits\n        current_available_digits -= 1\n        n -= 1\n        \n    return total\n```\n\n    \n    The algorithm starts with a base case when n=0, the result is 1, as there's only one number, 0, that has unique digits.\n\nFor other cases, it initializes total count to 10 (0 to 9), the unique digit count to 9, and the available digits count to 9. Then, it iterates until n becomes 1 or the available digits count becomes 0. In each iteration, the unique digit count is multiplied by the available digit count, which is then added to the total count. The available digit count is decremented in each iteration, as there will be one less digit to choose from to keep the numbers unique.\n\nAt the end, the total count is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction countNumbersWithUniqueDigits(n) {\n    if (n === 0) return 1;\n\n    let total = 10;\n    let uniqueDigits = 9;\n    let currentAvailableDigits = 9;\n\n    while (n-- > 1 && currentAvailableDigits > 0) {\n        uniqueDigits *= currentAvailableDigits;\n        total += uniqueDigits;\n        currentAvailableDigits--;\n    }\n\n    return total;\n}\n```\n\n    \n    The algorithm starts with a base case when n=0, the result is 1, as there's only one number, 0, that has unique digits.\n\nFor other cases, it initializes total count to 10 (0 to 9), the unique digit count to 9, and the available digits count to 9. Then, it iterates until n becomes 1 or the available digits count becomes 0. In each iteration, the unique digit count is multiplied by the available digit count, which is then added to the total count. The available digit count is decremented in each iteration, as there will be one less digit to choose from to keep the numbers unique.\n\nAt the end, the total count is returned.\n    ",
+    "java": "\n    ```java\npublic int countNumbersWithUniqueDigits(int n) {\n    if (n == 0) return 1;\n\n    int total = 10;\n    int uniqueDigits = 9;\n    int currentAvailableDigits = 9;\n\n    while (n-- > 1 && currentAvailableDigits > 0) {\n        uniqueDigits *= currentAvailableDigits;\n        total += uniqueDigits;\n        currentAvailableDigits--;\n    }\n\n    return total;\n}\n```\n\n    \n    The algorithm starts with a base case when n=0, the result is 1, as there's only one number, 0, that has unique digits.\n\nFor other cases, it initializes total count to 10 (0 to 9), the unique digit count to 9, and the available digits count to 9. Then, it iterates until n becomes 1 or the available digits count becomes 0. In each iteration, the unique digit count is multiplied by the available digit count, which is then added to the total count. The available digit count is decremented in each iteration, as there will be one less digit to choose from to keep the numbers unique.\n\nAt the end, the total count is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

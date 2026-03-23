@@ -1,0 +1,24 @@
+{
+  "id": 1047,
+  "title": "Remove All Adjacent Duplicates In String",
+  "slug": "remove-all-adjacent-duplicates-in-string",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a string s consisting of lowercase English letters. A duplicate removal consists of choosing two adjacent and equal letters and removing them.\n\nWe repeatedly make duplicate removals on s until we no longer can.\n\nReturn _the final string after all such duplicate removals have been made_. It can be proven that the answer is unique.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nimport heapq\n\ndef maxSumAfterKOperations(nums, k):\n    heapq.heapify(nums)\n    for _ in range(k):\n        current = heapq.heappop(nums)\n        heapq.heappush(nums, -current)\n    return sum(nums)\n```\n    \n    1. Create a min-heap from the given integer array nums.\n2. Iterate k times and for each iteration, do the following:\n   - Pop the smallest element from the min-heap.\n   - Negate the popped element and push it back to the min-heap.\n3. Calculate the sum of the elements in the min-heap and return it.\n\nNote: In JavaScript, we have also created a PriorityQueue class to achieve the functionality of a priority queue like in other languages.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxSumAfterKOperations(nums, k) {\n    const pq = new PriorityQueue(nums, (a, b) => a - b);\n    while(k--){\n        const current = pq.poll();\n        pq.offer(-current);\n    }\n    let sum = 0;\n    while(!pq.isEmpty()){\n        sum += pq.poll();\n    }\n    return sum;\n}\n\nclass PriorityQueue {\n    constructor(data=[], compareFunction=(a, b) => a > b){\n        this.data = data;\n        this.compareFunction = compareFunction;\n        this.heapify();\n    }\n    heapify(){\n        if(this.data.length > 0){\n            for(let i=Math.floor(this.size()/2); i>=0; i--){\n                this.siftDown(i);\n            }\n        }\n    }\n    parent(i){ return Math.floor((i-1)/2);}\n    left(i){ return 2*i + 1;}\n    right(i){ return 2*i + 2;}\n    size(){ return this.data.length;}\n    isEmpty(){ return this.size()==0;}\n    peek(){ return this.data[0];}\n    poll(){\n        const extracted = this.data.shift();\n        if(!this.isEmpty()){\n            this.data.unshift(this.data.pop());\n            this.siftDown(0);\n        }\n        return extracted;\n    }\n    siftDown(i){\n        let minIndex = i;\n        const l = this.left(i);\n        if(l<this.size() && this.compareFunction(this.data[l], this.data[minIndex])) minIndex = l;\n        const r = this.right(i);\n        if(r<this.size() && this.compareFunction(this.data[r], this.data[minIndex])) minIndex = r;\n        if(i!=minIndex){\n            [this.data[i], this.data[minIndex]] = [this.data[minIndex], this.data[i]];\n            this.siftDown(minIndex);\n        }\n    }\n    offer(value){\n        this.data.push(value);\n        this.siftUp(this.size()-1);\n    }\n    siftUp(i){\n        while(i>0 && this.compareFunction(this.data[i], this.data[this.parent(i)])){\n            [this.data[i], this.data[this.parent(i)]] = [this.data[this.parent(i)], this.data[i]];\n            i = this.parent(i);\n        }\n    }\n}\n```\n    \n    1. Create a min-heap from the given integer array nums.\n2. Iterate k times and for each iteration, do the following:\n   - Pop the smallest element from the min-heap.\n   - Negate the popped element and push it back to the min-heap.\n3. Calculate the sum of the elements in the min-heap and return it.\n\nNote: In JavaScript, we have also created a PriorityQueue class to achieve the functionality of a priority queue like in other languages.\n    ",
+    "java": "\n    ```java\npublic int maxSumAfterKOperations(int[] nums, int k) {\n    PriorityQueue<Integer> pq = new PriorityQueue<>();\n    for(int num : nums) pq.add(num);\n    while(k-- > 0){\n        int current = pq.poll();\n        pq.add(-current);\n    }\n    int sum = 0;\n    for(int num : pq) sum += num;\n    return sum;\n}\n```\n    \n    1. Create a min-heap from the given integer array nums.\n2. Iterate k times and for each iteration, do the following:\n   - Pop the smallest element from the min-heap.\n   - Negate the popped element and push it back to the min-heap.\n3. Calculate the sum of the elements in the min-heap and return it.\n\nNote: In JavaScript, we have also created a PriorityQueue class to achieve the functionality of a priority queue like in other languages.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

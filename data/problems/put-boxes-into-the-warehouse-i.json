@@ -1,0 +1,24 @@
+{
+  "id": 1564,
+  "title": "Put Boxes Into the Warehouse I",
+  "slug": "put-boxes-into-the-warehouse-i",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two arrays of positive integers, boxes and warehouse, representing the heights of some boxes of unit width and the heights of n rooms in a warehouse respectively. The warehouse's rooms are labelled from 0 to n - 1 from left to right where warehouse[i] (0-indexed) is the height of the ith room.\n\nBoxes are put into the warehouse by the following rules:\n\n*   Boxes cannot be stacked.\n*   You can rearrange the insertion order of the boxes.\n*   Boxes can only be pushed into the warehouse from left to right only.\n*   If the height of some room in the warehouse is less than the height of a box, then that box and all other boxes behind it will be stopped before that room.\n\nReturn _the maximum number of boxes you can put into the warehouse._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxBoxesInWarehouse(boxes, warehouse):\n    n = len(warehouse)\n    for i in range(1, n):\n        warehouse[i] = min(warehouse[i], warehouse[i - 1])\n    boxes.sort(reverse=True)\n    boxIndex = 0\n    boxesCount = 0\n    for i in range(n):\n        if boxIndex < len(boxes) and boxes[boxIndex] <= warehouse[i]:\n            boxesCount += 1\n            boxIndex += 1\n    return boxesCount\n```\n\n    \n    The main idea of the algorithm is to first preprocess the warehouse array such that for each room, it stores the minimum height up to that room. This is done to find the maximum height a box can have to be placed in a room considering previous rooms' heights. Then, reverse sort the boxes array to have the largest box first. Finally, iterate through the preprocessed warehouse array and compare the height of the current largest box with the height of the current room. If the box can fit, increment the count of boxes and move to the next box in the sorted array.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxBoxesInWarehouse(boxes, warehouse) {\n    let n = warehouse.length;\n    for (let i = 1; i < n; i++)\n        warehouse[i] = Math.min(warehouse[i], warehouse[i - 1]);\n    boxes.sort((a, b) => b - a);\n    let boxIndex = 0;\n    let boxesCount = 0;\n    for (let i = 0; i < n && boxIndex < boxes.length; i++) {\n        if (boxes[boxIndex] <= warehouse[i]) {\n            boxesCount++;\n            boxIndex++;\n        }\n    }\n    return boxesCount;\n}\n```\n\n    \n    The main idea of the algorithm is to first preprocess the warehouse array such that for each room, it stores the minimum height up to that room. This is done to find the maximum height a box can have to be placed in a room considering previous rooms' heights. Then, reverse sort the boxes array to have the largest box first. Finally, iterate through the preprocessed warehouse array and compare the height of the current largest box with the height of the current room. If the box can fit, increment the count of boxes and move to the next box in the sorted array.\n    ",
+    "java": "\n    ```java\npublic int maxBoxesInWarehouse(int[] boxes, int[] warehouse) {\n    int n = warehouse.length;\n    for (int i = 1; i < n; i++)\n        warehouse[i] = Math.min(warehouse[i], warehouse[i - 1]);\n    Arrays.sort(boxes);\n    int boxIndex = boxes.length - 1;\n    int boxesCount = 0;\n    for (int i = 0; i < n && boxIndex >= 0; i++) {\n        if (boxes[boxIndex] <= warehouse[i]) {\n            boxesCount++;\n            boxIndex--;\n        }\n    }\n    return boxesCount;\n}\n```\n\n    \n    The main idea of the algorithm is to first preprocess the warehouse array such that for each room, it stores the minimum height up to that room. This is done to find the maximum height a box can have to be placed in a room considering previous rooms' heights. Then, reverse sort the boxes array to have the largest box first. Finally, iterate through the preprocessed warehouse array and compare the height of the current largest box with the height of the current room. If the box can fit, increment the count of boxes and move to the next box in the sorted array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

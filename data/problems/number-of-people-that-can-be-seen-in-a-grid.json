@@ -1,0 +1,24 @@
+{
+  "id": 2282,
+  "title": "Number of People That Can Be Seen in a Grid",
+  "slug": "number-of-people-that-can-be-seen-in-a-grid",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an m x n 0-indexed 2D array of positive integers heights where heights[i][j] is the height of the person standing at position (i, j).\n\nA person standing at position (row1, col1) can see a person standing at position (row2, col2) if:\n\n*   The person at (row2, col2) is to the right or below the person at (row1, col1). More formally, this means that either row1 == row2 and col1 < col2 or row1 < row2 and col1 == col2.\n*   Everyone in between them is shorter than both of them.\n\nReturn _an_ m x n _2D array of integers_ answer _where_ answer[i][j] _is the number of people that the person at position_ (i, j) _can see._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef visible_people(heights):\n    m, n = len(heights), len(heights[0])\n    answer = [[0 for _ in range(n)] for _ in range(m)]\n\n    for i in range(m):\n        for j in range(n):\n            for k in range(j+1, n):\n                if heights[i][j] >= heights[i][k]:\n                    if heights[i][j] > heights[i][k]:\n                        answer[i][j] += 1\n                else:\n                    break\n            for k in range(i+1, m):\n                if heights[i][j] >= heights[k][j]:\n                    if heights[i][j] > heights[k][j]:\n                        answer[i][j] += 1\n                else:\n                    break\n\n    return answer\n```\n    \n    1. Create an `answer` matrix of the same dimensions as `heights`, initializing all values to 0.\n2. Use nested loops to iterate over each person in the `heights` matrix.\n3. For each person, look to the right and count the number of people with shorter height until a person with greater/equal height is encountered. Increment the count in the respective cell in the `answer` matrix.\n4. For each person, look downwards and count the number of people with shorter height until a person with greater/equal height is encountered. Increment the count in the respective cell in the `answer` matrix.\n5. Return the `answer` matrix.\n    ",
+    "javascript": "\n    ```javascript\nfunction visiblePeople(heights) {\n    let m = heights.length, n = heights[0].length;\n    let answer = Array.from({length:m}, () => Array(n).fill(0));\n\n    for (let i = 0; i < m; ++i) {\n        for (let j = 0; j < n; ++j) {\n            for (let k = j+1; k < n && heights[i][j] >= heights[i][k]; k++) {\n                if (heights[i][j] > heights[i][k]) answer[i][j]++;\n            }\n            for (let k = i+1; k < m && heights[i][j] >= heights[k][j]; k++) {\n                if (heights[i][j] > heights[k][j]) answer[i][j]++;\n            }\n        }\n    }\n\n    return answer;\n}\n```\n    \n    1. Create an `answer` matrix of the same dimensions as `heights`, initializing all values to 0.\n2. Use nested loops to iterate over each person in the `heights` matrix.\n3. For each person, look to the right and count the number of people with shorter height until a person with greater/equal height is encountered. Increment the count in the respective cell in the `answer` matrix.\n4. For each person, look downwards and count the number of people with shorter height until a person with greater/equal height is encountered. Increment the count in the respective cell in the `answer` matrix.\n5. Return the `answer` matrix.\n    ",
+    "java": "\n    ```java\npublic int[][] visiblePeople(int[][] heights) {\n    int m = heights.length, n = heights[0].length;\n    int[][] answer = new int[m][n];\n\n    for (int i = 0; i < m; ++i) {\n        for (int j = 0; j < n; ++j) {\n            for (int k = j+1; k < n && heights[i][j] >= heights[i][k]; k++) {\n                if (heights[i][j] > heights[i][k]) answer[i][j]++;\n            }\n            for (int k = i+1; k < m && heights[i][j] >= heights[k][j]; k++) {\n                if (heights[i][j] > heights[k][j]) answer[i][j]++;\n            }\n        }\n    }\n\n    return answer;\n}\n```\n    \n    1. Create an `answer` matrix of the same dimensions as `heights`, initializing all values to 0.\n2. Use nested loops to iterate over each person in the `heights` matrix.\n3. For each person, look to the right and count the number of people with shorter height until a person with greater/equal height is encountered. Increment the count in the respective cell in the `answer` matrix.\n4. For each person, look downwards and count the number of people with shorter height until a person with greater/equal height is encountered. Increment the count in the respective cell in the `answer` matrix.\n5. Return the `answer` matrix.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

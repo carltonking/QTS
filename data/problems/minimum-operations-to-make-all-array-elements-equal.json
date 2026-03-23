@@ -1,0 +1,24 @@
+{
+  "id": 2602,
+  "title": "Minimum Operations to Make All Array Elements Equal",
+  "slug": "minimum-operations-to-make-all-array-elements-equal",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array nums consisting of positive integers.\n\nYou are also given an integer array queries of size m. For the ith query, you want to make all of the elements of nums equal to queries[i]. You can perform the following operation on the array any number of times:\n\n*   Increase or decrease an element of the array by 1.\n\nReturn _an array_ answer _of size_ m _where_ answer[i] _is the minimum number of operations to make all elements of_ nums _equal to_ queries[i].\n\nNote that after each query the array is reset to its original state.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom typing import List\n\ndef min_operations(nums: List[int], queries: List[int]) -> List[int]:\n    answer = []\n    for query in queries:\n        operations = 0\n        for num in nums:\n            operations += abs(num - query)\n        answer.append(operations)\n    return answer\n```\n    \n    The algorithm iterates through each `query` in the `queries` array. For each `query`, it then iterates through each element in the `nums` array and calculates the absolute difference between `query` and the element. The absolute difference represents the minimum number of operations required to make the element equal to the `query`. The total number of operations for that `query` is the sum of the absolute differences for each element in `nums`. This process is repeated for all `queries`, and an array containing the total number of operations for each `query` is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction minOperations(nums, queries) {\n    let answer = [];\n    for (let query of queries) {\n        let operations = 0;\n        for (let num of nums) {\n            operations += Math.abs(num - query);\n        }\n        answer.push(operations);\n    }\n    return answer;\n}\n```\n    \n    The algorithm iterates through each `query` in the `queries` array. For each `query`, it then iterates through each element in the `nums` array and calculates the absolute difference between `query` and the element. The absolute difference represents the minimum number of operations required to make the element equal to the `query`. The total number of operations for that `query` is the sum of the absolute differences for each element in `nums`. This process is repeated for all `queries`, and an array containing the total number of operations for each `query` is returned.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<Integer> minOperations(int[] nums, int[] queries) {\n    List<Integer> answer = new ArrayList<>();\n    for (int query : queries) {\n        int operations = 0;\n        for (int num : nums) {\n            operations += Math.abs(num - query);\n        }\n        answer.add(operations);\n    }\n    return answer;\n}\n```\n    \n    The algorithm iterates through each `query` in the `queries` array. For each `query`, it then iterates through each element in the `nums` array and calculates the absolute difference between `query` and the element. The absolute difference represents the minimum number of operations required to make the element equal to the `query`. The total number of operations for that `query` is the sum of the absolute differences for each element in `nums`. This process is repeated for all `queries`, and an array containing the total number of operations for each `query` is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2156,
+  "title": "Find Substring With Given Hash Value",
+  "slug": "find-substring-with-given-hash-value",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "The hash of a 0-indexed string s of length k, given integers p and m, is computed using the following function:\n\n*   hash(s, p, m) = (val(s[0]) * p0 + val(s[1]) * p1 + ... + val(s[k-1]) * pk-1) mod m.\n\nWhere val(s[i]) represents the index of s[i] in the alphabet from val('a') = 1 to val('z') = 26.\n\nYou are given a string s and the integers power, modulo, k, and hashValue. Return sub, _the first substring of_ s _of length_ k _such that_ hash(sub, power, modulo) == hashValue.\n\nThe test cases will be generated such that an answer always exists.\n\nA substring is a contiguous non-empty sequence of characters within a string.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef alice_wins(stones):\n    sum_, count = 0, [0] * 3\n    for stone in stones:\n        sum_ += stone\n        count[stone % 3] += 1\n    if sum_ % 3:\n        return count[sum_ % 3] % 2 == 1\n    return count[1] % 2 == 0 or count[2] % 2 == 0 or count[1] == 0 or count[2] == 0\n```\n    \n    1. Calculate the sum of values of all stones and counts of stones with values 1, 2 modulo 3.\n2. If the sum is not divisible by 3, Alice will try to maintain it. In this case, Alice wins if the count of stones with the sum modulo 3 is odd.\n3. If the sum is divisible by 3, Alice will try to prevent it from being divisible by 3. In this case, Alice wins if there are an even number of 1s and 2s modulo 3.\n    ",
+    "javascript": "\n    ```javascript\nfunction aliceWins(stones) {\n    let sum = 0, count = [0, 0, 0];\n    for (let stone of stones) {\n        sum += stone;\n        count[stone % 3]++;\n    }\n    if (sum % 3 !== 0) {\n        return count[sum % 3] % 2 === 1;\n    }\n    return count[1] % 2 === 0 || count[2] % 2 === 0 || count[1] === 0 || count[2] === 0;\n}\n```\n    \n    1. Calculate the sum of values of all stones and counts of stones with values 1, 2 modulo 3.\n2. If the sum is not divisible by 3, Alice will try to maintain it. In this case, Alice wins if the count of stones with the sum modulo 3 is odd.\n3. If the sum is divisible by 3, Alice will try to prevent it from being divisible by 3. In this case, Alice wins if there are an even number of 1s and 2s modulo 3.\n    ",
+    "java": "\n    ```java\npublic boolean aliceWins(int[] stones) {\n    int sum = 0, count[] = new int[3];\n    for (int stone : stones) {\n        sum += stone;\n        count[stone % 3]++;\n    }\n    if (sum % 3 != 0) {\n        return count[sum % 3] % 2 == 1;\n    }\n    return count[1] % 2 == 0 || count[2] % 2 == 0 || count[1] == 0 || count[2] == 0;\n}\n```\n    \n    1. Calculate the sum of values of all stones and counts of stones with values 1, 2 modulo 3.\n2. If the sum is not divisible by 3, Alice will try to maintain it. In this case, Alice wins if the count of stones with the sum modulo 3 is odd.\n3. If the sum is divisible by 3, Alice will try to prevent it from being divisible by 3. In this case, Alice wins if there are an even number of 1s and 2s modulo 3.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

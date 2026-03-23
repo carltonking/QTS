@@ -1,0 +1,24 @@
+{
+  "id": 2106,
+  "title": "Maximum Fruits Harvested After at Most K Steps",
+  "slug": "maximum-fruits-harvested-after-at-most-k-steps",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Fruits are available at some positions on an infinite x-axis. You are given a 2D integer array fruits where fruits[i] = [positioni, amounti] depicts amounti fruits at the position positioni. fruits is already sorted by positioni in ascending order, and each positioni is unique.\n\nYou are also given an integer startPos and an integer k. Initially, you are at the position startPos. From any position, you can either walk to the left or right. It takes one step to move one unit on the x-axis, and you can walk at most k steps in total. For every position you reach, you harvest all the fruits at that position, and the fruits will disappear from that position.\n\nReturn _the maximum total number of fruits you can harvest_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom math import gcd\n\ndef findGCD(nums):\n    return gcd(min(nums), max(nums))\n```\n    \n    The algorithm implementation follows these steps:\n\n1. Define the gcd() function, which will compute the greatest common divisor using the Euclidean algorithm.\n2. Create the findGCD() function, which takes an array of integers (nums) as an argument.\n3. In the findGCD() function, find the minimum and maximum values in the given array. This is done using various min/max methods depending on the language used: std::min_element/std::max_element (C++), Arrays.stream (Java), min/max (Python), or. Math.min/Math.max (JavaScript).\n4. Return the gcd of the minimum and maximum values found in step 3 by calling the gcd() function.\n\nThis finds the greatest common divisor of the smallest and largest numbers in the given array.\n    ",
+    "javascript": "\n    ```javascript\nfunction gcd(a, b) {\n    return b === 0 ? a : gcd(b, a % b);\n}\n\nfunction findGCD(nums) {\n    const minVal = Math.min(...nums);\n    const maxVal = Math.max(...nums);\n    return gcd(minVal, maxVal);\n}\n```\n    \n    The algorithm implementation follows these steps:\n\n1. Define the gcd() function, which will compute the greatest common divisor using the Euclidean algorithm.\n2. Create the findGCD() function, which takes an array of integers (nums) as an argument.\n3. In the findGCD() function, find the minimum and maximum values in the given array. This is done using various min/max methods depending on the language used: std::min_element/std::max_element (C++), Arrays.stream (Java), min/max (Python), or. Math.min/Math.max (JavaScript).\n4. Return the gcd of the minimum and maximum values found in step 3 by calling the gcd() function.\n\nThis finds the greatest common divisor of the smallest and largest numbers in the given array.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int gcd(int a, int b) {\n    return b == 0 ? a : gcd(b, a % b);\n}\n\npublic int findGCD(int[] nums) {\n    int minVal = Arrays.stream(nums).min().getAsInt();\n    int maxVal = Arrays.stream(nums).max().getAsInt();\n    return gcd(minVal, maxVal);\n}\n```\n    \n    The algorithm implementation follows these steps:\n\n1. Define the gcd() function, which will compute the greatest common divisor using the Euclidean algorithm.\n2. Create the findGCD() function, which takes an array of integers (nums) as an argument.\n3. In the findGCD() function, find the minimum and maximum values in the given array. This is done using various min/max methods depending on the language used: std::min_element/std::max_element (C++), Arrays.stream (Java), min/max (Python), or. Math.min/Math.max (JavaScript).\n4. Return the gcd of the minimum and maximum values found in step 3 by calling the gcd() function.\n\nThis finds the greatest common divisor of the smallest and largest numbers in the given array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

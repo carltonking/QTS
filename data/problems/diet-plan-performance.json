@@ -1,0 +1,24 @@
+{
+  "id": 1176,
+  "title": "Diet Plan Performance",
+  "slug": "diet-plan-performance",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "A dieter consumes calories[i] calories on the i\\-th day.\n\nGiven an integer k, for every consecutive sequence of k days (calories[i], calories[i+1], ..., calories[i+k-1] for all 0 <= i <= n-k), they look at _T_, the total calories consumed during that sequence of k days (calories[i] + calories[i+1] + ... + calories[i+k-1]):\n\n*   If T < lower, they performed poorly on their diet and lose 1 point;\n*   If T > upper, they performed well on their diet and gain 1 point;\n*   Otherwise, they performed normally and there is no change in points.\n\nInitially, the dieter has zero points. Return the total number of points the dieter has after dieting for calories.length days.\n\nNote that the total points can be negative.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef dietPlanPerformance(calories, k, lower, upper):\n    points = 0\n    T = 0\n\n    for i in range(len(calories)):\n        T += calories[i]\n        if i >= k:\n            T -= calories[i-k]\n        if i >= k-1:\n            if T < lower: points -= 1\n            if T > upper: points += 1\n\n    return points\n```\n    \n    1. Initialize the points and total calories `T` to 0.\n2. Iterate through the given calories list.\n3. Add the current day calories to `T`.\n4. Check if the current index position is greater than or equal to `k`. If so, subtract the calories of the first day of the previous window from `T`.\n5. Check if we have formed a window of size `k`. If so, perform the point calculation:\n   1. If `T` is less than `lower`, decrement the points.\n   2. If `T` is greater than `upper`, increment the points.\n6. Return the total number of points.\n    ",
+    "javascript": "\n    ```javascript\nfunction dietPlanPerformance(calories, k, lower, upper) {\n    let points = 0;\n    let T = 0;\n\n    for(let i = 0; i < calories.length; i++) {\n        T += calories[i];\n        if(i >= k) {\n            T -= calories[i-k];\n        }\n        if(i >= k-1) {\n            if(T < lower) points--;\n            if(T > upper) points++;\n        }\n    }\n\n    return points;\n}\n```\n    \n    1. Initialize the points and total calories `T` to 0.\n2. Iterate through the given calories list.\n3. Add the current day calories to `T`.\n4. Check if the current index position is greater than or equal to `k`. If so, subtract the calories of the first day of the previous window from `T`.\n5. Check if we have formed a window of size `k`. If so, perform the point calculation:\n   1. If `T` is less than `lower`, decrement the points.\n   2. If `T` is greater than `upper`, increment the points.\n6. Return the total number of points.\n    ",
+    "java": "\n    ```java\npublic int dietPlanPerformance(int[] calories, int k, int lower, int upper) {\n    int points = 0;\n    int T = 0;\n\n    for(int i = 0; i < calories.length; i++) {\n        T += calories[i];\n        if(i >= k) {\n            T -= calories[i-k];\n        }\n        if(i >= k-1) {\n            if(T < lower) points--;\n            if(T > upper) points++;\n        }\n    }\n\n    return points;\n}\n```\n    \n    1. Initialize the points and total calories `T` to 0.\n2. Iterate through the given calories list.\n3. Add the current day calories to `T`.\n4. Check if the current index position is greater than or equal to `k`. If so, subtract the calories of the first day of the previous window from `T`.\n5. Check if we have formed a window of size `k`. If so, perform the point calculation:\n   1. If `T` is less than `lower`, decrement the points.\n   2. If `T` is greater than `upper`, increment the points.\n6. Return the total number of points.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

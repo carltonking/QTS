@@ -1,0 +1,24 @@
+{
+  "id": 1830,
+  "title": "Minimum Number of Operations to Make String Sorted",
+  "slug": "minimum-number-of-operations-to-make-string-sorted",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a string s (0-indexed)​​​​​​. You are asked to perform the following operation on s​​​​​​ until you get a sorted string:\n\n1.  Find the largest index i such that 1 <= i < s.length and s[i] < s[i - 1].\n2.  Find the largest index j such that i <= j < s.length and s[k] < s[i - 1] for all the possible values of k in the range [i, j] inclusive.\n3.  Swap the two characters at indices i - 1​​​​ and j​​​​​.\n4.  Reverse the suffix starting at index i​​​​​​.\n\nReturn _the number of operations needed to make the string sorted._ Since the answer can be too large, return it modulo 109 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import defaultdict\n\ndef countPairs(deliciousness):\n    MOD = 10**9 + 7\n    hashMap = defaultdict(int)\n    maxVal = max(deliciousness)\n    maxSum = maxVal * 2\n\n    count = 0\n    for val in deliciousness:\n        for sum in (1 << i for i in range(22)):\n            count = (count + hashMap[sum - val]) % MOD\n        hashMap[val] += 1\n\n    return count\n```\n    \n    1. Initialize a hashmap for storing the frequency of deliciousness values.\n2. Find the max value in the deliciousness array and calculate the max sum as twice the max value.\n3. Initialize a variable to store the count of good meal pairs.\n4. Iterate through the deliciousness array, for each value:\n   a. Iterate with powers of two less than or equal to max sum.\n   b. If the hashmap contains the power of two minus the current value, increment the count by the frequency of such value in the hashmap. Don't forget to modulo the count by 1e9 + 7.\n   c. Update the hashmap by incrementing the frequency of the current value.\n5. After iterating through the deliciousness array, return the count of good meal pairs.\n    ",
+    "javascript": "\n    ```javascript\nfunction countPairs(deliciousness) {\n    const MOD = 1e9 + 7;\n    const hashMap = new Map();\n    let maxVal = 0;\n    for (const val of deliciousness) {\n        maxVal = Math.max(maxVal, val);\n    }\n    const maxSum = maxVal * 2;\n\n    let count = 0;\n    for (const val of deliciousness) {\n        for (let sum = 1; sum <= maxSum; sum <<= 1) {\n            count = (count + (hashMap.get(sum - val) || 0)) % MOD;\n        }\n        hashMap.set(val, (hashMap.get(val) || 0) + 1);\n    }\n\n    return count;\n}\n```\n    \n    1. Initialize a hashmap for storing the frequency of deliciousness values.\n2. Find the max value in the deliciousness array and calculate the max sum as twice the max value.\n3. Initialize a variable to store the count of good meal pairs.\n4. Iterate through the deliciousness array, for each value:\n   a. Iterate with powers of two less than or equal to max sum.\n   b. If the hashmap contains the power of two minus the current value, increment the count by the frequency of such value in the hashmap. Don't forget to modulo the count by 1e9 + 7.\n   c. Update the hashmap by incrementing the frequency of the current value.\n5. After iterating through the deliciousness array, return the count of good meal pairs.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\n\npublic int countPairs(int[] deliciousness) {\n    final int MOD = (int) (1e9 + 7);\n    HashMap<Integer, Integer> hashMap = new HashMap<>();\n    int maxVal = 0;\n    for (int val : deliciousness) {\n        maxVal = Math.max(maxVal, val);\n    }\n    int maxSum = maxVal * 2;\n\n    int count = 0;\n    for (int val : deliciousness) {\n        for (int sum = 1; sum <= maxSum; sum <<= 1) {\n            count = (count + hashMap.getOrDefault(sum - val, 0)) % MOD;\n        }\n        hashMap.put(val, hashMap.getOrDefault(val, 0) + 1);\n    }\n\n    return count;\n}\n```\n    \n    1. Initialize a hashmap for storing the frequency of deliciousness values.\n2. Find the max value in the deliciousness array and calculate the max sum as twice the max value.\n3. Initialize a variable to store the count of good meal pairs.\n4. Iterate through the deliciousness array, for each value:\n   a. Iterate with powers of two less than or equal to max sum.\n   b. If the hashmap contains the power of two minus the current value, increment the count by the frequency of such value in the hashmap. Don't forget to modulo the count by 1e9 + 7.\n   c. Update the hashmap by incrementing the frequency of the current value.\n5. After iterating through the deliciousness array, return the count of good meal pairs.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2448,
+  "title": "Minimum Cost to Make Array Equal",
+  "slug": "minimum-cost-to-make-array-equal",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given two 0-indexed arrays nums and cost consisting each of n positive integers.\n\nYou can do the following operation any number of times:\n\n*   Increase or decrease any element of the array nums by 1.\n\nThe cost of doing one operation on the ith element is cost[i].\n\nReturn _the minimum total cost such that all the elements of the array_ nums _become equal_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minCost(nums, cost):\n    ans = float(\"inf\")\n    base = min(nums)\n    \n    for target in range(base, base + 2):\n        local_res = 0\n        for i in range(len(nums)):\n            local_res += abs(nums[i] - target) * cost[i]\n        ans = min(ans, local_res)\n    \n    return ans\n```\n    \n    The algorithm starts by finding the minimum value present in the `nums` array. Then, it iterates through `target` values within the range `[base, base + 1]` because we only need to check the minimum value and potential next minimum value. For each possible `target`, calculate the local result by iterating through the elements in the `nums` array and multiplying the absolute difference between the current element and target by the corresponding cost element. Update the global minimum cost if the local result is smaller than the current global minimum.\n    ",
+    "javascript": "\n    ```javascript\nfunction minCost(nums, cost) {\n    let ans = Number.MAX_VALUE;\n    let base = Math.min(...nums);\n    \n    for (let target = base; target < base + 2; target++) {\n        let local_res = 0;\n        for (let i = 0; i < nums.length; i++) {\n            local_res += Math.abs(nums[i] - target) * cost[i];\n        }\n        ans = Math.min(ans, local_res);\n    }\n    \n    return ans;\n}\n```\n    \n    The algorithm starts by finding the minimum value present in the `nums` array. Then, it iterates through `target` values within the range `[base, base + 1]` because we only need to check the minimum value and potential next minimum value. For each possible `target`, calculate the local result by iterating through the elements in the `nums` array and multiplying the absolute difference between the current element and target by the corresponding cost element. Update the global minimum cost if the local result is smaller than the current global minimum.\n    ",
+    "java": "\n    ```java\npublic long minCost(int[] nums, int[] cost) {\n    long ans = Long.MAX_VALUE;\n    int minValue = nums[0];\n    \n    for (int num : nums) {\n        minValue = Math.min(minValue, num);\n    }\n    \n    for (int target = minValue; target < minValue + 2; target++) {\n        long local_res = 0;\n        for (int i = 0; i < nums.length; i++) {\n            local_res += Math.abs(nums[i] - target) * cost[i];\n        }\n        ans = Math.min(ans, local_res);\n    }\n    \n    return ans;\n}\n```\n    \n    The algorithm starts by finding the minimum value present in the `nums` array. Then, it iterates through `target` values within the range `[base, base + 1]` because we only need to check the minimum value and potential next minimum value. For each possible `target`, calculate the local result by iterating through the elements in the `nums` array and multiplying the absolute difference between the current element and target by the corresponding cost element. Update the global minimum cost if the local result is smaller than the current global minimum.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 758,
+  "title": "Bold Words in String",
+  "slug": "bold-words-in-string",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of keywords words and a string s, make all appearances of all keywords words[i] in s bold. Any letters between and tags become bold.\n\nReturn s _after adding the bold tags_. The returned string should use the least number of tags possible, and the tags should form a valid combination.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef addBoldTag(words, s):\n    bold = [False] * len(s)\n    for word in words:\n        pos = s.find(word)\n        while pos != -1:\n            for i in range(pos, pos + len(word)):\n                bold[i] = True\n            pos = s.find(word, pos + 1)\n\n    result = []\n    for i in range(len(s)):\n        if bold[i] and (i == 0 or not bold[i - 1]):\n            result.append(\"<b>\")\n        result.append(s[i])\n        if bold[i] and (i == len(s) - 1 or not bold[i + 1]):\n            result.append(\"</b>\")\n\n    return \"\".join(result)\n```\n    \n    1. Create an array `bold` of boolean values, same length as `s`, initially set to `false`.\n2. For each `word` in `words`, find its indices in `s`. For each index found, set the corresponding elements in `bold` to `true`.\n3. Create an empty result string. Iterate through `s` and concatenate each character to the result string. If the character is marked as bold and the previous character is not marked as bold, prepend a `<b>` tag. If the character is marked as bold and the next character is not marked as bold, append a `</b>` tag.\n4. Return the result string with bold tags inserted.\n    ",
+    "javascript": "\n    ```javascript\nfunction addBoldTag(words, s) {\n    const bold = new Array(s.length).fill(false);\n    for (const word of words) {\n        let pos = s.indexOf(word);\n        while (pos !== -1) {\n            for (let i = pos; i < pos + word.length; i++) {\n                bold[i] = true;\n            }\n            pos = s.indexOf(word, pos + 1);\n        }\n    }\n\n    let result = \"\";\n    for (let i = 0; i < s.length; i++) {\n        if (bold[i] && (i === 0 || !bold[i - 1])) result += \"<b>\";\n        result += s[i];\n        if (bold[i] && (i === s.length - 1 || !bold[i + 1])) result += \"</b>\";\n    }\n\n    return result;\n}\n```\n    \n    1. Create an array `bold` of boolean values, same length as `s`, initially set to `false`.\n2. For each `word` in `words`, find its indices in `s`. For each index found, set the corresponding elements in `bold` to `true`.\n3. Create an empty result string. Iterate through `s` and concatenate each character to the result string. If the character is marked as bold and the previous character is not marked as bold, prepend a `<b>` tag. If the character is marked as bold and the next character is not marked as bold, append a `</b>` tag.\n4. Return the result string with bold tags inserted.\n    ",
+    "java": "\n    ```java\nimport java.util.List;\n\npublic String addBoldTag(List<String> words, String s) {\n    boolean[] bold = new boolean[s.length()];\n    for (String word : words) {\n        int pos = s.indexOf(word);\n        while (pos != -1) {\n            for (int i = pos; i < pos + word.length(); i++) {\n                bold[i] = true;\n            }\n            pos = s.indexOf(word, pos + 1);\n        }\n    }\n\n    StringBuilder result = new StringBuilder();\n    for (int i = 0; i < s.length(); i++) {\n        if (bold[i] && (i == 0 || !bold[i - 1])) result.append(\"<b>\");\n        result.append(s.charAt(i));\n        if (bold[i] && (i == s.length() - 1 || !bold[i + 1])) result.append(\"</b>\");\n    }\n\n    return result.toString();\n}\n```\n    \n    1. Create an array `bold` of boolean values, same length as `s`, initially set to `false`.\n2. For each `word` in `words`, find its indices in `s`. For each index found, set the corresponding elements in `bold` to `true`.\n3. Create an empty result string. Iterate through `s` and concatenate each character to the result string. If the character is marked as bold and the previous character is not marked as bold, prepend a `<b>` tag. If the character is marked as bold and the next character is not marked as bold, append a `</b>` tag.\n4. Return the result string with bold tags inserted.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

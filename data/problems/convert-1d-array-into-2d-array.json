@@ -1,0 +1,24 @@
+{
+  "id": 2022,
+  "title": "Convert 1D Array Into 2D Array",
+  "slug": "convert-1d-array-into-2d-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a 0-indexed 1-dimensional (1D) integer array original, and two integers, m and n. You are tasked with creating a 2-dimensional (2D) array with m rows and n columns using all the elements from original.\n\nThe elements from indices 0 to n - 1 (inclusive) of original should form the first row of the constructed 2D array, the elements from indices n to 2 * n - 1 (inclusive) should form the second row of the constructed 2D array, and so on.\n\nReturn _an_ m x n _2D array constructed according to the above procedure, or an empty 2D array if it is impossible_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_alternating_sum(nums):\n    even_sum = odd_sum = 0\n    for num in nums:\n        even_sum, odd_sum = max(even_sum + num, odd_sum), even_sum - num\n    return even_sum\n```\n    \n    The algorithm loops through each element of the input array `nums`. For each number:\n1. Calculate the new possible even index sum by adding the current number to the previous even sum.\n2. Compare it with the previous odd index sum and take the maximum of the two;\n3. Update the odd index sum by subtracting the current number from the updated even sum.\n\nThe algorithm maintains the maximum alternating sum in both even and odd indices during the loop. After iterating through all the numbers, the final result (maximum alternating sum) will be stored in the even sum variable. This approach has a time complexity of O(n) where n is the number of elements in the input array.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxAlternatingSum(nums) {\n    let evenSum = 0, oddSum = 0;\n    for (let num of nums) {\n        [evenSum, oddSum] = [Math.max(evenSum + num, oddSum), evenSum - num];\n    }\n    return evenSum;\n}\n```\n    \n    The algorithm loops through each element of the input array `nums`. For each number:\n1. Calculate the new possible even index sum by adding the current number to the previous even sum.\n2. Compare it with the previous odd index sum and take the maximum of the two;\n3. Update the odd index sum by subtracting the current number from the updated even sum.\n\nThe algorithm maintains the maximum alternating sum in both even and odd indices during the loop. After iterating through all the numbers, the final result (maximum alternating sum) will be stored in the even sum variable. This approach has a time complexity of O(n) where n is the number of elements in the input array.\n    ",
+    "java": "\n    ```java\npublic long maxAlternatingSum(int[] nums) {\n    long evenSum = 0, oddSum = 0;\n    for (int num : nums) {\n        evenSum = Math.max(evenSum + num, oddSum);\n        oddSum = evenSum - num;\n    }\n    return evenSum;\n}\n```\n    \n    The algorithm loops through each element of the input array `nums`. For each number:\n1. Calculate the new possible even index sum by adding the current number to the previous even sum.\n2. Compare it with the previous odd index sum and take the maximum of the two;\n3. Update the odd index sum by subtracting the current number from the updated even sum.\n\nThe algorithm maintains the maximum alternating sum in both even and odd indices during the loop. After iterating through all the numbers, the final result (maximum alternating sum) will be stored in the even sum variable. This approach has a time complexity of O(n) where n is the number of elements in the input array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1259,
+  "title": "Handshakes That Don't Cross",
+  "slug": "handshakes-that-dont-cross",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an even number of people numPeople that stand around a circle and each person shakes hands with someone else so that there are numPeople / 2 handshakes total.\n\nReturn _the number of ways these handshakes could occur such that none of the handshakes cross_.\n\nSince the answer could be very large, return it modulo 109 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef numberOfWays(numPeople: int) -> int:\n    MOD = 1000000007\n    dp = [0] * (numPeople // 2 + 1)\n    dp[0] = 1\n    for i in range(1, numPeople // 2 + 1):\n        for j in range(1, i + 1):\n            dp[i] = (dp[i] + dp[i - j] * dp[j - 1]) % MOD\n    return dp[numPeople // 2]\n```\n\n    \n    The problem can be solved using dynamic programming. We can use dp[i] to represent the number of different ways i pairs of people can perform handshakes without crossing. We initialize dp[0] to 1 as there is one way to perform no handshakes.\n\nNow, we iterate from 1 to numPeople/2 inclusive. In each iteration, we consider one pair of people at a time. Suppose there are i pairs of people and the current pair to be considered is j. Then, the remaining pairs of people can be divided into two groups - one having j - 1 pairs and the other having i - j pairs. Thus, we can calculate dp[i] by using the previous values of dp[]. Specifically, dp[i] is updated as follows:\ndp[i] = (dp[i] + (dp[i - j] * dp[j - 1]) % MOD) % MOD;\n\nFinally, we return dp[numPeople / 2].\n    ",
+    "javascript": "\n    ```javascript\nfunction numberOfWays(numPeople) {\n    const MOD = 1000000007;\n    let dp = new Array(numPeople / 2 + 1).fill(0);\n    dp[0] = 1;\n    for (let i = 1; i <= numPeople / 2; ++i) {\n        for (let j = 1; j <= i; ++j) {\n            dp[i] = (dp[i] + (dp[i - j] * dp[j - 1]) % MOD) % MOD;\n        }\n    }\n    return dp[numPeople / 2];\n}\n```\n\n    \n    The problem can be solved using dynamic programming. We can use dp[i] to represent the number of different ways i pairs of people can perform handshakes without crossing. We initialize dp[0] to 1 as there is one way to perform no handshakes.\n\nNow, we iterate from 1 to numPeople/2 inclusive. In each iteration, we consider one pair of people at a time. Suppose there are i pairs of people and the current pair to be considered is j. Then, the remaining pairs of people can be divided into two groups - one having j - 1 pairs and the other having i - j pairs. Thus, we can calculate dp[i] by using the previous values of dp[]. Specifically, dp[i] is updated as follows:\ndp[i] = (dp[i] + (dp[i - j] * dp[j - 1]) % MOD) % MOD;\n\nFinally, we return dp[numPeople / 2].\n    ",
+    "java": "\n    ```java\npublic int numberOfWays(int numPeople) {\n    int MOD = 1000000007;\n    int[] dp = new int[numPeople / 2 + 1];\n    dp[0] = 1;\n    for (int i = 1; i <= numPeople / 2; ++i) {\n        for (int j = 1; j <= i; ++j) {\n            dp[i] = (dp[i] + (int)(((long) dp[i - j] * dp[j - 1]) % MOD )) % MOD;\n        }\n    }\n    return dp[numPeople / 2];\n}\n```\n\n    \n    The problem can be solved using dynamic programming. We can use dp[i] to represent the number of different ways i pairs of people can perform handshakes without crossing. We initialize dp[0] to 1 as there is one way to perform no handshakes.\n\nNow, we iterate from 1 to numPeople/2 inclusive. In each iteration, we consider one pair of people at a time. Suppose there are i pairs of people and the current pair to be considered is j. Then, the remaining pairs of people can be divided into two groups - one having j - 1 pairs and the other having i - j pairs. Thus, we can calculate dp[i] by using the previous values of dp[]. Specifically, dp[i] is updated as follows:\ndp[i] = (dp[i] + (dp[i - j] * dp[j - 1]) % MOD) % MOD;\n\nFinally, we return dp[numPeople / 2].\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

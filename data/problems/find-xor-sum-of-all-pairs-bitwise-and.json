@@ -1,0 +1,24 @@
+{
+  "id": 1835,
+  "title": "Find XOR Sum of All Pairs Bitwise AND",
+  "slug": "find-xor-sum-of-all-pairs-bitwise-and",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "The XOR sum of a list is the bitwise XOR of all its elements. If the list only contains one element, then its XOR sum will be equal to this element.\n\n*   For example, the XOR sum of [1,2,3,4] is equal to 1 XOR 2 XOR 3 XOR 4 = 4, and the XOR sum of [3] is equal to 3.\n\nYou are given two 0-indexed arrays arr1 and arr2 that consist only of non-negative integers.\n\nConsider the list containing the result of arr1[i] AND arr2[j] (bitwise AND) for every (i, j) pair where 0 <= i < arr1.length and 0 <= j < arr2.length.\n\nReturn _the XOR sum of the aforementioned list_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef decode(encoded):\n    n = len(encoded) + 1\n    total_xor = 0\n    for i in range(1, n + 1):\n        total_xor ^= i\n    encoded_xor = 0\n    for i in range(1, n - 1, 2):\n        encoded_xor ^= encoded[i]\n    perm = [total_xor ^ encoded_xor]\n    for i in range(1, n):\n        perm.append(perm[-1] ^ encoded[i - 1])\n    return perm\n```\n    \n    1. Calculate the XOR of all integers from 1 to n (inclusive), and store it in the `total_xor` variable.\n2. Calculate the XOR of all elements of the encoded array with odd indices (starting from index 1), and store it in the `encoded_xor` variable.\n3. The first element of the perm array is calculated by XOR'ing `total_xor` and `encoded_xor`.\n4. Loop through the range 1 to n-1 (inclusive) and calculate the rest of the perm array elements using the following formula: `perm[i] = perm[i - 1] ^ encoded[i - 1]`.\n5. Return the reconstructed perm array.\n    ",
+    "javascript": "\n    ```javascript\nfunction decode(encoded) {\n    const n = encoded.length + 1;\n    let total_xor = 0;\n    for (let i = 1; i <= n; ++i) {\n        total_xor ^= i;\n    }\n    let encoded_xor = 0;\n    for (let i = 1; i < n - 1; i += 2) {\n        encoded_xor ^= encoded[i];\n    }\n    const perm = [total_xor ^ encoded_xor];\n    for (let i = 1; i < n; ++i) {\n        perm.push(perm[i - 1] ^ encoded[i - 1]);\n    }\n    return perm;\n}\n```\n\n    \n    1. Calculate the XOR of all integers from 1 to n (inclusive), and store it in the `total_xor` variable.\n2. Calculate the XOR of all elements of the encoded array with odd indices (starting from index 1), and store it in the `encoded_xor` variable.\n3. The first element of the perm array is calculated by XOR'ing `total_xor` and `encoded_xor`.\n4. Loop through the range 1 to n-1 (inclusive) and calculate the rest of the perm array elements using the following formula: `perm[i] = perm[i - 1] ^ encoded[i - 1]`.\n5. Return the reconstructed perm array.\n    ",
+    "java": "\n    ```java\npublic int[] decode(int[] encoded) {\n    int n = encoded.length + 1;\n    int total_xor = 0;\n    for (int i = 1; i <= n; ++i) {\n        total_xor ^= i;\n    }\n    int encoded_xor = 0;\n    for (int i = 1; i < n - 1; i += 2) {\n        encoded_xor ^= encoded[i];\n    }\n    int[] perm = new int[n];\n    perm[0] = total_xor ^ encoded_xor;\n    for (int i = 1; i < n; ++i) {\n        perm[i] = perm[i - 1] ^ encoded[i - 1];\n    }\n    return perm;\n}\n```\n    \n    1. Calculate the XOR of all integers from 1 to n (inclusive), and store it in the `total_xor` variable.\n2. Calculate the XOR of all elements of the encoded array with odd indices (starting from index 1), and store it in the `encoded_xor` variable.\n3. The first element of the perm array is calculated by XOR'ing `total_xor` and `encoded_xor`.\n4. Loop through the range 1 to n-1 (inclusive) and calculate the rest of the perm array elements using the following formula: `perm[i] = perm[i - 1] ^ encoded[i - 1]`.\n5. Return the reconstructed perm array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

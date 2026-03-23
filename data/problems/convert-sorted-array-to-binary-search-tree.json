@@ -1,0 +1,24 @@
+{
+  "id": 108,
+  "title": "Convert Sorted Array to Binary Search Tree",
+  "slug": "convert-sorted-array-to-binary-search-tree",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer array nums where the elements are sorted in ascending order, convert _it to a_ _height-balanced_ _binary search tree_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef sorted_array_to_bst(nums):\n    def helper(start, end):\n        if start > end:\n            return None\n\n        mid = start + (end - start) // 2\n        node = TreeNode(nums[mid])\n        node.left = helper(start, mid - 1)\n        node.right = helper(mid + 1, end)\n\n        return node\n\n    return helper(0, len(nums) - 1)\n```\n\n    \n    The algorithm for creating a height-balanced binary search tree from a sorted array can be described as follows:\n\n1. Find the middle element of the array, and make it the root of the binary search tree.\n2. For each half of the array (elements to the left of the middle element and elements to the right of the middle element), repeat step 1 recursively.\n3. The base case is when the start index is greater than the end index, in which case a null node is returned.\n\nThe above code implements this algorithm in C++, Java, Python, and JavaScript.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(val, left = null, right = null) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\nfunction sortedArrayToBST(nums, start = 0, end = nums.length - 1) {\n    if (start > end) return null;\n\n    let mid = start + Math.floor((end - start) / 2);\n    let node = new TreeNode(nums[mid]);\n    node.left = sortedArrayToBST(nums, start, mid - 1);\n    node.right = sortedArrayToBST(nums, mid + 1, end);\n\n    return node;\n}\n```\n\n    \n    The algorithm for creating a height-balanced binary search tree from a sorted array can be described as follows:\n\n1. Find the middle element of the array, and make it the root of the binary search tree.\n2. For each half of the array (elements to the left of the middle element and elements to the right of the middle element), repeat step 1 recursively.\n3. The base case is when the start index is greater than the end index, in which case a null node is returned.\n\nThe above code implements this algorithm in C++, Java, Python, and JavaScript.\n    ",
+    "java": "\n    ```java\npublic class TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n    TreeNode(int x) { val = x; }\n}\n\npublic TreeNode sortedArrayToBST(int[] nums) {\n    return sortedArrayToBST(nums, 0, nums.length - 1);\n}\n\nprivate TreeNode sortedArrayToBST(int[] nums, int start, int end) {\n    if (start > end) return null;\n\n    int mid = start + (end - start) / 2;\n    TreeNode node = new TreeNode(nums[mid]);\n    node.left = sortedArrayToBST(nums, start, mid - 1);\n    node.right = sortedArrayToBST(nums, mid + 1, end);\n\n    return node;\n}\n```\n\n    \n    The algorithm for creating a height-balanced binary search tree from a sorted array can be described as follows:\n\n1. Find the middle element of the array, and make it the root of the binary search tree.\n2. For each half of the array (elements to the left of the middle element and elements to the right of the middle element), repeat step 1 recursively.\n3. The base case is when the start index is greater than the end index, in which case a null node is returned.\n\nThe above code implements this algorithm in C++, Java, Python, and JavaScript.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

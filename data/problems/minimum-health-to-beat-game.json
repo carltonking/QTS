@@ -1,0 +1,24 @@
+{
+  "id": 2214,
+  "title": "Minimum Health to Beat Game",
+  "slug": "minimum-health-to-beat-game",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are playing a game that has n levels numbered from 0 to n - 1. You are given a 0-indexed integer array damage where damage[i] is the amount of health you will lose to complete the ith level.\n\nYou are also given an integer armor. You may use your armor ability at most once during the game on any level which will protect you from at most armor damage.\n\nYou must complete the levels in order and your health must be greater than 0 at all times to beat the game.\n\nReturn _the minimum health you need to start with to beat the game._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_health(damage, armor):\n    health = 0\n    for dmg in reversed(damage):\n        health += dmg\n        if health > armor:\n            health -= armor\n            armor = 0\n    return health + 1\n```\n    \n    We will iterate through the damage array in reverse, starting from the last element (i.e., the last level) to compute the minimum health required to complete the game.\n\nIn each step, we will add the damage[i] to the health. If the current health is greater than the value of armor, we subtract the armor value from the health and set the armor value to 0 since it can be used only once.\n\nAfter iterating through all the damage array elements, we add 1 to the health value and return it as the minimum health required to beat the game.\n    ",
+    "javascript": "\n    ```javascript\nfunction minHealth(damage, armor) {\n    let health = 0;\n    for (let i = damage.length - 1; i >= 0; --i) {\n        health += damage[i];\n        if (health > armor) {\n            health -= armor;\n            armor = 0;\n        }\n    }\n    return health + 1;\n}\n```\n    \n    We will iterate through the damage array in reverse, starting from the last element (i.e., the last level) to compute the minimum health required to complete the game.\n\nIn each step, we will add the damage[i] to the health. If the current health is greater than the value of armor, we subtract the armor value from the health and set the armor value to 0 since it can be used only once.\n\nAfter iterating through all the damage array elements, we add 1 to the health value and return it as the minimum health required to beat the game.\n    ",
+    "java": "\n    ```java\npublic int minHealth(int[] damage, int armor) {\n    int health = 0;\n    for (int i = damage.length - 1; i >= 0; --i) {\n        health += damage[i];\n        if (health > armor) {\n            health -= armor;\n            armor = 0;\n        }\n    }\n    return health + 1;\n}\n```\n    \n    We will iterate through the damage array in reverse, starting from the last element (i.e., the last level) to compute the minimum health required to complete the game.\n\nIn each step, we will add the damage[i] to the health. If the current health is greater than the value of armor, we subtract the armor value from the health and set the armor value to 0 since it can be used only once.\n\nAfter iterating through all the damage array elements, we add 1 to the health value and return it as the minimum health required to beat the game.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

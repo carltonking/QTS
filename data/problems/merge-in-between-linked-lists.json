@@ -1,0 +1,24 @@
+{
+  "id": 1669,
+  "title": "Merge In Between Linked Lists",
+  "slug": "merge-in-between-linked-lists",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two linked lists: list1 and list2 of sizes n and m respectively.\n\nRemove list1's nodes from the ath node to the bth node, and put list2 in their place.\n\nThe blue edges and nodes in the following figure indicate the result:\n\n_Build the result list and return its head._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minCost(n, cuts):\n    cuts = [0] + cuts + [n]\n    cuts.sort()\n    size = len(cuts)\n    dp = [[0] * size for _ in range(size)]\n\n    for len in range(2, size):\n        for i in range(size - len):\n            j = i + len\n            dp[i][j] = float('inf')\n            for k in range(i + 1, j):\n                dp[i][j] = min(dp[i][j], dp[i][k] + dp[k][j] + cuts[j] - cuts[i])\n\n    return dp[0][size - 1]\n```\n    \n    The algorithm uses dynamic programming to find the minimum total cost of the cuts. \n\n1. Initialize an array in each language to store the original cuts, 0, and n, and then sort the array.\n2. Create a 2D dp array where dp[i][j] represents the minimum cost of cutting the stick between cuts[i] and cuts[j].\n3. Iterate through possible lengths, starting from 2 to the length of the cuts array.\n4. Iterate over the cut positions and calculate the minimum cost for each cut by trying all possible cutting orders. The cost of a cut is calculated as the sum of lengths of the left and right parts of the stick after the cut.\n5. Return the value in dp[0][size - 1] as the minimum total cost of the cuts.\n    ",
+    "javascript": "\n    ```javascript\nfunction minCost(n, cuts) {\n    cuts.push(0);\n    cuts.push(n);\n    cuts.sort((a, b) => a - b);\n    const size = cuts.length;\n    const dp = Array.from({ length: size }, () => Array(size).fill(0));\n\n    for (let len = 2; len < size; len++) {\n        for (let i = 0; i < size - len; i++) {\n            const j = i + len;\n            dp[i][j] = Infinity;\n            for (let k = i + 1; k < j; k++) {\n                dp[i][j] = Math.min(dp[i][j], dp[i][k] + dp[k][j] + cuts[j] - cuts[i]);\n            }\n        }\n    }\n\n    return dp[0][size - 1];\n}\n```\n    \n    The algorithm uses dynamic programming to find the minimum total cost of the cuts. \n\n1. Initialize an array in each language to store the original cuts, 0, and n, and then sort the array.\n2. Create a 2D dp array where dp[i][j] represents the minimum cost of cutting the stick between cuts[i] and cuts[j].\n3. Iterate through possible lengths, starting from 2 to the length of the cuts array.\n4. Iterate over the cut positions and calculate the minimum cost for each cut by trying all possible cutting orders. The cost of a cut is calculated as the sum of lengths of the left and right parts of the stick after the cut.\n5. Return the value in dp[0][size - 1] as the minimum total cost of the cuts.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int minCost(int n, int[] cuts) {\n    int[] new_cuts = Arrays.copyOf(cuts, cuts.length + 2);\n    new_cuts[cuts.length] = 0;\n    new_cuts[cuts.length + 1] = n;\n    Arrays.sort(new_cuts);\n    int size = new_cuts.length;\n    \n    int[][] dp = new int[size][size];\n\n    for (int len = 2; len < size; ++len) {\n        for (int i = 0; i < size - len; ++i) {\n            int j = i + len;\n            dp[i][j] = Integer.MAX_VALUE;\n            for (int k = i + 1; k < j; ++k) {\n                dp[i][j] = Math.min(dp[i][j], dp[i][k] + dp[k][j] + new_cuts[j] - new_cuts[i]);\n            }\n        }\n    }\n\n    return dp[0][size - 1];\n}\n```\n    \n    The algorithm uses dynamic programming to find the minimum total cost of the cuts. \n\n1. Initialize an array in each language to store the original cuts, 0, and n, and then sort the array.\n2. Create a 2D dp array where dp[i][j] represents the minimum cost of cutting the stick between cuts[i] and cuts[j].\n3. Iterate through possible lengths, starting from 2 to the length of the cuts array.\n4. Iterate over the cut positions and calculate the minimum cost for each cut by trying all possible cutting orders. The cost of a cut is calculated as the sum of lengths of the left and right parts of the stick after the cut.\n5. Return the value in dp[0][size - 1] as the minimum total cost of the cuts.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

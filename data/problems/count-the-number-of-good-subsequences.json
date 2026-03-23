@@ -1,0 +1,24 @@
+{
+  "id": 2539,
+  "title": "Count the Number of Good Subsequences",
+  "slug": "count-the-number-of-good-subsequences",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A subsequence of a string is good if it is not empty and the frequency of each one of its characters is the same.\n\nGiven a string s, return _the number of good subsequences of_ s. Since the answer may be too large, return it modulo 109 + 7.\n\nA subsequence is a string that can be derived from another string by deleting some or no characters without changing the order of the remaining characters.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef numberOfGoodSubsequences(s: str) -> int:\n    count = [0] * 26\n    ans = 0\n    MOD = 1000000007\n    \n    for c in s:\n        count[ord(c) - ord('a')] += 1\n        \n    for val in count:\n        ans = (ans + (1 << val) - 1) % MOD\n        \n    return ans\n```\n\n    \n    To solve this problem, we first count the frequency of each character in the string. Then we iterate through the resulting counts and compute the number of possible combinations for each character count by raising 2 to the power of the count (this represents the possible combinations including or excluding that character in the subsequence). Since counts with value zero don't add any new subsequences, we subtract 1 (which is the count of empty subsequences) from the result of that operation. The sum of all these numbers modulo 10^9+7 is the final answer, as this takes into account the good subsequences from each character.\n    ",
+    "javascript": "\n    ```javascript\nfunction numberOfGoodSubsequences(s) {\n    let count = new Array(26).fill(0);\n    let ans = 0;\n    const MOD = 1000000007;\n    \n    for (let c of s) {\n        count[c.codePointAt(0) - 'a'.codePointAt(0)]++;\n    }\n    \n    for (let val of count) {\n        ans = (ans + (BigInt(1) << BigInt(val)) - BigInt(1)) % BigInt(MOD);\n    }\n    \n    return Number(ans);\n}\n```\n\n    \n    To solve this problem, we first count the frequency of each character in the string. Then we iterate through the resulting counts and compute the number of possible combinations for each character count by raising 2 to the power of the count (this represents the possible combinations including or excluding that character in the subsequence). Since counts with value zero don't add any new subsequences, we subtract 1 (which is the count of empty subsequences) from the result of that operation. The sum of all these numbers modulo 10^9+7 is the final answer, as this takes into account the good subsequences from each character.\n    ",
+    "java": "\n    ```java\npublic int numberOfGoodSubsequences(String s) {\n    int[] count = new int[26];\n    long ans = 0;\n    final int MOD = 1000000007;\n    \n    for (char c : s.toCharArray()) {\n        count[c - 'a']++;\n    }\n    \n    for (int val : count) {\n        ans = (ans + (1L << val) - 1) % MOD;\n    }\n    \n    return (int)ans;\n}\n```\n\n    \n    To solve this problem, we first count the frequency of each character in the string. Then we iterate through the resulting counts and compute the number of possible combinations for each character count by raising 2 to the power of the count (this represents the possible combinations including or excluding that character in the subsequence). Since counts with value zero don't add any new subsequences, we subtract 1 (which is the count of empty subsequences) from the result of that operation. The sum of all these numbers modulo 10^9+7 is the final answer, as this takes into account the good subsequences from each character.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

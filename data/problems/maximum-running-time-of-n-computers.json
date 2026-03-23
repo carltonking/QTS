@@ -1,0 +1,24 @@
+{
+  "id": 2141,
+  "title": "Maximum Running Time of N Computers",
+  "slug": "maximum-running-time-of-n-computers",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You have n computers. You are given the integer n and a 0-indexed integer array batteries where the ith battery can run a computer for batteries[i] minutes. You are interested in running all n computers simultaneously using the given batteries.\n\nInitially, you can insert at most one battery into each computer. After that and at any integer time moment, you can remove a battery from a computer and insert another battery any number of times. The inserted battery can be a totally new battery or a battery from another computer. You may assume that the removing and inserting processes take no time.\n\nNote that the batteries cannot be recharged.\n\nReturn _the maximum number of minutes you can run all the_ n _computers simultaneously._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_computer_runtime(n, batteries):\n    batteries.sort()\n    result = 0\n    for i in range(len(batteries)):\n        result = max(result, min(n, len(batteries) - i) * batteries[i])\n    return result\n```\n\n    \n    The algorithm sorts the input `batteries` in ascending order. Then, it iterates through the sorted batteries and calculates the maximum possible runtime for every possible combination of batteries, by taking into account that each computer can have at most one battery at a time. The maximum runtime is calculated as the minimum of `n` (number of computers) and the remaining batteries count, multiplied by the battery's runtime. Finally, the algorithm returns the maximum obtained runtime from all the possible combinations.\n    ",
+    "javascript": "\n    ```javascript\nfunction max_computer_runtime(n, batteries) {\n    batteries.sort((a, b) => a - b);\n    let result = 0;\n    for (let i = 0; i < batteries.length; i++) {\n        result = Math.max(result, Math.min(n, batteries.length - i) * batteries[i]);\n    }\n    return result;\n}\n```\n\n    \n    The algorithm sorts the input `batteries` in ascending order. Then, it iterates through the sorted batteries and calculates the maximum possible runtime for every possible combination of batteries, by taking into account that each computer can have at most one battery at a time. The maximum runtime is calculated as the minimum of `n` (number of computers) and the remaining batteries count, multiplied by the battery's runtime. Finally, the algorithm returns the maximum obtained runtime from all the possible combinations.\n    ",
+    "java": "\n    ```java\npublic int max_computer_runtime(int n, int[] batteries) {\n    Arrays.sort(batteries);\n    int result = 0;\n    for (int i = 0; i < batteries.length; i++) {\n        result = Math.max(result, Math.min(n, batteries.length - i) * batteries[i]);\n    }\n    return result;\n}\n```\n\n    \n    The algorithm sorts the input `batteries` in ascending order. Then, it iterates through the sorted batteries and calculates the maximum possible runtime for every possible combination of batteries, by taking into account that each computer can have at most one battery at a time. The maximum runtime is calculated as the minimum of `n` (number of computers) and the remaining batteries count, multiplied by the battery's runtime. Finally, the algorithm returns the maximum obtained runtime from all the possible combinations.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 961,
+  "title": "N-Repeated Element in Size 2N Array",
+  "slug": "n-repeated-element-in-size-2n-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an integer array nums with the following properties:\n\n*   nums.length == 2 * n.\n*   nums contains n + 1 unique elements.\n*   Exactly one element of nums is repeated n times.\n\nReturn _the element that is repeated_ n _times_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef isLongPressedName(name: str, typed: str) -> bool:\n    i, j = 0, 0\n    while j < len(typed):\n        if i < len(name) and name[i] == typed[j]:\n            i += 1\n        elif j == 0 or typed[j] != typed[j - 1]:\n            return False\n        j += 1\n    return i == len(name)\n```\n    \n    We initialize two pointers i and j, pointing to the current characters in the `name` and `typed` strings. We iterate through the `typed` string using the pointer j, and check the following conditions in each iteration:\n\n1. If the current characters at positions i and j are the same, we increment both pointers i and j.\n2. If the current character in the `typed` string (j) does not match the character at position j - 1, it means that there is no long press, and we return False since it cannot be a valid typing.\n\nAfter the loop, we check if the pointer i reached the end of the `name` string. If it did, it means that all characters in the `name` string were found at the `typed` string with some characters possibly being long pressed. If not, it implies that the `typed` string is not a valid typing of the `name` string, and we return False.\n    ",
+    "javascript": "\n    ```javascript\nfunction isLongPressedName(name, typed) {\n    let i = 0, j = 0;\n    while (j < typed.length) {\n        if (i < name.length && name[i] === typed[j]) {\n            i++;\n        } else if (j === 0 || typed[j] !== typed[j - 1]) {\n            return false;\n        }\n        j++;\n    }\n    return i === name.length;\n}\n```\n    \n    We initialize two pointers i and j, pointing to the current characters in the `name` and `typed` strings. We iterate through the `typed` string using the pointer j, and check the following conditions in each iteration:\n\n1. If the current characters at positions i and j are the same, we increment both pointers i and j.\n2. If the current character in the `typed` string (j) does not match the character at position j - 1, it means that there is no long press, and we return False since it cannot be a valid typing.\n\nAfter the loop, we check if the pointer i reached the end of the `name` string. If it did, it means that all characters in the `name` string were found at the `typed` string with some characters possibly being long pressed. If not, it implies that the `typed` string is not a valid typing of the `name` string, and we return False.\n    ",
+    "java": "\n    ```java\nboolean isLongPressedName(String name, String typed) {\n    int i = 0, j = 0;\n    while (j < typed.length()) {\n        if (i < name.length() && name.charAt(i) == typed.charAt(j)) {\n            i++;\n        } else if (j == 0 || typed.charAt(j) != typed.charAt(j - 1)) {\n            return false;\n        }\n        j++;\n    }\n    return i == name.length();\n}\n```\n    \n    We initialize two pointers i and j, pointing to the current characters in the `name` and `typed` strings. We iterate through the `typed` string using the pointer j, and check the following conditions in each iteration:\n\n1. If the current characters at positions i and j are the same, we increment both pointers i and j.\n2. If the current character in the `typed` string (j) does not match the character at position j - 1, it means that there is no long press, and we return False since it cannot be a valid typing.\n\nAfter the loop, we check if the pointer i reached the end of the `name` string. If it did, it means that all characters in the `name` string were found at the `typed` string with some characters possibly being long pressed. If not, it implies that the `typed` string is not a valid typing of the `name` string, and we return False.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

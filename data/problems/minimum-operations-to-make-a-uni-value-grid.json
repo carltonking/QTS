@@ -1,0 +1,24 @@
+{
+  "id": 2033,
+  "title": "Minimum Operations to Make a Uni-Value Grid",
+  "slug": "minimum-operations-to-make-a-uni-value-grid",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 2D integer grid of size m x n and an integer x. In one operation, you can add x to or subtract x from any element in the grid.\n\nA uni-value grid is a grid where all the elements of it are equal.\n\nReturn _the minimum number of operations to make the grid uni-value_. If it is not possible, return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef full_rounds_played(login_time, logout_time):\n    login_hour, login_minute = map(int, login_time.split(':'))\n    logout_hour, logout_minute = map(int, logout_time.split(':'))\n\n    if (logout_hour * 60 + logout_minute) < (login_hour * 60 + login_minute):\n        logout_hour += 24\n\n    rounds = (logout_hour * 60 + logout_minute - (login_hour * 60 + login_minute)) // 15\n    return rounds\n```\n\n    \n    1. Parse hours and minutes for both login and logout time.\n2. If logout time is earlier than login time (i.e., played through midnight), add 24 hours to the logout hour.\n3. Calculate the number of minutes played by taking the difference between logout and login times.\n4. Divide the difference by 15 to get the number of full rounds played and return the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction fullRoundsPlayed(loginTime, logoutTime) {\n    const loginHour = parseInt(loginTime.slice(0, 2));\n    const loginMinute = parseInt(loginTime.slice(3, 5));\n    const logoutHour = parseInt(logoutTime.slice(0, 2));\n    const logoutMinute = parseInt(logoutTime.slice(3, 5));\n\n    if ((logoutHour * 60 + logoutMinute) < (loginHour * 60 + loginMinute)) {\n        logoutHour += 24;\n    }\n\n    const rounds = (logoutHour * 60 + logoutMinute - (loginHour * 60 + loginMinute)) / 15;\n    return rounds;\n}\n```\n\n    \n    1. Parse hours and minutes for both login and logout time.\n2. If logout time is earlier than login time (i.e., played through midnight), add 24 hours to the logout hour.\n3. Calculate the number of minutes played by taking the difference between logout and login times.\n4. Divide the difference by 15 to get the number of full rounds played and return the result.\n    ",
+    "java": "\n    ```java\npublic int fullRoundsPlayed(String loginTime, String logoutTime) {\n    int loginHour = Integer.parseInt(loginTime.substring(0, 2));\n    int loginMinute = Integer.parseInt(loginTime.substring(3, 5));\n    int logoutHour = Integer.parseInt(logoutTime.substring(0, 2));\n    int logoutMinute = Integer.parseInt(logoutTime.substring(3, 5));\n\n    if ((logoutHour * 60 + logoutMinute) < (loginHour * 60 + loginMinute)) {\n        logoutHour += 24;\n    }\n\n    int rounds = (logoutHour * 60 + logoutMinute - (loginHour * 60 + loginMinute)) / 15;\n    return rounds;\n}\n```\n\n    \n    1. Parse hours and minutes for both login and logout time.\n2. If logout time is earlier than login time (i.e., played through midnight), add 24 hours to the logout hour.\n3. Calculate the number of minutes played by taking the difference between logout and login times.\n4. Divide the difference by 15 to get the number of full rounds played and return the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

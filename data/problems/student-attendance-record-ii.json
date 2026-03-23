@@ -1,0 +1,24 @@
+{
+  "id": 552,
+  "title": "Student Attendance Record II",
+  "slug": "student-attendance-record-ii",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "An attendance record for a student can be represented as a string where each character signifies whether the student was absent, late, or present on that day. The record only contains the following three characters:\n\n*   'A': Absent.\n*   'L': Late.\n*   'P': Present.\n\nAny student is eligible for an attendance award if they meet both of the following criteria:\n\n*   The student was absent ('A') for strictly fewer than 2 days total.\n*   The student was never late ('L') for 3 or more consecutive days.\n\nGiven an integer n, return _the number of possible attendance records of length_ n _that make a student eligible for an attendance award. The answer may be very large, so return it modulo_ 109 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef checkRecord(n: int) -> int:\n    M = 1000000007\n    dp = [1] * 6  # [latent state 0, latent state 1, ..., latent state 5]\n    while n:\n        next_dp = [0] * 6\n        next_dp[0] = (dp[0] + dp[1] + dp[2]) % M\n        next_dp[1] = dp[0]\n        next_dp[2] = dp[1]\n        next_dp[3] = (dp[3] + dp[4] + dp[5]) % M\n        next_dp[4] = dp[3]\n        next_dp[5] = dp[4]\n        dp = next_dp\n        n -= 1\n    return sum(dp) % M\n```\n\n    \n    The algorithm uses dynamic programming to count the number of eligible attendance records. We use a latent state representation consisting of 6 states to account for previous attendance occurrences:\n\n- latent state 0: no A or L\n- latent state 1: no A, 1 consecutive L\n- latent state 2: no A, 2 consecutive L\n- latent state 3: 1 A, no L\n- latent state 4: 1 A, 1 consecutive L\n- latent state 5: 1 A, 2 consecutive L\n\nIn each iteration, we update these latent states according to the previous states. After n iterations, the sum of all latent states represents the number of eligible attendance records.\n    ",
+    "javascript": "\n    ```javascript\nfunction checkRecord(n) {\n    let M = 1000000007;\n    let dp = Array(6).fill(1);  // [latent state 0, latent state 1, ..., latent state 5]\n    while (n--) {\n        let next_dp = Array(6).fill(0);\n        next_dp[0] = (dp[0] + dp[1] + dp[2]) % M;\n        next_dp[1] = dp[0];\n        next_dp[2] = dp[1];\n        next_dp[3] = (dp[3] + dp[4] + dp[5]) % M;\n        next_dp[4] = dp[3];\n        next_dp[5] = dp[4];\n        dp = next_dp;\n    }\n    return dp.reduce((sum, val) => (sum + val) % M, 0);\n}\n```\n\n    \n    The algorithm uses dynamic programming to count the number of eligible attendance records. We use a latent state representation consisting of 6 states to account for previous attendance occurrences:\n\n- latent state 0: no A or L\n- latent state 1: no A, 1 consecutive L\n- latent state 2: no A, 2 consecutive L\n- latent state 3: 1 A, no L\n- latent state 4: 1 A, 1 consecutive L\n- latent state 5: 1 A, 2 consecutive L\n\nIn each iteration, we update these latent states according to the previous states. After n iterations, the sum of all latent states represents the number of eligible attendance records.\n    ",
+    "java": "\n    ```java\npublic int checkRecord(int n) {\n    int M = 1000000007;\n    long[] dp = new long[6];  // {latent state 0, latent state 1, ..., latent state 5}\n    Arrays.fill(dp, 1);\n    while (n-- > 0) {\n        long[] next_dp = new long[6];\n        next_dp[0] = (dp[0] + dp[1] + dp[2]) % M;\n        next_dp[1] = dp[0];\n        next_dp[2] = dp[1];\n        next_dp[3] = (dp[3] + dp[4] + dp[5]) % M;\n        next_dp[4] = dp[3];\n        next_dp[5] = dp[4];\n        dp = next_dp;\n    }\n    return (int) ((dp[0] + dp[1] + dp[2] +\n                   dp[3] + dp[4] + dp[5]) % M);\n}\n```\n\n    \n    The algorithm uses dynamic programming to count the number of eligible attendance records. We use a latent state representation consisting of 6 states to account for previous attendance occurrences:\n\n- latent state 0: no A or L\n- latent state 1: no A, 1 consecutive L\n- latent state 2: no A, 2 consecutive L\n- latent state 3: 1 A, no L\n- latent state 4: 1 A, 1 consecutive L\n- latent state 5: 1 A, 2 consecutive L\n\nIn each iteration, we update these latent states according to the previous states. After n iterations, the sum of all latent states represents the number of eligible attendance records.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

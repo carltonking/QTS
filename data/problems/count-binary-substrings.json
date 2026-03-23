@@ -1,0 +1,24 @@
+{
+  "id": 696,
+  "title": "Count Binary Substrings",
+  "slug": "count-binary-substrings",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a binary string s, return the number of non-empty substrings that have the same number of 0's and 1's, and all the 0's and all the 1's in these substrings are grouped consecutively.\n\nSubstrings that occur multiple times are counted the number of times they occur.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_binary_substrings(s: str) -> int:\n    prev, curr, result = 0, 1, 0\n    for i in range(1, len(s)):\n        if s[i] == s[i - 1]:\n            curr += 1\n        else:\n            result += min(prev, curr)\n            prev, curr = curr, 1\n    return result + min(prev, curr)\n```\n    \n    Iterate through the binary string s. Keep track of the count of consecutive equal characters (curr) and the count of consecutive equal characters in the previous group (prev). When we encounter a character different from the previous one, add the minimum of prev and curr to the result. Update prev to the value of curr and reset curr to 1. After the iteration, add the minimum of prev and curr to the result and return the result. This will count all valid binary substrings with consecutive groups of 0's and 1's.\n    ",
+    "javascript": "\n    ```javascript\nfunction countBinarySubstrings(s) {\n    let prev = 0, curr = 1, result = 0;\n    for (let i = 1; i < s.length; i++) {\n        if (s[i] === s[i - 1]) {\n            curr++;\n        } else {\n            result += Math.min(prev, curr);\n            prev = curr;\n            curr = 1;\n        }\n    }\n    return result + Math.min(prev, curr);\n}\n```\n    \n    Iterate through the binary string s. Keep track of the count of consecutive equal characters (curr) and the count of consecutive equal characters in the previous group (prev). When we encounter a character different from the previous one, add the minimum of prev and curr to the result. Update prev to the value of curr and reset curr to 1. After the iteration, add the minimum of prev and curr to the result and return the result. This will count all valid binary substrings with consecutive groups of 0's and 1's.\n    ",
+    "java": "\n    ```java\npublic int countBinarySubstrings(String s) {\n    int prev = 0, curr = 1, result = 0;\n    for (int i = 1; i < s.length(); i++) {\n        if (s.charAt(i) == s.charAt(i - 1)) {\n            curr++;\n        } else {\n            result += Math.min(prev, curr);\n            prev = curr;\n            curr = 1;\n        }\n    }\n    return result + Math.min(prev, curr);\n}\n```\n    \n    Iterate through the binary string s. Keep track of the count of consecutive equal characters (curr) and the count of consecutive equal characters in the previous group (prev). When we encounter a character different from the previous one, add the minimum of prev and curr to the result. Update prev to the value of curr and reset curr to 1. After the iteration, add the minimum of prev and curr to the result and return the result. This will count all valid binary substrings with consecutive groups of 0's and 1's.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

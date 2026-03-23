@@ -1,0 +1,24 @@
+{
+  "id": 1019,
+  "title": "Next Greater Node In Linked List",
+  "slug": "next-greater-node-in-linked-list",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given the head of a linked list with n nodes.\n\nFor each node in the list, find the value of the next greater node. That is, for each node, find the value of the first node that is next to it and has a strictly larger value than it.\n\nReturn an integer array answer where answer[i] is the value of the next greater node of the ith node (1-indexed). If the ith node does not have a next greater node, set answer[i] = 0.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sortedSquares(nums):\n    return sorted([x ** 2 for x in nums])\n```\n    \n    The provided algorithm works as follows:\n\n1. Iterate through the input array 'nums' and square each element in-place (i.e., replace the original value with its square). This is done using a simple for loop in C++ and Java, list comprehension in Python, and the map function in JavaScript.\n2. Sort the resulting squared array in non-decreasing order using a sorting function appropriate for the language (sort function in C++, Arrays.sort() in Java, sorted() function in Python, and sort function in JavaScript).\n3. Return the sorted array of squared elements.\n\nThe result is an array of the squares of each number from the input 'nums', sorted in non-decreasing order as required. \n    ",
+    "javascript": "\n    ```javascript\nfunction sortedSquares(nums) {\n    return nums.map(x => x * x).sort((a, b) => a - b);\n}\n```\n    \n    The provided algorithm works as follows:\n\n1. Iterate through the input array 'nums' and square each element in-place (i.e., replace the original value with its square). This is done using a simple for loop in C++ and Java, list comprehension in Python, and the map function in JavaScript.\n2. Sort the resulting squared array in non-decreasing order using a sorting function appropriate for the language (sort function in C++, Arrays.sort() in Java, sorted() function in Python, and sort function in JavaScript).\n3. Return the sorted array of squared elements.\n\nThe result is an array of the squares of each number from the input 'nums', sorted in non-decreasing order as required. \n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int[] sortedSquares(int[] nums) {\n    for(int i = 0; i < nums.length; i++) {\n        nums[i] *= nums[i];\n    }\n    Arrays.sort(nums);\n    return nums;\n}\n```\n    \n    The provided algorithm works as follows:\n\n1. Iterate through the input array 'nums' and square each element in-place (i.e., replace the original value with its square). This is done using a simple for loop in C++ and Java, list comprehension in Python, and the map function in JavaScript.\n2. Sort the resulting squared array in non-decreasing order using a sorting function appropriate for the language (sort function in C++, Arrays.sort() in Java, sorted() function in Python, and sort function in JavaScript).\n3. Return the sorted array of squared elements.\n\nThe result is an array of the squares of each number from the input 'nums', sorted in non-decreasing order as required. \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2155,
+  "title": "All Divisions With the Highest Score of a Binary Array",
+  "slug": "all-divisions-with-the-highest-score-of-a-binary-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed binary array nums of length n. nums can be divided at index i (where 0 <= i <= n) into two arrays (possibly empty) numsleft and numsright:\n\n*   numsleft has all the elements of nums between index 0 and i - 1 (inclusive), while numsright has all the elements of nums between index i and n - 1 (inclusive).\n*   If i == 0, numsleft is empty, while numsright has all the elements of nums.\n*   If i == n, numsleft has all the elements of nums, while numsright is empty.\n\nThe division score of an index i is the sum of the number of 0's in numsleft and the number of 1's in numsright.\n\nReturn _all distinct indices that have the highest possible division score_. You may return the answer in any order.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom typing import List\n\ndef missing_rolls(rolls: List[int], mean: int, n: int) -> List[int]:\n    m = len(rolls)\n    total_sum = mean * (n + m)\n    sum_m = sum(rolls)\n    \n    if total_sum - sum_m < n or total_sum - sum_m > 6 * n:\n        return []\n    \n    ans = [1] * n\n    total_sum -= sum_m + n\n    for i in range(n):\n        add = min(5, total_sum)\n        ans[i] += add\n        total_sum -= add\n    \n    return ans\n```\n\n    \n    1. Calculate the total sum of all n + m rolls by multiplying mean with (n + m).\n2. Subtract the sum of m rolls from the total sum.\n3. Check if the remaining sum is valid for the given n (should be between n and 6 * n).\n4. If valid, create an array of size n with each value initialized to 1.\n5. Iterate through the array and add values ranging from 1 to 6 while updating the remaining sum.\n6. The final array is the answer.\n    ",
+    "javascript": "\n    ```javascript\nfunction missingRolls(rolls, mean, n) {\n    const m = rolls.length;\n    let sum = mean * (n + m);\n    for (const roll of rolls) {\n        sum -= roll;\n    }\n    \n    if (sum < n || sum > 6 * n) {\n        return [];\n    }\n    \n    const ans = Array(n).fill(1);\n    sum -= n;\n    for (let i = 0; i < n; i++) {\n        const add = Math.min(5, sum);\n        ans[i] += add;\n        sum -= add;\n    }\n    \n    return ans;\n}\n```\n\n    \n    1. Calculate the total sum of all n + m rolls by multiplying mean with (n + m).\n2. Subtract the sum of m rolls from the total sum.\n3. Check if the remaining sum is valid for the given n (should be between n and 6 * n).\n4. If valid, create an array of size n with each value initialized to 1.\n5. Iterate through the array and add values ranging from 1 to 6 while updating the remaining sum.\n6. The final array is the answer.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int[] missingRolls(int[] rolls, int mean, int n) {\n    int m = rolls.length;\n    int sum = mean * (n + m);\n    for (int roll: rolls) {\n        sum -= roll;\n    }\n    \n    if (sum < n || sum > 6 * n) {\n        return new int[] {};\n    }\n    \n    int[] ans = new int[n];\n    Arrays.fill(ans, 1);\n    sum -= n;\n    for (int i = 0; i < n; i++) {\n        int add = Math.min(5, sum);\n        ans[i] += add;\n        sum -= add;\n    }\n    \n    return ans;\n}\n```\n\n    \n    1. Calculate the total sum of all n + m rolls by multiplying mean with (n + m).\n2. Subtract the sum of m rolls from the total sum.\n3. Check if the remaining sum is valid for the given n (should be between n and 6 * n).\n4. If valid, create an array of size n with each value initialized to 1.\n5. Iterate through the array and add values ranging from 1 to 6 while updating the remaining sum.\n6. The final array is the answer.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

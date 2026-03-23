@@ -1,0 +1,24 @@
+{
+  "id": 1703,
+  "title": "Minimum Adjacent Swaps for K Consecutive Ones",
+  "slug": "minimum-adjacent-swaps-for-k-consecutive-ones",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an integer array, nums, and an integer k. nums comprises of only 0's and 1's. In one move, you can choose two adjacent indices and swap their values.\n\nReturn _the minimum number of moves required so that_ nums _has_ k _consecutive_ 1_'s_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minMoves(nums, k):\n    ones_pos = [i for i, x in enumerate(nums) if x == 1]\n    to_move = [i_b - i_a for i_a, i_b in zip(range(k), ones_pos)]\n    min_moves = sum(to_move[k // 2:])\n    move = min_moves\n    for left, right in zip(\n        to_move[:-k],       # left \"window\" of k-sized sliding window\n        to_move[k // 2 + 1:],  # right \"window\" of k-sized sliding window\n    ):\n        move += left - right\n        min_moves = min(min_moves, move)\n    return min_moves\n```\n    \n    The algorithm finds the positions of all the 1s in the input array. Then, it calculates the differences between positions and takes out the prefix sum of differences. After that, it finds the minimum sum of the differences for the sliding window of size `k`. The final result is the minimum sum of differences minus the sum of integers from 0 to `k - 1`. All the implementations follow the above algorithm and are adjusted to work with the respective languages.\n    ",
+    "javascript": "\n    ```javascript\nfunction minMoves(nums, k) {\n    const ones_pos = [];\n    for (let i = 0; i < nums.length; i++) {\n        if (nums[i] === 1) {\n            ones_pos.push(i - ones_pos.length);\n        }\n    }\n    let sum = 0;\n    for (let i = 0; i < k; i++) {\n        sum += ones_pos[i];\n    }\n    let min_sum = sum;\n    for (let i = k; i < ones_pos.length; i++) {\n        sum += ones_pos[i] - ones_pos[i - k];\n        min_sum = Math.min(min_sum, sum);\n    }\n    return min_sum - (k - 1) * k / 2;\n}\n```\n\n    \n    The algorithm finds the positions of all the 1s in the input array. Then, it calculates the differences between positions and takes out the prefix sum of differences. After that, it finds the minimum sum of the differences for the sliding window of size `k`. The final result is the minimum sum of differences minus the sum of integers from 0 to `k - 1`. All the implementations follow the above algorithm and are adjusted to work with the respective languages.\n    ",
+    "java": "\n    ```java\npublic int minMoves(int[] nums, int k) {\n    List<Integer> ones_pos = new ArrayList<>();\n    for (int i = 0; i < nums.length; i++) {\n        if (nums[i] == 1) {\n            ones_pos.add(i - ones_pos.size());\n        }\n    }\n    int sum = 0;\n    for (int i = 0; i < k; i++) {\n        sum += ones_pos.get(i);\n    }\n    int min_sum = sum;\n    for (int i = k; i < ones_pos.size(); i++) {\n        sum += ones_pos.get(i) - ones_pos.get(i - k);\n        min_sum = Math.min(min_sum, sum);\n    }\n    return min_sum - (k - 1) * k / 2;\n}\n```\n    \n    The algorithm finds the positions of all the 1s in the input array. Then, it calculates the differences between positions and takes out the prefix sum of differences. After that, it finds the minimum sum of the differences for the sliding window of size `k`. The final result is the minimum sum of differences minus the sum of integers from 0 to `k - 1`. All the implementations follow the above algorithm and are adjusted to work with the respective languages.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

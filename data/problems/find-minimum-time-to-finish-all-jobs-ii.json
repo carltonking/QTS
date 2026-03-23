@@ -1,0 +1,24 @@
+{
+  "id": 2323,
+  "title": "Find Minimum Time to Finish All Jobs II",
+  "slug": "find-minimum-time-to-finish-all-jobs-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two 0-indexed integer arrays jobs and workers of equal length, where jobs[i] is the amount of time needed to complete the ith job, and workers[j] is the amount of time the jth worker can work each day.\n\nEach job should be assigned to exactly one worker, such that each worker completes exactly one job.\n\nReturn _the minimum number of days needed to complete all the jobs after assignment._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_bit_flips(start, goal):\n    xor_value = start ^ goal\n    flips = 0\n    while xor_value:\n        flips += xor_value & 1\n        xor_value >>= 1\n    return flips\n```\n    \n    The algorithm for solving this problem consists of the following steps:\n\n1. Use bitwise XOR (^) to get a binary value representing the differing bits between 'start' and 'goal'.\n2. Iterate through the binary XOR value counting the number of 1's, which represent the required bit flips.\n3. End when all the bits have been parsed and return the number of flips required.\n\nThis approach has a time complexity of O(log n), where n is the larger of the two input integers.\n    ",
+    "javascript": "\n    ```javascript\nfunction minBitFlips(start, goal) {\n    let xorValue = start ^ goal;\n    let flips = 0;\n    while (xorValue) {\n        flips += xorValue & 1;\n        xorValue >>= 1;\n    }\n    return flips;\n}\n```\n    \n    The algorithm for solving this problem consists of the following steps:\n\n1. Use bitwise XOR (^) to get a binary value representing the differing bits between 'start' and 'goal'.\n2. Iterate through the binary XOR value counting the number of 1's, which represent the required bit flips.\n3. End when all the bits have been parsed and return the number of flips required.\n\nThis approach has a time complexity of O(log n), where n is the larger of the two input integers.\n    ",
+    "java": "\n    ```java\npublic int minBitFlips(int start, int goal) {\n    int xorValue = start ^ goal;\n    int flips = 0;\n    while (xorValue != 0) {\n        flips += xorValue & 1;\n        xorValue >>= 1;\n    }\n    return flips;\n}\n```\n    \n    The algorithm for solving this problem consists of the following steps:\n\n1. Use bitwise XOR (^) to get a binary value representing the differing bits between 'start' and 'goal'.\n2. Iterate through the binary XOR value counting the number of 1's, which represent the required bit flips.\n3. End when all the bits have been parsed and return the number of flips required.\n\nThis approach has a time complexity of O(log n), where n is the larger of the two input integers.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

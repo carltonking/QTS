@@ -1,0 +1,24 @@
+{
+  "id": 724,
+  "title": "Find Pivot Index",
+  "slug": "find-pivot-index",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array of integers nums, calculate the pivot index of this array.\n\nThe pivot index is the index where the sum of all the numbers strictly to the left of the index is equal to the sum of all the numbers strictly to the index's right.\n\nIf the index is on the left edge of the array, then the left sum is 0 because there are no elements to the left. This also applies to the right edge of the array.\n\nReturn _the leftmost pivot index_. If no such index exists, return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef pivotIndex(nums):\n    total_sum = sum(nums)\n    left_sum = 0\n    for i, num in enumerate(nums):\n        if left_sum == total_sum - left_sum - num:\n            return i\n        left_sum += num\n    return -1\n```\n\n    \n    1. First, find the total sum of the array.\n2. Iterate through the array, maintaining a running sum of the elements to the left of the current index.\n3. For each index, check if the left sum is equal to the total sum minus the left sum and the value at the current index.\n4. If such equality is found, return the index as the pivot index. If not found, return -1. \n    ",
+    "javascript": "\n    ```javascript\nfunction pivotIndex(nums) {\n    const total_sum = nums.reduce((a, b) => a + b, 0);\n    let left_sum = 0;\n    for (let i = 0; i < nums.length; ++i) {\n        if (left_sum === total_sum - left_sum - nums[i])\n            return i;\n        left_sum += nums[i];\n    }\n    return -1;\n}\n```\n\n    \n    1. First, find the total sum of the array.\n2. Iterate through the array, maintaining a running sum of the elements to the left of the current index.\n3. For each index, check if the left sum is equal to the total sum minus the left sum and the value at the current index.\n4. If such equality is found, return the index as the pivot index. If not found, return -1. \n    ",
+    "java": "\n    ```java\npublic int pivotIndex(int[] nums) {\n    int total_sum = 0, left_sum = 0;\n    for (int num : nums)\n        total_sum += num;\n    for (int i = 0; i < nums.length; ++i) {\n        if (left_sum == total_sum - left_sum - nums[i])\n            return i;\n        left_sum += nums[i];\n    }\n    return -1;\n}\n```\n\n    \n    1. First, find the total sum of the array.\n2. Iterate through the array, maintaining a running sum of the elements to the left of the current index.\n3. For each index, check if the left sum is equal to the total sum minus the left sum and the value at the current index.\n4. If such equality is found, return the index as the pivot index. If not found, return -1. \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

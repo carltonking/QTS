@@ -1,0 +1,24 @@
+{
+  "id": 2317,
+  "title": "Maximum XOR After Operations ",
+  "slug": "maximum-xor-after-operations",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums. In one operation, select any non-negative integer x and an index i, then update nums[i] to be equal to nums[i] AND (nums[i] XOR x).\n\nNote that AND is the bitwise AND operation and XOR is the bitwise XOR operation.\n\nReturn _the maximum possible bitwise XOR of all elements of_ nums _after applying the operation any number of times_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_collisions(directions: str) -> int:\n    collision_count = 0\n    left_count = 0\n\n    for direction in directions:\n        if direction == 'L':\n            left_count += 1\n        elif direction == 'R':\n            collision_count += left_count\n\n    return collision_count\n```\n    \n    The algorithm iterates through the `directions` string, counting the number of 'L' characters (left moving cars) as `leftCount`. When a 'R' character (right moving car) is encountered, the number of collisions for that right moving car is equal to the current value of `leftCount` (as all those left moving cars will collide with the current right moving car). This value is added to `collisionCount`. The final value of `collisionCount` after iterating through the string is the total number of collisions that will happen on the road.\n    ",
+    "javascript": "\n    ```javascript\nfunction countCollisions(directions) {\n    let collisionCount = 0;\n    let leftCount = 0;\n\n    for (let direction of directions) {\n        if (direction === 'L') {\n            leftCount++;\n        } else if (direction === 'R') {\n            collisionCount += leftCount;\n        }\n    }\n\n    return collisionCount;\n}\n```\n    \n    The algorithm iterates through the `directions` string, counting the number of 'L' characters (left moving cars) as `leftCount`. When a 'R' character (right moving car) is encountered, the number of collisions for that right moving car is equal to the current value of `leftCount` (as all those left moving cars will collide with the current right moving car). This value is added to `collisionCount`. The final value of `collisionCount` after iterating through the string is the total number of collisions that will happen on the road.\n    ",
+    "java": "\n    ```java\nint countCollisions(String directions) {\n    int collisionCount = 0, leftCount = 0;\n\n    for (char direction : directions.toCharArray()) {\n        if (direction == 'L') {\n            leftCount++;\n        } else if (direction == 'R') {\n            collisionCount += leftCount;\n        }\n    }\n\n    return collisionCount;\n}\n```\n    \n    The algorithm iterates through the `directions` string, counting the number of 'L' characters (left moving cars) as `leftCount`. When a 'R' character (right moving car) is encountered, the number of collisions for that right moving car is equal to the current value of `leftCount` (as all those left moving cars will collide with the current right moving car). This value is added to `collisionCount`. The final value of `collisionCount` after iterating through the string is the total number of collisions that will happen on the road.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

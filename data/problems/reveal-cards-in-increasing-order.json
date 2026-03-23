@@ -1,0 +1,24 @@
+{
+  "id": 950,
+  "title": "Reveal Cards In Increasing Order",
+  "slug": "reveal-cards-in-increasing-order",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array deck. There is a deck of cards where every card has a unique integer. The integer on the ith card is deck[i].\n\nYou can order the deck in any order you want. Initially, all the cards start face down (unrevealed) in one deck.\n\nYou will do the following steps repeatedly until all cards are revealed:\n\n1.  Take the top card of the deck, reveal it, and take it out of the deck.\n2.  If there are still cards in the deck then put the next top card of the deck at the bottom of the deck.\n3.  If there are still unrevealed cards, go back to step 1. Otherwise, stop.\n\nReturn _an ordering of the deck that would reveal the cards in increasing order_.\n\nNote that the first entry in the answer is considered to be the top of the deck.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import Counter\nfrom math import gcd\nfrom functools import reduce\n\ndef hasGroupsSizeX(deck):\n    counts = Counter(deck)\n    gcd_result = reduce(gcd, counts.values())\n    return gcd_result > 1\n```\n    \n    1. Count the occurrences of each card using a hash map (in C++ and Java), a counter (in Python), or an object (in JavaScript).\n2. Initialize a variable `gcd_result` to store the greatest common divisor (GCD) of the counts, initially set to 0.\n3. Iterate through the counts and calculate the GCD of the current `gcd_result` and each count. In Python, `reduce()` is used to perform this operation more easily.\n4. Return true if the final `gcd_result` is greater than 1, otherwise return false.\n    ",
+    "javascript": "\n    ```javascript\nfunction gcd(a, b) {\n   if (b === 0) return a;\n   return gcd(b, a % b);\n}\n\nfunction hasGroupsSizeX(deck) {\n    const counts = {};\n    for (const card of deck) {\n        if (card in counts) {\n            counts[card]++;\n        } else {\n            counts[card] = 1;\n        }\n    }\n    let gcd_result = 0;\n    for (const count in counts) {\n        gcd_result = gcd(gcd_result, counts[count]);\n    }\n    return gcd_result > 1;\n}\n```\n    \n    1. Count the occurrences of each card using a hash map (in C++ and Java), a counter (in Python), or an object (in JavaScript).\n2. Initialize a variable `gcd_result` to store the greatest common divisor (GCD) of the counts, initially set to 0.\n3. Iterate through the counts and calculate the GCD of the current `gcd_result` and each count. In Python, `reduce()` is used to perform this operation more easily.\n4. Return true if the final `gcd_result` is greater than 1, otherwise return false.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\nimport java.util.Map;\n\nclass Solution {\n    public boolean hasGroupsSizeX(int[] deck) {\n        HashMap<Integer, Integer> counts = new HashMap<>();\n        for (int card : deck) {\n            counts.put(card, counts.getOrDefault(card, 0) + 1);\n        }\n        int gcd_result = 0;\n        for (Map.Entry<Integer, Integer> count : counts.entrySet()) {\n            gcd_result = gcd(gcd_result, count.getValue());\n        }\n        return gcd_result > 1;\n    }\n    private int gcd(int a, int b) {\n        return b == 0 ? a : gcd(b, a % b);\n    }\n}\n```\n    \n    1. Count the occurrences of each card using a hash map (in C++ and Java), a counter (in Python), or an object (in JavaScript).\n2. Initialize a variable `gcd_result` to store the greatest common divisor (GCD) of the counts, initially set to 0.\n3. Iterate through the counts and calculate the GCD of the current `gcd_result` and each count. In Python, `reduce()` is used to perform this operation more easily.\n4. Return true if the final `gcd_result` is greater than 1, otherwise return false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

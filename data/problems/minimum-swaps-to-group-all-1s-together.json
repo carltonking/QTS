@@ -1,0 +1,24 @@
+{
+  "id": 1151,
+  "title": "Minimum Swaps to Group All 1's Together",
+  "slug": "minimum-swaps-to-group-all-1s-together",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a binary array data, return the minimum number of swaps required to group all 1's present in the array together in any place in the array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minSwaps(data):\n    ones = sum(data)\n    cur_ones, max_ones = 0, 0\n    for i, d in enumerate(data):\n        cur_ones += d\n        if i >= ones:\n            cur_ones -= data[i - ones]\n        max_ones = max(max_ones, cur_ones)\n    return ones - max_ones\n```\n\n    \n    First, count the number of ones in the data array. Then, use a sliding window of length equal to the count of ones to keep a running sum of ones in the window. Keep track of the maximum number of ones found in any window. The minimum number of swaps required to group all ones together equals the total number of ones minus the maximum number of ones found in any window.\n    ",
+    "javascript": "\n    ```javascript\nfunction minSwaps(data) {\n    let ones = data.reduce((a, b) => a + b);\n    let cur_ones = 0, max_ones = 0;\n    for (let i = 0; i < data.length; i++) {\n        cur_ones += data[i];\n        if (i >= ones) {\n            cur_ones -= data[i - ones];\n        }\n        max_ones = Math.max(max_ones, cur_ones);\n    }\n    return ones - max_ones;\n}\n```\n\n    \n    First, count the number of ones in the data array. Then, use a sliding window of length equal to the count of ones to keep a running sum of ones in the window. Keep track of the maximum number of ones found in any window. The minimum number of swaps required to group all ones together equals the total number of ones minus the maximum number of ones found in any window.\n    ",
+    "java": "\n    ```java\npublic int minSwaps(int[] data) {\n    int ones = 0;\n    for (int d : data) {\n        ones += d;\n    }\n    int cur_ones = 0, max_ones = 0;\n    for (int i = 0; i < data.length; i++) {\n        cur_ones += data[i];\n        if (i >= ones) {\n            cur_ones -= data[i - ones];\n        }\n        max_ones = Math.max(max_ones, cur_ones);\n    }\n    return ones - max_ones;\n}\n```\n\n    \n    First, count the number of ones in the data array. Then, use a sliding window of length equal to the count of ones to keep a running sum of ones in the window. Keep track of the maximum number of ones found in any window. The minimum number of swaps required to group all ones together equals the total number of ones minus the maximum number of ones found in any window.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

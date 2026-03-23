@@ -1,0 +1,24 @@
+{
+  "id": 491,
+  "title": "Non-decreasing Subsequences",
+  "slug": "non-decreasing-subsequences",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums, return _all the different possible non-decreasing subsequences of the given array with at least two elements_. You may return the answer in any order.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom typing import List\n\ndef findSubsequences(nums: List[int]) -> List[List[int]]:\n    res = set()\n    dfs(nums, 0, [], res)\n    return list(res)\n\ndef dfs(nums, start, path, res):\n    if len(path) >= 2:\n        res.add(tuple(path))\n    for i in range(start, len(nums)):\n        if path and path[-1] > nums[i]:\n            continue\n        dfs(nums, i + 1, path + [nums[i]], res)\n```\n    \n    We can solve this problem using Depth-First Search (DFS) approach. To generate all the possible subsequences, start by iterating through the array, for each element of the array perform DFS and insert it into the path.\n\nDuring DFS:\n\n1. If the path has at least 2 elements, consider this path as a valid increasing subsequence, and insert it into the set to avoid duplicates.\n2. For each element, skip the current element if its index is greater than equal to the current array size or its value is smaller than the last element in the path.\n3. Add the current element to the path, then perform DFS on the remaining array elements by incrementing the start index.\n4. Remove the current element from the path before backtracking.\n\nAfter completing the DFS traversal, convert the set of subsequences into the required format (vector or list) and return it.\n    ",
+    "javascript": "\n    ```javascript\nfunction findSubsequences(nums) {\n    const res = new Set();\n    dfs(nums, 0, [], res);\n    return Array.from(res).map(x => Array.from(x));\n}\n\nfunction dfs(nums, start, path, res) {\n    if (path.length >= 2) {\n        res.add(path);\n    }\n    for (let i = start; i < nums.length; i++) {\n        if (path.length && path[path.length - 1] > nums[i]) {\n            continue;\n        }\n        dfs(nums, i + 1, [...path, nums[i]], res);\n    }\n}\n```\n    \n    We can solve this problem using Depth-First Search (DFS) approach. To generate all the possible subsequences, start by iterating through the array, for each element of the array perform DFS and insert it into the path.\n\nDuring DFS:\n\n1. If the path has at least 2 elements, consider this path as a valid increasing subsequence, and insert it into the set to avoid duplicates.\n2. For each element, skip the current element if its index is greater than equal to the current array size or its value is smaller than the last element in the path.\n3. Add the current element to the path, then perform DFS on the remaining array elements by incrementing the start index.\n4. Remove the current element from the path before backtracking.\n\nAfter completing the DFS traversal, convert the set of subsequences into the required format (vector or list) and return it.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.HashSet;\nimport java.util.List;\nimport java.util.Set;\n\npublic List<List<Integer>> findSubsequences(int[] nums) {\n    Set<List<Integer>> res = new HashSet<>();\n    List<Integer> path = new ArrayList<>();\n    dfs(nums, 0, path, res);\n    return new ArrayList<>(res);\n}\n\nprivate void dfs(int[] nums, int start, List<Integer> path, Set<List<Integer>> res) {\n    if (path.size() >= 2) {\n        res.add(new ArrayList<>(path));\n    }\n    for (int i = start; i < nums.length; i++) {\n        if (!path.isEmpty() && path.get(path.size() - 1) > nums[i]) {\n            continue;\n        }\n        path.add(nums[i]);\n        dfs(nums, i + 1, path, res);\n        path.remove(path.size() - 1);\n    }\n}\n```\n    \n    We can solve this problem using Depth-First Search (DFS) approach. To generate all the possible subsequences, start by iterating through the array, for each element of the array perform DFS and insert it into the path.\n\nDuring DFS:\n\n1. If the path has at least 2 elements, consider this path as a valid increasing subsequence, and insert it into the set to avoid duplicates.\n2. For each element, skip the current element if its index is greater than equal to the current array size or its value is smaller than the last element in the path.\n3. Add the current element to the path, then perform DFS on the remaining array elements by incrementing the start index.\n4. Remove the current element from the path before backtracking.\n\nAfter completing the DFS traversal, convert the set of subsequences into the required format (vector or list) and return it.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

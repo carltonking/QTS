@@ -1,0 +1,24 @@
+{
+  "id": 1720,
+  "title": "Decode XORed Array",
+  "slug": "decode-xored-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "There is a hidden integer array arr that consists of n non-negative integers.\n\nIt was encoded into another integer array encoded of length n - 1, such that encoded[i] = arr[i] XOR arr[i + 1]. For example, if arr = [1,0,2,1], then encoded = [1,2,3].\n\nYou are given the encoded array. You are also given an integer first, that is the first element of arr, i.e. arr[0].\n\nReturn _the original array_ arr. It can be proved that the answer exists and is unique.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minOperations(logs):\n    depth = 0\n    for log in logs:\n        if log == \"../\":\n            if depth > 0:\n                depth -= 1\n        elif log != \"./\":\n            depth += 1\n    return depth\n```\n\n    \n    The algorithm maintains a variable `depth` to keep track of the current folder depth from the main folder. It starts from 0 (main folder) becuase the file system initially starts in the main folder. Then, it iterates through the `logs` list:\n\n- If the log is \"../\", it means the operation is to go up one level, so we decrement the `depth` by 1. Note that we check if `depth` is greater than 0 to handle the situation where the current folder is already the main folder (we don't want to go above the main folder).\n- If the log is not \"./\" (which means it's a sub-folder), it means the operation is to go down one level, so we increment the `depth` by 1.\n\nAfter the loop, the value of `depth` represents the minimum number of operations needed to go back to the main folder, so we return it.\n    ",
+    "javascript": "\n    ```javascript\nfunction minOperations(logs) {\n    let depth = 0;\n    for (const log of logs) {\n        if (log === \"../\") {\n            if (depth > 0) {\n                depth--;\n            }\n        } else if (log !== \"./\") {\n            depth++;\n        }\n    }\n    return depth;\n}\n```\n\n    \n    The algorithm maintains a variable `depth` to keep track of the current folder depth from the main folder. It starts from 0 (main folder) becuase the file system initially starts in the main folder. Then, it iterates through the `logs` list:\n\n- If the log is \"../\", it means the operation is to go up one level, so we decrement the `depth` by 1. Note that we check if `depth` is greater than 0 to handle the situation where the current folder is already the main folder (we don't want to go above the main folder).\n- If the log is not \"./\" (which means it's a sub-folder), it means the operation is to go down one level, so we increment the `depth` by 1.\n\nAfter the loop, the value of `depth` represents the minimum number of operations needed to go back to the main folder, so we return it.\n    ",
+    "java": "\n    ```java\npublic int minOperations(String[] logs) {\n    int depth = 0;\n    for (String log : logs) {\n        if (log.equals(\"../\")) {\n            if (depth > 0) {\n                depth--;\n            }\n        } else if (!log.equals(\"./\")) {\n            depth++;\n        }\n    }\n    return depth;\n}\n```\n\n    \n    The algorithm maintains a variable `depth` to keep track of the current folder depth from the main folder. It starts from 0 (main folder) becuase the file system initially starts in the main folder. Then, it iterates through the `logs` list:\n\n- If the log is \"../\", it means the operation is to go up one level, so we decrement the `depth` by 1. Note that we check if `depth` is greater than 0 to handle the situation where the current folder is already the main folder (we don't want to go above the main folder).\n- If the log is not \"./\" (which means it's a sub-folder), it means the operation is to go down one level, so we increment the `depth` by 1.\n\nAfter the loop, the value of `depth` represents the minimum number of operations needed to go back to the main folder, so we return it.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

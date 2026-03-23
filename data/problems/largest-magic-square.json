@@ -1,0 +1,24 @@
+{
+  "id": 1895,
+  "title": "Largest Magic Square",
+  "slug": "largest-magic-square",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A k x k magic square is a k x k grid filled with integers such that every row sum, every column sum, and both diagonal sums are all equal. The integers in the magic square do not have to be distinct. Every 1 x 1 grid is trivially a magic square.\n\nGiven an m x n integer grid, return _the size (i.e., the side length_ k_) of the largest magic square that can be found within this grid_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_operations(boxes: str):\n    result = [0] * len(boxes)\n    count, total = 0, 0\n\n    for i in range(len(boxes)):\n        total += count\n        result[i] = total\n        if boxes[i] == '1':\n            count += 1\n\n    count, total = 0, 0\n    for i in range(len(boxes) - 1, -1, -1):\n        total += count\n        result[i] += total\n        if boxes[i] == '1':\n            count += 1\n\n    return result\n```\n    \n    The algorithm can be divided into two parts:\n\n1. Iterate through the boxes string from left to right.\n   - In each iteration, increment the `total` by the current `count`.\n   - Set `result[i]` to the current `total`.\n   - If the current box (`boxes[i]`) has a ball (`'1'`), increment the `count`.\n2. Iterate through the boxes string from right to left.\n   - In each iteration, increment the `total` by the current `count`.\n   - Add the current `total` to `result[i]`.\n   - If the current box (`boxes[i]`) has a ball (`'1'`), increment the `count`.\n\nAt the end, the `result` array will have the minimum number of operations needed to move all balls to each box.\n    ",
+    "javascript": "\n    ```javascript\nfunction minOperations(boxes) {\n    const result = new Array(boxes.length).fill(0);\n    let count = 0, total = 0;\n    \n    for (let i = 0; i < boxes.length; i++) {\n        total += count;\n        result[i] = total;\n        if (boxes[i] === '1') count++;\n    }\n\n    count = 0;\n    total = 0;\n    for (let i = boxes.length - 1; i >= 0; i--) {\n        total += count;\n        result[i] += total;\n        if (boxes[i] === '1') count++;\n    }\n\n    return result;\n}\n```\n    \n    The algorithm can be divided into two parts:\n\n1. Iterate through the boxes string from left to right.\n   - In each iteration, increment the `total` by the current `count`.\n   - Set `result[i]` to the current `total`.\n   - If the current box (`boxes[i]`) has a ball (`'1'`), increment the `count`.\n2. Iterate through the boxes string from right to left.\n   - In each iteration, increment the `total` by the current `count`.\n   - Add the current `total` to `result[i]`.\n   - If the current box (`boxes[i]`) has a ball (`'1'`), increment the `count`.\n\nAt the end, the `result` array will have the minimum number of operations needed to move all balls to each box.\n    ",
+    "java": "\n    ```java\npublic int[] minOperations(String boxes) {\n    int[] result = new int[boxes.length()];\n    int count = 0, total = 0;\n    \n    for (int i = 0; i < boxes.length(); i++) {\n        total += count;\n        result[i] = total;\n        if (boxes.charAt(i) == '1') count++;\n    }\n\n    count = 0;\n    total = 0;\n    for (int i = boxes.length() - 1; i >= 0; i--) {\n        total += count;\n        result[i] += total;\n        if (boxes.charAt(i) == '1') count++;\n    }\n\n    return result;\n}\n```\n    \n    The algorithm can be divided into two parts:\n\n1. Iterate through the boxes string from left to right.\n   - In each iteration, increment the `total` by the current `count`.\n   - Set `result[i]` to the current `total`.\n   - If the current box (`boxes[i]`) has a ball (`'1'`), increment the `count`.\n2. Iterate through the boxes string from right to left.\n   - In each iteration, increment the `total` by the current `count`.\n   - Add the current `total` to `result[i]`.\n   - If the current box (`boxes[i]`) has a ball (`'1'`), increment the `count`.\n\nAt the end, the `result` array will have the minimum number of operations needed to move all balls to each box.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

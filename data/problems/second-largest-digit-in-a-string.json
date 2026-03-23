@@ -1,0 +1,24 @@
+{
+  "id": 1796,
+  "title": "Second Largest Digit in a String",
+  "slug": "second-largest-digit-in-a-string",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an alphanumeric string s, return _the second largest numerical digit that appears in_ s_, or_ -1 _if it does not exist_.\n\nAn alphanumeric string is a string consisting of lowercase English letters and digits.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef second_highest(s: str) -> int:\n    largest = -1\n    second_largest = -1\n    for c in s:\n        if c.isdigit():\n            d = int(c)\n            if d > largest:\n                second_largest = largest\n                largest = d\n            elif d < largest and d > second_largest:\n                second_largest = d\n    return second_largest\n```\n    \n    To solve this problem, we keep track of the largest and second largest numerical digit, initializing them to -1.\nWe iterate through each character in the input string, check if it's a digit using `isdigit` function in C++, `Character.isDigit` in Java, `c.isdigit()` in Python, and `!isNaN(c)` in JavaScript. If it's a digit, we convert it to an integer and then compare it with the current largest and second largest values.\n1. If the digit is greater than largest, we update second_largest to the largest value, and set largest to the digit.\n2. If the digit is not equal to the largest value and greater than second_largest, we update second_largest to the digit.\nAfter the loop, we return the second_largest value. If no second largest digit exists, the value will still be -1.\n    ",
+    "javascript": "\n    ```javascript\nfunction secondHighest(s) {\n    let largest = -1, second_largest = -1;\n    for (let c of s) {\n        if (!isNaN(c)) {\n            let d = parseInt(c);\n            if (d > largest) {\n                second_largest = largest;\n                largest = d;\n            } else if (d < largest && d > second_largest) {\n                second_largest = d;\n            }\n        }\n    }\n    return second_largest;\n}\n```\n    \n    To solve this problem, we keep track of the largest and second largest numerical digit, initializing them to -1.\nWe iterate through each character in the input string, check if it's a digit using `isdigit` function in C++, `Character.isDigit` in Java, `c.isdigit()` in Python, and `!isNaN(c)` in JavaScript. If it's a digit, we convert it to an integer and then compare it with the current largest and second largest values.\n1. If the digit is greater than largest, we update second_largest to the largest value, and set largest to the digit.\n2. If the digit is not equal to the largest value and greater than second_largest, we update second_largest to the digit.\nAfter the loop, we return the second_largest value. If no second largest digit exists, the value will still be -1.\n    ",
+    "java": "\n    ```java\npublic int secondHighest(String s) {\n    int largest = -1, second_largest = -1;\n    for (char c : s.toCharArray()) {\n        if (Character.isDigit(c)) {\n            int d = c - '0';\n            if (d > largest) {\n                second_largest = largest;\n                largest = d;\n            } else if (d < largest && d > second_largest) {\n                second_largest = d;\n            }\n        }\n    }\n    return second_largest;\n}\n```\n    \n    To solve this problem, we keep track of the largest and second largest numerical digit, initializing them to -1.\nWe iterate through each character in the input string, check if it's a digit using `isdigit` function in C++, `Character.isDigit` in Java, `c.isdigit()` in Python, and `!isNaN(c)` in JavaScript. If it's a digit, we convert it to an integer and then compare it with the current largest and second largest values.\n1. If the digit is greater than largest, we update second_largest to the largest value, and set largest to the digit.\n2. If the digit is not equal to the largest value and greater than second_largest, we update second_largest to the digit.\nAfter the loop, we return the second_largest value. If no second largest digit exists, the value will still be -1.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

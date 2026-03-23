@@ -1,0 +1,24 @@
+{
+  "id": 1672,
+  "title": "Richest Customer Wealth",
+  "slug": "richest-customer-wealth",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an m x n integer grid accounts where accounts[i][j] is the amount of money the i​​​​​​​​​​​th​​​​ customer has in the j​​​​​​​​​​​th​​​​ bank. Return _the wealth that the richest customer has._\n\nA customer's wealth is the amount of money they have in all their bank accounts. The richest customer is the customer that has the maximum wealth.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maximumWealth(accounts):\n    max_wealth = 0\n    for customer in accounts:\n        wealth = sum(customer)\n        max_wealth = max(max_wealth, wealth)\n    return max_wealth\n```\n    \n    The algorithm iterates through each customer in the given grid (accounts) and calculates their total wealth by summing the values in their bank accounts. After calculating the wealth for a customer, the algorithm checks if it is greater than the current maximum wealth, and if so, the maximum wealth gets updated to the new wealth value. After all iterations, the algorithm returns the maximum wealth found.\n\nThe approach is the same for each language, just with minor syntactical differences between them.\n    ",
+    "javascript": "\n    ```javascript\nfunction maximumWealth(accounts) {\n    let maxWealth = 0;\n    for (let customer of accounts) {\n        let wealth = 0;\n        for (let account of customer) {\n            wealth += account;\n        }\n        maxWealth = Math.max(maxWealth, wealth);\n    }\n    return maxWealth;\n}\n```\n    \n    The algorithm iterates through each customer in the given grid (accounts) and calculates their total wealth by summing the values in their bank accounts. After calculating the wealth for a customer, the algorithm checks if it is greater than the current maximum wealth, and if so, the maximum wealth gets updated to the new wealth value. After all iterations, the algorithm returns the maximum wealth found.\n\nThe approach is the same for each language, just with minor syntactical differences between them.\n    ",
+    "java": "\n    ```java\npublic int maximumWealth(int[][] accounts) {\n    int maxWealth = 0;\n    for (int[] customer : accounts) {\n        int wealth = 0;\n        for (int account : customer) {\n            wealth += account;\n        }\n        maxWealth = Math.max(maxWealth, wealth);\n    }\n    return maxWealth;\n}\n```\n    \n    The algorithm iterates through each customer in the given grid (accounts) and calculates their total wealth by summing the values in their bank accounts. After calculating the wealth for a customer, the algorithm checks if it is greater than the current maximum wealth, and if so, the maximum wealth gets updated to the new wealth value. After all iterations, the algorithm returns the maximum wealth found.\n\nThe approach is the same for each language, just with minor syntactical differences between them.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

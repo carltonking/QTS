@@ -1,0 +1,24 @@
+{
+  "id": 790,
+  "title": "Domino and Tromino Tiling",
+  "slug": "domino-and-tromino-tiling",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You have two types of tiles: a 2 x 1 domino shape and a tromino shape. You may rotate these shapes.\n\nGiven an integer n, return _the number of ways to tile an_ 2 x n _board_. Since the answer may be very large, return it modulo 109 + 7.\n\nIn a tiling, every square must be covered by a tile. Two tilings are different if and only if there are two 4-directionally adjacent cells on the board such that exactly one of the tilings has both squares occupied by a tile.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_ideal_permutation(nums):\n    for i, num in enumerate(nums):\n        if abs(num - i) > 1:\n            return False\n    return True\n```\n\n    \n    For the given question, we need to check if the number of global inversions is equal to the number of local inversions in the permutation. To do that, we can check if the absolute difference between the number at each index (`nums[i]`) and the index itself (`i`) is greater than 1. If it is, then it means the number of global inversions is not equal to the number of local inversions, and we can return false. If the loop completes without finding such a difference, we return true, which means the number of global inversions is equal to the number of local inversions.\n    ",
+    "javascript": "\n    ```javascript\nfunction isIdealPermutation(nums) {\n    for (let i = 0; i < nums.length; ++i) {\n        if (Math.abs(nums[i] - i) > 1) {\n            return false;\n        }\n    }\n    return true;\n}\n```\n\n    \n    For the given question, we need to check if the number of global inversions is equal to the number of local inversions in the permutation. To do that, we can check if the absolute difference between the number at each index (`nums[i]`) and the index itself (`i`) is greater than 1. If it is, then it means the number of global inversions is not equal to the number of local inversions, and we can return false. If the loop completes without finding such a difference, we return true, which means the number of global inversions is equal to the number of local inversions.\n    ",
+    "java": "\n    ```java\npublic boolean isIdealPermutation(int[] nums) {\n    for (int i = 0; i < nums.length; ++i) {\n        if (Math.abs(nums[i] - i) > 1) {\n            return false;\n        }\n    }\n    return true;\n}\n```\n\n    \n    For the given question, we need to check if the number of global inversions is equal to the number of local inversions in the permutation. To do that, we can check if the absolute difference between the number at each index (`nums[i]`) and the index itself (`i`) is greater than 1. If it is, then it means the number of global inversions is not equal to the number of local inversions, and we can return false. If the loop completes without finding such a difference, we return true, which means the number of global inversions is equal to the number of local inversions.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1416,
+  "title": "Restore The Array",
+  "slug": "restore-the-array",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "A program was supposed to print an array of integers. The program forgot to print whitespaces and the array is printed as a string of digits s and all we know is that all integers in the array were in the range [1, k] and there are no leading zeros in the array.\n\nGiven the string s and the integer k, return _the number of the possible arrays that can be printed as_ s _using the mentioned program_. Since the answer may be very large, return it modulo 109 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef numDecodings(s: str, k: int) -> int:\n    n = len(s)\n    dp = [0] * (n + 1)\n    dp[n] = 1\n    MOD = 1000000007\n\n    for i in range(n - 1, -1, -1):\n        num = 0\n        for j in range(i, n):\n            num = num * 10 + int(s[j])\n            if num >= 1 and num <= k:\n                dp[i] = (dp[i] + dp[j + 1]) % MOD\n            if num > k:\n                break\n\n    return dp[0]\n```\n    \n    The algorithm uses dynamic programming approach to solve the problem. We define a `dp` array of length `n + 1`, where `n` is the length of the input string `s`. The last element `dp[n]` is set to 1. Then we move backwards through the `s` string, and for each digit, calculate the possible number of decodings.\n\nWe iterate from position `i` to `j`, creating a number using the digits from `i` to `j`. If the number falls within the range `[1, k]`, it is a valid number and we add the number of ways of decoding the string from position `j+1` to the current numDecodings count for position `i`. If the number becomes greater than `k`, we break the inner loop.\n\nFinally, the first element of the `dp` array (`dp[0]`) contains the result, which is the number of possible arrays that can be printed from string `s`.\n    ",
+    "javascript": "\n    ```javascript\nfunction numDecodings(s, k) {\n    const n = s.length;\n    const dp = new Array(n + 1).fill(0);\n    dp[n] = 1;\n    const MOD = 1000000007;\n\n    for (let i = n - 1; i >= 0; i--) {\n        let num = 0;\n        for (let j = i; j < n && num <= k; j++) {\n            num = num * 10 + parseInt(s[j]);\n            if (num >= 1 && num <= k) {\n                dp[i] = (dp[i] + dp[j + 1]) % MOD;\n            }\n        }\n    }\n\n    return dp[0];\n}\n```\n    \n    The algorithm uses dynamic programming approach to solve the problem. We define a `dp` array of length `n + 1`, where `n` is the length of the input string `s`. The last element `dp[n]` is set to 1. Then we move backwards through the `s` string, and for each digit, calculate the possible number of decodings.\n\nWe iterate from position `i` to `j`, creating a number using the digits from `i` to `j`. If the number falls within the range `[1, k]`, it is a valid number and we add the number of ways of decoding the string from position `j+1` to the current numDecodings count for position `i`. If the number becomes greater than `k`, we break the inner loop.\n\nFinally, the first element of the `dp` array (`dp[0]`) contains the result, which is the number of possible arrays that can be printed from string `s`.\n    ",
+    "java": "\n    ```java\npublic int numDecodings(String s, int k) {\n    int n = s.length();\n    int[] dp = new int[n + 1];\n    dp[n] = 1;\n    int MOD = 1000000007;\n\n    for (int i = n - 1; i >= 0; i--) {\n        long num = 0;\n        for (int j = i; j < n && num <= k; j++) {\n            num = num * 10 + s.charAt(j) - '0';\n            if (num >= 1 && num <= k) {\n                dp[i] = (dp[i] + dp[j + 1]) % MOD;\n            }\n        }\n    }\n    return dp[0];\n}\n```\n    \n    The algorithm uses dynamic programming approach to solve the problem. We define a `dp` array of length `n + 1`, where `n` is the length of the input string `s`. The last element `dp[n]` is set to 1. Then we move backwards through the `s` string, and for each digit, calculate the possible number of decodings.\n\nWe iterate from position `i` to `j`, creating a number using the digits from `i` to `j`. If the number falls within the range `[1, k]`, it is a valid number and we add the number of ways of decoding the string from position `j+1` to the current numDecodings count for position `i`. If the number becomes greater than `k`, we break the inner loop.\n\nFinally, the first element of the `dp` array (`dp[0]`) contains the result, which is the number of possible arrays that can be printed from string `s`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

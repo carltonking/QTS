@@ -1,0 +1,24 @@
+{
+  "id": 624,
+  "title": "Maximum Distance in Arrays",
+  "slug": "maximum-distance-in-arrays",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given m arrays, where each array is sorted in ascending order.\n\nYou can pick up two integers from two different arrays (each array picks one) and calculate the distance. We define the distance between two integers a and b to be their absolute difference |a - b|.\n\nReturn _the maximum distance_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxDistance(arrays: List[List[int]]) -> int:\n    max_dist = 0\n    min_val = arrays[0][0]\n    max_val = arrays[0][-1]\n    \n    for arr in arrays[1:]:\n        max_dist = max(max_dist, max(abs(arr[-1] - min_val), abs(max_val - arr[0])))\n        min_val = min(min_val, arr[0])\n        max_val = max(max_val, arr[-1])\n        \n    return max_dist\n```\n    \n    We start by initializing the `max_dist` as 0, and get the minimum and maximum values from the first array in the list. Then, we iterate through the other arrays starting from index 1. For each array, we calculate the maximum distance between the current minimum value and the last element of that array, or the current maximum value and the first element of the current array. Using the calculated maximum distance, we update the maximum distance `max_dist` if it exceeds the current value. Finally, we update the minimum and maximum values with the minimum and maximum of the current array. This approach ensures that we are considering the possible array combinations without calculating every possible pair.\n    ",
+    "javascript": "\n    ```javascript\nvar maxDistance = function(arrays) {\n    let max_dist = 0;\n    let min_val = arrays[0][0];\n    let max_val = arrays[0][arrays[0].length - 1];\n\n    for (let i = 1; i < arrays.length; i++) {\n        max_dist = Math.max(max_dist, Math.max(\n            Math.abs(arrays[i][arrays[i].length - 1] - min_val),\n            Math.abs(max_val - arrays[i][0])\n        ));\n        min_val = Math.min(min_val, arrays[i][0]);\n        max_val = Math.max(max_val, arrays[i][arrays[i].length - 1]);\n    }\n    return max_dist;\n};\n```\n    \n    We start by initializing the `max_dist` as 0, and get the minimum and maximum values from the first array in the list. Then, we iterate through the other arrays starting from index 1. For each array, we calculate the maximum distance between the current minimum value and the last element of that array, or the current maximum value and the first element of the current array. Using the calculated maximum distance, we update the maximum distance `max_dist` if it exceeds the current value. Finally, we update the minimum and maximum values with the minimum and maximum of the current array. This approach ensures that we are considering the possible array combinations without calculating every possible pair.\n    ",
+    "java": "\n    ```java\npublic int maxDistance(List<List<Integer>> arrays) {\n    int max_dist = 0, min_val = arrays.get(0).get(0), max_val = arrays.get(0).get(arrays.get(0).size() - 1);\n    for (int i = 1; i < arrays.size(); i++) {\n        max_dist = Math.max(max_dist, Math.max(\n                Math.abs(arrays.get(i).get(arrays.get(i).size() - 1) - min_val),\n                Math.abs(max_val - arrays.get(i).get(0))\n        ));\n        min_val = Math.min(min_val, arrays.get(i).get(0));\n        max_val = Math.max(max_val, arrays.get(i).get(arrays.get(i).size() - 1));\n    }\n    return max_dist;\n}\n```\n    \n    We start by initializing the `max_dist` as 0, and get the minimum and maximum values from the first array in the list. Then, we iterate through the other arrays starting from index 1. For each array, we calculate the maximum distance between the current minimum value and the last element of that array, or the current maximum value and the first element of the current array. Using the calculated maximum distance, we update the maximum distance `max_dist` if it exceeds the current value. Finally, we update the minimum and maximum values with the minimum and maximum of the current array. This approach ensures that we are considering the possible array combinations without calculating every possible pair.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

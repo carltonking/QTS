@@ -1,0 +1,24 @@
+{
+  "id": 1848,
+  "title": "Minimum Distance to the Target Element",
+  "slug": "minimum-distance-to-the-target-element",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer array nums (0-indexed) and two integers target and start, find an index i such that nums[i] == target and abs(i - start) is minimized. Note that abs(x) is the absolute value of x.\n\nReturn abs(i - start).\n\nIt is guaranteed that target exists in nums.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sum_of_unique_elements(nums):\n    elem_count = {}\n    for num in nums:\n        elem_count[num] = elem_count.get(num, 0) + 1\n    sum = 0\n    for elem, count in elem_count.items():\n        if count == 1:\n            sum += elem\n    return sum\n```\n\n    \n    The algorithm starts by creating an empty hash map (or dictionary in Python) to store the count of each element in the input array. After that, it iterates through the input array and increments the count of each element in the hash map. Finally, it iterates through the hash map and checks the count of each element. If the count is 1, it adds the element to the sum. Once iteration is complete, the total sum of unique elements is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction sumOfUniqueElements(nums) {\n    const elemCount = {};\n    for (const num of nums) {\n        elemCount[num] = (elemCount[num] || 0) + 1;\n    }\n    let sum = 0;\n    for (const [elem, count] of Object.entries(elemCount)) {\n        if (count === 1) {\n            sum += parseInt(elem);\n        }\n    }\n    return sum;\n}\n```\n\n    \n    The algorithm starts by creating an empty hash map (or dictionary in Python) to store the count of each element in the input array. After that, it iterates through the input array and increments the count of each element in the hash map. Finally, it iterates through the hash map and checks the count of each element. If the count is 1, it adds the element to the sum. Once iteration is complete, the total sum of unique elements is returned.\n    ",
+    "java": "\n    ```java\npublic int sumOfUniqueElements(int[] nums) {\n    Map<Integer, Integer> elemCount = new HashMap<>();\n    for (int num : nums) {\n        elemCount.put(num, elemCount.getOrDefault(num, 0) + 1);\n    }\n    int sum = 0;\n    for (Map.Entry<Integer, Integer> entry : elemCount.entrySet()) {\n        if (entry.getValue() == 1) {\n            sum += entry.getKey();\n        }\n    }\n    return sum;\n}\n```\n\n    \n    The algorithm starts by creating an empty hash map (or dictionary in Python) to store the count of each element in the input array. After that, it iterates through the input array and increments the count of each element in the hash map. Finally, it iterates through the hash map and checks the count of each element. If the count is 1, it adds the element to the sum. Once iteration is complete, the total sum of unique elements is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

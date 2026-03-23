@@ -1,0 +1,24 @@
+{
+  "id": 522,
+  "title": "Longest Uncommon Subsequence II",
+  "slug": "longest-uncommon-subsequence-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of strings strs, return _the length of the longest uncommon subsequence between them_. If the longest uncommon subsequence does not exist, return -1.\n\nAn uncommon subsequence between an array of strings is a string that is a subsequence of one string but not the others.\n\nA subsequence of a string s is a string that can be obtained after deleting any number of characters from s.\n\n*   For example, \"abc \" is a subsequence of \"aebdc \" because you can delete the underlined characters in \"aebdc \" to get \"abc \". Other subsequences of \"aebdc \" include \"aebdc \", \"aeb \", and \" \" (empty string).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_lus_length(strs):\n    max_length = -1\n    for i in range(len(strs)):\n        is_uncommon = True\n        for j in range(len(strs)):\n            if i != j and strs[i] in strs[j]:\n                is_uncommon = False\n                break\n        if is_uncommon:\n            max_length = max(max_length, len(strs[i]))\n    return max_length\n```\n\n    \n    The algorithm first initializes a variable `maxLength` which will store the maximum length of the uncommon subsequence. Then it iterates through the input array of strings. For each string, it checks if it is an uncommon subsequence among the array elements. This check is done by iterating through the input array again, comparing the current string with all other strings in the array. If it's found that the current string is a subsequence of another string in the array, the current string cannot be the uncommon subsequence. If the current string is uncommon, its length is compared to the current value of `maxLength` and the maximum value is stored in `maxLength`. Finally, the `maxLength` will contain the length of the longest uncommon subsequence, or -1 if such a subsequence does not exist.\n    ",
+    "javascript": "\n    ```javascript\nfunction findLUSlength(strs) {\n    let maxLength = -1;\n    for(let i = 0; i < strs.length; ++i) {\n        let isUncommon = true;\n        for(let j = 0; j < strs.length; ++j) {\n            if(i != j && strs[j].includes(strs[i])) {\n                isUncommon = false;\n                break;\n            }\n        }\n        if(isUncommon) {\n            maxLength = Math.max(maxLength, strs[i].length);\n        }\n    }\n    return maxLength;\n}\n```\n\n    \n    The algorithm first initializes a variable `maxLength` which will store the maximum length of the uncommon subsequence. Then it iterates through the input array of strings. For each string, it checks if it is an uncommon subsequence among the array elements. This check is done by iterating through the input array again, comparing the current string with all other strings in the array. If it's found that the current string is a subsequence of another string in the array, the current string cannot be the uncommon subsequence. If the current string is uncommon, its length is compared to the current value of `maxLength` and the maximum value is stored in `maxLength`. Finally, the `maxLength` will contain the length of the longest uncommon subsequence, or -1 if such a subsequence does not exist.\n    ",
+    "java": "\n    ```java\nimport java.util.List;\n\npublic int findLUSlength(List<String> strs) {\n    int maxLength = -1;\n    for(int i = 0; i < strs.size(); ++i) {\n        boolean isUncommon = true;\n        for(int j = 0; j < strs.size(); ++j) {\n            if(i != j && strs.get(j).contains(strs.get(i))) {\n                isUncommon = false;\n                break;\n            }\n        }\n        if(isUncommon) {\n            maxLength = Math.max(maxLength, strs.get(i).length());\n        }\n    }\n    return maxLength;\n}\n```\n\n    \n    The algorithm first initializes a variable `maxLength` which will store the maximum length of the uncommon subsequence. Then it iterates through the input array of strings. For each string, it checks if it is an uncommon subsequence among the array elements. This check is done by iterating through the input array again, comparing the current string with all other strings in the array. If it's found that the current string is a subsequence of another string in the array, the current string cannot be the uncommon subsequence. If the current string is uncommon, its length is compared to the current value of `maxLength` and the maximum value is stored in `maxLength`. Finally, the `maxLength` will contain the length of the longest uncommon subsequence, or -1 if such a subsequence does not exist.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

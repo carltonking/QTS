@@ -1,0 +1,24 @@
+{
+  "id": 1647,
+  "title": "Minimum Deletions to Make Character Frequencies Unique",
+  "slug": "minimum-deletions-to-make-character-frequencies-unique",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A string s is called good if there are no two different characters in s that have the same frequency.\n\nGiven a string s, return _the minimum number of characters you need to delete to make_ s _good._\n\nThe frequency of a character in a string is the number of times it appears in the string. For example, in the string \"aab \", the frequency of 'a' is 2, while the frequency of 'b' is 1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef can_convert(s, t, k):\n    diff = 0\n    for i in range(len(s)):\n        curr_diff = (ord(t[i]) - ord(s[i]) + 26) % 26\n        if curr_diff > 0:\n            diff += curr_diff\n            k -= curr_diff\n    return k >= 0 and k >= diff - len(s) and k % 26 == 0\n```\n    \n    For each character in string `s`, we calculate the difference with the corresponding character in string `t`. We then add that difference to the total `diff` and subtract it from `k`. If the current difference is greater than 0, it means that character has been shifted.\n\nAfter every character has been checked, we need to check the following conditions: \n1. `k` should be greater than or equals to 0, which means we didn't exceed the total number of moves allowed.\n2. `k` should be greater than or equals to `diff` - `s.length()` to ensure that all possible shifts have been performed.\n3. `k % 26` should be equal to 0, as any multiple of 26 would bring the character back to the original position, making the shifts redundant.\n\nIf all the conditions are satisfied, it's possible to convert `s` into `t` in no more than `k` moves, otherwise it's not possible.\n    ",
+    "javascript": "\n    ```javascript\nfunction canConvert(s, t, k) {\n    let diff = 0;\n    for (let i = 0; i < s.length; i++) {\n        let curr_diff = (t.charCodeAt(i) - s.charCodeAt(i) + 26) % 26;\n        if (curr_diff > 0) {\n            diff += curr_diff;\n            k -= curr_diff;\n        }\n    }\n    return k >= 0 && k >= diff - s.length && k % 26 === 0;\n}\n```\n    \n    For each character in string `s`, we calculate the difference with the corresponding character in string `t`. We then add that difference to the total `diff` and subtract it from `k`. If the current difference is greater than 0, it means that character has been shifted.\n\nAfter every character has been checked, we need to check the following conditions: \n1. `k` should be greater than or equals to 0, which means we didn't exceed the total number of moves allowed.\n2. `k` should be greater than or equals to `diff` - `s.length()` to ensure that all possible shifts have been performed.\n3. `k % 26` should be equal to 0, as any multiple of 26 would bring the character back to the original position, making the shifts redundant.\n\nIf all the conditions are satisfied, it's possible to convert `s` into `t` in no more than `k` moves, otherwise it's not possible.\n    ",
+    "java": "\n    ```java\npublic boolean canConvert(String s, String t, int k) {\n    int diff = 0;\n    for (int i = 0; i < s.length(); i++) {\n        int curr_diff = (t.charAt(i) - s.charAt(i) + 26) % 26;\n        if (curr_diff > 0) {\n            diff += curr_diff;\n            k -= curr_diff;\n        }\n    }\n    return k >= 0 && k >= diff - s.length() && k % 26 == 0;\n}\n```\n    \n    For each character in string `s`, we calculate the difference with the corresponding character in string `t`. We then add that difference to the total `diff` and subtract it from `k`. If the current difference is greater than 0, it means that character has been shifted.\n\nAfter every character has been checked, we need to check the following conditions: \n1. `k` should be greater than or equals to 0, which means we didn't exceed the total number of moves allowed.\n2. `k` should be greater than or equals to `diff` - `s.length()` to ensure that all possible shifts have been performed.\n3. `k % 26` should be equal to 0, as any multiple of 26 would bring the character back to the original position, making the shifts redundant.\n\nIf all the conditions are satisfied, it's possible to convert `s` into `t` in no more than `k` moves, otherwise it's not possible.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

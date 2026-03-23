@@ -1,0 +1,24 @@
+{
+  "id": 1120,
+  "title": "Maximum Average Subtree",
+  "slug": "maximum-average-subtree",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the root of a binary tree, return _the maximum average value of a subtree of that tree_. Answers within 10-5 of the actual answer will be accepted.\n\nA subtree of a tree is any node of that tree plus all its descendants.\n\nThe average value of a tree is the sum of its values, divided by the number of nodes.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import defaultdict\n\ndef gardenNoAdj(n, paths):\n    graph = defaultdict(set)\n    for x, y in paths:\n        graph[x - 1].add(y - 1)\n        graph[y - 1].add(x - 1)\n    \n    result = [0] * n\n    for i in range(n):\n        used_flowers = {result[neighbor] for neighbor in graph[i]}\n        for flower in range(1, 5):\n            if flower not in used_flowers:\n                result[i] = flower\n                break\n    return result\n```\n\n    \n    The algorithm first represents the bidirectional paths with an adjacent graph structure. Then, for each garden (node), it iterates through its neighbors to keep track of the flowers already represented at adjacent gardens. Finally, it checks the remaining possible flowers (from the 4 types) which haven't been used in neighboring gardens, and assigns that flower type to the current garden. This process is repeated until a flower type is assigned to all gardens, ensuring that no two connected gardens have the same type of flower.\n    ",
+    "javascript": "\n    ```javascript\nfunction gardenNoAdj(n, paths) {\n    const graph = Array.from({ length: n }, () => new Set());\n    \n    for (const [x, y] of paths) {\n        graph[x - 1].add(y - 1);\n        graph[y - 1].add(x - 1);\n    }\n    \n    const result = Array(n).fill(0);\n    for (let i = 0; i < n; i++) {\n        const usedFlowers = new Set(graph[i].map(neighbor => result[neighbor]));\n        \n        for (let flower = 1; flower <= 4; flower++) {\n            if (!usedFlowers.has(flower)) {\n                result[i] = flower;\n                break;\n            }\n        }\n    }\n    return result;\n}\n```\n\n    \n    The algorithm first represents the bidirectional paths with an adjacent graph structure. Then, for each garden (node), it iterates through its neighbors to keep track of the flowers already represented at adjacent gardens. Finally, it checks the remaining possible flowers (from the 4 types) which haven't been used in neighboring gardens, and assigns that flower type to the current garden. This process is repeated until a flower type is assigned to all gardens, ensuring that no two connected gardens have the same type of flower.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic int[] gardenNoAdj(int n, int[][] paths) {\n    List<Set<Integer>> graph = new ArrayList<>();\n    for (int i = 0; i < n; i++) {\n        graph.add(new HashSet<>());\n    }\n    for (int[] path : paths) {\n        graph.get(path[0] - 1).add(path[1] - 1);\n        graph.get(path[1] - 1).add(path[0] - 1);\n    }\n    int[] result = new int[n];\n    for (int i = 0; i < n; i++) {\n        Set<Integer> usedFlowers = new HashSet<>();\n        for (int neighbor : graph.get(i)) {\n            usedFlowers.add(result[neighbor]);\n        }\n        for (int flower = 1; flower <= 4; flower++) {\n            if (!usedFlowers.contains(flower)) {\n                result[i] = flower;\n                break;\n            }\n        }\n    }\n    return result;\n}\n```\n\n    \n    The algorithm first represents the bidirectional paths with an adjacent graph structure. Then, for each garden (node), it iterates through its neighbors to keep track of the flowers already represented at adjacent gardens. Finally, it checks the remaining possible flowers (from the 4 types) which haven't been used in neighboring gardens, and assigns that flower type to the current garden. This process is repeated until a flower type is assigned to all gardens, ensuring that no two connected gardens have the same type of flower.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

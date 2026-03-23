@@ -1,0 +1,24 @@
+{
+  "id": 957,
+  "title": "Prison Cells After N Days",
+  "slug": "prison-cells-after-n-days",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There are 8 prison cells in a row and each cell is either occupied or vacant.\n\nEach day, whether the cell is occupied or vacant changes according to the following rules:\n\n*   If a cell has two adjacent neighbors that are both occupied or both vacant, then the cell becomes occupied.\n*   Otherwise, it becomes vacant.\n\nNote that because the prison is a row, the first and the last cells in the row can't have two adjacent neighbors.\n\nYou are given an integer array cells where cells[i] == 1 if the ith cell is occupied and cells[i] == 0 if the ith cell is vacant, and you are given an integer n.\n\nReturn the state of the prison after n days (i.e., n such changes described above).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minAddToMakeValid(s: str) -> int:\n    result = balance = 0\n    for c in s:\n        balance += 1 if c == '(' else -1\n        if balance == -1:\n            result += 1\n            balance += 1\n    return result + balance\n```\n    \n    The algorithm iterates through the string `s`, maintaining a `balance` variable. If an opening parenthesis is encountered, the balance is incremented, and if a closing parenthesis is encountered, the balance is decremented. If the balance becomes -1, this means there is an unmatched closing parenthesis. In this case, we increment `result` (the minimum number of moves required to make the string valid) and adjust the balance. At the end, any remaining balance indicates unmatched opening parentheses, so we add this to `result`.\n\nComplexity: O(n) where n is the length of the input string\n    ",
+    "javascript": "\n    ```javascript\nfunction minAddToMakeValid(s) {\n    let result = 0, balance = 0;\n    for (let c of s) {\n        balance += (c === '(') ? 1 : -1;\n        if (balance === -1) {\n            result++;\n            balance++;\n        }\n    }\n    return result + balance;\n}\n```\n    \n    The algorithm iterates through the string `s`, maintaining a `balance` variable. If an opening parenthesis is encountered, the balance is incremented, and if a closing parenthesis is encountered, the balance is decremented. If the balance becomes -1, this means there is an unmatched closing parenthesis. In this case, we increment `result` (the minimum number of moves required to make the string valid) and adjust the balance. At the end, any remaining balance indicates unmatched opening parentheses, so we add this to `result`.\n\nComplexity: O(n) where n is the length of the input string\n    ",
+    "java": "\n    ```java\npublic int minAddToMakeValid(String s) {\n    int result = 0, balance = 0;\n    for (char c : s.toCharArray()) {\n        balance += (c == '(') ? 1 : -1;\n        if (balance == -1) {\n            result++;\n            balance++;\n        }\n    }\n    return result + balance;\n}\n```\n    \n    The algorithm iterates through the string `s`, maintaining a `balance` variable. If an opening parenthesis is encountered, the balance is incremented, and if a closing parenthesis is encountered, the balance is decremented. If the balance becomes -1, this means there is an unmatched closing parenthesis. In this case, we increment `result` (the minimum number of moves required to make the string valid) and adjust the balance. At the end, any remaining balance indicates unmatched opening parentheses, so we add this to `result`.\n\nComplexity: O(n) where n is the length of the input string\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

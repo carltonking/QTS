@@ -1,0 +1,24 @@
+{
+  "id": 2163,
+  "title": "Minimum Difference in Sums After Removal of Elements",
+  "slug": "minimum-difference-in-sums-after-removal-of-elements",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums consisting of 3 * n elements.\n\nYou are allowed to remove any subsequence of elements of size exactly n from nums. The remaining 2 * n elements will be divided into two equal parts:\n\n*   The first n elements belonging to the first part and their sum is sumfirst.\n*   The next n elements belonging to the second part and their sum is sumsecond.\n\nThe difference in sums of the two parts is denoted as sumfirst - sumsecond.\n\n*   For example, if sumfirst = 3 and sumsecond = 2, their difference is 1.\n*   Similarly, if sumfirst = 2 and sumsecond = 3, their difference is -1.\n\nReturn _the minimum difference possible between the sums of the two parts after the removal of_ n _elements_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef kth_distinct_string(arr, k):\n    frequency = {}\n    for s in arr:\n        frequency[s] = frequency.get(s, 0) + 1\n\n    count = 0\n    for s in arr:\n        if frequency[s] == 1:\n            count += 1\n            if count == k:\n                return s\n\n    return \"\"\n```\n    \n    1. Create a hash table (unordered_map, HashMap, or dictionary, depending on the language) to store the frequency of strings in the input array.\n2. Iterate over the input array and increment the frequency of each string in the hash table.\n3. Initialize a count variable to keep track of the distinct strings found so far.\n4. Iterate over the input array again, checking the frequency of each string in the hash table.\n5. If the frequency is 1 (distinct), increment the count variable.\n6. If the count reaches k, return the current string.\n7. If no kth distinct string is found, return an empty string.\n    ",
+    "javascript": "\n    ```javascript\nfunction kthDistinctString(arr, k) {\n    const frequency = {};\n    for (const s of arr) {\n        frequency[s] = (frequency[s] || 0) + 1;\n    }\n\n    let count = 0;\n    for (const s of arr) {\n        if (frequency[s] === 1) {\n            count++;\n            if (count === k) {\n                return s;\n            }\n        }\n    }\n\n    return '';\n}\n```\n    \n    1. Create a hash table (unordered_map, HashMap, or dictionary, depending on the language) to store the frequency of strings in the input array.\n2. Iterate over the input array and increment the frequency of each string in the hash table.\n3. Initialize a count variable to keep track of the distinct strings found so far.\n4. Iterate over the input array again, checking the frequency of each string in the hash table.\n5. If the frequency is 1 (distinct), increment the count variable.\n6. If the count reaches k, return the current string.\n7. If no kth distinct string is found, return an empty string.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\nimport java.util.Map;\n\npublic String kthDistinctString(String[] arr, int k) {\n    Map<String, Integer> frequency = new HashMap<>();\n    for (String s : arr) {\n        frequency.put(s, frequency.getOrDefault(s, 0) + 1);\n    }\n\n    int count = 0;\n    for (String s : arr) {\n        if (frequency.get(s) == 1) {\n            count++;\n            if (count == k) {\n                return s;\n            }\n        }\n    }\n\n    return \"\";\n}\n```\n    \n    1. Create a hash table (unordered_map, HashMap, or dictionary, depending on the language) to store the frequency of strings in the input array.\n2. Iterate over the input array and increment the frequency of each string in the hash table.\n3. Initialize a count variable to keep track of the distinct strings found so far.\n4. Iterate over the input array again, checking the frequency of each string in the hash table.\n5. If the frequency is 1 (distinct), increment the count variable.\n6. If the count reaches k, return the current string.\n7. If no kth distinct string is found, return an empty string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

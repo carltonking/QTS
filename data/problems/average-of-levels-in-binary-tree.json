@@ -1,0 +1,24 @@
+{
+  "id": 637,
+  "title": "Average of Levels in Binary Tree",
+  "slug": "average-of-levels-in-binary-tree",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given the root of a binary tree, return _the average value of the nodes on each level in the form of an array_. Answers within 10-5 of the actual answer will be accepted.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef averageOfLevels(root: TreeNode):\n    result = []\n    queue = [root]\n\n    while queue:\n        sum_ = 0\n        count = 0\n        temp = []\n        while queue:\n            node = queue.pop(0)\n            sum_ += node.val\n            count += 1\n            if node.left: temp.append(node.left)\n            if node.right: temp.append(node.right)\n        queue = temp\n        result.append(sum_ / count)\n\n    return result\n```\n    \n    The algorithm uses a Breadth First Search (BFS) approach to solve this problem. A queue data structure is used to keep track of the tree nodes at each level. The algorithm iterates through each level of the binary tree, summing the values of all the nodes at the current level, and dividing by the number of nodes in that level to get the average. The result is added to a vector (C++), list (Java, Python), or array (JavaScript) and returned once the queue is empty, meaning all levels have been traversed.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(val, left = null, right = null) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\nfunction averageOfLevels(root) {\n    let result = [];\n    let queue = [root];\n\n    while (queue.length > 0) {\n        let sum = 0;\n        let count = 0;\n        let temp = [];\n        while (queue.length > 0) {\n            let currentNode = queue.shift();\n            sum += currentNode.val;\n            count++;\n            if (currentNode.left !== null) temp.push(currentNode.left);\n            if (currentNode.right !== null) temp.push(currentNode.right);\n        }\n        queue = temp;\n        result.push(sum / count);\n    }\n\n    return result;\n}\n```\n    \n    The algorithm uses a Breadth First Search (BFS) approach to solve this problem. A queue data structure is used to keep track of the tree nodes at each level. The algorithm iterates through each level of the binary tree, summing the values of all the nodes at the current level, and dividing by the number of nodes in that level to get the average. The result is added to a vector (C++), list (Java, Python), or array (JavaScript) and returned once the queue is empty, meaning all levels have been traversed.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.LinkedList;\nimport java.util.List;\nimport java.util.Queue;\n\npublic class TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n    TreeNode(int x) { val = x; }\n}\n\npublic List<Double> averageOfLevels(TreeNode root) {\n    List<Double> result = new ArrayList<>();\n    Queue<TreeNode> queue = new LinkedList<>();\n    queue.add(root);\n\n    while (!queue.isEmpty()) {\n        long sum = 0;\n        int count = 0;\n        Queue<TreeNode> temp = new LinkedList<>();\n        while (!queue.isEmpty()) {\n            TreeNode currentNode = queue.poll();\n            sum += currentNode.val;\n            count++;\n            if (currentNode.left != null) temp.add(currentNode.left);\n            if (currentNode.right != null) temp.add(currentNode.right);\n        }\n        queue = temp;\n        result.add((1.0 * sum) / count);\n    }\n\n    return result;\n}\n```\n    \n    The algorithm uses a Breadth First Search (BFS) approach to solve this problem. A queue data structure is used to keep track of the tree nodes at each level. The algorithm iterates through each level of the binary tree, summing the values of all the nodes at the current level, and dividing by the number of nodes in that level to get the average. The result is added to a vector (C++), list (Java, Python), or array (JavaScript) and returned once the queue is empty, meaning all levels have been traversed.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 325,
+  "title": "Maximum Size Subarray Sum Equals k",
+  "slug": "maximum-size-subarray-sum-equals-k",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums and an integer k, return _the maximum length of a_ _subarray_ _that sums to_ k. If there is not one, return 0 instead.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxSubArrayLen(nums: List[int], k: int) -> int:\n    sum_index = {}\n    maxLength = sum = 0\n    for i, num in enumerate(nums):\n        sum += num\n        if sum == k:\n            maxLength = i + 1\n        if sum - k in sum_index:\n            maxLength = max(maxLength, i - sum_index[sum - k])\n        if sum not in sum_index:\n            sum_index[sum] = i\n    return maxLength\n```\n\n    \n    The algorithm uses a HashMap (or dictionary for Python) to store a cumulative sum and its index. The HashMap (called `sumIndex` here) keeps track of the first time a certain sum (up to that index) is encountered in the array. Then, we iterate through the array and maintain a running sum. If the running sum is equal to the given sum `k`, the current maximum length of the subarray is updated as `i + 1`. If the running sum minus `k` exists in `sumIndex`, it means that we've found a subarray that sums to `k`, so we can update the maximum length by comparing with the current subarray length `i - sumIndex[sum - k]`. If the running sum is not present in the `sumIndex`, we can store its index.\n\nThe algorithm works in O(n) time complexity, where n is the length of the array because we traverse the entire array once and perform constant time operations for each element.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxSubArrayLen(nums, k) {\n    let sumIndex = new Map();\n    let maxLength = 0, sum = 0;\n    for (let i = 0; i < nums.length; i++) {\n        sum += nums[i];\n        if (sum === k) maxLength = i + 1;\n        if (sumIndex.has(sum - k)) maxLength = Math.max(maxLength, i - sumIndex.get(sum - k));\n        if (!sumIndex.has(sum)) sumIndex.set(sum, i);\n    }\n    return maxLength;\n}\n```\n\n    \n    The algorithm uses a HashMap (or dictionary for Python) to store a cumulative sum and its index. The HashMap (called `sumIndex` here) keeps track of the first time a certain sum (up to that index) is encountered in the array. Then, we iterate through the array and maintain a running sum. If the running sum is equal to the given sum `k`, the current maximum length of the subarray is updated as `i + 1`. If the running sum minus `k` exists in `sumIndex`, it means that we've found a subarray that sums to `k`, so we can update the maximum length by comparing with the current subarray length `i - sumIndex[sum - k]`. If the running sum is not present in the `sumIndex`, we can store its index.\n\nThe algorithm works in O(n) time complexity, where n is the length of the array because we traverse the entire array once and perform constant time operations for each element.\n    ",
+    "java": "\n    ```java\npublic int maxSubArrayLen(int[] nums, int k) {\n    Map<Integer, Integer> sumIndex = new HashMap<>();\n    int maxLength = 0, sum = 0;\n    for(int i = 0; i < nums.length; i++) {\n        sum += nums[i];\n        if (sum == k) maxLength = i + 1;\n        if (sumIndex.containsKey(sum - k)) maxLength = Math.max(maxLength, i - sumIndex.get(sum - k));\n        if (!sumIndex.containsKey(sum)) sumIndex.put(sum, i);\n    }\n    return maxLength;\n}\n```\n\n    \n    The algorithm uses a HashMap (or dictionary for Python) to store a cumulative sum and its index. The HashMap (called `sumIndex` here) keeps track of the first time a certain sum (up to that index) is encountered in the array. Then, we iterate through the array and maintain a running sum. If the running sum is equal to the given sum `k`, the current maximum length of the subarray is updated as `i + 1`. If the running sum minus `k` exists in `sumIndex`, it means that we've found a subarray that sums to `k`, so we can update the maximum length by comparing with the current subarray length `i - sumIndex[sum - k]`. If the running sum is not present in the `sumIndex`, we can store its index.\n\nThe algorithm works in O(n) time complexity, where n is the length of the array because we traverse the entire array once and perform constant time operations for each element.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

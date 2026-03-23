@@ -1,0 +1,24 @@
+{
+  "id": 2083,
+  "title": "Substrings That Begin and End With the Same Letter",
+  "slug": "substrings-that-begin-and-end-with-the-same-letter",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed string s consisting of only lowercase English letters. Return _the number of substrings in_ s _that begin and end with the same character._\n\nA substring is a contiguous non-empty sequence of characters within a string.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef has_three_divisors(n):\n    count = 0\n    for i in range(1, int(n**0.5) + 1):\n        if n % i == 0:\n            if n // i == i:\n                count += 1\n            else:\n                count += 2\n        if count > 3:\n            break\n    return count == 3\n```\n    \n    The algorithm iterates through every integer i from 1 to the square root of n. For each integer i, it checks if n is divisible by i, indicating that i is a divisor of n. If n is divisible by i, the algorithm further calculates n/i, which is the other divisor. If i and n/i are equal, count is incremented by 1; otherwise, count is incremented by 2, as there are two distinct divisors. If the count goes over 3, the loop is broken since we only care about finding exactly three divisors. At the end of the loop, it checks if count is equal to 3, and returns true if it is, otherwise it returns false.\n\nGiven an integer n, this algorithm will return true if n has exactly three positive divisors, otherwise, it will return false.\n    ",
+    "javascript": "\n    ```javascript\nfunction hasThreeDivisors(n) {\n    let count = 0;\n    for (let i = 1; i <= Math.sqrt(n); i++) {\n        if (n % i === 0) {\n            if (n / i === i)\n                count++;\n            else\n                count += 2;\n        }\n        if (count > 3)\n            break;\n    }\n    return count === 3;\n}\n```\n    \n    The algorithm iterates through every integer i from 1 to the square root of n. For each integer i, it checks if n is divisible by i, indicating that i is a divisor of n. If n is divisible by i, the algorithm further calculates n/i, which is the other divisor. If i and n/i are equal, count is incremented by 1; otherwise, count is incremented by 2, as there are two distinct divisors. If the count goes over 3, the loop is broken since we only care about finding exactly three divisors. At the end of the loop, it checks if count is equal to 3, and returns true if it is, otherwise it returns false.\n\nGiven an integer n, this algorithm will return true if n has exactly three positive divisors, otherwise, it will return false.\n    ",
+    "java": "\n    ```java\nboolean hasThreeDivisors(int n) {\n    int count = 0;\n    for (int i = 1; i <= Math.sqrt(n); i++) {\n        if (n % i == 0) {\n            if (n / i == i)\n                count++;\n            else\n                count += 2;\n        }\n        if (count > 3)\n            break;\n    }\n    return count == 3;\n}\n```\n    \n    The algorithm iterates through every integer i from 1 to the square root of n. For each integer i, it checks if n is divisible by i, indicating that i is a divisor of n. If n is divisible by i, the algorithm further calculates n/i, which is the other divisor. If i and n/i are equal, count is incremented by 1; otherwise, count is incremented by 2, as there are two distinct divisors. If the count goes over 3, the loop is broken since we only care about finding exactly three divisors. At the end of the loop, it checks if count is equal to 3, and returns true if it is, otherwise it returns false.\n\nGiven an integer n, this algorithm will return true if n has exactly three positive divisors, otherwise, it will return false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

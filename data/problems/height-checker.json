@@ -1,0 +1,24 @@
+{
+  "id": 1051,
+  "title": "Height Checker",
+  "slug": "height-checker",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "A school is trying to take an annual photo of all the students. The students are asked to stand in a single file line in non-decreasing order by height. Let this ordering be represented by the integer array expected where expected[i] is the expected height of the ith student in line.\n\nYou are given an integer array heights representing the current order that the students are standing in. Each heights[i] is the height of the ith student in line (0-indexed).\n\nReturn _the number of indices where_ heights[i] != expected[i].",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef height_checker(heights):\n    expected = sorted(heights)\n    \n    count = 0\n    for i in range(len(heights)):\n        if heights[i] != expected[i]:\n            count += 1\n            \n    return count\n```\n    \n    1. Create a copy of the input array called expected.\n2. Sort the expected array in non-decreasing order.\n3. Initialize a counter variable called count to 0.\n4. Iterate through the input array with index i.\n  4.1. If the element at index i in the input array is not equal to the element at index i in the expected array, increment the count.\n5. Return the count.\n    ",
+    "javascript": "\n    ```javascript\nfunction heightChecker(heights) {\n    const expected = [...heights].sort((a, b) => a - b);\n\n    let count = 0;\n    for (let i = 0; i < heights.length; ++i) {\n        if (heights[i] !== expected[i]) {\n            ++count;\n        }\n    }\n\n    return count;\n}\n```\n    \n    1. Create a copy of the input array called expected.\n2. Sort the expected array in non-decreasing order.\n3. Initialize a counter variable called count to 0.\n4. Iterate through the input array with index i.\n  4.1. If the element at index i in the input array is not equal to the element at index i in the expected array, increment the count.\n5. Return the count.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int heightChecker(int[] heights) {\n    int[] expected = heights.clone();\n    Arrays.sort(expected);\n\n    int count = 0;\n    for (int i = 0; i < heights.length; ++i) {\n        if (heights[i] != expected[i]) {\n            ++count;\n        }\n    }\n\n    return count;\n}\n```\n    \n    1. Create a copy of the input array called expected.\n2. Sort the expected array in non-decreasing order.\n3. Initialize a counter variable called count to 0.\n4. Iterate through the input array with index i.\n  4.1. If the element at index i in the input array is not equal to the element at index i in the expected array, increment the count.\n5. Return the count.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

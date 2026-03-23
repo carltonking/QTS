@@ -1,0 +1,24 @@
+{
+  "id": 1680,
+  "title": "Concatenation of Consecutive Binary Numbers",
+  "slug": "concatenation-of-consecutive-binary-numbers",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer n, return _the decimal value of the binary string formed by concatenating the binary representations of_ 1 _to_ n _in order, modulo_ 109 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_routes(locations, start, finish, fuel, curr=None, remaining_fuel=None, memo=None):\n    if memo is None:\n        memo = {}\n     \n    if curr is None:\n        curr = start\n        remaining_fuel = fuel\n\n    if remaining_fuel < 0:\n        return 0\n\n    if (curr, remaining_fuel) in memo:\n        return memo[(curr, remaining_fuel)]\n\n    ans = 1 if curr == finish else 0\n    for next in range(len(locations)):\n        if next != curr:\n            ans += count_routes(locations, start, finish, fuel, next, remaining_fuel - abs(locations[curr] - locations[next]), memo)\n            ans %= 1000000007\n\n    memo[(curr, remaining_fuel)] = ans\n    return ans\n```\n    \n    The algorithm is a depth-first search with memoization. We start from the given start city and move to any other city as long as we have enough fuel. If we reach the finish city, we count the route. We recursively try all combinations of moves, using memoization to store the intermediate results for each city and the remaining fuel. This way, we avoid recomputing the same subproblems multiple times, which reduces the overall time complexity of the algorithm. Since the answer may be too large, we return it modulo 10^9 + 7.\n    ",
+    "javascript": "\n    ```javascript\nfunction countRoutes(locations, start, finish, fuel, curr = null, remainingFuel = null, memo = {}) {\n    if (curr === null) {\n        curr = start;\n        remainingFuel = fuel;\n    }\n\n    if (remainingFuel < 0) {\n        return 0;\n    }\n\n    const key = `${curr}:${remainingFuel}`;\n    if (memo.hasOwnProperty(key)) {\n        return memo[key];\n    }\n\n    let ans = (curr === finish) ? 1 : 0;\n    for (let next = 0; next < locations.length; ++next) {\n        if (next !== curr) {\n            ans += countRoutes(locations, start, finish, fuel, next, remainingFuel - Math.abs(locations[curr] - locations[next]), memo);\n            ans %= 1000000007;\n        }\n    }\n    memo[key] = ans;\n    return ans;\n}\n```\n    \n    The algorithm is a depth-first search with memoization. We start from the given start city and move to any other city as long as we have enough fuel. If we reach the finish city, we count the route. We recursively try all combinations of moves, using memoization to store the intermediate results for each city and the remaining fuel. This way, we avoid recomputing the same subproblems multiple times, which reduces the overall time complexity of the algorithm. Since the answer may be too large, we return it modulo 10^9 + 7.\n    ",
+    "java": "\n    ```java\npublic int countRoutes(int[] locations, int start, int finish, int fuel) {\n    Integer[][] memo = new Integer[locations.length][fuel + 1];\n    return countRoutes(locations, start, finish, fuel, start, fuel, memo);\n}\n\nprivate int countRoutes(int[] locations, int start, int finish, int fuel, int curr, int remainingFuel, Integer[][] memo) {\n    if (remainingFuel < 0) {\n        return 0;\n    }\n\n    if (memo[curr][remainingFuel] != null) {\n        return memo[curr][remainingFuel];\n    }\n\n    int ans = curr == finish ? 1 : 0;\n    for (int next = 0; next < locations.length; ++next) {\n        if (next != curr) {\n            ans += countRoutes(locations, start, finish, fuel, next, remainingFuel - Math.abs(locations[curr] - locations[next]), memo);\n            ans %= 1000000007;\n        }\n    }\n    memo[curr][remainingFuel] = ans;\n    return ans;\n}\n```\n    \n    The algorithm is a depth-first search with memoization. We start from the given start city and move to any other city as long as we have enough fuel. If we reach the finish city, we count the route. We recursively try all combinations of moves, using memoization to store the intermediate results for each city and the remaining fuel. This way, we avoid recomputing the same subproblems multiple times, which reduces the overall time complexity of the algorithm. Since the answer may be too large, we return it modulo 10^9 + 7.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

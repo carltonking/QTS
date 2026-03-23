@@ -1,0 +1,24 @@
+{
+  "id": 1740,
+  "title": "Find Distance in a Binary Tree",
+  "slug": "find-distance-in-a-binary-tree",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the root of a binary tree and two integers p and q, return _the distance between the nodes of value_ p _and value_ q _in the tree_.\n\nThe distance between two nodes is the number of edges on the path from one to the other.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import defaultdict\n\ndef countSubgraphsForEachD(n, edges):\n    tree = defaultdict(list)\n    for u, v in edges:\n        tree[u].append(v)\n        tree[v].append(u)\n\n    def dfs(node, parent):\n        depth = 0\n        for child in tree[node]:\n            if child != parent:\n                depth = max(depth, 1 + dfs(child, node))\n        return depth\n\n    ans = [0] * (n - 1)\n    for i in range(1, n + 1):\n        maxD = dfs(i, 0)\n        if maxD > 0:\n            ans[maxD - 1] += 1\n\n    return ans\n```\n    \n    1. Convert the given edges into a tree data structure (an adjacency list).\n2. Write a recursive depth-first search (dfs) function that returns the maximum depth of a given node from its children, excluding the parent.\n3. Loop through each city from 1 to n and call the dfs function with the city as the starting node and 0 as the parent. Calculate the maximum distance (maxD) for each city.\n4. Increment the count in the ans array for the index of maxD - 1.\n5. The ans array now contains the count of subtrees for each distance d.\n\n(Note: This solution counts each subtree twice, but it doesn't affect the final result, as every subtree is counted twice, which cancels out the multiplicity.)\n    ",
+    "javascript": "\n    ```javascript\nfunction countSubgraphsForEachD(n, edges) {\n    const tree = Array.from({ length: n + 1 }, () => []);\n    for (const [u, v] of edges) {\n        tree[u].push(v);\n        tree[v].push(u);\n    }\n\n    function dfs(node, parent) {\n        let depth = 0;\n        for (const child of tree[node]) {\n            if (child !== parent) depth = Math.max(depth, 1 + dfs(child, node));\n        }\n        return depth;\n    }\n\n    const ans = new Array(n - 1).fill(0);\n    for (let i = 1; i <= n; i++) {\n        const maxD = dfs(i, 0);\n        if (maxD > 0) ans[maxD - 1]++;\n    }\n    return ans;\n}\n```\n    \n    1. Convert the given edges into a tree data structure (an adjacency list).\n2. Write a recursive depth-first search (dfs) function that returns the maximum depth of a given node from its children, excluding the parent.\n3. Loop through each city from 1 to n and call the dfs function with the city as the starting node and 0 as the parent. Calculate the maximum distance (maxD) for each city.\n4. Increment the count in the ans array for the index of maxD - 1.\n5. The ans array now contains the count of subtrees for each distance d.\n\n(Note: This solution counts each subtree twice, but it doesn't affect the final result, as every subtree is counted twice, which cancels out the multiplicity.)\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic int[] countSubgraphsForEachD(int n, int[][] edges) {\n    List<List<Integer>> tree = new ArrayList<>();\n    for (int i = 0; i <= n; i++) {\n        tree.add(new ArrayList<>());\n    }\n    for (int[] edge : edges) {\n        tree.get(edge[0]).add(edge[1]);\n        tree.get(edge[1]).add(edge[0]);\n    }\n    \n    int[] ans = new int[n - 1];\n    for (int i = 1; i <= n; i++) {\n        int maxD = dfs(tree, i, 0);\n        if (maxD > 0) ans[maxD - 1]++;\n    }\n    return ans;\n}\n\nprivate int dfs(List<List<Integer>> tree, int node, int parent) {\n    int depth = 0;\n    for (int child : tree.get(node)) {\n        if (child != parent) depth = Math.max(depth, 1 + dfs(tree, child, node));\n    }\n    return depth;\n}\n```\n    \n    1. Convert the given edges into a tree data structure (an adjacency list).\n2. Write a recursive depth-first search (dfs) function that returns the maximum depth of a given node from its children, excluding the parent.\n3. Loop through each city from 1 to n and call the dfs function with the city as the starting node and 0 as the parent. Calculate the maximum distance (maxD) for each city.\n4. Increment the count in the ans array for the index of maxD - 1.\n5. The ans array now contains the count of subtrees for each distance d.\n\n(Note: This solution counts each subtree twice, but it doesn't affect the final result, as every subtree is counted twice, which cancels out the multiplicity.)\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

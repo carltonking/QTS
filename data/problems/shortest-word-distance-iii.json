@@ -1,0 +1,24 @@
+{
+  "id": 245,
+  "title": "Shortest Word Distance III",
+  "slug": "shortest-word-distance-iii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of strings wordsDict and two strings that already exist in the array word1 and word2, return _the shortest distance between the occurrence of these two words in the list_.\n\nNote that word1 and word2 may be the same. It is guaranteed that they represent two individual words in the list.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef shortest_distance(words_dict, word1, word2):\n    index1, index2, min_distance = -1, -1, float('inf')\n    for i, word in enumerate(words_dict):\n        if word == word1:\n            index1 = i\n        if word == word2:\n            index2 = i\n        if index1 != -1 and(index2 != -1):\n            min_distance = min(min_distance, abs(index1 - index2))\n    return min_distance\n```\n    \n    For each string in the given list `wordsDict`, initialize `index1` and `index2` to -1 and `minDistance` to the maximum possible value for the respective language. Iterate through the list of strings and update `index1` or `index2` if the current string is equal to `word1` or `word2`. If both `index1` and `index2` are not -1 (meaning both words have been found at least once), calculate the absolute difference between the indices and update `minDistance` if the current distance is less than the previous minimum distance.\n\nReturn `minDistance` once the loop is done iterating.\n    ",
+    "javascript": "\n    ```javascript\nfunction shortestDistance(wordsDict, word1, word2) {\n    let index1 = -1, index2 = -1, minDistance = Infinity;\n    for (let i = 0; i < wordsDict.length; ++i) {\n        if (wordsDict[i] === word1) { index1 = i; }\n        if (wordsDict[i] === word2) { index2 = i; }\n        if (index1 !== -1 && index2 !== -1) {\n            minDistance = Math.min(minDistance, Math.abs(index1 - index2));\n        }\n    }\n    return minDistance;\n}\n```\n    \n    For each string in the given list `wordsDict`, initialize `index1` and `index2` to -1 and `minDistance` to the maximum possible value for the respective language. Iterate through the list of strings and update `index1` or `index2` if the current string is equal to `word1` or `word2`. If both `index1` and `index2` are not -1 (meaning both words have been found at least once), calculate the absolute difference between the indices and update `minDistance` if the current distance is less than the previous minimum distance.\n\nReturn `minDistance` once the loop is done iterating.\n    ",
+    "java": "\n    ```java\npublic int shortestDistance(String[] wordsDict, String word1, String word2) {\n    int index1 = -1, index2 = -1, minDistance = Integer.MAX_VALUE;\n    for (int i = 0; i < wordsDict.length; ++i) {\n        if (wordsDict[i].equals(word1)) { index1 = i; }\n        if (wordsDict[i].equals(word2)) { index2 = i; }\n        if (index1 != -1 && index2 != -1) {\n            minDistance = Math.min(minDistance, Math.abs(index1 - index2));\n        }\n    }\n    return minDistance;\n}\n```\n    \n    For each string in the given list `wordsDict`, initialize `index1` and `index2` to -1 and `minDistance` to the maximum possible value for the respective language. Iterate through the list of strings and update `index1` or `index2` if the current string is equal to `word1` or `word2`. If both `index1` and `index2` are not -1 (meaning both words have been found at least once), calculate the absolute difference between the indices and update `minDistance` if the current distance is less than the previous minimum distance.\n\nReturn `minDistance` once the loop is done iterating.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

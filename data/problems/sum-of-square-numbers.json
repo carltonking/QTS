@@ -1,0 +1,24 @@
+{
+  "id": 633,
+  "title": "Sum of Square Numbers",
+  "slug": "sum-of-square-numbers",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a non-negative integer c, decide whether there're two integers a and b such that a2 + b2 = c.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef judge_square_sum(c):\n    for a in range(int(c ** 0.5) + 1):\n        b = int((c - a * a) ** 0.5)\n        if a * a + b * b == c:\n            return True\n    return False\n```\n    \n    1. Initialize a variable `a` with a value of 0.\n2. Iterate through each possible value of `a` until the square root of `c`.\n3. For each value of `a`, calculate the square root of `c - a * a`, rounding down to an integer value (using floor function).\n4. Check if a² + b² equals c, if yes, return true, indicating the existence of integers `a` and `b`.\n5. If the loop is completed without finding such pair of integers, return false.\n    ",
+    "javascript": "\n    ```javascript\nfunction judgeSquareSum(c) {\n    for (let a = 0; a <= Math.sqrt(c); ++a) {\n        let b = Math.floor(Math.sqrt(c - a * a));\n        if (a * a + b * b === c) {\n            return true;\n        }\n    }\n    return false;\n}\n```\n    \n    1. Initialize a variable `a` with a value of 0.\n2. Iterate through each possible value of `a` until the square root of `c`.\n3. For each value of `a`, calculate the square root of `c - a * a`, rounding down to an integer value (using floor function).\n4. Check if a² + b² equals c, if yes, return true, indicating the existence of integers `a` and `b`.\n5. If the loop is completed without finding such pair of integers, return false.\n    ",
+    "java": "\n    ```java\nclass Solution {\n    public boolean judgeSquareSum(int c) {\n        for (int a = 0; a <= Math.sqrt(c); ++a) {\n            int b = (int) Math.sqrt(c - a * a);\n            if (a * a + b * b == c) {\n                return true;\n            }\n        }\n        return false;\n    }\n}\n```\n    \n    1. Initialize a variable `a` with a value of 0.\n2. Iterate through each possible value of `a` until the square root of `c`.\n3. For each value of `a`, calculate the square root of `c - a * a`, rounding down to an integer value (using floor function).\n4. Check if a² + b² equals c, if yes, return true, indicating the existence of integers `a` and `b`.\n5. If the loop is completed without finding such pair of integers, return false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

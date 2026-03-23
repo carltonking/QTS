@@ -1,0 +1,24 @@
+{
+  "id": 678,
+  "title": "Valid Parenthesis String",
+  "slug": "valid-parenthesis-string",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string s containing only three types of characters: '(', ')' and '*', return true _if_ s _is valid_.\n\nThe following rules define a valid string:\n\n*   Any left parenthesis '(' must have a corresponding right parenthesis ')'.\n*   Any right parenthesis ')' must have a corresponding left parenthesis '('.\n*   Left parenthesis '(' must go before the corresponding right parenthesis ')'.\n*   '*' could be treated as a single right parenthesis ')' or a single left parenthesis '(' or an empty string \" \".",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef checkValidString(s: str) -> bool:\n    left_balance, right_balance = 0, 0\n\n    for i in range(len(s)):\n        left_balance += 1 if s[i] == '(' or s[i] == '*' else -1\n        right_balance += 1 if s[len(s) - 1 - i] == ')' or s[len(s) - 1 - i] == '*' else -1\n\n        if left_balance < 0 or right_balance < 0:\n            return False\n\n    return True\n```\n\n    \n    The algorithm uses the greedy approach by keeping count of the possible balance of left and right parentheses with two variables `left_balance` and `right_balance`. \n\nWe iterate through the string in both forward and reverse direction looking at balance of the parentheses. The '*' character is treated as a left parenthesis when iterating forward, and as a right parenthesis when iterating in reverse. If at any point either balance is negative, we return false, as it is not a valid string.\n\nIf we successfully finish the iteration without returning false, it means the string is valid, and we return true.\n    ",
+    "javascript": "\n    ```javascript\nfunction checkValidString(s) {\n    let left_balance = 0, right_balance = 0;\n\n    for (let i = 0; i < s.length; i++) {\n        left_balance += (s[i] === '(' || s[i] === '*') ? 1 : -1;\n        right_balance += (s[s.length - 1 - i] === ')' || s[s.length - 1 - i] === '*') ? 1 : -1;\n\n        if (left_balance < 0 || right_balance < 0)\n            return false;\n    }\n\n    return true;\n}\n```\n\n    \n    The algorithm uses the greedy approach by keeping count of the possible balance of left and right parentheses with two variables `left_balance` and `right_balance`. \n\nWe iterate through the string in both forward and reverse direction looking at balance of the parentheses. The '*' character is treated as a left parenthesis when iterating forward, and as a right parenthesis when iterating in reverse. If at any point either balance is negative, we return false, as it is not a valid string.\n\nIf we successfully finish the iteration without returning false, it means the string is valid, and we return true.\n    ",
+    "java": "\n    ```java\npublic boolean checkValidString(String s) {\n    int left_balance = 0, right_balance = 0;\n\n    for (int i = 0; i < s.length(); i++) {\n        left_balance += (s.charAt(i) == '(' || s.charAt(i) == '*') ? 1 : -1;\n        right_balance += (s.charAt(s.length() - 1 - i) == ')' || s.charAt(s.length() - 1 - i) == '*') ? 1 : -1;\n\n        if (left_balance < 0 || right_balance < 0)\n            return false;\n    }\n\n    return true;\n}\n```\n\n    \n    The algorithm uses the greedy approach by keeping count of the possible balance of left and right parentheses with two variables `left_balance` and `right_balance`. \n\nWe iterate through the string in both forward and reverse direction looking at balance of the parentheses. The '*' character is treated as a left parenthesis when iterating forward, and as a right parenthesis when iterating in reverse. If at any point either balance is negative, we return false, as it is not a valid string.\n\nIf we successfully finish the iteration without returning false, it means the string is valid, and we return true.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

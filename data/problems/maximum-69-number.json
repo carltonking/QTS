@@ -1,0 +1,24 @@
+{
+  "id": 1323,
+  "title": "Maximum 69 Number",
+  "slug": "maximum-69-number",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a positive integer num consisting only of digits 6 and 9.\n\nReturn _the maximum number you can get by changing at most one digit (_6 _becomes_ 9_, and_ 9 _becomes_ 6_)_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maximum69Number(num: int) -> int:\n    num_str = list(str(num))\n    for i in range(len(num_str)):\n        if num_str[i] == '6':\n            num_str[i] = '9'\n            break\n    return int(''.join(num_str))\n```\n    \n    The algorithm to solve this problem is simple:\n\n1. Convert the integer `num` to a string, so that we can easily manipulate individual digits.\n2. Iterate through the string, looking for the first occurrence of the digit '6'.\n3. When the digit '6' is found, change it to '9' and exit the loop.\n4. Convert the modified string back to an integer and return it.\n\nThis algorithm guarantees that only one digit will be modified at most, and the result will be the maximum value possible under the given constraints.\n    ",
+    "javascript": "\n    ```javascript\nfunction maximum69Number(num) {\n    let numStr = num.toString();\n    let numArr = Array.from(numStr);\n    for (let i = 0; i < numArr.length; i++) {\n        if (numArr[i] == '6') {\n            numArr[i] = '9';\n            break;\n        }\n    }\n    return parseInt(numArr.join(''));\n}\n```\n    \n    The algorithm to solve this problem is simple:\n\n1. Convert the integer `num` to a string, so that we can easily manipulate individual digits.\n2. Iterate through the string, looking for the first occurrence of the digit '6'.\n3. When the digit '6' is found, change it to '9' and exit the loop.\n4. Convert the modified string back to an integer and return it.\n\nThis algorithm guarantees that only one digit will be modified at most, and the result will be the maximum value possible under the given constraints.\n    ",
+    "java": "\n    ```java\npublic int maximum69Number (int num) {\n    String numStr = Integer.toString(num);\n    char[] numArr = numStr.toCharArray();\n    for (int i = 0; i < numArr.length; i++) {\n        if (numArr[i] == '6') {\n            numArr[i] = '9';\n            break;\n        }\n    }\n    return Integer.parseInt(new String(numArr));\n}\n```\n    \n    The algorithm to solve this problem is simple:\n\n1. Convert the integer `num` to a string, so that we can easily manipulate individual digits.\n2. Iterate through the string, looking for the first occurrence of the digit '6'.\n3. When the digit '6' is found, change it to '9' and exit the loop.\n4. Convert the modified string back to an integer and return it.\n\nThis algorithm guarantees that only one digit will be modified at most, and the result will be the maximum value possible under the given constraints.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

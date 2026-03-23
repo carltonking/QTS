@@ -1,0 +1,24 @@
+{
+  "id": 1520,
+  "title": "Maximum Number of Non-Overlapping Substrings",
+  "slug": "maximum-number-of-non-overlapping-substrings",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given a string s of lowercase letters, you need to find the maximum number of non-empty substrings of s that meet the following conditions:\n\n1.  The substrings do not overlap, that is for any two substrings s[i..j] and s[x..y], either j < x or i > y is true.\n2.  A substring that contains a certain character c must also contain all occurrences of c.\n\nFind _the maximum number of substrings that meet the above conditions_. If there are multiple solutions with the same number of substrings, _return the one with minimum total length._ It can be shown that there exists a unique solution of minimum total length.\n\nNotice that you can return the substrings in any order.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef num_steps(s: str) -> int:\n    steps = 0\n    carry = 0\n\n    for i in range(len(s) - 1, 0, -1):\n        current = int(s[i]) + carry\n        if current == 1:\n            steps += 2\n            carry = 1\n        else:\n            steps += carry\n            carry = current\n\n    return steps + carry\n```\n    \n    1. Initialize the count of steps and carry to 0.\n2. Iterate through the elements of the binary string from the least significant digit to the most significant digit.\n3. In each iteration, add the carry and the current digit.\n4. If the result is 1, increment the steps by 2 and update the carry to 1.\n5. If the result is not 1, increment the steps by the previous carry and update the carry with the result.\n6. Return the total number of steps taken plus the final carry.\n    ",
+    "javascript": "\n    ```javascript\nfunction numSteps(s) {\n    let steps = 0, carry = 0;\n    for (let i = s.length - 1; i > 0; --i) {\n        let current = parseInt(s[i]) + carry;\n        if (current == 1) {\n            steps += 2;\n            carry = 1;\n        } else {\n            steps += carry;\n            carry = current;\n        }\n    }\n\n    return steps + carry;\n}\n```\n    \n    1. Initialize the count of steps and carry to 0.\n2. Iterate through the elements of the binary string from the least significant digit to the most significant digit.\n3. In each iteration, add the carry and the current digit.\n4. If the result is 1, increment the steps by 2 and update the carry to 1.\n5. If the result is not 1, increment the steps by the previous carry and update the carry with the result.\n6. Return the total number of steps taken plus the final carry.\n    ",
+    "java": "\n    ```java\npublic int numSteps(String s) {\n    int steps = 0, carry = 0;\n    for (int i = s.length() - 1; i > 0; --i) {\n        int current = s.charAt(i) - '0' + carry;\n        if (current == 1) {\n            steps += 2;\n            carry = 1;\n        } else {\n            steps += carry;\n            carry = current;\n        }\n    }\n\n    return steps + carry;\n}\n```\n    \n    1. Initialize the count of steps and carry to 0.\n2. Iterate through the elements of the binary string from the least significant digit to the most significant digit.\n3. In each iteration, add the carry and the current digit.\n4. If the result is 1, increment the steps by 2 and update the carry to 1.\n5. If the result is not 1, increment the steps by the previous carry and update the carry with the result.\n6. Return the total number of steps taken plus the final carry.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

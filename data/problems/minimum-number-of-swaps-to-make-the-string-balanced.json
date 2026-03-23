@@ -1,0 +1,24 @@
+{
+  "id": 1963,
+  "title": "Minimum Number of Swaps to Make the String Balanced",
+  "slug": "minimum-number-of-swaps-to-make-the-string-balanced",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed string s of even length n. The string consists of exactly n / 2 opening brackets '[' and n / 2 closing brackets ']'.\n\nA string is called balanced if and only if:\n\n*   It is the empty string, or\n*   It can be written as AB, where both A and B are balanced strings, or\n*   It can be written as [C], where C is a balanced string.\n\nYou may swap the brackets at any two indices any number of times.\n\nReturn _the minimum number of swaps to make_ s _balanced_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef get_xor_sum(arr1, arr2):\n    xor_arr1 = xor_arr2 = 0\n    for i in arr1:\n        xor_arr1 ^= i\n    for j in arr2:\n        xor_arr2 ^= j\n    return xor_arr1 & xor_arr2\n```\n    \n    1. Initialize two variables `xor_arr1` and `xor_arr2` to store the XOR sum of arr1 and arr2, respectively.\n2. Iterate over `arr1` and compute its XOR sum by using the XOR `^=` operator.\n3. Iterate over `arr2` and compute its XOR sum similarly.\n4. Return the bitwise AND `&` of the two computed XOR sums (`xor_arr1` and `xor_arr2`). As per the problem statement, this will be the XOR sum of the list containing the result of arr1[i] AND arr2[j].\n    ",
+    "javascript": "\n    ```javascript\nfunction getXORSum(arr1, arr2) {\n    let xor_arr1 = 0, xor_arr2 = 0;\n    for (let i of arr1) xor_arr1 ^= i;\n    for (let j of arr2) xor_arr2 ^= j;\n    return xor_arr1 & xor_arr2;\n}\n```\n    \n    1. Initialize two variables `xor_arr1` and `xor_arr2` to store the XOR sum of arr1 and arr2, respectively.\n2. Iterate over `arr1` and compute its XOR sum by using the XOR `^=` operator.\n3. Iterate over `arr2` and compute its XOR sum similarly.\n4. Return the bitwise AND `&` of the two computed XOR sums (`xor_arr1` and `xor_arr2`). As per the problem statement, this will be the XOR sum of the list containing the result of arr1[i] AND arr2[j].\n    ",
+    "java": "\n    ```java\npublic int getXORSum(int[] arr1, int[] arr2) {\n    int xor_arr1 = 0, xor_arr2 = 0;\n    for (int i : arr1) xor_arr1 ^= i;\n    for (int j : arr2) xor_arr2 ^= j;\n    return xor_arr1 & xor_arr2;\n}\n```\n    \n    1. Initialize two variables `xor_arr1` and `xor_arr2` to store the XOR sum of arr1 and arr2, respectively.\n2. Iterate over `arr1` and compute its XOR sum by using the XOR `^=` operator.\n3. Iterate over `arr2` and compute its XOR sum similarly.\n4. Return the bitwise AND `&` of the two computed XOR sums (`xor_arr1` and `xor_arr2`). As per the problem statement, this will be the XOR sum of the list containing the result of arr1[i] AND arr2[j].\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

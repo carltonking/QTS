@@ -1,0 +1,24 @@
+{
+  "id": 1973,
+  "title": "Count Nodes Equal to Sum of Descendants",
+  "slug": "count-nodes-equal-to-sum-of-descendants",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the root of a binary tree, return _the number of nodes where the value of the node is equal to the sum of the values of its descendants_.\n\nA descendant of a node x is any node that is on the path from node x to some leaf node. The sum is considered to be 0 if the node has no descendants.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, x):\n        self.val = x\n        self.left = None\n        self.right = None\n\nclass Solution:\n    def dfs(self, root, count):\n        if not root:\n            return 0\n        left_sum = self.dfs(root.left, count)\n        right_sum = self.dfs(root.right, count)\n        if root.val == left_sum + right_sum:\n            count[0] += 1\n        return root.val + left_sum + right_sum\n\n    def equalToDescendants(self, root):\n        count = [0]\n        self.dfs(root, count)\n        return count[0]\n```\n    \n    We start by defining a `TreeNode` class for each language to represent nodes in our binary tree.\n\nTo count the number of nodes with values equal to its descendants' sum, we use a Depth-First Search traversal. The `dfs` helper function is called on the left and right children of a node, which returns their sum. We then compare the sum of the left and right children with the node's value. If they are equal, we increment the count. Finally, we return the sum of the current node's value and its descendants.\n\nThe `equalToDescendants` function initializes the count and calls the `dfs` function on the root of the binary tree. It returns the final count.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(val) {\n        this.val = val;\n        this.left = null;\n        this.right = null;\n    }\n}\n\nclass Solution {\n    dfs(root, count) {\n        if (!root) return 0;\n        const left_sum = this.dfs(root.left, count);\n        const right_sum = this.dfs(root.right, count);\n        if (root.val == left_sum + right_sum) count[0]++;\n        return root.val + left_sum + right_sum;\n    }\n\n    equalToDescendants(root) {\n        const count = [0];\n        this.dfs(root, count);\n        return count[0];\n    }\n}\n```\n    \n    We start by defining a `TreeNode` class for each language to represent nodes in our binary tree.\n\nTo count the number of nodes with values equal to its descendants' sum, we use a Depth-First Search traversal. The `dfs` helper function is called on the left and right children of a node, which returns their sum. We then compare the sum of the left and right children with the node's value. If they are equal, we increment the count. Finally, we return the sum of the current node's value and its descendants.\n\nThe `equalToDescendants` function initializes the count and calls the `dfs` function on the root of the binary tree. It returns the final count.\n    ",
+    "java": "\n    ```java\nclass TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n    TreeNode(int x) { val = x; }\n}\n\nclass Solution {\n    private int dfs(TreeNode root, int[] count) {\n        if(root == null) return 0;\n        int left_sum = dfs(root.left, count);\n        int right_sum = dfs(root.right, count);\n        if(root.val == left_sum + right_sum) count[0]++;\n        return root.val + left_sum + right_sum;\n    }\n\n    public int equalToDescendants(TreeNode root) {\n        int[] count = new int[1];\n        dfs(root, count);\n        return count[0];\n    }\n}\n```\n    \n    We start by defining a `TreeNode` class for each language to represent nodes in our binary tree.\n\nTo count the number of nodes with values equal to its descendants' sum, we use a Depth-First Search traversal. The `dfs` helper function is called on the left and right children of a node, which returns their sum. We then compare the sum of the left and right children with the node's value. If they are equal, we increment the count. Finally, we return the sum of the current node's value and its descendants.\n\nThe `equalToDescendants` function initializes the count and calls the `dfs` function on the root of the binary tree. It returns the final count.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

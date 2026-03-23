@@ -1,0 +1,24 @@
+{
+  "id": 2305,
+  "title": "Fair Distribution of Cookies",
+  "slug": "fair-distribution-of-cookies",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array cookies, where cookies[i] denotes the number of cookies in the ith bag. You are also given an integer k that denotes the number of children to distribute all the bags of cookies to. All the cookies in the same bag must go to the same child and cannot be split up.\n\nThe unfairness of a distribution is defined as the maximum total cookies obtained by a single child in the distribution.\n\nReturn _the minimum unfairness of all distributions_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_append_k_sum(nums, k):\n    max_elem = max(nums)\n    return sum(range(max_elem + 1, max_elem + k + 1))\n```\n    \n    The algorithm simply finds the maximum element in the given array `nums` and calculates the sum of the next `k` unique positive integers after that maximum element to ensure the resulting total sum is minimum.\n\n1. Find the maximum element in the array, denoted as `max_elem`.\n2. Calculate the sum of the `k` unique positive integers that come after `max_elem` by iterating from `max_elem + 1` to `max_elem + k` and adding each number to the sum.\n3. Return the sum calculated in step 2.\n    ",
+    "javascript": "\n    ```javascript\nfunction minAppendKSum(nums, k) {\n    const max_elem = Math.max(...nums);\n    let sum = 0;\n    for (let i = max_elem + 1; i <= max_elem + k; i++) {\n        sum += i;\n    }\n    return sum;\n}\n```\n    \n    The algorithm simply finds the maximum element in the given array `nums` and calculates the sum of the next `k` unique positive integers after that maximum element to ensure the resulting total sum is minimum.\n\n1. Find the maximum element in the array, denoted as `max_elem`.\n2. Calculate the sum of the `k` unique positive integers that come after `max_elem` by iterating from `max_elem + 1` to `max_elem + k` and adding each number to the sum.\n3. Return the sum calculated in step 2.\n    ",
+    "java": "\n    ```java\npublic int minAppendKSum(int[] nums, int k) {\n    int max_elem = Arrays.stream(nums).max().getAsInt();\n    int sum = 0;\n    for (int i = max_elem + 1; i <= max_elem + k; i++) {\n        sum += i;\n    }\n    return sum;\n}\n```\n    \n    The algorithm simply finds the maximum element in the given array `nums` and calculates the sum of the next `k` unique positive integers after that maximum element to ensure the resulting total sum is minimum.\n\n1. Find the maximum element in the array, denoted as `max_elem`.\n2. Calculate the sum of the `k` unique positive integers that come after `max_elem` by iterating from `max_elem + 1` to `max_elem + k` and adding each number to the sum.\n3. Return the sum calculated in step 2.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

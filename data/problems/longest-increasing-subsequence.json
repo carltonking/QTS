@@ -1,0 +1,24 @@
+{
+  "id": 300,
+  "title": "Longest Increasing Subsequence",
+  "slug": "longest-increasing-subsequence",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums, return _the length of the longest strictly increasing_ _subsequence_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef lengthOfLIS(nums):\n    dp = [1] * len(nums)\n    max_length = 1\n    for i in range(1, len(nums)):\n        for j in range(i):\n            if nums[i] > nums[j]:\n                dp[i] = max(dp[i], dp[j] + 1)\n        max_length = max(max_length, dp[i])\n    return max_length\n```\n    \n    The algorithm employs dynamic programming to solve the problem. The algorithm initializes an array `dp` of the same length as the input array `nums`, and initializes all its elements with the value 1, indicating that at least a single element can be part of the longest increasing subsequence.\n\nThen, it employs a nested loop to iterate over the input array from the second element onwards. In the inner loop, we compare each element from the 0th index to `i-1` with the current element at `i`. If the current element is greater than the previous element, we update the `dp[i]` value by taking the maximum of the current `dp[i]` value and the `dp[j]` value of the previous element + 1, which indicates the length of the increasing subsequence.\n\nFinally, we update the max_length variable after each outer loop by taking its maximum from the array `dp`. After completing the iterations, we return the length of the longest increasing subsequence.\n    ",
+    "javascript": "\n    ```javascript\nfunction lengthOfLIS(nums) {\n    const dp = new Array(nums.length).fill(1);\n    let max_length = 1;\n    for (let i = 1; i < nums.length; i++) {\n        for (let j = 0; j < i; j++) {\n            if (nums[i] > nums[j]) {\n                dp[i] = Math.max(dp[i], dp[j] + 1);\n            }\n        }\n        max_length = Math.max(max_length, dp[i]);\n    }\n    return max_length;\n}\n```\n    \n    The algorithm employs dynamic programming to solve the problem. The algorithm initializes an array `dp` of the same length as the input array `nums`, and initializes all its elements with the value 1, indicating that at least a single element can be part of the longest increasing subsequence.\n\nThen, it employs a nested loop to iterate over the input array from the second element onwards. In the inner loop, we compare each element from the 0th index to `i-1` with the current element at `i`. If the current element is greater than the previous element, we update the `dp[i]` value by taking the maximum of the current `dp[i]` value and the `dp[j]` value of the previous element + 1, which indicates the length of the increasing subsequence.\n\nFinally, we update the max_length variable after each outer loop by taking its maximum from the array `dp`. After completing the iterations, we return the length of the longest increasing subsequence.\n    ",
+    "java": "\n    ```java\npublic int lengthOfLIS(int[] nums) {\n    int[] dp = new int[nums.length];\n    int max_length = 1;\n    Arrays.fill(dp, 1);\n    for (int i = 1; i < nums.length; i++) {\n        for (int j = 0; j < i; j++) {\n            if (nums[i] > nums[j]) {\n                dp[i] = Math.max(dp[i], dp[j] + 1);\n            }\n        }\n        max_length = Math.max(max_length, dp[i]);\n    }\n    return max_length;\n}\n```\n    \n    The algorithm employs dynamic programming to solve the problem. The algorithm initializes an array `dp` of the same length as the input array `nums`, and initializes all its elements with the value 1, indicating that at least a single element can be part of the longest increasing subsequence.\n\nThen, it employs a nested loop to iterate over the input array from the second element onwards. In the inner loop, we compare each element from the 0th index to `i-1` with the current element at `i`. If the current element is greater than the previous element, we update the `dp[i]` value by taking the maximum of the current `dp[i]` value and the `dp[j]` value of the previous element + 1, which indicates the length of the increasing subsequence.\n\nFinally, we update the max_length variable after each outer loop by taking its maximum from the array `dp`. After completing the iterations, we return the length of the longest increasing subsequence.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

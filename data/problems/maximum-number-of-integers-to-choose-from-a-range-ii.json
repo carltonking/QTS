@@ -1,0 +1,24 @@
+{
+  "id": 2557,
+  "title": "Maximum Number of Integers to Choose From a Range II",
+  "slug": "maximum-number-of-integers-to-choose-from-a-range-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array banned and two integers n and maxSum. You are choosing some number of integers following the below rules:\n\n*   The chosen integers have to be in the range [1, n].\n*   Each integer can be chosen at most once.\n*   The chosen integers should not be in the array banned.\n*   The sum of the chosen integers should not exceed maxSum.\n\nReturn _the maximum number of integers you can choose following the mentioned rules_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_chosen_integers(banned, n, max_sum):\n    banned_set = set(banned)\n    chosen_integers = 0\n    chosen_sum = 0\n\n    for i in range(n, 0, -1):\n        if i not in banned_set and chosen_sum < max_sum:\n            if chosen_sum + i <= max_sum:\n                chosen_sum += i\n                chosen_integers += 1\n            else:\n                break\n\n    return chosen_integers\n```\n    \n    1. Create a set from the input banned list to have O(1) look-up time for banned numbers.\n2. Initialize two variables `chosen_integers` and `chosen_sum` to keep track of the count of chosen integers and their sum, respectively.\n3. Iterate through the range [1, n] in reverse order:\n   - Check if the current number is not in the banned set and the current `chosen_sum` is less than `maxSum`.\n   - If the current number added to the `chosen_sum` does not exceed `maxSum`, add the current number to the `chosen_sum` and increment the `chosen_integers` count.\n   - If the current number added to the `chosen_sum` would exceed `maxSum`, we break the loop as adding any more numbers will exceed the `maxSum`.\n4. Return the `chosen_integers` count.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxChosenIntegers(banned, n, maxSum) {\n    const bannedSet = new Set(banned);\n    let chosenIntegers = 0;\n    let chosenSum = 0;\n\n    for (let i = n; i > 0 && chosenSum < maxSum; i--) {\n        if (!bannedSet.has(i)) {\n            if (chosenSum + i <= maxSum) {\n                chosenSum += i;\n                chosenIntegers++;\n            } else {\n                break;\n            }\n        }\n    }\n\n    return chosenIntegers;\n}\n```\n    \n    1. Create a set from the input banned list to have O(1) look-up time for banned numbers.\n2. Initialize two variables `chosen_integers` and `chosen_sum` to keep track of the count of chosen integers and their sum, respectively.\n3. Iterate through the range [1, n] in reverse order:\n   - Check if the current number is not in the banned set and the current `chosen_sum` is less than `maxSum`.\n   - If the current number added to the `chosen_sum` does not exceed `maxSum`, add the current number to the `chosen_sum` and increment the `chosen_integers` count.\n   - If the current number added to the `chosen_sum` would exceed `maxSum`, we break the loop as adding any more numbers will exceed the `maxSum`.\n4. Return the `chosen_integers` count.\n    ",
+    "java": "\n    ```java\nint maxChosenIntegers(int[] banned, int n, long maxSum) {\n    Set<Integer> bannedSet = new HashSet<>();\n    for (int num : banned) {\n        bannedSet.add(num);\n    }\n    int chosenIntegers = 0;\n    long chosenSum = 0;\n\n    for (int i = n; i > 0 && chosenSum < maxSum; i--) {\n        if (!bannedSet.contains(i)) {\n            if (chosenSum + i <= maxSum) {\n                chosenSum += i;\n                chosenIntegers++;\n            } else {\n                break;\n            }\n        }\n    }\n\n    return chosenIntegers;\n}\n```\n    \n    1. Create a set from the input banned list to have O(1) look-up time for banned numbers.\n2. Initialize two variables `chosen_integers` and `chosen_sum` to keep track of the count of chosen integers and their sum, respectively.\n3. Iterate through the range [1, n] in reverse order:\n   - Check if the current number is not in the banned set and the current `chosen_sum` is less than `maxSum`.\n   - If the current number added to the `chosen_sum` does not exceed `maxSum`, add the current number to the `chosen_sum` and increment the `chosen_integers` count.\n   - If the current number added to the `chosen_sum` would exceed `maxSum`, we break the loop as adding any more numbers will exceed the `maxSum`.\n4. Return the `chosen_integers` count.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

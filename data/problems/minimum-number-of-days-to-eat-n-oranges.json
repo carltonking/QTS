@@ -1,0 +1,24 @@
+{
+  "id": 1553,
+  "title": "Minimum Number of Days to Eat N Oranges",
+  "slug": "minimum-number-of-days-to-eat-n-oranges",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "There are n oranges in the kitchen and you decided to eat some of these oranges every day as follows:\n\n*   Eat one orange.\n*   If the number of remaining oranges n is divisible by 2 then you can eat n / 2 oranges.\n*   If the number of remaining oranges n is divisible by 3 then you can eat 2 * (n / 3) oranges.\n\nYou can only choose one of the actions per day.\n\nGiven the integer n, return _the minimum number of days to eat_ n _oranges_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef countTriplets(arr):\n    n = len(arr)\n    XOR = [0] * (n + 1)\n    \n    for i in range(n):\n        XOR[i+1] = XOR[i] ^ arr[i]\n    \n    count = 0\n    for i in range(n):\n        for k in range(i+1, n):\n            if XOR[i] == XOR[k+1]:\n                count += k-i\n    return count\n```\n    \n    1. Calculate the prefix xor array `XOR` by iterating through the array `arr` and performing bitwise-xor operation. Initialize an array `XOR` of size n+1 with the first element as 0. Then for each element i, update XOR[i+1] with XOR[i] ^ arr[i].\n2. Initialize a counter variable `count`.\n3. Iterate through the array with nested loops. The outer loop iterates from index 0 to n-1, i.e., i = 0 to n-1.\n4. In the inner loop, iterate from index i+1 to n-1, i.e., k = i+1 to n-1.\n5. Check if XOR[i] is equal to XOR[k+1]. If it is true, increment count by k-i.\n6. Return the count.\n    ",
+    "javascript": "\n    ```javascript\nfunction countTriplets(arr) {\n    let n = arr.length;\n    let XOR = new Array(n + 1).fill(0);\n    \n    for (let i = 0; i < n; i++) {\n        XOR[i+1] = XOR[i] ^ arr[i];\n    }\n    \n    let count = 0;\n    for (let i = 0; i < n; i++) {\n        for (let k = i+1; k < n; k++) {\n            if (XOR[i] === XOR[k+1]) {\n                count += (k-i);\n            }\n        }\n    }\n    return count;\n}\n```\n    \n    1. Calculate the prefix xor array `XOR` by iterating through the array `arr` and performing bitwise-xor operation. Initialize an array `XOR` of size n+1 with the first element as 0. Then for each element i, update XOR[i+1] with XOR[i] ^ arr[i].\n2. Initialize a counter variable `count`.\n3. Iterate through the array with nested loops. The outer loop iterates from index 0 to n-1, i.e., i = 0 to n-1.\n4. In the inner loop, iterate from index i+1 to n-1, i.e., k = i+1 to n-1.\n5. Check if XOR[i] is equal to XOR[k+1]. If it is true, increment count by k-i.\n6. Return the count.\n    ",
+    "java": "\n    ```java\npublic int countTriplets(int[] arr) {\n    int n = arr.length;\n    int[] XOR = new int[n+1];\n    \n    for (int i = 0; i < n; i++) {\n        XOR[i+1] = XOR[i] ^ arr[i];\n    }\n    \n    int count = 0;\n    for (int i = 0; i < n; i++) {\n        for (int k = i+1; k < n; k++) {\n            if(XOR[i] == XOR[k+1]) count += k-i;\n        }\n    }\n    return count;\n}\n```\n    \n    1. Calculate the prefix xor array `XOR` by iterating through the array `arr` and performing bitwise-xor operation. Initialize an array `XOR` of size n+1 with the first element as 0. Then for each element i, update XOR[i+1] with XOR[i] ^ arr[i].\n2. Initialize a counter variable `count`.\n3. Iterate through the array with nested loops. The outer loop iterates from index 0 to n-1, i.e., i = 0 to n-1.\n4. In the inner loop, iterate from index i+1 to n-1, i.e., k = i+1 to n-1.\n5. Check if XOR[i] is equal to XOR[k+1]. If it is true, increment count by k-i.\n6. Return the count.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 189,
+  "title": "Rotate Array",
+  "slug": "rotate-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef rotate(nums, k):\n    n = len(nums)\n    k %= n\n    nums[:] = nums[-k:] + nums[:-k]\n```\n    \n    The algorithm first reverses the entire array, then reverses the first `k` elements, and finally reverses the remaining `n-k` elements where `n` is the length of the array. The reversing operation is done in-place so as not to use extra memory.\n\nThis is achieved using a `reverse` function that swaps elements at positions `start` and `end` and increment `start` and decrement `end` until `start` is greater than or equal to `end`. The `reverse` function basically reverses the elements between the given positions.\n\nIn Python, we use slicing to achieve the rotation without the explicit `reverse` function.\n    ",
+    "javascript": "\n    ```javascript\nfunction rotate(nums, k) {\n    const n = nums.length;\n    k %= n;\n    reverse(nums, 0, n - 1);\n    reverse(nums, 0, k - 1);\n    reverse(nums, k, n - 1);\n}\n\nfunction reverse(nums, start, end) {\n    while (start < end) {\n        [nums[start], nums[end]] = [nums[end], nums[start]];\n        start++;\n        end--;\n    }\n}\n```\n    \n    The algorithm first reverses the entire array, then reverses the first `k` elements, and finally reverses the remaining `n-k` elements where `n` is the length of the array. The reversing operation is done in-place so as not to use extra memory.\n\nThis is achieved using a `reverse` function that swaps elements at positions `start` and `end` and increment `start` and decrement `end` until `start` is greater than or equal to `end`. The `reverse` function basically reverses the elements between the given positions.\n\nIn Python, we use slicing to achieve the rotation without the explicit `reverse` function.\n    ",
+    "java": "\n    ```java\npublic void rotate(int[] nums, int k) {\n    int n = nums.length;\n    k %= n;\n    reverse(nums, 0, n - 1);\n    reverse(nums, 0, k - 1);\n    reverse(nums, k, n - 1);\n}\n\nprivate void reverse(int[] nums, int start, int end) {\n    while (start < end) {\n        int temp = nums[start];\n        nums[start++] = nums[end];\n        nums[end--] = temp;\n    }\n}\n```\n    \n    The algorithm first reverses the entire array, then reverses the first `k` elements, and finally reverses the remaining `n-k` elements where `n` is the length of the array. The reversing operation is done in-place so as not to use extra memory.\n\nThis is achieved using a `reverse` function that swaps elements at positions `start` and `end` and increment `start` and decrement `end` until `start` is greater than or equal to `end`. The `reverse` function basically reverses the elements between the given positions.\n\nIn Python, we use slicing to achieve the rotation without the explicit `reverse` function.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

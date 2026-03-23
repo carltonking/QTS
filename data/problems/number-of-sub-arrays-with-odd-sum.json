@@ -1,0 +1,24 @@
+{
+  "id": 1524,
+  "title": "Number of Sub-arrays With Odd Sum",
+  "slug": "number-of-sub-arrays-with-odd-sum",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of integers arr, return _the number of subarrays with an odd sum_.\n\nSince the answer can be very large, return it modulo 109 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef stringMatching(words):\n    result = []\n    for word1 in words:\n        for word2 in words:\n            if word1 != word2 and word1 in word2:\n                result.append(word1)\n                break\n    return result\n```\n    \n    The given algorithm is a simple brute-force approach to find substrings. We iterate through each word (word1) in the given list of words, and then for each word1, we iterate through the list of words again (word2) to compare with word1. If word1 is different from word2 and word1 is a substring of word2, we add word1 to the resulting list and break the inner loop to avoid adding duplicates. Finally, we return the list of strings which are a substring of another word in the given list of words.\n    ",
+    "javascript": "\n    ```javascript\nfunction stringMatching(words) {\n    const result = [];\n    for (const word1 of words) {\n        for (const word2 of words) {\n            if (word1 !== word2 && word2.includes(word1)) {\n                result.push(word1);\n                break;\n            }\n        }\n    }\n    return result;\n}\n```\n    \n    The given algorithm is a simple brute-force approach to find substrings. We iterate through each word (word1) in the given list of words, and then for each word1, we iterate through the list of words again (word2) to compare with word1. If word1 is different from word2 and word1 is a substring of word2, we add word1 to the resulting list and break the inner loop to avoid adding duplicates. Finally, we return the list of strings which are a substring of another word in the given list of words.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<String> stringMatching(String[] words) {\n    List<String> result = new ArrayList<>();\n    for (String word1 : words) {\n        for (String word2 : words) {\n            if (!word1.equals(word2) && word2.contains(word1)) {\n                result.add(word1);\n                break;\n            }\n        }\n    }\n    return result;\n}\n```\n    \n    The given algorithm is a simple brute-force approach to find substrings. We iterate through each word (word1) in the given list of words, and then for each word1, we iterate through the list of words again (word2) to compare with word1. If word1 is different from word2 and word1 is a substring of word2, we add word1 to the resulting list and break the inner loop to avoid adding duplicates. Finally, we return the list of strings which are a substring of another word in the given list of words.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

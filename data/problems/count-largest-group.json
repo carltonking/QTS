@@ -1,0 +1,24 @@
+{
+  "id": 1399,
+  "title": "Count Largest Group",
+  "slug": "count-largest-group",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an integer n.\n\nEach number from 1 to n is grouped according to the sum of its digits.\n\nReturn _the number of groups that have the largest size_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef countLargestGroup(n: int) -> int:\n    groups = [0] * 37\n    largest_group_size = 0\n    count_largest_groups = 0\n\n    for i in range(1, n + 1):\n        sum_of_digits = sum(map(int, str(i)))\n        groups[sum_of_digits] += 1\n        if groups[sum_of_digits] > largest_group_size:\n            largest_group_size = groups[sum_of_digits]\n            count_largest_groups = 1\n        elif groups[sum_of_digits] == largest_group_size:\n            count_largest_groups += 1\n\n    return count_largest_groups\n```\n    \n    The algorithm iterates through every number from 1 to n. For each number, calculate the sum of its digits. Increment the count for the group corresponding to that sum of digits. Update the largest group size if the current group becomes larger than the previous largest group. If the current group size is equal to the largest group size, increment the count of largest groups.\n\nThe algorithm has a time complexity of O(n), as it processes each number from 1 to n once.\n    ",
+    "javascript": "\n    ```javascript\nfunction countLargestGroup(n) {\n    const groups = new Array(37).fill(0);\n    let largest_group_size = 0;\n    let count_largest_groups = 0;\n\n    for (let i = 1; i <= n; i++) {\n        const sum = i.toString().split('').reduce((a, b) => a + parseInt(b), 0);\n        groups[sum]++;\n        if (groups[sum] > largest_group_size) {\n            largest_group_size = groups[sum];\n            count_largest_groups = 1;\n        } else if (groups[sum] === largest_group_size) {\n            count_largest_groups++;\n        }\n    }\n    return count_largest_groups;\n};\n```\n    \n    The algorithm iterates through every number from 1 to n. For each number, calculate the sum of its digits. Increment the count for the group corresponding to that sum of digits. Update the largest group size if the current group becomes larger than the previous largest group. If the current group size is equal to the largest group size, increment the count of largest groups.\n\nThe algorithm has a time complexity of O(n), as it processes each number from 1 to n once.\n    ",
+    "java": "\n    ```java\npublic int countLargestGroup(int n) {\n    int[] groups = new int[37];\n    int largest_group_size = 0;\n    int count_largest_groups = 0;\n\n    for (int i = 1; i <= n; i++) {\n        int sum = 0, num = i;\n        while (num > 0) {\n            sum += num % 10;\n            num /= 10;\n        }\n        groups[sum]++;\n        if (groups[sum] > largest_group_size) {\n            largest_group_size = groups[sum];\n            count_largest_groups = 1;\n        } else if (groups[sum] == largest_group_size) {\n            count_largest_groups++;\n        }\n    }\n    return count_largest_groups;\n}\n```\n    \n    The algorithm iterates through every number from 1 to n. For each number, calculate the sum of its digits. Increment the count for the group corresponding to that sum of digits. Update the largest group size if the current group becomes larger than the previous largest group. If the current group size is equal to the largest group size, increment the count of largest groups.\n\nThe algorithm has a time complexity of O(n), as it processes each number from 1 to n once.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

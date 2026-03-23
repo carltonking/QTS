@@ -1,0 +1,24 @@
+{
+  "id": 462,
+  "title": "Minimum Moves to Equal Array Elements II",
+  "slug": "minimum-moves-to-equal-array-elements-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums of size n, return _the minimum number of moves required to make all array elements equal_.\n\nIn one move, you can increment or decrement an element of the array by 1.\n\nTest cases are designed so that the answer will fit in a 32-bit integer.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_moves2(nums):\n    nums.sort()\n    mid = nums[len(nums) // 2]\n    moves = 0\n    for num in nums:\n        moves += abs(num - mid)\n    return moves\n```\n    \n    1. Sort the array `nums` in ascending order.\n2. Find the middle element (median) of the sorted array.\n3. Initialize a variable `moves` to store the number of moves required.\n4. Iterate through the array, and for each element, calculate the absolute difference between the element and the median. Add this difference to the `moves` variable.\n5. Return the total `moves`.\n\nThe algorithm takes advantage of the fact that the optimal solution is to move all elements towards the median, as it minimizes the total distance between the elements.\n    ",
+    "javascript": "\n    ```javascript\nfunction minMoves2(nums) {\n    nums.sort((a, b) => a - b);\n    const mid = nums[Math.floor(nums.length / 2)];\n    let moves = 0;\n    for (const num of nums) {\n        moves += Math.abs(num - mid);\n    }\n    return moves;\n}\n```\n    \n    1. Sort the array `nums` in ascending order.\n2. Find the middle element (median) of the sorted array.\n3. Initialize a variable `moves` to store the number of moves required.\n4. Iterate through the array, and for each element, calculate the absolute difference between the element and the median. Add this difference to the `moves` variable.\n5. Return the total `moves`.\n\nThe algorithm takes advantage of the fact that the optimal solution is to move all elements towards the median, as it minimizes the total distance between the elements.\n    ",
+    "java": "\n    ```java\npublic int minMoves2(int[] nums) {\n    Arrays.sort(nums);\n    int mid = nums[nums.length / 2];\n    int moves = 0;\n    for (int num : nums) {\n        moves += Math.abs(num - mid);\n    }\n    return moves;\n}\n```\n    \n    1. Sort the array `nums` in ascending order.\n2. Find the middle element (median) of the sorted array.\n3. Initialize a variable `moves` to store the number of moves required.\n4. Iterate through the array, and for each element, calculate the absolute difference between the element and the median. Add this difference to the `moves` variable.\n5. Return the total `moves`.\n\nThe algorithm takes advantage of the fact that the optimal solution is to move all elements towards the median, as it minimizes the total distance between the elements.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

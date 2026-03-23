@@ -1,0 +1,24 @@
+{
+  "id": 1365,
+  "title": "How Many Numbers Are Smaller Than the Current Number",
+  "slug": "how-many-numbers-are-smaller-than-the-current-number",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given the array nums, for each nums[i] find out how many numbers in the array are smaller than it. That is, for each nums[i] you have to count the number of valid j's such that j != i and nums[j] < nums[i].\n\nReturn the answer in an array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef smallerNumbersThanCurrent(nums):\n    result = []\n    for i in range(len(nums)):\n        count = 0\n        for j in range(len(nums)):\n            if i != j and nums[j] < nums[i]:\n                count += 1\n        result.append(count)\n    return result\n```\n    \n    The algorithm implements a simple nested loop. For each element `nums[i]` in the input array `nums`, compare it to all other elements in the array. If any element `nums[j]` is smaller than `nums[i]` and `j` is not equal to `i`, increment a counter. After iterating through all elements, store the value of the counter in the result array at the same index as the current element `nums[i]`. Finally, return the result array.\n    ",
+    "javascript": "\n    ```javascript\nfunction smallerNumbersThanCurrent(nums) {\n    let result = [];\n    for (let i = 0; i < nums.length; i++) {\n        let count = 0;\n        for (let j = 0; j < nums.length; j++) {\n            if (i !== j && nums[j] < nums[i]) {\n                count++;\n            }\n        }\n        result.push(count);\n    }\n    return result;\n}\n```\n    \n    The algorithm implements a simple nested loop. For each element `nums[i]` in the input array `nums`, compare it to all other elements in the array. If any element `nums[j]` is smaller than `nums[i]` and `j` is not equal to `i`, increment a counter. After iterating through all elements, store the value of the counter in the result array at the same index as the current element `nums[i]`. Finally, return the result array.\n    ",
+    "java": "\n    ```java\npublic int[] smallerNumbersThanCurrent(int[] nums) {\n    int[] result = new int[nums.length];\n    for (int i = 0; i < nums.length; i++) {\n        int count = 0;\n        for (int j = 0; j < nums.length; j++) {\n            if (i != j && nums[j] < nums[i]) {\n                count++;\n            }\n        }\n        result[i] = count;\n    }\n    return result;\n}\n```\n    \n    The algorithm implements a simple nested loop. For each element `nums[i]` in the input array `nums`, compare it to all other elements in the array. If any element `nums[j]` is smaller than `nums[i]` and `j` is not equal to `i`, increment a counter. After iterating through all elements, store the value of the counter in the result array at the same index as the current element `nums[i]`. Finally, return the result array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

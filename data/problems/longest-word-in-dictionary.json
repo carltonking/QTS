@@ -1,0 +1,24 @@
+{
+  "id": 720,
+  "title": "Longest Word in Dictionary",
+  "slug": "longest-word-in-dictionary",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of strings words representing an English Dictionary, return _the longest word in_ words _that can be built one character at a time by other words in_ words.\n\nIf there is more than one possible answer, return the longest word with the smallest lexicographical order. If there is no answer, return the empty string.\n\nNote that the word should be built from left to right with each additional character being added to the end of a previous word.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef longest_word(words):\n    built_words = set()\n    result = ''\n\n    for word in sorted(words):\n        if len(word) == 1 or word[:-1] in built_words:\n            if len(word) > len(result):\n                result = word\n            built_words.add(word)\n\n    return result\n```\n\n    \n    The algorithm starts by sorting the input list of words. Then, it initializes an empty set `built_words` to store the \"buildable\" words and an empty string `result` to keep track of the longest word found.\n\nFor each word in the sorted list, it checks if the word is buildable by having the length of 1 or its substring without the last character is in the set `built_words`. If the word is buildable, it compares its length with the current `result` and updates the `result` if the word is longer. It also adds the buildable word to the set `built_words`.\n\nAfter iterating through all the words in the list, it returns the longest buildable word found.\n    ",
+    "javascript": "\n    ```javascript\nfunction longestWord(words) {\n    words.sort();\n    const builtWords = new Set();\n    let result = '';\n\n    for (const word of words) {\n        if (word.length === 1 || builtWords.has(word.slice(0, -1))) {\n            result = (word.length > result.length) ? word : result;\n            builtWords.add(word);\n        }\n    }\n\n    return result;\n}\n```\n\n    \n    The algorithm starts by sorting the input list of words. Then, it initializes an empty set `built_words` to store the \"buildable\" words and an empty string `result` to keep track of the longest word found.\n\nFor each word in the sorted list, it checks if the word is buildable by having the length of 1 or its substring without the last character is in the set `built_words`. If the word is buildable, it compares its length with the current `result` and updates the `result` if the word is longer. It also adds the buildable word to the set `built_words`.\n\nAfter iterating through all the words in the list, it returns the longest buildable word found.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\nimport java.util.HashSet;\nimport java.util.Set;\n\nclass Solution {\n    public String longestWord(String[] words) {\n        Arrays.sort(words);\n        Set<String> builtWords = new HashSet<>();\n        String result = \"\";\n\n        for (String word : words) {\n            if (word.length() == 1 || builtWords.contains(word.substring(0, word.length() - 1))) {\n                result = (word.length() > result.length()) ? word : result;\n                builtWords.add(word);\n            }\n        }\n\n        return result;\n    }\n}\n```\n\n    \n    The algorithm starts by sorting the input list of words. Then, it initializes an empty set `built_words` to store the \"buildable\" words and an empty string `result` to keep track of the longest word found.\n\nFor each word in the sorted list, it checks if the word is buildable by having the length of 1 or its substring without the last character is in the set `built_words`. If the word is buildable, it compares its length with the current `result` and updates the `result` if the word is longer. It also adds the buildable word to the set `built_words`.\n\nAfter iterating through all the words in the list, it returns the longest buildable word found.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

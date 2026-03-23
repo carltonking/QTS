@@ -1,0 +1,24 @@
+{
+  "id": 954,
+  "title": "Array of Doubled Pairs",
+  "slug": "array-of-doubled-pairs",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array of even length arr, return true _if it is possible to reorder_ arr _such that_ arr[2 * i + 1] = 2 * arr[2 * i] _for every_ 0 <= i < len(arr) / 2_, or_ false _otherwise_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef canReorderDoubled(arr):\n    count = collections.Counter(arr)\n    \n    for a in sorted(count, key=abs):\n        if count[a] > 0:\n            target = a * 2\n            if count[target] < count[a]:\n                return False\n            count[target] -= count[a]\n\n    return True\n```\n    \n    1. Count values in the dataArray using a map / dictionary / counter.\n2. For each value in the dataArray, in ascending order of magnitude (Take care of negative values properly):\n     - Check if we have sufficient values to match the count.\n     - If we do, remove the required count and continue. Else, return False.\n3. If our loop encounters no issues, return True.\n    ",
+    "javascript": "\n    ```javascript\nvar canReorderDoubled = function(arr) {\n    const count = new Map();\n    arr.sort((a, b) => Math.abs(a) - Math.abs(b));\n    \n    for (const a of arr) {\n        if (!count.has(a)) {\n            count.set(a, 0);\n        }\n        count.set(a, count.get(a) + 1);\n    }\n    \n    for (const a of count.keys()) {\n        if (count.get(a) > 0) {\n            const target = a < 0 ? a / 2 : a * 2;\n            if (!count.has(target) || count.get(target) < count.get(a)) {\n                return false;\n            }\n            count.set(target, count.get(target) - count.get(a));\n        }\n    }\n\n    return true;\n};\n```\n    \n    1. Count values in the dataArray using a map / dictionary / counter.\n2. For each value in the dataArray, in ascending order of magnitude (Take care of negative values properly):\n     - Check if we have sufficient values to match the count.\n     - If we do, remove the required count and continue. Else, return False.\n3. If our loop encounters no issues, return True.\n    ",
+    "java": "\n    ```java\npublic boolean canReorderDoubled(int[] arr) {\n    Map<Integer, Integer> count = new TreeMap<>();\n    for (int a : arr) {\n        count.put(a, count.getOrDefault(a, 0) + 1);\n    }\n    \n    for (int a : count.keySet()) {\n        if (count.get(a) > 0) {\n            int target = a < 0 ? a / 2 : a * 2;\n            if (count.getOrDefault(target, 0) < count.get(a)) return false;\n            count.put(target, count.get(target) - count.get(a));\n        }\n    }\n\n    return true;\n}\n```\n    \n    1. Count values in the dataArray using a map / dictionary / counter.\n2. For each value in the dataArray, in ascending order of magnitude (Take care of negative values properly):\n     - Check if we have sufficient values to match the count.\n     - If we do, remove the required count and continue. Else, return False.\n3. If our loop encounters no issues, return True.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

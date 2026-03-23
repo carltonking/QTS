@@ -1,0 +1,24 @@
+{
+  "id": 1854,
+  "title": "Maximum Population Year",
+  "slug": "maximum-population-year",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a 2D integer array logs where each logs[i] = [birthi, deathi] indicates the birth and death years of the ith person.\n\nThe population of some year x is the number of people alive during that year. The ith person is counted in year x's population if x is in the inclusive range [birthi, deathi - 1]. Note that the person is not counted in the year that they die.\n\nReturn _the earliest year with the maximum population_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxAliveYear(logs):\n    years = [0] * 101\n    for log in logs:\n        years[log[0] - 1950] += 1\n        years[log[1] - 1950] -= 1\n    max_population = years[0]\n    max_year = 1950\n    for i in range(1, 101):\n        years[i] += years[i - 1]\n        if years[i] > max_population:\n            max_population = years[i]\n            max_year = i + 1950\n    return max_year\n```\n    \n    The algorithm iterates through the logs and increments the birth year and decrements the death year in the years array. Then, starting from the first year, it accumulates the population for each year by summing up the previous year's population with the current year's population. After that, it checks which year has the maximum population and returns that year.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxAliveYear(logs) {\n    let years = new Array(101).fill(0);\n    for (let log of logs) {\n        years[log[0] - 1950]++;\n        years[log[1] - 1950]--;\n    }\n    let max_population = years[0];\n    let max_year = 1950;\n    for (let i = 1; i < 101; i++) {\n        years[i] += years[i - 1];\n        if (years[i] > max_population) {\n            max_population = years[i];\n            max_year = i + 1950;\n        }\n    }\n    return max_year;\n}\n```\n    \n    The algorithm iterates through the logs and increments the birth year and decrements the death year in the years array. Then, starting from the first year, it accumulates the population for each year by summing up the previous year's population with the current year's population. After that, it checks which year has the maximum population and returns that year.\n    ",
+    "java": "\n    ```java\npublic int maxAliveYear(int[][] logs) {\n    int[] years = new int[101];\n    for (int[] log : logs) {\n        years[log[0] - 1950]++;\n        years[log[1] - 1950]--;\n    }\n    int max_population = years[0];\n    int max_year = 1950;\n    for (int i = 1; i < 101; i++) {\n        years[i] += years[i - 1];\n        if (years[i] > max_population) {\n            max_population = years[i];\n            max_year = i + 1950;\n        }\n    }\n    return max_year;\n}\n```\n    \n    The algorithm iterates through the logs and increments the birth year and decrements the death year in the years array. Then, starting from the first year, it accumulates the population for each year by summing up the previous year's population with the current year's population. After that, it checks which year has the maximum population and returns that year.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 451,
+  "title": "Sort Characters By Frequency",
+  "slug": "sort-characters-by-frequency",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string s, sort it in decreasing order based on the frequency of the characters. The frequency of a character is the number of times it appears in the string.\n\nReturn _the sorted string_. If there are multiple answers, return _any of them_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import Counter\n\ndef sort_by_frequency(s):\n    freq = Counter(s)\n    chars = list(s)\n    chars.sort(key=lambda c: freq[c], reverse=True)\n    return ''.join(chars)\n```\n    \n    1. Create a frequency map `freq` to store the frequency of each character in the input string.\n2. Create an array or list `chars` containing all characters of the input string.\n3. Loop through the input string and increment the frequency count for each character in the frequency map.\n4. Sort the `chars` array or list based on the frequency of each character in the frequency map in descending order (higher frequency first).\n5. Combine the sorted `chars` array or list into a string and return the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction sortByFrequency(s) {\n    const freq = {};\n    const chars = [...s];\n    \n    for (const c of s)\n        freq[c] = (freq[c] || 0) + 1;\n        \n    chars.sort((a, b) => freq[b] - freq[a]);\n    \n    return chars.join('');\n}\n```\n    \n    1. Create a frequency map `freq` to store the frequency of each character in the input string.\n2. Create an array or list `chars` containing all characters of the input string.\n3. Loop through the input string and increment the frequency count for each character in the frequency map.\n4. Sort the `chars` array or list based on the frequency of each character in the frequency map in descending order (higher frequency first).\n5. Combine the sorted `chars` array or list into a string and return the result.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic String sortByFrequency(String s) {\n    Map<Character, Integer> freq = new HashMap<>();\n    Character[] chars = new Character[m.length()];\n    \n    for (int i = 0; i < m.length(); i++) {\n        chars[i] = m.charAt(i);\n        freq.put(chars[i], freq.getOrDefault(chars[i], 0) + 1);\n    }\n    \n    Arrays.sort(chars, (a, b) -> freq.get(b).compareTo(freq.get(a)));\n    \n    StringBuilder sb = new StringBuilder();\n    for (Character c : chars) {\n        sb.append(c);\n    }\n    return sb.toString();\n}\n```\n    \n    1. Create a frequency map `freq` to store the frequency of each character in the input string.\n2. Create an array or list `chars` containing all characters of the input string.\n3. Loop through the input string and increment the frequency count for each character in the frequency map.\n4. Sort the `chars` array or list based on the frequency of each character in the frequency map in descending order (higher frequency first).\n5. Combine the sorted `chars` array or list into a string and return the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

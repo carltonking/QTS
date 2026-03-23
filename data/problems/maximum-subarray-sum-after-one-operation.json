@@ -1,0 +1,24 @@
+{
+  "id": 1746,
+  "title": "Maximum Subarray Sum After One Operation",
+  "slug": "maximum-subarray-sum-after-one-operation",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array nums. You must perform exactly one operation where you can replace one element nums[i] with nums[i] * nums[i].\n\nReturn _the maximum possible subarray sum after exactly one operation_. The subarray must be non-empty.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxLengthBetweenEqualCharacters(s: str) -> int:\n    max_length = -1\n    char_index_map = {}\n\n    for i, char in enumerate(s):\n        if char in char_index_map:\n            max_length = max(max_length, i - char_index_map[char] - 1)\n        else:\n            char_index_map[char] = i\n\n    return max_length\n```\n    \n    1. Initialize maxLength to -1 and create a hash map (or dictionary) called charIndexMap.\n2. Iterate through the string s and for each character:\n   a. If the character is already in charIndexMap, update maxLength with the maximum value between the current maxLength and the distance between the current index and the previous index of the character minus 1.\n   b. If the character is not in the charIndexMap, store the character and its index in the map.\n3. Return maxLength. If maxLength is never updated (no equal characters found), it will return -1 as required.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxLengthBetweenEqualCharacters(s) {\n    let maxLength = -1;\n    let charIndexMap = new Map();\n\n    for (let i = 0; i < s.length; i++) {\n        if (charIndexMap.has(s[i])) {\n            maxLength = Math.max(maxLength, i - charIndexMap.get(s[i]) - 1);\n        } else {\n            charIndexMap.set(s[i], i);\n        }\n    }\n\n    return maxLength;\n}\n```\n    \n    1. Initialize maxLength to -1 and create a hash map (or dictionary) called charIndexMap.\n2. Iterate through the string s and for each character:\n   a. If the character is already in charIndexMap, update maxLength with the maximum value between the current maxLength and the distance between the current index and the previous index of the character minus 1.\n   b. If the character is not in the charIndexMap, store the character and its index in the map.\n3. Return maxLength. If maxLength is never updated (no equal characters found), it will return -1 as required.\n    ",
+    "java": "\n    ```java\npublic int maxLengthBetweenEqualCharacters(String s) {\n    int maxLength = -1;\n    HashMap<Character, Integer> charIndexMap = new HashMap<>();\n\n    for (int i = 0; i < s.length(); i++) {\n        char currentChar = s.charAt(i);\n\n        if (charIndexMap.containsKey(currentChar)) {\n            maxLength = Math.max(maxLength, i - charIndexMap.get(currentChar) - 1);\n        } else {\n            charIndexMap.put(currentChar, i);\n        }\n    }\n\n    return maxLength;\n}\n```\n    \n    1. Initialize maxLength to -1 and create a hash map (or dictionary) called charIndexMap.\n2. Iterate through the string s and for each character:\n   a. If the character is already in charIndexMap, update maxLength with the maximum value between the current maxLength and the distance between the current index and the previous index of the character minus 1.\n   b. If the character is not in the charIndexMap, store the character and its index in the map.\n3. Return maxLength. If maxLength is never updated (no equal characters found), it will return -1 as required.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

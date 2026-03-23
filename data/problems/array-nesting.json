@@ -1,0 +1,24 @@
+{
+  "id": 565,
+  "title": "Array Nesting",
+  "slug": "array-nesting",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array nums of length n where nums is a permutation of the numbers in the range [0, n - 1].\n\nYou should build a set s[k] = {nums[k], nums[nums[k]], nums[nums[nums[k]]], ... } subjected to the following rule:\n\n*   The first element in s[k] starts with the selection of the element nums[k] of index = k.\n*   The next element in s[k] should be nums[nums[k]], and then nums[nums[nums[k]]], and so on.\n*   We stop adding right before a duplicate element occurs in s[k].\n\nReturn _the longest length of a set_ s[k].",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef arrayNesting(nums):\n    n = len(nums)\n    max_len = 0\n    for i in range(n):\n        if nums[i] != -1:\n            start = nums[i]\n            count = 0\n            while nums[start] != -1:\n                temp = start\n                start = nums[start]\n                count += 1\n                nums[temp] = -1\n            max_len = max(max_len, count)\n    return max_len\n```\n    \n    This algorithm iterates through the given `nums` array. During the iteration, when the current element `nums[i]` is not equal to -1, it initializes a new set by setting `start` to `nums[i]` and sets the `count` to 0. Then, in the inner while loop, it keeps following the chain as described in the problem statement and sets the visited element to -1. After completing the chain for the current element, it calculates the maximum length found so far and assigns it to `max_len`. This process is repeated for all elements in the `nums` array. Finally, the algorithm returns the longest length of a set `s[k]` found.\n    ",
+    "javascript": "\n    ```javascript\nfunction arrayNesting(nums) {\n    let n = nums.length;\n    let max_len = 0;\n    for (let i = 0; i < n; ++i) {\n        if (nums[i] !== -1) {       \n            let start = nums[i];\n            let count = 0;\n            while (nums[start] !== -1) {\n                let temp = start;\n                start = nums[start];\n                count++;\n                nums[temp] = -1;\n            }\n            max_len = Math.max(max_len, count);\n        }\n    }\n    return max_len;\n}\n```\n    \n    This algorithm iterates through the given `nums` array. During the iteration, when the current element `nums[i]` is not equal to -1, it initializes a new set by setting `start` to `nums[i]` and sets the `count` to 0. Then, in the inner while loop, it keeps following the chain as described in the problem statement and sets the visited element to -1. After completing the chain for the current element, it calculates the maximum length found so far and assigns it to `max_len`. This process is repeated for all elements in the `nums` array. Finally, the algorithm returns the longest length of a set `s[k]` found.\n    ",
+    "java": "\n    ```java\npublic int arrayNesting(int[] nums) {\n    int n = nums.length;\n    int max_len = 0;\n    for (int i = 0; i < n; ++i) {\n        if (nums[i] != -1) {       \n            int start = nums[i];\n            int count = 0;\n            while (nums[start] != -1) {\n                int temp = start;\n                start = nums[start];\n                count++;\n                nums[temp]=-1;\n            }\n            max_len = Math.max(max_len, count);\n        }\n    }\n    return max_len;\n}\n```\n    \n    This algorithm iterates through the given `nums` array. During the iteration, when the current element `nums[i]` is not equal to -1, it initializes a new set by setting `start` to `nums[i]` and sets the `count` to 0. Then, in the inner while loop, it keeps following the chain as described in the problem statement and sets the visited element to -1. After completing the chain for the current element, it calculates the maximum length found so far and assigns it to `max_len`. This process is repeated for all elements in the `nums` array. Finally, the algorithm returns the longest length of a set `s[k]` found.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

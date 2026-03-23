@@ -1,0 +1,24 @@
+{
+  "id": 647,
+  "title": "Palindromic Substrings",
+  "slug": "palindromic-substrings",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string s, return _the number of palindromic substrings in it_.\n\nA string is a palindrome when it reads the same backward as forward.\n\nA substring is a contiguous sequence of characters within the string.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef countSubstrings(s: str) -> int:\n    n = len(s)\n    count = 0\n    for center in range(2 * n - 1):\n        left = center // 2\n        right = left + center % 2\n        while left >= 0 and right < n and s[left] == s[right]:\n            count += 1\n            left -= 1\n            right += 1\n    return count\n```\n    \n    The algorithm is based on the idea of expanding a palindromic substring out from its center. There can be 2 * n - 1 possible centers for a string of length n. For each center, the algorithm initializes two pointers, left and right. Initially, left = center / 2, and right = left + center % 2. This ensures that both odd- and even-length palindromic substrings are covered. Then, for each center, the algorithm checks if characters at left and right are equal. If so, increment the count, move left pointer one position to the left, and right pointer one position to the right. The process continues until conditions are no longer satisfied, ensuring all palindromic substrings are taken into account. Finally, the count is returned as the answer.\n    ",
+    "javascript": "\n    ```javascript\nfunction countSubstrings(s) {\n    const n = s.length;\n    let count = 0;\n    for (let center = 0; center < 2 * n - 1; ++center) {\n        let left = Math.floor(center / 2);\n        let right = left + center % 2;\n        while (left >= 0 && right < n && s[left] === s[right]) {\n            ++count;\n            --left;\n            ++right;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm is based on the idea of expanding a palindromic substring out from its center. There can be 2 * n - 1 possible centers for a string of length n. For each center, the algorithm initializes two pointers, left and right. Initially, left = center / 2, and right = left + center % 2. This ensures that both odd- and even-length palindromic substrings are covered. Then, for each center, the algorithm checks if characters at left and right are equal. If so, increment the count, move left pointer one position to the left, and right pointer one position to the right. The process continues until conditions are no longer satisfied, ensuring all palindromic substrings are taken into account. Finally, the count is returned as the answer.\n    ",
+    "java": "\n    ```java\npublic int countSubstrings(String s) {\n    int n = s.length(), count = 0;\n    for (int center = 0; center < 2 * n - 1; ++center) {\n        int left = center / 2;\n        int right = left + center % 2;\n        while (left >= 0 && right < n && s.charAt(left) == s.charAt(right)) {\n            ++count;\n            --left;\n            ++right;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm is based on the idea of expanding a palindromic substring out from its center. There can be 2 * n - 1 possible centers for a string of length n. For each center, the algorithm initializes two pointers, left and right. Initially, left = center / 2, and right = left + center % 2. This ensures that both odd- and even-length palindromic substrings are covered. Then, for each center, the algorithm checks if characters at left and right are equal. If so, increment the count, move left pointer one position to the left, and right pointer one position to the right. The process continues until conditions are no longer satisfied, ensuring all palindromic substrings are taken into account. Finally, the count is returned as the answer.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

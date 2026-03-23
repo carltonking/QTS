@@ -1,0 +1,24 @@
+{
+  "id": 942,
+  "title": "DI String Match",
+  "slug": "di-string-match",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "A permutation perm of n + 1 integers of all the integers in the range [0, n] can be represented as a string s of length n where:\n\n*   s[i] == 'I' if perm[i] < perm[i + 1], and\n*   s[i] == 'D' if perm[i] > perm[i + 1].\n\nGiven a string s, reconstruct the permutation perm and return it. If there are multiple valid permutations perm, return any of them.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef isPalindrome(num):\n    return str(num) == str(num)[::-1]\n\ndef superpalindromesInRange(left: str, right: str) -> int:\n    l = int(left)\n    r = int(right)\n    cnt = 0\n    base = 1\n    while base * base <= r:\n        if isPalindrome(base) and isPalindrome(base * base):\n            if base * base >= l:\n                cnt += 1\n        base += 1\n    return cnt\n```\n\n    \n    To solve the problem, we will do the following steps:\n1. Create a helper function `isPalindrome` to check if a given number is a palindrome.\n2. Iterate over all the possible palindrome base numbers. For each base, check if the base and the square of the base are both palindromes. If they are, check if the square of the base is within the range [l, r] and increment a counter for each valid super-palindrome found.\n3. Return the counter as the final result.\n    ",
+    "javascript": "\n    ```javascript\nfunction isPalindrome(num) {\n    const str = num.toString();\n    const revStr = str.split('').reverse().join('');\n    return str === revStr;\n}\n\nfunction superpalindromesInRange(left, right) {\n    const l = parseInt(left);\n    const r = parseInt(right);\n    let cnt = 0;\n    for (let base = 1; base * base <= r; ++base) {\n        if (isPalindrome(base) && isPalindrome(base * base)) {\n            if (base * base >= l) {\n                cnt++;\n            }\n        }\n    }\n    return cnt;\n}\n```\n\n    \n    To solve the problem, we will do the following steps:\n1. Create a helper function `isPalindrome` to check if a given number is a palindrome.\n2. Iterate over all the possible palindrome base numbers. For each base, check if the base and the square of the base are both palindromes. If they are, check if the square of the base is within the range [l, r] and increment a counter for each valid super-palindrome found.\n3. Return the counter as the final result.\n    ",
+    "java": "\n    ```java\nboolean isPalindrome(long num) {\n    String str = Long.toString(num);\n    String revStr = new StringBuilder(str).reverse().toString();\n    return str.equals(revStr);\n}\n\nint superpalindromesInRange(String left, String right) {\n    long l = Long.parseLong(left);\n    long r = Long.parseLong(right);\n    int cnt = 0;\n    for (long base = 1; base * base <= r; ++base) {\n        if (isPalindrome(base) && isPalindrome(base * base)) {\n            if (base * base >= l) {\n                cnt++;\n            }\n        }\n    }\n    return cnt;\n}\n```\n\n    \n    To solve the problem, we will do the following steps:\n1. Create a helper function `isPalindrome` to check if a given number is a palindrome.\n2. Iterate over all the possible palindrome base numbers. For each base, check if the base and the square of the base are both palindromes. If they are, check if the square of the base is within the range [l, r] and increment a counter for each valid super-palindrome found.\n3. Return the counter as the final result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

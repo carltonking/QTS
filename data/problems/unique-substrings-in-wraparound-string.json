@@ -1,0 +1,24 @@
+{
+  "id": 467,
+  "title": "Unique Substrings in Wraparound String",
+  "slug": "unique-substrings-in-wraparound-string",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "We define the string base to be the infinite wraparound string of \"abcdefghijklmnopqrstuvwxyz \", so base will look like this:\n\n*   \"...zabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcd.... \".\n\nGiven a string s, return _the number of unique non-empty substrings of_ s _are present in_ base.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findSubstringInWraproundString(p: str) -> int:\n    cnt = [0] * 26\n    length = 0\n\n    for i in range(len(p)):\n        if i > 0 and (p[i] == chr(ord(p[i - 1]) + 1) or ord(p[i - 1]) - ord(p[i]) == 25):\n            length += 1\n        else:\n            length = 1\n        cnt[ord(p[i]) - ord('a')] = max(cnt[ord(p[i]) - ord('a')], length)\n\n    return sum(cnt)\n```\n\n    \n    1. Initialize an array cnt of size 26 to keep the count of the maximum length of contiguous characters ending with a given character.\n2. Initialize a variable length to keep track of the current count of contiguous characters.\n3. Iterate through the given string p.\n   - If the current character is the next character of the previous one or wraps around from 'z' to 'a', increment length by 1.\n   - Otherwise, reset length to 1.\n   - Update cnt for the current character with the maximum of its current value and length.\n4. Return the sum of all the counts in cnt.\n    ",
+    "javascript": "\n    ```javascript\nfunction findSubstringInWraproundString(p) {\n    const cnt = new Array(26).fill(0);\n    let length = 0;\n\n    for (let i = 0; i < p.length; i++) {\n        if (i > 0 && (p.charCodeAt(i) === p.charCodeAt(i - 1) + 1 || p.charCodeAt(i - 1) - p.charCodeAt(i) === 25)) {\n            length++;\n        } else {\n            length = 1;\n        }\n        cnt[p.charCodeAt(i) - 'a'.charCodeAt(0)] = Math.max(cnt[p.charCodeAt(i) - 'a'.charCodeAt(0)], length);\n    }\n\n    return cnt.reduce((a, b) => a + b, 0);\n}\n```\n\n    \n    1. Initialize an array cnt of size 26 to keep the count of the maximum length of contiguous characters ending with a given character.\n2. Initialize a variable length to keep track of the current count of contiguous characters.\n3. Iterate through the given string p.\n   - If the current character is the next character of the previous one or wraps around from 'z' to 'a', increment length by 1.\n   - Otherwise, reset length to 1.\n   - Update cnt for the current character with the maximum of its current value and length.\n4. Return the sum of all the counts in cnt.\n    ",
+    "java": "\n    ```java\npublic int findSubstringInWraproundString(String p) {\n    int[] cnt = new int[26];\n    int length = 0;\n\n    for (int i = 0; i < p.length(); i++) {\n        if (i > 0 && (p.charAt(i) == p.charAt(i - 1) + 1 || p.charAt(i - 1) - p.charAt(i) == 25)) {\n            length++;\n        } else {\n            length = 1;\n        }\n        cnt[p.charAt(i) - 'a'] = Math.max(cnt[p.charAt(i) - 'a'], length);\n    }\n\n    int sum = 0;\n    for (int v : cnt) {\n        sum += v;\n    }\n    return sum;\n}\n```\n\n    \n    1. Initialize an array cnt of size 26 to keep the count of the maximum length of contiguous characters ending with a given character.\n2. Initialize a variable length to keep track of the current count of contiguous characters.\n3. Iterate through the given string p.\n   - If the current character is the next character of the previous one or wraps around from 'z' to 'a', increment length by 1.\n   - Otherwise, reset length to 1.\n   - Update cnt for the current character with the maximum of its current value and length.\n4. Return the sum of all the counts in cnt.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

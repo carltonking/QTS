@@ -1,0 +1,24 @@
+{
+  "id": 1979,
+  "title": "Find Greatest Common Divisor of Array",
+  "slug": "find-greatest-common-divisor-of-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer array nums, return _the greatest common divisor of the smallest number and largest number in_ nums.\n\nThe greatest common divisor of two numbers is the largest positive integer that evenly divides both numbers.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findGCD(nums):\n    min_val, max_val = min(nums), max(nums)\n    while max_val % min_val != 0:\n        min_val, max_val = max_val % min_val, min_val\n    return min_val\n```\n    \n    1. First, find the minimum and maximum elements in the `nums` array.\n2. Initialize two variables `min_val` and `max_val` with the values of the minimum and maximum elements, respectively.\n3. Calculate the greatest common divisor (GCD) of `min_val` and `max_val` using the Euclidean algorithm. Keep performing the modulo operation and swapping them until `max_val % min_val` is equal to zero.\n4. Return the `min_val` as the GCD of the two numbers.\n    ",
+    "javascript": "\n    ```javascript\nfunction findGCD(nums) {\n    let min_val = Math.min(...nums);\n    let max_val = Math.max(...nums);\n    while(max_val % min_val !== 0) {\n        [min_val, max_val] = [max_val % min_val, min_val];\n    }\n    return min_val;\n}\n```\n    \n    1. First, find the minimum and maximum elements in the `nums` array.\n2. Initialize two variables `min_val` and `max_val` with the values of the minimum and maximum elements, respectively.\n3. Calculate the greatest common divisor (GCD) of `min_val` and `max_val` using the Euclidean algorithm. Keep performing the modulo operation and swapping them until `max_val % min_val` is equal to zero.\n4. Return the `min_val` as the GCD of the two numbers.\n    ",
+    "java": "\n    ```java\npublic int findGCD(int[] nums) {\n    int min_val = Arrays.stream(nums).min().getAsInt();\n    int max_val = Arrays.stream(nums).max().getAsInt();\n    while(max_val % min_val != 0) {\n        int temp = min_val;\n        min_val = max_val % min_val;\n        max_val = temp;\n    }\n    return min_val;\n}\n```\n    \n    1. First, find the minimum and maximum elements in the `nums` array.\n2. Initialize two variables `min_val` and `max_val` with the values of the minimum and maximum elements, respectively.\n3. Calculate the greatest common divisor (GCD) of `min_val` and `max_val` using the Euclidean algorithm. Keep performing the modulo operation and swapping them until `max_val % min_val` is equal to zero.\n4. Return the `min_val` as the GCD of the two numbers.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

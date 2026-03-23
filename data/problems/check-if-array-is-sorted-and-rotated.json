@@ -1,0 +1,24 @@
+{
+  "id": 1752,
+  "title": "Check if Array Is Sorted and Rotated",
+  "slug": "check-if-array-is-sorted-and-rotated",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array nums, return true _if the array was originally sorted in non-decreasing order, then rotated some number of positions (including zero)_. Otherwise, return false.\n\nThere may be duplicates in the original array.\n\nNote: An array A rotated by x positions results in an array B of the same length such that A[i] == B[(i+x) % A.length], where % is the modulo operation.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef check_arithmetic_subarrays(nums, l, r):\n    results = []\n    for i in range(len(l)):\n        subarray = sorted(nums[l[i]:r[i] + 1])\n        is_arithmetic = True\n        diff = subarray[1] - subarray[0]\n        for j in range(1, len(subarray) - 1):\n            if subarray[j + 1] - subarray[j] != diff:\n                is_arithmetic = False\n                break\n        results.append(is_arithmetic)\n    return results\n```\n\n    \n    1. For each element `i` in arrays `l` and `r`, create a subarray from `nums` using the range `[l[i], r[i]]`.\n2. Sort the subarray.\n3. Check if the subarray is an arithmetic sequence, by iterating through the subarray and making sure the difference between consecutive elements is the same.\n4. If the subarray is an arithmetic sequence, add `true` to the result array, otherwise, add `false`.\n5. Repeat this process for all the elements in arrays `l` and `r`.\n6. Return the results array containing the answers for each query.\n    ",
+    "javascript": "\n    ```javascript\nfunction checkArithmeticSubarrays(nums, l, r) {\n    const results = [];\n    for(let i = 0; i < l.length; i++) {\n        const subarray = nums.slice(l[i], r[i] + 1).sort((a, b) => a - b);\n        let is_arithmetic = true;\n        const diff = subarray[1] - subarray[0];\n        for(let j = 1; j < subarray.length - 1; j++) {\n            if(subarray[j + 1] - subarray[j] !== diff) {\n                is_arithmetic = false;\n                break;\n            }\n        }\n        results.push(is_arithmetic);\n    }\n    return results;\n}\n```\n\n    \n    1. For each element `i` in arrays `l` and `r`, create a subarray from `nums` using the range `[l[i], r[i]]`.\n2. Sort the subarray.\n3. Check if the subarray is an arithmetic sequence, by iterating through the subarray and making sure the difference between consecutive elements is the same.\n4. If the subarray is an arithmetic sequence, add `true` to the result array, otherwise, add `false`.\n5. Repeat this process for all the elements in arrays `l` and `r`.\n6. Return the results array containing the answers for each query.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.List;\n\npublic List<Boolean> checkArithmeticSubarrays(int[] nums, int[] l, int[] r) {\n    List<Boolean> results = new ArrayList<>();\n    for(int i = 0; i < l.length; i++) {\n        int[] subarray = Arrays.copyOfRange(nums, l[i], r[i] + 1);\n        Arrays.sort(subarray);\n        boolean is_arithmetic = true;\n        int diff = subarray[1] - subarray[0];\n        for(int j = 1; j < subarray.length - 1; j++) {\n            if(subarray[j + 1] - subarray[j] != diff) {\n                is_arithmetic = false;\n                break;\n            }\n        }\n        results.add(is_arithmetic);\n    }\n    return results;\n}\n```\n\n    \n    1. For each element `i` in arrays `l` and `r`, create a subarray from `nums` using the range `[l[i], r[i]]`.\n2. Sort the subarray.\n3. Check if the subarray is an arithmetic sequence, by iterating through the subarray and making sure the difference between consecutive elements is the same.\n4. If the subarray is an arithmetic sequence, add `true` to the result array, otherwise, add `false`.\n5. Repeat this process for all the elements in arrays `l` and `r`.\n6. Return the results array containing the answers for each query.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

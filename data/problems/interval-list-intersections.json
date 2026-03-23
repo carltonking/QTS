@@ -1,0 +1,24 @@
+{
+  "id": 986,
+  "title": "Interval List Intersections",
+  "slug": "interval-list-intersections",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two lists of closed intervals, firstList and secondList, where firstList[i] = [starti, endi] and secondList[j] = [startj, endj]. Each list of intervals is pairwise disjoint and in sorted order.\n\nReturn _the intersection of these two interval lists_.\n\nA closed interval [a, b] (with a <= b) denotes the set of real numbers x with a <= x <= b.\n\nThe intersection of two closed intervals is a set of real numbers that are either empty or represented as a closed interval. For example, the intersection of [1, 3] and [2, 4] is [2, 3].",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom itertools import permutations\n\ndef largestTimeFromDigits(arr):\n    max_time = -1\n    for h, i, j, k in permutations(arr):\n        hour = h * 10 + i\n        minute = j * 10 + k\n        time = hour * 60 + minute\n        if hour < 24 and minute < 60 and time > max_time:\n            max_time = time\n\n    if max_time == -1:\n        return \"\"\n    else:\n        return \"{:02d}:{:02d}\".format(max_time // 60, max_time % 60)\n```\n    \n    The algorithm first tries to find all the permutations of the given array `arr`. For each permutation, it checks if this permutation can yield a valid 24-hour time format. An integer multiplication is used to extract hours and minutes from the digits.\n\nWe check if the resulting hours and minutes are valid (less than 24 for hours and less than 60 for minutes). If so, we calculate the current time and compare it with the current maximum. If the current time is greater than the current maximum time, we update our max_time variable.\n\nFinally, we return the max_time value in \"HH:MM\" format. If no valid time is found, we return an empty string.\n    ",
+    "javascript": "\n    ```javascript\nfunction largestTimeFromDigits(arr) {\n    let maxTime = -1;\n    for (let i = 0; i < 4; i++) {\n        if (arr[i] > 2) continue;\n        for (let j = 0; j < 4; j++) {\n            if (j === i || (arr[i] === 2 && arr[j] > 3)) continue;\n            for (let k = 0; k < 4; k++) {\n                if (k === i || k === j || arr[k] > 5) continue;\n                let l = 6 - i - j - k;\n                let time = 60 * (10 * arr[i] + arr[j]) + 10 * arr[k] + arr[l];\n                maxTime = Math.max(maxTime, time);\n            }\n        }\n    }\n    if (maxTime === -1) return \"\";\n    else return `${String(Math.trunc(maxTime / 60)).padStart(2, '0')}:${String(maxTime % 60).padStart(2, '0')}`;\n}\n```\n    \n    The algorithm first tries to find all the permutations of the given array `arr`. For each permutation, it checks if this permutation can yield a valid 24-hour time format. An integer multiplication is used to extract hours and minutes from the digits.\n\nWe check if the resulting hours and minutes are valid (less than 24 for hours and less than 60 for minutes). If so, we calculate the current time and compare it with the current maximum. If the current time is greater than the current maximum time, we update our max_time variable.\n\nFinally, we return the max_time value in \"HH:MM\" format. If no valid time is found, we return an empty string.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic String largestTimeFromDigits(int[] A) {\n    Arrays.sort(A);\n    for (int i = 3; i >= 0; i--) {\n        if (A[i] <= 2) {\n            for (int j = 3; j >= 0; j--) {\n                if ((A[i] != 2 || A[j] <= 3) && A[j] != A[i]) {\n                    for (int k = 3; k >= 0; k--) {\n                        if (A[k] <= 5 && A[k] != A[i] && A[k] != A[j]) {\n                            int l = 6 - i - j - k;\n                            return String.format(\"%d%d:%d%d\", A[i], A[j], A[k], A[l]);\n                        }\n                    }\n                }\n            }\n        }\n    }\n    return \"\";\n}\n```\n    \n    The algorithm first tries to find all the permutations of the given array `arr`. For each permutation, it checks if this permutation can yield a valid 24-hour time format. An integer multiplication is used to extract hours and minutes from the digits.\n\nWe check if the resulting hours and minutes are valid (less than 24 for hours and less than 60 for minutes). If so, we calculate the current time and compare it with the current maximum. If the current time is greater than the current maximum time, we update our max_time variable.\n\nFinally, we return the max_time value in \"HH:MM\" format. If no valid time is found, we return an empty string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

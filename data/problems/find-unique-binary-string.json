@@ -1,0 +1,24 @@
+{
+  "id": 1980,
+  "title": "Find Unique Binary String",
+  "slug": "find-unique-binary-string",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of strings nums containing n unique binary strings each of length n, return _a binary string of length_ n _that does not appear in_ nums_. If there are multiple answers, you may return any of them_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findDifferentBinaryString(nums):\n    s = set(nums)\n    n = len(nums)\n    \n    for i in range(1 << n):\n        candidate = ''.join(['1' if i & (1 << j) else '0' for j in range(n)])\n        if candidate not in s:\n            return candidate\n    return \"\"\n```\n    \n    The algorithm first converts the given array of strings `nums` into a set `s` for faster lookup. Then, we iterate through each possible binary string formed by the numbers from 0 up to (but not including) `2^n`. For each number, we generate a binary string by checking if its binary representation has a `1` at position `j`. If it does, we append '1' to the `candidate` string; otherwise, we append '0'. After generating the `candidate` string, we check if it exists in the set `s`. If it does not exist, we return the `candidate`. If the loop completes without finding a match, we return an empty string.\n    ",
+    "javascript": "\n    ```javascript\nfunction findDifferentBinaryString(nums) {\n    const n = nums.length;\n    const s = new Set(nums);\n\n    for (let i = 0; i < (1 << n); ++i) {\n        let candidate = '';\n        for (let j = 0; j < n; ++j) {\n            candidate += ((i & (1 << j)) !== 0) ? '1' : '0';\n        }\n\n        if (!s.has(candidate)) {\n            return candidate;\n        }\n    }\n    return '';\n}\n```\n    \n    The algorithm first converts the given array of strings `nums` into a set `s` for faster lookup. Then, we iterate through each possible binary string formed by the numbers from 0 up to (but not including) `2^n`. For each number, we generate a binary string by checking if its binary representation has a `1` at position `j`. If it does, we append '1' to the `candidate` string; otherwise, we append '0'. After generating the `candidate` string, we check if it exists in the set `s`. If it does not exist, we return the `candidate`. If the loop completes without finding a match, we return an empty string.\n    ",
+    "java": "\n    ```java\nimport java.util.HashSet;\nimport java.util.List;\nimport java.util.Set;\n\npublic String findDifferentBinaryString(List<String> nums) {\n    Set<String> set = new HashSet<>(nums);\n    int n = nums.size();\n\n    for (int i = 0; i < (1 << n); ++i) {\n        StringBuilder candidate = new StringBuilder();\n        for (int j = 0; j < n; ++j) {\n            candidate.append(((i & (1 << j)) != 0) ? '1' : '0');\n        }\n\n        if (!set.contains(candidate.toString())) {\n            return candidate.toString();\n        }\n    }\n    return \"\";\n}\n```\n    \n    The algorithm first converts the given array of strings `nums` into a set `s` for faster lookup. Then, we iterate through each possible binary string formed by the numbers from 0 up to (but not including) `2^n`. For each number, we generate a binary string by checking if its binary representation has a `1` at position `j`. If it does, we append '1' to the `candidate` string; otherwise, we append '0'. After generating the `candidate` string, we check if it exists in the set `s`. If it does not exist, we return the `candidate`. If the loop completes without finding a match, we return an empty string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2294,
+  "title": "Partition Array Such That Maximum Difference Is K",
+  "slug": "partition-array-such-that-maximum-difference-is-k",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array nums and an integer k. You may partition nums into one or more subsequences such that each element in nums appears in exactly one of the subsequences.\n\nReturn _the minimum number of subsequences needed such that the difference between the maximum and minimum values in each subsequence is at most_ k_._\n\nA subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minimum_time_for_trips(time, total_trips):\n    time.sort()\n\n    start, end = 0, time[-1] * total_trips\n    while start < end:\n        mid = start + (end - start) // 2\n        trips = sum(mid // t for t in time)\n        if trips < total_trips:\n            start = mid + 1\n        else:\n            end = mid\n\n    return start\n```\n    \n    1. Sort the input array `time` in ascending order.\n2. Initialize the search range with variables `start` and `end`, where `start = 0` and `end = max(time) * totalTrips`. This represents the minimum and maximum possible time required to complete `totalTrips`.\n3. Apply a binary search approach to find the minimum time required to complete `totalTrips`:\n   - Calculate `mid` as the average of `start` and `end`.\n   - For each bus `t`, calculate the number of trips it can complete in `mid` time and accumulate the result in `trips`.\n   - If `trips` is less than `totalTrips`, update `start` to `mid + 1`. Otherwise, update `end` to `mid`.\n4. After the binary search loop, the minimum time required is `start`. Return it.\n    ",
+    "javascript": "\n    ```javascript\nfunction minimumTimeForTrips(time, totalTrips) {\n    time.sort((a, b) => a - b);\n\n    let start = 0, end = time[time.length - 1] * totalTrips;\n    while (start < end) {\n        let mid = start + Math.floor((end - start) / 2);\n        let trips = 0;\n        for (let t of time) {\n            trips += Math.floor(mid / t);\n        }\n        if (trips < totalTrips) {\n            start = mid + 1;\n        } else {\n            end = mid;\n        }\n    }\n\n    return start;\n}\n```\n    \n    1. Sort the input array `time` in ascending order.\n2. Initialize the search range with variables `start` and `end`, where `start = 0` and `end = max(time) * totalTrips`. This represents the minimum and maximum possible time required to complete `totalTrips`.\n3. Apply a binary search approach to find the minimum time required to complete `totalTrips`:\n   - Calculate `mid` as the average of `start` and `end`.\n   - For each bus `t`, calculate the number of trips it can complete in `mid` time and accumulate the result in `trips`.\n   - If `trips` is less than `totalTrips`, update `start` to `mid + 1`. Otherwise, update `end` to `mid`.\n4. After the binary search loop, the minimum time required is `start`. Return it.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int minimumTimeForTrips(int[] time, int totalTrips) {\n    Arrays.sort(time);\n\n    int start = 0, end = time[time.length - 1] * totalTrips;\n    while (start < end) {\n        int mid = start + (end - start) / 2;\n        int trips = 0;\n        for (int t : time) {\n            trips += mid / t;\n        }\n        if (trips < totalTrips) {\n            start = mid + 1;\n        } else {\n            end = mid;\n        }\n    }\n\n    return start;\n}\n```\n    \n    1. Sort the input array `time` in ascending order.\n2. Initialize the search range with variables `start` and `end`, where `start = 0` and `end = max(time) * totalTrips`. This represents the minimum and maximum possible time required to complete `totalTrips`.\n3. Apply a binary search approach to find the minimum time required to complete `totalTrips`:\n   - Calculate `mid` as the average of `start` and `end`.\n   - For each bus `t`, calculate the number of trips it can complete in `mid` time and accumulate the result in `trips`.\n   - If `trips` is less than `totalTrips`, update `start` to `mid + 1`. Otherwise, update `end` to `mid`.\n4. After the binary search loop, the minimum time required is `start`. Return it.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

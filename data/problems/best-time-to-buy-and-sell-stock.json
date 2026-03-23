@@ -1,0 +1,39 @@
+{
+  "id": 9,
+  "title": "Best Time to Buy and Sell Stock",
+  "slug": "best-time-to-buy-and-sell-stock",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "You are given an array prices where prices[i] is the price of a given stock on the ith day. Maximize profit with one buy and one sell.",
+  "examples": [
+    {
+      "input": "prices = [7,1,5,3,6,4]",
+      "output": "5"
+    }
+  ],
+  "constraints": [
+    "1 <= prices.length <= 10^5"
+  ],
+  "starterCode": {
+    "python": "from typing import List\nclass Solution:\n    def maxProfit(self, prices: List[int]) -> int:\n        pass",
+    "javascript": "var maxProfit = function(prices) {\n    \n};",
+    "java": "class Solution {\n    public int maxProfit(int[] prices) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    int maxProfit(vector<int>& prices) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Best Time to Buy and Sell Stock\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "[7,1,5,3,6,4]",
+      "expectedOutput": "5"
+    },
+    {
+      "input": "[7,6,4,3,1]",
+      "expectedOutput": "0"
+    }
+  ]
+}

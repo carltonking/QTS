@@ -1,0 +1,24 @@
+{
+  "id": 1480,
+  "title": "Running Sum of 1d Array",
+  "slug": "running-sum-of-1d-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array nums. We define a running sum of an array as runningSum[i] = sum(nums[0]...nums[i]).\n\nReturn the running sum of nums.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef runningSum(nums):\n    for i in range(1, len(nums)):\n        nums[i] += nums[i - 1]\n    return nums\n```\n    \n    The solution for this problem is to iterate through the input array `nums` starting from the second element (index 1). In each iteration, we add the preceding element to the current element using the formula `nums[i] += nums[i - 1]`. After finishing the loop, the modified input array is the running sum of the original array.\n\nThe logic is exactly the same across all languages; we just have to appropriately manage syntax differences.\n    ",
+    "javascript": "\n    ```javascript\nfunction runningSum(nums) {\n    for(let i = 1; i < nums.length; i++) {\n        nums[i] += nums[i - 1];\n    }\n    return nums;\n}\n```\n    \n    The solution for this problem is to iterate through the input array `nums` starting from the second element (index 1). In each iteration, we add the preceding element to the current element using the formula `nums[i] += nums[i - 1]`. After finishing the loop, the modified input array is the running sum of the original array.\n\nThe logic is exactly the same across all languages; we just have to appropriately manage syntax differences.\n    ",
+    "java": "\n    ```java\npublic int[] runningSum(int[] nums) {\n    for(int i = 1; i < nums.length; i++) {\n        nums[i] += nums[i - 1];\n    }\n    return nums;\n}\n```\n    \n    The solution for this problem is to iterate through the input array `nums` starting from the second element (index 1). In each iteration, we add the preceding element to the current element using the formula `nums[i] += nums[i - 1]`. After finishing the loop, the modified input array is the running sum of the original array.\n\nThe logic is exactly the same across all languages; we just have to appropriately manage syntax differences.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

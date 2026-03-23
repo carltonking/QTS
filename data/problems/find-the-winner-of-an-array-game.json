@@ -1,0 +1,24 @@
+{
+  "id": 1535,
+  "title": "Find the Winner of an Array Game",
+  "slug": "find-the-winner-of-an-array-game",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array arr of distinct integers and an integer k.\n\nA game will be played between the first two elements of the array (i.e. arr[0] and arr[1]). In each round of the game, we compare arr[0] with arr[1], the larger integer wins and remains at position 0, and the smaller integer moves to the end of the array. The game ends when an integer wins k consecutive rounds.\n\nReturn _the integer which will win the game_.\n\nIt is guaranteed that there will be a winner of the game.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef number_of_ways(n, m, k, mod=1_000_000_007):\n    if k > 1:\n        result = 1\n        for _ in range(n):\n            result = (result * m) % mod\n        return result\n    return 1 if n % 2 == 0 else m\n```\n    \n    The algorithm first checks if k is greater than 1. If it is, initialize a variable 'result' to 1, and then loop through the range of n, at each iteration multiply 'result' by m and apply the modulo operation using the given 'mod' value. Return the final result value.\n\nIf k is not greater than 1, return 1 if n is even, and return m if n is odd.\n    ",
+    "javascript": "\n    ```javascript\nfunction numberOfWays(n, m, k, mod = 1_000_000_007) {\n    if (k > 1) {\n        let result = 1;\n        for (let i = 0; i < n; ++i) {\n            result = (result * m) % mod;\n        }\n        return result;\n    }\n    return n % 2 === 0 ? 1 : m;\n}\n```\n    \n    The algorithm first checks if k is greater than 1. If it is, initialize a variable 'result' to 1, and then loop through the range of n, at each iteration multiply 'result' by m and apply the modulo operation using the given 'mod' value. Return the final result value.\n\nIf k is not greater than 1, return 1 if n is even, and return m if n is odd.\n    ",
+    "java": "\n    ```java\nint numberOfWays(int n, int m, int k, int mod = 1_000_000_007) {\n    if (k > 1) {\n        long result = 1;\n        for (int i = 0; i < n; ++i) {\n            result = (result * m) % mod;\n        }\n        return (int)result;\n    }\n    return n % 2 == 0 ? 1 : m;\n}\n```\n    \n    The algorithm first checks if k is greater than 1. If it is, initialize a variable 'result' to 1, and then loop through the range of n, at each iteration multiply 'result' by m and apply the modulo operation using the given 'mod' value. Return the final result value.\n\nIf k is not greater than 1, return 1 if n is even, and return m if n is odd.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

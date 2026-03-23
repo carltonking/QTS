@@ -1,0 +1,24 @@
+{
+  "id": 2216,
+  "title": "Minimum Deletions to Make Array Beautiful",
+  "slug": "minimum-deletions-to-make-array-beautiful",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums. The array nums is beautiful if:\n\n*   nums.length is even.\n*   nums[i] != nums[i + 1] for all i % 2 == 0.\n\nNote that an empty array is considered beautiful.\n\nYou can delete any number of elements from nums. When you delete an element, all the elements to the right of the deleted element will be shifted one unit to the left to fill the gap created and all the elements to the left of the deleted element will remain unchanged.\n\nReturn _the minimum number of elements to delete from_ nums _to make it_ _beautiful._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass ListNode:\n    def __init__(self, x):\n        self.val = x\n        self.next = None\n\ndef delete_middle(head):\n    if not head or not head.next:\n        return head\n    slow = head\n    fast = head\n    prev = None\n\n    while fast and fast.next:\n        prev = slow\n        slow = slow.next\n        fast = fast.next.next\n\n    prev.next = slow.next\n    return head\n```\n    \n    The algorithm utilizes the slow and fast pointer approach to find the middle node of the linked list. Initialize two pointers: slow and fast both pointing to the head of the list. Additionally, have a prev pointer to store the previous node of slow pointer.\n\nIn each iteration of the while loop, move the slow pointer by one step and fast pointer by two steps. When fast pointer reaches the end of the linked list or there is no next for fast pointer, then the slow pointer points to the middle node.\n\nAt each step, update the prev pointer to the current slow pointer, so when we reach the middle node, the prev pointer points to the node before the middle node. Then, update the next attribute of the prev node to skip the middle node (slow->next). Finally, return the head of the modified linked list.\n    ",
+    "javascript": "\n    ```javascript\nclass ListNode {\n    constructor(val, next = null) {\n        this.val = val;\n        this.next = next;\n    }\n}\n\nfunction deleteMiddle(head) {\n    if (!head || !head.next) return head;\n    let slow = head;\n    let fast = head;\n    let prev = null;\n\n    while (fast && fast.next) {\n        prev = slow;\n        slow = slow.next;\n        fast = fast.next.next;\n    }\n\n    prev.next = slow.next;\n    return head;\n}\n```\n\n    \n    The algorithm utilizes the slow and fast pointer approach to find the middle node of the linked list. Initialize two pointers: slow and fast both pointing to the head of the list. Additionally, have a prev pointer to store the previous node of slow pointer.\n\nIn each iteration of the while loop, move the slow pointer by one step and fast pointer by two steps. When fast pointer reaches the end of the linked list or there is no next for fast pointer, then the slow pointer points to the middle node.\n\nAt each step, update the prev pointer to the current slow pointer, so when we reach the middle node, the prev pointer points to the node before the middle node. Then, update the next attribute of the prev node to skip the middle node (slow->next). Finally, return the head of the modified linked list.\n    ",
+    "java": "\n    ```java\nclass ListNode {\n    int val;\n    ListNode next;\n    ListNode(int x) {\n        val = x;\n        next = null;\n    }\n}\n\npublic ListNode deleteMiddle(ListNode head) {\n    if (head == null || head.next == null) return head;\n    ListNode slow = head;\n    ListNode fast = head;\n    ListNode prev = null;\n    \n    while (fast != null && fast.next != null) {\n        prev = slow;\n        slow = slow.next;\n        fast = fast.next.next;\n    }\n \n    prev.next = slow.next;\n    return head;\n}\n```\n    \n    The algorithm utilizes the slow and fast pointer approach to find the middle node of the linked list. Initialize two pointers: slow and fast both pointing to the head of the list. Additionally, have a prev pointer to store the previous node of slow pointer.\n\nIn each iteration of the while loop, move the slow pointer by one step and fast pointer by two steps. When fast pointer reaches the end of the linked list or there is no next for fast pointer, then the slow pointer points to the middle node.\n\nAt each step, update the prev pointer to the current slow pointer, so when we reach the middle node, the prev pointer points to the node before the middle node. Then, update the next attribute of the prev node to skip the middle node (slow->next). Finally, return the head of the modified linked list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

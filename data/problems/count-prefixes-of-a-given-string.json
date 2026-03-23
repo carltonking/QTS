@@ -1,0 +1,24 @@
+{
+  "id": 2255,
+  "title": "Count Prefixes of a Given String",
+  "slug": "count-prefixes-of-a-given-string",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a string array words and a string s, where words[i] and s comprise only of lowercase English letters.\n\nReturn _the number of strings in_ words _that are a prefix of_ s.\n\nA prefix of a string is a substring that occurs at the beginning of the string. A substring is a contiguous sequence of characters within a string.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minSwaps(nums):\n    ones = maxOnes = currOnes = left = 0\n\n    for num in nums:\n        ones += num\n\n    for right in range(len(nums)):\n        currOnes += nums[right]\n\n        if right - left + 1 > ones:\n            currOnes -= nums[left]\n            left += 1\n\n        maxOnes = max(maxOnes, currOnes)\n\n    return ones - maxOnes\n```\n    \n    1. Count the total number of 1's in the array and store this value in the `ones` variable.\n2. Initialize variables `maxOnes`, `currOnes`, and `left` to 0. These will be used to keep track of the maximum number of 1's in a range and our current window.\n3. Loop through the array using the `right` variable.\n4. Add the value in `nums[right]` to `currOnes`.\n5. Check if the window size (between `right` and `left`) is greater than the total number of 1's.\n6. If it is, remove the value at `nums[left]` from `currOnes`, then increment `left` to reduce our window size.\n7. Update the `maxOnes` variable to store the maximum value between itself and `currOnes`.\n8. After looping through the entire array, subtract `maxOnes` from the total `ones`. The result is the minimum number of swaps needed.\n    ",
+    "javascript": "\n    ```javascript\nfunction minSwaps(nums) {\n    let ones = 0, maxOnes = 0, currOnes = 0, left = 0;\n\n    for (let num of nums) {\n        ones += num;\n    }\n\n    for (let right = 0; right < nums.length; ++right) {\n        currOnes += nums[right];\n\n        if (right - left + 1 > ones) {\n            currOnes -= nums[left];\n            ++left;\n        }\n\n        maxOnes = Math.max(maxOnes, currOnes);\n    }\n\n    return ones - maxOnes;\n}\n```\n    \n    1. Count the total number of 1's in the array and store this value in the `ones` variable.\n2. Initialize variables `maxOnes`, `currOnes`, and `left` to 0. These will be used to keep track of the maximum number of 1's in a range and our current window.\n3. Loop through the array using the `right` variable.\n4. Add the value in `nums[right]` to `currOnes`.\n5. Check if the window size (between `right` and `left`) is greater than the total number of 1's.\n6. If it is, remove the value at `nums[left]` from `currOnes`, then increment `left` to reduce our window size.\n7. Update the `maxOnes` variable to store the maximum value between itself and `currOnes`.\n8. After looping through the entire array, subtract `maxOnes` from the total `ones`. The result is the minimum number of swaps needed.\n    ",
+    "java": "\n    ```java\npublic int minSwaps(int[] nums) {\n    int ones = 0, maxOnes = 0, currOnes = 0, left = 0;\n\n    for (int num : nums) {\n        ones += num;\n    }\n\n    for (int right = 0; right < nums.length; ++right) {\n        currOnes += nums[right];\n\n        if (right - left + 1 > ones) {\n            currOnes -= nums[left];\n            ++left;\n        }\n\n        maxOnes = Math.max(maxOnes, currOnes);\n    }\n\n    return ones - maxOnes;\n}\n```\n    \n    1. Count the total number of 1's in the array and store this value in the `ones` variable.\n2. Initialize variables `maxOnes`, `currOnes`, and `left` to 0. These will be used to keep track of the maximum number of 1's in a range and our current window.\n3. Loop through the array using the `right` variable.\n4. Add the value in `nums[right]` to `currOnes`.\n5. Check if the window size (between `right` and `left`) is greater than the total number of 1's.\n6. If it is, remove the value at `nums[left]` from `currOnes`, then increment `left` to reduce our window size.\n7. Update the `maxOnes` variable to store the maximum value between itself and `currOnes`.\n8. After looping through the entire array, subtract `maxOnes` from the total `ones`. The result is the minimum number of swaps needed.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

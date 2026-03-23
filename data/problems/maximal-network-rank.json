@@ -1,0 +1,24 @@
+{
+  "id": 1615,
+  "title": "Maximal Network Rank",
+  "slug": "maximal-network-rank",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There is an infrastructure of n cities with some number of roads connecting these cities. Each roads[i] = [ai, bi] indicates that there is a bidirectional road between cities ai and bi.\n\nThe network rank of two different cities is defined as the total number of directly connected roads to either city. If a road is directly connected to both cities, it is only counted once.\n\nThe maximal network rank of the infrastructure is the maximum network rank of all pairs of different cities.\n\nGiven the integer n and the array roads, return _the maximal network rank of the entire infrastructure_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef range_sum(nums, n, left, right):\n    MOD = 10**9 + 7\n    sums = []\n    for i in range(n):\n        sum = 0\n        for j in range(i, n):\n            sum += nums[j]\n            sums.append(sum)\n    sums.sort()\n    result = 0\n    for i in range(left-1, right):\n        result = (result + sums[i]) % MOD\n    return result\n```\n    \n    The algorithm implemented for this problem does the following:\n\n1. Create a variable `MOD` holding the value 1e9 + 7;\n2. Create a vector, array or list called `sums` which will store the sum of all non-empty continuous subarrays;\n3. Iterate through `nums`, and for each position `i`, create another loop from `i` to `n - 1`, adding the elements to create the sum of the current subarray and appending or inserting it into `sums`.\n4. Sort `sums` in non-decreasing order using `sort()` or `Arrays.sort()`. For Python and Javascript, you might need to implement a compare function;\n5. Iterate through `sums` from index `left - 1` to `right - 1`, accumulating the desired subarray sums in variable `result`. Make sure to apply the modulo operation to the result in each addition;\n6. Return the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction rangeSum(nums, n, left, right) {\n    const MOD = 10**9 + 7;\n    let sums = [];\n    for (let i = 0; i < n; ++i) {\n        let sum = 0;\n        for (let j = i; j < n; ++j) {\n            sum += nums[j];\n            sums.push(sum);\n        }\n    }\n    sums.sort((a, b) => a - b);\n    let result = 0;\n    for (let i = left - 1; i < right; ++i) {\n        result = (result + sums[i]) % MOD;\n    }\n    return result;\n}\n```\n    \n    The algorithm implemented for this problem does the following:\n\n1. Create a variable `MOD` holding the value 1e9 + 7;\n2. Create a vector, array or list called `sums` which will store the sum of all non-empty continuous subarrays;\n3. Iterate through `nums`, and for each position `i`, create another loop from `i` to `n - 1`, adding the elements to create the sum of the current subarray and appending or inserting it into `sums`.\n4. Sort `sums` in non-decreasing order using `sort()` or `Arrays.sort()`. For Python and Javascript, you might need to implement a compare function;\n5. Iterate through `sums` from index `left - 1` to `right - 1`, accumulating the desired subarray sums in variable `result`. Make sure to apply the modulo operation to the result in each addition;\n6. Return the result.\n    ",
+    "java": "\n    ```java\npublic int rangeSum(int[] nums, int n, int left, int right) {\n    int MOD = (int)1e9 + 7;\n    int[] sums = new int[n * (n + 1) / 2];\n    int index = 0;\n    for (int i = 0; i < n; ++i) {\n        int sum = 0;\n        for (int j = i; j < n; ++j) {\n            sum += nums[j];\n            sums[index++] = sum;\n        }\n    }\n    Arrays.sort(sums);\n    int result = 0;\n    for (int i = left - 1; i < right; ++i) {\n        result = (result + sums[i]) % MOD;\n    }\n    return result;\n}\n```\n    \n    The algorithm implemented for this problem does the following:\n\n1. Create a variable `MOD` holding the value 1e9 + 7;\n2. Create a vector, array or list called `sums` which will store the sum of all non-empty continuous subarrays;\n3. Iterate through `nums`, and for each position `i`, create another loop from `i` to `n - 1`, adding the elements to create the sum of the current subarray and appending or inserting it into `sums`.\n4. Sort `sums` in non-decreasing order using `sort()` or `Arrays.sort()`. For Python and Javascript, you might need to implement a compare function;\n5. Iterate through `sums` from index `left - 1` to `right - 1`, accumulating the desired subarray sums in variable `result`. Make sure to apply the modulo operation to the result in each addition;\n6. Return the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

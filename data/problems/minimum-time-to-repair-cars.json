@@ -1,0 +1,24 @@
+{
+  "id": 2594,
+  "title": "Minimum Time to Repair Cars",
+  "slug": "minimum-time-to-repair-cars",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array ranks representing the ranks of some mechanics. ranksi is the rank of the ith mechanic. A mechanic with a rank r can repair n cars in r * n2 minutes.\n\nYou are also given an integer cars representing the total number of cars waiting in the garage to be repaired.\n\nReturn _the minimum time taken to repair all the cars._\n\nNote: All the mechanics can repair the cars simultaneously.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_time_to_repair(ranks, cars):\n    ranks.sort()\n    low, high = 0, 100 * cars * cars\n    \n    while low < high:\n        mid = low + (high - low) // 2\n        total_cars_repaired = 0\n        for rank in ranks:\n            cars_repaired = min(cars, mid // (rank * rank))\n            total_cars_repaired += cars_repaired\n            if total_cars_repaired >= cars:\n                break\n        if total_cars_repaired >= cars:\n            high = mid\n        else:\n            low = mid + 1\n            \n    return low\n```\n\n    \n    1. Sort mechanics by their ranks.\n2. Perform binary search to find the minimum time required to repair all cars:\n    a. Initialize the boundaries `low` and `high`.\n    b. Calculate the middle value `mid`.\n    c. For each mechanic, calculate the number of cars they can repair in `mid` minutes and sum it to `total_cars_repaired`.\n    d. Check if `total_cars_repaired` is greater than or equal to the number of cars. If yes, update `high = mid`. Otherwise, update `low = mid + 1`.\n3. The answer is in the `low` variable.\n    ",
+    "javascript": "\n    ```javascript\nfunction minTimeToRepair(ranks, cars) {\n    ranks.sort((a, b) => a - b);\n    let low = 0, high = 100 * cars * cars;\n    while (low < high) {\n        const mid = low + Math.floor((high - low) / 2);\n        let total_cars_repaired = 0;\n        for (const rank of ranks) {\n            const cars_repaired = Math.min(cars, Math.floor(mid / (rank * rank)));\n            total_cars_repaired += cars_repaired;\n            if (total_cars_repaired >= cars) break;\n        }\n        if (total_cars_repaired >= cars) high = mid;\n        else low = mid + 1;\n    }\n    return low;\n}\n```\n\n    \n    1. Sort mechanics by their ranks.\n2. Perform binary search to find the minimum time required to repair all cars:\n    a. Initialize the boundaries `low` and `high`.\n    b. Calculate the middle value `mid`.\n    c. For each mechanic, calculate the number of cars they can repair in `mid` minutes and sum it to `total_cars_repaired`.\n    d. Check if `total_cars_repaired` is greater than or equal to the number of cars. If yes, update `high = mid`. Otherwise, update `low = mid + 1`.\n3. The answer is in the `low` variable.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int minTimeToRepair(int[] ranks, int cars) {\n    Arrays.sort(ranks);\n    int low = 0, high = 100 * cars * cars;\n    while (low < high) {\n        int mid = low + (high - low) / 2;\n        int total_cars_repaired = 0;\n        for (int rank : ranks) {\n            int cars_repaired = Math.min(cars, mid / (rank * rank));\n            total_cars_repaired += cars_repaired;\n            if (total_cars_repaired >= cars) break;\n        }\n        if (total_cars_repaired >= cars) high = mid;\n        else low = mid + 1;\n    }\n    return low;\n}\n```\n\n    \n    1. Sort mechanics by their ranks.\n2. Perform binary search to find the minimum time required to repair all cars:\n    a. Initialize the boundaries `low` and `high`.\n    b. Calculate the middle value `mid`.\n    c. For each mechanic, calculate the number of cars they can repair in `mid` minutes and sum it to `total_cars_repaired`.\n    d. Check if `total_cars_repaired` is greater than or equal to the number of cars. If yes, update `high = mid`. Otherwise, update `low = mid + 1`.\n3. The answer is in the `low` variable.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

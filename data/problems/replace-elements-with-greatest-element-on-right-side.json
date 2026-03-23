@@ -1,0 +1,24 @@
+{
+  "id": 1299,
+  "title": "Replace Elements with Greatest Element on Right Side",
+  "slug": "replace-elements-with-greatest-element-on-right-side",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array arr, replace every element in that array with the greatest element among the elements to its right, and replace the last element with -1.\n\nAfter doing so, return the array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef kConcatenationMaxSum(arr, k):\n    M = 10**9 + 7\n    s = sum(arr)\n    max_sum = max_ending_here = 0\n    for i in range(len(arr) * min(2, k)):\n        max_ending_here = max(arr[i % len(arr)], max_ending_here + arr[i % len(arr)])\n        max_sum = max(max_sum, max_ending_here)\n    return 0 if k == 1 else (((max_sum - max_ending_here) % M) * (k - 2) % M + max_ending_here) % M\n```\n    \n    1. Calculate the sum of the array elements.\n2. Find the maximum subarray sum using Kadane's algorithm in a single array.\n3. If k is 1, return the maximum subarray sum from the single array.\n4. Concatenate the array twice and find the maximum subarray sum, considering that the subarray can go over the boundaries.\n5. Calculate the final maximum sum by considering the maximum subarray found in the two concatenated arrays, plus the sum of arrays multiplied by (k - 2), if the sum is positive.\n6. Return the maximum sum modulo 1,000,000,007.\n    ",
+    "javascript": "\n    ```javascript\nfunction kConcatenationMaxSum(arr, k) {\n    const M = 1_000_000_007;\n    let sum = 0, maxSum = 0, curMax = 0;\n    for (let i = 0; i < arr.length; i++) {\n        sum += arr[i];\n        curMax = Math.max(arr[i], curMax + arr[i]);\n        maxSum = Math.max(maxSum, curMax);\n    }\n    if (k === 1) return maxSum % M;\n    let twoConcatenation = 0, twoConcatenationMax = 0;\n    for (let i = 0; i < 2 * arr.length; i++) {\n        twoConcatenation = Math.max(arr[i % arr.length], twoConcatenation + arr[i % arr.length]);\n        twoConcatenationMax = Math.max(twoConcatenationMax, twoConcatenation);\n    }\n    return Math.max(Math.max(maxSum, twoConcatenationMax + (k - 2) * Math.max(0, sum)), 0) % M;\n}\n```\n    \n    1. Calculate the sum of the array elements.\n2. Find the maximum subarray sum using Kadane's algorithm in a single array.\n3. If k is 1, return the maximum subarray sum from the single array.\n4. Concatenate the array twice and find the maximum subarray sum, considering that the subarray can go over the boundaries.\n5. Calculate the final maximum sum by considering the maximum subarray found in the two concatenated arrays, plus the sum of arrays multiplied by (k - 2), if the sum is positive.\n6. Return the maximum sum modulo 1,000,000,007.\n    ",
+    "java": "\n    ```java\npublic int kConcatenationMaxSum(int[] arr, int k) {\n    int M = 1_000_000_007;\n    long sum = 0, maxSum = 0, curMax = 0;\n    for (int i = 0; i < arr.length; i++) {\n        sum += arr[i];\n        curMax = Math.max(arr[i], curMax + arr[i]);\n        maxSum = Math.max(maxSum, curMax);\n    }\n    if (k == 1) return (int)(maxSum % M);\n    long twoConcatenation = 0, twoConcatenationMax = 0;\n    for (int i = 0; i < 2 * arr.length; i++) {\n        twoConcatenation = Math.max(arr[i % arr.length], twoConcatenation + arr[i % arr.length]);\n        twoConcatenationMax = Math.max(twoConcatenationMax, twoConcatenation);\n    }\n    return (int)(Math.max(Math.max(maxSum, twoConcatenationMax + (k - 2) * Math.max(0, sum)), 0) % M);\n}\n```\n    \n    1. Calculate the sum of the array elements.\n2. Find the maximum subarray sum using Kadane's algorithm in a single array.\n3. If k is 1, return the maximum subarray sum from the single array.\n4. Concatenate the array twice and find the maximum subarray sum, considering that the subarray can go over the boundaries.\n5. Calculate the final maximum sum by considering the maximum subarray found in the two concatenated arrays, plus the sum of arrays multiplied by (k - 2), if the sum is positive.\n6. Return the maximum sum modulo 1,000,000,007.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

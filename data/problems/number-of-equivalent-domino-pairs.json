@@ -1,0 +1,24 @@
+{
+  "id": 1128,
+  "title": "Number of Equivalent Domino Pairs",
+  "slug": "number-of-equivalent-domino-pairs",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a list of dominoes, dominoes[i] = [a, b] is equivalent to dominoes[j] = [c, d] if and only if either (a == c and b == d), or (a == d and b == c) - that is, one domino can be rotated to be equal to another domino.\n\nReturn _the number of pairs_ (i, j) _for which_ 0 <= i < j < dominoes.length_, and_ dominoes[i] _is equivalent to_ dominoes[j].",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef remove_duplicates(s: str) -> str:\n    stack = []\n    for c in s:\n        if stack and stack[-1] == c:\n            stack.pop()\n        else:\n            stack.append(c)\n    return \"\".join(stack)\n```\n    \n    The algorithm uses a stack data structure to process the input string 's'. Iterate through the string from left to right, if the current character 'c' is equal to the character at the top of the stack, pop the character from the top of the stack, otherwise, push the current character onto the stack.\n\nAfter processing the entire string 's', the stack will contain the characters left after all the duplicate removals. Then, convert the stack to the resulting string in the respective language (in C++, Java, and JavaScript, we convert the stack to a string by iterating through it, and in Python, we use the built-in join function).\n\nThe time complexity of the algorithm is O(n), where n is the length of the input string 's', and the space complexity is O(n) considering the stack that can be as big as the input string.\n    ",
+    "javascript": "\n    ```javascript\nfunction removeDuplicates(s) {\n    const stack = [];\n    for (const c of s) {\n        if (stack.length > 0 && stack[stack.length - 1] === c) {\n            stack.pop();\n        } else {\n            stack.push(c);\n        }\n    }\n    return stack.join('');\n}\n```\n    \n    The algorithm uses a stack data structure to process the input string 's'. Iterate through the string from left to right, if the current character 'c' is equal to the character at the top of the stack, pop the character from the top of the stack, otherwise, push the current character onto the stack.\n\nAfter processing the entire string 's', the stack will contain the characters left after all the duplicate removals. Then, convert the stack to the resulting string in the respective language (in C++, Java, and JavaScript, we convert the stack to a string by iterating through it, and in Python, we use the built-in join function).\n\nThe time complexity of the algorithm is O(n), where n is the length of the input string 's', and the space complexity is O(n) considering the stack that can be as big as the input string.\n    ",
+    "java": "\n    ```java\npublic String removeDuplicates(String s) {\n    StringBuilder sb = new StringBuilder();\n    for (char c : s.toCharArray()) {\n        if (sb.length() > 0 && sb.charAt(sb.length() - 1) == c) {\n            sb.setLength(sb.length() - 1);\n        } else {\n            sb.append(c);\n        }\n    }\n    return sb.toString();\n}\n```\n    \n    The algorithm uses a stack data structure to process the input string 's'. Iterate through the string from left to right, if the current character 'c' is equal to the character at the top of the stack, pop the character from the top of the stack, otherwise, push the current character onto the stack.\n\nAfter processing the entire string 's', the stack will contain the characters left after all the duplicate removals. Then, convert the stack to the resulting string in the respective language (in C++, Java, and JavaScript, we convert the stack to a string by iterating through it, and in Python, we use the built-in join function).\n\nThe time complexity of the algorithm is O(n), where n is the length of the input string 's', and the space complexity is O(n) considering the stack that can be as big as the input string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

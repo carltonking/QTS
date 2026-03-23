@@ -1,0 +1,24 @@
+{
+  "id": 443,
+  "title": "String Compression",
+  "slug": "string-compression",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of characters chars, compress it using the following algorithm:\n\nBegin with an empty string s. For each group of consecutive repeating characters in chars:\n\n*   If the group's length is 1, append the character to s.\n*   Otherwise, append the character followed by the group's length.\n\nThe compressed string s should not be returned separately, but instead, be stored in the input character array chars. Note that group lengths that are 10 or longer will be split into multiple characters in chars.\n\nAfter you are done modifying the input array, return _the new length of the array_.\n\nYou must write an algorithm that uses only constant extra space.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef compress(chars):\n    index, i = 0, 0\n    \n    while i < len(chars):\n        count = 1\n        while i + count < len(chars) and chars[i] == chars[i + count]:\n            count += 1\n            \n        chars[index] = chars[i]\n        index += 1\n        \n        if count > 1:\n            count_str = str(count)\n            for c in count_str:\n                chars[index] = c\n                index += 1\n                \n        i += count\n        \n    return index\n```\n    \n    This algorithm iterates through the input array `chars`, for each character, it counts the number of consecutive occurrences (using `count` variable) of that character. Then, the algorithm replaces the current character(s) with the compressed form (the character itself, followed by the count if it is greater than 1). `index` keeps track of the position in the modified input array `chars`.\n\nAt the end of each iteration, the value of `i` is incremented by `count` to move to the next unique character in the array. Finally, the algorithm returns `index`, which is the new length of the array.\n\nThis implementation uses only constant extra space by modifying the input array itself and using a couple of simple variables.\n    ",
+    "javascript": "\n    ```javascript\nfunction compress(chars) {\n    let index = 0, count;\n    for(let i = 0; i < chars.length; i += count) {\n        count = 1;\n        while(i + count < chars.length && chars[i] === chars[i + count]) {\n            count++;\n        }\n        chars[index++] = chars[i];\n        if(count > 1) {\n            for(let c of count.toString()) {\n                chars[index++] = c;\n            }\n        }\n    }\n    return index;\n}\n```\n    \n    This algorithm iterates through the input array `chars`, for each character, it counts the number of consecutive occurrences (using `count` variable) of that character. Then, the algorithm replaces the current character(s) with the compressed form (the character itself, followed by the count if it is greater than 1). `index` keeps track of the position in the modified input array `chars`.\n\nAt the end of each iteration, the value of `i` is incremented by `count` to move to the next unique character in the array. Finally, the algorithm returns `index`, which is the new length of the array.\n\nThis implementation uses only constant extra space by modifying the input array itself and using a couple of simple variables.\n    ",
+    "java": "\n    ```java\npublic int compress(char[] chars) {\n    int index = 0, count;\n    for(int i = 0; i < chars.length; i += count) {\n        count = 1;\n        while(i + count < chars.length && chars[i] == chars[i + count]) {\n            count++;\n        }\n        chars[index++] = chars[i];\n        if(count > 1) {\n            for(char c : Integer.toString(count).toCharArray()) {\n                chars[index++] = c;\n            }\n        }\n    }\n    return index;\n}\n```\n    \n    This algorithm iterates through the input array `chars`, for each character, it counts the number of consecutive occurrences (using `count` variable) of that character. Then, the algorithm replaces the current character(s) with the compressed form (the character itself, followed by the count if it is greater than 1). `index` keeps track of the position in the modified input array `chars`.\n\nAt the end of each iteration, the value of `i` is incremented by `count` to move to the next unique character in the array. Finally, the algorithm returns `index`, which is the new length of the array.\n\nThis implementation uses only constant extra space by modifying the input array itself and using a couple of simple variables.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

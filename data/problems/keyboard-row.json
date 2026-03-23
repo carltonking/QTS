@@ -1,0 +1,24 @@
+{
+  "id": 500,
+  "title": "Keyboard Row",
+  "slug": "keyboard-row",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array of strings words, return _the words that can be typed using letters of the alphabet on only one row of American keyboard like the image below_.\n\nIn the American keyboard:\n\n*   the first row consists of the characters \"qwertyuiop \",\n*   the second row consists of the characters \"asdfghjkl \", and\n*   the third row consists of the characters \"zxcvbnm \".",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_words(words):\n    rows = [\n        set(\"qwertyuiopQWERTYUIOP\"),\n        set(\"asdfghjklASDFGHJKL\"),\n        set(\"zxcvbnmZXCVBNM\")\n    ]\n    res = []\n\n    for word in words:\n        row = -1\n        for i in range(3):\n            if word[0] in rows[i]:\n                row = i\n                break\n\n        if all(c in rows[row] for c in word):\n            res.append(word)\n\n    return res\n```\n\n    \n    1. Create an array of sets representing each row of the American keyboard. Include both uppercase and lowercase letters in the set.\n2. Initialize an empty result list.\n3. Loop through the input words array.\n4. Determine the row of the first character of the current word by checking which of the 3 rows contains it.\n5. Check if all the characters in the current word belong to the same row found in step 4. If yes, append the word to the result list.\n6. Once the loop is done, return the result list.\n    ",
+    "javascript": "\n    ```javascript\nfunction findWords(words) {\n    const rows = [\n        new Set(\"qwertyuiopQWERTYUIOP\".split('')),\n        new Set(\"asdfghjklASDFGHJKL\".split('')),\n        new Set(\"zxcvbnmZXCVBNM\".split(''))\n    ];\n    const res = [];\n\n    for (const word of words) {\n        let row = -1;\n        for (let i = 0; i < 3; i++) {\n            if (rows[i].has(word[0])) {\n                row = i;\n                break;\n            }\n        }\n\n        if (word.split('').every(c => rows[row].has(c))) {\n            res.push(word);\n        }\n    }\n\n    return res;\n}\n```\n\n    \n    1. Create an array of sets representing each row of the American keyboard. Include both uppercase and lowercase letters in the set.\n2. Initialize an empty result list.\n3. Loop through the input words array.\n4. Determine the row of the first character of the current word by checking which of the 3 rows contains it.\n5. Check if all the characters in the current word belong to the same row found in step 4. If yes, append the word to the result list.\n6. Once the loop is done, return the result list.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.HashSet;\nimport java.util.List;\n\npublic class Solution {\n    public String[] findWords(String[] words) {\n        HashSet<Character>[] rows = new HashSet[] {\n            new HashSet<Character>() {{\n                add('q'); add('w'); add('e'); add('r'); add('t');\n                add('y'); add('u'); add('i'); add('o'); add('p');\n            }},\n            new HashSet<Character>() {{\n                add('a'); add('s'); add('d'); add('f'); add('g');\n                add('h'); add('j'); add('k'); add('l');\n            }},\n            new HashSet<Character>() {{\n                add('z'); add('x'); add('c'); add('v'); add('b');\n                add('n'); add('m');\n            }}\n        };\n        List<String> res = new ArrayList<>();\n        \n        for (String word : words) {\n            int row = -1;\n            for (int i = 0; i < 3; i++) {\n                if (rows[i].contains(Character.toLowerCase(word.charAt(0)))) {\n                    row = i;\n                    break;\n                }\n            }\n            \n            boolean isOneRow = true;\n            for (char letter : word.toCharArray()) {\n                if (!rows[row].contains(Character.toLowerCase(letter))) {\n                    isOneRow = false;\n                    break;\n                }\n            }\n            \n            if (isOneRow)\n                res.add(word);\n        }\n        \n        return res.toArray(new String[0]);\n    }\n}\n```\n\n    \n    1. Create an array of sets representing each row of the American keyboard. Include both uppercase and lowercase letters in the set.\n2. Initialize an empty result list.\n3. Loop through the input words array.\n4. Determine the row of the first character of the current word by checking which of the 3 rows contains it.\n5. Check if all the characters in the current word belong to the same row found in step 4. If yes, append the word to the result list.\n6. Once the loop is done, return the result list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

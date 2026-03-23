@@ -1,0 +1,24 @@
+{
+  "id": 868,
+  "title": "Binary Gap",
+  "slug": "binary-gap",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a positive integer n, find and return _the longest distance between any two adjacent_ 1_'s in the binary representation of_ n_. If there are no two adjacent_ 1_'s, return_ 0_._\n\nTwo 1's are adjacent if there are only 0's separating them (possibly no 0's). The distance between two 1's is the absolute difference between their bit positions. For example, the two 1's in \"1001 \" have a distance of 3.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef push_dominoes(dominoes: str) -> str:\n    prev, cur = None, dominoes\n    while prev != cur:\n        prev = cur\n        cur_lst = list(prev)\n        for i in range(len(cur)):\n            if prev[i] == 'L' and i > 0 and prev[i - 1] == '.':\n                cur_lst[i - 1] = 'L'\n            elif prev[i] == 'R' and i < len(cur) - 1 and prev[i + 1] == '.':\n                cur_lst[i + 1] = 'R'\n        cur = ''.join(cur_lst)\n    return cur\n```\n    \n    1. Initialize `prev` and `cur` variables to store the state of dominoes. Set `cur` initially to the input string.\n2. Run a loop until the states of dominoes do not change, i.e., `prev != cur`.\n3. Iterate through each character in the `prev` string:\n   - If the character is 'L' and there is a domino to its left, and the left domino is '.', set that domino to 'L'.\n   - If the character is 'R' and there is a domino to its right, and the right domino is '.', set that domino to 'R'.\n4. Concatenate the new state of the dominoes to form the string `cur`.\n5. Continue the loop until there is no change in the states of the dominoes.\n6. Return the final state of the dominoes as a string.\n    ",
+    "javascript": "\n    ```javascript\nfunction pushDominoes(dominoes) {\n    let prev, cur = dominoes;\n    do {\n        prev = cur;\n        let curList = prev.split('');\n        for (let i = 0; i < prev.length; ++i) {\n            if (prev[i] === 'L' && i > 0 && prev[i - 1] === '.')\n                curList[i - 1] = 'L';\n            else if (prev[i] === 'R' && i < prev.length - 1 && prev[i + 1] === '.')\n                curList[i + 1] = 'R';\n        }\n        cur = curList.join('');\n    } while (prev !== cur);\n    return cur;\n}\n```\n    \n    1. Initialize `prev` and `cur` variables to store the state of dominoes. Set `cur` initially to the input string.\n2. Run a loop until the states of dominoes do not change, i.e., `prev != cur`.\n3. Iterate through each character in the `prev` string:\n   - If the character is 'L' and there is a domino to its left, and the left domino is '.', set that domino to 'L'.\n   - If the character is 'R' and there is a domino to its right, and the right domino is '.', set that domino to 'R'.\n4. Concatenate the new state of the dominoes to form the string `cur`.\n5. Continue the loop until there is no change in the states of the dominoes.\n6. Return the final state of the dominoes as a string.\n    ",
+    "java": "\n    ```java\npublic String pushDominoes(String dominoes) {\n    int n = dominoes.length();\n    String prev;\n    String cur = dominoes;\n    do {\n        prev = cur;\n        StringBuilder sb = new StringBuilder(prev);\n        for (int i = 0; i < n; ++i) {\n            if (prev.charAt(i) == 'L' && i > 0 && prev.charAt(i - 1) == '.')\n                sb.setCharAt(i - 1, 'L');\n            else if (prev.charAt(i) == 'R' && i < n - 1 && prev.charAt(i + 1) == '.')\n                sb.setCharAt(i + 1, 'R');\n        }\n        cur = sb.toString();\n    } while (!prev.equals(cur));\n    return cur;\n}\n```\n    \n    1. Initialize `prev` and `cur` variables to store the state of dominoes. Set `cur` initially to the input string.\n2. Run a loop until the states of dominoes do not change, i.e., `prev != cur`.\n3. Iterate through each character in the `prev` string:\n   - If the character is 'L' and there is a domino to its left, and the left domino is '.', set that domino to 'L'.\n   - If the character is 'R' and there is a domino to its right, and the right domino is '.', set that domino to 'R'.\n4. Concatenate the new state of the dominoes to form the string `cur`.\n5. Continue the loop until there is no change in the states of the dominoes.\n6. Return the final state of the dominoes as a string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1453,
+  "title": "Maximum Number of Darts Inside of a Circular Dartboard",
+  "slug": "maximum-number-of-darts-inside-of-a-circular-dartboard",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Alice is throwing n darts on a very large wall. You are given an array darts where darts[i] = [xi, yi] is the position of the ith dart that Alice threw on the wall.\n\nBob knows the positions of the n darts on the wall. He wants to place a dartboard of radius r on the wall so that the maximum number of darts that Alice throws lies on the dartboard.\n\nGiven the integer r, return _the maximum number of darts that can lie on the dartboard_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef numPoints(darts, r):\n    n = len(darts)\n    result = 1\n    \n    for i in range(n):\n        for j in range(n):\n            cnt = 0\n            for k in range(n):\n                dx = darts[i][0] - darts[k][0]\n                dy = darts[i][1] - darts[k][1]\n                if (dx * dx + dy * dy) ** 0.5 <= r:\n                    cnt += 1\n                    \n            if cnt > result:\n                result = cnt\n                \n    return result\n```\n    \n    The algorithm is fairly straightforward. We iterate through all pairs of darts and try to place the dartboard center on each pair. Then, for each pair of darts, we check how many darts are within the distance `r` from both darts in the pair. The answer is the maximum count of darts that can be covered by the dartboard for all pairs of darts.\n\nThe time complexity of the algorithm is O(n^3), where n is the number of darts. In the worst case, there can be up to 100 darts, so the algorithm will be fast enough.\n    ",
+    "javascript": "\n    ```javascript\nfunction numPoints(darts, r) {\n    const n = darts.length;\n    let result = 1;\n    \n    for (let i = 0; i < n; ++i) {\n        for (let j = 0; j < n; ++j) {\n            let cnt = 0;\n            for (let k = 0; k < n; ++k) {\n                const dx = darts[i][0] - darts[k][0];\n                const dy = darts[i][1] - darts[k][1];\n                if (Math.sqrt(dx * dx + dy * dy) <= r) cnt++;\n            }\n            \n            if (cnt > result) result = cnt;\n        }\n    }\n    return result;\n}\n```\n    \n    The algorithm is fairly straightforward. We iterate through all pairs of darts and try to place the dartboard center on each pair. Then, for each pair of darts, we check how many darts are within the distance `r` from both darts in the pair. The answer is the maximum count of darts that can be covered by the dartboard for all pairs of darts.\n\nThe time complexity of the algorithm is O(n^3), where n is the number of darts. In the worst case, there can be up to 100 darts, so the algorithm will be fast enough.\n    ",
+    "java": "\n    ```java\nimport java.util.List;\n\npublic int numPoints(List<List<Integer>> darts, int r) {\n    int n = darts.size();\n    int result = 1;\n    \n    for (int i = 0; i < n; ++i) {\n        for (int j = 0; j < n; ++j) {\n            int cnt = 0;\n            for (int k = 0; k < n; ++k) {\n                int dx = darts.get(i).get(0) - darts.get(k).get(0);\n                int dy = darts.get(i).get(1) - darts.get(k).get(1);\n                if (Math.sqrt(dx * dx + dy * dy) <= r) cnt++;\n            }\n            \n            if (cnt > result) result = cnt;\n        }\n    }\n    return result;\n}\n```\n    \n    The algorithm is fairly straightforward. We iterate through all pairs of darts and try to place the dartboard center on each pair. Then, for each pair of darts, we check how many darts are within the distance `r` from both darts in the pair. The answer is the maximum count of darts that can be covered by the dartboard for all pairs of darts.\n\nThe time complexity of the algorithm is O(n^3), where n is the number of darts. In the worst case, there can be up to 100 darts, so the algorithm will be fast enough.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

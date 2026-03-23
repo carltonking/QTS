@@ -1,0 +1,24 @@
+{
+  "id": 1817,
+  "title": "Finding the Users Active Minutes",
+  "slug": "finding-the-users-active-minutes",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given the logs for users' actions on LeetCode, and an integer k. The logs are represented by a 2D integer array logs where each logs[i] = [IDi, timei] indicates that the user with IDi performed an action at the minute timei.\n\nMultiple users can perform actions simultaneously, and a single user can perform multiple actions in the same minute.\n\nThe user active minutes (UAM) for a given user is defined as the number of unique minutes in which the user performed an action on LeetCode. A minute can only be counted once, even if multiple actions occur during it.\n\nYou are to calculate a 1-indexed array answer of size k such that, for each j (1 <= j <= k), answer[j] is the number of users whose UAM equals j.\n\nReturn _the array_ answer _as described above_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef total_money(n):\n    weeks = n // 7\n    days_remaining = n % 7\n    return 28 * weeks + 7 * weeks * (weeks - 1) // 2 + (weeks + 1) * days_remaining + days_remaining * (days_remaining - 1) // 2\n```\n\n    \n    The algorithm calculates the total amount of money Hercy will have at the end of the nth day. For this, it first calculates the number of full weeks (`weeks`) by dividing `n` by 7 and the remaining days (`days_remaining`) by taking the modulo. Then it calculates the total amount of money:\n- The amount of money he puts in on each Monday for `weeks` weeks: `28 * weeks`.\n- The total amount of money he puts in the remaining days of each week: `7 * weeks * (weeks - 1) / 2`.\n- The amount of money he puts in during the remaining days: `(weeks + 1) * days_remaining`.\n- The total amount of money he puts in during the remaining days, minus the deposit for the first day of the week: `days_remaining * (days_remaining - 1) / 2`.\n\nThe final result is obtained by summing these four terms.\n    ",
+    "javascript": "\n    ```javascript\nfunction totalMoney(n) {\n    let weeks = Math.floor(n / 7);\n    let days_remaining = n % 7;\n    return 28 * weeks + 7 * weeks * (weeks - 1) / 2 + (weeks + 1) * days_remaining + days_remaining * (days_remaining - 1) / 2;\n}\n```\n\n    \n    The algorithm calculates the total amount of money Hercy will have at the end of the nth day. For this, it first calculates the number of full weeks (`weeks`) by dividing `n` by 7 and the remaining days (`days_remaining`) by taking the modulo. Then it calculates the total amount of money:\n- The amount of money he puts in on each Monday for `weeks` weeks: `28 * weeks`.\n- The total amount of money he puts in the remaining days of each week: `7 * weeks * (weeks - 1) / 2`.\n- The amount of money he puts in during the remaining days: `(weeks + 1) * days_remaining`.\n- The total amount of money he puts in during the remaining days, minus the deposit for the first day of the week: `days_remaining * (days_remaining - 1) / 2`.\n\nThe final result is obtained by summing these four terms.\n    ",
+    "java": "\n    ```java\nint totalMoney(int n) {\n    int weeks = n / 7;\n    int days_remaining = n % 7;\n    return 28 * weeks + 7 * weeks * (weeks - 1) / 2 + (weeks + 1) * days_remaining + days_remaining * (days_remaining - 1) / 2;\n}\n```\n\n    \n    The algorithm calculates the total amount of money Hercy will have at the end of the nth day. For this, it first calculates the number of full weeks (`weeks`) by dividing `n` by 7 and the remaining days (`days_remaining`) by taking the modulo. Then it calculates the total amount of money:\n- The amount of money he puts in on each Monday for `weeks` weeks: `28 * weeks`.\n- The total amount of money he puts in the remaining days of each week: `7 * weeks * (weeks - 1) / 2`.\n- The amount of money he puts in during the remaining days: `(weeks + 1) * days_remaining`.\n- The total amount of money he puts in during the remaining days, minus the deposit for the first day of the week: `days_remaining * (days_remaining - 1) / 2`.\n\nThe final result is obtained by summing these four terms.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

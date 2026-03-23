@@ -1,0 +1,24 @@
+{
+  "id": 953,
+  "title": "Verifying an Alien Dictionary",
+  "slug": "verifying-an-alien-dictionary",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "In an alien language, surprisingly, they also use English lowercase letters, but possibly in a different order. The order of the alphabet is some permutation of lowercase letters.\n\nGiven a sequence of words written in the alien language, and the order of the alphabet, return true if and only if the given words are sorted lexicographically in this alien language.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef reverse_string(s):\n    return s[::-1]\n```\n\n    \n    The algorithm to reverse a string is simple. It takes the input string, iterates from the last character to the first, and appends each character to a new string, which is then returned.\n\nIn each of the provided implementations, the language's standard library, or a built-in method, is utilized to achieve the goal, rather than manually writing a loop to iterate over the string.\n\nIn C++, the `std::reverse` function from the `<algorithm>` library is used to reverse the input string.\n\nIn Java, a `StringBuilder` is created from the input string, and then its built-in `reverse` method is called. Finally, the reversed `StringBuilder` is converted back to a `String`.\n\nIn Python, slicing is used to reverse the string with the syntax `s[::-1]`.\n\nIn JavaScript, the `split` method is used to convert the string into an array of characters. Then, the `reverse` method is called on the array, which reverses the order of the elements. Finally, the `join` method is called on the reversed array to convert it back to a string.\n    ",
+    "javascript": "\n    ```javascript\nfunction reverseString(s) {\n    return s.split('').reverse().join('');\n}\n```\n\n    \n    The algorithm to reverse a string is simple. It takes the input string, iterates from the last character to the first, and appends each character to a new string, which is then returned.\n\nIn each of the provided implementations, the language's standard library, or a built-in method, is utilized to achieve the goal, rather than manually writing a loop to iterate over the string.\n\nIn C++, the `std::reverse` function from the `<algorithm>` library is used to reverse the input string.\n\nIn Java, a `StringBuilder` is created from the input string, and then its built-in `reverse` method is called. Finally, the reversed `StringBuilder` is converted back to a `String`.\n\nIn Python, slicing is used to reverse the string with the syntax `s[::-1]`.\n\nIn JavaScript, the `split` method is used to convert the string into an array of characters. Then, the `reverse` method is called on the array, which reverses the order of the elements. Finally, the `join` method is called on the reversed array to convert it back to a string.\n    ",
+    "java": "\n    ```java\npublic String reverseString(String s) {\n    StringBuilder result = new StringBuilder(s);\n    return result.reverse().toString();\n}\n```\n\n    \n    The algorithm to reverse a string is simple. It takes the input string, iterates from the last character to the first, and appends each character to a new string, which is then returned.\n\nIn each of the provided implementations, the language's standard library, or a built-in method, is utilized to achieve the goal, rather than manually writing a loop to iterate over the string.\n\nIn C++, the `std::reverse` function from the `<algorithm>` library is used to reverse the input string.\n\nIn Java, a `StringBuilder` is created from the input string, and then its built-in `reverse` method is called. Finally, the reversed `StringBuilder` is converted back to a `String`.\n\nIn Python, slicing is used to reverse the string with the syntax `s[::-1]`.\n\nIn JavaScript, the `split` method is used to convert the string into an array of characters. Then, the `reverse` method is called on the array, which reverses the order of the elements. Finally, the `join` method is called on the reversed array to convert it back to a string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

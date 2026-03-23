@@ -1,0 +1,24 @@
+{
+  "id": 2447,
+  "title": "Number of Subarrays With GCD Equal to K",
+  "slug": "number-of-subarrays-with-gcd-equal-to-k",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums and an integer k, return _the number of subarrays of_ nums _where the greatest common divisor of the subarray's elements is_ k.\n\nA subarray is a contiguous non-empty sequence of elements within an array.\n\nThe greatest common divisor of an array is the largest integer that evenly divides all the array elements.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef gcd(a, b):\n    if b == 0:\n        return a\n    return gcd(b, a % b)\n\ndef count_GCD_subarrays(nums, k):\n    count = 0\n\n    for i in range(len(nums)):\n        gcd_so_far = 0\n        for j in range(i, len(nums)):\n            gcd_so_far = gcd(gcd_so_far, nums[j])\n            if gcd_so_far == k:\n                count += 1\n\n    return count\n```\n    \n    To find the subarrays with a greatest common divisor (GCD) equal to `k`, we iterate through each element of `nums`. For each element 'i', we find the GCD of the subarrays starting at 'i' and ending at each element 'j' such that i <= j < nums.length.\n\nTo calculate the GCD of a subarray, we use the Euclidean algorithm which finds the GCD of two numbers by recursively dividing them and getting the remainder. In this case, we can use the previous GCD (`gcd_so_far`) and the current element (`nums[j]`) to update the GCD. When `gcd_so_far` is equal to `k`, we increment the count.\n\nAfter traversing all subarrays, we return the count.\n    ",
+    "javascript": "\n    ```javascript\nfunction gcd(a, b) {\n    if (b === 0) return a;\n    return gcd(b, a % b);\n}\n\nfunction countGCDSubarrays(nums, k) {\n    let count = 0;\n\n    for (let i = 0; i < nums.length; ++i) {\n        let gcdSoFar = 0;\n        for (let j = i; j < nums.length; ++j) {\n            gcdSoFar = gcd(gcdSoFar, nums[j]);\n            if (gcdSoFar === k) ++count;\n        }\n    }\n\n    return count;\n}\n```\n    \n    To find the subarrays with a greatest common divisor (GCD) equal to `k`, we iterate through each element of `nums`. For each element 'i', we find the GCD of the subarrays starting at 'i' and ending at each element 'j' such that i <= j < nums.length.\n\nTo calculate the GCD of a subarray, we use the Euclidean algorithm which finds the GCD of two numbers by recursively dividing them and getting the remainder. In this case, we can use the previous GCD (`gcd_so_far`) and the current element (`nums[j]`) to update the GCD. When `gcd_so_far` is equal to `k`, we increment the count.\n\nAfter traversing all subarrays, we return the count.\n    ",
+    "java": "\n    ```java\npublic int gcd(int a, int b) {\n    if (b == 0) return a;\n    return gcd(b, a % b);\n}\n\npublic int countGCDSubarrays(int[] nums, int k) {\n    int count = 0;\n\n    for (int i = 0; i < nums.length; ++i) {\n        int gcdSoFar = 0;\n        for (int j = i; j < nums.length; ++j) {\n            gcdSoFar = gcd(gcdSoFar, nums[j]);\n            if (gcdSoFar == k) ++count;\n        }\n    }\n\n    return count;\n}\n```\n    \n    To find the subarrays with a greatest common divisor (GCD) equal to `k`, we iterate through each element of `nums`. For each element 'i', we find the GCD of the subarrays starting at 'i' and ending at each element 'j' such that i <= j < nums.length.\n\nTo calculate the GCD of a subarray, we use the Euclidean algorithm which finds the GCD of two numbers by recursively dividing them and getting the remainder. In this case, we can use the previous GCD (`gcd_so_far`) and the current element (`nums[j]`) to update the GCD. When `gcd_so_far` is equal to `k`, we increment the count.\n\nAfter traversing all subarrays, we return the count.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

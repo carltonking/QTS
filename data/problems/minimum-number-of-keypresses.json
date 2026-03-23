@@ -1,0 +1,24 @@
+{
+  "id": 2268,
+  "title": "Minimum Number of Keypresses",
+  "slug": "minimum-number-of-keypresses",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You have a keypad with 9 buttons, numbered from 1 to 9, each mapped to lowercase English letters. You can choose which characters each button is matched to as long as:\n\n*   All 26 lowercase English letters are mapped to.\n*   Each character is mapped to by exactly 1 button.\n*   Each button maps to at most 3 characters.\n\nTo type the first character matched to a button, you press the button once. To type the second character, you press the button twice, and so on.\n\nGiven a string s, return _the minimum number of keypresses needed to type_ s _using your keypad._\n\nNote that the characters mapped to by each button, and the order they are mapped in cannot be changed.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_keypresses(s: str) -> int:\n    keypresses = [(i % 9) + 1 for i in range(26)]\n    result = 0\n    for c in s:\n        result += keypresses[ord(c) - ord('a')]\n    return result\n```\n    \n    We first create an array `keypresses` of length 26 to represent all lowercase English letters, where each element maps the number of keypresses needed to type the corresponding character. Then, we iterate through the input string `s` and for each character `c`, we increment the `result` counter with the number of keypresses needed to type the `c`. In the end, we return the result counter.\n    ",
+    "javascript": "\n    ```javascript\nfunction minKeypresses(s) {\n    const keypresses = Array.from({length: 26}, (_, i) => (i % 9) + 1);\n    let result = 0;\n    for (const c of s) {\n        result += keypresses[c.charCodeAt(0) - 'a'.charCodeAt(0)];\n    }\n    return result;\n}\n```\n    \n    We first create an array `keypresses` of length 26 to represent all lowercase English letters, where each element maps the number of keypresses needed to type the corresponding character. Then, we iterate through the input string `s` and for each character `c`, we increment the `result` counter with the number of keypresses needed to type the `c`. In the end, we return the result counter.\n    ",
+    "java": "\n    ```java\npublic int minKeypresses(String s) {\n    int[] keypresses = new int[26];\n    for (int i = 0; i < 26; ++i) {\n        keypresses[i] = (i % 9) + 1;\n    }\n    int result = 0;\n    for (char c : s.toCharArray()) {\n        result += keypresses[c - 'a'];\n    }\n    return result;\n}\n```\n    \n    We first create an array `keypresses` of length 26 to represent all lowercase English letters, where each element maps the number of keypresses needed to type the corresponding character. Then, we iterate through the input string `s` and for each character `c`, we increment the `result` counter with the number of keypresses needed to type the `c`. In the end, we return the result counter.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

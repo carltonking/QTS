@@ -1,0 +1,24 @@
+{
+  "id": 1589,
+  "title": "Maximum Sum Obtained of Any Permutation",
+  "slug": "maximum-sum-obtained-of-any-permutation",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "We have an array of integers, nums, and an array of requests where requests[i] = [starti, endi]. The ith request asks for the sum of nums[starti] + nums[starti + 1] + ... + nums[endi - 1] + nums[endi]. Both starti and endi are _0-indexed_.\n\nReturn _the maximum total sum of all requests among all permutations of_ nums.\n\nSince the answer may be too large, return it modulo 109 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxSumRangeQuery(nums, requests):\n    n = len(nums)\n    count = [0] * n\n    for request in requests:\n        count[request[0]] += 1\n        if request[1] + 1 < n:\n            count[request[1] + 1] -= 1\n    for i in range(1, n):\n        count[i] += count[i - 1]\n\n    nums.sort()\n    count.sort()\n\n    ans = 0\n    for i in range(n):\n        ans = (ans + nums[i] * count[i]) % 1000000007\n    return ans\n```\n    \n    1. Create an empty frequency count array, `count`, of the same size as `nums`.\n2. Loop through the `requests` array to update our `count` array: increment the count value on the `start` index and decrement it on the `end + 1` index, if it is less than `n`.\n3. Starting from the second index of the `count` array, update each `count` element with the sum of the current element and the previous element, i.e., compute the prefix sum.\n4. Sort both the `nums` and `count` arrays in non-decreasing order.\n5. Calculate the summation of the product of pairwise elements of two sorted arrays, modulo 1e9+7, and store it in a variable called `ans`.\n6. Return the `ans` value.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxSumRangeQuery(nums, requests) {\n    const n = nums.length;\n    const count = new Array(n).fill(0);\n    const MOD = 1000000007;\n\n    for (const request of requests) {\n        count[request[0]]++;\n        if (request[1] + 1 < n) {\n            count[request[1] + 1]--;\n        }\n    }\n    for (let i = 1; i < n; i++) {\n        count[i] += count[i - 1];\n    }\n\n    nums.sort((a, b) => a - b);\n    count.sort((a, b) => a - b);\n\n    let ans = 0;\n    for (let i = 0; i < n; i++) {\n        ans = (ans + nums[i] * count[i]) % MOD;\n    }\n\n    return ans;\n}\n```\n    \n    1. Create an empty frequency count array, `count`, of the same size as `nums`.\n2. Loop through the `requests` array to update our `count` array: increment the count value on the `start` index and decrement it on the `end + 1` index, if it is less than `n`.\n3. Starting from the second index of the `count` array, update each `count` element with the sum of the current element and the previous element, i.e., compute the prefix sum.\n4. Sort both the `nums` and `count` arrays in non-decreasing order.\n5. Calculate the summation of the product of pairwise elements of two sorted arrays, modulo 1e9+7, and store it in a variable called `ans`.\n6. Return the `ans` value.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int maxSumRangeQuery(int[] nums, int[][] requests) {\n    int n = nums.length;\n    int[] count = new int[n];\n    for (int[] request : requests) {\n        count[request[0]]++;\n        if (request[1] + 1 < n)\n            count[request[1] + 1]--;\n    }\n    for (int i = 1; i < n; i++) {\n        count[i] += count[i - 1];\n    }\n    Arrays.sort(nums);\n    Arrays.sort(count);\n    \n    long ans = 0;\n    for (int i = 0; i < n; i++) {\n        ans = (ans + (long)nums[i] * count[i]) % 1000000007;\n    }\n    return (int) ans;\n}\n```\n    \n    1. Create an empty frequency count array, `count`, of the same size as `nums`.\n2. Loop through the `requests` array to update our `count` array: increment the count value on the `start` index and decrement it on the `end + 1` index, if it is less than `n`.\n3. Starting from the second index of the `count` array, update each `count` element with the sum of the current element and the previous element, i.e., compute the prefix sum.\n4. Sort both the `nums` and `count` arrays in non-decreasing order.\n5. Calculate the summation of the product of pairwise elements of two sorted arrays, modulo 1e9+7, and store it in a variable called `ans`.\n6. Return the `ans` value.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

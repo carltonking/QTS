@@ -1,0 +1,24 @@
+{
+  "id": 520,
+  "title": "Detect Capital",
+  "slug": "detect-capital",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "We define the usage of capitals in a word to be right when one of the following cases holds:\n\n*   All letters in this word are capitals, like \"USA \".\n*   All letters in this word are not capitals, like \"leetcode \".\n*   Only the first letter in this word is capital, like \"Google \".\n\nGiven a string word, return true if the usage of capitals in it is right.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef detectCapitalUse(word: str) -> bool:\n    numCapital = sum(1 for c in word if c.isupper())\n    return numCapital == 0 or numCapital == len(word) or (numCapital == 1 and word[0].isupper())\n```\n\n    \n    The algorithm keeps track of the count of capital letters in the word. It iterates over each character in the word, and if the character is uppercase, it increments the `numCapital` counter.\n\nAfter iterating through the word, the algorithm checks if one of the three conditions holds:\n1. There are no capital letters (`numCapital == 0`)\n2. All letters are capital (`numCapital == word.size()` in C++ / `word.length` in Java and JavaScript / `len(word)` in Python)\n3. Only the first letter is capital (`numCapital == 1` and the first letter is uppercase)\n\nIf any of these conditions hold, the function returns `true`, otherwise `false`.\n    ",
+    "javascript": "\n    ```javascript\nfunction detectCapitalUse(word) {\n    let numCapital = 0;\n    for (let c of word) {\n        if (c === c.toUpperCase()) numCapital++;\n    }\n    return numCapital === 0 || numCapital === word.length || (numCapital === 1 && word[0] === word[0].toUpperCase());\n}\n```\n\n    \n    The algorithm keeps track of the count of capital letters in the word. It iterates over each character in the word, and if the character is uppercase, it increments the `numCapital` counter.\n\nAfter iterating through the word, the algorithm checks if one of the three conditions holds:\n1. There are no capital letters (`numCapital == 0`)\n2. All letters are capital (`numCapital == word.size()` in C++ / `word.length` in Java and JavaScript / `len(word)` in Python)\n3. Only the first letter is capital (`numCapital == 1` and the first letter is uppercase)\n\nIf any of these conditions hold, the function returns `true`, otherwise `false`.\n    ",
+    "java": "\n    ```java\npublic boolean detectCapitalUse(String word) {\n    int numCapital = 0;\n    for (char c : word.toCharArray()) {\n        if (Character.isUpperCase(c)) numCapital++;\n    }\n    return numCapital == 0 || numCapital == word.length() || (numCapital == 1 && Character.isUpperCase(word.charAt(0)));\n}\n```\n\n    \n    The algorithm keeps track of the count of capital letters in the word. It iterates over each character in the word, and if the character is uppercase, it increments the `numCapital` counter.\n\nAfter iterating through the word, the algorithm checks if one of the three conditions holds:\n1. There are no capital letters (`numCapital == 0`)\n2. All letters are capital (`numCapital == word.size()` in C++ / `word.length` in Java and JavaScript / `len(word)` in Python)\n3. Only the first letter is capital (`numCapital == 1` and the first letter is uppercase)\n\nIf any of these conditions hold, the function returns `true`, otherwise `false`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

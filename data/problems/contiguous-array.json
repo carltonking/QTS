@@ -1,0 +1,24 @@
+{
+  "id": 525,
+  "title": "Contiguous Array",
+  "slug": "contiguous-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a binary array nums, return _the maximum length of a contiguous subarray with an equal number of_ 0 _and_ 1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findMaxLength(nums):\n    counts = {0: -1}\n    max_len = count = 0\n    for i, num in enumerate(nums):\n        count += 1 if num == 1 else -1\n        if count in counts:\n            max_len = max(max_len, i - counts[count])\n        else:\n            counts[count] = i\n    return max_len\n```\n    \n    This algorithm iterates through the given binary array and maintains a running count. It uses a hash table called \"counts\" to store the count-value pairs in which the count is the key and its index is the value. We initialize the hash table with a pair {0: -1} to handle the edge case when the first few elements form a valid subarray.\n\nFor each element in the array, we increment the count by 1 if the element is 1 or decrement by 1 if it is 0. The count then represents the difference between 1's and 0's in the array up to the current index.\n\nThen, we check if the current count is present in the hash table. If it is, that means we have encountered an equal number of 1's and 0's between the current index and the index stored under the current count in the hash table, so we compare this subarray's length with the previously stored max length of a valid subarray. Finally, we store the current count and index in the hash table if it isn't already present.\n    ",
+    "javascript": "\n    ```javascript\nfunction findMaxLength(nums) {\n    let counts = new Map();\n    counts.set(0, -1);\n    let max_len = 0, count = 0;\n    for (let i = 0; i < nums.length; i++) {\n        count += (nums[i] === 1) ? 1 : -1;\n        if (counts.has(count))\n            max_len = Math.max(max_len, i - counts.get(count));\n        else\n            counts.set(count, i);\n    }\n    return max_len;\n}\n```\n    \n    This algorithm iterates through the given binary array and maintains a running count. It uses a hash table called \"counts\" to store the count-value pairs in which the count is the key and its index is the value. We initialize the hash table with a pair {0: -1} to handle the edge case when the first few elements form a valid subarray.\n\nFor each element in the array, we increment the count by 1 if the element is 1 or decrement by 1 if it is 0. The count then represents the difference between 1's and 0's in the array up to the current index.\n\nThen, we check if the current count is present in the hash table. If it is, that means we have encountered an equal number of 1's and 0's between the current index and the index stored under the current count in the hash table, so we compare this subarray's length with the previously stored max length of a valid subarray. Finally, we store the current count and index in the hash table if it isn't already present.\n    ",
+    "java": "\n    ```java\npublic int findMaxLength(int[] nums) {\n    HashMap<Integer, Integer> counts = new HashMap<>();\n    counts.put(0, -1);\n    int max_len = 0, count = 0;\n    for (int i = 0; i < nums.length; i++) {\n        count += (nums[i] == 1) ? 1 : -1;\n        if (counts.containsKey(count))\n            max_len = Math.max(max_len, i - counts.get(count));\n        else\n            counts.put(count, i);\n    }\n    return max_len;\n}\n```\n\n    \n    This algorithm iterates through the given binary array and maintains a running count. It uses a hash table called \"counts\" to store the count-value pairs in which the count is the key and its index is the value. We initialize the hash table with a pair {0: -1} to handle the edge case when the first few elements form a valid subarray.\n\nFor each element in the array, we increment the count by 1 if the element is 1 or decrement by 1 if it is 0. The count then represents the difference between 1's and 0's in the array up to the current index.\n\nThen, we check if the current count is present in the hash table. If it is, that means we have encountered an equal number of 1's and 0's between the current index and the index stored under the current count in the hash table, so we compare this subarray's length with the previously stored max length of a valid subarray. Finally, we store the current count and index in the hash table if it isn't already present.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 28,
+  "title": "Find the Index of the First Occurrence in a String",
+  "slug": "find-the-index-of-the-first-occurrence-in-a-string",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef strStr(haystack: str, needle: str) -> int:\n    if not needle:\n        return 0\n    try:\n        index = haystack.index(needle)\n        return index\n    except ValueError:\n        return -1\n```\n    \n    The algorithm searches for the first occurrence of the `needle` string in the `haystack` string. First, it checks if the `needle` is empty, and if it is, it returns 0. Otherwise, it uses the built-in `find`, `indexOf` or `index` functions provided by the corresponding language's string data type. These functions return the index of the first occurrence of the specified substring. If the substring is not found, they return specific values like string::npos for C++, -1 for Java, and raise a ValueError exception for Python. Depending on the returned value, the algorithm either returns the index of the first occurrence or -1, indicating that `needle` is not part of `haystack`.\n    ",
+    "javascript": "\n    ```javascript\nfunction strStr(haystack, needle) {\n    if (needle === '') return 0;\n\n    let index = haystack.indexOf(needle);\n    return index;\n}\n```\n    \n    The algorithm searches for the first occurrence of the `needle` string in the `haystack` string. First, it checks if the `needle` is empty, and if it is, it returns 0. Otherwise, it uses the built-in `find`, `indexOf` or `index` functions provided by the corresponding language's string data type. These functions return the index of the first occurrence of the specified substring. If the substring is not found, they return specific values like string::npos for C++, -1 for Java, and raise a ValueError exception for Python. Depending on the returned value, the algorithm either returns the index of the first occurrence or -1, indicating that `needle` is not part of `haystack`.\n    ",
+    "java": "\n    ```java\npublic int strStr(String haystack, String needle) {\n    if (needle.isEmpty()) return 0;\n    \n    int index = haystack.indexOf(needle);\n    return index;\n}\n```\n    \n    The algorithm searches for the first occurrence of the `needle` string in the `haystack` string. First, it checks if the `needle` is empty, and if it is, it returns 0. Otherwise, it uses the built-in `find`, `indexOf` or `index` functions provided by the corresponding language's string data type. These functions return the index of the first occurrence of the specified substring. If the substring is not found, they return specific values like string::npos for C++, -1 for Java, and raise a ValueError exception for Python. Depending on the returned value, the algorithm either returns the index of the first occurrence or -1, indicating that `needle` is not part of `haystack`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

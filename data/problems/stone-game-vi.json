@@ -1,0 +1,24 @@
+{
+  "id": 1686,
+  "title": "Stone Game VI",
+  "slug": "stone-game-vi",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Alice and Bob take turns playing a game, with Alice starting first.\n\nThere are n stones in a pile. On each player's turn, they can remove a stone from the pile and receive points based on the stone's value. Alice and Bob may value the stones differently.\n\nYou are given two integer arrays of length n, aliceValues and bobValues. Each aliceValues[i] and bobValues[i] represents how Alice and Bob, respectively, value the ith stone.\n\nThe winner is the person with the most points after all the stones are chosen. If both players have the same amount of points, the game results in a draw. Both players will play optimally. Both players know the other's values.\n\nDetermine the result of the game, and:\n\n*   If Alice wins, return 1.\n*   If Bob wins, return -1.\n*   If the game results in a draw, return 0.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef stoneGameVI(aliceValues, bobValues):\n    n = len(aliceValues)\n    diff = sorted([(aliceValues[i] + bobValues[i], i) for i in range(n)], reverse=True)\n\n    aliceSum, bobSum = 0, 0\n    for i in range(n):\n        if i % 2 == 0:\n            aliceSum += aliceValues[diff[i][1]]\n        else:\n            bobSum += bobValues[diff[i][1]]\n            \n    return 0 if aliceSum == bobSum else (1 if aliceSum > bobSum else -1)\n```\n\n    \n    Instead of looking at the stones' values separately, we can look at them by their total value (`total = aliceValue + bobValue`). We sort the stones in decreasing order of their total value. Essentially, we want both Alice and Bob to take higher value stones.\n\nThen, we iterate over the sorted stones, giving each stone i to the current player (Alice gets the stones from even indices, Bob gets the stones from odd indices). After that, we compare the sum of values obtained by both players, and return the appropriate result value (win, lose, or draw) as per the problem statement.\n    ",
+    "javascript": "\n    ```javascript\nfunction stoneGameVI(aliceValues, bobValues) {\n    const n = aliceValues.length;\n    const diff = aliceValues.map((val, i) => [val + bobValues[i], i]).sort((a, b) => b[0] - a[0]);\n\n    let aliceSum = 0, bobSum = 0;\n    for (let i = 0; i < n; i++) {\n        if (i % 2 === 0)\n            aliceSum += aliceValues[diff[i][1]];\n        else\n            bobSum += bobValues[diff[i][1]];\n    }\n\n    return aliceSum === bobSum ? 0 : (aliceSum > bobSum ? 1 : -1);\n}\n```\n\n    \n    Instead of looking at the stones' values separately, we can look at them by their total value (`total = aliceValue + bobValue`). We sort the stones in decreasing order of their total value. Essentially, we want both Alice and Bob to take higher value stones.\n\nThen, we iterate over the sorted stones, giving each stone i to the current player (Alice gets the stones from even indices, Bob gets the stones from odd indices). After that, we compare the sum of values obtained by both players, and return the appropriate result value (win, lose, or draw) as per the problem statement.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\nimport java.util.Comparator;\n\npublic int stoneGameVI(int[] aliceValues, int[] bobValues) {\n    int n = aliceValues.length;\n    Integer[] indices = new Integer[n];\n    for (int i = 0; i < n; i++) {\n        indices[i] = i;\n    }\n    \n    Arrays.sort(indices, (a, b) -> (bobValues[a] + aliceValues[a]) - (bobValues[b] + aliceValues[b]));\n    \n    int aliceSum = 0, bobSum = 0;\n    for (int i = n - 1; i >= 0; i--) {\n        if ((n - 1 - i) % 2 == 0)\n            aliceSum += aliceValues[indices[i]];\n        else\n            bobSum += bobValues[indices[i]];\n    }\n\n    return Integer.compare(aliceSum, bobSum);\n}\n```\n\n    \n    Instead of looking at the stones' values separately, we can look at them by their total value (`total = aliceValue + bobValue`). We sort the stones in decreasing order of their total value. Essentially, we want both Alice and Bob to take higher value stones.\n\nThen, we iterate over the sorted stones, giving each stone i to the current player (Alice gets the stones from even indices, Bob gets the stones from odd indices). After that, we compare the sum of values obtained by both players, and return the appropriate result value (win, lose, or draw) as per the problem statement.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

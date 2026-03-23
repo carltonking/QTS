@@ -1,0 +1,24 @@
+{
+  "id": 2257,
+  "title": "Count Unguarded Cells in the Grid",
+  "slug": "count-unguarded-cells-in-the-grid",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two integers m and n representing a 0-indexed m x n grid. You are also given two 2D integer arrays guards and walls where guards[i] = [rowi, coli] and walls[j] = [rowj, colj] represent the positions of the ith guard and jth wall respectively.\n\nA guard can see every cell in the four cardinal directions (north, east, south, or west) starting from their position unless obstructed by a wall or another guard. A cell is guarded if there is at least one guard that can see it.\n\nReturn _the number of unoccupied cells that are not guarded._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef earliest_blooming_day(plant_time, grow_time):\n    bloom_time = [plant_time[i] + grow_time[i] for i in range(len(plant_time))]\n    bloom_time.sort()\n    earliest_day = 0\n    for i in bloom_time:\n        earliest_day = max(earliest_day, i)\n        earliest_day += 1\n    return earliest_day\n```\n    \n    The algorithm computes the bloom time of each flower by adding its respective plant and grow times. It stores these bloom times in an array called `bloomTime`.\n\nNext, it sorts the `bloomTime` array in ascending order.\n\nThe algorithm then goes through the sorted `bloomTime` array and finds the maximum value between the current `earliestDay` and `bloomTime[i]`. The variable `earliestDay` is incremented at each step to account for planting a new seed each day. Finally, it returns the earliest possible day where all seeds are blooming.\n\n\n    ",
+    "javascript": "\n    ```javascript\nfunction earliestBloomingDay(plantTime, growTime) {\n    let bloomTime = plantTime.map((t, i) => t + growTime[i]);\n    bloomTime.sort((a, b) => a - b);\n    let earliestDay = 0;\n    for (let i = 0; i < bloomTime.length; i++) {\n        earliestDay = Math.max(earliestDay, bloomTime[i]);\n        earliestDay++;\n    }\n    return earliestDay;\n}\n```\n    \n    The algorithm computes the bloom time of each flower by adding its respective plant and grow times. It stores these bloom times in an array called `bloomTime`.\n\nNext, it sorts the `bloomTime` array in ascending order.\n\nThe algorithm then goes through the sorted `bloomTime` array and finds the maximum value between the current `earliestDay` and `bloomTime[i]`. The variable `earliestDay` is incremented at each step to account for planting a new seed each day. Finally, it returns the earliest possible day where all seeds are blooming.\n\n\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic int earliestBloomingDay(int[] plantTime, int[] growTime) {\n    Integer[] bloomTime = new Integer[plantTime.length];\n    for (int i = 0; i < plantTime.length; i++) {\n        bloomTime[i] = plantTime[i] + growTime[i];\n    }\n    Arrays.sort(bloomTime);\n    int earliestDay = 0;\n    for (int i = 0; i < bloomTime.length; i++) {\n        earliestDay = Math.max(earliestDay, bloomTime[i]);\n        earliestDay++;\n    }\n    return earliestDay;\n}\n```\n    \n    The algorithm computes the bloom time of each flower by adding its respective plant and grow times. It stores these bloom times in an array called `bloomTime`.\n\nNext, it sorts the `bloomTime` array in ascending order.\n\nThe algorithm then goes through the sorted `bloomTime` array and finds the maximum value between the current `earliestDay` and `bloomTime[i]`. The variable `earliestDay` is incremented at each step to account for planting a new seed each day. Finally, it returns the earliest possible day where all seeds are blooming.\n\n\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

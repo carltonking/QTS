@@ -1,0 +1,24 @@
+{
+  "id": 1254,
+  "title": "Number of Closed Islands",
+  "slug": "number-of-closed-islands",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a 2D grid consists of 0s (land) and 1s (water). An _island_ is a maximal 4-directionally connected group of 0s and a _closed island_ is an island totally (all left, top, right, bottom) surrounded by 1s.\n\nReturn the number of _closed islands_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef closedIsland(grid):\n    def dfs(grid, i, j):\n        if i < 0 or j < 0 or i >= len(grid) or j >= len(grid[0]):\n            return False\n\n        if grid[i][j] == 1:\n            return True\n\n        grid[i][j] = 1\n\n        up = dfs(grid, i - 1, j)\n        down = dfs(grid, i + 1, j)\n        left = dfs(grid, i, j - 1)\n        right = dfs(grid, i, j + 1)\n\n        return up and down and left and right\n\n    count = 0\n    for i in range(len(grid)):\n        for j in range(len(grid[0])):\n            if grid[i][j] == 0 and dfs(grid, i, j):\n                count += 1\n\n    return count\n```\n\n    \n    The algorithm uses Depth-first Search (DFS) to traverse islands of 0s (land). If the DFS function returns false, then the current cell is on the edge and it is not a closed island. If the DFS function returns true, then the current cell is surrounded by 1s (water), and the current island is a closed island.\n\nFor each cell that contains a 0 (land), we call the DFS function to explore the island. If the DFS function returns true for all directions (up, down, left, and right), then it is a closed island. We increment the count for each closed island found.\n\nFinally, we return the total count of closed islands.\n    ",
+    "javascript": "\n    ```javascript\nfunction closedIsland(grid) {\n    function dfs(grid, i, j) {\n        if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length) {\n            return false;\n        }\n\n        if (grid[i][j] == 1) {\n            return true;\n        }\n\n        grid[i][j] = 1;\n\n        const up = dfs(grid, i - 1, j);\n        const down = dfs(grid, i + 1, j);\n        const left = dfs(grid, i, j - 1);\n        const right = dfs(grid, i, j + 1);\n\n        return up && down && left && right;\n    }\n\n    let count = 0;\n    for (let i = 0; i < grid.length; i++) {\n        for (let j = 0; j < grid[0].length; j++) {\n            if (grid[i][j] == 0 && dfs(grid, i, j)) {\n                count++;\n            }\n        }\n    }\n\n    return count;\n}\n```\n\n    \n    The algorithm uses Depth-first Search (DFS) to traverse islands of 0s (land). If the DFS function returns false, then the current cell is on the edge and it is not a closed island. If the DFS function returns true, then the current cell is surrounded by 1s (water), and the current island is a closed island.\n\nFor each cell that contains a 0 (land), we call the DFS function to explore the island. If the DFS function returns true for all directions (up, down, left, and right), then it is a closed island. We increment the count for each closed island found.\n\nFinally, we return the total count of closed islands.\n    ",
+    "java": "\n    ```java\npublic int closedIsland(int[][] grid) {\n    int count = 0;\n    for (int i = 0; i < grid.length; i++) {\n        for (int j = 0; j < grid[0].length; j++) {\n            if (grid[i][j] == 0 && dfs(grid, i, j)) {\n                count++;\n            }\n        }\n    }\n    return count;\n}\n\nprivate boolean dfs(int[][] grid, int i, int j) {\n    if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length) {\n        return false;\n    }\n\n    if (grid[i][j] == 1) {\n        return true;\n    }\n\n    grid[i][j] = 1;\n\n    boolean up = dfs(grid, i - 1, j);\n    boolean down = dfs(grid, i + 1, j);\n    boolean left = dfs(grid, i, j - 1);\n    boolean right = dfs(grid, i, j + 1);\n\n    return up && down && left && right;\n}\n```\n\n    \n    The algorithm uses Depth-first Search (DFS) to traverse islands of 0s (land). If the DFS function returns false, then the current cell is on the edge and it is not a closed island. If the DFS function returns true, then the current cell is surrounded by 1s (water), and the current island is a closed island.\n\nFor each cell that contains a 0 (land), we call the DFS function to explore the island. If the DFS function returns true for all directions (up, down, left, and right), then it is a closed island. We increment the count for each closed island found.\n\nFinally, we return the total count of closed islands.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

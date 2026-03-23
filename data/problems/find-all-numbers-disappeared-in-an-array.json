@@ -1,0 +1,24 @@
+{
+  "id": 448,
+  "title": "Find All Numbers Disappeared in an Array",
+  "slug": "find-all-numbers-disappeared-in-an-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array nums of n integers where nums[i] is in the range [1, n], return _an array of all the integers in the range_ [1, n] _that do not appear in_ nums.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_disappeared_numbers(nums):\n    result = []\n    \n    for num in nums:\n        index = abs(num) - 1\n        nums[index] = -abs(nums[index])\n\n    for i, num in enumerate(nums):\n        if num > 0:\n            result.append(i + 1)\n\n    return result\n```\n    \n    The algorithm works as follows:\n\n1. Iterate through the input array.\n2. For each value `nums[i]`, find its index by subtracting 1 (`index = abs(nums[i]) - 1`). This is because the integers in the range are 1 to n, and indices are 0-indexed.\n3. Negate the value at this index (`nums[index] = -abs(nums[index])`). This marks the value as \"found\".\n4. Iterate through the modified array.\n5. If a value is positive, it means the integer corresponding to that index hasn't been found. Add it to the result array.\n\nThis algorithm has a time complexity of O(n) and doesn't use any additional space other than the result array.\n    ",
+    "javascript": "\n    ```javascript\nfunction findDisappearedNumbers(nums) {\n    const result = [];\n\n    for (let i = 0; i < nums.length; i++) {\n        const index = Math.abs(nums[i]) - 1;\n        nums[index] = -Math.abs(nums[index]);\n    }\n\n    for (let i = 0; i < nums.length; i++) {\n        if (nums[i] > 0) {\n            result.push(i + 1);\n        }\n    }\n\n    return result;\n}\n```\n    \n    The algorithm works as follows:\n\n1. Iterate through the input array.\n2. For each value `nums[i]`, find its index by subtracting 1 (`index = abs(nums[i]) - 1`). This is because the integers in the range are 1 to n, and indices are 0-indexed.\n3. Negate the value at this index (`nums[index] = -abs(nums[index])`). This marks the value as \"found\".\n4. Iterate through the modified array.\n5. If a value is positive, it means the integer corresponding to that index hasn't been found. Add it to the result array.\n\nThis algorithm has a time complexity of O(n) and doesn't use any additional space other than the result array.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<Integer> findDisappearedNumbers(int[] nums) {\n    List<Integer> result = new ArrayList<>();\n    \n    for (int i = 0; i < nums.length; i++) {\n        int index = Math.abs(nums[i]) - 1;\n        nums[index] = -Math.abs(nums[index]);\n    }\n\n    for (int i = 0; i < nums.length; i++) {\n        if (nums[i] > 0) {\n            result.add(i + 1);\n        }\n    }\n\n    return result;\n}\n```\n    \n    The algorithm works as follows:\n\n1. Iterate through the input array.\n2. For each value `nums[i]`, find its index by subtracting 1 (`index = abs(nums[i]) - 1`). This is because the integers in the range are 1 to n, and indices are 0-indexed.\n3. Negate the value at this index (`nums[index] = -abs(nums[index])`). This marks the value as \"found\".\n4. Iterate through the modified array.\n5. If a value is positive, it means the integer corresponding to that index hasn't been found. Add it to the result array.\n\nThis algorithm has a time complexity of O(n) and doesn't use any additional space other than the result array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

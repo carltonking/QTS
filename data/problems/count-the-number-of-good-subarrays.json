@@ -1,0 +1,24 @@
+{
+  "id": 2537,
+  "title": "Count the Number of Good Subarrays",
+  "slug": "count-the-number-of-good-subarrays",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums and an integer k, return _the number of good subarrays of_ nums.\n\nA subarray arr is good if it there are at least k pairs of indices (i, j) such that i < j and arr[i] == arr[j].\n\nA subarray is a contiguous non-empty sequence of elements within an array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef goodSubarrays(nums, k):\n    count = {0: 1}\n    result = 0\n    prefix_sum = 0\n\n    for num in nums:\n        prefix_sum += num - 1\n        if prefix_sum - k in count:\n            result += count[prefix_sum - k]\n        count[prefix_sum] = count.get(prefix_sum, 0) + 1\n\n    return result\n```\n    \n    The algorithm uses a hash map to store counts of prefix sums. The prefix sum is incremented by `num - 1` for each element in the input array. Then, the algorithm checks if `(prefix_sum - k)` exists as a key in the hash map.\n\nIf it exists, the value of the hash map at that key is added to the result, because it represents the number of good subarrays ending at that element. After this, the hash map is updated with the current prefix sum count.\n\nThis process is repeated for every element in the array, and the final result is returned. This algorithm has a time complexity of O(n) and space complexity of O(n), where n is the length of the input array.\n    ",
+    "javascript": "\n    ```javascript\nfunction goodSubarrays(nums, k) {\n    const count = new Map();\n    let result = 0, prefixSum = 0;\n\n    count.set(0, 1);\n    for (const num of nums) {\n        prefixSum += num - 1;\n        result += count.get(prefixSum - k) || 0;\n        count.set(prefixSum, (count.get(prefixSum) || 0) + 1);\n    }\n\n    return result;\n}\n```\n    \n    The algorithm uses a hash map to store counts of prefix sums. The prefix sum is incremented by `num - 1` for each element in the input array. Then, the algorithm checks if `(prefix_sum - k)` exists as a key in the hash map.\n\nIf it exists, the value of the hash map at that key is added to the result, because it represents the number of good subarrays ending at that element. After this, the hash map is updated with the current prefix sum count.\n\nThis process is repeated for every element in the array, and the final result is returned. This algorithm has a time complexity of O(n) and space complexity of O(n), where n is the length of the input array.\n    ",
+    "java": "\n    ```java\npublic int goodSubarrays(int[] nums, int k) {\n    Map<Integer, Integer> count = new HashMap<>();\n    int result = 0, prefixSum = 0;\n    \n    count.put(0, 1);\n    for (int num : nums) {\n        prefixSum += num - 1;\n        result += count.getOrDefault(prefixSum - k, 0);\n        count.put(prefixSum, count.getOrDefault(prefixSum, 0) + 1);\n    }\n    \n    return result;\n}\n```\n    \n    The algorithm uses a hash map to store counts of prefix sums. The prefix sum is incremented by `num - 1` for each element in the input array. Then, the algorithm checks if `(prefix_sum - k)` exists as a key in the hash map.\n\nIf it exists, the value of the hash map at that key is added to the result, because it represents the number of good subarrays ending at that element. After this, the hash map is updated with the current prefix sum count.\n\nThis process is repeated for every element in the array, and the final result is returned. This algorithm has a time complexity of O(n) and space complexity of O(n), where n is the length of the input array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

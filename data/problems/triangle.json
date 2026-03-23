@@ -1,0 +1,24 @@
+{
+  "id": 120,
+  "title": "Triangle",
+  "slug": "triangle",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a triangle array, return _the minimum path sum from top to bottom_.\n\nFor each step, you may move to an adjacent number of the row below. More formally, if you are on index i on the current row, you may move to either index i or index i + 1 on the next row.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minimumTotal(triangle):\n    for row in range(len(triangle) - 2, -1, -1):\n        for col in range(len(triangle[row])):\n            triangle[row][col] += min(triangle[row + 1][col], triangle[row + 1][col + 1])\n    return triangle[0][0]\n```\n    \n    The algorithm starts from the second last row of the triangle, moving bottom-up. For each number in the current row, we add the minimum adjacent number in the row below it. This is done for all numbers in the current row. Then, we move to the row above and repeat the process. This way, we are calculating the minimum path sum for each number in the triangle until we reach the top. Finally, the minimum path sum from top to bottom can be found in the top-most number (triangle[0][0]) after these operations are complete.\n    ",
+    "javascript": "\n    ```javascript\nfunction minimumTotal(triangle) {\n    for (let row = triangle.length - 2; row >= 0; row--) {\n        for (let col = 0; col < triangle[row].length; col++) {\n            triangle[row][col] += Math.min(triangle[row + 1][col], triangle[row + 1][col + 1]);\n        }\n    }\n    return triangle[0][0];\n}\n```\n    \n    The algorithm starts from the second last row of the triangle, moving bottom-up. For each number in the current row, we add the minimum adjacent number in the row below it. This is done for all numbers in the current row. Then, we move to the row above and repeat the process. This way, we are calculating the minimum path sum for each number in the triangle until we reach the top. Finally, the minimum path sum from top to bottom can be found in the top-most number (triangle[0][0]) after these operations are complete.\n    ",
+    "java": "\n    ```java\npublic int minimumTotal(List<List<Integer>> triangle) {\n    for (int row = triangle.size() - 2; row >= 0; row--) {\n        for (int col = 0; col < triangle.get(row).size(); col++) {\n            int minSum = Math.min(triangle.get(row + 1).get(col), triangle.get(row + 1).get(col + 1));\n            triangle.get(row).set(col, triangle.get(row).get(col) + minSum);\n        }\n    }\n    return triangle.get(0).get(0);\n}\n```\n    \n    The algorithm starts from the second last row of the triangle, moving bottom-up. For each number in the current row, we add the minimum adjacent number in the row below it. This is done for all numbers in the current row. Then, we move to the row above and repeat the process. This way, we are calculating the minimum path sum for each number in the triangle until we reach the top. Finally, the minimum path sum from top to bottom can be found in the top-most number (triangle[0][0]) after these operations are complete.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

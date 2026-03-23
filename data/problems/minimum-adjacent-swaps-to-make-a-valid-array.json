@@ -1,0 +1,24 @@
+{
+  "id": 2340,
+  "title": "Minimum Adjacent Swaps to Make a Valid Array",
+  "slug": "minimum-adjacent-swaps-to-make-a-valid-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums.\n\nSwaps of adjacent elements are able to be performed on nums.\n\nA valid array meets the following conditions:\n\n*   The largest element (any of the largest elements if there are multiple) is at the rightmost position in the array.\n*   The smallest element (any of the smallest elements if there are multiple) is at the leftmost position in the array.\n\nReturn _the minimum swaps required to make_ nums _a valid array_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minSwaps(nums):\n    n = len(nums)\n    minPos = 0\n    maxPos = 0\n    swaps = 0\n\n    for i in range(1, n):\n        if nums[i] <= nums[minPos]:\n            minPos = i\n        if nums[i] >= nums[maxPos]:\n            maxPos = i\n\n    swaps = minPos + (n - 1 - maxPos)\n    if minPos < maxPos:\n        swaps -= 1\n\n    return swaps\n```\n    \n    The algorithm first initializes the minimum and maximum element positions (`minPos` and `maxPos`) as 0.\nThen, it iterates through each element of the array, updating the positions if it's smaller or equal to the current minimum or larger or equal to the current maximum.\n\nAfter calculating the positions of the minimum and maximum elements, the algorithm calculates the number of swaps needed to place the minimum element at the leftmost position and the maximum element at the rightmost position, which is given by `minPos + (n - 1 - maxPos)`. At last, if `minPos` is smaller than `maxPos`, we decrement the swaps counter by 1 because we need one less swap to move both minimum and maximum elements to their designated positions.\n\nLastly, the algorithm returns the calculated `swaps` count.\n    ",
+    "javascript": "\n    ```javascript\nfunction minSwaps(nums) {\n    let n = nums.length;\n    let minPos = 0, maxPos = 0, swaps = 0;\n\n    for (let i = 1; i < n; i++) {\n        if (nums[i] <= nums[minPos])\n            minPos = i;\n        if (nums[i] >= nums[maxPos])\n            maxPos = i;\n    }\n\n    swaps = minPos + (n - 1 - maxPos);\n    if (minPos < maxPos) swaps--;\n\n    return swaps;\n}\n```\n    \n    The algorithm first initializes the minimum and maximum element positions (`minPos` and `maxPos`) as 0.\nThen, it iterates through each element of the array, updating the positions if it's smaller or equal to the current minimum or larger or equal to the current maximum.\n\nAfter calculating the positions of the minimum and maximum elements, the algorithm calculates the number of swaps needed to place the minimum element at the leftmost position and the maximum element at the rightmost position, which is given by `minPos + (n - 1 - maxPos)`. At last, if `minPos` is smaller than `maxPos`, we decrement the swaps counter by 1 because we need one less swap to move both minimum and maximum elements to their designated positions.\n\nLastly, the algorithm returns the calculated `swaps` count.\n    ",
+    "java": "\n    ```java\npublic int minSwaps(int[] nums) {\n    int n = nums.length;\n    int minPos = 0, maxPos = 0, swaps = 0;\n\n    for (int i = 1; i < n; i++) {\n        if (nums[i] <= nums[minPos])\n            minPos = i;\n        if (nums[i] >= nums[maxPos])\n            maxPos = i;\n    }\n\n    swaps = minPos + (n - 1 - maxPos);\n    if (minPos < maxPos) swaps--;\n\n    return swaps;\n}\n```\n    \n    The algorithm first initializes the minimum and maximum element positions (`minPos` and `maxPos`) as 0.\nThen, it iterates through each element of the array, updating the positions if it's smaller or equal to the current minimum or larger or equal to the current maximum.\n\nAfter calculating the positions of the minimum and maximum elements, the algorithm calculates the number of swaps needed to place the minimum element at the leftmost position and the maximum element at the rightmost position, which is given by `minPos + (n - 1 - maxPos)`. At last, if `minPos` is smaller than `maxPos`, we decrement the swaps counter by 1 because we need one less swap to move both minimum and maximum elements to their designated positions.\n\nLastly, the algorithm returns the calculated `swaps` count.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

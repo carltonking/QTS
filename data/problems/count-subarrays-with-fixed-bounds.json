@@ -1,0 +1,24 @@
+{
+  "id": 2444,
+  "title": "Count Subarrays With Fixed Bounds",
+  "slug": "count-subarrays-with-fixed-bounds",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an integer array nums and two integers minK and maxK.\n\nA fixed-bound subarray of nums is a subarray that satisfies the following conditions:\n\n*   The minimum value in the subarray is equal to minK.\n*   The maximum value in the subarray is equal to maxK.\n\nReturn _the number of fixed-bound subarrays_.\n\nA subarray is a contiguous part of an array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef fixed_bound_subarrays(nums, minK, maxK):\n    count, min_index, max_index = 0, -1, -1\n    for i, num in enumerate(nums):\n        if num==minK:\n            min_index=i\n        elif num==maxK:\n            max_index=i\n        \n        count += min(min_index, max_index) + 1\n    return count\n```\n    \n    We initialize counter, min_index, and max_index variables. Iterate through the given nums array. Inside the loop, we check if the current element of nums equals minK or maxK, and we update min_index or max_index accordingly.\n\nAfter updating min_index and/or max_index, we calculate the minimum of min_index and max_index, and add it to the counter. We also add 1 to this result, since we need to account for the fixed-bound subarray itself.\n\nAt the end of the loop, return the counter representing the number of fixed-bound subarrays.\n    ",
+    "javascript": "\n    ```javascript\nfunction fixedBoundSubarrays(nums, minK, maxK) {\n    let count = 0, min_index = -1, max_index = -1;\n    for (let i = 0; i < nums.length; i++) {\n        if(nums[i]===minK) min_index=i;\n        else if(nums[i]===maxK) max_index=i;\n        count += Math.min(min_index, max_index)+1;\n    }\n    return count;\n}\n```\n    \n    We initialize counter, min_index, and max_index variables. Iterate through the given nums array. Inside the loop, we check if the current element of nums equals minK or maxK, and we update min_index or max_index accordingly.\n\nAfter updating min_index and/or max_index, we calculate the minimum of min_index and max_index, and add it to the counter. We also add 1 to this result, since we need to account for the fixed-bound subarray itself.\n\nAt the end of the loop, return the counter representing the number of fixed-bound subarrays.\n    ",
+    "java": "\n    ```java\npublic int fixedBoundSubarrays(int[] nums, int minK, int maxK) {\n    int count = 0, min_index = -1, max_index = -1;\n    for (int i = 0; i < nums.length; i++) {\n        if(nums[i]==minK) min_index=i;\n        else if(nums[i]==maxK) max_index=i;\n        count += Math.min(min_index, max_index)+1;\n    }\n    return count;\n}\n```\n    \n    We initialize counter, min_index, and max_index variables. Iterate through the given nums array. Inside the loop, we check if the current element of nums equals minK or maxK, and we update min_index or max_index accordingly.\n\nAfter updating min_index and/or max_index, we calculate the minimum of min_index and max_index, and add it to the counter. We also add 1 to this result, since we need to account for the fixed-bound subarray itself.\n\nAt the end of the loop, return the counter representing the number of fixed-bound subarrays.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 581,
+  "title": "Shortest Unsorted Continuous Subarray",
+  "slug": "shortest-unsorted-continuous-subarray",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums, you need to find one continuous subarray that if you only sort this subarray in ascending order, then the whole array will be sorted in ascending order.\n\nReturn _the shortest such subarray and output its length_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findUnsortedSubarray(nums):\n    sorted_nums = sorted(nums)\n    start, end = 0, len(nums) - 1\n    while start < len(nums) and nums[start] == sorted_nums[start]:\n        start += 1\n    while end > start and nums[end] == sorted_nums[end]:\n        end -= 1\n    return end - start + 1\n```\n    \n    1. Create a copy of the input array and sort it in ascending order.\n2. Initialize two variables, `start` and `end`, to check the boundaries of the unsorted subarray.\n3. Loop through the array, comparing the sorted copy and the original array. When we encounter a mismatch at some index, we break the loop and store the index in `start`. This `start` index is the beginning of the unsorted subarray.\n4. Similarly, we start from the end of the array and find the first mismatch. We store this index in `end`. This `end` index is the boundary of the unsorted subarray.\n5. Calculate the length of the unsorted subarray as `end - start + 1`.\n    ",
+    "javascript": "\n    ```javascript\nfunction findUnsortedSubarray(nums) {\n    const sortedNums = [...nums].sort((a, b) => a - b);\n    let start = 0, end = nums.length - 1;\n    while (start < nums.length && nums[start] === sortedNums[start]) start++;\n    while (end > start && nums[end] === sortedNums[end]) end--;\n    return end - start + 1;\n}\n```\n    \n    1. Create a copy of the input array and sort it in ascending order.\n2. Initialize two variables, `start` and `end`, to check the boundaries of the unsorted subarray.\n3. Loop through the array, comparing the sorted copy and the original array. When we encounter a mismatch at some index, we break the loop and store the index in `start`. This `start` index is the beginning of the unsorted subarray.\n4. Similarly, we start from the end of the array and find the first mismatch. We store this index in `end`. This `end` index is the boundary of the unsorted subarray.\n5. Calculate the length of the unsorted subarray as `end - start + 1`.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int findUnsortedSubarray(int[] nums) {\n    int[] sortedNums = nums.clone();\n    Arrays.sort(sortedNums);\n    int start = 0, end = nums.length - 1;\n    while (start < nums.length && nums[start] == sortedNums[start]) start++;\n    while (end > start && nums[end] == sortedNums[end]) end--;\n    return end - start + 1;\n}\n```\n    \n    1. Create a copy of the input array and sort it in ascending order.\n2. Initialize two variables, `start` and `end`, to check the boundaries of the unsorted subarray.\n3. Loop through the array, comparing the sorted copy and the original array. When we encounter a mismatch at some index, we break the loop and store the index in `start`. This `start` index is the beginning of the unsorted subarray.\n4. Similarly, we start from the end of the array and find the first mismatch. We store this index in `end`. This `end` index is the boundary of the unsorted subarray.\n5. Calculate the length of the unsorted subarray as `end - start + 1`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

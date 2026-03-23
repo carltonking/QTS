@@ -1,0 +1,24 @@
+{
+  "id": 413,
+  "title": "Arithmetic Slices",
+  "slug": "arithmetic-slices",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "An integer array is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same.\n\n*   For example, [1,3,5,7,9], [7,7,7,7], and [3,-1,-5,-9] are arithmetic sequences.\n\nGiven an integer array nums, return _the number of arithmetic subarrays of_ nums.\n\nA subarray is a contiguous subsequence of the array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef numberOfArithmeticSlices(nums):\n    n = len(nums)\n    count, cur = 0, 0\n    for i in range(2, n):\n        if nums[i] - nums[i - 1] == nums[i - 1] - nums[i - 2]:\n            cur += 1\n            count += cur\n        else:\n            cur = 0\n    return count\n```\n    \n    The algorithm iterates through the given integer array `nums`. Starting from the third element (index 2), for each element, it checks if the difference between the current and the previous element is the same as the difference between the previous and the element before the previous one. If the differences are the same, that means we have an arithmetic subarray, so we increment the `cur` value to keep track of the consecutive arithmetic subarrays, and then add `cur` to the `count` which tracks the total number of arithmetic subarrays. If the differences are not the same, we reset `cur` to 0. Finally, the `count` is returned as the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction numberOfArithmeticSlices(nums) {\n    let n = nums.length, count = 0, cur = 0;\n    for (let i = 2; i < n; ++i) {\n        if (nums[i] - nums[i - 1] === nums[i - 1] - nums[i - 2]) {\n            cur++;\n            count += cur;\n        } else {\n            cur = 0;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm iterates through the given integer array `nums`. Starting from the third element (index 2), for each element, it checks if the difference between the current and the previous element is the same as the difference between the previous and the element before the previous one. If the differences are the same, that means we have an arithmetic subarray, so we increment the `cur` value to keep track of the consecutive arithmetic subarrays, and then add `cur` to the `count` which tracks the total number of arithmetic subarrays. If the differences are not the same, we reset `cur` to 0. Finally, the `count` is returned as the result.\n    ",
+    "java": "\n    ```java\npublic int numberOfArithmeticSlices(int[] nums) {\n    int n = nums.length, count = 0, cur = 0;\n    for (int i = 2; i < n; ++i) {\n        if (nums[i] - nums[i - 1] == nums[i - 1] - nums[i - 2]) {\n            cur++;\n            count += cur;\n        } else {\n            cur = 0;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm iterates through the given integer array `nums`. Starting from the third element (index 2), for each element, it checks if the difference between the current and the previous element is the same as the difference between the previous and the element before the previous one. If the differences are the same, that means we have an arithmetic subarray, so we increment the `cur` value to keep track of the consecutive arithmetic subarrays, and then add `cur` to the `count` which tracks the total number of arithmetic subarrays. If the differences are not the same, we reset `cur` to 0. Finally, the `count` is returned as the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

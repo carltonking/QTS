@@ -1,0 +1,24 @@
+{
+  "id": 837,
+  "title": "New 21 Game",
+  "slug": "new-21-game",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Alice plays the following game, loosely based on the card game \"21 \".\n\nAlice starts with 0 points and draws numbers while she has less than k points. During each draw, she gains an integer number of points randomly from the range [1, maxPts], where maxPts is an integer. Each draw is independent and the outcomes have equal probabilities.\n\nAlice stops drawing numbers when she gets k or more points.\n\nReturn the probability that Alice has n or fewer points.\n\nAnswers within 10-5 of the actual answer are considered accepted.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef mostCommonWord(paragraph: str, banned: List[str]):\n    word_count = {}\n    banned_set = {ban.lower() for ban in banned}\n\n    for word in paragraph.lower().split():\n        cleaned_word = ''.join(c for c in word if c.isalpha())\n        if cleaned_word not in banned_set:\n            word_count[cleaned_word] = word_count.get(cleaned_word, 0) + 1\n\n    return max(word_count, key=word_count.get)\n```\n\n    \n    First, convert the given `paragraph` to lowercase and split it into words. Then, create a `wordCount` map to store each word and their corresponding frequency count. Ignore punctuations by checking if the character is an alphabet or not. \n\nCreate a set of lowercase banned words (`bannedSet`) and iterate through the original list of words. For any word, not in the bannedSet, update or increment its frequency count in the wordCount map.\n\nFinally, iterate through the `wordCount` map to find the word with the highest frequency count and return it as the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction mostCommonWord(paragraph, banned) {\n    const wordCount = new Map();\n    const bannedSet = new Set(banned.map(x => x.toLowerCase()));\n    const words = paragraph.toLowerCase().split(/\\W+/);\n\n    words.forEach(word => {\n        if (!bannedSet.has(word)) {\n            wordCount.set(word, (wordCount.get(word) || 0) + 1);\n        }\n    });\n    \n    let maxCount = -1;\n    let result = '';\n    wordCount.forEach((count, word) => {\n        if (count > maxCount) {\n            maxCount = count;\n            result = word;\n        }\n    });\n    \n    return result;\n}\n```\n\n    \n    First, convert the given `paragraph` to lowercase and split it into words. Then, create a `wordCount` map to store each word and their corresponding frequency count. Ignore punctuations by checking if the character is an alphabet or not. \n\nCreate a set of lowercase banned words (`bannedSet`) and iterate through the original list of words. For any word, not in the bannedSet, update or increment its frequency count in the wordCount map.\n\nFinally, iterate through the `wordCount` map to find the word with the highest frequency count and return it as the result.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\nimport java.util.HashSet;\nimport java.util.Map;\nimport java.util.Set;\n\npublic String mostCommonWord(String paragraph, String[] banned) {\n    String lowerPara = paragraph.toLowerCase();\n    String[] words = lowerPara.split(\"\\\\W+\");\n    Map<String, Integer> wordCount = new HashMap<>();\n    Set<String> bannedSet = new HashSet<>();\n    \n    for (String ban : banned) {\n        bannedSet.add(ban.toLowerCase());\n    }\n    \n    for (String word : words) {\n        if (!bannedSet.contains(word)) {\n            wordCount.put(word, wordCount.getOrDefault(word, 0) + 1);\n        }\n    }\n    \n    return wordCount.entrySet().stream()\n            .max(Map.Entry.comparingByValue())\n            .orElseThrow()\n            .getKey();\n}\n```\n\n    \n    First, convert the given `paragraph` to lowercase and split it into words. Then, create a `wordCount` map to store each word and their corresponding frequency count. Ignore punctuations by checking if the character is an alphabet or not. \n\nCreate a set of lowercase banned words (`bannedSet`) and iterate through the original list of words. For any word, not in the bannedSet, update or increment its frequency count in the wordCount map.\n\nFinally, iterate through the `wordCount` map to find the word with the highest frequency count and return it as the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

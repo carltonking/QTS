@@ -1,0 +1,24 @@
+{
+  "id": 152,
+  "title": "Maximum Product Subarray",
+  "slug": "maximum-product-subarray",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums, find a subarray that has the largest product, and return _the product_.\n\nThe test cases are generated so that the answer will fit in a 32-bit integer.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxProduct(nums):\n    max_so_far = min_so_far = result = nums[0]\n    \n    for i in range(1, len(nums)):\n        if nums[i] < 0:\n            max_so_far, min_so_far = min_so_far, max_so_far\n        \n        max_so_far = max(nums[i], max_so_far * nums[i])\n        min_so_far = min(nums[i], min_so_far * nums[i])\n        result = max(result, max_so_far)\n    \n    return result\n```\n\n    \n    The algorithm maintains the maximum and minimum product subarray ending at the current position. For each position, it checks if the current element is negative. If it is, it swaps the maximum and minimum product subarray, since multiplying by a negative number reverses their order.\n\nAfter the swap, it calculates the maximum and minimum product subarray ending at the current position by considering the current element and the product of the maximum and minimum product subarray ending at the previous position, multiplied by the current element. It updates the result as the maximum of the result and the maximum product subarray ending at the current position.\n\nThis process continues for all elements of the array, and the result is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxProduct(nums) {\n    let max_so_far = nums[0];\n    let min_so_far = nums[0];\n    let result = nums[0];\n    \n    for (let i = 1; i < nums.length; i++) {\n        if (nums[i] < 0) {\n            [max_so_far, min_so_far] = [min_so_far, max_so_far];\n        }\n        \n        max_so_far = Math.max(nums[i], max_so_far * nums[i]);\n        min_so_far = Math.min(nums[i], min_so_far * nums[i]);\n        result = Math.max(result, max_so_far);\n    }\n    return result;\n}\n```\n\n    \n    The algorithm maintains the maximum and minimum product subarray ending at the current position. For each position, it checks if the current element is negative. If it is, it swaps the maximum and minimum product subarray, since multiplying by a negative number reverses their order.\n\nAfter the swap, it calculates the maximum and minimum product subarray ending at the current position by considering the current element and the product of the maximum and minimum product subarray ending at the previous position, multiplied by the current element. It updates the result as the maximum of the result and the maximum product subarray ending at the current position.\n\nThis process continues for all elements of the array, and the result is returned.\n    ",
+    "java": "\n    ```java\npublic int maxProduct(int[] nums) {\n    int max_so_far = nums[0];\n    int min_so_far = nums[0];\n    int result = nums[0];\n    \n    for (int i = 1; i < nums.length; i++) {\n        if (nums[i] < 0) {\n            int temp = max_so_far;\n            max_so_far = min_so_far;\n            min_so_far = temp;\n        }\n        \n        max_so_far = Math.max(nums[i], max_so_far * nums[i]);\n        min_so_far = Math.min(nums[i], min_so_far * nums[i]);\n        result = Math.max(result, max_so_far);\n    }\n    return result;\n}\n```\n\n    \n    The algorithm maintains the maximum and minimum product subarray ending at the current position. For each position, it checks if the current element is negative. If it is, it swaps the maximum and minimum product subarray, since multiplying by a negative number reverses their order.\n\nAfter the swap, it calculates the maximum and minimum product subarray ending at the current position by considering the current element and the product of the maximum and minimum product subarray ending at the previous position, multiplied by the current element. It updates the result as the maximum of the result and the maximum product subarray ending at the current position.\n\nThis process continues for all elements of the array, and the result is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

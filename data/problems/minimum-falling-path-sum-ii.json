@@ -1,0 +1,24 @@
+{
+  "id": 1289,
+  "title": "Minimum Falling Path Sum II",
+  "slug": "minimum-falling-path-sum-ii",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given an n x n integer matrix grid, return _the minimum sum of a falling path with non-zero shifts_.\n\nA falling path with non-zero shifts is a choice of exactly one element from each row of grid such that no two elements chosen in adjacent rows are in the same column.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef day_of_the_week(day, month, year):\n    days = [\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"]\n    if month < 3:\n        month += 12\n        year -= 1\n    k = year % 100\n    j = year // 100\n    day_of_week = (day + 13 * (month + 1) // 5 + k + k // 4 + 5 * j + j // 4) % 7\n    return days[day_of_week]\n```\n    \n    This algorithm is based on Zeller's Congruence. First, we create an array of week days. If the month is smaller than 3 (meaning January or February), we add 12 to the month and reduce the year by 1. Then, we calculate k and j, which are the year%100 and year/100, respectively. Finally, the day of the week is calculated by a formula considering the day, month, k, j, and some constants, and the output is the corresponding day string from our week days array.\n    ",
+    "javascript": "\n    ```javascript\nfunction dayOfTheWeek(day, month, year) {\n    const days = [\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"];\n    if (month < 3) {\n        month += 12;\n        year -= 1;\n    }\n    const k = year % 100;\n    const j = Math.floor(year / 100);\n    const dayOfWeek = (day + Math.floor(13 * (month + 1) / 5) + k + Math.floor(k / 4) + 5 * j + Math.floor(j / 4)) % 7;\n    return days[dayOfWeek];\n}\n```\n    \n    This algorithm is based on Zeller's Congruence. First, we create an array of week days. If the month is smaller than 3 (meaning January or February), we add 12 to the month and reduce the year by 1. Then, we calculate k and j, which are the year%100 and year/100, respectively. Finally, the day of the week is calculated by a formula considering the day, month, k, j, and some constants, and the output is the corresponding day string from our week days array.\n    ",
+    "java": "\n    ```java\npublic String dayOfTheWeek(int day, int month, int year) {\n    String[] days = {\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"};\n    if (month < 3) {\n        month += 12;\n        year -= 1;\n    }\n    int k = year % 100;\n    int j = year / 100;\n    int dayOfWeek = (day + 13 * (month + 1) / 5 + k + k / 4 + 5 * j + j / 4) % 7;\n    return days[dayOfWeek];\n}\n```\n    \n    This algorithm is based on Zeller's Congruence. First, we create an array of week days. If the month is smaller than 3 (meaning January or February), we add 12 to the month and reduce the year by 1. Then, we calculate k and j, which are the year%100 and year/100, respectively. Finally, the day of the week is calculated by a formula considering the day, month, k, j, and some constants, and the output is the corresponding day string from our week days array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

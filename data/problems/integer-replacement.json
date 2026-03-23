@@ -1,0 +1,24 @@
+{
+  "id": 397,
+  "title": "Integer Replacement",
+  "slug": "integer-replacement",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a positive integer n, you can apply one of the following operations:\n\n1.  If n is even, replace n with n / 2.\n2.  If n is odd, replace n with either n + 1 or n - 1.\n\nReturn _the minimum number of operations needed for_ n _to become_ 1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_operations(n):\n    steps = 0\n    while n > 1:\n        n = n // 2 if n % 2 == 0 else n - 1\n        steps += 1\n    return steps\n```\n    \n    The algorithm to calculate the minimum number of operations needed for n to become 1 is straightforward. We initialize a variable `steps` to 0 to keep track of the number of operations performed. In a loop, we iterate until n becomes 1.\n\nIn each iteration of the loop, we check if n is an even number (n % 2 == 0). If it is, we divide n by 2; otherwise, we subtract 1 from n. We increase the count of `steps` by 1 in each iteration.\n\nFinally, we return the total number of `steps` when the loop terminates (when n becomes 1).\n    ",
+    "javascript": "\n    ```javascript\nfunction minOperations(n) {\n    let steps = 0;\n    while(n > 1) {\n        n = (n % 2 === 0) ? n / 2 : n - 1;\n        steps++;\n    }\n    return steps;\n}\n```\n    \n    The algorithm to calculate the minimum number of operations needed for n to become 1 is straightforward. We initialize a variable `steps` to 0 to keep track of the number of operations performed. In a loop, we iterate until n becomes 1.\n\nIn each iteration of the loop, we check if n is an even number (n % 2 == 0). If it is, we divide n by 2; otherwise, we subtract 1 from n. We increase the count of `steps` by 1 in each iteration.\n\nFinally, we return the total number of `steps` when the loop terminates (when n becomes 1).\n    ",
+    "java": "\n    ```java\nint minOperations(int n) {\n    int steps = 0;\n    while(n > 1) {\n        n = (n % 2 == 0) ? n / 2 : n - 1;\n        steps++;\n    }\n    return steps;\n}\n```\n    \n    The algorithm to calculate the minimum number of operations needed for n to become 1 is straightforward. We initialize a variable `steps` to 0 to keep track of the number of operations performed. In a loop, we iterate until n becomes 1.\n\nIn each iteration of the loop, we check if n is an even number (n % 2 == 0). If it is, we divide n by 2; otherwise, we subtract 1 from n. We increase the count of `steps` by 1 in each iteration.\n\nFinally, we return the total number of `steps` when the loop terminates (when n becomes 1).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

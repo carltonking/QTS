@@ -1,0 +1,24 @@
+{
+  "id": 771,
+  "title": "Jewels and Stones",
+  "slug": "jewels-and-stones",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You're given strings jewels representing the types of stones that are jewels, and stones representing the stones you have. Each character in stones is a type of stone you have. You want to know how many of the stones you have are also jewels.\n\nLetters are case sensitive, so \"a \" is considered a different type of stone from \"A \".",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef num_jewels_in_stones(jewels: str, stones: str) -> int:\n    count = 0\n    for stone in stones:\n        if stone in jewels:\n            count += 1\n    return count\n```\n    \n    The algorithm is pretty simple, as it iterates through each character (stone) in the `stones` string, and checks if that character is present in the `jewels` string. If it is, increment the counter. Finally, return the counter as the result.\n\nThis method does not require any additional space, except for the counter variable, and its time complexity is O(n*m) where n is the length of `stones` and m is the length of `jewels`.\n    ",
+    "javascript": "\n    ```javascript\nfunction numJewelsInStones(jewels, stones) {\n    let count = 0;\n    for (let stone of stones) {\n        if (jewels.indexOf(stone) !== -1) {\n            count++;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm is pretty simple, as it iterates through each character (stone) in the `stones` string, and checks if that character is present in the `jewels` string. If it is, increment the counter. Finally, return the counter as the result.\n\nThis method does not require any additional space, except for the counter variable, and its time complexity is O(n*m) where n is the length of `stones` and m is the length of `jewels`.\n    ",
+    "java": "\n    ```java\npublic int numJewelsInStones(String jewels, String stones) {\n    int count = 0;\n    for (char stone : stones.toCharArray()) {\n        if (jewels.indexOf(stone) != -1) {\n            count++;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm is pretty simple, as it iterates through each character (stone) in the `stones` string, and checks if that character is present in the `jewels` string. If it is, increment the counter. Finally, return the counter as the result.\n\nThis method does not require any additional space, except for the counter variable, and its time complexity is O(n*m) where n is the length of `stones` and m is the length of `jewels`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

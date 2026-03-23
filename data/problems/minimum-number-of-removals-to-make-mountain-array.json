@@ -1,0 +1,24 @@
+{
+  "id": 1671,
+  "title": "Minimum Number of Removals to Make Mountain Array",
+  "slug": "minimum-number-of-removals-to-make-mountain-array",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You may recall that an array arr is a mountain array if and only if:\n\n*   arr.length >= 3\n*   There exists some index i (0-indexed) with 0 < i < arr.length - 1 such that:\n    *   arr[0] < arr[1] < ... < arr[i - 1] < arr[i]\n    *   arr[i] > arr[i + 1] > ... > arr[arr.length - 1]\n\nGiven an integer array nums​​​, return _the minimum number of elements to remove to make_ nums_​​​_ _a mountain array._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minimumMountainRemovals(nums):\n    n = len(nums)\n    left, right = [0] * n, [0] * n\n    for i in range(1, n):\n        left[i] = left[i - 1] + int(nums[i] > nums[i - 1])\n        right[n - i - 1] = right[n - i] + int(nums[n - i - 1] > nums[n - i])\n    ans = n - 3\n    for i in range(1, n - 1):\n        ans = min(ans, n - 1 - left[i] - right[i])\n    return ans\n```\n    \n    The algorithm calculates the minimum number of elements to remove to make the input array a mountain array. First, it initializes two arrays `left` and `right`, with the same length as the input array. These arrays will store the increasing and decreasing sequence, respectively, ending at position `i`.\n\nFor each index in the range of the input array, the algorithm increases the length of `left` and `right` sequences if the current element is greater than the previous one or if the current element in the reversed array is greater the next one, respectively. Then, the minimum number of elements to remove is calculated by comparing the sum of both sequences for each index, and keeping the minimum value. Subtracting this value from the total length minus one is the final answer.\n    ",
+    "javascript": "\n    ```javascript\nfunction minimumMountainRemovals(nums) {\n    const n = nums.length;\n    const left = new Array(n).fill(0);\n    const right = new Array(n).fill(0);\n    for (let i = 1; i < n; ++i) {\n        left[i] = left[i - 1] + (nums[i] > nums[i - 1] ? 1 : 0);\n        right[n - i - 1] = right[n - i] + (nums[n - i - 1] > nums[n - i] ? 1 : 0);\n    }\n    let ans = n - 3;\n    for (let i = 1; i < n - 1; ++i) {\n        ans = Math.min(ans, n - 1 - left[i] - right[i]);\n    }\n    return ans;\n}\n```\n    \n    The algorithm calculates the minimum number of elements to remove to make the input array a mountain array. First, it initializes two arrays `left` and `right`, with the same length as the input array. These arrays will store the increasing and decreasing sequence, respectively, ending at position `i`.\n\nFor each index in the range of the input array, the algorithm increases the length of `left` and `right` sequences if the current element is greater than the previous one or if the current element in the reversed array is greater the next one, respectively. Then, the minimum number of elements to remove is calculated by comparing the sum of both sequences for each index, and keeping the minimum value. Subtracting this value from the total length minus one is the final answer.\n    ",
+    "java": "\n    ```java\npublic int minimumMountainRemovals(int[] nums) {\n    int n = nums.length;\n    int[] left = new int[n], right = new int[n];\n    for (int i = 1; i < n; ++i) {\n        left[i] = left[i - 1] + (nums[i] > nums[i - 1] ? 1 : 0);\n        right[n - i - 1] = right[n - i] + (nums[n - i - 1] > nums[n - i] ? 1 : 0);\n    }\n    int ans = n - 3;\n    for (int i = 1; i < n - 1; ++i) {\n        ans = Math.min(ans, n - 1 - left[i] - right[i]);\n    }\n    return ans;\n}\n```\n    \n    The algorithm calculates the minimum number of elements to remove to make the input array a mountain array. First, it initializes two arrays `left` and `right`, with the same length as the input array. These arrays will store the increasing and decreasing sequence, respectively, ending at position `i`.\n\nFor each index in the range of the input array, the algorithm increases the length of `left` and `right` sequences if the current element is greater than the previous one or if the current element in the reversed array is greater the next one, respectively. Then, the minimum number of elements to remove is calculated by comparing the sum of both sequences for each index, and keeping the minimum value. Subtracting this value from the total length minus one is the final answer.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

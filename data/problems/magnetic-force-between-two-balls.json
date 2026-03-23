@@ -1,0 +1,24 @@
+{
+  "id": 1552,
+  "title": "Magnetic Force Between Two Balls",
+  "slug": "magnetic-force-between-two-balls",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "In the universe Earth C-137, Rick discovered a special form of magnetic force between two balls if they are put in his new invented basket. Rick has n empty baskets, the ith basket is at position[i], Morty has m balls and needs to distribute the balls into the baskets such that the minimum magnetic force between any two balls is maximum.\n\nRick stated that magnetic force between two different balls at positions x and y is |x - y|.\n\nGiven the integer array position and the integer m. Return _the required force_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef build_array(target, n):\n    result = []\n    current = 1\n    for num in target:\n        while current < num:\n            result.append(\"Push\")\n            result.append(\"Pop\")\n            current += 1\n        result.append(\"Push\")\n        current += 1\n    return result\n```\n    \n    The algorithm iterates through the `target` array. For each number, it checks if the `current` value (starting from 1) is smaller. If it is, the algorithm adds the \"Push\" and \"Pop\" operations to the result list, because these numbers in `list` are not part of the `target` array. The `current` value is then incremented. Once the `current` value reaches the `num` in the target array, the algorithm adds a \"Push\" operation to the result list and increments the `current` value again. This process continues until the entire target array has been built using the operations listed in the result list.\n    ",
+    "javascript": "\n    ```javascript\nfunction buildArray(target, n) {\n    const result = [];\n    let current = 1;\n    for (const num of target) {\n        while (current < num) {\n            result.push(\"Push\");\n            result.push(\"Pop\");\n            current++;\n        }\n        result.push(\"Push\");\n        current++;\n    }\n    return result;\n}\n```\n    \n    The algorithm iterates through the `target` array. For each number, it checks if the `current` value (starting from 1) is smaller. If it is, the algorithm adds the \"Push\" and \"Pop\" operations to the result list, because these numbers in `list` are not part of the `target` array. The `current` value is then incremented. Once the `current` value reaches the `num` in the target array, the algorithm adds a \"Push\" operation to the result list and increments the `current` value again. This process continues until the entire target array has been built using the operations listed in the result list.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<String> buildArray(int[] target, int n) {\n    List<String> result = new ArrayList<>();\n    int current = 1;\n    for (int num : target) {\n        while (current < num) {\n            result.add(\"Push\");\n            result.add(\"Pop\");\n            current++;\n        }\n        result.add(\"Push\");\n        current++;\n    }\n    return result;\n}\n```\n    \n    The algorithm iterates through the `target` array. For each number, it checks if the `current` value (starting from 1) is smaller. If it is, the algorithm adds the \"Push\" and \"Pop\" operations to the result list, because these numbers in `list` are not part of the `target` array. The `current` value is then incremented. Once the `current` value reaches the `num` in the target array, the algorithm adds a \"Push\" operation to the result list and increments the `current` value again. This process continues until the entire target array has been built using the operations listed in the result list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

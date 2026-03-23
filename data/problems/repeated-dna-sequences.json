@@ -1,0 +1,24 @@
+{
+  "id": 187,
+  "title": "Repeated DNA Sequences",
+  "slug": "repeated-dna-sequences",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "The DNA sequence is composed of a series of nucleotides abbreviated as 'A', 'C', 'G', and 'T'.\n\n*   For example, \"ACGAATTCCG \" is a DNA sequence.\n\nWhen studying DNA, it is useful to identify repeated sequences within the DNA.\n\nGiven a string s that represents a DNA sequence, return all the 10\\-letter-long sequences (substrings) that occur more than once in a DNA molecule. You may return the answer in any order.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import defaultdict\n\ndef findRepeatedDnaSequences(s: str):\n    dna_counter = defaultdict(int)\n    result = []\n\n    for i in range(len(s) - 9):\n        sequence = s[i:i + 10]\n        dna_counter[sequence] += 1\n        if dna_counter[sequence] == 2:\n            result.append(sequence)\n\n    return result\n```\n    \n    The algorithm iterates through the input DNA sequence `s` and extracts 10-letter-long substrings. It then uses a hashmap/dictionary to count the occurrences of each substring. If the count for a specific substring becomes 2, it adds the substring to the result list. The defaultdict in Python and Map in JavaScript handle default values automatically when incrementing the counts. \n\nOnce the loop finishes, the result list contains all 10-letter-long DNA sequences that have occurred more than once.\n    ",
+    "javascript": "\n    ```javascript\nfunction findRepeatedDnaSequences(s) {\n    const dnaCounter = new Map();\n    const result = [];\n\n    for (let i = 0; i <= s.length - 10; i++) {\n        const sequence = s.slice(i, i + 10);\n        dnaCounter.set(sequence, (dnaCounter.get(sequence) || 0) + 1);\n        if (dnaCounter.get(sequence) === 2) {\n            result.push(sequence);\n        }\n    }\n\n    return result;\n}\n```\n    \n    The algorithm iterates through the input DNA sequence `s` and extracts 10-letter-long substrings. It then uses a hashmap/dictionary to count the occurrences of each substring. If the count for a specific substring becomes 2, it adds the substring to the result list. The defaultdict in Python and Map in JavaScript handle default values automatically when incrementing the counts. \n\nOnce the loop finishes, the result list contains all 10-letter-long DNA sequences that have occurred more than once.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.HashMap;\nimport java.util.List;\n\npublic List<String> findRepeatedDnaSequences(String s) {\n    List<String> result = new ArrayList<>();\n    HashMap<String, Integer> dnaCounter = new HashMap<>();\n\n    for (int i = 0; i <= s.length() - 10; i++) {\n        String sequence = s.substring(i, i + 10);\n        dnaCounter.put(sequence, dnaCounter.getOrDefault(sequence, 0) + 1);\n        if (dnaCounter.get(sequence) == 2) {\n            result.add(sequence);\n        }\n    }\n\n    return result;\n}\n```\n    \n    The algorithm iterates through the input DNA sequence `s` and extracts 10-letter-long substrings. It then uses a hashmap/dictionary to count the occurrences of each substring. If the count for a specific substring becomes 2, it adds the substring to the result list. The defaultdict in Python and Map in JavaScript handle default values automatically when incrementing the counts. \n\nOnce the loop finishes, the result list contains all 10-letter-long DNA sequences that have occurred more than once.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

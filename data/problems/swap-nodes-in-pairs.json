@@ -1,0 +1,24 @@
+{
+  "id": 24,
+  "title": "Swap Nodes in Pairs",
+  "slug": "swap-nodes-in-pairs",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a linked list, swap every two adjacent nodes and return its head. You must solve the problem without modifying the values in the list's nodes (i.e., only nodes themselves may be changed.)",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef swapPairs(head: Optional[ListNode]) -> Optional[ListNode]:\n    if not head or not head.next:\n        return head\n\n    second = head.next\n    head.next = swapPairs(second.next)\n    second.next = head\n\n    return second\n```\n    \n    The algorithm uses recursion to solve the problem. It starts by checking if the list has remaining pairs to swap. If not, the head of the current section of the list is returned.\n\nIf there are pairs left to swap, it takes the second node (which will become the new head of the current pair) and sets its next node to the result of the recursive call with the node after it as the new head.\n\nThen, it sets the current head's next node to the second node and returns the second node as the new head of the pair. As the recursion unfolds, the pairs get swapped, and the final swapped linked list head is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction swapPairs(head) {\n    if (!head || !head.next) return head;\n\n    let second = head.next;\n    head.next = swapPairs(second.next);\n    second.next = head;\n\n    return second;\n}\n```\n    \n    The algorithm uses recursion to solve the problem. It starts by checking if the list has remaining pairs to swap. If not, the head of the current section of the list is returned.\n\nIf there are pairs left to swap, it takes the second node (which will become the new head of the current pair) and sets its next node to the result of the recursive call with the node after it as the new head.\n\nThen, it sets the current head's next node to the second node and returns the second node as the new head of the pair. As the recursion unfolds, the pairs get swapped, and the final swapped linked list head is returned.\n    ",
+    "java": "\n    ```java\npublic ListNode swapPairs(ListNode head) {\n    if (head == null || head.next == null) return head;\n    \n    ListNode second = head.next;\n    head.next = swapPairs(second.next);\n    second.next = head;\n    \n    return second;\n}\n```\n    \n    The algorithm uses recursion to solve the problem. It starts by checking if the list has remaining pairs to swap. If not, the head of the current section of the list is returned.\n\nIf there are pairs left to swap, it takes the second node (which will become the new head of the current pair) and sets its next node to the result of the recursive call with the node after it as the new head.\n\nThen, it sets the current head's next node to the second node and returns the second node as the new head of the pair. As the recursion unfolds, the pairs get swapped, and the final swapped linked list head is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

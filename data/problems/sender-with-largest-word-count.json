@@ -1,0 +1,24 @@
+{
+  "id": 2284,
+  "title": "Sender With Largest Word Count",
+  "slug": "sender-with-largest-word-count",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You have a chat log of n messages. You are given two string arrays messages and senders where messages[i] is a message sent by senders[i].\n\nA message is list of words that are separated by a single space with no leading or trailing spaces. The word count of a sender is the total number of words sent by the sender. Note that a sender may send more than one message.\n\nReturn _the sender with the largest word count_. If there is more than one sender with the largest word count, return _the one with the lexicographically largest name_.\n\nNote:\n\n*   Uppercase letters come before lowercase letters in lexicographical order.\n*   \"Alice \" and \"alice \" are distinct.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef rearrange_digits(num):\n    if num == 0:\n        return 0\n    digits = sorted(str(num))\n    \n    if digits[0] != '-' and digits[0] == '0':\n        nonzero_index = next(index for index, digit in enumerate(digits) if digit != '0')\n        digits[0], digits[nonzero_index] = digits[nonzero_index], digits[0]\n    \n    return int(\"\".join(digits))\n```\n    \n    1. If num is 0, return 0 (base case).\n2. Convert num to a string, then sort the characters in the string. If num is negative, the '-' character will stay at the beginning.\n3. If the number is positive and the first character is '0', find the first non-zero digit and swap it with the '0'.\n4. Join the characters into a single string and convert back to an integer.\n\nThis algorithm has a time complexity of O(nlogn) due to the sorting step. It ensures that the rearranged number has the smallest value because the digits are placed in non-decreasing order from left to right, taking into account the non-leading zero requirement.\n    ",
+    "javascript": "\n    ```javascript\nfunction rearrangeDigits(num) {\n    if (num === 0)\n        return 0;\n    const chars = num.toString().split('').sort();\n    \n    if (chars[0] !== '-' && chars[0] === '0') {\n        let nonzeroIndex = 1;\n        while (chars[nonzeroIndex] === '0') {\n            nonzeroIndex++;\n        }\n        [chars[0], chars[nonzeroIndex]] = [chars[nonzeroIndex], chars[0]];\n    }\n    \n    return parseInt(chars.join(''));\n}\n```\n    \n    1. If num is 0, return 0 (base case).\n2. Convert num to a string, then sort the characters in the string. If num is negative, the '-' character will stay at the beginning.\n3. If the number is positive and the first character is '0', find the first non-zero digit and swap it with the '0'.\n4. Join the characters into a single string and convert back to an integer.\n\nThis algorithm has a time complexity of O(nlogn) due to the sorting step. It ensures that the rearranged number has the smallest value because the digits are placed in non-decreasing order from left to right, taking into account the non-leading zero requirement.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int rearrangeDigits(int num) {\n    if (num == 0)\n        return 0;\n    char[] chars = Integer.toString(num).toCharArray();\n    Arrays.sort(chars);\n    \n    if (chars[0] != '-' && chars[0] == '0') {\n        int nonzeroIndex = 1;\n        while (chars[nonzeroIndex] == '0') {\n            nonzeroIndex++;\n        }\n        char temp = chars[0];\n        chars[0] = chars[nonzeroIndex];\n        chars[nonzeroIndex] = temp;\n    }\n   \n    return Integer.parseInt(String.valueOf(chars));\n}\n```\n    \n    1. If num is 0, return 0 (base case).\n2. Convert num to a string, then sort the characters in the string. If num is negative, the '-' character will stay at the beginning.\n3. If the number is positive and the first character is '0', find the first non-zero digit and swap it with the '0'.\n4. Join the characters into a single string and convert back to an integer.\n\nThis algorithm has a time complexity of O(nlogn) due to the sorting step. It ensures that the rearranged number has the smallest value because the digits are placed in non-decreasing order from left to right, taking into account the non-leading zero requirement.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

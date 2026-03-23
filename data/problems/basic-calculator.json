@@ -1,0 +1,24 @@
+{
+  "id": 224,
+  "title": "Basic Calculator",
+  "slug": "basic-calculator",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given a string s representing a valid expression, implement a basic calculator to evaluate it, and return _the result of the evaluation_.\n\nNote: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as eval().",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef calculate(s: str) -> int:\n    result = 0\n    sign = 1\n    num = 0\n    st = []\n    for c in s:\n        if c.isdigit():\n            num = num * 10 + int(c)\n        else:\n            result += sign * num\n            num = 0\n            if c == '+':\n                sign = 1\n            elif c == '-':\n                sign = -1\n            elif c == '(':\n                st.append(result)\n                st.append(sign)\n                result = 0\n                sign = 1\n            elif c == ')':\n                prev_sign = st.pop()\n                prev_result = st.pop()\n                result = prev_result + prev_sign * result\n    result += sign * num\n    return result\n```\n    \n    The algorithm first initializes variables `result`, `sign`, and `num` along with a stack `st`. It iterates through each character of the given string, `s`. If a digit is encountered, we update `num`, otherwise, if an operator, `(` or `)` is found, we perform the appropriate operation and update the variables accordingly. For example, we store the current result and sign onto the stack when we encounter a `(` and calculate the result when we encounter a `)` and use the stack to track the values of previous results and signs. Finally, we return the final result after the iteration is complete.\n    ",
+    "javascript": "\n    ```javascript\nfunction calculate(s) {\n    let result = 0, sign = 1, num = 0;\n    let st = [];\n    for (let c of s) {\n        if (/\\d/.test(c)) {\n            num = num * 10 + (c - '0');\n        } else {\n            result += sign * num;\n            num = 0;\n            if (c === '+') {\n                sign = 1;\n            } else if (c === '-') {\n                sign = -1;\n            } else if (c === '(') {\n                st.push(result);\n                st.push(sign);\n                result = 0;\n                sign = 1;\n            } else if (c === ')') {\n                let prev_sign = st.pop();\n                let prev_result = st.pop();\n                result = prev_result + prev_sign * result;\n            }\n        }\n    }\n    result += sign * num;\n    return result;\n}\n```\n    \n    The algorithm first initializes variables `result`, `sign`, and `num` along with a stack `st`. It iterates through each character of the given string, `s`. If a digit is encountered, we update `num`, otherwise, if an operator, `(` or `)` is found, we perform the appropriate operation and update the variables accordingly. For example, we store the current result and sign onto the stack when we encounter a `(` and calculate the result when we encounter a `)` and use the stack to track the values of previous results and signs. Finally, we return the final result after the iteration is complete.\n    ",
+    "java": "\n    ```java\npublic int calculate(String s) {\n    int result = 0, sign = 1, num = 0;\n    Stack<Integer> st = new Stack<>();\n    for (char c : s.toCharArray()) {\n        if (Character.isDigit(c)) {\n            num = num * 10 + (c - '0');\n        } else {\n            result += sign * num;\n            num = 0;\n            if (c == '+') {\n                sign = 1;\n            } else if (c == '-') {\n                sign = -1;\n            } else if (c == '(') {\n                st.push(result);\n                st.push(sign);\n                result = 0;\n                sign = 1;\n            } else if (c == ')') {\n                int prev_sign = st.pop();\n                int prev_result = st.pop();\n                result = prev_result + prev_sign * result;\n            }\n        }\n    }\n    result += sign * num;\n    return result;\n}\n```\n    \n    The algorithm first initializes variables `result`, `sign`, and `num` along with a stack `st`. It iterates through each character of the given string, `s`. If a digit is encountered, we update `num`, otherwise, if an operator, `(` or `)` is found, we perform the appropriate operation and update the variables accordingly. For example, we store the current result and sign onto the stack when we encounter a `(` and calculate the result when we encounter a `)` and use the stack to track the values of previous results and signs. Finally, we return the final result after the iteration is complete.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

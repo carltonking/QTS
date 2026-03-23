@@ -1,0 +1,24 @@
+{
+  "id": 2351,
+  "title": "First Letter to Appear Twice",
+  "slug": "first-letter-to-appear-twice",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a string s consisting of lowercase English letters, return _the first letter to appear twice_.\n\nNote:\n\n*   A letter a appears twice before another letter b if the second occurrence of a is before the second occurrence of b.\n*   s will contain at least one letter that appears twice.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef first_letter_to_appear_twice(s: str) -> str:\n    occurrences = [0] * 26\n    for c in s:\n        occurrences[ord(c) - ord('a')] += 1\n        if occurrences[ord(c) - ord('a')] == 2:\n            return c\n    return '?'\n```\n    \n    The solution in each programming language follows the same algorithm. First, we create an array to store the occurrences of each lowercase English letter. Then, we iterate through the given string, incrementing the count of the current character in the occurrences array. If an element in the occurrences array reaches 2, that means we've found a letter that appears twice, so we return that letter.\n    ",
+    "javascript": "\n    ```javascript\nfunction firstLetterToAppearTwice(s) {\n    const occurrences = new Array(26).fill(0);\n    for (let c of s) {\n        occurrences[c.charCodeAt(0) - 'a'.charCodeAt(0)]++;\n        if (occurrences[c.charCodeAt(0) - 'a'.charCodeAt(0)] == 2) {\n            return c;\n        }\n    }\n    return '?';\n}\n```\n    \n    The solution in each programming language follows the same algorithm. First, we create an array to store the occurrences of each lowercase English letter. Then, we iterate through the given string, incrementing the count of the current character in the occurrences array. If an element in the occurrences array reaches 2, that means we've found a letter that appears twice, so we return that letter.\n    ",
+    "java": "\n    ```java\npublic char firstLetterToAppearTwice(String s) {\n    int[] occurrences = new int[26];\n    for (char c : s.toCharArray()) {\n        occurrences[c - 'a']++;\n        if (occurrences[c - 'a'] == 2) {\n            return c;\n        }\n    }\n    return '?';\n}\n```\n    \n    The solution in each programming language follows the same algorithm. First, we create an array to store the occurrences of each lowercase English letter. Then, we iterate through the given string, incrementing the count of the current character in the occurrences array. If an element in the occurrences array reaches 2, that means we've found a letter that appears twice, so we return that letter.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

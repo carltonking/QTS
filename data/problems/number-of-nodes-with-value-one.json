@@ -1,0 +1,24 @@
+{
+  "id": 2445,
+  "title": "Number of Nodes With Value One",
+  "slug": "number-of-nodes-with-value-one",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There is an undirected connected tree with n nodes labeled from 1 to n and n - 1 edges. You are given the integer n. The parent node of a node with a label v is the node with the label floor (v / 2). The root of the tree is the node with the label 1.\n\n*   For example, if n = 7, then the node with the label 3 has the node with the label floor(3 / 2) = 1 as its parent, and the node with the label 7 has the node with the label floor(7 / 2) = 3 as its parent.\n\nYou are also given an integer array queries. Initially, every node has a value 0 on it. For each query queries[i], you should flip all values in the subtree of the node with the label queries[i].\n\nReturn _the total number of nodes with the value_ 1 _after processing all the queries_.\n\nNote that:\n\n*   Flipping the value of a node means that the node with the value 0 becomes 1 and vice versa.\n*   floor(x) is equivalent to rounding x down to the nearest integer.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef flip_trees(n, queries):\n    flipped_nodes = {}\n    for query in queries:\n        flipped_nodes[query] = not flipped_nodes.get(query, False)\n        while query > 1:\n            query //= 2\n            flipped_nodes[query] = not flipped_nodes.get(query, False)\n\n    count = 0\n    for value in flipped_nodes.values():\n        if value:\n            count += 1\n\n    return count\n```\n    \n    This algorithm uses a hash map to store the nodes that have been flipped. For each query, it toggles the flipped state of the current node and all its parent nodes up to the root (node `1`). After going through all the queries, it counts the number of nodes which are flipped (have a value of `1`) in the hash map.\n\nSince we only store the flipped nodes in the hash map, and not all the nodes, this algorithm has a space complexity lower than O(n). The time complexity is O(queries.length * log(n)), as each query corresponds to a path of length at most log(n) in the tree.\n    ",
+    "javascript": "\n    ```javascript\nfunction flipTrees(n, queries) {\n    const flippedNodes = new Map();\n\n    queries.forEach(query => {\n        flippedNodes.set(query, !flippedNodes.get(query));\n        while (query > 1) {\n            query = Math.floor(query / 2);\n            flippedNodes.set(query, !flippedNodes.get(query));\n        }\n    });\n\n    let count = 0;\n    flippedNodes.forEach(value => {\n        if (value) {\n            count++;\n        }\n    });\n\n    return count;\n}\n```\n    \n    This algorithm uses a hash map to store the nodes that have been flipped. For each query, it toggles the flipped state of the current node and all its parent nodes up to the root (node `1`). After going through all the queries, it counts the number of nodes which are flipped (have a value of `1`) in the hash map.\n\nSince we only store the flipped nodes in the hash map, and not all the nodes, this algorithm has a space complexity lower than O(n). The time complexity is O(queries.length * log(n)), as each query corresponds to a path of length at most log(n) in the tree.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\nimport java.util.Map;\nimport java.util.List;\n\npublic int flipTrees(int n, List<Integer> queries) {\n    Map<Integer, Boolean> flippedNodes = new HashMap<>();\n    for (int query : queries) {\n        flippedNodes.put(query, !flippedNodes.getOrDefault(query, false));\n        while (query > 1) {\n            query /= 2;\n            flippedNodes.put(query, !flippedNodes.getOrDefault(query, false));\n        }\n    }\n    \n    int count = 0;\n    for (Map.Entry<Integer, Boolean> node : flippedNodes.entrySet()) {\n        if (node.getValue()) {\n            count++;\n        }\n    }\n    return count;\n}\n```\n    \n    This algorithm uses a hash map to store the nodes that have been flipped. For each query, it toggles the flipped state of the current node and all its parent nodes up to the root (node `1`). After going through all the queries, it counts the number of nodes which are flipped (have a value of `1`) in the hash map.\n\nSince we only store the flipped nodes in the hash map, and not all the nodes, this algorithm has a space complexity lower than O(n). The time complexity is O(queries.length * log(n)), as each query corresponds to a path of length at most log(n) in the tree.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

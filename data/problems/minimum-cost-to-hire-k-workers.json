@@ -1,0 +1,24 @@
+{
+  "id": 857,
+  "title": "Minimum Cost to Hire K Workers",
+  "slug": "minimum-cost-to-hire-k-workers",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "There are n workers. You are given two integer arrays quality and wage where quality[i] is the quality of the ith worker and wage[i] is the minimum wage expectation for the ith worker.\n\nWe want to hire exactly k workers to form a paid group. To hire a group of k workers, we must pay them according to the following rules:\n\n1.  Every worker in the paid group should be paid in the ratio of their quality compared to other workers in the paid group.\n2.  Every worker in the paid group must be paid at least their minimum wage expectation.\n\nGiven the integer k, return _the least amount of money needed to form a paid group satisfying the above conditions_. Answers within 10-5 of the actual answer will be accepted.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef largeGroupPositions(s: str):\n    result = []\n    start = 0\n    for i in range(1, len(s)):\n        if s[i] != s[start]:\n            if i - start >= 3:\n                result.append([start, i - 1])\n            start = i\n    if len(s) - start >= 3:\n        result.append([start, len(s) - 1])\n    return result\n```\n\n    \n    The algorithm used is very simple. We initialize a variable `start` that keeps track of the index of the first character of the current group, and iterate `i` through the string `s`. When the character at position `i` is different from the character at position `start`, we know that the group ends at `i - 1`, so if the group length is greater or equal to 3, we add the interval `[start, i - 1]` to the result list. After that, we update the value of `start` to the current index `i`. To make sure we include the last group in our result, we need to do the check for the group length outside of the loop (after it completes).\n    ",
+    "javascript": "\n    ```javascript\nfunction largeGroupPositions(s) {\n    const result = [];\n    let start = 0;\n    for (let i = 1; i < s.length; ++i) {\n        if (s.charAt(i) !== s.charAt(start)) {\n            if (i - start >= 3) {\n                result.push([start, i - 1]);\n            }\n            start = i;\n        }\n    }\n    if (s.length - start >= 3) {\n        result.push([start, s.length - 1]);\n    }\n    return result;\n}\n```\n\n    \n    The algorithm used is very simple. We initialize a variable `start` that keeps track of the index of the first character of the current group, and iterate `i` through the string `s`. When the character at position `i` is different from the character at position `start`, we know that the group ends at `i - 1`, so if the group length is greater or equal to 3, we add the interval `[start, i - 1]` to the result list. After that, we update the value of `start` to the current index `i`. To make sure we include the last group in our result, we need to do the check for the group length outside of the loop (after it completes).\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<List<Integer>> largeGroupPositions(String s) {\n    List<List<Integer>> result = new ArrayList<>();\n    int start = 0;\n    for (int i = 1; i < s.length(); ++i) {\n        if (s.charAt(i) != s.charAt(start)) {\n            if (i - start >= 3) {\n                List<Integer> interval = new ArrayList<>();\n                interval.add(start);\n                interval.add(i - 1);\n                result.add(interval);\n            }\n            start = i;\n        }\n    }\n    if (s.length() - start >= 3) {\n        List<Integer> interval = new ArrayList<>();\n        interval.add(start);\n        interval.add(s.length() - 1);\n        result.add(interval);\n    }\n    return result;\n}\n```\n\n    \n    The algorithm used is very simple. We initialize a variable `start` that keeps track of the index of the first character of the current group, and iterate `i` through the string `s`. When the character at position `i` is different from the character at position `start`, we know that the group ends at `i - 1`, so if the group length is greater or equal to 3, we add the interval `[start, i - 1]` to the result list. After that, we update the value of `start` to the current index `i`. To make sure we include the last group in our result, we need to do the check for the group length outside of the loop (after it completes).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2505,
+  "title": "Bitwise OR of All Subsequence Sums",
+  "slug": "bitwise-or-of-all-subsequence-sums",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums, return _the value of the bitwise_ OR _of the sum of all possible subsequences in the array_.\n\nA subsequence is a sequence that can be derived from another sequence by removing zero or more elements without changing the order of the remaining elements.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef subsequence_or_sum(nums):\n    result = 0\n    for num in nums:\n        result |= num\n    return result\n```\n    \n    For each integer in the array, we use the bitwise OR operation to accumulate the results, since it ensures that we don't lose any set bit while combining numbers. At the end, the result variable holds the bitwise OR sum of all subsequences in the array. This is an O(n) solution, as it iterates through the input array once.\n    ",
+    "javascript": "\n    ```javascript\nfunction subsequenceORSum(nums) {\n    let result = 0;\n    for (let num of nums) {\n        result |= num;\n    }\n    return result;\n}\n```\n    \n    For each integer in the array, we use the bitwise OR operation to accumulate the results, since it ensures that we don't lose any set bit while combining numbers. At the end, the result variable holds the bitwise OR sum of all subsequences in the array. This is an O(n) solution, as it iterates through the input array once.\n    ",
+    "java": "\n    ```java\npublic int subsequenceORSum(int[] nums) {\n    int result = 0;\n    for (int num : nums) {\n        result |= num;\n    }\n    return result;\n}\n```\n    \n    For each integer in the array, we use the bitwise OR operation to accumulate the results, since it ensures that we don't lose any set bit while combining numbers. At the end, the result variable holds the bitwise OR sum of all subsequences in the array. This is an O(n) solution, as it iterates through the input array once.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

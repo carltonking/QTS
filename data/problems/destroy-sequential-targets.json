@@ -1,0 +1,24 @@
+{
+  "id": 2453,
+  "title": "Destroy Sequential Targets",
+  "slug": "destroy-sequential-targets",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed array nums consisting of positive integers, representing targets on a number line. You are also given an integer space.\n\nYou have a machine which can destroy targets. Seeding the machine with some nums[i] allows it to destroy all targets with values that can be represented as nums[i] + c * space, where c is any non-negative integer. You want to destroy the maximum number of targets in nums.\n\nReturn _the minimum value of_ nums[i] _you can seed the machine with to destroy the maximum number of targets._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minSeededValue(nums, space):\n    count = {}\n    for num in nums:\n        count[num % space] = count.get(num % space, 0) + 1\n    return max(count, key=lambda x: (count[x], -x))\n```\n    \n    The algorithm consists of the following steps:\n1. Iterate over the numbers in the array `nums` and store the remainders obtained when dividing each number by the `space` in a hash map or dictionary, along with their counts.\n2. Find the key (i.e., the remainder) in the hash map that has the maximum value for `(count[x], -x)` (in descending order). This corresponds to the largest count, and smallest remainder (breaking ties).\n3. Return the key (remainder) with the maximum count and the smallest value.\n\nThe hash map/dictionary stores the count of the remainders of each number in the array when divided by `space`. This allows us to efficiently find the largest count of remainders that correspond to a certain `nums[i]`, so the machine can destroy the maximum number of targets.\n    ",
+    "javascript": "\n    ```javascript\nfunction minSeededValue(nums, space) {\n    let count = new Map();\n    for (const num of nums) {\n        count.set(num % space, (count.get(num % space) || 0) + 1);\n    }\n    return [...count.entries()].reduce((a, b) => {\n        if (a[1] < b[1] || (a[1] === b[1] && a[0] > b[0])) {\n            return b;\n        } else {\n            return a;\n        }\n    })[0];\n}\n```\n    \n    The algorithm consists of the following steps:\n1. Iterate over the numbers in the array `nums` and store the remainders obtained when dividing each number by the `space` in a hash map or dictionary, along with their counts.\n2. Find the key (i.e., the remainder) in the hash map that has the maximum value for `(count[x], -x)` (in descending order). This corresponds to the largest count, and smallest remainder (breaking ties).\n3. Return the key (remainder) with the maximum count and the smallest value.\n\nThe hash map/dictionary stores the count of the remainders of each number in the array when divided by `space`. This allows us to efficiently find the largest count of remainders that correspond to a certain `nums[i]`, so the machine can destroy the maximum number of targets.\n    ",
+    "java": "\n    ```java\nint minSeededValue(int[] nums, int space) {\n    Map<Integer, Integer> count = new HashMap<>();\n    for (int num : nums) {\n        count.put(num % space, count.getOrDefault(num % space, 0) + 1);\n    }\n    return Collections.max(count.entrySet(), (a, b) -> {\n            if (a.getValue() < b.getValue()) {\n                return -1;\n            } else if (a.getValue() > b.getValue()) {\n                return 1;\n            } else { // a.getValue() == b.getValue()\n                return Integer.compare(b.getKey(), a.getKey());\n            }\n        }).getKey();\n}\n```\n    \n    The algorithm consists of the following steps:\n1. Iterate over the numbers in the array `nums` and store the remainders obtained when dividing each number by the `space` in a hash map or dictionary, along with their counts.\n2. Find the key (i.e., the remainder) in the hash map that has the maximum value for `(count[x], -x)` (in descending order). This corresponds to the largest count, and smallest remainder (breaking ties).\n3. Return the key (remainder) with the maximum count and the smallest value.\n\nThe hash map/dictionary stores the count of the remainders of each number in the array when divided by `space`. This allows us to efficiently find the largest count of remainders that correspond to a certain `nums[i]`, so the machine can destroy the maximum number of targets.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

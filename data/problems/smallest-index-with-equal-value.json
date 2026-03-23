@@ -1,0 +1,24 @@
+{
+  "id": 2057,
+  "title": "Smallest Index With Equal Value",
+  "slug": "smallest-index-with-equal-value",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a 0-indexed integer array nums, return _the smallest index_ i _of_ nums _such that_ i mod 10 == nums[i]_, or_ -1 _if such index does not exist_.\n\nx mod y denotes the remainder when x is divided by y.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef smallest_index(nums):\n    for i, num in enumerate(nums):\n        if i % 10 == num:\n            return i\n    return -1\n```\n    \n    The algorithm iterates through the elements of the input array (nums) and checks whether the current index (i) of the element satisfies the condition `i mod 10 == nums[i]`. If the condition is satisfied, it returns the index (i). If the loop finishes without finding an index that satisfies the condition, it returns -1.\n\nThe algorithm has a time complexity of O(n), where n is the length of the input array. This is because the algorithm iterates through the array once.\n    ",
+    "javascript": "\n    ```javascript\nfunction smallestIndex(nums) {\n    for (let i = 0; i < nums.length; i++) {\n        if (i % 10 === nums[i]) {\n            return i;\n        }\n    }\n    return -1;\n}\n```\n\n    \n    The algorithm iterates through the elements of the input array (nums) and checks whether the current index (i) of the element satisfies the condition `i mod 10 == nums[i]`. If the condition is satisfied, it returns the index (i). If the loop finishes without finding an index that satisfies the condition, it returns -1.\n\nThe algorithm has a time complexity of O(n), where n is the length of the input array. This is because the algorithm iterates through the array once.\n    ",
+    "java": "\n    ```java\npublic int smallestIndex(int[] nums) {\n    for (int i = 0; i < nums.length; i++) {\n        if (i % 10 == nums[i]) {\n            return i;\n        }\n    }\n    return -1;\n}\n```\n    \n    The algorithm iterates through the elements of the input array (nums) and checks whether the current index (i) of the element satisfies the condition `i mod 10 == nums[i]`. If the condition is satisfied, it returns the index (i). If the loop finishes without finding an index that satisfies the condition, it returns -1.\n\nThe algorithm has a time complexity of O(n), where n is the length of the input array. This is because the algorithm iterates through the array once.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

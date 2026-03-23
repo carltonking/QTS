@@ -1,0 +1,24 @@
+{
+  "id": 1797,
+  "title": "Design Authentication Manager",
+  "slug": "design-authentication-manager",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There is an authentication system that works with authentication tokens. For each session, the user will receive a new authentication token that will expire timeToLive seconds after the currentTime. If the token is renewed, the expiry time will be extended to expire timeToLive seconds after the (potentially different) currentTime.\n\nImplement the AuthenticationManager class:\n\n*   AuthenticationManager(int timeToLive) constructs the AuthenticationManager and sets the timeToLive.\n*   generate(string tokenId, int currentTime) generates a new token with the given tokenId at the given currentTime in seconds.\n*   renew(string tokenId, int currentTime) renews the unexpired token with the given tokenId at the given currentTime in seconds. If there are no unexpired tokens with the given tokenId, the request is ignored, and nothing happens.\n*   countUnexpiredTokens(int currentTime) returns the number of unexpired tokens at the given currentTime.\n\nNote that if a token expires at time t, and another action happens on time t (renew or countUnexpiredTokens), the expiration takes place before the other actions.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef interpret(command: str) -> str:\n    result = []\n    i = 0\n    while i < len(command):\n        if command[i] == \"G\":\n            result.append(\"G\")\n            i += 1\n        elif command[i:i+2] == \"()\":\n            result.append(\"o\")\n            i += 2\n        else:\n            result.append(\"al\")\n            i += 4\n    return \"\".join(result)\n```\n    \n    The algorithm iterates through each character in the `command` string. \n1. If the character is 'G', it adds 'G' to the result.\n2. If the character is '(' and followed by ')', it appends 'o' to the result and skips the ')' character.\n3. If it encounters \"(al)\", it appends \"al\" to the result and skips the corresponding characters.\n\nThen return the result string.\n    ",
+    "javascript": "\n    ```javascript\nfunction interpret(command) {\n    let result = \"\";\n    for (let i = 0; i < command.length; ++i) {\n        if (command[i] === 'G') result += 'G';\n        else if (command[i] === '(' && command[i+1] === ')') {\n            result += 'o';\n            i++;\n        } else {\n            result += \"al\";\n            i+=3;\n        }\n    }\n    return result;\n}\n```\n\n    \n    The algorithm iterates through each character in the `command` string. \n1. If the character is 'G', it adds 'G' to the result.\n2. If the character is '(' and followed by ')', it appends 'o' to the result and skips the ')' character.\n3. If it encounters \"(al)\", it appends \"al\" to the result and skips the corresponding characters.\n\nThen return the result string.\n    ",
+    "java": "\n    ```java\npublic String interpret(String command) {\n    StringBuilder result = new StringBuilder();\n    for (int i = 0; i < command.length(); ++i) {\n        if (command.charAt(i) == 'G') result.append('G');\n        else if (command.charAt(i) == '(' && command.charAt(i+1) == ')') {\n            result.append('o');\n            i++;\n        } else {\n            result.append(\"al\");\n            i+=3;\n        }\n    }\n    return result.toString();\n}\n```\n    \n    The algorithm iterates through each character in the `command` string. \n1. If the character is 'G', it adds 'G' to the result.\n2. If the character is '(' and followed by ')', it appends 'o' to the result and skips the ')' character.\n3. If it encounters \"(al)\", it appends \"al\" to the result and skips the corresponding characters.\n\nThen return the result string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

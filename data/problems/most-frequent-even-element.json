@@ -1,0 +1,24 @@
+{
+  "id": 2404,
+  "title": "Most Frequent Even Element",
+  "slug": "most-frequent-even-element",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer array nums, return _the most frequent even element_.\n\nIf there is a tie, return the smallest one. If there is no such element, return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef most_frequent_even(nums):\n    count = {}\n    for num in nums:\n        if num % 2 == 0:\n            count[num] = count.get(num, 0) + 1\n    max_count = float('-inf')\n    most_frequent = -1\n    for num, freq in count.items():\n        if freq > max_count or (freq == max_count and num < most_frequent):\n            max_count = freq\n            most_frequent = num\n    return most_frequent\n```\n\n    \n    The algorithm uses a hash map to count the frequency of even numbers in the given array. The hash map is iterated and the even number with the highest frequency is stored as the most frequent. If there is a tie, the smaller number is chosen as the most frequent. If no even number is found, the algorithm returns -1.\n    ",
+    "javascript": "\n    ```javascript\nfunction mostFrequentEven(nums) {\n    let count = {};\n    for (let num of nums) {\n        if (num % 2 === 0) {\n            count[num] = (count[num] || 0) + 1;\n        }\n    }\n    let maxCount = Number.MIN_SAFE_INTEGER;\n    let mostFrequent = -1;\n    for (let num in count) {\n        let freq = count[num];\n        if (freq > maxCount || (freq === maxCount && parseInt(num) < mostFrequent)) {\n            maxCount = freq;\n            mostFrequent = parseInt(num);\n        }\n    }\n    return mostFrequent;\n}\n```\n\n    \n    The algorithm uses a hash map to count the frequency of even numbers in the given array. The hash map is iterated and the even number with the highest frequency is stored as the most frequent. If there is a tie, the smaller number is chosen as the most frequent. If no even number is found, the algorithm returns -1.\n    ",
+    "java": "\n    ```java\npublic int mostFrequentEven(int[] nums) {\n    Map<Integer, Integer> count = new HashMap<>();\n    for (int num : nums) {\n        if (num % 2 == 0) {\n            count.put(num, count.getOrDefault(num, 0) + 1);\n        }\n    }\n    int maxCount = Integer.MIN_VALUE;\n    int mostFrequent = -1;\n    for (Map.Entry<Integer, Integer> entry : count.entrySet()) {\n        int num = entry.getKey();\n        int freq = entry.getValue();\n        if (freq > maxCount || (freq == maxCount && num < mostFrequent)) {\n            maxCount = freq;\n            mostFrequent = num;\n        }\n    }\n    return mostFrequent;\n}\n```\n\n    \n    The algorithm uses a hash map to count the frequency of even numbers in the given array. The hash map is iterated and the even number with the highest frequency is stored as the most frequent. If there is a tie, the smaller number is chosen as the most frequent. If no even number is found, the algorithm returns -1.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

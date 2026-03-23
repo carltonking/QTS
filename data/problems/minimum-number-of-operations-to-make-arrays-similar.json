@@ -1,0 +1,24 @@
+{
+  "id": 2449,
+  "title": "Minimum Number of Operations to Make Arrays Similar",
+  "slug": "minimum-number-of-operations-to-make-arrays-similar",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given two positive integer arrays nums and target, of the same length.\n\nIn one operation, you can choose any two distinct indices i and j where 0 <= i, j < nums.length and:\n\n*   set nums[i] = nums[i] + 2 and\n*   set nums[j] = nums[j] - 2.\n\nTwo arrays are considered to be similar if the frequency of each element is the same.\n\nReturn _the minimum number of operations required to make_ nums _similar to_ target. The test cases are generated such that nums can always be similar to target.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minOperations(nums, target):\n    n = len(nums)\n    sum_nums = sum(nums)\n    sum_target = sum(target)\n    diff = (sum_target - sum_nums) // 2\n    cnt = 0\n    for i in range(n):\n        if nums[i] > target[i]:\n            cnt += (nums[i] - target[i] - diff) // 2\n    return cnt\n```\n\n    \n    1. Calculate the sum of both nums and target arrays.\n2. Calculate the difference in sum (sum_target - sum_nums) and divide by 2.\n3. For each element in nums, if it's greater than the corresponding element in target, increment the count cnt by the difference between the elements, minus diff and then divide by 2.\n4. Return the cnt as the minimum number of operations required to make nums similar to target.\n    ",
+    "javascript": "\n    ```javascript\nfunction minOperations(nums, target) {\n    const n = nums.length;\n    const sum_nums = nums.reduce((a, b) => a + b, 0);\n    const sum_target = target.reduce((a, b) => a + b, 0);\n    const diff = (sum_target - sum_nums) / 2;\n    let cnt = 0;\n    for (let i = 0; i < n; i++) {\n        if (nums[i] > target[i]) {\n            cnt += (nums[i] - target[i] - diff) / 2;\n        }\n    }\n    return cnt;\n}\n```\n\n    \n    1. Calculate the sum of both nums and target arrays.\n2. Calculate the difference in sum (sum_target - sum_nums) and divide by 2.\n3. For each element in nums, if it's greater than the corresponding element in target, increment the count cnt by the difference between the elements, minus diff and then divide by 2.\n4. Return the cnt as the minimum number of operations required to make nums similar to target.\n    ",
+    "java": "\n    ```java\npublic int minOperations(int[] nums, int[] target) {\n    int n = nums.length;\n    int sum_nums = 0;\n    int sum_target = 0;\n    for (int i = 0; i < n; i++) {\n        sum_nums += nums[i];\n        sum_target += target[i];\n    }\n    int diff = (sum_target - sum_nums) / 2;\n    int cnt = 0;\n    for (int i = 0; i < n; i++) {\n        if (nums[i] > target[i]) {\n            cnt += (nums[i] - target[i] - diff) / 2;\n        }\n    }\n    return cnt;\n}\n```\n\n    \n    1. Calculate the sum of both nums and target arrays.\n2. Calculate the difference in sum (sum_target - sum_nums) and divide by 2.\n3. For each element in nums, if it's greater than the corresponding element in target, increment the count cnt by the difference between the elements, minus diff and then divide by 2.\n4. Return the cnt as the minimum number of operations required to make nums similar to target.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

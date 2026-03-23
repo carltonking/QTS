@@ -1,0 +1,24 @@
+{
+  "id": 717,
+  "title": "1-bit and 2-bit Characters",
+  "slug": "1-bit-and-2-bit-characters",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "We have two special characters:\n\n*   The first character can be represented by one bit 0.\n*   The second character can be represented by two bits (10 or 11).\n\nGiven a binary array bits that ends with 0, return true if the last character must be a one-bit character.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_one_bit_character(bits):\n    i = 0\n    while i < len(bits) - 1:\n        i += bits[i] + 1\n    return i == len(bits) - 1\n```\n    \n    The algorithm iterates through the binary array `bits`. If the current element is 1, the next character will be a 2-bit character, so the index `i` will be incremented by 2 (1 from the current iteration and 1 from the 2-bit character). If the current element is 0, it means that the current character is a 1-bit character, so the index `i` is incremented by 1 (from the current iteration). The loop ends either when reaching the last character or when going beyond it.\n\nAfter the loop, if `i` is equal to the last index of the array (i.e., `bits.size() - 1`, `bits.length - 1`, or `len(bits) - 1` depending on the language), it means the last character is a 1-bit character, and the function returns `true`. Otherwise, it returns `false`.\n    ",
+    "javascript": "\n    ```javascript\nfunction isOneBitCharacter(bits) {\n    let i;\n    for (i = 0; i < bits.length - 1; i++) {\n        i += bits[i];\n    }\n    return i === bits.length - 1;\n}\n```\n    \n    The algorithm iterates through the binary array `bits`. If the current element is 1, the next character will be a 2-bit character, so the index `i` will be incremented by 2 (1 from the current iteration and 1 from the 2-bit character). If the current element is 0, it means that the current character is a 1-bit character, so the index `i` is incremented by 1 (from the current iteration). The loop ends either when reaching the last character or when going beyond it.\n\nAfter the loop, if `i` is equal to the last index of the array (i.e., `bits.size() - 1`, `bits.length - 1`, or `len(bits) - 1` depending on the language), it means the last character is a 1-bit character, and the function returns `true`. Otherwise, it returns `false`.\n    ",
+    "java": "\n    ```java\nboolean isOneBitCharacter(int[] bits) {\n    int i;\n    for (i = 0; i < bits.length - 1; i++) {\n        i += bits[i];\n    }\n    return i == bits.length - 1;\n}\n```\n    \n    The algorithm iterates through the binary array `bits`. If the current element is 1, the next character will be a 2-bit character, so the index `i` will be incremented by 2 (1 from the current iteration and 1 from the 2-bit character). If the current element is 0, it means that the current character is a 1-bit character, so the index `i` is incremented by 1 (from the current iteration). The loop ends either when reaching the last character or when going beyond it.\n\nAfter the loop, if `i` is equal to the last index of the array (i.e., `bits.size() - 1`, `bits.length - 1`, or `len(bits) - 1` depending on the language), it means the last character is a 1-bit character, and the function returns `true`. Otherwise, it returns `false`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

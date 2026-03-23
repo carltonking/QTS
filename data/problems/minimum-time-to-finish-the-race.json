@@ -1,0 +1,24 @@
+{
+  "id": 2188,
+  "title": "Minimum Time to Finish the Race",
+  "slug": "minimum-time-to-finish-the-race",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a 0-indexed 2D integer array tires where tires[i] = [fi, ri] indicates that the ith tire can finish its xth successive lap in fi * ri(x-1) seconds.\n\n*   For example, if fi = 3 and ri = 2, then the tire would finish its 1st lap in 3 seconds, its 2nd lap in 3 * 2 = 6 seconds, its 3rd lap in 3 * 22 = 12 seconds, etc.\n\nYou are also given an integer changeTime and an integer numLaps.\n\nThe race consists of numLaps laps and you may start the race with any tire. You have an unlimited supply of each tire and after every lap, you may change to any given tire (including the current tire type) if you wait changeTime seconds.\n\nReturn _the minimum time to finish the race._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_x(n, quantities):\n    total_products = sum(quantities)\n    return (total_products + n - 1) // n\n```\n    \n    We first compute the total number of products by summing up the values in the `quantities` array. In C++ and Java, we do this by looping through the array and adding each value to a running total. In Python, we use the built-in `sum()` function, while in JavaScript, we use the `reduce()` function.\n\nAfter we have the total number of products, we calculate the minimum possible x by dividing the total number of products by the number of specialty retail stores and rounding up to the nearest integer. In C++ and Java, we do this using integer division, adding `n - 1` to the total number of products to ensure that the result is rounded up. In Python, we use floor division (`//`), which also ensures that the result is rounded up. In JavaScript, we use `Math.floor()` for rounding.\n\nFinally, we return the minimum possible x, which represents the minimum number of products per store.\n    ",
+    "javascript": "\n    ```javascript\nfunction min_x(n, quantities) {\n    let total_products = quantities.reduce((a, b) => a + b);\n    return Math.floor((total_products + n - 1) / n);\n}\n```\n    \n    We first compute the total number of products by summing up the values in the `quantities` array. In C++ and Java, we do this by looping through the array and adding each value to a running total. In Python, we use the built-in `sum()` function, while in JavaScript, we use the `reduce()` function.\n\nAfter we have the total number of products, we calculate the minimum possible x by dividing the total number of products by the number of specialty retail stores and rounding up to the nearest integer. In C++ and Java, we do this using integer division, adding `n - 1` to the total number of products to ensure that the result is rounded up. In Python, we use floor division (`//`), which also ensures that the result is rounded up. In JavaScript, we use `Math.floor()` for rounding.\n\nFinally, we return the minimum possible x, which represents the minimum number of products per store.\n    ",
+    "java": "\n    ```java\nimport java.util.List;\n\npublic int min_x(int n, List<Integer> quantities) {\n    int total_products = 0;\n    for (int q : quantities) {\n        total_products += q;\n    }\n\n    return (total_products + n - 1) / n;\n}\n```\n    \n    We first compute the total number of products by summing up the values in the `quantities` array. In C++ and Java, we do this by looping through the array and adding each value to a running total. In Python, we use the built-in `sum()` function, while in JavaScript, we use the `reduce()` function.\n\nAfter we have the total number of products, we calculate the minimum possible x by dividing the total number of products by the number of specialty retail stores and rounding up to the nearest integer. In C++ and Java, we do this using integer division, adding `n - 1` to the total number of products to ensure that the result is rounded up. In Python, we use floor division (`//`), which also ensures that the result is rounded up. In JavaScript, we use `Math.floor()` for rounding.\n\nFinally, we return the minimum possible x, which represents the minimum number of products per store.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

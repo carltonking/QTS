@@ -1,0 +1,24 @@
+{
+  "id": 1923,
+  "title": "Longest Common Subpath",
+  "slug": "longest-common-subpath",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "There is a country of n cities numbered from 0 to n - 1. In this country, there is a road connecting every pair of cities.\n\nThere are m friends numbered from 0 to m - 1 who are traveling through the country. Each one of them will take a path consisting of some cities. Each path is represented by an integer array that contains the visited cities in order. The path may contain a city more than once, but the same city will not be listed consecutively.\n\nGiven an integer n and a 2D integer array paths where paths[i] is an integer array representing the path of the ith friend, return _the length of the longest common subpath that is shared by every friend's path, or_ 0 _if there is no common subpath at all_.\n\nA subpath of a path is a contiguous sequence of cities within that path.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef are_sentences_similar(sentence1, sentence2):\n    words1 = sentence1.split()\n    words2 = sentence2.split()\n\n    while words1 and words2 and words1[0] == words2[0]:\n        words1.pop(0)\n        words2.pop(0)\n    \n    while words1 and words2 and words1[-1] == words2[-1]:\n        words1.pop()\n        words2.pop()\n\n    return not words1 or not words2\n```\n    \n    The algorithm first splits the input sentences into lists of words (vector in C++, ArrayList in Java, list in Python, and array in JavaScript). Then, it compares and removes the common words from the beginning of both lists by using a while loop until no more common words are found. After that, it compares and removes the common words from the end of both lists using another while loop until no more common words are found. Finally, it returns true if one of the lists is empty, which means that the input sentences are similar, otherwise it returns false.\n    ",
+    "javascript": "\n    ```javascript\nfunction areSentencesSimilar(sentence1, sentence2) {\n    let words1 = sentence1.split(\" \");\n    let words2 = sentence2.split(\" \");\n    \n    while (\n        words1.length && words2.length &&\n        words1[0] === words2[0]\n    ) {\n        words1.shift();\n        words2.shift();\n    }\n    \n    while (\n        words1.length && words2.length &&\n        words1[words1.length - 1] === words2[words2.length - 1]\n    ) {\n        words1.pop();\n        words2.pop();\n    }\n    \n    return !words1.length || !words2.length;\n}\n```\n    \n    The algorithm first splits the input sentences into lists of words (vector in C++, ArrayList in Java, list in Python, and array in JavaScript). Then, it compares and removes the common words from the beginning of both lists by using a while loop until no more common words are found. After that, it compares and removes the common words from the end of both lists using another while loop until no more common words are found. Finally, it returns true if one of the lists is empty, which means that the input sentences are similar, otherwise it returns false.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic boolean areSentencesSimilar(String sentence1, String sentence2) {\n    List<String> words1 = new ArrayList<>(Arrays.asList(sentence1.split(\" \")));\n    List<String> words2 = new ArrayList<>(Arrays.asList(sentence2.split(\" \")));\n\n    while (!words1.isEmpty() && !words2.isEmpty() && words1.get(0).equals(words2.get(0))) {\n        words1.remove(0);\n        words2.remove(0);\n    }\n\n    while (!words1.isEmpty() && !words2.isEmpty() && words1.get(words1.size() - 1).equals(words2.get(words2.size() - 1))) {\n        words1.remove(words1.size() - 1);\n        words2.remove(words2.size() - 1);\n    }\n\n    return words1.isEmpty() || words2.isEmpty();\n}\n```\n    \n    The algorithm first splits the input sentences into lists of words (vector in C++, ArrayList in Java, list in Python, and array in JavaScript). Then, it compares and removes the common words from the beginning of both lists by using a while loop until no more common words are found. After that, it compares and removes the common words from the end of both lists using another while loop until no more common words are found. Finally, it returns true if one of the lists is empty, which means that the input sentences are similar, otherwise it returns false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

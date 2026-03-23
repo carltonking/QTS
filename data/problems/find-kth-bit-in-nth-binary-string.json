@@ -1,0 +1,24 @@
+{
+  "id": 1545,
+  "title": "Find Kth Bit in Nth Binary String",
+  "slug": "find-kth-bit-in-nth-binary-string",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given two positive integers n and k, the binary string Sn is formed as follows:\n\n*   S1 = \"0 \"\n*   Si = Si - 1 + \"1 \" + reverse(invert(Si - 1)) for i > 1\n\nWhere + denotes the concatenation operation, reverse(x) returns the reversed string x, and invert(x) inverts all the bits in x (0 changes to 1 and 1 changes to 0).\n\nFor example, the first four strings in the above sequence are:\n\n*   S1 = \"0 \"\n*   S2 = \"011 \"\n*   S3 = \"0111001 \"\n*   S4 = \"011100110110001 \"\n\nReturn _the_ kth _bit_ _in_ Sn. It is guaranteed that k is valid for the given n.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef largestNumber(cost, target):\n    dp = [\"\" for _ in range(target + 1)]\n    dp[0] = \"\"\n    \n    for t in range(1, target + 1):\n        for i in range(1, 10):\n            if t >= cost[i - 1] and dp[t - cost[i - 1]]:\n                temp = dp[t - cost[i - 1]] + str(i)\n                if len(dp[t]) <= len(temp):\n                    dp[t] = temp\n\n    return dp[target] if dp[target] else \"0\"\n```\n\n    \n    We use dynamic programming with an array `dp` where `dp[i]` will store the largest integer that can be painted using exactly a cost of `i`. Initially, all elements of `dp` are empty strings except `dp[0]` which is an empty string (no digits are used). Loop through all possible prices from 1 to `target`, for each price loop through all digit costs from 1 to 9. If the current price minus the current digit cost has a valid value in the `dp`, add the current digit to the value and store it into `temp`. If the current value has a smaller length than `temp`, replace the current value with `temp`. This way we will find the maximum integer value for each cost. Finally, we return the value of dp[target], if it's empty we return \"0\" as there is no valid option.\n    ",
+    "javascript": "\n    ```javascript\nfunction largestNumber(cost, target) {\n    const dp = new Array(target + 1).fill(\"\");\n    dp[0] = \"\";\n    \n    for (let t = 1; t <= target; ++t) {\n        for (let i = 1; i <= 9; ++i) {\n            if (t >= cost[i - 1] && dp[t - cost[i - 1]] !== \"\") {\n                const temp = dp[t - cost[i - 1]] + i.toString();\n                if (dp[t].length <= temp.length) {\n                    dp[t] = temp;\n                }\n            }\n        }\n    }\n\n    return dp[target] === \"\" ? \"0\" : dp[target];\n}\n```\n\n    \n    We use dynamic programming with an array `dp` where `dp[i]` will store the largest integer that can be painted using exactly a cost of `i`. Initially, all elements of `dp` are empty strings except `dp[0]` which is an empty string (no digits are used). Loop through all possible prices from 1 to `target`, for each price loop through all digit costs from 1 to 9. If the current price minus the current digit cost has a valid value in the `dp`, add the current digit to the value and store it into `temp`. If the current value has a smaller length than `temp`, replace the current value with `temp`. This way we will find the maximum integer value for each cost. Finally, we return the value of dp[target], if it's empty we return \"0\" as there is no valid option.\n    ",
+    "java": "\n    ```java\npublic String largestNumber(int[] cost, int target) {\n    String[] dp = new String[target + 1];\n    dp[0] = \"\";\n    \n    for (int t = 1; t <= target; ++t) {\n        for (int i = 1; i <= 9; ++i) {\n            if (t >= cost[i - 1] && dp[t - cost[i - 1]] != null) {\n                String temp = dp[t - cost[i - 1]] + Integer.toString(i);\n                if (dp[t] == null || dp[t].length() <= temp.length()) {\n                    dp[t] = temp;\n                }\n            }\n        }\n    }\n\n    return dp[target] == null ? \"0\" : dp[target];\n}\n```\n\n    \n    We use dynamic programming with an array `dp` where `dp[i]` will store the largest integer that can be painted using exactly a cost of `i`. Initially, all elements of `dp` are empty strings except `dp[0]` which is an empty string (no digits are used). Loop through all possible prices from 1 to `target`, for each price loop through all digit costs from 1 to 9. If the current price minus the current digit cost has a valid value in the `dp`, add the current digit to the value and store it into `temp`. If the current value has a smaller length than `temp`, replace the current value with `temp`. This way we will find the maximum integer value for each cost. Finally, we return the value of dp[target], if it's empty we return \"0\" as there is no valid option.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

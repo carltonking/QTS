@@ -1,0 +1,40 @@
+{
+  "id": 29,
+  "title": "Container With Most Water",
+  "slug": "container-with-most-water",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Greedy"
+  ],
+  "description": "Given n non-negative integers where each represents a point at coordinate (i, height[i]), find two lines that together with the x-axis form a container containing the most water.",
+  "examples": [
+    {
+      "input": "height = [1,8,6,2,5,4,8,3,7]",
+      "output": "49"
+    }
+  ],
+  "constraints": [
+    "n == height.length"
+  ],
+  "starterCode": {
+    "python": "from typing import List\nclass Solution:\n    def maxArea(self, height: List[int]) -> int:\n        pass",
+    "javascript": "var maxArea = function(height) {\n    \n};",
+    "java": "class Solution {\n    public int maxArea(int[] height) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    int maxArea(vector<int>& height) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Container With Most Water\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "[1,8,6,2,5,4,8,3,7]",
+      "expectedOutput": "49"
+    },
+    {
+      "input": "[1,1]",
+      "expectedOutput": "1"
+    }
+  ]
+}

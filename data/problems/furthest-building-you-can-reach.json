@@ -1,0 +1,24 @@
+{
+  "id": 1642,
+  "title": "Furthest Building You Can Reach",
+  "slug": "furthest-building-you-can-reach",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array heights representing the heights of buildings, some bricks, and some ladders.\n\nYou start your journey from building 0 and move to the next building by possibly using bricks or ladders.\n\nWhile moving from building i to building i+1 (0-indexed),\n\n*   If the current building's height is greater than or equal to the next building's height, you do not need a ladder or bricks.\n*   If the current building's height is less than the next building's height, you can either use one ladder or (h[i+1] - h[i]) bricks.\n\n_Return the furthest building index (0-indexed) you can reach if you use the given ladders and bricks optimally._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxWaterBottles(numBottles: int, numExchange: int) -> int:\n    total = numBottles\n    while numBottles >= numExchange:\n        newBottles = numBottles // numExchange\n        total += newBottles\n        numBottles = newBottles + numBottles % numExchange\n    return total\n```\n    \n    The algorithm initializes the total number of bottles to `numBottles` (the initial number of filled bottles), then enters into a loop that continues until the number of bottles is less than the `numExchange` value. Inside the loop, we find how many new full bottles we can get by exchanging the empty bottles (`newBottles = numBottles / numExchange`), add the obtained `newBottles` to the total, and update the `numBottles` to reflect the number of new filled bottles plus the remaining empty bottles that we couldn't exchange. We repeat this process until we no longer have enough bottles to exchange. We return the `total` number of water bottles that were drank.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxWaterBottles(numBottles, numExchange) {\n    let total = numBottles;\n    while (numBottles >= numExchange) {\n        const newBottles = Math.floor(numBottles / numExchange);\n        total += newBottles;\n        numBottles = newBottles + numBottles % numExchange;\n    }\n    return total;\n}\n```\n\n    \n    The algorithm initializes the total number of bottles to `numBottles` (the initial number of filled bottles), then enters into a loop that continues until the number of bottles is less than the `numExchange` value. Inside the loop, we find how many new full bottles we can get by exchanging the empty bottles (`newBottles = numBottles / numExchange`), add the obtained `newBottles` to the total, and update the `numBottles` to reflect the number of new filled bottles plus the remaining empty bottles that we couldn't exchange. We repeat this process until we no longer have enough bottles to exchange. We return the `total` number of water bottles that were drank.\n    ",
+    "java": "\n    ```java\npublic int maxWaterBottles(int numBottles, int numExchange) {\n    int total = numBottles;\n    while (numBottles >= numExchange) {\n        int newBottles = numBottles / numExchange;\n        total += newBottles;\n        numBottles = newBottles + numBottles % numExchange;\n    }\n    return total;\n}\n```\n    \n    The algorithm initializes the total number of bottles to `numBottles` (the initial number of filled bottles), then enters into a loop that continues until the number of bottles is less than the `numExchange` value. Inside the loop, we find how many new full bottles we can get by exchanging the empty bottles (`newBottles = numBottles / numExchange`), add the obtained `newBottles` to the total, and update the `numBottles` to reflect the number of new filled bottles plus the remaining empty bottles that we couldn't exchange. We repeat this process until we no longer have enough bottles to exchange. We return the `total` number of water bottles that were drank.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

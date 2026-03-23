@@ -1,0 +1,24 @@
+{
+  "id": 672,
+  "title": "Bulb Switcher II",
+  "slug": "bulb-switcher-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There is a room with n bulbs labeled from 1 to n that all are turned on initially, and four buttons on the wall. Each of the four buttons has a different functionality where:\n\n*   Button 1: Flips the status of all the bulbs.\n*   Button 2: Flips the status of all the bulbs with even labels (i.e., 2, 4, ...).\n*   Button 3: Flips the status of all the bulbs with odd labels (i.e., 1, 3, ...).\n*   Button 4: Flips the status of all the bulbs with a label j = 3k + 1 where k = 0, 1, 2, ... (i.e., 1, 4, 7, 10, ...).\n\nYou must make exactly presses button presses in total. For each press, you may pick any of the four buttons to press.\n\nGiven the two integers n and presses, return _the number of different possible statuses after performing all_ presses _button presses_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef num_light_configuration(n, presses):\n    dp = [[0] * (presses + 1) for _ in range(n+1)]\n    dp[0][0] = 1\n\n    for i in range(n + 1):\n        for j in range(1, presses + 1):\n            dp[i][j] = dp[i][j - 1] * (i + 1) + (dp[i - 1][j - 1] if i > 0 else 0)\n\n    return dp[n][presses]\n```\n    \n    1. Create a dynamic programming `dp` matrix, where `dp[i][j]` represents the number of different configurations possible after `j` button-press operations with only `i` bulbs.\n2. Initialize `dp[0][0]` to 1, which means there is 1 way to have 0 bulbs (i.e., do nothing).\n3. Iterate through `i` bulbs and `j` button-press operations.\n4. For each button press, there are 4 possible operations:\n    a. Turn off all bulbs.\n    b. Turn off even numbered bulbs.\n    c. Turn off odd numbered bulbs.\n    d. Turn off bulbs whose index is a multiple of 3.\n5. Update the `dp[i][j]` value by the operations that can be performed on this configuration.\n6. Return `dp[n][presses]` which represents the final number of different possible statuses after performing all presses button presses.\n    ",
+    "javascript": "\n    ```javascript\nfunction numLightConfiguration(n, presses) {\n    let dp = new Array(n + 1).fill(0).map(() => new Array(presses + 1).fill(0));\n    dp[0][0] = 1;\n\n    for (let i = 0; i <= n; ++i) {\n        for (let j = 1; j <= presses; ++j) {\n            dp[i][j] = dp[i][j - 1] * (i + 1) + (i > 0 ? dp[i - 1][j - 1] : 0);\n        }\n    }\n\n    return dp[n][presses];\n}\n```\n    \n    1. Create a dynamic programming `dp` matrix, where `dp[i][j]` represents the number of different configurations possible after `j` button-press operations with only `i` bulbs.\n2. Initialize `dp[0][0]` to 1, which means there is 1 way to have 0 bulbs (i.e., do nothing).\n3. Iterate through `i` bulbs and `j` button-press operations.\n4. For each button press, there are 4 possible operations:\n    a. Turn off all bulbs.\n    b. Turn off even numbered bulbs.\n    c. Turn off odd numbered bulbs.\n    d. Turn off bulbs whose index is a multiple of 3.\n5. Update the `dp[i][j]` value by the operations that can be performed on this configuration.\n6. Return `dp[n][presses]` which represents the final number of different possible statuses after performing all presses button presses.\n    ",
+    "java": "\n    ```java\npublic int numLightConfiguration(int n, int presses) {\n    int[][] dp = new int[n + 1][presses + 1];\n    dp[0][0] = 1;\n\n    for (int i = 0; i <= n; ++i) {\n        for (int j = 1; j <= presses; ++j) {\n            dp[i][j] = dp[i][j - 1] * (i + 1) + (i > 0 ? dp[i - 1][j - 1] : 0);\n        }\n    }\n\n    return dp[n][presses];\n}\n```\n    \n    1. Create a dynamic programming `dp` matrix, where `dp[i][j]` represents the number of different configurations possible after `j` button-press operations with only `i` bulbs.\n2. Initialize `dp[0][0]` to 1, which means there is 1 way to have 0 bulbs (i.e., do nothing).\n3. Iterate through `i` bulbs and `j` button-press operations.\n4. For each button press, there are 4 possible operations:\n    a. Turn off all bulbs.\n    b. Turn off even numbered bulbs.\n    c. Turn off odd numbered bulbs.\n    d. Turn off bulbs whose index is a multiple of 3.\n5. Update the `dp[i][j]` value by the operations that can be performed on this configuration.\n6. Return `dp[n][presses]` which represents the final number of different possible statuses after performing all presses button presses.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

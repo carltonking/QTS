@@ -1,0 +1,24 @@
+{
+  "id": 1266,
+  "title": "Minimum Time Visiting All Points",
+  "slug": "minimum-time-visiting-all-points",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "On a 2D plane, there are n points with integer coordinates points[i] = [xi, yi]. Return _the minimum time in seconds to visit all the points in the order given by_ points.\n\nYou can move according to these rules:\n\n*   In 1 second, you can either:\n    *   move vertically by one unit,\n    *   move horizontally by one unit, or\n    *   move diagonally sqrt(2) units (in other words, move one unit vertically then one unit horizontally in 1 second).\n*   You have to visit the points in the same order as they appear in the array.\n*   You are allowed to pass through points that appear later in the order, but these do not count as visits.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minTimeToVisitAllPoints(points):\n    time = 0\n    for i in range(1, len(points)):\n        dx = abs(points[i][0] - points[i - 1][0])\n        dy = abs(points[i][1] - points[i - 1][1])\n        time += max(dx, dy)\n    return time\n```\n    \n    We iterate through every point in the given order. At each point, we calculate the horizontal distance `dx` and the vertical distance `dy` between the current point and the previous point. The minimum time to move between these two points is the maximum of `dx` and `dy`. This is because the diagonal movement can shorten both distances simultaneously. We add this value to the total time and continue until all points are visited.\n    ",
+    "javascript": "\n    ```javascript\nfunction minTimeToVisitAllPoints(points) {\n    let time = 0;\n    for (let i = 1; i < points.length; i++) {\n        let dx = Math.abs(points[i][0] - points[i - 1][0]);\n        let dy = Math.abs(points[i][1] - points[i - 1][1]);\n        time += Math.max(dx, dy);\n    }\n    return time;\n}\n```\n    \n    We iterate through every point in the given order. At each point, we calculate the horizontal distance `dx` and the vertical distance `dy` between the current point and the previous point. The minimum time to move between these two points is the maximum of `dx` and `dy`. This is because the diagonal movement can shorten both distances simultaneously. We add this value to the total time and continue until all points are visited.\n    ",
+    "java": "\n    ```java\npublic int minTimeToVisitAllPoints(int[][] points) {\n    int time = 0;\n    for (int i = 1; i < points.length; i++) {\n        int dx = Math.abs(points[i][0] - points[i - 1][0]);\n        int dy = Math.abs(points[i][1] - points[i - 1][1]);\n        time += Math.max(dx, dy);\n    }\n    return time;\n}\n```\n    \n    We iterate through every point in the given order. At each point, we calculate the horizontal distance `dx` and the vertical distance `dy` between the current point and the previous point. The minimum time to move between these two points is the maximum of `dx` and `dy`. This is because the diagonal movement can shorten both distances simultaneously. We add this value to the total time and continue until all points are visited.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

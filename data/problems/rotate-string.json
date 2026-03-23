@@ -1,0 +1,24 @@
+{
+  "id": 796,
+  "title": "Rotate String",
+  "slug": "rotate-string",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given two strings s and goal, return true _if and only if_ s _can become_ goal _after some number of shifts on_ s.\n\nA shift on s consists of moving the leftmost character of s to the rightmost position.\n\n*   For example, if s = \"abcde \", then it will be \"bcdea \" after one shift.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef can_transform(sx, sy, tx, ty):\n    while sx != tx or sy != ty:\n        if sx > tx or sy > ty:\n            return False\n        if sx < tx:\n            tx -= ty\n        else:\n            ty -= sx\n    return True\n```\n    \n    The algorithm starts with the target coordinates (tx, ty), and works its way backward by performing the inverse operations to approach the source point (sx, sy). In each iteration, check if sx > tx or sy > ty, meaning the target point cannot be reached (return false). Depending on whether tx > sx or ty > sy, subtract the smaller coordinate from the larger one. If (tx and ty) become equal to (sx and sy), the target point can be reached, and the function returns true.\n    ",
+    "javascript": "\n    ```javascript\nfunction canTransform(sx, sy, tx, ty) {\n    while (sx !== tx || sy !== ty) {\n        if (sx > tx || sy > ty) return false;\n        if (sx < tx) {\n            tx -= ty;\n        } else {\n            ty -= sx;\n        }\n    }\n    return true;\n}\n```\n    \n    The algorithm starts with the target coordinates (tx, ty), and works its way backward by performing the inverse operations to approach the source point (sx, sy). In each iteration, check if sx > tx or sy > ty, meaning the target point cannot be reached (return false). Depending on whether tx > sx or ty > sy, subtract the smaller coordinate from the larger one. If (tx and ty) become equal to (sx and sy), the target point can be reached, and the function returns true.\n    ",
+    "java": "\n    ```java\nboolean canTransform(int sx, int sy, int tx, int ty) {\n    while (sx != tx || sy != ty) {\n        if (sx > tx || sy > ty) return false;\n        if (sx < tx) {\n            tx -= ty;\n        } else {\n            ty -= sx;\n        }\n    }\n    return true;\n}\n```\n    \n    The algorithm starts with the target coordinates (tx, ty), and works its way backward by performing the inverse operations to approach the source point (sx, sy). In each iteration, check if sx > tx or sy > ty, meaning the target point cannot be reached (return false). Depending on whether tx > sx or ty > sy, subtract the smaller coordinate from the larger one. If (tx and ty) become equal to (sx and sy), the target point can be reached, and the function returns true.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

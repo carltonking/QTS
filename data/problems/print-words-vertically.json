@@ -1,0 +1,24 @@
+{
+  "id": 1324,
+  "title": "Print Words Vertically",
+  "slug": "print-words-vertically",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string s. Return all the words vertically in the same order in which they appear in s.\nWords are returned as a list of strings, complete with spaces when is necessary. (Trailing spaces are not allowed).\nEach word would be put on only one column and that in one column there will be only one word.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findBall(grid):\n    m, n = len(grid), len(grid[0])\n    result = [-1] * n\n\n    for i in range(n):\n        x, y = 0, i\n\n        while x < m:\n            nx, ny = x + 1, y + grid[x][y]\n            if ny < 0 or ny >= n or grid[x][ny] != grid[x][y]:\n                break\n            x, y = nx, ny\n\n        if x == m:\n            result[i] = y\n\n    return result\n```\n\n    \n    1. Initialize the result array with a size of n and fill it with -1.\n2. Loop through the columns of the grid.\n3. For each ball dropped from the i-th column, store the current position (x, y) as 0, i.\n4. In each step, calculate the next position of the ball based on the direction provided by the grid cell (i.e., x + 1, y + grid[x][y]).\n5. Check if the ball would hit a wall or get stuck in a \"V\" shaped pattern: if the next y-coordinate is out of range or the direction in the next cell is different.\n6. If neither condition is fulfilled, update the current position to the next position.\n7. When the ball reaches the bottom (x == m), update the result[i] with the final y-coordinate.\n8. Return the result array.\n    ",
+    "javascript": "\n    ```javascript\nfunction findBall(grid) {\n    const m = grid.length;\n    const n = grid[0].length;\n    const result = new Array(n).fill(-1);\n\n    for (let i = 0; i < n; i++) {\n        let x = 0, y = i;\n\n        while (x < m) {\n            let nx = x + 1;\n            let ny = y + grid[x][y];\n            if (ny < 0 || ny >= n || grid[x][ny] !== grid[x][y]) break;\n            x = nx;\n            y = ny;\n        }\n\n        if (x === m) {\n            result[i] = y;\n        }\n    }\n\n    return result;\n}\n```\n\n    \n    1. Initialize the result array with a size of n and fill it with -1.\n2. Loop through the columns of the grid.\n3. For each ball dropped from the i-th column, store the current position (x, y) as 0, i.\n4. In each step, calculate the next position of the ball based on the direction provided by the grid cell (i.e., x + 1, y + grid[x][y]).\n5. Check if the ball would hit a wall or get stuck in a \"V\" shaped pattern: if the next y-coordinate is out of range or the direction in the next cell is different.\n6. If neither condition is fulfilled, update the current position to the next position.\n7. When the ball reaches the bottom (x == m), update the result[i] with the final y-coordinate.\n8. Return the result array.\n    ",
+    "java": "\n    ```java\npublic int[] findBall(int[][] grid) {\n    int m = grid.length;\n    int n = grid[0].length;\n    int[] result = new int[n];\n\n    for (int i = 0; i < n; i++) {\n        int x = 0, y = i;\n        result[i] = -1;\n\n        while (x < m) {\n            int nx = x + 1, ny = y + grid[x][y];\n            if (ny < 0 || ny >= n || grid[x][ny] != grid[x][y]) break;\n            x = nx;\n            y = ny;\n        }\n\n        if (x == m) {\n            result[i] = y;\n        }\n    }\n\n    return result;\n}\n```\n    \n    1. Initialize the result array with a size of n and fill it with -1.\n2. Loop through the columns of the grid.\n3. For each ball dropped from the i-th column, store the current position (x, y) as 0, i.\n4. In each step, calculate the next position of the ball based on the direction provided by the grid cell (i.e., x + 1, y + grid[x][y]).\n5. Check if the ball would hit a wall or get stuck in a \"V\" shaped pattern: if the next y-coordinate is out of range or the direction in the next cell is different.\n6. If neither condition is fulfilled, update the current position to the next position.\n7. When the ball reaches the bottom (x == m), update the result[i] with the final y-coordinate.\n8. Return the result array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

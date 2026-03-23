@@ -1,0 +1,24 @@
+{
+  "id": 987,
+  "title": "Vertical Order Traversal of a Binary Tree",
+  "slug": "vertical-order-traversal-of-a-binary-tree",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given the root of a binary tree, calculate the vertical order traversal of the binary tree.\n\nFor each node at position (row, col), its left and right children will be at positions (row + 1, col - 1) and (row + 1, col + 1) respectively. The root of the tree is at (0, 0).\n\nThe vertical order traversal of a binary tree is a list of top-to-bottom orderings for each column index starting from the leftmost column and ending on the rightmost column. There may be multiple nodes in the same row and same column. In such a case, sort these nodes by their values.\n\nReturn _the vertical order traversal of the binary tree_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import deque\n\ndef deckRevealedIncreasing(deck):\n    n = len(deck)\n    index = deque(range(n))\n    ans = [0] * n\n\n    deck.sort()\n    for card in deck:\n        ans[index.popleft()] = card\n        if index:\n            index.append(index.popleft())\n\n    return ans\n```\n    \n    The algorithm creates an index deque (or Queue in JavaScript and Java) that stores the indices from 0 to N-1. It then sorts the given deck in increasing order. For each card in the sorted deck, it assigns the card to the answer array at the index taken from the front of the index deque. After that, while the index deque is not empty, it moves the next index at the front of the deque to the back.\n\nThis approach simulates the process of revealing cards and reordering the index deque.\n    ",
+    "javascript": "\n    ```javascript\nfunction deckRevealedIncreasing(deck) {\n    const n = deck.length;\n    const index = [];\n    for (let i = 0; i < n; i++) {\n        index.push(i);\n    }\n\n    const ans = new Array(n);\n    deck.sort((a, b) => a - b);\n\n    for (const card of deck) {\n        ans[index.shift()] = card;\n        if (index.length) {\n            index.push(index.shift());\n        }\n    }\n    return ans;\n}\n```\n    \n    The algorithm creates an index deque (or Queue in JavaScript and Java) that stores the indices from 0 to N-1. It then sorts the given deck in increasing order. For each card in the sorted deck, it assigns the card to the answer array at the index taken from the front of the index deque. After that, while the index deque is not empty, it moves the next index at the front of the deque to the back.\n\nThis approach simulates the process of revealing cards and reordering the index deque.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic int[] deckRevealedIncreasing(int[] deck) {\n    int n = deck.length;\n    Queue<Integer> index = new LinkedList<>();\n    for (int i = 0; i < n; i++)\n        index.add(i);\n\n    int[] ans = new int[n];\n    Arrays.sort(deck);\n    for (int card : deck) {\n        ans[index.poll()] = card;\n        if (!index.isEmpty()) {\n            index.add(index.poll());\n        }\n    }\n    return ans;\n}\n```\n    \n    The algorithm creates an index deque (or Queue in JavaScript and Java) that stores the indices from 0 to N-1. It then sorts the given deck in increasing order. For each card in the sorted deck, it assigns the card to the answer array at the index taken from the front of the index deque. After that, while the index deque is not empty, it moves the next index at the front of the deque to the back.\n\nThis approach simulates the process of revealing cards and reordering the index deque.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

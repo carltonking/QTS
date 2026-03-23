@@ -1,0 +1,24 @@
+{
+  "id": 453,
+  "title": "Minimum Moves to Equal Array Elements",
+  "slug": "minimum-moves-to-equal-array-elements",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums of size n, return _the minimum number of moves required to make all array elements equal_.\n\nIn one move, you can increment n - 1 elements of the array by 1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_moves(nums):\n    min_element = min(nums)\n    moves = sum(num - min_element for num in nums)\n    return moves\n```\n\n    \n    The algorithm works as follows:\n\n1. Find the minimum element in nums.\n2. Calculate the number of moves required to make other elements equal to the minimum element by summing the difference between each element and the minimum element (n-1 up moves for each number).\n3. Return the calculated number of moves.\n\nThe algorithm has a time complexity of O(n) as it iterates through the array twice. The space complexity is also O(n) in the case of the Python solution (due to list comprehensions), otherwise O(1).\n    ",
+    "javascript": "\n    ```javascript\nfunction minMoves(nums) {\n    let min_element = Math.min(...nums);\n    let moves = nums.reduce((acc, num) => acc + (num - min_element), 0);\n    return moves;\n}\n```\n\n    \n    The algorithm works as follows:\n\n1. Find the minimum element in nums.\n2. Calculate the number of moves required to make other elements equal to the minimum element by summing the difference between each element and the minimum element (n-1 up moves for each number).\n3. Return the calculated number of moves.\n\nThe algorithm has a time complexity of O(n) as it iterates through the array twice. The space complexity is also O(n) in the case of the Python solution (due to list comprehensions), otherwise O(1).\n    ",
+    "java": "\n    ```java\npublic int minMoves(int[] nums) {\n    int min_element = nums[0];\n    for (int num : nums) {\n        min_element = Math.min(min_element, num);\n    }\n    int moves = 0;\n    for (int num : nums) {\n        moves += (num - min_element);\n    }\n    return moves;\n}\n```\n\n    \n    The algorithm works as follows:\n\n1. Find the minimum element in nums.\n2. Calculate the number of moves required to make other elements equal to the minimum element by summing the difference between each element and the minimum element (n-1 up moves for each number).\n3. Return the calculated number of moves.\n\nThe algorithm has a time complexity of O(n) as it iterates through the array twice. The space complexity is also O(n) in the case of the Python solution (due to list comprehensions), otherwise O(1).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

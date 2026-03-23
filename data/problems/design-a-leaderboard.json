@@ -1,0 +1,24 @@
+{
+  "id": 1244,
+  "title": "Design A Leaderboard",
+  "slug": "design-a-leaderboard",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Design a Leaderboard class, which has 3 functions:\n\n1.  addScore(playerId, score): Update the leaderboard by adding score to the given player's score. If there is no player with such id in the leaderboard, add him to the leaderboard with the given score.\n2.  top(K): Return the score sum of the top K players.\n3.  reset(playerId): Reset the score of the player with the given id to 0 (in other words erase it from the leaderboard). It is guaranteed that the player was added to the leaderboard before calling this function.\n\nInitially, the leaderboard is empty.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef num_distinct_repeated_substrings(s):\n    seen = set()\n    for length in range(len(s) // 2, 0, -1):\n        for i in range(len(s) - 2 * length + 1):\n            substr = s[i:i + length]\n            if substr in s[i + length:]:\n                seen.add(substr)\n    return len(seen)\n```\n\n    \n    1. Initialize an empty set `seen` to store distinct substrings.\n2. Iterate over the possible lengths of a substring from half the length of the input string to 1 (inclusive), because the maximum length of the duplicated substring would be half the length of the text in case it's fully repeated.\n3. For each length, iterate over the string and extract a substring of that length starting at the current position.\n4. Check if there is another occurrence of this substring after the current position (i.e., if it can be concatenated with itself).\n5. If it satisfies the above condition, add it to the `seen` set.\n6. At the end of the iterations, return the size of the `seen` set to get the number of distinct non-empty substrings that can be written as a concatenation of some string with itself. \n    ",
+    "javascript": "\n    ```javascript\nfunction numDistinctRepeatedSubstrings(s) {\n  let seen = new Set();\n  for (let len = Math.floor(s.length / 2); len >= 1; len--) {\n    for (let i = 0; i <= s.length - 2 * len; i++) {\n      let substr = s.slice(i, i + len);\n      if (s.indexOf(substr, i + len) !== -1)\n        seen.add(substr);\n    }\n  }\n  return seen.size;\n}\n```\n\n    \n    1. Initialize an empty set `seen` to store distinct substrings.\n2. Iterate over the possible lengths of a substring from half the length of the input string to 1 (inclusive), because the maximum length of the duplicated substring would be half the length of the text in case it's fully repeated.\n3. For each length, iterate over the string and extract a substring of that length starting at the current position.\n4. Check if there is another occurrence of this substring after the current position (i.e., if it can be concatenated with itself).\n5. If it satisfies the above condition, add it to the `seen` set.\n6. At the end of the iterations, return the size of the `seen` set to get the number of distinct non-empty substrings that can be written as a concatenation of some string with itself. \n    ",
+    "java": "\n    ```java\nint numDistinctRepeatedSubstrings(String s) {\n    HashSet<String> seen = new HashSet<>();\n    for (int len = s.length() / 2; len >= 1; len--) {\n        for (int i = 0; i <= s.length() - 2 * len; i++) {\n            String substr = s.substring(i, i + len);\n            if (s.indexOf(substr, i + len) != -1)\n                seen.add(substr);\n        }\n    }\n    return seen.size();\n}\n```\n\n    \n    1. Initialize an empty set `seen` to store distinct substrings.\n2. Iterate over the possible lengths of a substring from half the length of the input string to 1 (inclusive), because the maximum length of the duplicated substring would be half the length of the text in case it's fully repeated.\n3. For each length, iterate over the string and extract a substring of that length starting at the current position.\n4. Check if there is another occurrence of this substring after the current position (i.e., if it can be concatenated with itself).\n5. If it satisfies the above condition, add it to the `seen` set.\n6. At the end of the iterations, return the size of the `seen` set to get the number of distinct non-empty substrings that can be written as a concatenation of some string with itself. \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

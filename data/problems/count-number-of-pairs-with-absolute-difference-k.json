@@ -1,0 +1,24 @@
+{
+  "id": 2006,
+  "title": "Count Number of Pairs With Absolute Difference K",
+  "slug": "count-number-of-pairs-with-absolute-difference-k",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer array nums and an integer k, return _the number of pairs_ (i, j) _where_ i < j _such that_ |nums[i] - nums[j]| == k.\n\nThe value of |x| is defined as:\n\n*   x if x >= 0.\n*   -x if x < 0.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef chalk_replacer(chalk, k):\n    total_chalk = sum(chalk)\n    k %= total_chalk\n    for i, val in enumerate(chalk):\n        if k < val:\n            return i\n        k -= val\n    return 0\n```\n    \n    1. Calculate the sum of all elements in the `chalk` array, representing the total chalk needed for one full cycle.\n2. Calculate the remainder of `k` divided by the total chalk needed using modulo operation (`k %= sum`). This will determine the remaining chalk when the teacher starts the last cycle.\n3. Iterate through the `chalk` array:\n   - If the remaining chalk (`k`) is less than the chalk needed by the current student (`chalk[i]` for C++ and Java, or `val` for Python and JavaScript), return the index of this student.\n   - Otherwise, update the remaining chalk by subtracting the chalk needed by the current student from `k`.\n\nRepeat this process until a student is found who will replace the chalk.\n    ",
+    "javascript": "\n    ```javascript\nfunction chalkReplacer(chalk, k) {\n    let sum = chalk.reduce((a, b) => a + b, 0);\n    k %= sum;\n    for (let i = 0; i < chalk.length; i++) {\n        if (k < chalk[i]) {\n            return i;\n        }\n        k -= chalk[i];\n    }\n    return 0;\n}\n```\n    \n    1. Calculate the sum of all elements in the `chalk` array, representing the total chalk needed for one full cycle.\n2. Calculate the remainder of `k` divided by the total chalk needed using modulo operation (`k %= sum`). This will determine the remaining chalk when the teacher starts the last cycle.\n3. Iterate through the `chalk` array:\n   - If the remaining chalk (`k`) is less than the chalk needed by the current student (`chalk[i]` for C++ and Java, or `val` for Python and JavaScript), return the index of this student.\n   - Otherwise, update the remaining chalk by subtracting the chalk needed by the current student from `k`.\n\nRepeat this process until a student is found who will replace the chalk.\n    ",
+    "java": "\n    ```java\npublic int chalkReplacer(int[] chalk, int k) {\n    long sum = 0;\n    for (int i = 0; i < chalk.length; i++) {\n        sum += chalk[i];\n    }\n    k %= sum;\n    for (int i = 0; i < chalk.length; i++) {\n        if (k < chalk[i]) {\n            return i;\n        }\n        k -= chalk[i];\n    }\n    return 0;\n}\n```\n    \n    1. Calculate the sum of all elements in the `chalk` array, representing the total chalk needed for one full cycle.\n2. Calculate the remainder of `k` divided by the total chalk needed using modulo operation (`k %= sum`). This will determine the remaining chalk when the teacher starts the last cycle.\n3. Iterate through the `chalk` array:\n   - If the remaining chalk (`k`) is less than the chalk needed by the current student (`chalk[i]` for C++ and Java, or `val` for Python and JavaScript), return the index of this student.\n   - Otherwise, update the remaining chalk by subtracting the chalk needed by the current student from `k`.\n\nRepeat this process until a student is found who will replace the chalk.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

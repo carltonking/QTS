@@ -1,0 +1,24 @@
+{
+  "id": 1584,
+  "title": "Min Cost to Connect All Points",
+  "slug": "min-cost-to-connect-all-points",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array points representing integer coordinates of some points on a 2D-plane, where points[i] = [xi, yi].\n\nThe cost of connecting two points [xi, yi] and [xj, yj] is the manhattan distance between them: |xi - xj| + |yi - yj|, where |val| denotes the absolute value of val.\n\nReturn _the minimum cost to make all points connected._ All points are connected if there is exactly one simple path between any two points.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef average(salary):\n    min_salary = min(salary)\n    max_salary = max(salary)\n    sum_salaries = sum(salary)\n    sum_salaries -= (min_salary + max_salary)\n    return sum_salaries / (len(salary) - 2)\n```\n    \n    First, find the minimum and maximum salary values in the salary array. The simplest method is to use existing standard library/helper functions provided by the programming languages to find the minimum and maximum values in the array. For C++, use `min_element()` and `max_element()`. For Java, use `Arrays.stream().min().getAsInt()` and `Arrays.stream().max().getAsInt()`. For Python, use `min()` and `max()`. For JavaScript, use `Math.min(...)` and `Math.max(...)`.\n\nNext, calculate the sum of all salary values in the array using a loop. After that, subtract the minimum and maximum salary from the sum. Finally, divide the resulting sum by the total number of salary entries minus 2 (because we're excluding the minimum and maximum). This gives us the average salary excluding the minimum and maximum. Return the result as a double.\n    ",
+    "javascript": "\n    ```javascript\nfunction average(salary) {\n    let sum = 0, minSalary = Math.min(...salary), maxSalary = Math.max(...salary);\n    for (let s of salary) {\n        sum += s;\n    }\n    sum -= (minSalary + maxSalary);\n    return sum / (salary.length - 2);\n}\n```\n    \n    First, find the minimum and maximum salary values in the salary array. The simplest method is to use existing standard library/helper functions provided by the programming languages to find the minimum and maximum values in the array. For C++, use `min_element()` and `max_element()`. For Java, use `Arrays.stream().min().getAsInt()` and `Arrays.stream().max().getAsInt()`. For Python, use `min()` and `max()`. For JavaScript, use `Math.min(...)` and `Math.max(...)`.\n\nNext, calculate the sum of all salary values in the array using a loop. After that, subtract the minimum and maximum salary from the sum. Finally, divide the resulting sum by the total number of salary entries minus 2 (because we're excluding the minimum and maximum). This gives us the average salary excluding the minimum and maximum. Return the result as a double.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic double average(int[] salary) {\n    double sum = 0;\n    int minSalary = Arrays.stream(salary).min().getAsInt();\n    int maxSalary = Arrays.stream(salary).max().getAsInt();\n    for (int s : salary) {\n        sum += s;\n    }\n    sum -= (minSalary + maxSalary);\n    return sum / (salary.length - 2);\n}\n```\n    \n    First, find the minimum and maximum salary values in the salary array. The simplest method is to use existing standard library/helper functions provided by the programming languages to find the minimum and maximum values in the array. For C++, use `min_element()` and `max_element()`. For Java, use `Arrays.stream().min().getAsInt()` and `Arrays.stream().max().getAsInt()`. For Python, use `min()` and `max()`. For JavaScript, use `Math.min(...)` and `Math.max(...)`.\n\nNext, calculate the sum of all salary values in the array using a loop. After that, subtract the minimum and maximum salary from the sum. Finally, divide the resulting sum by the total number of salary entries minus 2 (because we're excluding the minimum and maximum). This gives us the average salary excluding the minimum and maximum. Return the result as a double.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

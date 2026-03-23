@@ -1,0 +1,24 @@
+{
+  "id": 1800,
+  "title": "Maximum Ascending Subarray Sum",
+  "slug": "maximum-ascending-subarray-sum",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array of positive integers nums, return the _maximum possible sum of an ascending subarray in_ nums.\n\nA subarray is defined as a contiguous sequence of numbers in an array.\n\nA subarray [numsl, numsl+1, ..., numsr-1, numsr] is ascending if for all i where l <= i < r, numsi < numsi+1. Note that a subarray of size 1 is ascending.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef concatenated_binary(n: int) -> int:\n    result = 0\n    mod = 1000000007\n    for i in range(1, n + 1):\n        length = len(bin(i)) - 2\n        result = ((result << length) % mod + i) % mod\n    return result\n```\n\n    \n    The algorithm iterates through all integers from 1 to `n`. For each integer, it first calculates its binary length (i.e. number of bits) using log base 2. This can be done using logarithm internally with floating point representation, followed by flooring and adding 1. In C++, you can use `log2`, in Java you can do `Math.log(i) / Math.log(2)`, and in JavaScript – `Math.log2`. \n\nThen, the result is shifted left by the calculated length (integer arithmetic is mostly used), and the current integer is added to the result. The whole operation is performed under modulo 109 + 7 to prevent overflow. In the end, the result is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction concatenatedBinary(n) {\n    let result = 0;\n    const mod = 1000000007;\n    for (let i = 1; i <= n; ++i) {\n        const length = Math.floor(Math.log2(i)) + 1;\n        result = ((result << length) % mod + i) % mod;\n    }\n    return result;\n}\n```\n\n    \n    The algorithm iterates through all integers from 1 to `n`. For each integer, it first calculates its binary length (i.e. number of bits) using log base 2. This can be done using logarithm internally with floating point representation, followed by flooring and adding 1. In C++, you can use `log2`, in Java you can do `Math.log(i) / Math.log(2)`, and in JavaScript – `Math.log2`. \n\nThen, the result is shifted left by the calculated length (integer arithmetic is mostly used), and the current integer is added to the result. The whole operation is performed under modulo 109 + 7 to prevent overflow. In the end, the result is returned.\n    ",
+    "java": "\n    ```java\npublic class Solution {\n    public int concatenatedBinary(int n) {\n        long result = 0;\n        int mod = 1_000_000_007;\n        for (int i = 1; i <= n; ++i) {\n            int length = (int)(Math.log(i) / Math.log(2)) + 1;\n            result = ((result << length) % mod + i) % mod;\n        }\n        return (int) result;\n    }\n}\n```\n\n    \n    The algorithm iterates through all integers from 1 to `n`. For each integer, it first calculates its binary length (i.e. number of bits) using log base 2. This can be done using logarithm internally with floating point representation, followed by flooring and adding 1. In C++, you can use `log2`, in Java you can do `Math.log(i) / Math.log(2)`, and in JavaScript – `Math.log2`. \n\nThen, the result is shifted left by the calculated length (integer arithmetic is mostly used), and the current integer is added to the result. The whole operation is performed under modulo 109 + 7 to prevent overflow. In the end, the result is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

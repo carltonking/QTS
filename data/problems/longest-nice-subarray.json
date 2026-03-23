@@ -1,0 +1,24 @@
+{
+  "id": 2401,
+  "title": "Longest Nice Subarray",
+  "slug": "longest-nice-subarray",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array nums consisting of positive integers.\n\nWe call a subarray of nums nice if the bitwise AND of every pair of elements that are in different positions in the subarray is equal to 0.\n\nReturn _the length of the longest nice subarray_.\n\nA subarray is a contiguous part of an array.\n\nNote that subarrays of length 1 are always considered nice.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef longestNiceSubarray(nums):\n    n = len(nums)\n    max_len = 1\n    for i in range(n):\n        mask = 0\n        for j in range(i, n):\n            mask |= nums[j]\n            if mask & (mask - 1) == 0:\n                max_len = max(max_len, j - i + 1)\n    return max_len\n```\n    \n    The algorithm iterates through all possible subarrays of the input array. For each subarray, a bitwise-OR mask is maintained, such that its bits represent the union of bits in all elements of the subarray. We check if the mask is a power of two (i.e., if there is only one bit set to 1). If the mask is a power of two, that means all bits in every pair of elements in the subarray do not overlap and hence their pairwise bitwise-AND is zero, satisfying the nice subarray condition. In this case, we update the maximum length of the nice subarray.\n\nThe time complexity of the algorithm is O(n^2) since we iterate through all possible subarrays. The space complexity is O(1) as we only maintain a mask and max_len.\n    ",
+    "javascript": "\n    ```javascript\nfunction longestNiceSubarray(nums) {\n    const n = nums.length;\n    let maxLen = 1;\n    for (let i = 0; i < n; i++) {\n        let mask = 0;\n        for (let j = i; j < n; j++) {\n            mask |= nums[j];\n            if ((mask & (mask - 1)) === 0) {\n                maxLen = Math.max(maxLen, j - i + 1);\n            }\n        }\n    }\n    return maxLen;\n}\n```\n    \n    The algorithm iterates through all possible subarrays of the input array. For each subarray, a bitwise-OR mask is maintained, such that its bits represent the union of bits in all elements of the subarray. We check if the mask is a power of two (i.e., if there is only one bit set to 1). If the mask is a power of two, that means all bits in every pair of elements in the subarray do not overlap and hence their pairwise bitwise-AND is zero, satisfying the nice subarray condition. In this case, we update the maximum length of the nice subarray.\n\nThe time complexity of the algorithm is O(n^2) since we iterate through all possible subarrays. The space complexity is O(1) as we only maintain a mask and max_len.\n    ",
+    "java": "\n    ```java\npublic int longestNiceSubarray(int[] nums) {\n    int n = nums.length;\n    int maxLen = 1;\n    for (int i = 0; i < n; i++) {\n        int mask = 0;\n        for (int j = i; j < n; j++) {\n            mask |= nums[j];\n            if ((mask & (mask - 1)) == 0) {\n                maxLen = Math.max(maxLen, j - i + 1);\n            }\n        }\n    }\n    return maxLen;\n}\n```\n    \n    The algorithm iterates through all possible subarrays of the input array. For each subarray, a bitwise-OR mask is maintained, such that its bits represent the union of bits in all elements of the subarray. We check if the mask is a power of two (i.e., if there is only one bit set to 1). If the mask is a power of two, that means all bits in every pair of elements in the subarray do not overlap and hence their pairwise bitwise-AND is zero, satisfying the nice subarray condition. In this case, we update the maximum length of the nice subarray.\n\nThe time complexity of the algorithm is O(n^2) since we iterate through all possible subarrays. The space complexity is O(1) as we only maintain a mask and max_len.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

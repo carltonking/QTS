@@ -1,0 +1,24 @@
+{
+  "id": 2287,
+  "title": "Rearrange Characters to Make Target String",
+  "slug": "rearrange-characters-to-make-target-string",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given two 0-indexed strings s and target. You can take some letters from s and rearrange them to form new strings.\n\nReturn _the maximum number of copies of_ target _that can be formed by taking letters from_ s _and rearranging them._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxNumberOfCopies(s, target):\n    s_counts = [0] * 26\n    target_counts = [0] * 26\n\n    for c in s:\n        s_counts[ord(c) - ord('a')] += 1\n\n    for c in target:\n        target_counts[ord(c) - ord('a')] += 1\n\n    max_copies = float('inf')\n    for i in range(26):\n        if target_counts[i] > 0:\n            max_copies = min(max_copies, s_counts[i] // target_counts[i])\n    return max_copies\n```\n\n    \n    1. Create two arrays `s_counts` and `target_counts` of length 26 to count the occurrences of each alphabet in both strings s and target.\n2. Iterate through the input strings s and target, and calculate the frequency of each character in both strings s and target using their ASCII values.\n3. Initialize a variable `max_copies` to store the maximum number of copies that can be formed.\n4. Iterate through the `target_counts` from 0 to 25 (inclusive) and check if the count of each character is greater than 0. If yes, update `max_copies` with the minimum value between the current `max_copies` value and the integer division of `s_counts` and `target_counts` at that index.\n5. Return the `max_copies` as the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxNumberOfCopies(s, target) {\n    let sCounts = new Array(26).fill(0);\n    let targetCounts = new Array(26).fill(0);\n\n    for (let c of s)\n        sCounts[c.charCodeAt(0) - 'a'.charCodeAt(0)]++;\n\n    for (let c of target)\n        targetCounts[c.charCodeAt(0) - 'a'.charCodeAt(0)]++;\n\n    let maxCopies = Number.MAX_SAFE_INTEGER;\n    for (let i = 0; i < 26; i++) {\n        if (targetCounts[i] > 0)\n            maxCopies = Math.min(maxCopies, Math.floor(sCounts[i] / targetCounts[i]));\n    }\n    return maxCopies;\n}\n```\n\n    \n    1. Create two arrays `s_counts` and `target_counts` of length 26 to count the occurrences of each alphabet in both strings s and target.\n2. Iterate through the input strings s and target, and calculate the frequency of each character in both strings s and target using their ASCII values.\n3. Initialize a variable `max_copies` to store the maximum number of copies that can be formed.\n4. Iterate through the `target_counts` from 0 to 25 (inclusive) and check if the count of each character is greater than 0. If yes, update `max_copies` with the minimum value between the current `max_copies` value and the integer division of `s_counts` and `target_counts` at that index.\n5. Return the `max_copies` as the result.\n    ",
+    "java": "\n    ```java\npublic int maxNumberOfCopies(String s, String target) {\n    int[] sCounts = new int[26];\n    int[] targetCounts = new int[26];\n\n    for (char c : s.toCharArray())\n        sCounts[c - 'a']++;\n\n    for (char c : target.toCharArray())\n        targetCounts[c - 'a']++;\n\n    int maxCopies = Integer.MAX_VALUE;\n    for (int i = 0; i < 26; i++) {\n        if (targetCounts[i] > 0)\n            maxCopies = Math.min(maxCopies, sCounts[i] / targetCounts[i]);\n    }\n    return maxCopies;\n}\n```\n\n    \n    1. Create two arrays `s_counts` and `target_counts` of length 26 to count the occurrences of each alphabet in both strings s and target.\n2. Iterate through the input strings s and target, and calculate the frequency of each character in both strings s and target using their ASCII values.\n3. Initialize a variable `max_copies` to store the maximum number of copies that can be formed.\n4. Iterate through the `target_counts` from 0 to 25 (inclusive) and check if the count of each character is greater than 0. If yes, update `max_copies` with the minimum value between the current `max_copies` value and the integer division of `s_counts` and `target_counts` at that index.\n5. Return the `max_copies` as the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

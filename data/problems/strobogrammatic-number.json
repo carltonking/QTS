@@ -1,0 +1,24 @@
+{
+  "id": 246,
+  "title": "Strobogrammatic Number",
+  "slug": "strobogrammatic-number",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a string num which represents an integer, return true _if_ num _is a strobogrammatic number_.\n\nA strobogrammatic number is a number that looks the same when rotated 180 degrees (looked at upside down).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef isStrobogrammatic(num: str) -> bool:\n    lookup = {'0': '0', '1': '1', '6': '9', '8': '8', '9': '6'}\n    left, right = 0, len(num) - 1\n    while left <= right:\n        if num[left] not in lookup or lookup[num[left]] != num[right]:\n            return False\n        left += 1\n        right -= 1\n    return True\n```\n    \n    The algorithm uses a while loop and a dictionary (lookup) to check if the given string is strobogrammatic. The main idea is to iterate through the string with two pointers, `left` and `right`. The `left` pointer starts at the beginning of the string and `right` starts at the end.\n\nFor each step of the while loop:\n1. Check if the character at the `left` pointer is in the `lookup` dictionary, if not, return false.\n2. Check if the mapped (rotated) character of the character at the `left` pointer matches the character at the `right` pointer, if not, return false.\n3. Increment `left` pointer and decrement `right` pointer.\n\nIf the loop finishes iterating through the string without returning false, then return true as the string is strobogrammatic.\n    ",
+    "javascript": "\n    ```javascript\nfunction isStrobogrammatic(num) {\n    const lookup = {'0': '0', '1': '1', '6': '9', '8': '8', '9': '6'};\n    let left = 0, right = num.length - 1;\n    while(left <= right) {\n        if(!(num[left] in lookup) || lookup[num[left]] !== num[right]) {\n            return false;\n        }\n        left++;\n        right--;\n    }\n    return true;\n}\n```\n    \n    The algorithm uses a while loop and a dictionary (lookup) to check if the given string is strobogrammatic. The main idea is to iterate through the string with two pointers, `left` and `right`. The `left` pointer starts at the beginning of the string and `right` starts at the end.\n\nFor each step of the while loop:\n1. Check if the character at the `left` pointer is in the `lookup` dictionary, if not, return false.\n2. Check if the mapped (rotated) character of the character at the `left` pointer matches the character at the `right` pointer, if not, return false.\n3. Increment `left` pointer and decrement `right` pointer.\n\nIf the loop finishes iterating through the string without returning false, then return true as the string is strobogrammatic.\n    ",
+    "java": "\n    ```java\npublic boolean isStrobogrammatic(String num) {\n    HashMap<Character, Character> lookup = new HashMap<Character, Character>() {{\n        put('0', '0');\n        put('1', '1');\n        put('6', '9');\n        put('8', '8');\n        put('9', '6');\n    }};\n    int left = 0, right = num.length() - 1;\n    while(left <= right) {\n        if(!lookup.containsKey(num.charAt(left)) || lookup.get(num.charAt(left)) != num.charAt(right)) {\n            return false;\n        }\n        left++;\n        right--;\n    }\n    return true;\n}\n```\n    \n    The algorithm uses a while loop and a dictionary (lookup) to check if the given string is strobogrammatic. The main idea is to iterate through the string with two pointers, `left` and `right`. The `left` pointer starts at the beginning of the string and `right` starts at the end.\n\nFor each step of the while loop:\n1. Check if the character at the `left` pointer is in the `lookup` dictionary, if not, return false.\n2. Check if the mapped (rotated) character of the character at the `left` pointer matches the character at the `right` pointer, if not, return false.\n3. Increment `left` pointer and decrement `right` pointer.\n\nIf the loop finishes iterating through the string without returning false, then return true as the string is strobogrammatic.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

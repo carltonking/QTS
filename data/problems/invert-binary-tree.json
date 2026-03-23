@@ -1,0 +1,40 @@
+{
+  "id": 17,
+  "title": "Invert Binary Tree",
+  "slug": "invert-binary-tree",
+  "difficulty": "Easy",
+  "tags": [
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search"
+  ],
+  "description": "Given the root of a binary tree, invert the tree and return its root.",
+  "examples": [
+    {
+      "input": "root = [4,2,7,1,3,6,9]",
+      "output": "[4,7,2,9,6,3,1]"
+    }
+  ],
+  "constraints": [
+    "The number of nodes in the tree is in [0, 100]"
+  ],
+  "starterCode": {
+    "python": "class Solution:\n    def invertTree(self, root):\n        pass",
+    "javascript": "var invertTree = function(root) {\n    \n};",
+    "java": "class Solution {\n    public TreeNode invertTree(TreeNode root) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    TreeNode* invertTree(TreeNode* root) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Invert Binary Tree\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "[4,2,7,1,3,6,9]",
+      "expectedOutput": "[4,7,2,9,6,3,1]"
+    },
+    {
+      "input": "[]",
+      "expectedOutput": "[]"
+    }
+  ]
+}

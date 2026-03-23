@@ -1,0 +1,24 @@
+{
+  "id": 2422,
+  "title": "Merge Operations to Turn Array Into a Palindrome",
+  "slug": "merge-operations-to-turn-array-into-a-palindrome",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array nums consisting of positive integers.\n\nYou can perform the following operation on the array any number of times:\n\n*   Choose any two adjacent elements and replace them with their sum.\n    *   For example, if nums = [1,2,3,1], you can apply one operation to make it [1,5,1].\n\nReturn _the minimum number of operations needed to turn the array into a palindrome_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minOperations(nums):\n    n = len(nums)\n    i, j = 0, n - 1\n    operations = 0\n\n    while i < j:\n        if nums[i] == nums[j]:\n            i += 1\n            j -= 1\n        elif nums[i] < nums[j]:\n            nums[i + 1] += nums[i]\n            i += 1\n            operations += 1\n        else:\n            nums[j - 1] += nums[j]\n            j -= 1\n            operations += 1\n\n    return operations\n```\n    \n    The algorithm uses two pointers, `i` and `j`, initializing them to the start and end of the array, respectively. It then enters a loop, moving these pointers inwards and comparing the values in the array at these indices. If the values are equal, the pointers are moved inwards without performing any operation. If the values are not equal, an operation is performed to make the smaller value equal to the larger one. The loop continues until the pointers cross each other. The number of operations performed is returned as the result.\n\nThe algorithm has a complexity of O(n) as it iterates through the input array once.\n    ",
+    "javascript": "\n    ```javascript\nfunction minOperations(nums) {\n    const n = nums.length;\n    let i = 0, j = n - 1;\n    let operations = 0;\n\n    while (i < j) {\n        if (nums[i] === nums[j]) {\n            i++;\n            j--;\n        } else if (nums[i] < nums[j]) {\n            nums[i + 1] += nums[i];\n            i++;\n            operations++;\n        } else {\n            nums[j - 1] += nums[j];\n            j--;\n            operations++;\n        }\n    }\n    return operations;\n}\n```\n    \n    The algorithm uses two pointers, `i` and `j`, initializing them to the start and end of the array, respectively. It then enters a loop, moving these pointers inwards and comparing the values in the array at these indices. If the values are equal, the pointers are moved inwards without performing any operation. If the values are not equal, an operation is performed to make the smaller value equal to the larger one. The loop continues until the pointers cross each other. The number of operations performed is returned as the result.\n\nThe algorithm has a complexity of O(n) as it iterates through the input array once.\n    ",
+    "java": "\n    ```java\npublic int minOperations(int[] nums) {\n    int n = nums.length;\n    int i = 0, j = n - 1;\n    int operations = 0;\n\n    while (i < j) {\n        if (nums[i] == nums[j]) {\n            i++;\n            j--;\n        } else if (nums[i] < nums[j]) {\n            nums[i + 1] += nums[i];\n            i++;\n            operations++;\n        } else {\n            nums[j - 1] += nums[j];\n            j--;\n            operations++;\n        }\n    }\n    return operations;\n}\n```\n    \n    The algorithm uses two pointers, `i` and `j`, initializing them to the start and end of the array, respectively. It then enters a loop, moving these pointers inwards and comparing the values in the array at these indices. If the values are equal, the pointers are moved inwards without performing any operation. If the values are not equal, an operation is performed to make the smaller value equal to the larger one. The loop continues until the pointers cross each other. The number of operations performed is returned as the result.\n\nThe algorithm has a complexity of O(n) as it iterates through the input array once.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

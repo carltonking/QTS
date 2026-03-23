@@ -1,0 +1,24 @@
+{
+  "id": 2291,
+  "title": "Maximum Profit From Trading Stocks",
+  "slug": "maximum-profit-from-trading-stocks",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two 0-indexed integer arrays of the same length present and future where present[i] is the current price of the ith stock and future[i] is the price of the ith stock a year in the future. You may buy each stock at most once. You are also given an integer budget representing the amount of money you currently have.\n\nReturn _the maximum amount of profit you can make._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_and_sum(nums, num_slots):\n    slot = [0] * (num_slots + 1)\n    for num in nums:\n        for j in range(num_slots, 0, -1):\n            new_val = num & j\n            if new_val > slot[j]:\n                slot[j] = new_val\n\n    return sum(slot)\n```\n    \n    1. Create an array `slot` of size numSlots + 1, to store the maximum AND value for each slot. Initialized with all 0s.\n2. For each number in `nums`, iterate through the slot numbers from `numSlots` to 1.\n   - Calculate the AND value (`new_val`) of the current number with the slot number `j`.\n   - If the `new_val` is greater than the current value in `slot[j]`, then update `slot[j]` to `new_val`. This is to ensure that we store the maximum AND value for each slot.\n3. Sum all the values in the `slot` array and return the result. This is the maximum possible AND sum of `nums` given `numSlots` slots.\n\nNote: All the code snippets provided above implement the same algorithm in four different programming languages.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxANDSum(nums, numSlots) {\n    let slot = new Array(numSlots + 1).fill(0);\n    for (let num of nums) {\n        for (let j = numSlots; j > 0; j--) {\n            let newVal = num & j;\n            if (newVal > slot[j]) slot[j] = newVal;\n        }\n    }\n\n    return slot.reduce((acc, val) => acc + val, 0);\n}\n```\n    \n    1. Create an array `slot` of size numSlots + 1, to store the maximum AND value for each slot. Initialized with all 0s.\n2. For each number in `nums`, iterate through the slot numbers from `numSlots` to 1.\n   - Calculate the AND value (`new_val`) of the current number with the slot number `j`.\n   - If the `new_val` is greater than the current value in `slot[j]`, then update `slot[j]` to `new_val`. This is to ensure that we store the maximum AND value for each slot.\n3. Sum all the values in the `slot` array and return the result. This is the maximum possible AND sum of `nums` given `numSlots` slots.\n\nNote: All the code snippets provided above implement the same algorithm in four different programming languages.\n    ",
+    "java": "\n    ```java\npublic int maxANDSum(int[] nums, int numSlots) {\n    int[] slot = new int[numSlots + 1];\n    for (int num : nums) {\n        for (int j = numSlots; j > 0; j--) {\n            int newVal = num & j;\n            if (newVal > slot[j]) slot[j] = newVal;\n        }\n    }\n\n    int sum = 0;\n    for (int s : slot) {\n        sum += s;\n    }\n    return sum;\n}\n```\n    \n    1. Create an array `slot` of size numSlots + 1, to store the maximum AND value for each slot. Initialized with all 0s.\n2. For each number in `nums`, iterate through the slot numbers from `numSlots` to 1.\n   - Calculate the AND value (`new_val`) of the current number with the slot number `j`.\n   - If the `new_val` is greater than the current value in `slot[j]`, then update `slot[j]` to `new_val`. This is to ensure that we store the maximum AND value for each slot.\n3. Sum all the values in the `slot` array and return the result. This is the maximum possible AND sum of `nums` given `numSlots` slots.\n\nNote: All the code snippets provided above implement the same algorithm in four different programming languages.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

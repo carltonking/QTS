@@ -1,0 +1,24 @@
+{
+  "id": 2240,
+  "title": "Number of Ways to Buy Pens and Pencils",
+  "slug": "number-of-ways-to-buy-pens-and-pencils",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer total indicating the amount of money you have. You are also given two integers cost1 and cost2 indicating the price of a pen and pencil respectively. You can spend part or all of your money to buy multiple quantities (or none) of each kind of writing utensil.\n\nReturn _the number of distinct ways you can buy some number of pens and pencils._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import defaultdict\n\ndef sum_of_intervals(arr):\n    n = len(arr)\n    indices = defaultdict(list)\n    intervals = [0] * n\n\n    for i in range(n):\n        indices[arr[i]].append(i)\n\n    for i in range(n):\n        for index in indices[arr[i]]:\n            intervals[i] += abs(index - i)\n\n    return intervals\n```\n    \n    1. Store the indices of each element in arr in a separate data structure (in this case, a vector for C++, an ArrayList for Java, a defaultdict for Python, and an Array for JavaScript).(indices[arr[i]] contains all the indices where arr[i] appears)\n2. For each element in arr, loop through the indices[arr[i]] and sum up the intervals between index i and other indices.\n3. Add this sum to intervals[i] and return the intervals array.\n    ",
+    "javascript": "\n    ```javascript\nfunction sumOfIntervals(arr) {\n    const n = arr.length;\n    const indices = Array.from({ length: 101 }, () => []);\n    const intervals = Array(n).fill(0);\n\n    for (let i = 0; i < n; ++i) {\n        indices[arr[i]].push(i);\n    }\n\n    for (let i = 0; i < n; ++i) {\n        for (const index of indices[arr[i]]) {\n            intervals[i] += Math.abs(index - i);\n        }\n    }\n\n    return intervals;\n}\n```\n    \n    1. Store the indices of each element in arr in a separate data structure (in this case, a vector for C++, an ArrayList for Java, a defaultdict for Python, and an Array for JavaScript).(indices[arr[i]] contains all the indices where arr[i] appears)\n2. For each element in arr, loop through the indices[arr[i]] and sum up the intervals between index i and other indices.\n3. Add this sum to intervals[i] and return the intervals array.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\nclass Solution {\n    public int[] sumOfIntervals(int[] arr) {\n        int n = arr.length;\n        List<ArrayList<Integer>> indices = new ArrayList<>(101);\n        for (int i = 0; i < 101; i++) {\n            indices.add(new ArrayList<>());\n        }\n        int[] intervals = new int[n];\n\n        for (int i = 0; i < n; ++i) {\n            indices.get(arr[i]).add(i);\n        }\n\n        for (int i = 0; i < n; ++i) {\n            for (int index : indices.get(arr[i])) {\n                intervals[i] += Math.abs(index - i);\n            }\n        }\n\n        return intervals;\n    }\n}\n```\n    \n    1. Store the indices of each element in arr in a separate data structure (in this case, a vector for C++, an ArrayList for Java, a defaultdict for Python, and an Array for JavaScript).(indices[arr[i]] contains all the indices where arr[i] appears)\n2. For each element in arr, loop through the indices[arr[i]] and sum up the intervals between index i and other indices.\n3. Add this sum to intervals[i] and return the intervals array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 936,
+  "title": "Stamping The Sequence",
+  "slug": "stamping-the-sequence",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given two strings stamp and target. Initially, there is a string s of length target.length with all s[i] == '?'.\n\nIn one turn, you can place stamp over s and replace every letter in the s with the corresponding letter from stamp.\n\n*   For example, if stamp = \"abc \" and target = \"abcba \", then s is \"????? \" initially. In one turn you can:\n\n    *   place stamp at index 0 of s to obtain \"abc?? \",\n    *   place stamp at index 1 of s to obtain \"?abc? \", or\n    *   place stamp at index 2 of s to obtain \"??abc \".\n\n    Note that stamp must be fully contained in the boundaries of s in order to stamp (i.e., you cannot place stamp at index 3 of s).\n\nWe want to convert s to target using at most 10 * target.length turns.\n\nReturn _an array of the index of the left-most letter being stamped at each turn_. If we cannot obtain target from s within 10 * target.length turns, return an empty array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass RLEIterator:\n    def __init__(self, encoding):\n        self.encoding = encoding\n        self.index = 0\n\n    def next(self, n):\n        while self.index < len(self.encoding):\n            if n <= self.encoding[self.index]:\n                self.encoding[self.index] -= n\n                return self.encoding[self.index + 1]\n            n -= self.encoding[self.index]\n            self.index += 2\n        return -1\n```\n    \n    The RLEIterator class creates an iterator for a given run-length encoded array. In the constructor, it initializes the class with the `encoding` array and initializes the `index` variable to 0.\n\nThe `next` function takes an integer `n` and iterates through the run-length encoded array to find the value at the given position. If `n` is less than or equal to the current run's count (`encoding[index]), we update the run count by subtracting n and return the corresponding value. If `n` is greater than the run's count, we subtract the run count from `n` and move to the next run by incrementing the index by 2. If the iterator reaches the end of the encoding array, it returns -1.\n    ",
+    "javascript": "\n    ```javascript\nclass RLEIterator {\n    constructor(encoding) {\n        this.encoding = encoding;\n        this.index = 0;\n    }\n\n    next(n) {\n        while (this.index < this.encoding.length) {\n            if (n <= this.encoding[this.index]) {\n                this.encoding[this.index] -= n;\n                return this.encoding[this.index + 1];\n            }\n            n -= this.encoding[this.index];\n            this.index += 2;\n        }\n        return -1;\n    }\n}\n```\n    \n    The RLEIterator class creates an iterator for a given run-length encoded array. In the constructor, it initializes the class with the `encoding` array and initializes the `index` variable to 0.\n\nThe `next` function takes an integer `n` and iterates through the run-length encoded array to find the value at the given position. If `n` is less than or equal to the current run's count (`encoding[index]), we update the run count by subtracting n and return the corresponding value. If `n` is greater than the run's count, we subtract the run count from `n` and move to the next run by incrementing the index by 2. If the iterator reaches the end of the encoding array, it returns -1.\n    ",
+    "java": "\n    ```java\nclass RLEIterator {\n    private int[] encoding;\n    private int index;\n\n    public RLEIterator(int[] encoding) {\n        this.encoding = encoding;\n        this.index = 0;\n    }\n    \n    public int next(int n) {\n        while (index < encoding.length) {\n            if (n <= encoding[index]) {\n                encoding[index] -= n;\n                return encoding[index + 1];\n            }\n            n -= encoding[index];\n            index += 2;\n        }\n        return -1;\n    }\n}\n```\n    \n    The RLEIterator class creates an iterator for a given run-length encoded array. In the constructor, it initializes the class with the `encoding` array and initializes the `index` variable to 0.\n\nThe `next` function takes an integer `n` and iterates through the run-length encoded array to find the value at the given position. If `n` is less than or equal to the current run's count (`encoding[index]), we update the run count by subtracting n and return the corresponding value. If `n` is greater than the run's count, we subtract the run count from `n` and move to the next run by incrementing the index by 2. If the iterator reaches the end of the encoding array, it returns -1.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

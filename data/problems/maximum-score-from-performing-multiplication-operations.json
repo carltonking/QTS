@@ -1,0 +1,24 @@
+{
+  "id": 1770,
+  "title": "Maximum Score from Performing Multiplication Operations",
+  "slug": "maximum-score-from-performing-multiplication-operations",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given two 0-indexed integer arrays nums and multipliers of size n and m respectively, where n >= m.\n\nYou begin with a score of 0. You want to perform exactly m operations. On the ith operation (0-indexed) you will:\n\n*   Choose one integer x from either the start or the end of the array nums.\n*   Add multipliers[i] * x to your score.\n    *   Note that multipliers[0] corresponds to the first operation, multipliers[1] to the second operation, and so on.\n*   Remove x from nums.\n\nReturn _the maximum score after performing_ m _operations._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_deletions(s):\n    freq = collections.Counter(s)\n    used = set()\n    deletions = 0\n\n    for count in freq.values():\n        while count in used and count > 0:\n            deletions += 1\n            count -= 1\n        used.add(count)\n\n    return deletions\n```\n    \n    1. Count the frequency of each character in the string.\n2. Create a set to store the unique frequencies that have been used.\n3. Initialize a deletion counter to 0.\n4. Iterate through the frequency counts of each character.\n5. For each count, check if it is already in the used set. If it is and the count is greater than 0, increment the deletion counter, and decrement the count.\n6. After adjusting the count, add the count to the used set.\n7. Return the deletion counter after iterating through all character frequencies.\n    ",
+    "javascript": "\n    ```javascript\nfunction minDeletions(s) {\n    const freq = {};\n    const used = new Set();\n    let deletions = 0;\n\n    for (const c of s) {\n        freq[c] = (freq[c] || 0) + 1;\n    }\n\n    for (const count in freq) {\n        let num = freq[count];\n        while (used.has(num) && num > 0) {\n            deletions++;\n            num--;\n        }\n        used.add(num);\n    }\n\n    return deletions;\n}\n```\n    \n    1. Count the frequency of each character in the string.\n2. Create a set to store the unique frequencies that have been used.\n3. Initialize a deletion counter to 0.\n4. Iterate through the frequency counts of each character.\n5. For each count, check if it is already in the used set. If it is and the count is greater than 0, increment the deletion counter, and decrement the count.\n6. After adjusting the count, add the count to the used set.\n7. Return the deletion counter after iterating through all character frequencies.\n    ",
+    "java": "\n    ```java\npublic int minDeletions(String s) {\n    int[] freq = new int[26];\n    HashSet<Integer> used = new HashSet<>();\n    int deletions = 0;\n\n    for (char c : s.toCharArray()) {\n        freq[c - 'a']++;\n    }\n\n    for (int count : freq) {\n        while (used.contains(count) && count > 0) {\n            deletions++;\n            count--;\n        }\n        used.add(count);\n    }\n\n    return deletions;\n}\n```\n    \n    1. Count the frequency of each character in the string.\n2. Create a set to store the unique frequencies that have been used.\n3. Initialize a deletion counter to 0.\n4. Iterate through the frequency counts of each character.\n5. For each count, check if it is already in the used set. If it is and the count is greater than 0, increment the deletion counter, and decrement the count.\n6. After adjusting the count, add the count to the used set.\n7. Return the deletion counter after iterating through all character frequencies.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

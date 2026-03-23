@@ -1,0 +1,24 @@
+{
+  "id": 459,
+  "title": "Repeated Substring Pattern",
+  "slug": "repeated-substring-pattern",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a string s, check if it can be constructed by taking a substring of it and appending multiple copies of the substring together.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef can_construct(s):\n    n = len(s)\n    for i in range(n // 2, 0, -1):\n        if n % i == 0:\n            substr = s[:i]\n            flag = True\n            for j in range(i, n, i):\n                if s[j:j+i] != substr:\n                    flag = False\n                    break\n\n            if flag:\n                return True\n\n    return False\n```\n\n    \n    The algorithm iterates through possible substring lengths from half of the length of the given string down to 1 (inclusive). For each length `i`, it checks if the given string can be divided into substrings of equal length `i`. If yes, it takes the first substring and checks if all the remaining substrings of the same length are equal to the first one.\n\nIf all the substrings are equal, the function returns `true`, meaning the given string can be constructed by appending multiple copies of the substring together. If none of the lengths results in equal substrings, the function returns `false`.\n    ",
+    "javascript": "\n    ```javascript\nfunction canConstruct(s) {\n    const n = s.length;\n    for (let i = Math.floor(n / 2); i > 0; --i) {\n        if (n % i === 0) {\n            const substr = s.substring(0, i);\n            let flag = true;\n            for (let j = i; j < n; j += i) {\n                if (s.substring(j, j + i) !== substr) {\n                    flag = false;\n                    break;\n                }\n            }\n\n            if (flag) return true;\n        }\n    }\n    return false;\n}\n```\n\n    \n    The algorithm iterates through possible substring lengths from half of the length of the given string down to 1 (inclusive). For each length `i`, it checks if the given string can be divided into substrings of equal length `i`. If yes, it takes the first substring and checks if all the remaining substrings of the same length are equal to the first one.\n\nIf all the substrings are equal, the function returns `true`, meaning the given string can be constructed by appending multiple copies of the substring together. If none of the lengths results in equal substrings, the function returns `false`.\n    ",
+    "java": "\n    ```java\npublic boolean canConstruct(String s) {\n    int n = s.length();\n    for (int i = n / 2; i > 0; --i) {\n        if (n % i == 0) {\n            String substr = s.substring(0, i);\n            boolean flag = true;\n            for (int j = i; j < n; j += i) {\n                if (!s.substring(j, j + i).equals(substr)) {\n                    flag = false;\n                    break;\n                }\n            }\n\n            if (flag) return true;\n        }\n    }\n    return false;\n}\n```\n\n    \n    The algorithm iterates through possible substring lengths from half of the length of the given string down to 1 (inclusive). For each length `i`, it checks if the given string can be divided into substrings of equal length `i`. If yes, it takes the first substring and checks if all the remaining substrings of the same length are equal to the first one.\n\nIf all the substrings are equal, the function returns `true`, meaning the given string can be constructed by appending multiple copies of the substring together. If none of the lengths results in equal substrings, the function returns `false`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

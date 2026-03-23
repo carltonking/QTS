@@ -1,0 +1,24 @@
+{
+  "id": 2500,
+  "title": "Delete Greatest Value in Each Row",
+  "slug": "delete-greatest-value-in-each-row",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an m x n matrix grid consisting of positive integers.\n\nPerform the following operation until grid becomes empty:\n\n*   Delete the element with the greatest value from each row. If multiple such elements exist, delete any of them.\n*   Add the maximum of deleted elements to the answer.\n\nNote that the number of columns decreases by one after each operation.\n\nReturn _the answer after performing the operations described above_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxValueAfterOperations(grid):\n    ans = 0\n    while grid:\n        maxVal = 0\n        maxRow = -1\n\n        for i, row in enumerate(grid):\n            rowMax = max(row)\n            if rowMax > maxVal:\n                maxVal = rowMax\n                maxRow = i\n            grid[i] = [e for e in row if e != rowMax]\n\n        ans += maxVal\n        if not grid[maxRow]:\n            grid.pop(maxRow)\n\n    return ans\n```\n\n    \n    - Loop until 'grid' becomes empty.\n- Search for the greatest element in each row and delete any of them if there's a tie. Keep track of the maximum of deleted elements and the respective row number.\n- Add the maximum of deleted elements to 'ans'.\n- If the row with initially found maximum becomes empty, remove that row from 'grid'.\n- Finally, return the sum of all maximum deleted elements 'ans'.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxValueAfterOperations(grid) {\n    let ans = 0;\n    while (grid.length) {\n        let maxVal = 0;\n        let maxRow = -1;\n\n        grid.forEach((row, i) => {\n            let rowMax = Math.max(...row);\n            if (rowMax > maxVal) {\n                maxVal = rowMax;\n                maxRow = i;\n            }\n            grid[i] = row.filter(e => e !== rowMax);\n        });\n\n        ans += maxVal;\n        if (!grid[maxRow].length) {\n            grid.splice(maxRow, 1);\n        }\n    }\n\n    return ans;\n}\n```\n\n    \n    - Loop until 'grid' becomes empty.\n- Search for the greatest element in each row and delete any of them if there's a tie. Keep track of the maximum of deleted elements and the respective row number.\n- Add the maximum of deleted elements to 'ans'.\n- If the row with initially found maximum becomes empty, remove that row from 'grid'.\n- Finally, return the sum of all maximum deleted elements 'ans'.\n    ",
+    "java": "\n    ```java\nint maxValueAfterOperations(int[][] grid) {\n    int ans = 0;\n    while (grid.length != 0) {\n        int maxVal = 0, maxRow = -1;\n\n        for (int i = 0; i < grid.length; ++i) {\n            int rowMax = Arrays.stream(grid[i]).max().getAsInt();\n            if (rowMax > maxVal) {\n                maxVal = rowMax;\n                maxRow = i;\n            }\n            grid[i] = Arrays.stream(grid[i]).filter(e -> e != rowMax).toArray();\n        }\n\n        ans += maxVal;\n        if (grid[maxRow].length == 0) {\n            grid = Arrays.stream(grid).filter(row -> row.length != 0).toArray(int[][]::new);\n        }\n    }\n\n    return ans;\n}\n```\n\n    \n    - Loop until 'grid' becomes empty.\n- Search for the greatest element in each row and delete any of them if there's a tie. Keep track of the maximum of deleted elements and the respective row number.\n- Add the maximum of deleted elements to 'ans'.\n- If the row with initially found maximum becomes empty, remove that row from 'grid'.\n- Finally, return the sum of all maximum deleted elements 'ans'.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

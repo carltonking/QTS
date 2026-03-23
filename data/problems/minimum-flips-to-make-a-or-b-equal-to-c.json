@@ -1,0 +1,24 @@
+{
+  "id": 1318,
+  "title": "Minimum Flips to Make a OR b Equal to c",
+  "slug": "minimum-flips-to-make-a-or-b-equal-to-c",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given 3 positives numbers a, b and c. Return the minimum flips required in some bits of a and b to make ( a OR b == c ). (bitwise OR operation).\nFlip operation consists of change any single bit 1 to 0 or change the bit 0 to 1 in their binary representation.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minFlips(a: int, b: int, c: int) -> int:\n    count = 0\n    for i in range(32):\n        bitA = (a >> i) & 1\n        bitB = (b >> i) & 1\n        bitC = (c >> i) & 1\n        if bitC == 0:\n            count += bitA + bitB\n        else:\n            count += 1 - (bitA | bitB)\n    return count\n```\n    \n    We iterate through all 32 bits since the maximum number is 10^9, which requires 30 bits to represent in binary. For each bit, we determine the bits for `a`, `b`, and `c`, at the current position. If the bit in `c` is 0, we increment the counter by the sum of the bits of `a` and `b` at that position. This is because we need to flip any 1s in `a` and `b` to make the OR result 0. If the bit in `c` is 1, we increment the counter by 1 minus the OR result of `a` and `b`. This is because either `a` or `b` (or both) need to have a 1 at this position, so 1 minus the OR result gives us the necessary flips.\n    ",
+    "javascript": "\n    ```javascript\nfunction minFlips(a, b, c) {\n    let count = 0;\n    for (let i = 0; i < 32; ++i) {\n        let bitA = (a >> i) & 1;\n        let bitB = (b >> i) & 1;\n        let bitC = (c >> i) & 1;\n        if (bitC === 0) {\n            count += bitA + bitB;\n        } else {\n            count += 1 - (bitA | bitB);\n        }\n    }\n    return count;\n}\n```\n    \n    We iterate through all 32 bits since the maximum number is 10^9, which requires 30 bits to represent in binary. For each bit, we determine the bits for `a`, `b`, and `c`, at the current position. If the bit in `c` is 0, we increment the counter by the sum of the bits of `a` and `b` at that position. This is because we need to flip any 1s in `a` and `b` to make the OR result 0. If the bit in `c` is 1, we increment the counter by 1 minus the OR result of `a` and `b`. This is because either `a` or `b` (or both) need to have a 1 at this position, so 1 minus the OR result gives us the necessary flips.\n    ",
+    "java": "\n    ```java\npublic int minFlips(int a, int b, int c) {\n    int count = 0;\n    for (int i = 0; i < 32; ++i) {\n        int bitA = (a >> i) & 1;\n        int bitB = (b >> i) & 1;\n        int bitC = (c >> i) & 1;\n        if (bitC == 0) {\n            count += bitA + bitB;\n        } else {\n            count += 1 - (bitA | bitB);\n        }\n    }\n    return count;\n}\n```\n    \n    We iterate through all 32 bits since the maximum number is 10^9, which requires 30 bits to represent in binary. For each bit, we determine the bits for `a`, `b`, and `c`, at the current position. If the bit in `c` is 0, we increment the counter by the sum of the bits of `a` and `b` at that position. This is because we need to flip any 1s in `a` and `b` to make the OR result 0. If the bit in `c` is 1, we increment the counter by 1 minus the OR result of `a` and `b`. This is because either `a` or `b` (or both) need to have a 1 at this position, so 1 minus the OR result gives us the necessary flips.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

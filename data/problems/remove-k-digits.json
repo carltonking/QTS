@@ -1,0 +1,24 @@
+{
+  "id": 402,
+  "title": "Remove K Digits",
+  "slug": "remove-k-digits",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given string num representing a non-negative integer num, and an integer k, return _the smallest possible integer after removing_ k _digits from_ num.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef remove_k_digits(num, k):\n    stack = []\n    for c in num:\n        while k > 0 and stack and stack[-1] > c:\n            stack.pop()\n            k -= 1\n        stack.append(c)\n    while k > 0:\n        stack.pop()\n        k -= 1\n    return ''.join(stack).lstrip('0') or '0'\n```\n    \n    The algorithm maintains a stack, initially empty. It iterates through the input string char by char, and for each char, it tries to remove the largest possible digit from the stack, as long as k is greater than 0. If the stack is empty or its topmost element is smaller than the current char, the current char is pushed into the stack. \n\nAfter the iteration, if k is still greater than 0, then we remove the remaining top k elements from the stack. Finally, the resultant smallest integer is formed from the stack, removing any leading zeros if present, and returned as a string.\n\nThe time complexity of this algorithm is O(n), where n is the length of the input string, as it iterates through the input string once and processes each character.\n    ",
+    "javascript": "\n    ```javascript\nfunction removeKDigits(num, k) {\n    let stack = [];\n    for (let i = 0; i < num.length; i++) {\n        let c = num[i];\n        while (k > 0 && stack.length > 0 && stack[stack.length - 1] > c) {\n            stack.pop();\n            k--;\n        }\n        stack.push(c);\n    }\n    while (k > 0) {\n        stack.pop();\n        k--;\n    }\n    let result = stack.join('').replace(/^0+/, '');\n    return result || '0';\n}\n```\n    \n    The algorithm maintains a stack, initially empty. It iterates through the input string char by char, and for each char, it tries to remove the largest possible digit from the stack, as long as k is greater than 0. If the stack is empty or its topmost element is smaller than the current char, the current char is pushed into the stack. \n\nAfter the iteration, if k is still greater than 0, then we remove the remaining top k elements from the stack. Finally, the resultant smallest integer is formed from the stack, removing any leading zeros if present, and returned as a string.\n\nThe time complexity of this algorithm is O(n), where n is the length of the input string, as it iterates through the input string once and processes each character.\n    ",
+    "java": "\n    ```java\npublic String removeKDigits(String num, int k) {\n    StringBuilder result = new StringBuilder();\n    for (char c : num.toCharArray()) {\n        while (k > 0 && result.length() > 0 && result.charAt(result.length() - 1) > c) {\n            result.setLength(result.length() - 1);\n            k--;\n        }\n        result.append(c);\n    }\n    result.setLength(result.length() - k);\n    while (result.length() > 0 && result.charAt(0) == '0') {\n        result.deleteCharAt(0);\n    }\n    return result.length() == 0 ? \"0\" : result.toString();\n}\n```\n    \n    The algorithm maintains a stack, initially empty. It iterates through the input string char by char, and for each char, it tries to remove the largest possible digit from the stack, as long as k is greater than 0. If the stack is empty or its topmost element is smaller than the current char, the current char is pushed into the stack. \n\nAfter the iteration, if k is still greater than 0, then we remove the remaining top k elements from the stack. Finally, the resultant smallest integer is formed from the stack, removing any leading zeros if present, and returned as a string.\n\nThe time complexity of this algorithm is O(n), where n is the length of the input string, as it iterates through the input string once and processes each character.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

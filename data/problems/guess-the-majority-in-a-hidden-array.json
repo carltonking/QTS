@@ -1,0 +1,24 @@
+{
+  "id": 1538,
+  "title": "Guess the Majority in a Hidden Array",
+  "slug": "guess-the-majority-in-a-hidden-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "We have an integer array nums, where all the integers in nums are 0 or 1. You will not be given direct access to the array, instead, you will have an API ArrayReader which have the following functions:\n\n*   int query(int a, int b, int c, int d): where 0 <= a < b < c < d < ArrayReader.length(). The function returns the distribution of the value of the 4 elements and returns:\n    *   4 : if the values of the 4 elements are the same (0 or 1).\n    *   2 : if three elements have a value equal to 0 and one element has value equal to 1 or vice versa.\n    *   0 : if two element have a value equal to 0 and two elements have a value equal to 1.\n*   int length(): Returns the size of the array.\n\nYou are allowed to call query() 2 \\* n times at most where n is equal to ArrayReader.length().\n\nReturn any index of the most frequent value in nums, in case of tie, return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxScore(cardPoints, k):\n    n = len(cardPoints)\n    total = sum(cardPoints[:k])\n\n    max_score = total\n    for i in range(k - 1, -1, -1):\n        j = n - k + i\n        total += cardPoints[j] - cardPoints[i]\n        max_score = max(max_score, total)\n\n    return max_score\n```\n\n    \n    The algorithm starts by taking the first k cards and calculating the initial total score. Then, in a loop, it iteratively removes the first card and adds the next card from the end. By doing this, it explores all possible combinations of taking `k` cards from the beginning or the end of the row. The maximum score is updated each time a potentially higher score is found. The loop ends when all combinations are explored, and the resulting maximum score is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxScore(cardPoints, k) {\n    let n = cardPoints.length;\n    let total = 0;\n    for (let i = 0; i < k; i++) {\n        total += cardPoints[i];\n    }\n\n    let maxScore = total;\n    for (let i = k - 1, j = n - 1; i >= 0; i--, j--) {\n        total += cardPoints[j] - cardPoints[i];\n        maxScore = Math.max(maxScore, total);\n    }\n\n    return maxScore;\n}\n```\n\n    \n    The algorithm starts by taking the first k cards and calculating the initial total score. Then, in a loop, it iteratively removes the first card and adds the next card from the end. By doing this, it explores all possible combinations of taking `k` cards from the beginning or the end of the row. The maximum score is updated each time a potentially higher score is found. The loop ends when all combinations are explored, and the resulting maximum score is returned.\n    ",
+    "java": "\n    ```java\npublic int maxScore(int[] cardPoints, int k) {\n    int n = cardPoints.length;\n    int total = 0;\n    for (int i = 0; i < k; i++) {\n        total += cardPoints[i];\n    }\n\n    int maxScore = total;\n    for (int i = k - 1, j = n - 1; i >= 0; i--, j--) {\n        total += cardPoints[j] - cardPoints[i];\n        maxScore = Math.max(maxScore, total);\n    }\n\n    return maxScore;\n}\n```\n\n    \n    The algorithm starts by taking the first k cards and calculating the initial total score. Then, in a loop, it iteratively removes the first card and adds the next card from the end. By doing this, it explores all possible combinations of taking `k` cards from the beginning or the end of the row. The maximum score is updated each time a potentially higher score is found. The loop ends when all combinations are explored, and the resulting maximum score is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

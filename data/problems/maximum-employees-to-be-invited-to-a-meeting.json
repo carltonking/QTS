@@ -1,0 +1,24 @@
+{
+  "id": 2127,
+  "title": "Maximum Employees to Be Invited to a Meeting",
+  "slug": "maximum-employees-to-be-invited-to-a-meeting",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "A company is organizing a meeting and has a list of n employees, waiting to be invited. They have arranged for a large circular table, capable of seating any number of employees.\n\nThe employees are numbered from 0 to n - 1. Each employee has a favorite person and they will attend the meeting only if they can sit next to their favorite person at the table. The favorite person of an employee is not themself.\n\nGiven a 0-indexed integer array favorite, where favorite[i] denotes the favorite person of the ith employee, return _the maximum number of employees that can be invited to the meeting_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_invited(favorite):\n    in_degree = [0] * len(favorite)\n    for fav in favorite:\n        in_degree[fav] += 1\n    result = 0\n    for degree in in_degree:\n        result += max(degree - 1, 0)\n    return min(result + 2, len(favorite))\n```\n    \n    The algorithm works by calculating in-degrees, which represent the number of times a person is favored by others. For each person `i`, we add all in-degrees minus one to the result (since a person only needs to be favored by one other person to be included at the table). Finally, we return the minimum of `result + 2` (to account for the first and last person added to the circle) and the total number of people. This ensures we do not invite more people than there are in the input array even if there are enough favorite relationships to do so.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxInvited(favorite) {\n    let inDegree = new Array(favorite.length).fill(0);\n    for (let fav of favorite) {\n        inDegree[fav]++;\n    }\n    let result = 0;\n    for (let degree of inDegree) {\n        result += Math.max(degree - 1, 0);\n    }\n    return Math.min(result + 2, favorite.length);\n}\n```\n    \n    The algorithm works by calculating in-degrees, which represent the number of times a person is favored by others. For each person `i`, we add all in-degrees minus one to the result (since a person only needs to be favored by one other person to be included at the table). Finally, we return the minimum of `result + 2` (to account for the first and last person added to the circle) and the total number of people. This ensures we do not invite more people than there are in the input array even if there are enough favorite relationships to do so.\n    ",
+    "java": "\n    ```java\npublic int maxInvited(int[] favorite) {\n    int[] inDegree = new int[favorite.length];\n    for (int fav : favorite) {\n        inDegree[fav]++;\n    }\n    int result = 0;\n    for (int degree : inDegree) {\n        result += Math.max(degree - 1, 0);\n    }\n    return Math.min(result + 2, favorite.length);\n}\n```\n    \n    The algorithm works by calculating in-degrees, which represent the number of times a person is favored by others. For each person `i`, we add all in-degrees minus one to the result (since a person only needs to be favored by one other person to be included at the table). Finally, we return the minimum of `result + 2` (to account for the first and last person added to the circle) and the total number of people. This ensures we do not invite more people than there are in the input array even if there are enough favorite relationships to do so.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

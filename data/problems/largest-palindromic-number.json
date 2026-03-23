@@ -1,0 +1,24 @@
+{
+  "id": 2384,
+  "title": "Largest Palindromic Number",
+  "slug": "largest-palindromic-number",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a string num consisting of digits only.\n\nReturn _the largest palindromic integer (in the form of a string) that can be formed using digits taken from_ num. It should not contain leading zeroes.\n\nNotes:\n\n*   You do not need to use all the digits of num, but you must use at least one digit.\n*   The digits can be reordered.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef root_sum_equal(root):\n    if not root:\n        return False\n    return root.val == root.left.val + root.right.val\n```\n\n    \n    The algorithm checks if the given root node exists, and if it does, it checks whether the value of the root is equal to the sum of the values of its left and right children. If the root does not exist, it returns false. This works for a tree consisting of exactly 3 nodes as specified in the question.\n    ",
+    "javascript": "\n    ```javascript\nfunction rootSumEqual(root) {\n    if (!root) return false;\n    return (root.val === root.left.val + root.right.val);\n}\n```\n\n    \n    The algorithm checks if the given root node exists, and if it does, it checks whether the value of the root is equal to the sum of the values of its left and right children. If the root does not exist, it returns false. This works for a tree consisting of exactly 3 nodes as specified in the question.\n    ",
+    "java": "\n    ```java\npublic boolean rootSumEqual(TreeNode root) {\n    if (root == null) return false;\n    return (root.val == root.left.val + root.right.val);\n}\n```\n\n    \n    The algorithm checks if the given root node exists, and if it does, it checks whether the value of the root is equal to the sum of the values of its left and right children. If the root does not exist, it returns false. This works for a tree consisting of exactly 3 nodes as specified in the question.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

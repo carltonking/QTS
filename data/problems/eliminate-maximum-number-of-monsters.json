@@ -1,0 +1,24 @@
+{
+  "id": 1921,
+  "title": "Eliminate Maximum Number of Monsters",
+  "slug": "eliminate-maximum-number-of-monsters",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are playing a video game where you are defending your city from a group of n monsters. You are given a 0-indexed integer array dist of size n, where dist[i] is the initial distance in kilometers of the ith monster from the city.\n\nThe monsters walk toward the city at a constant speed. The speed of each monster is given to you in an integer array speed of size n, where speed[i] is the speed of the ith monster in kilometers per minute.\n\nYou have a weapon that, once fully charged, can eliminate a single monster. However, the weapon takes one minute to charge.The weapon is fully charged at the very start.\n\nYou lose when any monster reaches your city. If a monster reaches the city at the exact moment the weapon is fully charged, it counts as a loss, and the game ends before you can use your weapon.\n\nReturn _the maximum number of monsters that you can eliminate before you lose, or_ n _if you can eliminate all the monsters before they reach the city._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef eliminate_maximum(dist, speed):\n    n = len(dist)\n    time_to_reach_city = [(dist[i] + speed[i] - 1) // speed[i] for i in range(n)]\n    time_to_reach_city.sort()\n    eliminated = 0\n    for i in range(n):\n        if time_to_reach_city[i] > i:\n            eliminated += 1\n        else:\n            break\n    return eliminated\n```\n    \n    1. Calculate the time it takes for each monster to reach the city, and store these times in an array `time_to_reach_city`.\n2. Sort the `time_to_reach_city` array in ascending order.\n3. Iterate through the array and check if the time it takes for the monster to reach the city is greater than the current time (index `i`). If it is, eliminate the monster and increment the `eliminated` counter.\n4. If the time it takes for any remaining monster to reach the city is less than or equal to the current time, break out of the loop.\n5. Return the number of eliminated monsters.\n    ",
+    "javascript": "\n    ```javascript\nfunction eliminateMaximum(dist, speed) {\n    const n = dist.length;\n    const timeToReachCity = dist.map((d, i) => Math.ceil(d / speed[i])).sort((a, b) => a - b);\n    let eliminated = 0;\n    for (let i = 0; i < n && timeToReachCity[i] > i; i++) {\n        eliminated++;\n    }\n    return eliminated;\n}\n```\n    \n    1. Calculate the time it takes for each monster to reach the city, and store these times in an array `time_to_reach_city`.\n2. Sort the `time_to_reach_city` array in ascending order.\n3. Iterate through the array and check if the time it takes for the monster to reach the city is greater than the current time (index `i`). If it is, eliminate the monster and increment the `eliminated` counter.\n4. If the time it takes for any remaining monster to reach the city is less than or equal to the current time, break out of the loop.\n5. Return the number of eliminated monsters.\n    ",
+    "java": "\n    ```java\npublic int eliminateMaximum(int[] dist, int[] speed) {\n    int n = dist.length;\n    int[] timeToReachCity = new int[n];\n    for (int i = 0; i < n; i++) {\n        timeToReachCity[i] = (dist[i] + speed[i] - 1) / speed[i];\n    }\n    Arrays.sort(timeToReachCity);\n    int eliminated = 0;\n    for (int i = 0; i < n && timeToReachCity[i] > i; i++) {\n        eliminated++;\n    }\n    return eliminated;\n}\n```\n    \n    1. Calculate the time it takes for each monster to reach the city, and store these times in an array `time_to_reach_city`.\n2. Sort the `time_to_reach_city` array in ascending order.\n3. Iterate through the array and check if the time it takes for the monster to reach the city is greater than the current time (index `i`). If it is, eliminate the monster and increment the `eliminated` counter.\n4. If the time it takes for any remaining monster to reach the city is less than or equal to the current time, break out of the loop.\n5. Return the number of eliminated monsters.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

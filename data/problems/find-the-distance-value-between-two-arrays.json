@@ -1,0 +1,24 @@
+{
+  "id": 1385,
+  "title": "Find the Distance Value Between Two Arrays",
+  "slug": "find-the-distance-value-between-two-arrays",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given two integer arrays arr1 and arr2, and the integer d, _return the distance value between the two arrays_.\n\nThe distance value is defined as the number of elements arr1[i] such that there is not any element arr2[j] where |arr1[i]-arr2[j]| <= d.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findTheDistanceValue(arr1, arr2, d):\n    distance = 0\n    for a in arr1:\n        found = True\n        for b in arr2:\n            if abs(a - b) <= d:\n                found = False\n                break\n        if found:\n            distance += 1\n    return distance\n```\n    \n    For each element `a` in array `arr1`, we iterate through all elements `b` in array `arr2` and check the condition `|a-b| <= d`. If we find an element `b` that satisfies the condition, we stop searching and move to the next element of `arr1`. If we haven't found any such element, we increment the distance value. Finally, we return the distance value after processing all elements of `arr1`.\n    ",
+    "javascript": "\n    ```javascript\nfunction findTheDistanceValue(arr1, arr2, d) {\n    let distance = 0;\n    for (let a of arr1) {\n        let found = true;\n        for (let b of arr2) {\n            if (Math.abs(a - b) <= d) {\n                found = false;\n                break;\n            }\n        }\n        if (found) distance++;\n    }\n    return distance;\n}\n```\n    \n    For each element `a` in array `arr1`, we iterate through all elements `b` in array `arr2` and check the condition `|a-b| <= d`. If we find an element `b` that satisfies the condition, we stop searching and move to the next element of `arr1`. If we haven't found any such element, we increment the distance value. Finally, we return the distance value after processing all elements of `arr1`.\n    ",
+    "java": "\n    ```java\npublic int findTheDistanceValue(int[] arr1, int[] arr2, int d) {\n    int distance = 0;\n    for (int a : arr1) {\n        boolean found = true;\n        for (int b : arr2) {\n            if (Math.abs(a - b) <= d) {\n                found = false;\n                break;\n            }\n        }\n        if (found) distance++;\n    }\n    return distance;\n}\n```\n    \n    For each element `a` in array `arr1`, we iterate through all elements `b` in array `arr2` and check the condition `|a-b| <= d`. If we find an element `b` that satisfies the condition, we stop searching and move to the next element of `arr1`. If we haven't found any such element, we increment the distance value. Finally, we return the distance value after processing all elements of `arr1`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2136,
+  "title": "Earliest Possible Day of Full Bloom",
+  "slug": "earliest-possible-day-of-full-bloom",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You have n flower seeds. Every seed must be planted first before it can begin to grow, then bloom. Planting a seed takes time and so does the growth of a seed. You are given two 0-indexed integer arrays plantTime and growTime, of length n each:\n\n*   plantTime[i] is the number of full days it takes you to plant the ith seed. Every day, you can work on planting exactly one seed. You do not have to work on planting the same seed on consecutive days, but the planting of a seed is not complete until you have worked plantTime[i] days on planting it in total.\n*   growTime[i] is the number of full days it takes the ith seed to grow after being completely planted. After the last day of its growth, the flower blooms and stays bloomed forever.\n\nFrom the beginning of day 0, you can plant the seeds in any order.\n\nReturn _the earliest possible day where all seeds are blooming_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef earliestBlooms(plantTime, growTime):\n    n = len(plantTime)\n    processTime = list(zip(plantTime, growTime))\n    processTime.sort()\n\n    day = 0\n    blooms = 0\n    for p in processTime:\n        day += p[0]\n        blooms = max(blooms, day + p[1])\n    return blooms\n```\n    \n    1. Create a new list/array, `processTime`, containing pairs/tuples of (plantTime, growTime) for each seed.\n2. Sort `processTime` in ascending order based on plantTime.\n3. Iterate through the sorted `processTime` pairs/tuples. For each pair/tuple, increment the `day` counter by the plantTime, and compare the sum of `day` and growTime with the current `blooms` value. If the sum is greater, update `blooms` with the new value.\n4. Return the final `blooms` value as the earliest day when all seeds have bloomed.\n    ",
+    "javascript": "\n    ```javascript\nfunction earliestBlooms(plantTime, growTime) {\n    let n = plantTime.length;\n    let processTime = plantTime.map((val, i) => ([val, growTime[i]]));\n    processTime.sort((a, b) => a[0] - b[0]);\n\n    let day = 0;\n    let blooms = 0;\n    for (let p of processTime) {\n        day += p[0];\n        blooms = Math.max(blooms, day + p[1]);\n    }\n    return blooms;\n}\n```\n    \n    1. Create a new list/array, `processTime`, containing pairs/tuples of (plantTime, growTime) for each seed.\n2. Sort `processTime` in ascending order based on plantTime.\n3. Iterate through the sorted `processTime` pairs/tuples. For each pair/tuple, increment the `day` counter by the plantTime, and compare the sum of `day` and growTime with the current `blooms` value. If the sum is greater, update `blooms` with the new value.\n4. Return the final `blooms` value as the earliest day when all seeds have bloomed.\n    ",
+    "java": "\n    ```java\npublic int earliestBlooms(int[] plantTime, int[] growTime) {\n    int n = plantTime.length;\n    int[][] processTime = new int[n][2];\n    for (int i = 0; i < n; ++i) {\n        processTime[i][0] = plantTime[i];\n        processTime[i][1] = growTime[i];\n    }\n    Arrays.sort(processTime, (a, b) -> a[0] - b[0]);\n\n    int day = 0;\n    int blooms = 0;\n    for (int[] p : processTime) {\n        day += p[0];\n        blooms = Math.max(blooms, day + p[1]);\n    }\n    return blooms;\n}\n```\n    \n    1. Create a new list/array, `processTime`, containing pairs/tuples of (plantTime, growTime) for each seed.\n2. Sort `processTime` in ascending order based on plantTime.\n3. Iterate through the sorted `processTime` pairs/tuples. For each pair/tuple, increment the `day` counter by the plantTime, and compare the sum of `day` and growTime with the current `blooms` value. If the sum is greater, update `blooms` with the new value.\n4. Return the final `blooms` value as the earliest day when all seeds have bloomed.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

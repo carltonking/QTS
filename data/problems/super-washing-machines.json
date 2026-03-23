@@ -1,0 +1,24 @@
+{
+  "id": 517,
+  "title": "Super Washing Machines",
+  "slug": "super-washing-machines",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You have n super washing machines on a line. Initially, each washing machine has some dresses or is empty.\n\nFor each move, you could choose any m (1 <= m <= n) washing machines, and pass one dress of each washing machine to one of its adjacent washing machines at the same time.\n\nGiven an integer array machines representing the number of dresses in each washing machine from left to right on the line, return _the minimum number of moves to make all the washing machines have the same number of dresses_. If it is not possible to do it, return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_min_moves(machines):\n    n = len(machines)\n    total_dresses = sum(machines)\n    if total_dresses % n != 0:\n        return -1\n    average = total_dresses // n\n    moves = 0\n    imbalance = 0\n    \n    for i in range(n):\n        imbalance += machines[i] - average\n        moves = max(moves, abs(imbalance), machines[i] - average)\n        \n    return moves\n```\n    \n    1. Calculate the total number of dresses and check if it can be evenly distributed among the machines. If it cannot, return -1.\n2. Calculate the average number of dresses each machine should have.\n3. Initialize the moves and imbalance count to 0.\n4. Iterate through the machines and calculate the current imbalance for each machine.\n5. Update the moves count by taking the maximum of the current moves, the absolute value of the current imbalance, and the difference between the current machine's dresses and the average value.\n6. Return the moves count.\n    ",
+    "javascript": "\n    ```javascript\nfunction findMinMoves(machines) {\n    let n = machines.length;\n    let totalDresses = machines.reduce((a, b) => a + b, 0);\n    if (totalDresses % n !== 0) return -1;\n    let average = totalDresses / n;\n    let moves = 0, imbalance = 0;\n    \n    for (let i = 0; i < n; i++) {\n        imbalance += machines[i] - average;\n        moves = Math.max(moves, Math.max(Math.abs(imbalance), machines[i] - average));\n    }\n    \n    return moves;\n}\n```\n    \n    1. Calculate the total number of dresses and check if it can be evenly distributed among the machines. If it cannot, return -1.\n2. Calculate the average number of dresses each machine should have.\n3. Initialize the moves and imbalance count to 0.\n4. Iterate through the machines and calculate the current imbalance for each machine.\n5. Update the moves count by taking the maximum of the current moves, the absolute value of the current imbalance, and the difference between the current machine's dresses and the average value.\n6. Return the moves count.\n    ",
+    "java": "\n    ```java\npublic int findMinMoves(int[] machines) {\n    int n = machines.length;\n    int totalDresses = 0;\n    for (int m : machines) totalDresses += m;\n    if (totalDresses % n != 0) return -1;\n    int average = totalDresses / n;\n    int moves = 0, imbalance = 0;\n    \n    for (int i = 0; i < n; i++) {\n        imbalance += machines[i] - average;\n        moves = Math.max(moves, Math.max(Math.abs(imbalance), machines[i] - average));\n    }\n    \n    return moves;\n}\n```\n    \n    1. Calculate the total number of dresses and check if it can be evenly distributed among the machines. If it cannot, return -1.\n2. Calculate the average number of dresses each machine should have.\n3. Initialize the moves and imbalance count to 0.\n4. Iterate through the machines and calculate the current imbalance for each machine.\n5. Update the moves count by taking the maximum of the current moves, the absolute value of the current imbalance, and the difference between the current machine's dresses and the average value.\n6. Return the moves count.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

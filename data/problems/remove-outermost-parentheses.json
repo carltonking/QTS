@@ -1,0 +1,24 @@
+{
+  "id": 1021,
+  "title": "Remove Outermost Parentheses",
+  "slug": "remove-outermost-parentheses",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "A valid parentheses string is either empty \" \", \"( \" + A + \") \", or A + B, where A and B are valid parentheses strings, and + represents string concatenation.\n\n*   For example, \" \", \"() \", \"(())() \", and \"(()(())) \" are all valid parentheses strings.\n\nA valid parentheses string s is primitive if it is nonempty, and there does not exist a way to split it into s = A + B, with A and B nonempty valid parentheses strings.\n\nGiven a valid parentheses string s, consider its primitive decomposition: s = P1 + P2 + ... + Pk, where Pi are primitive valid parentheses strings.\n\nReturn s _after removing the outermost parentheses of every primitive string in the primitive decomposition of_ s.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef distributeCoins(root):\n    def dfs(node):\n        if not node:\n            return 0\n        left, right = dfs(node.left), dfs(node.right)\n        moves[0] += abs(left) + abs(right)\n        return node.val + left + right - 1\n\n    moves = [0]\n    dfs(root)\n    return moves[0]\n```\n    \n    The algorithm uses DFS (Depth-first search) to traverse the binary tree. We start from the root node and move down to the leaf nodes before returning to the parent nodes. In each step, we calculate the number of moves as the absolute difference between the current node's value and 1, because we want every node to have exactly one coin. The total number of moves required is the sum of these absolute differences.\n\nWe use a helper function that takes the current node as its argument and returns its excess coins. In each recursive call, the helper function calls itself for left and right children of the node. The number of moves is then incremented by the absolute values of the returned excess coins from the left and right children.\n\nFinally, we return the total number of moves calculated during the traversal.\n    ",
+    "javascript": "\n    ```javascript\nfunction distributeCoins(root) {\n    function dfs(node) {\n        if (!node) return 0;\n        let left = dfs(node.left);\n        let right = dfs(node.right);\n        moves[0] += Math.abs(left) + Math.abs(right);\n        return node.val + left + right - 1;\n    }\n\n    let moves = [0];\n    dfs(root);\n    return moves[0];\n}\n```\n\n    \n    The algorithm uses DFS (Depth-first search) to traverse the binary tree. We start from the root node and move down to the leaf nodes before returning to the parent nodes. In each step, we calculate the number of moves as the absolute difference between the current node's value and 1, because we want every node to have exactly one coin. The total number of moves required is the sum of these absolute differences.\n\nWe use a helper function that takes the current node as its argument and returns its excess coins. In each recursive call, the helper function calls itself for left and right children of the node. The number of moves is then incremented by the absolute values of the returned excess coins from the left and right children.\n\nFinally, we return the total number of moves calculated during the traversal.\n    ",
+    "java": "\n    ```java\npublic int distributeCoins(TreeNode root) {\n    int[] moves = new int[1];\n    distributeCoins(root, moves);\n    return moves[0];\n}\n\nprivate int distributeCoins(TreeNode root, int[] moves) {\n    if (root == null) return 0;\n    int left = distributeCoins(root.left, moves);\n    int right = distributeCoins(root.right, moves);\n    moves[0] += Math.abs(left) + Math.abs(right);\n    return root.val + left + right - 1;\n}\n```\n    \n    The algorithm uses DFS (Depth-first search) to traverse the binary tree. We start from the root node and move down to the leaf nodes before returning to the parent nodes. In each step, we calculate the number of moves as the absolute difference between the current node's value and 1, because we want every node to have exactly one coin. The total number of moves required is the sum of these absolute differences.\n\nWe use a helper function that takes the current node as its argument and returns its excess coins. In each recursive call, the helper function calls itself for left and right children of the node. The number of moves is then incremented by the absolute values of the returned excess coins from the left and right children.\n\nFinally, we return the total number of moves calculated during the traversal.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

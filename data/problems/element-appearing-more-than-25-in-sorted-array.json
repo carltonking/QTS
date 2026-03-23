@@ -1,0 +1,24 @@
+{
+  "id": 1287,
+  "title": "Element Appearing More Than 25% In Sorted Array",
+  "slug": "element-appearing-more-than-25-in-sorted-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer array sorted in non-decreasing order, there is exactly one integer in the array that occurs more than 25% of the time, return that integer.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef shortest_distance(distance, start, destination):\n    total_distance = sum(distance)\n    clockwise_distance = sum(distance[start:destination])\n    \n    return min(clockwise_distance, total_distance - clockwise_distance)\n```\n    \n    1. Initialize two variables `total_distance` and `clockwise_distance`.\n2. Iterate through the input `distance` array and add the elements into the `total_distance`.\n3. For elements between the `start` and the `destination`, add elements into the `clockwise_distance`.\n4. After the iteration, we have the total distance of the circle and the distance from `start` to `destination` in the clockwise direction.\n5. The counterclockwise distance is then `total_distance - clockwise_distance`.\n6. Return the minimum of the clockwise and counterclockwise distances.\n    ",
+    "javascript": "\n    ```javascript\nfunction shortestDistance(distance, start, destination) {\n    let total_distance = 0, clockwise_distance = 0;\n    \n    for (let i = 0; i < distance.length; ++i) {\n        total_distance += distance[i];\n        if (i >= start && i < destination) {\n            clockwise_distance += distance[i];\n        }\n    }\n    \n    return Math.min(clockwise_distance, total_distance - clockwise_distance);\n}\n```\n    \n    1. Initialize two variables `total_distance` and `clockwise_distance`.\n2. Iterate through the input `distance` array and add the elements into the `total_distance`.\n3. For elements between the `start` and the `destination`, add elements into the `clockwise_distance`.\n4. After the iteration, we have the total distance of the circle and the distance from `start` to `destination` in the clockwise direction.\n5. The counterclockwise distance is then `total_distance - clockwise_distance`.\n6. Return the minimum of the clockwise and counterclockwise distances.\n    ",
+    "java": "\n    ```java\npublic int shortestDistance(int[] distance, int start, int destination) {\n    int total_distance = 0, clockwise_distance = 0;\n    \n    for(int i = 0; i < distance.length; ++i) {\n        total_distance += distance[i];\n        if(i >= start && i < destination) {\n            clockwise_distance += distance[i];\n        }\n    }\n    \n    return Math.min(clockwise_distance, total_distance - clockwise_distance);\n}\n```\n    \n    1. Initialize two variables `total_distance` and `clockwise_distance`.\n2. Iterate through the input `distance` array and add the elements into the `total_distance`.\n3. For elements between the `start` and the `destination`, add elements into the `clockwise_distance`.\n4. After the iteration, we have the total distance of the circle and the distance from `start` to `destination` in the clockwise direction.\n5. The counterclockwise distance is then `total_distance - clockwise_distance`.\n6. Return the minimum of the clockwise and counterclockwise distances.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

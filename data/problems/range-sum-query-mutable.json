@@ -1,0 +1,24 @@
+{
+  "id": 307,
+  "title": "Range Sum Query - Mutable",
+  "slug": "range-sum-query-mutable",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums, handle multiple queries of the following types:\n\n1.  Update the value of an element in nums.\n2.  Calculate the sum of the elements of nums between indices left and right inclusive where left <= right.\n\nImplement the NumArray class:\n\n*   NumArray(int[] nums) Initializes the object with the integer array nums.\n*   void update(int index, int val) Updates the value of nums[index] to be val.\n*   int sumRange(int left, int right) Returns the sum of the elements of nums between indices left and right inclusive (i.e. nums[left] + nums[left + 1] + ... + nums[right]).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass NumArray:\n\n    def __init__(self, nums: List[int]):\n        self.prefix_sum = [0] * (len(nums) + 1)\n        for i in range(len(nums)):\n            self.prefix_sum[i + 1] = self.prefix_sum[i] + nums[i]\n\n    def sumRange(self, left: int, right: int) -> int:\n        return self.prefix_sum[right + 1] - self.prefix_sum[left]\n```\n\n    \n    The algorithm uses a prefix sum array to efficiently answer the range sum queries. The idea is to pre-process the input array by creating an auxiliary array prefixSum, where prefixSum[i] stores the sum of the first i elements. This allows us to compute the sum of elements in a range [left, right] in constant time, by simply returning the difference between prefixSum[right+1] and prefixSum[left]. To generate the prefixSum array, we iterate through the input array nums, and for each element, we add its value to the prefixSum array using the previous prefixSum value.\n\nThe time complexity of creating the prefixSum array is O(n) and each range sum query will take O(1) time since we just need to access and subtract two elements in the prefixSum array.\n    ",
+    "javascript": "\n    ```javascript\nclass NumArray {\n    constructor(nums) {\n        this.prefixSum = [0];\n        for (let i = 0; i < nums.length; i++) {\n            this.prefixSum[i + 1] = this.prefixSum[i] + nums[i];\n        }\n    }\n\n    sumRange(left, right) {\n        return this.prefixSum[right + 1] - this.prefixSum[left];\n    }\n}\n```\n\n    \n    The algorithm uses a prefix sum array to efficiently answer the range sum queries. The idea is to pre-process the input array by creating an auxiliary array prefixSum, where prefixSum[i] stores the sum of the first i elements. This allows us to compute the sum of elements in a range [left, right] in constant time, by simply returning the difference between prefixSum[right+1] and prefixSum[left]. To generate the prefixSum array, we iterate through the input array nums, and for each element, we add its value to the prefixSum array using the previous prefixSum value.\n\nThe time complexity of creating the prefixSum array is O(n) and each range sum query will take O(1) time since we just need to access and subtract two elements in the prefixSum array.\n    ",
+    "java": "\n    ```java\nclass NumArray {\n    private int[] prefixSum;\n\n    public NumArray(int[] nums) {\n        prefixSum = new int[nums.length + 1];\n        for (int i = 0; i < nums.length; i++) {\n            prefixSum[i + 1] = prefixSum[i] + nums[i];\n        }\n    }\n\n    public int sumRange(int left, int right) {\n        return prefixSum[right + 1] - prefixSum[left];\n    }\n}\n```\n\n    \n    The algorithm uses a prefix sum array to efficiently answer the range sum queries. The idea is to pre-process the input array by creating an auxiliary array prefixSum, where prefixSum[i] stores the sum of the first i elements. This allows us to compute the sum of elements in a range [left, right] in constant time, by simply returning the difference between prefixSum[right+1] and prefixSum[left]. To generate the prefixSum array, we iterate through the input array nums, and for each element, we add its value to the prefixSum array using the previous prefixSum value.\n\nThe time complexity of creating the prefixSum array is O(n) and each range sum query will take O(1) time since we just need to access and subtract two elements in the prefixSum array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

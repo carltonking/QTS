@@ -1,0 +1,24 @@
+{
+  "id": 476,
+  "title": "Number Complement",
+  "slug": "number-complement",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "The complement of an integer is the integer you get when you flip all the 0's to 1's and all the 1's to 0's in its binary representation.\n\n*   For example, The integer 5 is \"101 \" in binary and its complement is \"010 \" which is the integer 2.\n\nGiven an integer num, return _its complement_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_complement(num: int) -> int:\n    bit_length = 0\n    mask = num\n    while mask > 0:\n        mask >>= 1\n        bit_length += 1\n    all_ones = (1 << bit_length) - 1\n\n    return num ^ all_ones\n```\n    \n    First, we calculate the number of bits in the binary representation of the input integer `num`. We do this by consecutively right-shifting the number (bitwise operation) and counting the iterations until the number becomes 0. This gives us the length of the binary representation.\n\nOnce we have the length, we create a bitmask of the same length with all bits set to 1 (for example, if the length is 3, the bitmask would be 111 in binary). To get the complement of the input integer, we then XOR (`^` operator) the number with this all-1 mask. The XOR operation returns 1 when the input bits are different and 0 when they are the same, so if we have a 0 in the input, we will get 1 and vice versa. This way, we get the complement of the original number.\n\nFinally, we return the resulting number, which is the complement of the input integer `num`.\n    ",
+    "javascript": "\n    ```javascript\nfunction findComplement(num) {\n    let bitLength = 0;\n    let mask = num;\n    while (mask > 0) {\n        mask >>= 1;\n        bitLength++;\n    }\n    const allOnes = (1 << bitLength) - 1;\n\n    return num ^ allOnes;\n}\n```\n    \n    First, we calculate the number of bits in the binary representation of the input integer `num`. We do this by consecutively right-shifting the number (bitwise operation) and counting the iterations until the number becomes 0. This gives us the length of the binary representation.\n\nOnce we have the length, we create a bitmask of the same length with all bits set to 1 (for example, if the length is 3, the bitmask would be 111 in binary). To get the complement of the input integer, we then XOR (`^` operator) the number with this all-1 mask. The XOR operation returns 1 when the input bits are different and 0 when they are the same, so if we have a 0 in the input, we will get 1 and vice versa. This way, we get the complement of the original number.\n\nFinally, we return the resulting number, which is the complement of the input integer `num`.\n    ",
+    "java": "\n    ```java\npublic int findComplement(int num) {\n    int bitLength = 0;\n    int mask = num;\n    while (mask > 0) {\n        mask >>= 1;\n        bitLength++;\n    }\n    int allOnes = (1 << bitLength) - 1;\n\n    return num ^ allOnes;\n}\n```\n    \n    First, we calculate the number of bits in the binary representation of the input integer `num`. We do this by consecutively right-shifting the number (bitwise operation) and counting the iterations until the number becomes 0. This gives us the length of the binary representation.\n\nOnce we have the length, we create a bitmask of the same length with all bits set to 1 (for example, if the length is 3, the bitmask would be 111 in binary). To get the complement of the input integer, we then XOR (`^` operator) the number with this all-1 mask. The XOR operation returns 1 when the input bits are different and 0 when they are the same, so if we have a 0 in the input, we will get 1 and vice versa. This way, we get the complement of the original number.\n\nFinally, we return the resulting number, which is the complement of the input integer `num`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

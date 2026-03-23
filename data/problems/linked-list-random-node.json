@@ -1,0 +1,24 @@
+{
+  "id": 382,
+  "title": "Linked List Random Node",
+  "slug": "linked-list-random-node",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a singly linked list, return a random node's value from the linked list. Each node must have the same probability of being chosen.\n\nImplement the Solution class:\n\n*   Solution(ListNode head) Initializes the object with the head of the singly-linked list head.\n*   int getRandom() Chooses a node randomly from the list and returns its value. All the nodes of the list should be equally likely to be chosen.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nimport random\n\nclass ListNode:\n    def __init__(self, x):\n        self.val = x\n        self.next = None\n\nclass Solution:\n    def __init__(self, head: ListNode):\n        self.head = head\n\n    def getRandom(self) -> int:\n        current, result = self.head, 0\n        for i, node in enumerate(self.iterate_nodes(current)):\n            if random.randint(0, i) == 0:\n                result = node.val\n        return result\n\n    def iterate_nodes(self, current):\n        while current:\n            yield current\n            current = current.next\n```\n    \n    The function initializes the head of the linked list and a random number generator (in the case of Java). The `getRandom()` function iterates through the list, starting with the head node. It uses the reservoir sampling algorithm of size 1 for obtaining a random value at each step. This ensures each node has an equal probability of being chosen. In this algorithm, a random integer `i` is generated, and if `i` is 0, the current node's value is selected as the result.\n    ",
+    "javascript": "\n    ```javascript\nclass ListNode {\n    constructor(val, next = null) {\n        this.val = val;\n        this.next = next;\n    }\n}\n\nclass Solution {\n    constructor(head) {\n        this.head = head;\n    }\n\n    getRandom() {\n        let current = this.head;\n        let result = current.val;\n        for (let i = 1; current !== null; i++) {\n            if (Math.floor(Math.random() * i) === 0) {\n                result = current.val;\n            }\n            current = current.next;\n        }\n        return result;\n    }\n}\n```\n    \n    The function initializes the head of the linked list and a random number generator (in the case of Java). The `getRandom()` function iterates through the list, starting with the head node. It uses the reservoir sampling algorithm of size 1 for obtaining a random value at each step. This ensures each node has an equal probability of being chosen. In this algorithm, a random integer `i` is generated, and if `i` is 0, the current node's value is selected as the result.\n    ",
+    "java": "\n    ```java\nimport java.util.Random;\n\nclass ListNode {\n    int val;\n    ListNode next;\n    ListNode(int x) { val = x; }\n}\n\npublic class Solution {\n    ListNode head;\n    Random random;\n\n    public Solution(ListNode head) {\n        this.head = head;\n        random = new Random();\n    }\n\n    public int getRandom() {\n        ListNode current = head;\n        int result = current.val, i;\n        for (i = 1; current != null; i++) {\n            if (random.nextInt(i) == 0) {\n                result = current.val;\n            }\n            current = current.next;\n        }\n        return result;\n    }\n}\n```\n    \n    The function initializes the head of the linked list and a random number generator (in the case of Java). The `getRandom()` function iterates through the list, starting with the head node. It uses the reservoir sampling algorithm of size 1 for obtaining a random value at each step. This ensures each node has an equal probability of being chosen. In this algorithm, a random integer `i` is generated, and if `i` is 0, the current node's value is selected as the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

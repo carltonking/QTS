@@ -1,0 +1,24 @@
+{
+  "id": 742,
+  "title": "Closest Leaf in a Binary Tree",
+  "slug": "closest-leaf-in-a-binary-tree",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the root of a binary tree where every node has a unique value and a target integer k, return _the value of the nearest leaf node to the target_ k _in the tree_.\n\nNearest to a leaf means the least number of edges traveled on the binary tree to reach any leaf of the tree. Also, a node is called a leaf if it has no children.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef to_lower_case(s: str) -> str:\n    return s.lower()\n```\n    \n    The implemented algorithm converts each letter of the given string to its lowercase version. For C++, the transform function is used to apply the `tolower` function to each character to convert it to lowercase. In Java, Python, and JavaScript, the built-in `toLowerCase`, `lower`, and `toLowerCase` functions, respectively, are used to transform the input string into its lowercase variant.\n    ",
+    "javascript": "\n    ```javascript\nfunction toLowerCase(s) {\n    return s.toLowerCase();\n}\n```\n    \n    The implemented algorithm converts each letter of the given string to its lowercase version. For C++, the transform function is used to apply the `tolower` function to each character to convert it to lowercase. In Java, Python, and JavaScript, the built-in `toLowerCase`, `lower`, and `toLowerCase` functions, respectively, are used to transform the input string into its lowercase variant.\n    ",
+    "java": "\n    ```java\npublic String toLowerCase(String s) {\n    return s.toLowerCase();\n}\n```\n    \n    The implemented algorithm converts each letter of the given string to its lowercase version. For C++, the transform function is used to apply the `tolower` function to each character to convert it to lowercase. In Java, Python, and JavaScript, the built-in `toLowerCase`, `lower`, and `toLowerCase` functions, respectively, are used to transform the input string into its lowercase variant.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

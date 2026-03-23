@@ -1,0 +1,24 @@
+{
+  "id": 2224,
+  "title": "Minimum Number of Operations to Convert Time",
+  "slug": "minimum-number-of-operations-to-convert-time",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given two strings current and correct representing two 24-hour times.\n\n24-hour times are formatted as \"HH:MM \", where HH is between 00 and 23, and MM is between 00 and 59. The earliest 24-hour time is 00:00, and the latest is 23:59.\n\nIn one operation you can increase the time current by 1, 5, 15, or 60 minutes. You can perform this operation any number of times.\n\nReturn _the minimum number of operations needed to convert_ current _to_ correct.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minimum_operations(current: str, correct: str) -> int:\n    ch, cm = map(int, current.split(':'))\n    th, tm = map(int, correct.split(':'))\n    ct = ch * 60 + cm\n    tt = th * 60 + tm\n\n    operations = 0\n    while ct < tt:\n        if tt - ct >= 60:\n            ct += 60\n        elif tt - ct >= 15:\n            ct += 15\n        elif tt - ct >= 5:\n            ct += 5\n        else:\n            ct += 1\n\n        operations += 1\n\n    return operations\n```\n\n    \n    The approach to solving this problem is fairly straightforward. First, we parse the input strings 'current' and 'correct' into hours and minutes. We then calculate the total minutes for both 'current' (ct) and 'correct' (tt).\n\nWe initialize a variable `operations` tokeep track of the minimum number of operations needed.\n\nUsing a while loop, we check if ct is smaller than tt indicating that we still need to perform operations. In each iteration, we choose the largest operation possible (60, 15, 5, or 1 minute(s)) based on the difference between tt and ct. After performing the operation, we increment the operations counter.\n\nThe final result is the value of the `operations` counter at the end of the loop.\n    ",
+    "javascript": "\n    ```javascript\nfunction minimumOperations(current, correct) {\n    let [ch, cm] = current.split(':').map(Number);\n    let [th, tm] = correct.split(':').map(Number);\n    let ct = ch * 60 + cm, tt = th * 60 + tm;\n\n    let operations = 0;\n    while (ct < tt) {\n        if (tt - ct >= 60)\n            ct += 60;\n        else if (tt - ct >= 15)\n            ct += 15;\n        else if (tt - ct >= 5)\n            ct += 5;\n        else\n            ct += 1;\n\n        operations++;\n    }\n    return operations;\n}\n```\n\n    \n    The approach to solving this problem is fairly straightforward. First, we parse the input strings 'current' and 'correct' into hours and minutes. We then calculate the total minutes for both 'current' (ct) and 'correct' (tt).\n\nWe initialize a variable `operations` tokeep track of the minimum number of operations needed.\n\nUsing a while loop, we check if ct is smaller than tt indicating that we still need to perform operations. In each iteration, we choose the largest operation possible (60, 15, 5, or 1 minute(s)) based on the difference between tt and ct. After performing the operation, we increment the operations counter.\n\nThe final result is the value of the `operations` counter at the end of the loop.\n    ",
+    "java": "\n    ```java\nint minimumOperations(String current, String correct) {\n    int ch = Integer.parseInt(current.substring(0, 2)), cm = Integer.parseInt(current.substring(3));\n    int th = Integer.parseInt(correct.substring(0,2)), tm = Integer.parseInt(correct.substring(3));\n    int ct = ch * 60 + cm, tt = th * 60 + tm;\n\n    int operations = 0;\n    while (ct < tt) {\n        if (tt - ct >= 60)\n            ct += 60;\n        else if (tt - ct >= 15)\n            ct += 15;\n        else if (tt - ct >= 5)\n            ct += 5;\n        else\n            ct += 1;\n\n        operations++;\n    }\n    return operations;\n}\n```\n\n    \n    The approach to solving this problem is fairly straightforward. First, we parse the input strings 'current' and 'correct' into hours and minutes. We then calculate the total minutes for both 'current' (ct) and 'correct' (tt).\n\nWe initialize a variable `operations` tokeep track of the minimum number of operations needed.\n\nUsing a while loop, we check if ct is smaller than tt indicating that we still need to perform operations. In each iteration, we choose the largest operation possible (60, 15, 5, or 1 minute(s)) based on the difference between tt and ct. After performing the operation, we increment the operations counter.\n\nThe final result is the value of the `operations` counter at the end of the loop.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

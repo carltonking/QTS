@@ -1,0 +1,24 @@
+{
+  "id": 344,
+  "title": "Reverse String",
+  "slug": "reverse-string",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Write a function that reverses a string. The input string is given as an array of characters s.\n\nYou must do this by modifying the input array [in-place](https://en.wikipedia.org/wiki/In-place_algorithm) with O(1) extra memory.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef reverseString(s: List[str]) -> None:\n    left, right = 0, len(s) - 1\n    while left < right:\n        s[left], s[right] = s[right], s[left]\n        left, right = left + 1, right - 1\n```\n    \n    The algorithm follows a two-pointer approach. Initialize two pointers, `left` and `right`, at the beginning and end of the input array. Using a while loop, run until the `left` pointer is greater than or equal to the `right` pointer. In the loop, swap the elements at the `left` and `right` pointers. Increment the `left` pointer and decrement the `right` pointer. Repeat this process until the loop terminates, which means the entire string has been reversed.\n    ",
+    "javascript": "\n    ```javascript\nfunction reverseString(s) {\n    let left = 0, right = s.length - 1;\n    while (left < right) {\n        [s[left], s[right]] = [s[right], s[left]];\n        left++;\n        right--;\n    }\n}\n```\n    \n    The algorithm follows a two-pointer approach. Initialize two pointers, `left` and `right`, at the beginning and end of the input array. Using a while loop, run until the `left` pointer is greater than or equal to the `right` pointer. In the loop, swap the elements at the `left` and `right` pointers. Increment the `left` pointer and decrement the `right` pointer. Repeat this process until the loop terminates, which means the entire string has been reversed.\n    ",
+    "java": "\n    ```java\npublic void reverseString(char[] s) {\n    int left = 0, right = s.length - 1;\n    while (left < right) {\n        char temp = s[left];\n        s[left++] = s[right];\n        s[right--] = temp;\n    }\n}\n```\n    \n    The algorithm follows a two-pointer approach. Initialize two pointers, `left` and `right`, at the beginning and end of the input array. Using a while loop, run until the `left` pointer is greater than or equal to the `right` pointer. In the loop, swap the elements at the `left` and `right` pointers. Increment the `left` pointer and decrement the `right` pointer. Repeat this process until the loop terminates, which means the entire string has been reversed.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

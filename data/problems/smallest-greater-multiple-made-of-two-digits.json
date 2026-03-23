@@ -1,0 +1,24 @@
+{
+  "id": 1999,
+  "title": "Smallest Greater Multiple Made of Two Digits",
+  "slug": "smallest-greater-multiple-made-of-two-digits",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given three integers, k, digit1, and digit2, you want to find the smallest integer that is:\n\n*   Larger than k,\n*   A multiple of k, and\n*   Comprised of only the digits digit1 and/or digit2.\n\nReturn _the smallest such integer. If no such integer exists or the integer exceeds the limit of a signed 32-bit integer (_231 - 1_), return_ -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef checkZeroOnes(s: str) -> bool:\n    longest_zero = longest_one = current_zero = current_one = 0\n    \n    for c in s:\n        if c == '0':\n            current_zero += 1\n            longest_zero = max(longest_zero, current_zero)\n            current_one = 0\n        else:\n            current_one += 1\n            longest_one = max(longest_one, current_one)\n            current_zero = 0\n            \n    return longest_one > longest_zero\n```\n\n    \n    1. Initialize variables for tracking the lengths of the longest and current segments of 0's and 1's.\n2. Iterate through the string.\n3. For each character, update the corresponding current segment length and compare it with the longest segment length.\n   a. If the current character is '0', increment the current segment of 0's, update the longest segment of 0's if necessary, and reset the current segment of 1's.\n   b. If the current character is '1', increment the current segment of 1's, update the longest segment of 1's if necessary, and reset the current segment of 0's.\n4. After the iteration, compare the lengths of the longest segments of 0's and 1's and return the result as a boolean.\n    ",
+    "javascript": "\n    ```javascript\nfunction checkZeroOnes(s) {\n    let longestZero = 0;\n    let longestOne = 0;\n    let currentZero = 0;\n    let currentOne = 0;\n\n    for (let c of s) {\n        if (c === '0') {\n            currentZero++;\n            longestZero = Math.max(longestZero, currentZero);\n            currentOne = 0;\n        } else {\n            currentOne++;\n            longestOne = Math.max(longestOne, currentOne);\n            currentZero = 0;\n        }\n    }\n    return longestOne > longestZero;\n}\n```\n\n    \n    1. Initialize variables for tracking the lengths of the longest and current segments of 0's and 1's.\n2. Iterate through the string.\n3. For each character, update the corresponding current segment length and compare it with the longest segment length.\n   a. If the current character is '0', increment the current segment of 0's, update the longest segment of 0's if necessary, and reset the current segment of 1's.\n   b. If the current character is '1', increment the current segment of 1's, update the longest segment of 1's if necessary, and reset the current segment of 0's.\n4. After the iteration, compare the lengths of the longest segments of 0's and 1's and return the result as a boolean.\n    ",
+    "java": "\n    ```java\npublic boolean checkZeroOnes(String s) {\n    int longestZero = 0;\n    int longestOne = 0;\n    int currentZero = 0;\n    int currentOne = 0;\n    \n    for (char c : s.toCharArray()) {\n        if (c == '0') {\n            currentZero++;\n            longestZero = Math.max(longestZero, currentZero);\n            currentOne = 0;\n        } else {\n            currentOne++;\n            longestOne = Math.max(longestOne, currentOne);\n            currentZero = 0;\n        }\n    }\n    return longestOne > longestZero;\n}\n```\n\n    \n    1. Initialize variables for tracking the lengths of the longest and current segments of 0's and 1's.\n2. Iterate through the string.\n3. For each character, update the corresponding current segment length and compare it with the longest segment length.\n   a. If the current character is '0', increment the current segment of 0's, update the longest segment of 0's if necessary, and reset the current segment of 1's.\n   b. If the current character is '1', increment the current segment of 1's, update the longest segment of 1's if necessary, and reset the current segment of 0's.\n4. After the iteration, compare the lengths of the longest segments of 0's and 1's and return the result as a boolean.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

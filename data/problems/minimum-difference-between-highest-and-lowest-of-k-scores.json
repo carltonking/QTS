@@ -1,0 +1,24 @@
+{
+  "id": 1984,
+  "title": "Minimum Difference Between Highest and Lowest of K Scores",
+  "slug": "minimum-difference-between-highest-and-lowest-of-k-scores",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums, where nums[i] represents the score of the ith student. You are also given an integer k.\n\nPick the scores of any k students from the array so that the difference between the highest and the lowest of the k scores is minimized.\n\nReturn _the minimum possible difference_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_distance(nums1, nums2):\n    i, j, max_dist = 0, 0, 0\n    while i < len(nums1) and j < len(nums2):\n        if i <= j and nums1[i] <= nums2[j]:\n            max_dist = max(max_dist, j - i)\n            j += 1\n        else:\n            i += 1\n    return max_dist\n```\n    \n    1. Initialize variables `i` and `j` to 0 and `maxDist` to 0.\n2. Loop with a `while` condition until we reach the end of either of the arrays.\n3. Check the valid pair condition: `i <= j` and `nums1[i] <= nums2[j]`.\n   - If the pair is valid, calculate the distance as `j - i` and update `maxDist` if this distance is greater than its current value.\n   - Increment `j` to check the next element in array `nums2`.\n4. If the pair condition is not valid, increment `i` to check the next element in array `nums1`.\n5. Repeat steps 3-4 until the end of either array is reached.\n6. Return the `maxDist` as the maximum distance of a valid pair.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxDistance(nums1, nums2) {\n    let i = 0, j = 0, maxDist = 0;\n    while (i < nums1.length && j < nums2.length) {\n        if (i <= j && nums1[i] <= nums2[j]) {\n            maxDist = Math.max(maxDist, j - i);\n            j++;\n        } else {\n            i++;\n        }\n    }\n    return maxDist;\n}\n```\n    \n    1. Initialize variables `i` and `j` to 0 and `maxDist` to 0.\n2. Loop with a `while` condition until we reach the end of either of the arrays.\n3. Check the valid pair condition: `i <= j` and `nums1[i] <= nums2[j]`.\n   - If the pair is valid, calculate the distance as `j - i` and update `maxDist` if this distance is greater than its current value.\n   - Increment `j` to check the next element in array `nums2`.\n4. If the pair condition is not valid, increment `i` to check the next element in array `nums1`.\n5. Repeat steps 3-4 until the end of either array is reached.\n6. Return the `maxDist` as the maximum distance of a valid pair.\n    ",
+    "java": "\n    ```java\npublic int maxDistance(int[] nums1, int[] nums2) {\n    int i = 0, j = 0, maxDist = 0;\n    while (i < nums1.length && j < nums2.length) {\n        if (i <= j && nums1[i] <= nums2[j]) {\n            maxDist = Math.max(maxDist, j - i);\n            j++;\n        } else {\n            i++;\n        }\n    }\n    return maxDist;\n}\n```\n    \n    1. Initialize variables `i` and `j` to 0 and `maxDist` to 0.\n2. Loop with a `while` condition until we reach the end of either of the arrays.\n3. Check the valid pair condition: `i <= j` and `nums1[i] <= nums2[j]`.\n   - If the pair is valid, calculate the distance as `j - i` and update `maxDist` if this distance is greater than its current value.\n   - Increment `j` to check the next element in array `nums2`.\n4. If the pair condition is not valid, increment `i` to check the next element in array `nums1`.\n5. Repeat steps 3-4 until the end of either array is reached.\n6. Return the `maxDist` as the maximum distance of a valid pair.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

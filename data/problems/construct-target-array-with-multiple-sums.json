@@ -1,0 +1,24 @@
+{
+  "id": 1354,
+  "title": "Construct Target Array With Multiple Sums",
+  "slug": "construct-target-array-with-multiple-sums",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an array target of n integers. From a starting array arr consisting of n 1's, you may perform the following procedure :\n\n*   let x be the sum of all elements currently in your array.\n*   choose index i, such that 0 <= i < n and set the value of arr at index i to x.\n*   You may repeat this procedure as many times as needed.\n\nReturn true _if it is possible to construct the_ target _array from_ arr_, otherwise, return_ false.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom sortedcontainers import SortedSet\n\ndef winners_and_losers(matches):\n    winners, losers = SortedSet(), SortedSet()\n\n    for winner, loser in matches:\n        winners.add(winner)\n        losers.add(loser)\n\n    return [list(winners), list(losers)]\n```\n    \n    The algorithm first initializes two sorted sets - one for winners and one for losers.\n\nFor each match in the input, we extract the winner and loser and insert them into their respective sorted sets. Sorted sets automatically maintain the ordering and uniqueness of elements.\n\nFinally, we convert the sorted sets to arrays/lists in their respective languages and return an array/list containing two arrays/lists - the winners and the losers - each sorted in increasing order.\n    ",
+    "javascript": "\n    ```javascript\nfunction winnersAndLosers(matches) {\n    const winners = new Set();\n    const losers = new Set();\n\n    for (const match of matches) {\n        winners.add(match[0]);\n        losers.add(match[1]);\n    }\n\n    return [Array.from(winners).sort((a, b) => a - b), Array.from(losers).sort((a, b) => a - b)];\n}\n```\n    \n    The algorithm first initializes two sorted sets - one for winners and one for losers.\n\nFor each match in the input, we extract the winner and loser and insert them into their respective sorted sets. Sorted sets automatically maintain the ordering and uniqueness of elements.\n\nFinally, we convert the sorted sets to arrays/lists in their respective languages and return an array/list containing two arrays/lists - the winners and the losers - each sorted in increasing order.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic List<List<Integer>> winnersAndLosers(int[][] matches) {\n    TreeSet<Integer> winners = new TreeSet<>();\n    TreeSet<Integer> losers = new TreeSet<>();\n    for (int[] match : matches) {\n        winners.add(match[0]);\n        losers.add(match[1]);\n    }\n    return Arrays.asList(new ArrayList<>(winners), new ArrayList<>(losers));\n}\n```\n    \n    The algorithm first initializes two sorted sets - one for winners and one for losers.\n\nFor each match in the input, we extract the winner and loser and insert them into their respective sorted sets. Sorted sets automatically maintain the ordering and uniqueness of elements.\n\nFinally, we convert the sorted sets to arrays/lists in their respective languages and return an array/list containing two arrays/lists - the winners and the losers - each sorted in increasing order.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

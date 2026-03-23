@@ -1,0 +1,24 @@
+{
+  "id": 2376,
+  "title": "Count Special Integers",
+  "slug": "count-special-integers",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "We call a positive integer special if all of its digits are distinct.\n\nGiven a positive integer n, return _the number of special integers that belong to the interval_ [1, n].",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_distinct(n):\n    unique_digits = set()\n    while n > 0:\n        digit = n % 10\n        if digit in unique_digits:\n            return False\n        unique_digits.add(digit)\n        n //= 10\n    return True\n\ndef count_special(n):\n    count = 0\n    for i in range(1, n + 1):\n        if is_distinct(i):\n            count += 1\n    return count\n```\n    \n    The algorithm checks all integers from 1 to n if they are special by using an auxiliary function called `isDistinct`. The `isDistinct` function checks if all digits of a given integer are distinct by using a set data structure to store the unique digits of the integer. For each digit of the given integer, if the digit is not already in the set, it's added to the set. If the digit is in the set, the function returns `false` as it is not a special integer. The main function increments the count for each integer from 1 to n that is a special integer and returns the count.\n    ",
+    "javascript": "\n    ```javascript\nfunction isDistinct(n) {\n    const uniqueDigits = new Set();\n    while (n > 0) {\n        const digit = n % 10;\n        if (uniqueDigits.has(digit)) {\n            return false;\n        }\n        uniqueDigits.add(digit);\n        n = Math.floor(n / 10);\n    }\n    return true;\n}\n\nfunction countSpecial(n) {\n    let count = 0;\n    for (let i = 1; i <= n; i++) {\n        if (isDistinct(i)) {\n            count++;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm checks all integers from 1 to n if they are special by using an auxiliary function called `isDistinct`. The `isDistinct` function checks if all digits of a given integer are distinct by using a set data structure to store the unique digits of the integer. For each digit of the given integer, if the digit is not already in the set, it's added to the set. If the digit is in the set, the function returns `false` as it is not a special integer. The main function increments the count for each integer from 1 to n that is a special integer and returns the count.\n    ",
+    "java": "\n    ```java\nboolean isDistinct(int n) {\n    Set<Integer> uniqueDigits = new HashSet<>();\n    while (n > 0) {\n        int digit = n % 10;\n        if (uniqueDigits.contains(digit)) {\n            return false;\n        }\n        uniqueDigits.add(digit);\n        n /= 10;\n    }\n    return true;\n}\n\nint countSpecial(int n) {\n    int count = 0;\n    for (int i = 1; i <= n; i++) {\n        if (isDistinct(i)) {\n            count++;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm checks all integers from 1 to n if they are special by using an auxiliary function called `isDistinct`. The `isDistinct` function checks if all digits of a given integer are distinct by using a set data structure to store the unique digits of the integer. For each digit of the given integer, if the digit is not already in the set, it's added to the set. If the digit is in the set, the function returns `false` as it is not a special integer. The main function increments the count for each integer from 1 to n that is a special integer and returns the count.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

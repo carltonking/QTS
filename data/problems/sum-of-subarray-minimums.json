@@ -1,0 +1,24 @@
+{
+  "id": 907,
+  "title": "Sum of Subarray Minimums",
+  "slug": "sum-of-subarray-minimums",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of integers arr, find the sum of min(b), where b ranges over every (contiguous) subarray of arr. Since the answer may be large, return the answer modulo 109 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minEatingSpeed(piles, h):\n    left, right = 1, max(piles)\n    while left < right:\n        mid = left + (right - left) // 2\n        totalHours = sum((pile + mid - 1) // mid for pile in piles)\n        if totalHours > h:\n            left = mid + 1\n        else:\n            right = mid\n    return left\n```\n    \n    The problem can be solved using binary search. We start with the lowest possible value of k (eating speed) as 1 and the highest possible value as the maximum value in the piles array. We calculate the mid value and the total hours it would take Koko to eat all bananas at the current mid eating speed. If the total hours is more than h, we increase the left boundary, otherwise we decrease the right boundary. We continue the process until left and right meet, and at this point, we have found the minimum integer k such that Koko can eat all the bananas within h hours.\n    ",
+    "javascript": "\n    ```javascript\nfunction minEatingSpeed(piles, h) {\n  let left = 1, right = Math.max(...piles);\n  while (left < right) {\n    let mid = left + Math.floor((right - left) / 2);\n    let totalHours = 0;\n    for (let pile of piles)\n      totalHours += Math.ceil(pile / mid);\n    if (totalHours > h)\n      left = mid + 1;\n    else\n      right = mid;\n  }\n  return left;\n}\n```\n    \n    The problem can be solved using binary search. We start with the lowest possible value of k (eating speed) as 1 and the highest possible value as the maximum value in the piles array. We calculate the mid value and the total hours it would take Koko to eat all bananas at the current mid eating speed. If the total hours is more than h, we increase the left boundary, otherwise we decrease the right boundary. We continue the process until left and right meet, and at this point, we have found the minimum integer k such that Koko can eat all the bananas within h hours.\n    ",
+    "java": "\n    ```java\npublic int minEatingSpeed(int[] piles, int h) {\n    int left = 1, right = 1;\n    for (int pile : piles)\n        right = Math.max(right, pile);\n    while (left < right) {\n        int mid = left + (right - left) / 2;\n        int totalHours = 0;\n        for (int pile : piles)\n            totalHours += (pile + mid - 1) / mid;\n        if (totalHours > h)\n            left = mid + 1;\n        else\n            right = mid;\n    }\n    return left;\n}\n```\n    \n    The problem can be solved using binary search. We start with the lowest possible value of k (eating speed) as 1 and the highest possible value as the maximum value in the piles array. We calculate the mid value and the total hours it would take Koko to eat all bananas at the current mid eating speed. If the total hours is more than h, we increase the left boundary, otherwise we decrease the right boundary. We continue the process until left and right meet, and at this point, we have found the minimum integer k such that Koko can eat all the bananas within h hours.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

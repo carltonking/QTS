@@ -1,0 +1,24 @@
+{
+  "id": 1878,
+  "title": "Get Biggest Three Rhombus Sums in a Grid",
+  "slug": "get-biggest-three-rhombus-sums-in-a-grid",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an m x n integer matrix grid​​​.\n\nA rhombus sum is the sum of the elements that form the border of a regular rhombus shape in grid​​​. The rhombus must have the shape of a square rotated 45 degrees with each of the corners centered in a grid cell. Below is an image of four valid rhombus shapes with the corresponding colored cells that should be included in each rhombus sum:\n\nNote that the rhombus can have an area of 0, which is depicted by the purple rhombus in the bottom right corner.\n\nReturn _the biggest three distinct rhombus sums in the_ grid _in descending order. If there are less than three distinct values, return all of them_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef check(nums):\n    count = 0\n    for i in range(1, len(nums)):\n        if nums[i] < nums[i - 1]:\n            count += 1\n        if count > 1:\n            return False\n    return count == 1 or nums[0] >= nums[-1]\n```\n    \n    The algorithm iterates through the array and checks if the current element is less than the previous element. If it is, this creates a count variable incrementing by 1. If the count is greater than 1, it means there is more than one place where the array is not in non-decreasing order, so return false.\n\nIf the count is not greater than 1 after the iteration and is equal to 1 or the first element of the array is greater than or equal to the last element, it's a rotated non-decreasing array, so return true.\n    ",
+    "javascript": "\n    ```javascript\nfunction check(nums) {\n    let count = 0;\n    for (let i = 1; i < nums.length; ++i) {\n        if (nums[i] < nums[i - 1]) {\n            ++count;\n        }\n        if (count > 1) {\n            return false;\n        }\n    }\n    return count === 1 || nums[0] >= nums[nums.length - 1];\n}\n```\n    \n    The algorithm iterates through the array and checks if the current element is less than the previous element. If it is, this creates a count variable incrementing by 1. If the count is greater than 1, it means there is more than one place where the array is not in non-decreasing order, so return false.\n\nIf the count is not greater than 1 after the iteration and is equal to 1 or the first element of the array is greater than or equal to the last element, it's a rotated non-decreasing array, so return true.\n    ",
+    "java": "\n    ```java\npublic boolean check(int[] nums) {\n    int count = 0;\n    for (int i = 1; i < nums.length; ++i) {\n        if (nums[i] < nums[i - 1]) {\n            ++count;\n        }\n        if (count > 1) {\n            return false;\n        }\n    }\n    return count == 1 || nums[0] >= nums[nums.length - 1];\n}\n```\n    \n    The algorithm iterates through the array and checks if the current element is less than the previous element. If it is, this creates a count variable incrementing by 1. If the count is greater than 1, it means there is more than one place where the array is not in non-decreasing order, so return false.\n\nIf the count is not greater than 1 after the iteration and is equal to 1 or the first element of the array is greater than or equal to the last element, it's a rotated non-decreasing array, so return true.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

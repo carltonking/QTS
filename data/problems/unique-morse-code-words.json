@@ -1,0 +1,24 @@
+{
+  "id": 804,
+  "title": "Unique Morse Code Words",
+  "slug": "unique-morse-code-words",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "International Morse Code defines a standard encoding where each letter is mapped to a series of dots and dashes, as follows:\n\n*   'a' maps to \".- \",\n*   'b' maps to \"-... \",\n*   'c' maps to \"-.-. \", and so on.\n\nFor convenience, the full table for the 26 letters of the English alphabet is given below:\n\n[ \".- \", \"-... \", \"-.-. \", \"-.. \", \". \", \"..-. \", \"--. \", \".... \", \".. \", \".--- \", \"-.- \", \".-.. \", \"-- \", \"-. \", \"--- \", \".--. \", \"--.- \", \".-. \", \"... \", \"- \", \"..- \", \"...- \", \".-- \", \"-..- \", \"-.-- \", \"--.. \"]\n\nGiven an array of strings words where each word can be written as a concatenation of the Morse code of each letter.\n\n*   For example, \"cab \" can be written as \"-.-..--... \", which is the concatenation of \"-.-. \", \".- \", and \"-... \". We will call such a concatenation the transformation of a word.\n\nReturn _the number of different transformations among all words we have_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef rotated_digits(n):\n    count = 0\n    for i in range(1, n + 1):\n        is_valid_after_rotation = True\n        is_different_after_rotation = False\n        num = i\n        while num:\n            digit = num % 10\n            if digit in {3, 4, 7}:\n                is_valid_after_rotation = False\n                break\n            if digit in {2, 5, 6, 9}:\n                is_different_after_rotation = True\n            num //= 10\n        if is_valid_after_rotation and is_different_after_rotation:\n            count += 1\n    return count\n```\n    \n    The algorithm loops through all the integers from 1 to n, for each integer it checks if it is a good integer (valid and different after rotation). For checking if the integer is good, we loop through each digit of the integer and check if the digit remains valid after rotation and if it changes or not. If all digits are valid after rotation and at least one digit is different, the integer is a good integer, and we increment the count.\n    ",
+    "javascript": "\n    ```javascript\nfunction rotatedDigits(n) {\n    let count = 0;\n    for (let i = 1; i <= n; ++i) {\n        let isValidAfterRotation = true;\n        let isDifferentAfterRotation = false;\n        let num = i;\n        while (num !== 0) {\n            let digit = num % 10;\n            if (digit === 3 || digit === 4 || digit === 7) {\n                isValidAfterRotation = false;\n                break;\n            }\n            if (digit === 2 || digit === 5 || digit === 6 || digit === 9) {\n                isDifferentAfterRotation = true;\n            }\n            num = Math.floor(num / 10);\n        }\n        if (isValidAfterRotation && isDifferentAfterRotation) {\n            count++;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm loops through all the integers from 1 to n, for each integer it checks if it is a good integer (valid and different after rotation). For checking if the integer is good, we loop through each digit of the integer and check if the digit remains valid after rotation and if it changes or not. If all digits are valid after rotation and at least one digit is different, the integer is a good integer, and we increment the count.\n    ",
+    "java": "\n    ```java\nint rotatedDigits(int n) {\n    int count = 0;\n    for (int i = 1; i <= n; ++i) {\n        boolean isValidAfterRotation = true;\n        boolean isDifferentAfterRotation = false;\n        int num = i;\n        while (num != 0) {\n            int digit = num % 10;\n            if (digit == 3 || digit == 4 || digit == 7) {\n                isValidAfterRotation = false;\n                break;\n            }\n            if (digit == 2 || digit == 5 || digit == 6 || digit == 9) {\n                isDifferentAfterRotation = true;\n            }\n            num /= 10;\n        }\n        if (isValidAfterRotation && isDifferentAfterRotation) {\n            count++;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm loops through all the integers from 1 to n, for each integer it checks if it is a good integer (valid and different after rotation). For checking if the integer is good, we loop through each digit of the integer and check if the digit remains valid after rotation and if it changes or not. If all digits are valid after rotation and at least one digit is different, the integer is a good integer, and we increment the count.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

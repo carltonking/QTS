@@ -1,0 +1,24 @@
+{
+  "id": 1732,
+  "title": "Find the Highest Altitude",
+  "slug": "find-the-highest-altitude",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "There is a biker going on a road trip. The road trip consists of n + 1 points at different altitudes. The biker starts his trip on point 0 with altitude equal 0.\n\nYou are given an integer array gain of length n where gain[i] is the net gain in altitude between points i​​​​​​ and i + 1 for all (0 <= i < n). Return _the highest altitude of a point._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_operations(n):\n    operations = 0\n    while n > 0:\n        if n % 2 == 0:\n            n //= 2\n        else:\n            n -= 1\n        operations += 1\n    return operations\n```\n    \n    The algorithm initializes a variable `operations` to store the number of operations taken. It then enters a loop that iterates while `n` is greater than 0. In each iteration, it checks whether `n` is divisible by 2 (i.e., even). If it is, the algorithm divides `n` by 2; otherwise, it decrements `n` by 1. In each loop iteration, the algorithm also increments the `operations` counter. The loop ends when `n` reaches 0, and the algorithm returns the total count of operations performed.\n\nThis algorithm finds the minimum number of operations required because dividing `n` by 2 is more optimal than decrementing `n` by 1 whenever `n` is even, as it reduces the number more rapidly.\n    ",
+    "javascript": "\n    ```javascript\nfunction minOperations(n) {\n    let operations = 0;\n    while (n > 0) {\n        if (n % 2 === 0) {\n            n /= 2;\n        } else {\n            n--;\n        }\n        operations++;\n    }\n    return operations;\n}\n```\n    \n    The algorithm initializes a variable `operations` to store the number of operations taken. It then enters a loop that iterates while `n` is greater than 0. In each iteration, it checks whether `n` is divisible by 2 (i.e., even). If it is, the algorithm divides `n` by 2; otherwise, it decrements `n` by 1. In each loop iteration, the algorithm also increments the `operations` counter. The loop ends when `n` reaches 0, and the algorithm returns the total count of operations performed.\n\nThis algorithm finds the minimum number of operations required because dividing `n` by 2 is more optimal than decrementing `n` by 1 whenever `n` is even, as it reduces the number more rapidly.\n    ",
+    "java": "\n    ```java\nint minOperations(int n) {\n    int operations = 0;\n    while (n > 0) {\n        if (n % 2 == 0) {\n            n /= 2;\n        } else {\n            n--;\n        }\n        operations++;\n    }\n    return operations;\n}\n```\n    \n    The algorithm initializes a variable `operations` to store the number of operations taken. It then enters a loop that iterates while `n` is greater than 0. In each iteration, it checks whether `n` is divisible by 2 (i.e., even). If it is, the algorithm divides `n` by 2; otherwise, it decrements `n` by 1. In each loop iteration, the algorithm also increments the `operations` counter. The loop ends when `n` reaches 0, and the algorithm returns the total count of operations performed.\n\nThis algorithm finds the minimum number of operations required because dividing `n` by 2 is more optimal than decrementing `n` by 1 whenever `n` is even, as it reduces the number more rapidly.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1013,
+  "title": "Partition Array Into Three Parts With Equal Sum",
+  "slug": "partition-array-into-three-parts-with-equal-sum",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array of integers arr, return true if we can partition the array into three non-empty parts with equal sums.\n\nFormally, we can partition the array if we can find indexes i + 1 < j with (arr[0] + arr[1] + ... + arr[i] == arr[i + 1] + arr[i + 2] + ... + arr[j - 1] == arr[j] + arr[j + 1] + ... + arr[arr.length - 1])",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef fib(n):\n    if n <= 1:\n        return n\n    a, b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    return b\n```\n    \n    The algorithm iterates from 2 to n using a loop that calculates the current Fibonacci number by adding the two previous ones. It uses three variables a, b, and c, representing the two previous Fibonacci numbers and the current one, respectively. At each iteration, the algorithm calculates the current Fibonacci number, updates a and b, and repeats. This minimizes the extra space needed and avoids recursion, resulting in an efficient O(n) time complexity solution.\n    ",
+    "javascript": "\n    ```javascript\nfunction fib(n) {\n    if (n <= 1)\n        return n;\n    let a = 0, b = 1, c;\n    for (let i = 2; i <= n; i++) {\n        c = a + b;\n        a = b;\n        b = c;\n    }\n    return b;\n}\n```\n    \n    The algorithm iterates from 2 to n using a loop that calculates the current Fibonacci number by adding the two previous ones. It uses three variables a, b, and c, representing the two previous Fibonacci numbers and the current one, respectively. At each iteration, the algorithm calculates the current Fibonacci number, updates a and b, and repeats. This minimizes the extra space needed and avoids recursion, resulting in an efficient O(n) time complexity solution.\n    ",
+    "java": "\n    ```java\npublic int fib(int n) {\n    if (n <= 1)\n        return n;\n    int a = 0, b = 1, c;\n    for (int i = 2; i <= n; i++) {\n        c = a + b;\n        a = b;\n        b = c;\n    }\n    return b;\n}\n```\n    \n    The algorithm iterates from 2 to n using a loop that calculates the current Fibonacci number by adding the two previous ones. It uses three variables a, b, and c, representing the two previous Fibonacci numbers and the current one, respectively. At each iteration, the algorithm calculates the current Fibonacci number, updates a and b, and repeats. This minimizes the extra space needed and avoids recursion, resulting in an efficient O(n) time complexity solution.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

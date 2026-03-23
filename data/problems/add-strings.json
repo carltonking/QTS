@@ -1,0 +1,24 @@
+{
+  "id": 415,
+  "title": "Add Strings",
+  "slug": "add-strings",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given two non-negative integers, num1 and num2 represented as string, return _the sum of_ num1 _and_ num2 _as a string_.\n\nYou must solve the problem without using any built-in library for handling large integers (such as BigInteger). You must also not convert the inputs to integers directly.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef addStrings(num1: str, num2: str) -> str:\n    i, j, carry, result = len(num1) - 1, len(num2) - 1, 0, []\n\n    while i >= 0 or j >= 0 or carry:\n        sum = carry\n\n        if i >= 0:\n            sum += int(num1[i])\n            i -= 1\n        if j >= 0:\n            sum += int(num2[j])\n            j -= 1\n\n        carry = sum // 10\n        result.append(str(sum % 10))\n\n    return ''.join(result[::-1])\n```\n\n    \n    1. Initialize pointers `i` and `j` to the end of `num1` and `num2`, a `carry` variable to 0, and an empty `result` container.\n2. While there are still digits to process or a carry to propagate:\n   a. Initialize a `sum` variable with the current carry.\n   b. Add the current digits from num`1[i]` and `num2[j]` to `sum` if exist, decreasing `i` and `j` respectively after each addition.\n   c. Update the value of `carry` to be the integer division of `sum` by 10.\n   d. Add the value of `sum % 10` to the `result` container.\n3. Return the reversed `result` container as a string.\n    ",
+    "javascript": "\n    ```javascript\nfunction addStrings(num1, num2) {\n    let i = num1.length - 1, j = num2.length - 1, carry = 0;\n    let result = [];\n\n    while (i >= 0 || j >= 0 || carry) {\n        let sum = carry;\n\n        if (i >= 0) {\n            sum += parseInt(num1[i]);\n            --i;\n        }\n        if (j >= 0) {\n            sum += parseInt(num2[j]);\n            --j;\n        }\n\n        carry = Math.floor(sum / 10);\n        result.push(sum % 10);\n    }\n\n    return result.reverse().join('');\n}\n```\n\n    \n    1. Initialize pointers `i` and `j` to the end of `num1` and `num2`, a `carry` variable to 0, and an empty `result` container.\n2. While there are still digits to process or a carry to propagate:\n   a. Initialize a `sum` variable with the current carry.\n   b. Add the current digits from num`1[i]` and `num2[j]` to `sum` if exist, decreasing `i` and `j` respectively after each addition.\n   c. Update the value of `carry` to be the integer division of `sum` by 10.\n   d. Add the value of `sum % 10` to the `result` container.\n3. Return the reversed `result` container as a string.\n    ",
+    "java": "\n    ```java\npublic String addStrings(String num1, String num2) {\n    int i = num1.length() - 1, j = num2.length() - 1, carry = 0;\n    StringBuilder result = new StringBuilder();\n\n    while (i >= 0 || j >= 0 || carry != 0) {\n        int sum = carry;\n\n        if (i >= 0) {\n            sum += num1.charAt(i) - '0';\n            --i;\n        }\n        if (j >= 0) {\n            sum += num2.charAt(j) - '0';\n            --j;\n        }\n\n        carry = sum / 10;\n        result.append(sum % 10);\n    }\n\n    return result.reverse().toString();\n}\n```\n\n    \n    1. Initialize pointers `i` and `j` to the end of `num1` and `num2`, a `carry` variable to 0, and an empty `result` container.\n2. While there are still digits to process or a carry to propagate:\n   a. Initialize a `sum` variable with the current carry.\n   b. Add the current digits from num`1[i]` and `num2[j]` to `sum` if exist, decreasing `i` and `j` respectively after each addition.\n   c. Update the value of `carry` to be the integer division of `sum` by 10.\n   d. Add the value of `sum % 10` to the `result` container.\n3. Return the reversed `result` container as a string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

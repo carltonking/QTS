@@ -1,0 +1,24 @@
+{
+  "id": 2123,
+  "title": "Minimum Operations to Remove Adjacent Ones in Matrix",
+  "slug": "minimum-operations-to-remove-adjacent-ones-in-matrix",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a 0-indexed binary matrix grid. In one operation, you can flip any 1 in grid to be 0.\n\nA binary matrix is well-isolated if there is no 1 in the matrix that is 4-directionally connected (i.e., horizontal and vertical) to another 1.\n\nReturn _the minimum number of operations to make_ grid _well-isolated_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef numberOfWeakCharacters(properties):\n    properties.sort(key=lambda x: (x[0], -x[1]))\n    \n    max_defense = 0\n    weak_count = 0\n    for attack, defense in reversed(properties):\n        if defense < max_defense:\n            weak_count += 1\n        else:\n            max_defense = defense\n            \n    return weak_count\n```\n    \n    1. Sort the properties array based on attack values in ascending order. If there's a tie between attack values, then sort based on defense values in descending order.\n2. Initialize two variables, `maxDefense` and `weakCount` to 0.\n3. Iterate through the sorted properties array in reverse order.\n   - If the defense value of the current character is less than the `maxDefense`, increment the `weakCount`.\n   - Else, update the `maxDefense` to the defense value of the current character.\n4. Return the `weakCount`.\n\nThe reason behind sorting attack values in ascending order and defense values in descending order is to process characters with higher attack values first. Doing so helps us maintain the maximum defense value found so far from characters of higher attack value, hence, allowing us to identify weak characters easily.\n    ",
+    "javascript": "\n    ```javascript\nfunction numberOfWeakCharacters(properties) {\n    properties.sort((a, b) => a[0] === b[0] ? b[1] - a[1] : a[0] - b[0]);\n    \n    let maxDefense = 0, weakCount = 0;\n    for (let i = properties.length - 1; i >= 0; i--) {\n        if (properties[i][1] < maxDefense) {\n            weakCount++;\n        } else {\n            maxDefense = properties[i][1];\n        }\n    }\n    \n    return weakCount;\n}\n```\n    \n    1. Sort the properties array based on attack values in ascending order. If there's a tie between attack values, then sort based on defense values in descending order.\n2. Initialize two variables, `maxDefense` and `weakCount` to 0.\n3. Iterate through the sorted properties array in reverse order.\n   - If the defense value of the current character is less than the `maxDefense`, increment the `weakCount`.\n   - Else, update the `maxDefense` to the defense value of the current character.\n4. Return the `weakCount`.\n\nThe reason behind sorting attack values in ascending order and defense values in descending order is to process characters with higher attack values first. Doing so helps us maintain the maximum defense value found so far from characters of higher attack value, hence, allowing us to identify weak characters easily.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int numberOfWeakCharacters(int[][] properties) {\n    Arrays.sort(properties, (a, b) -> a[0] == b[0] ? b[1] - a[1] : a[0] - b[0]);\n    \n    int maxDefense = 0, weakCount = 0;\n    for (int i = properties.length - 1; i >= 0; i--) {\n        if (properties[i][1] < maxDefense) {\n            weakCount++;\n        } else {\n            maxDefense = properties[i][1];\n        }\n    }\n    \n    return weakCount;\n}\n```\n    \n    1. Sort the properties array based on attack values in ascending order. If there's a tie between attack values, then sort based on defense values in descending order.\n2. Initialize two variables, `maxDefense` and `weakCount` to 0.\n3. Iterate through the sorted properties array in reverse order.\n   - If the defense value of the current character is less than the `maxDefense`, increment the `weakCount`.\n   - Else, update the `maxDefense` to the defense value of the current character.\n4. Return the `weakCount`.\n\nThe reason behind sorting attack values in ascending order and defense values in descending order is to process characters with higher attack values first. Doing so helps us maintain the maximum defense value found so far from characters of higher attack value, hence, allowing us to identify weak characters easily.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

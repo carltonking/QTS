@@ -1,0 +1,24 @@
+{
+  "id": 1935,
+  "title": "Maximum Number of Words You Can Type",
+  "slug": "maximum-number-of-words-you-can-type",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "There is a malfunctioning keyboard where some letter keys do not work. All other keys on the keyboard work properly.\n\nGiven a string text of words separated by a single space (no leading or trailing spaces) and a string brokenLetters of all distinct letter keys that are broken, return _the number of words in_ text _you can fully type using this keyboard_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_operations(n):\n    count = 1\n    temp = 1\n\n    while temp % n != 0:\n        temp = (temp * 2) % n\n        count += 1\n\n    return count\n```\n    \n    The algorithm starts by initializing a counter count and a temporary variable temp to store the intermediate values. For each operation, the algorithm updates the value of temp by multiplying it by 2 and taking the modulo of n. This is repeated until the temporary value becomes zero modulo n (temp % n == 0), which means that the original permutation has been reached again. The counter count is updated after each iteration, and the algorithm returns the value of count as the minimum non-zero number of operations needed.\n    ",
+    "javascript": "\n    ```javascript\nfunction min_operations(n) {\n    let count = 1;\n    let temp = 1;\n\n    while (temp % n !== 0) {\n        temp = (temp * 2) % n;\n        count++;\n    }\n\n    return count;\n}\n```\n    \n    The algorithm starts by initializing a counter count and a temporary variable temp to store the intermediate values. For each operation, the algorithm updates the value of temp by multiplying it by 2 and taking the modulo of n. This is repeated until the temporary value becomes zero modulo n (temp % n == 0), which means that the original permutation has been reached again. The counter count is updated after each iteration, and the algorithm returns the value of count as the minimum non-zero number of operations needed.\n    ",
+    "java": "\n    ```java\npublic int min_operations(int n) {\n    int count = 1;\n    int temp = 1;\n\n    while (temp % n != 0) {\n        temp = (temp * 2) % n;\n        count++;\n    }\n\n    return count;\n}\n```\n    \n    The algorithm starts by initializing a counter count and a temporary variable temp to store the intermediate values. For each operation, the algorithm updates the value of temp by multiplying it by 2 and taking the modulo of n. This is repeated until the temporary value becomes zero modulo n (temp % n == 0), which means that the original permutation has been reached again. The counter count is updated after each iteration, and the algorithm returns the value of count as the minimum non-zero number of operations needed.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

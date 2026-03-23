@@ -1,0 +1,24 @@
+{
+  "id": 496,
+  "title": "Next Greater Element I",
+  "slug": "next-greater-element-i",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "The next greater element of some element x in an array is the first greater element that is to the right of x in the same array.\n\nYou are given two distinct 0-indexed integer arrays nums1 and nums2, where nums1 is a subset of nums2.\n\nFor each 0 <= i < nums1.length, find the index j such that nums1[i] == nums2[j] and determine the next greater element of nums2[j] in nums2. If there is no next greater element, then the answer for this query is -1.\n\nReturn _an array_ ans _of length_ nums1.length _such that_ ans[i] _is the next greater element as described above._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef next_greater_element(nums1, nums2):\n    next_greater = {}\n    stack = []\n\n    for num in nums2:\n        while stack and stack[-1] < num:\n            next_greater[stack.pop()] = num\n        stack.append(num)\n\n    return [next_greater.get(n, -1) for n in nums1]\n```\n    \n    The algorithm uses a stack, following these steps:\n1. Initialize an empty stack.\n2. Iterate through nums2 elements:\n   a. While the stack is not empty and the top of the stack is less than the current nums2 element, add the next greater element of the top of the stack as the current nums2 element and pop it.\n   b. Push the current nums2 element into the stack.\n3. For every element in nums1, get the next greater element found in step 2 or -1 if no such element was found.\n4. Return the result array.\n\nThe key point is using the stack to keep track of the previous elements that still need to find their next greater element while iterating nums2 in a single pass. This ensures that the algorithm runs in linear O(n) time complexity.\n    ",
+    "javascript": "\n    ```javascript\nfunction nextGreaterElement(nums1, nums2) {\n    const nextGreater = new Map();\n    const stack = [];\n\n    nums2.forEach(num => {\n        while (stack.length && stack[stack.length - 1] < num) {\n            nextGreater.set(stack.pop(), num);\n        }\n        stack.push(num);\n    });\n\n    return nums1.map(n => nextGreater.get(n) || -1);\n}\n```\n    \n    The algorithm uses a stack, following these steps:\n1. Initialize an empty stack.\n2. Iterate through nums2 elements:\n   a. While the stack is not empty and the top of the stack is less than the current nums2 element, add the next greater element of the top of the stack as the current nums2 element and pop it.\n   b. Push the current nums2 element into the stack.\n3. For every element in nums1, get the next greater element found in step 2 or -1 if no such element was found.\n4. Return the result array.\n\nThe key point is using the stack to keep track of the previous elements that still need to find their next greater element while iterating nums2 in a single pass. This ensures that the algorithm runs in linear O(n) time complexity.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\nimport java.util.Stack;\n\npublic int[] nextGreaterElement(int[] nums1, int[] nums2) {\n    HashMap<Integer, Integer> nextGreater = new HashMap<>();\n    Stack<Integer> stack = new Stack<>();\n\n    for (int num : nums2) {\n        while (!stack.isEmpty() && stack.peek() < num) {\n            nextGreater.put(stack.pop(), num);\n        }\n        stack.push(num);\n    }\n\n    int[] result = new int[nums1.length];\n    for (int i = 0; i < nums1.length; i++) {\n        result[i] = nextGreater.getOrDefault(nums1[i], -1);\n    }\n\n    return result;\n}\n```\n    \n    The algorithm uses a stack, following these steps:\n1. Initialize an empty stack.\n2. Iterate through nums2 elements:\n   a. While the stack is not empty and the top of the stack is less than the current nums2 element, add the next greater element of the top of the stack as the current nums2 element and pop it.\n   b. Push the current nums2 element into the stack.\n3. For every element in nums1, get the next greater element found in step 2 or -1 if no such element was found.\n4. Return the result array.\n\nThe key point is using the stack to keep track of the previous elements that still need to find their next greater element while iterating nums2 in a single pass. This ensures that the algorithm runs in linear O(n) time complexity.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

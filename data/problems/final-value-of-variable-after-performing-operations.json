@@ -1,0 +1,24 @@
+{
+  "id": 2011,
+  "title": "Final Value of Variable After Performing Operations",
+  "slug": "final-value-of-variable-after-performing-operations",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "There is a programming language with only four operations and one variable X:\n\n*   ++X and X++ increments the value of the variable X by 1.\n*   --X and X-- decrements the value of the variable X by 1.\n\nInitially, the value of X is 0.\n\nGiven an array of strings operations containing a list of operations, return _the final value of_ X _after performing all the operations_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_value(n: str, x: int) -> str:\n    is_negative = n[0] == '-'\n    pos = 1 if is_negative else 0\n\n    while pos < len(n):\n        if (is_negative and int(n[pos]) > x) or (not is_negative and int(n[pos]) < x):\n            break\n        pos += 1\n\n    return n[:pos] + str(x) + n[pos:]\n```\n    \n    The algorithm starts by checking if the given integer `n` is negative or not, and initializes the position `pos` where we want to insert the integer `x`. It then iterates through the digits of `n`. For negative numbers, it checks to find the first digit that is greater than `x`. For positive numbers, it looks for the first digit that is smaller than `x`. If found, we break out of the loop.\n\nFinally, we return the new string by concatenating the substring before the position `pos`, the digit `x`, and the substring after the position.\n\nThe algorithm has a complexity of O(n) where n is the length of the input string.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxValue(n, x) {\n    const isNegative = n[0] === '-';\n    let pos = isNegative ? 1 : 0;\n\n    while (pos < n.length) {\n        if ((isNegative && parseInt(n[pos], 10) > x) || (!isNegative && parseInt(n[pos], 10) < x)) {\n            break;\n        }\n        pos++;\n    }\n\n    return n.slice(0, pos) + x.toString() + n.slice(pos);\n}\n```\n    \n    The algorithm starts by checking if the given integer `n` is negative or not, and initializes the position `pos` where we want to insert the integer `x`. It then iterates through the digits of `n`. For negative numbers, it checks to find the first digit that is greater than `x`. For positive numbers, it looks for the first digit that is smaller than `x`. If found, we break out of the loop.\n\nFinally, we return the new string by concatenating the substring before the position `pos`, the digit `x`, and the substring after the position.\n\nThe algorithm has a complexity of O(n) where n is the length of the input string.\n    ",
+    "java": "\n    ```java\npublic String maxValue(String n, int x) {\n    boolean is_negative = n.charAt(0) == '-';\n    int pos = is_negative ? 1 : 0;\n\n    while (pos < n.length()) {\n        if (is_negative && n.charAt(pos) - '0' > x || !is_negative && n.charAt(pos) - '0' < x) {\n            break;\n        }\n        pos++;\n    }\n\n    return n.substring(0, pos) + Integer.toString(x) + n.substring(pos);\n}\n```\n    \n    The algorithm starts by checking if the given integer `n` is negative or not, and initializes the position `pos` where we want to insert the integer `x`. It then iterates through the digits of `n`. For negative numbers, it checks to find the first digit that is greater than `x`. For positive numbers, it looks for the first digit that is smaller than `x`. If found, we break out of the loop.\n\nFinally, we return the new string by concatenating the substring before the position `pos`, the digit `x`, and the substring after the position.\n\nThe algorithm has a complexity of O(n) where n is the length of the input string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1764,
+  "title": "Form Array by Concatenating Subarrays of Another Array",
+  "slug": "form-array-by-concatenating-subarrays-of-another-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 2D integer array groups of length n. You are also given an integer array nums.\n\nYou are asked if you can choose n disjoint subarrays from the array nums such that the ith subarray is equal to groups[i] (0-indexed), and if i > 0, the (i-1)th subarray appears before the ith subarray in nums (i.e. the subarrays must be in the same order as groups).\n\nReturn true _if you can do this task, and_ false _otherwise_.\n\nNote that the subarrays are disjoint if and only if there is no index k such that nums[k] belongs to more than one subarray. A subarray is a contiguous sequence of elements within an array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_k_repeating(sequence, word):\n    max_k = 0\n    seq_length = len(sequence)\n    word_length = len(word)\n    for i in range(seq_length - word_length + 1):\n        k = 0\n        while sequence[i:i + word_length * (k + 1)] == word * (k + 1):\n            k += 1\n        max_k = max(max_k, k)\n    return max_k\n```\n    \n    The algorithm iterates through the `sequence` string with a for loop until the `word` no longer fits (i.e., from index 0 to the length of the `sequence` minus the length of the `word` plus 1). For each index, a variable `k` is set to represent the current k-repeating value. It is initialized to 0. While `word` repeated `k+1` times can be found in the corresponding substring in the `sequence`, increment `k`. After the while loop breaks, update the maximum k-repeating value by comparing with the `maxK` variable using the `max()` function in Python, or a simple comparison for other languages. Return `maxK` as the final result.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxKRepeating(sequence, word) {\n    let maxK = 0;\n    const seqLength = sequence.length;\n    const wordLength = word.length;\n    for (let i = 0; i <= seqLength - wordLength; i++) {\n        let k = 0;\n        while (sequence.substr(i, wordLength * (k + 1)) === word.repeat(k + 1)) {\n            k++;\n        }\n        if (k > maxK) {\n            maxK = k;\n        }\n    }\n    return maxK;\n}\n```\n    \n    The algorithm iterates through the `sequence` string with a for loop until the `word` no longer fits (i.e., from index 0 to the length of the `sequence` minus the length of the `word` plus 1). For each index, a variable `k` is set to represent the current k-repeating value. It is initialized to 0. While `word` repeated `k+1` times can be found in the corresponding substring in the `sequence`, increment `k`. After the while loop breaks, update the maximum k-repeating value by comparing with the `maxK` variable using the `max()` function in Python, or a simple comparison for other languages. Return `maxK` as the final result.\n    ",
+    "java": "\n    ```java\npublic int maxKRepeating(String sequence, String word) {\n    int maxK = 0;\n    int seqLength = sequence.length();\n    int wordLength = word.length();\n    for (int i = 0; i <= seqLength - wordLength; i++) {\n        int k = 0;\n        while (sequence.startsWith(repeat(word, k + 1), i)) {\n            k++;\n        }\n        if (k > maxK) {\n            maxK = k;\n        }\n    }\n    return maxK;\n}\n\nprivate String repeat(String str, int count) {\n    StringBuilder sb = new StringBuilder();\n    for (int i = 0; i < count; i++) {\n        sb.append(str);\n    }\n    return sb.toString();\n}\n```\n    \n    The algorithm iterates through the `sequence` string with a for loop until the `word` no longer fits (i.e., from index 0 to the length of the `sequence` minus the length of the `word` plus 1). For each index, a variable `k` is set to represent the current k-repeating value. It is initialized to 0. While `word` repeated `k+1` times can be found in the corresponding substring in the `sequence`, increment `k`. After the while loop breaks, update the maximum k-repeating value by comparing with the `maxK` variable using the `max()` function in Python, or a simple comparison for other languages. Return `maxK` as the final result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

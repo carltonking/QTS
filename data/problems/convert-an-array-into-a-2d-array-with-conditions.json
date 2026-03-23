@@ -1,0 +1,24 @@
+{
+  "id": 2610,
+  "title": "Convert an Array Into a 2D Array With Conditions",
+  "slug": "convert-an-array-into-a-2d-array-with-conditions",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array nums. You need to create a 2D array from nums satisfying the following conditions:\n\n*   The 2D array should contain only the elements of the array nums.\n*   Each row in the 2D array contains distinct integers.\n*   The number of rows in the 2D array should be minimal.\n\nReturn _the resulting array_. If there are multiple answers, return any of them.\n\nNote that the 2D array can have a different number of elements on each row.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef distinct_rows_from(nums):\n    rows = []\n    \n    for num in nums:\n        inserted = False\n        for row in rows:\n            if num not in row:\n                row.add(num)\n                inserted = True\n                break\n        \n        if not inserted:\n            rows.append({num})\n\n    return [list(row) for row in rows]\n```\n    \n    The algorithm iterates through the input array (`nums`). For each number in `nums`, it checks if the number can be inserted in any existing row in the result without violating the distinct condition. If yes, it inserts the number in the first available row; if not, it creates a new row with that number. Finally, it converts the sets containing distinct numbers into arrays/Lists and returns the resulting 2D array.\n\nThe time complexity of this algorithm is O(n^2), where n is the length of the input array `nums`. In the worst case, every number in `nums` would need to be inserted in a separate row, resulting in n separate iterations for each number. However, in practice, the algorithm's performance is usually better than the worst-case scenario.\n    ",
+    "javascript": "\n    ```javascript\nfunction distinctRowsFrom(nums) {\n    const rows = [];\n    \n    for(const num of nums) {\n        let inserted = false;\n        for(const row of rows) {\n            if(!row.has(num)) {\n                row.add(num);\n                inserted = true;\n                break;\n            }\n        }\n        \n        if(!inserted) rows.push(new Set([num]));\n    }\n    \n    return rows.map(row => Array.from(row));\n}\n```\n    \n    The algorithm iterates through the input array (`nums`). For each number in `nums`, it checks if the number can be inserted in any existing row in the result without violating the distinct condition. If yes, it inserts the number in the first available row; if not, it creates a new row with that number. Finally, it converts the sets containing distinct numbers into arrays/Lists and returns the resulting 2D array.\n\nThe time complexity of this algorithm is O(n^2), where n is the length of the input array `nums`. In the worst case, every number in `nums` would need to be inserted in a separate row, resulting in n separate iterations for each number. However, in practice, the algorithm's performance is usually better than the worst-case scenario.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.HashSet;\nimport java.util.List;\n\npublic List<List<Integer>> distinctRowsFrom(int[] nums) {\n    List<HashSet<Integer>> rows = new ArrayList<>();\n    \n    for(int num : nums) {\n        boolean inserted = false;\n        for(HashSet<Integer> row : rows) {\n            if(!row.contains(num)) {\n                row.add(num);\n                inserted = true;\n                break;\n            }\n        }\n        \n        if(!inserted) {\n            HashSet<Integer> newRow = new HashSet<>();\n            newRow.add(num);\n            rows.add(newRow);\n        }\n    }\n    \n    List<List<Integer>> result = new ArrayList<>();\n    for (HashSet<Integer> row : rows) {\n        result.add(new ArrayList<Integer>(row));\n    }\n\n    return result;\n}\n```\n    \n    The algorithm iterates through the input array (`nums`). For each number in `nums`, it checks if the number can be inserted in any existing row in the result without violating the distinct condition. If yes, it inserts the number in the first available row; if not, it creates a new row with that number. Finally, it converts the sets containing distinct numbers into arrays/Lists and returns the resulting 2D array.\n\nThe time complexity of this algorithm is O(n^2), where n is the length of the input array `nums`. In the worst case, every number in `nums` would need to be inserted in a separate row, resulting in n separate iterations for each number. However, in practice, the algorithm's performance is usually better than the worst-case scenario.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

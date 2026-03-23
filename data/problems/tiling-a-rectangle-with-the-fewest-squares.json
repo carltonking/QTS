@@ -1,0 +1,24 @@
+{
+  "id": 1240,
+  "title": "Tiling a Rectangle with the Fewest Squares",
+  "slug": "tiling-a-rectangle-with-the-fewest-squares",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given a rectangle of size n x m, return _the minimum number of integer-sided squares that tile the rectangle_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom functools import lru_cache\n\ndef stoneGameII(piles):\n    n = len(piles)\n    for i in range(n - 2, -1, -1):\n        piles[i] += piles[i + 1]\n\n    @lru_cache(None)\n    def search(idx, M):\n        if idx + 2 * M >= n:\n            return piles[idx]\n        return max(piles[idx] - search(idx + x, max(M, x)) for x in range(1, 2 * M + 1))\n\n    return search(0, 1)\n```\n    \n    The algorithm uses dynamic programming with memoization. It first calculates the total number of remaining stones starting from each pile. This can be done in O(n) time complexity. Then, it checks the memoization table for previously computed values.\n\nThe main search function goes through all possible values of X (1 <= X <= 2M) while recursively maximizing the stones difference. After all the positions are checked, it returns the maximum value found. This way, the algorithm guarantees that Alice will choose the optimal move to get the maximum number of stones possible.\n\nThe time complexity is O(n^2*M) where n is the number of piles and M is the maximum limit of piles that can be picked.\n    ",
+    "javascript": "\n    ```javascript\nfunction stoneGameII(piles) {\n    let n = piles.length;\n    let memo = new Array(n).fill(0).map(() => new Array(n + 1).fill(0));\n    \n    for (let i = n - 2 ; i >= 0; --i) {\n        piles[i] += piles[i + 1];\n    }\n\n    function search(idx, M) {\n        if (idx + 2 * M >= n) {\n            return piles[idx];\n        }\n        \n        if (memo[idx][M] > 0) {\n            return memo[idx][M];\n        }\n        \n        memo[idx][M] = 0;\n        \n        for (let x = 1; x <= 2 * M; ++x) {\n            memo[idx][M] = Math.max(memo[idx][M], piles[idx] - search(idx + x, Math.max(M, x)));\n        }\n        \n        return memo[idx][M];\n    }\n    \n    return search(0, 1);\n}\n```\n    \n    The algorithm uses dynamic programming with memoization. It first calculates the total number of remaining stones starting from each pile. This can be done in O(n) time complexity. Then, it checks the memoization table for previously computed values.\n\nThe main search function goes through all possible values of X (1 <= X <= 2M) while recursively maximizing the stones difference. After all the positions are checked, it returns the maximum value found. This way, the algorithm guarantees that Alice will choose the optimal move to get the maximum number of stones possible.\n\nThe time complexity is O(n^2*M) where n is the number of piles and M is the maximum limit of piles that can be picked.\n    ",
+    "java": "\n    ```java\npublic int stoneGameII(int[] piles) {\n    int n = piles.length;\n    int[][] memo = new int[n][n + 1];\n    \n    for (int i = n - 2 ; i >= 0; --i) {\n        piles[i] += piles[i + 1];\n    }\n\n    return search(piles, 0, 1, memo);\n}\n\nprivate int search(int[] piles, int idx, int M, int[][] memo) {\n    int n = piles.length;\n    \n    if (idx + 2 * M >= n) {\n        return piles[idx];\n    }\n    \n    if (memo[idx][M] > 0) {\n        return memo[idx][M];\n    }\n    \n    memo[idx][M] = 0;\n    \n    for (int x = 1; x <= 2 * M; ++x) {\n        memo[idx][M] = Math.max(memo[idx][M], piles[idx] - search(piles, idx + x, Math.max(M, x), memo));\n    }\n    \n    return memo[idx][M];\n}\n```\n    \n    The algorithm uses dynamic programming with memoization. It first calculates the total number of remaining stones starting from each pile. This can be done in O(n) time complexity. Then, it checks the memoization table for previously computed values.\n\nThe main search function goes through all possible values of X (1 <= X <= 2M) while recursively maximizing the stones difference. After all the positions are checked, it returns the maximum value found. This way, the algorithm guarantees that Alice will choose the optimal move to get the maximum number of stones possible.\n\nThe time complexity is O(n^2*M) where n is the number of piles and M is the maximum limit of piles that can be picked.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

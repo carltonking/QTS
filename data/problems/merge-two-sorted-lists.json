@@ -1,0 +1,39 @@
+{
+  "id": 15,
+  "title": "Merge Two Sorted Lists",
+  "slug": "merge-two-sorted-lists",
+  "difficulty": "Easy",
+  "tags": [
+    "Linked List",
+    "Recursion"
+  ],
+  "description": "Merge two sorted linked lists and return it as a sorted list.",
+  "examples": [
+    {
+      "input": "list1 = [1,2,4], list2 = [1,3,4]",
+      "output": "[1,1,2,3,4,4]"
+    }
+  ],
+  "constraints": [
+    "The number of nodes in both lists is in [0, 50]"
+  ],
+  "starterCode": {
+    "python": "class Solution:\n    def mergeTwoLists(self, list1, list2):\n        pass",
+    "javascript": "var mergeTwoLists = function(list1, list2) {\n    \n};",
+    "java": "class Solution {\n    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Merge Two Sorted Lists\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "[1,2,4]\n[1,3,4]",
+      "expectedOutput": "[1,1,2,3,4,4]"
+    },
+    {
+      "input": "[]\n[]",
+      "expectedOutput": "[]"
+    }
+  ]
+}

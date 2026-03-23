@@ -1,0 +1,24 @@
+{
+  "id": 941,
+  "title": "Valid Mountain Array",
+  "slug": "valid-mountain-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array of integers arr, return _true if and only if it is a valid mountain array_.\n\nRecall that arr is a mountain array if and only if:\n\n*   arr.length >= 3\n*   There exists some i with 0 < i < arr.length - 1 such that:\n    *   arr[0] < arr[1] < ... < arr[i - 1] < arr[i]\n    *   arr[i] > arr[i + 1] > ... > arr[arr.length - 1]",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef move_even_odd(nums):\n    even_index = 0\n    odd_index = len(nums) - 1\n\n    while even_index < odd_index:\n        if nums[even_index] % 2 == 0:\n            even_index += 1\n        else:\n            nums[even_index], nums[odd_index] = nums[odd_index], nums[even_index]\n            odd_index -= 1\n\n    return nums\n```\n    \n    The algorithm uses two pointers, `evenIndex` and `oddIndex`. `evenIndex` starts from the beginning of the array, whereas `oddIndex` starts from the end. We iterate through the array until `evenIndex` is greater than or equal to `oddIndex`. Inside the loop, if `nums[evenIndex]` is even, we increment `evenIndex` because it's already in the correct position. If `nums[evenIndex]` is odd, we swap it with `nums[oddIndex]` and decrement `oddIndex`. Thus, we move even numbers to the beginning and odd numbers to the end of the array.\n    ",
+    "javascript": "\n    ```javascript\nfunction moveEvenOdd(nums) {\n    let evenIndex = 0;\n    let oddIndex = nums.length - 1;\n\n    while (evenIndex < oddIndex) {\n        if (nums[evenIndex] % 2 === 0) {\n            evenIndex++;\n        } else {\n            [nums[evenIndex], nums[oddIndex]] = [nums[oddIndex], nums[evenIndex]];\n            oddIndex--;\n        }\n    }\n}\n```\n    \n    The algorithm uses two pointers, `evenIndex` and `oddIndex`. `evenIndex` starts from the beginning of the array, whereas `oddIndex` starts from the end. We iterate through the array until `evenIndex` is greater than or equal to `oddIndex`. Inside the loop, if `nums[evenIndex]` is even, we increment `evenIndex` because it's already in the correct position. If `nums[evenIndex]` is odd, we swap it with `nums[oddIndex]` and decrement `oddIndex`. Thus, we move even numbers to the beginning and odd numbers to the end of the array.\n    ",
+    "java": "\n    ```java\npublic void moveEvenOdd(int[] nums) {\n    int evenIndex = 0;\n    int oddIndex = nums.length - 1;\n\n    while (evenIndex < oddIndex) {\n        if (nums[evenIndex] % 2 == 0) {\n            evenIndex++;\n        } else {\n            int temp = nums[evenIndex];\n            nums[evenIndex] = nums[oddIndex];\n            nums[oddIndex] = temp;\n            oddIndex--;\n        }\n    }\n}\n```\n    \n    The algorithm uses two pointers, `evenIndex` and `oddIndex`. `evenIndex` starts from the beginning of the array, whereas `oddIndex` starts from the end. We iterate through the array until `evenIndex` is greater than or equal to `oddIndex`. Inside the loop, if `nums[evenIndex]` is even, we increment `evenIndex` because it's already in the correct position. If `nums[evenIndex]` is odd, we swap it with `nums[oddIndex]` and decrement `oddIndex`. Thus, we move even numbers to the beginning and odd numbers to the end of the array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

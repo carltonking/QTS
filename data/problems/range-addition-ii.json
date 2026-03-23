@@ -1,0 +1,24 @@
+{
+  "id": 598,
+  "title": "Range Addition II",
+  "slug": "range-addition-ii",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an m x n matrix M initialized with all 0's and an array of operations ops, where ops[i] = [ai, bi] means M[x][y] should be incremented by one for all 0 <= x < ai and 0 <= y < bi.\n\nCount and return _the number of maximum integers in the matrix after performing all the operations_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxCount(m: int, n: int, ops: List[List[int]]) -> int:\n    for op in ops:\n        m = min(m, op[0])\n        n = min(n, op[1])\n    return m * n\n```\n    \n    The algorithm consists of iterating through each operation in the ops array and updating the values of m and n to be the minimum of their current value and the corresponding values in the operation. This is because the maximum integers will always be in the top-left corner of the matrix (0 <= x < ai and 0 <= y < bi). Once all operations have been considered, we multiply the final values of m and n to get the count of maximum integers in the matrix.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxCount(m, n, ops) {\n    for (let op of ops) {\n        m = Math.min(m, op[0]);\n        n = Math.min(n, op[1]);\n    }\n    return m * n;\n}\n```\n    \n    The algorithm consists of iterating through each operation in the ops array and updating the values of m and n to be the minimum of their current value and the corresponding values in the operation. This is because the maximum integers will always be in the top-left corner of the matrix (0 <= x < ai and 0 <= y < bi). Once all operations have been considered, we multiply the final values of m and n to get the count of maximum integers in the matrix.\n    ",
+    "java": "\n    ```java\npublic int maxCount(int m, int n, int[][] ops) {\n    for (int[] op : ops) {\n        m = Math.min(m, op[0]);\n        n = Math.min(n, op[1]);\n    }\n    return m * n;\n}\n```\n    \n    The algorithm consists of iterating through each operation in the ops array and updating the values of m and n to be the minimum of their current value and the corresponding values in the operation. This is because the maximum integers will always be in the top-left corner of the matrix (0 <= x < ai and 0 <= y < bi). Once all operations have been considered, we multiply the final values of m and n to get the count of maximum integers in the matrix.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

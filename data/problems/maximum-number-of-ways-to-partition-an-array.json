@@ -1,0 +1,24 @@
+{
+  "id": 2025,
+  "title": "Maximum Number of Ways to Partition an Array",
+  "slug": "maximum-number-of-ways-to-partition-an-array",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums of length n. The number of ways to partition nums is the number of pivot indices that satisfy both conditions:\n\n*   1 <= pivot < n\n*   nums[0] + nums[1] + ... + nums[pivot - 1] == nums[pivot] + nums[pivot + 1] + ... + nums[n - 1]\n\nYou are also given an integer k. You can choose to change the value of one element of nums to k, or to leave the array unchanged.\n\nReturn _the maximum possible number of ways to partition_ nums _to satisfy both conditions after changing at most one element_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef make_equal(words):\n    chars = set()\n    total_chars = 0\n    for word in words:\n        total_chars += len(word)\n        for c in word:\n            chars.add(c)\n    return total_chars % len(chars) == 0\n```\n    \n    The algorithm is quite simple for this problem:\n\n1. Create a set 'chars' to store unique characters in words to keep track of different characters.\n2. Create a variable 'totalChars' to store the total number of characters in words, initialized to 0.\n3. Iterate through each word in words array.\n   - For each word, add its length to the totalChars variable.\n   - Then, iterate through each character in the word and add it to the 'chars' set.\n4. If the total number of characters in the 'words' can be divided evenly by the number of different characters in the set, return true, otherwise return false.\n    ",
+    "javascript": "\n    ```javascript\nfunction makeEqual(words) {\n    let chars = new Set();\n    let totalChars = 0;\n    for (let word of words) {\n        totalChars += word.length;\n        for (let c of word) {\n            chars.add(c);\n        }\n    }\n    return totalChars % chars.size === 0;\n}\n```\n    \n    The algorithm is quite simple for this problem:\n\n1. Create a set 'chars' to store unique characters in words to keep track of different characters.\n2. Create a variable 'totalChars' to store the total number of characters in words, initialized to 0.\n3. Iterate through each word in words array.\n   - For each word, add its length to the totalChars variable.\n   - Then, iterate through each character in the word and add it to the 'chars' set.\n4. If the total number of characters in the 'words' can be divided evenly by the number of different characters in the set, return true, otherwise return false.\n    ",
+    "java": "\n    ```java\nimport java.util.HashSet;\nimport java.util.Set;\n\npublic boolean makeEqual(String[] words) {\n    Set<Character> chars = new HashSet<>();\n    int totalChars = 0;\n    for (String word : words) {\n        totalChars += word.length();\n        for (char c : word.toCharArray()) {\n            chars.add(c);\n        }\n    }\n    return totalChars % chars.size() == 0;\n}\n```\n    \n    The algorithm is quite simple for this problem:\n\n1. Create a set 'chars' to store unique characters in words to keep track of different characters.\n2. Create a variable 'totalChars' to store the total number of characters in words, initialized to 0.\n3. Iterate through each word in words array.\n   - For each word, add its length to the totalChars variable.\n   - Then, iterate through each character in the word and add it to the 'chars' set.\n4. If the total number of characters in the 'words' can be divided evenly by the number of different characters in the set, return true, otherwise return false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

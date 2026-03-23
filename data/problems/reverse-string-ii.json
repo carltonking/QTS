@@ -1,0 +1,24 @@
+{
+  "id": 541,
+  "title": "Reverse String II",
+  "slug": "reverse-string-ii",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a string s and an integer k, reverse the first k characters for every 2k characters counting from the start of the string.\n\nIf there are fewer than k characters left, reverse all of them. If there are less than 2k but greater than or equal to k characters, then reverse the first k characters and leave the other as original.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef reverseStr(s, k):\n    chars = list(s)\n    for i in range(0, len(chars), 2 * k):\n        chars[i:i + k] = reversed(chars[i:i + k])\n    return \"\".join(chars)\n```\n    \n    The algorithm first creates a mutable array from the original string. Then, we iterate over every 2k characters. If there are at least k characters remaining from the current position, we reverse the first k characters. Otherwise, we reverse all the remaining characters.\n\nIn C++, we use the `reverse` function that takes iterators as arguments. In Java, JavaScript, and Python, we use custom loops for reversing k characters, taking into account the case when there are fewer than k characters remaining. Then, we join the characters back into a string.\n    ",
+    "javascript": "\n    ```javascript\nfunction reverseStr(s, k) {\n    let chars = s.split(\"\");\n    for (let i = 0; i < chars.length; i += 2 * k) {\n        let left = i;\n        let right = Math.min(i + k - 1, chars.length - 1);\n        while (left < right) {\n            [chars[left++], chars[right--]] = [chars[right], chars[left]];\n        }\n    }\n    return chars.join(\"\");\n}\n```\n    \n    The algorithm first creates a mutable array from the original string. Then, we iterate over every 2k characters. If there are at least k characters remaining from the current position, we reverse the first k characters. Otherwise, we reverse all the remaining characters.\n\nIn C++, we use the `reverse` function that takes iterators as arguments. In Java, JavaScript, and Python, we use custom loops for reversing k characters, taking into account the case when there are fewer than k characters remaining. Then, we join the characters back into a string.\n    ",
+    "java": "\n    ```java\npublic String reverseStr(String s, int k) {\n    char[] chars = s.toCharArray();\n    for (int i = 0; i < chars.length; i += 2 * k) {\n        int left = i;\n        int right = Math.min(i + k - 1, chars.length - 1);\n        while (left < right) {\n            char temp = chars[left];\n            chars[left++] = chars[right];\n            chars[right--] = temp;\n        }\n    }\n    return new String(chars);\n}\n```\n    \n    The algorithm first creates a mutable array from the original string. Then, we iterate over every 2k characters. If there are at least k characters remaining from the current position, we reverse the first k characters. Otherwise, we reverse all the remaining characters.\n\nIn C++, we use the `reverse` function that takes iterators as arguments. In Java, JavaScript, and Python, we use custom loops for reversing k characters, taking into account the case when there are fewer than k characters remaining. Then, we join the characters back into a string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

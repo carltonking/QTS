@@ -1,0 +1,24 @@
+{
+  "id": 2134,
+  "title": "Minimum Swaps to Group All 1's Together II",
+  "slug": "minimum-swaps-to-group-all-1s-together-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A swap is defined as taking two distinct positions in an array and swapping the values in them.\n\nA circular array is defined as an array where we consider the first element and the last element to be adjacent.\n\nGiven a binary circular array nums, return _the minimum number of swaps required to group all_ 1_'s present in the array together at any location_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_consecutive_answers(answer_key: str, k: int) -> int:\n    n = len(answer_key)\n    start, max_len, max_count = 0, 0, 0\n    count = {'T': 0, 'F': 0}\n\n    for end in range(n):\n        max_count = max(max_count, count.__setitem__(answer_key[end], count[answer_key[end]] + 1))\n\n        if end - start + 1 - max_count > k:\n            count[answer_key[start]] -= 1\n            start += 1\n\n        max_len = max(max_len, end - start + 1)\n\n    return max_len\n```\n    \n    The algorithm uses a sliding window approach. We start with the left pointer `start` and the right pointer `end`, initially at position 0. For each element in the `answerKey`, we update the maximum count of consecutive 'T's or 'F's using the `count` dictionary. Then, we check if the current window size `(end - start + 1)` minus the maximum count of consecutive 'T's or 'F's is greater than `k`. If it is, we need to shrink the window from the left side by moving the `start` pointer to the right, adjusting the count for the removed character. Finally, we update the max length of consecutive 'T's or 'F's found so far using `maxLen`. When the loop is done, we return `maxLen`.\n\nThis algorithm ensures that we cost only O(n) time complexity as we process each character in the `answerKey` only once.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxConsecutiveAnswers(answerKey, k) {\n    const n = answerKey.length;\n    let start = 0, maxLen = 0, maxCount = 0;\n    let count = {'T': 0, 'F': 0};\n\n    for (let end = 0; end < n; end++) {\n        maxCount = Math.max(maxCount, count[answerKey[end]] += 1);\n\n        if (end - start + 1 - maxCount > k) {\n            count[answerKey[start]] -= 1;\n            start++;\n        }\n\n        maxLen = Math.max(maxLen, end - start + 1);\n    }\n\n    return maxLen;\n}\n```\n    \n    The algorithm uses a sliding window approach. We start with the left pointer `start` and the right pointer `end`, initially at position 0. For each element in the `answerKey`, we update the maximum count of consecutive 'T's or 'F's using the `count` dictionary. Then, we check if the current window size `(end - start + 1)` minus the maximum count of consecutive 'T's or 'F's is greater than `k`. If it is, we need to shrink the window from the left side by moving the `start` pointer to the right, adjusting the count for the removed character. Finally, we update the max length of consecutive 'T's or 'F's found so far using `maxLen`. When the loop is done, we return `maxLen`.\n\nThis algorithm ensures that we cost only O(n) time complexity as we process each character in the `answerKey` only once.\n    ",
+    "java": "\n    ```java\npublic int maxConsecutiveAnswers(String answerKey, int k) {\n    int n = answerKey.length();\n    int start = 0, maxLen = 0, maxCount = 0;\n    int[] count = new int[2];\n\n    for (int end = 0; end < n; end++) {\n        maxCount = Math.max(maxCount, ++count[answerKey.charAt(end) == 'T' ? 1 : 0]);\n\n        if (end - start + 1 - maxCount > k) {\n            count[answerKey.charAt(start) == 'T' ? 1 : 0]--;\n            start++;\n        }\n\n        maxLen = Math.max(maxLen, end - start + 1);\n    }\n\n    return maxLen;\n}\n```\n    \n    The algorithm uses a sliding window approach. We start with the left pointer `start` and the right pointer `end`, initially at position 0. For each element in the `answerKey`, we update the maximum count of consecutive 'T's or 'F's using the `count` dictionary. Then, we check if the current window size `(end - start + 1)` minus the maximum count of consecutive 'T's or 'F's is greater than `k`. If it is, we need to shrink the window from the left side by moving the `start` pointer to the right, adjusting the count for the removed character. Finally, we update the max length of consecutive 'T's or 'F's found so far using `maxLen`. When the loop is done, we return `maxLen`.\n\nThis algorithm ensures that we cost only O(n) time complexity as we process each character in the `answerKey` only once.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

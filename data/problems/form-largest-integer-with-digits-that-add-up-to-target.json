@@ -1,0 +1,24 @@
+{
+  "id": 1449,
+  "title": "Form Largest Integer With Digits That Add up to Target",
+  "slug": "form-largest-integer-with-digits-that-add-up-to-target",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given an array of integers cost and an integer target, return _the maximum integer you can paint under the following rules_:\n\n*   The cost of painting a digit (i + 1) is given by cost[i] (0-indexed).\n*   The total cost used must be equal to target.\n*   The integer does not have 0 digits.\n\nSince the answer may be very large, return it as a string. If there is no way to paint any integer given the condition, return \"0 \".",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef largestNumber(cost, target):\n    dp = [\"\" for _ in range(target + 1)]\n    dp[0] = \"\"\n\n    for i in range(9):\n        for j in range(cost[i], target + 1):\n            if dp[j - cost[i]] != None and len(dp[j - cost[i]]) < j - cost[i] \\\n               and (dp[j] == None or len(dp[j - cost[i]]) + 1 > len(dp[j])):\n                dp[j] = dp[j - cost[i]] + str(i + 1)\n\n    return dp[target] if dp[target] else \"0\"\n```\n    \n    To solve this problem, we use a dynamic programming approach. We create an array `dp` where `dp[i]` keeps the maximum integer using the total cost `i`. To find the value of `dp[i]`, we keep track of the maximum integer up to the cost `i - cost[j]` for each of the paint costs and add the digit `j + 1`. Then, we compare the lengths of the integers at `dp[i - cost[j]]` and `dp[i]` to determine which one generates the maximum integer. At the end, we return `dp[target]`. If there is no solution, the default value will be an empty string which is changed to \"0\" before returning.\n    ",
+    "javascript": "\n    ```javascript\nfunction largestNumber(cost, target) {\n    const dp = new Array(target + 1).fill(\"\");\n    dp[0] = \"\";\n\n    for (let i = 0; i < 9; ++i) {\n        for (let j = cost[i]; j <= target; ++j) {\n            if (dp[j - cost[i]].length < j - cost[i] && dp[j - cost[i]].length + 1 > dp[j].length) {\n                dp[j] = dp[j - cost[i]] + (i + 1).toString();\n            }\n        }\n    }\n\n    return dp[target] || \"0\";\n}\n```\n    \n    To solve this problem, we use a dynamic programming approach. We create an array `dp` where `dp[i]` keeps the maximum integer using the total cost `i`. To find the value of `dp[i]`, we keep track of the maximum integer up to the cost `i - cost[j]` for each of the paint costs and add the digit `j + 1`. Then, we compare the lengths of the integers at `dp[i - cost[j]]` and `dp[i]` to determine which one generates the maximum integer. At the end, we return `dp[target]`. If there is no solution, the default value will be an empty string which is changed to \"0\" before returning.\n    ",
+    "java": "\n    ```java\npublic String largestNumber(int[] cost, int target) {\n    String[] dp = new String[target + 1];\n    dp[0] = \"\";\n\n    for (int i = 0; i < 9; ++i) {\n        for (int j = cost[i]; j <= target; ++j) {\n            if (dp[j - cost[i]] != null && dp[j - cost[i]].length() < j - cost[i]\n                    && (dp[j] == null || dp[j - cost[i]].length() + 1 > dp[j].length())) {\n                dp[j] = dp[j - cost[i]] + (char) ('1' + i);\n            }\n        }\n    }\n\n    return dp[target] == null ? \"0\" : dp[target];\n}\n```\n    \n    To solve this problem, we use a dynamic programming approach. We create an array `dp` where `dp[i]` keeps the maximum integer using the total cost `i`. To find the value of `dp[i]`, we keep track of the maximum integer up to the cost `i - cost[j]` for each of the paint costs and add the digit `j + 1`. Then, we compare the lengths of the integers at `dp[i - cost[j]]` and `dp[i]` to determine which one generates the maximum integer. At the end, we return `dp[target]`. If there is no solution, the default value will be an empty string which is changed to \"0\" before returning.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

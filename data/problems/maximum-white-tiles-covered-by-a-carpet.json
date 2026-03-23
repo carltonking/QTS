@@ -1,0 +1,24 @@
+{
+  "id": 2271,
+  "title": "Maximum White Tiles Covered by a Carpet",
+  "slug": "maximum-white-tiles-covered-by-a-carpet",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 2D integer array tiles where tiles[i] = [li, ri] represents that every tile j in the range li <= j <= ri is colored white.\n\nYou are also given an integer carpetLen, the length of a single carpet that can be placed anywhere.\n\nReturn _the maximum number of white tiles that can be covered by the carpet_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef rearrange_array(nums):\n    nums.sort()\n    half = len(nums) // 2\n    result = [0] * len(nums)\n    j = 0\n    for i in range(half):\n        result[j] = nums[i]\n        result[j + 1] = nums[half + i]\n        j += 2\n    return result\n```\n    \n    The algorithm consists of the following steps:\n1. Sort the input array in ascending order.\n2. Initialize a new array of the same length as the input array, called 'result'.\n3. Calculate half of the length of the array.\n4. Iterate through the first half of the input array, placing one positive element and one negative element in the 'result' array alternatively.\n5. Return the 'result' array.\n\nThe time complexity of this algorithm is O(nlogn), where n is the length of the input array, and it comes from the sorting step. The space complexity is O(n) due to the creation of the 'result' array.\n    ",
+    "javascript": "\n    ```javascript\nfunction rearrangeArray(nums) {\n    nums.sort((a, b) => a - b);\n    const result = new Array(nums.length);\n    const half = nums.length / 2;\n    let j = 0;\n    for (let i = 0; i < half; i++) {\n        result[j] = nums[i];\n        result[j + 1] = nums[half + i];\n        j += 2;\n    }\n    return result;\n}\n```\n    \n    The algorithm consists of the following steps:\n1. Sort the input array in ascending order.\n2. Initialize a new array of the same length as the input array, called 'result'.\n3. Calculate half of the length of the array.\n4. Iterate through the first half of the input array, placing one positive element and one negative element in the 'result' array alternatively.\n5. Return the 'result' array.\n\nThe time complexity of this algorithm is O(nlogn), where n is the length of the input array, and it comes from the sorting step. The space complexity is O(n) due to the creation of the 'result' array.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int[] rearrangeArray(int[] nums) {\n    Arrays.sort(nums);\n    int[] result = new int[nums.length];\n    int half = nums.length / 2;\n    int j = 0;\n    for (int i = 0; i < half; i++) {\n        result[j] = nums[i];\n        result[j + 1] = nums[half + i];\n        j += 2;\n    }\n    return result;\n}\n```\n    \n    The algorithm consists of the following steps:\n1. Sort the input array in ascending order.\n2. Initialize a new array of the same length as the input array, called 'result'.\n3. Calculate half of the length of the array.\n4. Iterate through the first half of the input array, placing one positive element and one negative element in the 'result' array alternatively.\n5. Return the 'result' array.\n\nThe time complexity of this algorithm is O(nlogn), where n is the length of the input array, and it comes from the sorting step. The space complexity is O(n) due to the creation of the 'result' array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

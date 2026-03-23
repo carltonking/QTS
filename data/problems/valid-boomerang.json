@@ -1,0 +1,24 @@
+{
+  "id": 1037,
+  "title": "Valid Boomerang",
+  "slug": "valid-boomerang",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array points where points[i] = [xi, yi] represents a point on the X-Y plane, return true _if these points are a boomerang_.\n\nA boomerang is a set of three points that are all distinct and not in a straight line.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_k_bit_flips(nums, k):\n    n, res, flipped = len(nums), 0, 0\n    change = [0] * n\n    for i in range(n - k + 1):\n        flipped ^= change[i]\n        if nums[i] == flipped:\n            res += 1\n            flipped ^= 1\n            if i + k < n:\n                change[i + k] ^= 1\n    for i in range(n - k + 1, n):\n        flipped ^= change[i]\n        if nums[i] == flipped:\n            return -1\n    return res\n```\n\n    \n    The algorithm iterates through the array and uses a 'greedy' approach. It flips any subarray starting from the left-most index to ensure no zeroes are left in the array. \n\nTo minimize the number of flips, we only flip subarrays if it starts with a 0. We also keep track of previous flips using a separate array (`change`) to reduce redundant flips.\n\nIn the second loop, we check if any 0s are left in the remaining non-flipable part of the array. If so, return -1 as it's not possible to have an all 1s array.\n    ",
+    "javascript": "\n    ```javascript\nfunction minKBitFlips(nums, k) {\n    const n = nums.length;\n    let res = 0, flipped = 0;\n    const change = new Array(n).fill(0);\n    for (let i = 0; i <= n - k; ++i) {\n        flipped ^= change[i];\n        if (nums[i] == flipped) {\n            res++;\n            flipped ^= 1;\n            if (i + k < n) change[i + k] ^= 1;\n        }\n    }\n    for (let i = n - k + 1; i < n; ++i) {\n        flipped ^= change[i];\n        if (nums[i] == flipped) return -1;\n    }\n    return res;\n}\n```\n\n    \n    The algorithm iterates through the array and uses a 'greedy' approach. It flips any subarray starting from the left-most index to ensure no zeroes are left in the array. \n\nTo minimize the number of flips, we only flip subarrays if it starts with a 0. We also keep track of previous flips using a separate array (`change`) to reduce redundant flips.\n\nIn the second loop, we check if any 0s are left in the remaining non-flipable part of the array. If so, return -1 as it's not possible to have an all 1s array.\n    ",
+    "java": "\n    ```java\npublic int minKBitFlips(int[] nums, int k) {\n    int n = nums.length, res = 0, flipped = 0;\n    int[] change = new int[n];\n    for (int i = 0; i <= n - k; i++) {\n        flipped ^= change[i];\n        if (nums[i] == flipped) {\n            res++;\n            flipped ^= 1;\n            if (i + k < n) change[i + k] ^= 1;\n        }\n    }\n    for (int i = n - k + 1; i < n; i++) {\n        flipped ^= change[i];\n        if (nums[i] == flipped) return -1;\n    }\n    return res;\n}\n```\n\n    \n    The algorithm iterates through the array and uses a 'greedy' approach. It flips any subarray starting from the left-most index to ensure no zeroes are left in the array. \n\nTo minimize the number of flips, we only flip subarrays if it starts with a 0. We also keep track of previous flips using a separate array (`change`) to reduce redundant flips.\n\nIn the second loop, we check if any 0s are left in the remaining non-flipable part of the array. If so, return -1 as it's not possible to have an all 1s array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

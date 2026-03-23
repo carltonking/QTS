@@ -1,0 +1,24 @@
+{
+  "id": 2560,
+  "title": "House Robber IV",
+  "slug": "house-robber-iv",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There are several consecutive houses along a street, each of which has some money inside. There is also a robber, who wants to steal money from the homes, but he refuses to steal from adjacent homes.\n\nThe capability of the robber is the maximum amount of money he steals from one house of all the houses he robbed.\n\nYou are given an integer array nums representing how much money is stashed in each house. More formally, the ith house from the left has nums[i] dollars.\n\nYou are also given an integer k, representing the minimum number of houses the robber will steal from. It is always possible to steal at least k houses.\n\nReturn _the minimum capability of the robber out of all the possible ways to steal at least_ k _houses_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minimumCapability(nums, k):\n    n, l, r = len(nums), 1, 10**9\n    while l < r:\n        mid = l + (r - l) // 2\n        i, cnt = 0, 0\n        for j in range(n):\n            if nums[j] <= mid:\n                cnt += 1\n                i = j + 2\n                while i + 1 < n and (i == j + 1 or nums[i] > mid):\n                    i += 1\n        if cnt < k:\n            l = mid + 1\n        else:\n            r = mid\n    return l\n```\n    \n    This problem can be solved by a binary search algorithm. The main idea is to find the minimum capability of the robber by checking whether there's a valid way to steal from at least `k` houses with the current mid capability. \n\nIn the algorithm, we initiate left (l) as 1 and right (r) as the highest possible value, which is 1e9. In each step of our algorithm, we calculate the mid capability by averaging l and r. We count the number of houses the robber can steal from without stealing adjacent houses, considering the mid capability. If it's less than k, we should set l as mid + 1. Otherwise, set r as mid. The loop continues until l == r, which indicates that we've found the minimum capability of the robber.\n    ",
+    "javascript": "\n    ```javascript\nfunction minimumCapability(nums, k) {\n    let n = nums.length, l = 1, r = 1e9;\n    while (l < r) {\n        let mid = l + Math.floor((r - l) / 2), i = 0, cnt = 0;\n        for (let j = 0; j < n; ++j) {\n            if (nums[j] <= mid) {\n                ++cnt;\n                i = j + 2;\n                while (i + 1 < n && (i == j + 1 || nums[i] > mid)) ++i;\n            }\n        }\n        if (cnt < k) l = mid + 1;\n        else r = mid;\n    }\n    return l;\n}\n```\n    \n    This problem can be solved by a binary search algorithm. The main idea is to find the minimum capability of the robber by checking whether there's a valid way to steal from at least `k` houses with the current mid capability. \n\nIn the algorithm, we initiate left (l) as 1 and right (r) as the highest possible value, which is 1e9. In each step of our algorithm, we calculate the mid capability by averaging l and r. We count the number of houses the robber can steal from without stealing adjacent houses, considering the mid capability. If it's less than k, we should set l as mid + 1. Otherwise, set r as mid. The loop continues until l == r, which indicates that we've found the minimum capability of the robber.\n    ",
+    "java": "\n    ```java\npublic int minimumCapability(int[] nums, int k) {\n    int n = nums.length, l = 1, r = (int) 1e9;\n    while (l < r) {\n        int mid = l + (r - l) / 2, i = 0, cnt = 0;\n        for (int j = 0; j < n; ++j) {\n            if (nums[j] <= mid) {\n                ++cnt;\n                i = j + 2;\n                while (i + 1 < n && (i == j + 1 || nums[i] > mid)) ++i;\n            }\n        }\n        if (cnt < k) l = mid + 1;\n        else r = mid;\n    }\n    return l;\n}\n```\n    \n    This problem can be solved by a binary search algorithm. The main idea is to find the minimum capability of the robber by checking whether there's a valid way to steal from at least `k` houses with the current mid capability. \n\nIn the algorithm, we initiate left (l) as 1 and right (r) as the highest possible value, which is 1e9. In each step of our algorithm, we calculate the mid capability by averaging l and r. We count the number of houses the robber can steal from without stealing adjacent houses, considering the mid capability. If it's less than k, we should set l as mid + 1. Otherwise, set r as mid. The loop continues until l == r, which indicates that we've found the minimum capability of the robber.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

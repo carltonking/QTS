@@ -1,0 +1,24 @@
+{
+  "id": 339,
+  "title": "Nested List Weight Sum",
+  "slug": "nested-list-weight-sum",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a nested list of integers nestedList. Each element is either an integer or a list whose elements may also be integers or other lists.\n\nThe depth of an integer is the number of lists that it is inside of. For example, the nested list [1,[2,2],[[3],2],1] has each integer's value set to its depth.\n\nReturn _the sum of each integer in_ nestedList _multiplied by its depth_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom typing import List, Union\n\ndef depth_sum(nested_list: List[Union[int, List]]) -> int:\n    def depth_sum_helper(nested_list: List[Union[int, List]], depth: int) -> int:\n        return sum(element * depth if isinstance(element, int) else depth_sum_helper(element, depth + 1) for element in nested_list)\n\n    return depth_sum_helper(nested_list, 1)\n```\n\n    \n    The algorithm utilizes a helper function that takes the nested list and the current depth. It loops through each element in the nested list. If the element is an integer, it adds the product of the integer and the depth to the sum. If the element is a list, it recursively calls the helper function with the element and a higher depth. This continues until all elements are processed, and the sum is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction depthSum(nestedList) {\n    return depthSumHelper(nestedList, 1);\n}\n\nfunction depthSumHelper(nestedList, depth) {\n    let sum = 0;\n    for (let element of nestedList) {\n        if (typeof element === \"number\") {\n            sum += element * depth;\n        } else {\n            sum += depthSumHelper(element, depth + 1);\n        }\n    }\n    return sum;\n}\n```\n\n    \n    The algorithm utilizes a helper function that takes the nested list and the current depth. It loops through each element in the nested list. If the element is an integer, it adds the product of the integer and the depth to the sum. If the element is a list, it recursively calls the helper function with the element and a higher depth. This continues until all elements are processed, and the sum is returned.\n    ",
+    "java": "\n    ```java\nimport java.util.List;\n\npublic int depthSum(List<?> nestedList) {\n    return depthSumHelper(nestedList, 1);\n}\n\nprivate int depthSumHelper(List<?> nestedList, int depth) {\n    int sum = 0;\n    for (Object element : nestedList) {\n        if (element instanceof Integer) {\n            sum += (int) element * depth;\n        } else {\n            sum += depthSumHelper((List<?>) element, depth + 1);\n        }\n    }\n    return sum;\n}\n```\n\n    \n    The algorithm utilizes a helper function that takes the nested list and the current depth. It loops through each element in the nested list. If the element is an integer, it adds the product of the integer and the depth to the sum. If the element is a list, it recursively calls the helper function with the element and a higher depth. This continues until all elements are processed, and the sum is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

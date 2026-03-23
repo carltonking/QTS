@@ -1,0 +1,24 @@
+{
+  "id": 477,
+  "title": "Total Hamming Distance",
+  "slug": "total-hamming-distance",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "The [Hamming distance](https://en.wikipedia.org/wiki/Hamming_distance) between two integers is the number of positions at which the corresponding bits are different.\n\nGiven an integer array nums, return _the sum of Hamming distances between all the pairs of the integers in_ nums.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef total_hamming_distance(nums):\n    total_distance = 0\n    n = len(nums)\n\n    for i in range(32):\n        bit_count = sum(((num >> i) & 1) for num in nums)\n        total_distance += bit_count * (n - bit_count)\n\n    return total_distance\n```\n    \n    The algorithm iterates through the 32-bit positions of the integers. For each bit position, it counts the number of integers in the array that have a 1 at that position. Then, it calculates the Hamming distance for that bit position by multiplying the number of 1s by the number of 0s at that position. Finally, it sums up the Hamming distances for all the bit positions to find the total Hamming distance between all the pairs of integers in the array. This way, the algorithm has a linear runtime complexity with respect to the size of the input array.\n    ",
+    "javascript": "\n    ```javascript\nfunction totalHammingDistance(nums) {\n    let totalDistance = 0, n = nums.length;\n    \n    for (let i = 0; i < 32; ++i) {\n        let bitCount = 0;\n        for (let num of nums) {\n            bitCount += (num >> i) & 1;\n        }\n        totalDistance += bitCount * (n - bitCount);\n    }\n    \n    return totalDistance;\n}\n```\n    \n    The algorithm iterates through the 32-bit positions of the integers. For each bit position, it counts the number of integers in the array that have a 1 at that position. Then, it calculates the Hamming distance for that bit position by multiplying the number of 1s by the number of 0s at that position. Finally, it sums up the Hamming distances for all the bit positions to find the total Hamming distance between all the pairs of integers in the array. This way, the algorithm has a linear runtime complexity with respect to the size of the input array.\n    ",
+    "java": "\n    ```java\npublic int totalHammingDistance(int[] nums) {\n    int totalDistance = 0, n = nums.length;\n    \n    for (int i = 0; i < 32; ++i) {\n        int bitCount = 0;\n        for (int num : nums) {\n            bitCount += (num >> i) & 1;\n        }\n        totalDistance += bitCount * (n - bitCount);\n    }\n    \n    return totalDistance;\n}\n```\n    \n    The algorithm iterates through the 32-bit positions of the integers. For each bit position, it counts the number of integers in the array that have a 1 at that position. Then, it calculates the Hamming distance for that bit position by multiplying the number of 1s by the number of 0s at that position. Finally, it sums up the Hamming distances for all the bit positions to find the total Hamming distance between all the pairs of integers in the array. This way, the algorithm has a linear runtime complexity with respect to the size of the input array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

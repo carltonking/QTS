@@ -1,0 +1,24 @@
+{
+  "id": 1446,
+  "title": "Consecutive Characters",
+  "slug": "consecutive-characters",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "The power of the string is the maximum length of a non-empty substring that contains only one unique character.\n\nGiven a string s, return _the power of_ s.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef angleClock(hour: int, minutes: int) -> float:\n    minute_angle = 6 * minutes\n    hour_angle = 30 * hour + 0.5 * minutes\n    angle = abs(hour_angle - minute_angle)\n    return min(angle, 360 - angle)\n```\n    \n    Here is the algorithm to find the smaller angle between the hour and the minute hand:\n\n1. Calculate the angle of the minute hand from the 12 o'clock position. Since each minute mark is 6 degrees apart (360/60), multiply the provided minutes by 6 to find the angle.\n2. Calculate the angle of the hour hand from the 12 o'clock position. Each hour mark is 30 degrees apart (360/12). Multiply the provided hours by 30, but also add half a degree for each minute passed as the hour hand moves slightly with each passing minute.\n3. Find the absolute difference between the hour and minute hand angles.\n4. Return the minimum of the calculated angle and 360 minus the calculated angle, as the target angle should always be the smaller angle formed between the clock hands.\n    ",
+    "javascript": "\n    ```javascript\nfunction angleClock(hour, minutes) {\n    let minuteAngle = 6 * minutes;\n    let hourAngle = 30 * hour + 0.5 * minutes;\n    let angle = Math.abs(hourAngle - minuteAngle);\n    return Math.min(angle, 360 - angle);\n}\n```\n    \n    Here is the algorithm to find the smaller angle between the hour and the minute hand:\n\n1. Calculate the angle of the minute hand from the 12 o'clock position. Since each minute mark is 6 degrees apart (360/60), multiply the provided minutes by 6 to find the angle.\n2. Calculate the angle of the hour hand from the 12 o'clock position. Each hour mark is 30 degrees apart (360/12). Multiply the provided hours by 30, but also add half a degree for each minute passed as the hour hand moves slightly with each passing minute.\n3. Find the absolute difference between the hour and minute hand angles.\n4. Return the minimum of the calculated angle and 360 minus the calculated angle, as the target angle should always be the smaller angle formed between the clock hands.\n    ",
+    "java": "\n    ```java\ndouble angleClock(int hour, int minutes) {\n    double minuteAngle = 6 * minutes;\n    double hourAngle = 30 * hour + 0.5 * minutes;\n    double angle = Math.abs(hourAngle - minuteAngle);\n    return Math.min(angle, 360 - angle);\n}\n```\n    \n    Here is the algorithm to find the smaller angle between the hour and the minute hand:\n\n1. Calculate the angle of the minute hand from the 12 o'clock position. Since each minute mark is 6 degrees apart (360/60), multiply the provided minutes by 6 to find the angle.\n2. Calculate the angle of the hour hand from the 12 o'clock position. Each hour mark is 30 degrees apart (360/12). Multiply the provided hours by 30, but also add half a degree for each minute passed as the hour hand moves slightly with each passing minute.\n3. Find the absolute difference between the hour and minute hand angles.\n4. Return the minimum of the calculated angle and 360 minus the calculated angle, as the target angle should always be the smaller angle formed between the clock hands.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

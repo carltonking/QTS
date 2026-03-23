@@ -1,0 +1,24 @@
+{
+  "id": 920,
+  "title": "Number of Music Playlists",
+  "slug": "number-of-music-playlists",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Your music player contains n different songs. You want to listen to goal songs (not necessarily different) during your trip. To avoid boredom, you will create a playlist so that:\n\n*   Every song is played at least once.\n*   A song can only be played again only if k other songs have been played.\n\nGiven n, goal, and k, return _the number of possible playlists that you can create_. Since the answer can be very large, return it modulo 109 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef uncommon_from_sentences(s1, s2):\n    word_count = {}\n    for word in (s1 + \" \" + s2).split():\n        word_count[word] = word_count.get(word, 0) + 1\n\n    return [key for key, val in word_count.items() if val == 1]\n```\n    \n    The algorithm works as follows:\n\n1. Create a hash map called `word_count` to store the word count of each word.\n2. Concatenate `s1` and `s2` separated by a space and split the string into words.\n3. Iterate through each word and update the value in the `wordCount` hash map.\n4. Create a list (Java: ArrayList, Python: list, JavaScript: array) called `result`.\n5. Iterate through each key-value pair in `wordCount`, and if the value is 1, push the key (the word) into `result`.\n6. Return `result`.\n\nThe time complexity of the algorithm is O(N) where N is the number of words in both sentences. The space complexity is also O(N) for storing the hash map and the result list.\n    ",
+    "javascript": "\n    ```javascript\nfunction uncommonFromSentences(s1, s2) {\n    const wordCount = new Map();\n    const words = (s1 + \" \" + s2).split(\" \");\n    \n    for (const word of words) {\n        wordCount.set(word, (wordCount.get(word) || 0) + 1);\n    }\n\n    const result = [];\n    for (const [key, value] of wordCount.entries()) {\n        if (value === 1) {\n            result.push(key);\n        }\n    }\n    \n    return result;\n}\n```\n    \n    The algorithm works as follows:\n\n1. Create a hash map called `word_count` to store the word count of each word.\n2. Concatenate `s1` and `s2` separated by a space and split the string into words.\n3. Iterate through each word and update the value in the `wordCount` hash map.\n4. Create a list (Java: ArrayList, Python: list, JavaScript: array) called `result`.\n5. Iterate through each key-value pair in `wordCount`, and if the value is 1, push the key (the word) into `result`.\n6. Return `result`.\n\nThe time complexity of the algorithm is O(N) where N is the number of words in both sentences. The space complexity is also O(N) for storing the hash map and the result list.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.HashMap;\nimport java.util.List;\nimport java.util.Map;\n\npublic List<String> uncommonFromSentences(String s1, String s2) {\n    Map<String, Integer> wordCount = new HashMap<>();\n    for (String word : (s1 + \" \" + s2).split(\" \")) {\n        wordCount.put(word, wordCount.getOrDefault(word, 0) + 1);\n    }\n\n    List<String> result = new ArrayList<>();\n    for (Map.Entry<String, Integer> entry : wordCount.entrySet()) {\n        if (entry.getValue() == 1) {\n            result.add(entry.getKey());\n        }\n    }\n\n    return result;\n}\n```\n    \n    The algorithm works as follows:\n\n1. Create a hash map called `word_count` to store the word count of each word.\n2. Concatenate `s1` and `s2` separated by a space and split the string into words.\n3. Iterate through each word and update the value in the `wordCount` hash map.\n4. Create a list (Java: ArrayList, Python: list, JavaScript: array) called `result`.\n5. Iterate through each key-value pair in `wordCount`, and if the value is 1, push the key (the word) into `result`.\n6. Return `result`.\n\nThe time complexity of the algorithm is O(N) where N is the number of words in both sentences. The space complexity is also O(N) for storing the hash map and the result list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

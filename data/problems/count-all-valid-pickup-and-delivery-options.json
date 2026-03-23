@@ -1,0 +1,24 @@
+{
+  "id": 1359,
+  "title": "Count All Valid Pickup and Delivery Options",
+  "slug": "count-all-valid-pickup-and-delivery-options",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given n orders, each order consist in pickup and delivery services.\n\nCount all valid pickup/delivery possible sequences such that delivery(i) is always after of pickup(i).\n\nSince the answer may be too large, return it modulo 10^9 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef circular_permutation(n, start):\n    result = [start ^ (i ^ (i >> 1)) for i in range(1 << n)]\n    return result\n```\n\n    \n    The algorithm is based on the Gray Code sequence generation, which guarantees only one bit difference between consecutive elements.\n\n1. Initialize a list or an array called result with the size of 2^n.\n2. Iterate through the range 0 to 2^n - 1.\n3. For each i in the range, calculate the Gray Code with the formula `i ^ (i >> 1)`.\n4. XOR the Gray Code with the given start value and store it in the result array.\n5. Return the result array.\n\nThis algorithm generates a sequence that fulfills the given requirements of having a one-bit difference between consecutive elements and it starts with the provided start value.\n    ",
+    "javascript": "\n    ```javascript\nfunction circularPermutation(n, start) {\n    let result = new Array(1 << n);\n    for (let i = 0; i < (1 << n); ++i) {\n        result[i] = start ^ (i ^ (i >> 1));\n    }\n    return result;\n}\n```\n\n    \n    The algorithm is based on the Gray Code sequence generation, which guarantees only one bit difference between consecutive elements.\n\n1. Initialize a list or an array called result with the size of 2^n.\n2. Iterate through the range 0 to 2^n - 1.\n3. For each i in the range, calculate the Gray Code with the formula `i ^ (i >> 1)`.\n4. XOR the Gray Code with the given start value and store it in the result array.\n5. Return the result array.\n\nThis algorithm generates a sequence that fulfills the given requirements of having a one-bit difference between consecutive elements and it starts with the provided start value.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\n\npublic static ArrayList<Integer> circularPermutation(int n, int start) {\n    ArrayList<Integer> result = new ArrayList<>(1 << n);\n    for (int i = 0; i < (1 << n); ++i) {\n        result.add(start ^ (i ^ (i >> 1)));\n    }\n    return result;\n}\n```\n\n    \n    The algorithm is based on the Gray Code sequence generation, which guarantees only one bit difference between consecutive elements.\n\n1. Initialize a list or an array called result with the size of 2^n.\n2. Iterate through the range 0 to 2^n - 1.\n3. For each i in the range, calculate the Gray Code with the formula `i ^ (i >> 1)`.\n4. XOR the Gray Code with the given start value and store it in the result array.\n5. Return the result array.\n\nThis algorithm generates a sequence that fulfills the given requirements of having a one-bit difference between consecutive elements and it starts with the provided start value.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

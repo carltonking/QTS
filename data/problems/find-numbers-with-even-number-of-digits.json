@@ -1,0 +1,24 @@
+{
+  "id": 1295,
+  "title": "Find Numbers with Even Number of Digits",
+  "slug": "find-numbers-with-even-number-of-digits",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array nums of integers, return how many of them contain an even number of digits.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_perimeter(neededApples):\n    layer = 0\n    apples = 0\n\n    while apples < neededApples:\n        layer += 1\n        apples += 12 * layer\n\n    return 8 * layer\n```\n    \n    To solve this problem, we will start at the center of the garden (0, 0) and expand outwards in layers. Each new layer will enclose a new set of trees, and the number of apples in each tree can be calculated using the formula |i| + |j|. We keep track of the total apples acquired and continue expanding outwards until we have at least the number of apples needed (neededApples).\n\nSince there are 4 corners in the square corresponding to each axis-aligned square plot, and each layer adds 2 trees per corner, we have a total of 8 trees added per layer. Thus, the perimeter added when expanding each layer is 8 units. \n\nIn each layer, we have 12 * layer of apples (this comes from calculating the number of apples added in each side of the square when expanding outwards, which forms a pattern).\n\nThe algorithm works as follows:\n1. Initialize layer to 0 and apples to 0\n2. While apples is less than neededApples, increment layer and add 12 * layer apples to the current count.\n3. Return 8 * layer as the perimeter, as each layer increases the perimeter by 8 units.\n\nThis solution has a linear time complexity with respect to the number of apples needed.\n    ",
+    "javascript": "\n    ```javascript\nfunction minPerimeter(neededApples) {\n    let layer = 0;\n    let apples = 0;\n\n    while (apples < neededApples) {\n        layer++;\n        apples += 12 * layer;\n    }\n\n    return 8 * layer;\n}\n```\n    \n    To solve this problem, we will start at the center of the garden (0, 0) and expand outwards in layers. Each new layer will enclose a new set of trees, and the number of apples in each tree can be calculated using the formula |i| + |j|. We keep track of the total apples acquired and continue expanding outwards until we have at least the number of apples needed (neededApples).\n\nSince there are 4 corners in the square corresponding to each axis-aligned square plot, and each layer adds 2 trees per corner, we have a total of 8 trees added per layer. Thus, the perimeter added when expanding each layer is 8 units. \n\nIn each layer, we have 12 * layer of apples (this comes from calculating the number of apples added in each side of the square when expanding outwards, which forms a pattern).\n\nThe algorithm works as follows:\n1. Initialize layer to 0 and apples to 0\n2. While apples is less than neededApples, increment layer and add 12 * layer apples to the current count.\n3. Return 8 * layer as the perimeter, as each layer increases the perimeter by 8 units.\n\nThis solution has a linear time complexity with respect to the number of apples needed.\n    ",
+    "java": "\n    ```java\nint minPerimeter(int neededApples) {\n    int layer = 0;\n    int apples = 0;\n\n    while (apples < neededApples) {\n        layer++;\n        apples += 12 * layer;\n    }\n\n    return 8 * layer;\n}\n```\n    \n    To solve this problem, we will start at the center of the garden (0, 0) and expand outwards in layers. Each new layer will enclose a new set of trees, and the number of apples in each tree can be calculated using the formula |i| + |j|. We keep track of the total apples acquired and continue expanding outwards until we have at least the number of apples needed (neededApples).\n\nSince there are 4 corners in the square corresponding to each axis-aligned square plot, and each layer adds 2 trees per corner, we have a total of 8 trees added per layer. Thus, the perimeter added when expanding each layer is 8 units. \n\nIn each layer, we have 12 * layer of apples (this comes from calculating the number of apples added in each side of the square when expanding outwards, which forms a pattern).\n\nThe algorithm works as follows:\n1. Initialize layer to 0 and apples to 0\n2. While apples is less than neededApples, increment layer and add 12 * layer apples to the current count.\n3. Return 8 * layer as the perimeter, as each layer increases the perimeter by 8 units.\n\nThis solution has a linear time complexity with respect to the number of apples needed.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

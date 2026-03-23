@@ -1,0 +1,24 @@
+{
+  "id": 2290,
+  "title": "Minimum Obstacle Removal to Reach Corner",
+  "slug": "minimum-obstacle-removal-to-reach-corner",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a 0-indexed 2D integer array grid of size m x n. Each cell has one of two values:\n\n*   0 represents an empty cell,\n*   1 represents an obstacle that may be removed.\n\nYou can move up, down, left, or right from and to an empty cell.\n\nReturn _the minimum number of obstacles to remove so you can move from the upper left corner_ (0, 0) _to the lower right corner_ (m - 1, n - 1).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_number_of_beans_to_remove(beans):\n    count = {}\n    for bean in beans:\n        if bean not in count:\n            count[bean] = 0\n        count[bean] += 1\n\n    min_remove = len(beans)\n    for key, value in count.items():\n        remove = 0\n        for other_key, other_value in count.items():\n            if other_key != key:\n                remove += other_value * max(0, other_key - key)\n        min_remove = min(min_remove, remove)\n\n    return min_remove\n```\n    \n    1. Count the occurrences of each number of beans in a hash map or dictionary (count).\n2. Iterate over each unique number of beans (key) in the count dictionary.\n3. For each unique number of beans, calculate the number of beans to remove if all remaining non-empty bags have this number of beans.\n4. Accumulate the removal count.\n5. Keep track of the minimum removal count.\n6. Return the minimum removal count.\n    ",
+    "javascript": "\n    ```javascript\nfunction minNumberOfBeansToRemove(beans) {\n    const count = {};\n    for (const bean of beans) {\n        if (!count.hasOwnProperty(bean)) {\n            count[bean] = 0;\n        }\n        count[bean]++;\n    }\n\n    let min_remove = beans.length;\n    for (const [key, value] of Object.entries(count)) {\n        let remove = 0;\n        for (const [other_key, other_value] of Object.entries(count)) {\n            if (other_key !== key) {\n                remove += other_value * Math.max(0, other_key - key);\n            }\n        }\n        min_remove = Math.min(min_remove, remove);\n    }\n\n    return min_remove;\n}\n```\n    \n    1. Count the occurrences of each number of beans in a hash map or dictionary (count).\n2. Iterate over each unique number of beans (key) in the count dictionary.\n3. For each unique number of beans, calculate the number of beans to remove if all remaining non-empty bags have this number of beans.\n4. Accumulate the removal count.\n5. Keep track of the minimum removal count.\n6. Return the minimum removal count.\n    ",
+    "java": "\n    ```java\nimport java.util.Map;\nimport java.util.HashMap;\n\npublic int minNumberOfBeansToRemove(int[] beans) {\n    Map<Integer, Integer> count = new HashMap<>();\n    for (int bean : beans) {\n        count.put(bean, count.getOrDefault(bean, 0) + 1);\n    }\n\n    int min_remove = beans.length;\n    for (Map.Entry<Integer, Integer> item : count.entrySet()) {\n        int remove = 0;\n        for (Map.Entry<Integer, Integer> other : count.entrySet()) {\n            if (!other.getKey().equals(item.getKey())) {\n                remove += other.getValue() * Math.max(0, other.getKey() - item.getKey());\n            }\n        }\n        min_remove = Math.min(min_remove, remove);\n    }\n\n    return min_remove;\n}\n```\n    \n    1. Count the occurrences of each number of beans in a hash map or dictionary (count).\n2. Iterate over each unique number of beans (key) in the count dictionary.\n3. For each unique number of beans, calculate the number of beans to remove if all remaining non-empty bags have this number of beans.\n4. Accumulate the removal count.\n5. Keep track of the minimum removal count.\n6. Return the minimum removal count.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

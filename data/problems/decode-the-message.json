@@ -1,0 +1,24 @@
+{
+  "id": 2325,
+  "title": "Decode the Message",
+  "slug": "decode-the-message",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given the strings key and message, which represent a cipher key and a secret message, respectively. The steps to decode message are as follows:\n\n1.  Use the first appearance of all 26 lowercase English letters in key as the order of the substitution table.\n2.  Align the substitution table with the regular English alphabet.\n3.  Each letter in message is then substituted using the table.\n4.  Spaces ' ' are transformed to themselves.\n\n*   For example, given key = \"happy boy \" (actual key would have at least one instance of each letter in the alphabet), we have the partial substitution table of ('h' -> 'a', 'a' -> 'b', 'p' -> 'c', 'y' -> 'd', 'b' -> 'e', 'o' -> 'f').\n\nReturn _the decoded message_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef valid_selections(s: str) -> int:\n    res = 0\n    for i in range(1, len(s) - 1):\n        if s[i - 1] != s[i] and s[i] != s[i + 1] and s[i - 1] != s[i + 1]:\n            res += 1\n    return res\n```\n    \n    We iterate through the binary string `s` starting from index 1 till the second-last character in the string. For each character `s[i]`, we check three conditions: \n1. s[i-1] should be different from s[i]\n2. s[i] should be different from s[i+1]\n3. s[i+1] should be different from s[i-1]\n\nIf all these conditions are met for the current index `i`, then we can increment the result counter. Finally, we return the result counter, which is the number of valid ways to select 3 buildings.\n    ",
+    "javascript": "\n    ```javascript\nfunction validSelections(s) {\n    let res = 0;\n    for (let i = 1; i < s.length - 1; i++) {\n        if (s[i - 1] !== s[i] && s[i] !== s[i + 1] && s[i - 1] !== s[i + 1]) {\n            res++;\n        }\n    }\n    return res;\n}\n```\n    \n    We iterate through the binary string `s` starting from index 1 till the second-last character in the string. For each character `s[i]`, we check three conditions: \n1. s[i-1] should be different from s[i]\n2. s[i] should be different from s[i+1]\n3. s[i+1] should be different from s[i-1]\n\nIf all these conditions are met for the current index `i`, then we can increment the result counter. Finally, we return the result counter, which is the number of valid ways to select 3 buildings.\n    ",
+    "java": "\n    ```java\npublic int validSelections(String s) {\n    int res = 0;\n    for (int i = 1; i < s.length() - 1; i++) {\n        if (!s.substring(i - 1, i).equals(s.substring(i, i + 1)) &&\n            !s.substring(i, i + 1).equals(s.substring(i + 1, i + 2)) &&\n            !s.substring(i - 1, i).equals(s.substring(i + 1, i + 2))) {\n            res++;\n        }\n    }\n    return res;\n}\n```\n    \n    We iterate through the binary string `s` starting from index 1 till the second-last character in the string. For each character `s[i]`, we check three conditions: \n1. s[i-1] should be different from s[i]\n2. s[i] should be different from s[i+1]\n3. s[i+1] should be different from s[i-1]\n\nIf all these conditions are met for the current index `i`, then we can increment the result counter. Finally, we return the result counter, which is the number of valid ways to select 3 buildings.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

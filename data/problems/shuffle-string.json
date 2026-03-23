@@ -1,0 +1,24 @@
+{
+  "id": 1528,
+  "title": "Shuffle String",
+  "slug": "shuffle-string",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a string s and an integer array indices of the same length. The string s will be shuffled such that the character at the ith position moves to indices[i] in the shuffled string.\n\nReturn _the shuffled string_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom typing import List\n\ndef kids_with_candies(candies: List[int], extra_candies: int) -> List[bool]:\n    max_candies = max(candies)\n    result = [candy + extra_candies >= max_candies for candy in candies]\n    return result\n```\n    \n    The algorithm first finds the maximum number of candies any kid has by iterating over the candies array. Then, it iterates over the candies array again, checking if the number of candies a particular kid has plus the extra candies is greater than or equal to the maximum number of candies. If it is, it adds `true` to the result array, otherwise `false`. This result array is returned. The algorithm has a time complexity of O(n), where n is the length of the candies array.\n    ",
+    "javascript": "\n    ```javascript\nfunction kidsWithCandies(candies, extraCandies) {\n    let maxCandies = Math.max(...candies);\n    let result = candies.map(candy => candy + extraCandies >= maxCandies);\n    return result;\n}\n```\n    \n    The algorithm first finds the maximum number of candies any kid has by iterating over the candies array. Then, it iterates over the candies array again, checking if the number of candies a particular kid has plus the extra candies is greater than or equal to the maximum number of candies. If it is, it adds `true` to the result array, otherwise `false`. This result array is returned. The algorithm has a time complexity of O(n), where n is the length of the candies array.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {\n    int maxCandies = 0;\n    for (int candy : candies) {\n        maxCandies = Math.max(candy, maxCandies);\n    }\n\n    List<Boolean> result = new ArrayList<>();\n    for (int candy : candies) {\n        result.add(candy + extraCandies >= maxCandies);\n    }\n\n    return result;\n}\n```\n    \n    The algorithm first finds the maximum number of candies any kid has by iterating over the candies array. Then, it iterates over the candies array again, checking if the number of candies a particular kid has plus the extra candies is greater than or equal to the maximum number of candies. If it is, it adds `true` to the result array, otherwise `false`. This result array is returned. The algorithm has a time complexity of O(n), where n is the length of the candies array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

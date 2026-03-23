@@ -1,0 +1,24 @@
+{
+  "id": 2413,
+  "title": "Smallest Even Multiple",
+  "slug": "smallest-even-multiple",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a positive integer n, return _the smallest positive integer that is a multiple of both_ 2 _and_ n.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef smallest_multiple(n):\n    return n if n % 2 == 0 else n * 2\n```\n    \n    The algorithm to solve this problem is quite simple. The smallest positive integer that is a multiple of both 2 and `n` can be determined by checking if `n` is even or odd. If `n` is even, it means that it is already a multiple of 2, so the answer should be `n`. If `n` is odd, we need to multiply `n` by 2 to get the smallest multiple that is also divisible by 2, so the answer should be `n * 2`.\n    ",
+    "javascript": "\n    ```javascript\nfunction smallestMultiple(n) {\n    return n % 2 === 0 ? n : n * 2;\n}\n```\n    \n    The algorithm to solve this problem is quite simple. The smallest positive integer that is a multiple of both 2 and `n` can be determined by checking if `n` is even or odd. If `n` is even, it means that it is already a multiple of 2, so the answer should be `n`. If `n` is odd, we need to multiply `n` by 2 to get the smallest multiple that is also divisible by 2, so the answer should be `n * 2`.\n    ",
+    "java": "\n    ```java\npublic int smallestMultiple(int n) {\n    return n % 2 == 0 ? n : n * 2;\n}\n```\n    \n    The algorithm to solve this problem is quite simple. The smallest positive integer that is a multiple of both 2 and `n` can be determined by checking if `n` is even or odd. If `n` is even, it means that it is already a multiple of 2, so the answer should be `n`. If `n` is odd, we need to multiply `n` by 2 to get the smallest multiple that is also divisible by 2, so the answer should be `n * 2`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

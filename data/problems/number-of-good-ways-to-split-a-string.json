@@ -1,0 +1,24 @@
+{
+  "id": 1525,
+  "title": "Number of Good Ways to Split a String",
+  "slug": "number-of-good-ways-to-split-a-string",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a string s.\n\nA split is called good if you can split s into two non-empty strings sleft and sright where their concatenation is equal to s (i.e., sleft + sright = s) and the number of distinct letters in sleft and sright is the same.\n\nReturn _the number of good splits you can make in s_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef process_queries(queries, m):\n    nums = list(range(1, m+1))\n    result = []\n    for q in queries:\n        pos = nums.index(q)\n        result.append(pos)\n        del nums[pos]\n        nums.insert(0, q)\n    return result\n```\n    \n    The algorithm starts by initializing a list `nums` of values from 1 to `m` and an empty result list.\n\nFor each query `q` in the queries list:\n1. Find the position `pos` of `q` in the `nums` list.\n2. Add `pos` to the result list.\n3. Remove `q` from its current position in the `nums` list.\n4. Insert `q` at the beginning of the `nums` list.\n\nFinally, return the result list.\n    ",
+    "javascript": "\n    ```javascript\nfunction processQueries(queries, m) {\n    const nums = Array.from({ length: m }, (_, i) => i + 1);\n    const result = [];\n    for (const q of queries) {\n        const pos = nums.indexOf(q);\n        result.push(pos);\n        nums.splice(pos, 1);\n        nums.unshift(q);\n    }\n    return result;\n}\n```\n    \n    The algorithm starts by initializing a list `nums` of values from 1 to `m` and an empty result list.\n\nFor each query `q` in the queries list:\n1. Find the position `pos` of `q` in the `nums` list.\n2. Add `pos` to the result list.\n3. Remove `q` from its current position in the `nums` list.\n4. Insert `q` at the beginning of the `nums` list.\n\nFinally, return the result list.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<Integer> processQueries(int[] queries, int m) {\n    List<Integer> nums = new ArrayList<>();\n    List<Integer> result = new ArrayList<>();\n    for (int i = 0; i < m; i++) {\n        nums.add(i + 1);\n    }\n    for (int q : queries) {\n        int pos = nums.indexOf(q);\n        result.add(pos);\n        nums.remove(pos);\n        nums.add(0, q);\n    }\n    return result;\n}\n```\n    \n    The algorithm starts by initializing a list `nums` of values from 1 to `m` and an empty result list.\n\nFor each query `q` in the queries list:\n1. Find the position `pos` of `q` in the `nums` list.\n2. Add `pos` to the result list.\n3. Remove `q` from its current position in the `nums` list.\n4. Insert `q` at the beginning of the `nums` list.\n\nFinally, return the result list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

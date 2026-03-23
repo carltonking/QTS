@@ -1,0 +1,24 @@
+{
+  "id": 2601,
+  "title": "Prime Subtraction Operation",
+  "slug": "prime-subtraction-operation",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums of length n.\n\nYou can perform the following operation as many times as you want:\n\n*   Pick an index i that you haven't picked before, and pick a prime p strictly less than nums[i], then subtract p from nums[i].\n\nReturn _true if you can make nums a strictly increasing array using the above operation and false otherwise._\n\nA strictly increasing array is an array whose each element is strictly greater than its preceding element.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef strictlyIncreasingArray(nums):\n    for i in range(len(nums) - 1):\n        nums[i] -= i\n        if nums[i] >= nums[i + 1]:\n            return False\n    return True\n```\n    \n    The algorithm iterates through the array, checking if the current element `nums[i]` is strictly less than the next element `nums[i+1]`. Before the comparison, the algorithm subtracts the index `i` from the current element `nums[i]`. This is because, in the prime subtraction operation, an index can only be chosen once, so it essentially checks if the array can be made strictly increasing after applying the prime subtraction to the current index. If for any index `i`, the current element `nums[i]` is greater than or equal to the next element `nums[i+1]`, the function will return `false`, indicating that the array cannot be made strictly increasing.\n\nIf the loop completes without finding any such index, the function returns `true`, which shows that the given array can be made strictly increasing through the prime subtraction operation as described above.\n    ",
+    "javascript": "\n    ```javascript\nfunction strictlyIncreasingArray(nums) {\n    for (let i = 0; i < nums.length - 1; ++i) {\n        nums[i] -= i;\n        if (nums[i] >= nums[i + 1]) {\n            return false;\n        }\n    }\n    return true;\n}\n```\n    \n    The algorithm iterates through the array, checking if the current element `nums[i]` is strictly less than the next element `nums[i+1]`. Before the comparison, the algorithm subtracts the index `i` from the current element `nums[i]`. This is because, in the prime subtraction operation, an index can only be chosen once, so it essentially checks if the array can be made strictly increasing after applying the prime subtraction to the current index. If for any index `i`, the current element `nums[i]` is greater than or equal to the next element `nums[i+1]`, the function will return `false`, indicating that the array cannot be made strictly increasing.\n\nIf the loop completes without finding any such index, the function returns `true`, which shows that the given array can be made strictly increasing through the prime subtraction operation as described above.\n    ",
+    "java": "\n    ```java\npublic boolean strictlyIncreasingArray(int[] nums) {\n    for (int i = 0; i < nums.length - 1; ++i) {\n        nums[i] -= i;\n        if (nums[i] >= nums[i + 1]) {\n            return false;\n        }\n    }\n    return true;\n}\n```\n    \n    The algorithm iterates through the array, checking if the current element `nums[i]` is strictly less than the next element `nums[i+1]`. Before the comparison, the algorithm subtracts the index `i` from the current element `nums[i]`. This is because, in the prime subtraction operation, an index can only be chosen once, so it essentially checks if the array can be made strictly increasing after applying the prime subtraction to the current index. If for any index `i`, the current element `nums[i]` is greater than or equal to the next element `nums[i+1]`, the function will return `false`, indicating that the array cannot be made strictly increasing.\n\nIf the loop completes without finding any such index, the function returns `true`, which shows that the given array can be made strictly increasing through the prime subtraction operation as described above.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1762,
+  "title": "Buildings With an Ocean View",
+  "slug": "buildings-with-an-ocean-view",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There are n buildings in a line. You are given an integer array heights of size n that represents the heights of the buildings in the line.\n\nThe ocean is to the right of the buildings. A building has an ocean view if the building can see the ocean without obstructions. Formally, a building has an ocean view if all the buildings to its right have a smaller height.\n\nReturn a list of indices (0-indexed) of buildings that have an ocean view, sorted in increasing order.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nimport heapq\n\ndef furthest_building(heights, bricks, ladders):\n    min_heap = []\n    for i in range(len(heights) - 1):\n        diff = heights[i + 1] - heights[i]\n        if diff > 0:\n            heapq.heappush(min_heap, diff)\n            if len(min_heap) > ladders:\n                bricks -= heapq.heappop(min_heap)\n                if bricks < 0:\n                    return i\n    return len(heights) - 1\n```\n\n    \n    The algorithm uses a priority queue (min heap) to store the differences in height for each consecutive pair of buildings. As we go through the list of buildings, if the height difference is positive (meaning we need to climb), we push the difference into the min heap. If the size of the min heap becomes larger than the number of ladders we have, it means we have to use bricks. Therefore, we remove the smallest height difference from the min heap and subtract it from our remaining bricks. If we run out of bricks (bricks < 0), we return the last building index we could reach. If we successfully go through the entire loop, we return the last building index in the list.\n    ",
+    "javascript": "\n    ```javascript\nfunction furthestBuilding(heights, bricks, ladders) {\n    const minHeap = [];\n    for (let i = 0; i < heights.length - 1; ++i) {\n        const diff = heights[i + 1] - heights[i];\n        if (diff > 0) {\n            minHeap.push(diff);\n            minHeap.sort((a, b) => a - b);\n            if (minHeap.length > ladders) {\n                bricks -= minHeap.shift();\n                if (bricks < 0) {\n                    return i;\n                }\n            }\n        }\n    }\n    return heights.length - 1;\n}\n```\n\n    \n    The algorithm uses a priority queue (min heap) to store the differences in height for each consecutive pair of buildings. As we go through the list of buildings, if the height difference is positive (meaning we need to climb), we push the difference into the min heap. If the size of the min heap becomes larger than the number of ladders we have, it means we have to use bricks. Therefore, we remove the smallest height difference from the min heap and subtract it from our remaining bricks. If we run out of bricks (bricks < 0), we return the last building index we could reach. If we successfully go through the entire loop, we return the last building index in the list.\n    ",
+    "java": "\n    ```java\nimport java.util.PriorityQueue;\n\npublic int furthestBuilding(int[] heights, int bricks, int ladders) {\n    PriorityQueue<Integer> minHeap = new PriorityQueue<>();\n    for (int i = 0; i < heights.length - 1; ++i) {\n        int diff = heights[i + 1] - heights[i];\n        if (diff > 0) {\n            minHeap.offer(diff);\n            if (minHeap.size() > ladders) {\n                bricks -= minHeap.poll();\n                if (bricks < 0) {\n                    return i;\n                }\n            }\n        }\n    }\n    return heights.length - 1;\n}\n```\n\n    \n    The algorithm uses a priority queue (min heap) to store the differences in height for each consecutive pair of buildings. As we go through the list of buildings, if the height difference is positive (meaning we need to climb), we push the difference into the min heap. If the size of the min heap becomes larger than the number of ladders we have, it means we have to use bricks. Therefore, we remove the smallest height difference from the min heap and subtract it from our remaining bricks. If we run out of bricks (bricks < 0), we return the last building index we could reach. If we successfully go through the entire loop, we return the last building index in the list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

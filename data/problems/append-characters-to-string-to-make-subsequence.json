@@ -1,0 +1,24 @@
+{
+  "id": 2486,
+  "title": "Append Characters to String to Make Subsequence",
+  "slug": "append-characters-to-string-to-make-subsequence",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two strings s and t consisting of only lowercase English letters.\n\nReturn _the minimum number of characters that need to be appended to the end of_ s _so that_ t _becomes a subsequence of_ s.\n\nA subsequence is a string that can be derived from another string by deleting some or no characters without changing the order of the remaining characters.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_addition(s: str, t: str) -> int:\n    s_len = len(s)\n    t_len = len(t)\n    i, j = 0, 0\n    while i < s_len and j < t_len:\n        if s[i] == t[j]:\n            j += 1\n        i += 1\n    return t_len - j\n```\n    \n    The algorithm maintains two pointers, `i` and `j`, to iterate through the given strings `s` and `t`. The pointer `i` iterates through the string `s` and the pointer `j` iterates through the string `t`. While iterating through `s`, if we find a character that matches the current character in `t`, we increment the `j` pointer. This is because the matched character can be a part of the subsequence we are looking for. The iteration stops when either `i` reaches the end of `s` or `j` reaches the end of `t`.\n\nAt the end, we subtract the index `j` from the length of `t`. This gives us the minimum number of characters that need to be appended to the end of `s` so that `t` becomes a subsequence of `s`.\n    ",
+    "javascript": "\n    ```javascript\nfunction minAddition(s, t) {\n    let sLen = s.length;\n    let tLen = t.length;\n    let i = 0, j = 0;\n    while (i < sLen && j < tLen) {\n        if (s[i] === t[j]) {\n            j++;\n        }\n        i++;\n    }\n    return tLen - j;\n}\n```\n    \n    The algorithm maintains two pointers, `i` and `j`, to iterate through the given strings `s` and `t`. The pointer `i` iterates through the string `s` and the pointer `j` iterates through the string `t`. While iterating through `s`, if we find a character that matches the current character in `t`, we increment the `j` pointer. This is because the matched character can be a part of the subsequence we are looking for. The iteration stops when either `i` reaches the end of `s` or `j` reaches the end of `t`.\n\nAt the end, we subtract the index `j` from the length of `t`. This gives us the minimum number of characters that need to be appended to the end of `s` so that `t` becomes a subsequence of `s`.\n    ",
+    "java": "\n    ```java\npublic int minAddition(String s, String t) {\n    int sLen = s.length();\n    int tLen = t.length();\n    int i = 0, j = 0;\n    while (i < sLen && j < tLen) {\n        if (s.charAt(i) == t.charAt(j)) {\n            j++;\n        }\n        i++;\n    }\n    return tLen - j;\n}\n```\n    \n    The algorithm maintains two pointers, `i` and `j`, to iterate through the given strings `s` and `t`. The pointer `i` iterates through the string `s` and the pointer `j` iterates through the string `t`. While iterating through `s`, if we find a character that matches the current character in `t`, we increment the `j` pointer. This is because the matched character can be a part of the subsequence we are looking for. The iteration stops when either `i` reaches the end of `s` or `j` reaches the end of `t`.\n\nAt the end, we subtract the index `j` from the length of `t`. This gives us the minimum number of characters that need to be appended to the end of `s` so that `t` becomes a subsequence of `s`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

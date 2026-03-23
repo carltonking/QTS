@@ -1,0 +1,24 @@
+{
+  "id": 1966,
+  "title": "Binary Searchable Numbers in an Unsorted Array",
+  "slug": "binary-searchable-numbers-in-an-unsorted-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Consider a function that implements an algorithm similar to [Binary Search](https://leetcode.com/explore/learn/card/binary-search/). The function has two input parameters: sequence is a sequence of integers, and target is an integer value. The purpose of the function is to find if the target exists in the sequence.\n\nThe pseudocode of the function is as follows:\n\nfunc(sequence, target)\n  while sequence is not empty\n    randomly choose an element from sequence as the pivot\n    if pivot = target, return true\n    else if pivot < target, remove pivot and all elements to its left from the sequence\n    else, remove pivot and all elements to its right from the sequence\n  end while\n  return false\n\nWhen the sequence is sorted, the function works correctly for all values. When the sequence is not sorted, the function does not work for all values, but may still work for some values.\n\nGiven an integer array nums, representing the sequence, that contains unique numbers and may or may not be sorted, return _the number of values that are guaranteed to be found using the function, for every possible pivot selection_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxFrequency(nums, k):\n    nums.sort()\n    max_freq, n, total = 1, len(nums), 0\n    i = 0\n    for j in range(n):\n        total += nums[j]\n        while total < nums[j] * (j - i + 1) - k:\n            total -= nums[i]\n            i += 1\n        max_freq = max(max_freq, j - i + 1)\n    return max_freq\n```\n    \n    1. Sort the input array, nums, in non-decreasing order.\n2. Traverse the sorted array using two pointers, i and j. Initialize sum and max_freq to 0 and 1, respectively.\n3. In each step, increment the sum by the element at index j (nums[j]).\n4. Use a while loop to check if the current sum is less than the required sum to make all elements in the current range equal to nums[j]. If this is the case, decrement the sum by the element at index i (nums[i]) and move the index i one step forward.\n5. Update the max_freq by comparing it with the current range length (j - i + 1), and pick the maximum value.\n6. Continue iterating until the end of the array and return the max_freq.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxFrequency(nums, k) {\n    nums.sort((a, b) => a - b);\n    let max_freq = 1, n = nums.length;\n    let sum = 0;\n    for (let i = 0, j = 0; j < n; ++j) {\n        sum += nums[j];\n        while (sum < nums[j] * (j - i + 1) - k) {\n            sum -= nums[i++];\n        }\n        max_freq = Math.max(max_freq, j - i + 1);\n    }\n    return max_freq;\n}\n```\n    \n    1. Sort the input array, nums, in non-decreasing order.\n2. Traverse the sorted array using two pointers, i and j. Initialize sum and max_freq to 0 and 1, respectively.\n3. In each step, increment the sum by the element at index j (nums[j]).\n4. Use a while loop to check if the current sum is less than the required sum to make all elements in the current range equal to nums[j]. If this is the case, decrement the sum by the element at index i (nums[i]) and move the index i one step forward.\n5. Update the max_freq by comparing it with the current range length (j - i + 1), and pick the maximum value.\n6. Continue iterating until the end of the array and return the max_freq.\n    ",
+    "java": "\n    ```java\npublic int maxFrequency(int[] nums, int k) {\n    Arrays.sort(nums);\n    int max_freq = 1, n = nums.length;\n    long sum = 0;\n    for (int i = 0, j = 0; j < n; ++j) {\n        sum += nums[j];\n        while (sum < (long) nums[j] * (j - i + 1) - k) {\n            sum -= nums[i++];\n        }\n        max_freq = Math.max(max_freq, j - i + 1);\n    }\n    return max_freq;\n}\n```\n    \n    1. Sort the input array, nums, in non-decreasing order.\n2. Traverse the sorted array using two pointers, i and j. Initialize sum and max_freq to 0 and 1, respectively.\n3. In each step, increment the sum by the element at index j (nums[j]).\n4. Use a while loop to check if the current sum is less than the required sum to make all elements in the current range equal to nums[j]. If this is the case, decrement the sum by the element at index i (nums[i]) and move the index i one step forward.\n5. Update the max_freq by comparing it with the current range length (j - i + 1), and pick the maximum value.\n6. Continue iterating until the end of the array and return the max_freq.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

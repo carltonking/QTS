@@ -1,0 +1,24 @@
+{
+  "id": 1302,
+  "title": "Deepest Leaves Sum",
+  "slug": "deepest-leaves-sum",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the root of a binary tree, return _the sum of values of its deepest leaves_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef make_fancy_string(s: str) -> str:\n    result = [s[0]]\n    count = 1\n\n    for i in range(1, len(s)):\n        if s[i] == s[i - 1]:\n            count += 1\n        else:\n            count = 1\n        if count < 3:\n            result.append(s[i])\n\n    return ''.join(result)\n```\n\n    \n    1. Initialize an empty resulting string and set the count to 1.\n2. Iterate through the input string starting from the second character.\n3. Compare the current character with the previous one:\n    a. If they are equal, increment the count.\n    b. If they are not equal, reset the count to 1.\n4. If the count is less than 3, add the current character to the result.\n5. After iterating through the entire string, return the resulting string.\n    ",
+    "javascript": "\n    ```javascript\nfunction makeFancyString(s) {\n    let result = s[0];\n    let count = 1;\n\n    for (let i = 1; i < s.length; i++) {\n        if (s[i] === s[i - 1]) {\n            count++;\n        } else {\n            count = 1;\n        }\n        if (count < 3) {\n            result += s[i];\n        }\n    }\n\n    return result;\n}\n```\n\n    \n    1. Initialize an empty resulting string and set the count to 1.\n2. Iterate through the input string starting from the second character.\n3. Compare the current character with the previous one:\n    a. If they are equal, increment the count.\n    b. If they are not equal, reset the count to 1.\n4. If the count is less than 3, add the current character to the result.\n5. After iterating through the entire string, return the resulting string.\n    ",
+    "java": "\n    ```java\npublic String makeFancyString(String s) {\n    StringBuilder result = new StringBuilder();\n    int count = 1;\n\n    for (int i = 1; i < s.length(); i++) {\n        if (s.charAt(i) == s.charAt(i - 1)) {\n            count++;\n        } else {\n            count = 1;\n        }\n        if (count < 3) {\n            result.append(s.charAt(i));\n        }\n    }\n\n    return result.toString();\n}\n```\n\n    \n    1. Initialize an empty resulting string and set the count to 1.\n2. Iterate through the input string starting from the second character.\n3. Compare the current character with the previous one:\n    a. If they are equal, increment the count.\n    b. If they are not equal, reset the count to 1.\n4. If the count is less than 3, add the current character to the result.\n5. After iterating through the entire string, return the resulting string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

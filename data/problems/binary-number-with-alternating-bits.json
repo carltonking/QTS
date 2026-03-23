@@ -1,0 +1,24 @@
+{
+  "id": 693,
+  "title": "Binary Number with Alternating Bits",
+  "slug": "binary-number-with-alternating-bits",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a positive integer, check whether it has alternating bits: namely, if two adjacent bits will always have different values.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef has_alternating_bits(n):\n    prev_bit = n % 2\n    n //= 2\n    while n > 0:\n        curr_bit = n % 2\n        if curr_bit == prev_bit:\n            return False\n        prev_bit = curr_bit\n        n //= 2\n    return True\n```\n\n    \n    The algorithm initializes `prevBit` with the least significant bit of `n`. Then, it divides `n` by 2 to eliminate the least significant bit. While `n` is greater than 0, the algorithm retrieves the least significant bit of `n` and compares it to `prevBit`. If they are equal, it means the adjacent bits are not alternating, so the function returns false. Otherwise, it assigns the least significant bit to `prevBit` and divides `n` by 2 again to move on to the next bit. When `n` becomes 0, it means all adjacent bits in the given integer are alternating, and the function returns true.\n    ",
+    "javascript": "\n    ```javascript\nfunction hasAlternatingBits(n) {\n    let prevBit = n % 2;\n    n = Math.floor(n / 2);\n    while (n > 0) {\n        let currBit = n % 2;\n        if (currBit === prevBit) return false;\n        prevBit = currBit;\n        n = Math.floor(n / 2);\n    }\n    return true;\n}\n```\n\n    \n    The algorithm initializes `prevBit` with the least significant bit of `n`. Then, it divides `n` by 2 to eliminate the least significant bit. While `n` is greater than 0, the algorithm retrieves the least significant bit of `n` and compares it to `prevBit`. If they are equal, it means the adjacent bits are not alternating, so the function returns false. Otherwise, it assigns the least significant bit to `prevBit` and divides `n` by 2 again to move on to the next bit. When `n` becomes 0, it means all adjacent bits in the given integer are alternating, and the function returns true.\n    ",
+    "java": "\n    ```java\npublic boolean hasAlternatingBits(int n) {\n    int prevBit = n % 2;\n    n /= 2;\n    while (n > 0) {\n        int currBit = n % 2;\n        if (currBit == prevBit) return false;\n        prevBit = currBit;\n        n /= 2;\n    }\n    return true;\n}\n```\n\n    \n    The algorithm initializes `prevBit` with the least significant bit of `n`. Then, it divides `n` by 2 to eliminate the least significant bit. While `n` is greater than 0, the algorithm retrieves the least significant bit of `n` and compares it to `prevBit`. If they are equal, it means the adjacent bits are not alternating, so the function returns false. Otherwise, it assigns the least significant bit to `prevBit` and divides `n` by 2 again to move on to the next bit. When `n` becomes 0, it means all adjacent bits in the given integer are alternating, and the function returns true.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

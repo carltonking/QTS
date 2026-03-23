@@ -1,0 +1,24 @@
+{
+  "id": 1751,
+  "title": "Maximum Number of Events That Can Be Attended II",
+  "slug": "maximum-number-of-events-that-can-be-attended-ii",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an array of events where events[i] = [startDayi, endDayi, valuei]. The ith event starts at startDayi and ends at endDayi, and if you attend this event, you will receive a value of valuei. You are also given an integer k which represents the maximum number of events you can attend.\n\nYou can only attend one event at a time. If you choose to attend an event, you must attend the entire event. Note that the end day is inclusive: that is, you cannot attend two events where one of them starts and the other ends on the same day.\n\nReturn _the maximum sum of values that you can receive by attending events._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef slowestKey(releaseTimes, keysPressed):\n    max_key = keysPressed[0]\n    max_duration = releaseTimes[0]\n    for i in range(1, len(releaseTimes)):\n        duration = releaseTimes[i] - releaseTimes[i - 1]\n        if duration > max_duration or (duration == max_duration and keysPressed[i] > max_key):\n            max_key = keysPressed[i]\n            max_duration = duration\n    return max_key\n```\n\n    \n    The algorithm starts by initializing the max_key to the first key in keysPressed and max_duration to the duration of the first key press. Then, from the second key press to the last, it calculates the duration of each key press by subtracting the previous release time from the current release time. It compares the current duration with the max_duration. If the current duration is larger than max_duration or if the durations are equal and the current key is lexicographically larger than the max_key, update max_key and max_duration. Finally, return max_key as the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction slowestKey(releaseTimes, keysPressed) {\n    let max_key = keysPressed[0];\n    let max_duration = releaseTimes[0];\n\n    for (let i = 1; i < releaseTimes.length; i++) {\n        let duration = releaseTimes[i] - releaseTimes[i - 1];\n        if (duration > max_duration || (duration === max_duration && keysPressed[i] > max_key)) {\n            max_key = keysPressed[i];\n            max_duration = duration;\n        }\n    }\n    return max_key;\n}\n```\n\n    \n    The algorithm starts by initializing the max_key to the first key in keysPressed and max_duration to the duration of the first key press. Then, from the second key press to the last, it calculates the duration of each key press by subtracting the previous release time from the current release time. It compares the current duration with the max_duration. If the current duration is larger than max_duration or if the durations are equal and the current key is lexicographically larger than the max_key, update max_key and max_duration. Finally, return max_key as the result.\n    ",
+    "java": "\n    ```java\npublic char slowestKey(int[] releaseTimes, String keysPressed) {\n    char max_key = keysPressed.charAt(0);\n    int max_duration = releaseTimes[0];\n    for (int i = 1; i < releaseTimes.length; i++) {\n        int duration = releaseTimes[i] - releaseTimes[i - 1];\n        if (duration > max_duration || (duration == max_duration && keysPressed.charAt(i) > max_key)) {\n            max_key = keysPressed.charAt(i);\n            max_duration = duration;\n        }\n    }\n    return max_key;\n}\n```\n\n    \n    The algorithm starts by initializing the max_key to the first key in keysPressed and max_duration to the duration of the first key press. Then, from the second key press to the last, it calculates the duration of each key press by subtracting the previous release time from the current release time. It compares the current duration with the max_duration. If the current duration is larger than max_duration or if the durations are equal and the current key is lexicographically larger than the max_key, update max_key and max_duration. Finally, return max_key as the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

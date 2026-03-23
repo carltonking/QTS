@@ -1,0 +1,24 @@
+{
+  "id": 2469,
+  "title": "Convert the Temperature",
+  "slug": "convert-the-temperature",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a non-negative floating point number rounded to two decimal places celsius, that denotes the temperature in Celsius.\n\nYou should convert Celsius into Kelvin and Fahrenheit and return it as an array ans = [kelvin, fahrenheit].\n\nReturn _the array ans._ Answers within 10-5 of the actual answer will be accepted.\n\nNote that:\n\n*   Kelvin = Celsius + 273.15\n*   Fahrenheit = Celsius * 1.80 + 32.00",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef convert_temperature(celsius):\n    kelvin = celsius + 273.15\n    fahrenheit = celsius * 1.8 + 32\n    return [kelvin, fahrenheit]\n```\n    \n    The algorithm is quite simple. First, we calculate and store the temperature value in Kelvin by adding 273.15 to the given Celsius value. Next, we calculate the Fahrenheit value by multiplying the Celsius value by 1.8 and adding 32. Finally, we return an array with the calculated Kelvin and Fahrenheit values.\n    ",
+    "javascript": "\n    ```javascript\nfunction convertTemperature(celsius) {\n    const kelvin = celsius + 273.15;\n    const fahrenheit = celsius * 1.80 + 32.00;\n    return [kelvin, fahrenheit];\n}\n```\n    \n    The algorithm is quite simple. First, we calculate and store the temperature value in Kelvin by adding 273.15 to the given Celsius value. Next, we calculate the Fahrenheit value by multiplying the Celsius value by 1.8 and adding 32. Finally, we return an array with the calculated Kelvin and Fahrenheit values.\n    ",
+    "java": "\n    ```java\npublic double[] convertTemperature(double celsius) {\n    double kelvin = celsius + 273.15;\n    double fahrenheit = celsius * 1.80 + 32.00;\n    return new double[]{kelvin, fahrenheit};\n}\n```\n    \n    The algorithm is quite simple. First, we calculate and store the temperature value in Kelvin by adding 273.15 to the given Celsius value. Next, we calculate the Fahrenheit value by multiplying the Celsius value by 1.8 and adding 32. Finally, we return an array with the calculated Kelvin and Fahrenheit values.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 279,
+  "title": "Perfect Squares",
+  "slug": "perfect-squares",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer n, return _the least number of perfect square numbers that sum to_ n.\n\nA perfect square is an integer that is the square of an integer; in other words, it is the product of some integer with itself. For example, 1, 4, 9, and 16 are perfect squares while 3 and 11 are not.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef numSquares(n):\n    dp = [float('inf')] * (n + 1)\n    dp[0] = 0\n    \n    for i in range(1, n + 1):\n        j = 1\n        while j * j <= i:\n            dp[i] = min(dp[i], dp[i - j * j] + 1)\n            j += 1\n            \n    return dp[n]\n```\n    \n    We use Dynamic Programming (DP) to solve this problem. We initialize a 1-dimensional DP array, `dp`, of size `n + 1`, where `n` is given in the problem statement. We set `dp[0]` to `0` because it takes zero square numbers to sum up to zero. We fill the rest of the DP array with a maximum or infinite value, depending on the language used.\n\nWe iterate through the DP array from index `1` to index `n`, inclusive. For each index `i`, we iterate through all perfect square numbers `j * j` smaller than or equal to `i` to find the least number of perfect square numbers that sum up to `i`. We update the `dp` array with the minimum value of the current value at `dp[i]` and `dp[i - j * j] + 1`.\n\nAfter completing the iterations, the value at `dp[n]` represents the least number of perfect squares that sum to `n`.\n    ",
+    "javascript": "\n    ```javascript\nfunction numSquares(n) {\n    const dp = new Array(n + 1).fill(Infinity);\n    dp[0] = 0;\n\n    for (let i = 1; i <= n; i++) {\n        for (let j = 1; j * j <= i; j++) {\n            dp[i] = Math.min(dp[i], dp[i - j * j] + 1);\n        }\n    }\n\n    return dp[n];\n}\n```\n    \n    We use Dynamic Programming (DP) to solve this problem. We initialize a 1-dimensional DP array, `dp`, of size `n + 1`, where `n` is given in the problem statement. We set `dp[0]` to `0` because it takes zero square numbers to sum up to zero. We fill the rest of the DP array with a maximum or infinite value, depending on the language used.\n\nWe iterate through the DP array from index `1` to index `n`, inclusive. For each index `i`, we iterate through all perfect square numbers `j * j` smaller than or equal to `i` to find the least number of perfect square numbers that sum up to `i`. We update the `dp` array with the minimum value of the current value at `dp[i]` and `dp[i - j * j] + 1`.\n\nAfter completing the iterations, the value at `dp[n]` represents the least number of perfect squares that sum to `n`.\n    ",
+    "java": "\n    ```java\npublic int numSquares(int n) {\n    int[] dp = new int[n + 1];\n    Arrays.fill(dp, Integer.MAX_VALUE);\n    dp[0] = 0;\n    \n    for (int i = 1; i <= n; i++) {\n        for (int j = 1; j * j <= i; j++) {\n            dp[i] = Math.min(dp[i], dp[i - j * j] + 1);\n        }\n    }\n    \n    return dp[n];\n}\n```\n    \n    We use Dynamic Programming (DP) to solve this problem. We initialize a 1-dimensional DP array, `dp`, of size `n + 1`, where `n` is given in the problem statement. We set `dp[0]` to `0` because it takes zero square numbers to sum up to zero. We fill the rest of the DP array with a maximum or infinite value, depending on the language used.\n\nWe iterate through the DP array from index `1` to index `n`, inclusive. For each index `i`, we iterate through all perfect square numbers `j * j` smaller than or equal to `i` to find the least number of perfect square numbers that sum up to `i`. We update the `dp` array with the minimum value of the current value at `dp[i]` and `dp[i - j * j] + 1`.\n\nAfter completing the iterations, the value at `dp[n]` represents the least number of perfect squares that sum to `n`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

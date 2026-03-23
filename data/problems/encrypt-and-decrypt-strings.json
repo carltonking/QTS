@@ -1,0 +1,24 @@
+{
+  "id": 2227,
+  "title": "Encrypt and Decrypt Strings",
+  "slug": "encrypt-and-decrypt-strings",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a character array keys containing unique characters and a string array values containing strings of length 2. You are also given another string array dictionary that contains all permitted original strings after decryption. You should implement a data structure that can encrypt or decrypt a 0-indexed string.\n\nA string is encrypted with the following process:\n\n1.  For each character c in the string, we find the index i satisfying keys[i] == c in keys.\n2.  Replace c with values[i] in the string.\n\nNote that in case a character of the string is not present in keys, the encryption process cannot be carried out, and an empty string \" \" is returned.\n\nA string is decrypted with the following process:\n\n1.  For each substring s of length 2 occurring at an even index in the string, we find an i such that values[i] == s. If there are multiple valid i, we choose any one of them. This means a string could have multiple possible strings it can decrypt to.\n2.  Replace s with keys[i] in the string.\n\nImplement the Encrypter class:\n\n*   Encrypter(char[] keys, String[] values, String[] dictionary) Initializes the Encrypter class with keys, values, and dictionary.\n*   String encrypt(String word1) Encrypts word1 with the encryption process described above and returns the encrypted string.\n*   int decrypt(String word2) Returns the number of possible strings word2 could decrypt to that also appear in dictionary.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sum_of_subarray_ranges(nums):\n    n = len(nums)\n    ans = 0\n    for i in range(n):\n        for j in range(i, n):\n            ans += max(nums[i:j+1]) - min(nums[i:j+1])\n    return ans\n```\n    \n    The algorithm is a straightforward brute force solution which calculates the range of all possible subarrays and then sums them up. The solution iterates through all possible subarray starting positions (i) and ending positions (j), and for each subarray, it computes the maximum and minimum element. The sum of all subarray ranges is updated by incrementing the answer variable by the difference between the maximum and minimum elements (the range) for each subarray. This is implemented similarly in all four languages using nested loops.\n    ",
+    "javascript": "\n    ```javascript\nfunction sumOfSubarrayRanges(nums) {\n    let n = nums.length;\n    let ans = 0;\n    for (let i = 0; i < n; ++i) {\n        for (let j = i; j < n; ++j) {\n            ans += Math.max(...nums.slice(i, j + 1)) - Math.min(...nums.slice(i, j + 1));\n        }\n    }\n    return ans;\n}\n```\n    \n    The algorithm is a straightforward brute force solution which calculates the range of all possible subarrays and then sums them up. The solution iterates through all possible subarray starting positions (i) and ending positions (j), and for each subarray, it computes the maximum and minimum element. The sum of all subarray ranges is updated by incrementing the answer variable by the difference between the maximum and minimum elements (the range) for each subarray. This is implemented similarly in all four languages using nested loops.\n    ",
+    "java": "\n    ```java\npublic int sumOfSubarrayRanges(int[] nums) {\n    int n = nums.length;\n    int ans = 0;\n    for (int i = 0; i < n; ++i) {\n        for (int j = i; j < n; ++j) {\n            ans += maxElement(nums, i, j) - minElement(nums, i, j);\n        }\n    }\n    return ans;\n}\n\nprivate int maxElement(int[] nums, int start, int end) {\n    int max = nums[start];\n    for (int i = start + 1; i <= end; ++i) {\n        max = Math.max(max, nums[i]);\n    }\n    return max;\n}\n\nprivate int minElement(int[] nums, int start, int end) {\n    int min = nums[start];\n    for (int i = start + 1; i <= end; ++i) {\n        min = Math.min(min, nums[i]);\n    }\n    return min;\n}\n```\n    \n    The algorithm is a straightforward brute force solution which calculates the range of all possible subarrays and then sums them up. The solution iterates through all possible subarray starting positions (i) and ending positions (j), and for each subarray, it computes the maximum and minimum element. The sum of all subarray ranges is updated by incrementing the answer variable by the difference between the maximum and minimum elements (the range) for each subarray. This is implemented similarly in all four languages using nested loops.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

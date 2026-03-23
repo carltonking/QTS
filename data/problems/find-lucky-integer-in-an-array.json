@@ -1,0 +1,24 @@
+{
+  "id": 1394,
+  "title": "Find Lucky Integer in an Array",
+  "slug": "find-lucky-integer-in-an-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array of integers arr, a lucky integer is an integer that has a frequency in the array equal to its value.\n\nReturn _the largest lucky integer in the array_. If there is no lucky integer return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_lucky(arr):\n    freq = {}\n    for num in arr:\n        freq[num] = freq.get(num, 0) + 1\n    max_lucky = -1\n    for num, count in freq.items():\n        if num == count:\n            max_lucky = max(max_lucky, num)\n    return max_lucky\n```\n    \n    The algorithm iterates over the input array, computing the frequency of each number. It then iterates through the frequencies and checks if the number and its frequency match. If they do, it keeps track of the maximum such number. Finally, the algorithm returns the maximum lucky integer. If no lucky integer is found, the function returns -1.\n    ",
+    "javascript": "\n    ```javascript\nfunction findLucky(arr) {\n    const freq = {};\n    for (const num of arr) {\n        if (!freq[num]) {\n            freq[num] = 0;\n        }\n        freq[num]++;\n    }\n    let maxLucky = -1;\n    for (const [num, count] of Object.entries(freq)) {\n        if ( parseInt(num) === count) {\n            maxLucky = Math.max(maxLucky, parseInt(num));\n        }\n    }\n    return maxLucky;\n}\n```\n    \n    The algorithm iterates over the input array, computing the frequency of each number. It then iterates through the frequencies and checks if the number and its frequency match. If they do, it keeps track of the maximum such number. Finally, the algorithm returns the maximum lucky integer. If no lucky integer is found, the function returns -1.\n    ",
+    "java": "\n    ```java\npublic int findLucky(int[] arr) {\n    Map<Integer, Integer> freq = new HashMap<>();\n    for (int num : arr) {\n        freq.put(num, freq.getOrDefault(num, 0) + 1);\n    }\n    int maxLucky = -1;\n    for (Map.Entry<Integer, Integer> entry : freq.entrySet()) {\n        if (entry.getKey().equals(entry.getValue())) {\n            maxLucky = Math.max(maxLucky, entry.getKey());\n        }\n    }\n    return maxLucky;\n}\n```\n    \n    The algorithm iterates over the input array, computing the frequency of each number. It then iterates through the frequencies and checks if the number and its frequency match. If they do, it keeps track of the maximum such number. Finally, the algorithm returns the maximum lucky integer. If no lucky integer is found, the function returns -1.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2334,
+  "title": "Subarray With Elements Greater Than Varying Threshold",
+  "slug": "subarray-with-elements-greater-than-varying-threshold",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an integer array nums and an integer threshold.\n\nFind any subarray of nums of length k such that every element in the subarray is greater than threshold / k.\n\nReturn _the size of any such subarray_. If there is no such subarray, return -1.\n\nA subarray is a contiguous non-empty sequence of elements within an array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_subarray_length(nums, threshold):\n    n = len(nums)\n    left = 0\n    right = 0\n    total = 0\n    max_length = -1\n\n    while right < n:\n        total += nums[right]\n        while total * (right - left + 1) < threshold * (right - left + 1):\n            total -= nums[left]\n            left += 1\n        max_length = max(max_length, right - left + 1)\n        right += 1\n\n    return max_length\n```\n    \n    The algorithm is a sliding window approach. We initialize left and right pointers at the beginning of the array, and a sum variable. We also initialize maxLength to -1 to handle the case where there is no valid subarray.\n\nIn the loop, we move the right pointer, adding the element at that position to the sum. We then check if the sum times the length of the current window (right - left + 1) is less than the threshold times the length of the current window. If it is, we move the left pointer and subtract that value from the sum to maintain the sum of elements in the window.\n\nAt each step, we update maxLength to the maximum of the current maxLength and the length of the current window (right - left + 1). This way, we store the maximum length we've found so far.\n\nAfter the loop, we return maxLength, which is the final answer.\n    ",
+    "javascript": "\n    ```javascript\nfunction findSubarrayLength(nums, threshold) {\n    let n = nums.length, left = 0, right = 0, sum = 0, maxLength = -1;\n\n    while (right < n) {\n        sum += nums[right];\n        while (sum * (right - left + 1) < threshold * (right - left + 1)) {\n            sum -= nums[left];\n            left++;\n        }\n        maxLength = Math.max(maxLength, right - left + 1);\n        right++;\n    }\n\n    return maxLength;\n}\n```\n    \n    The algorithm is a sliding window approach. We initialize left and right pointers at the beginning of the array, and a sum variable. We also initialize maxLength to -1 to handle the case where there is no valid subarray.\n\nIn the loop, we move the right pointer, adding the element at that position to the sum. We then check if the sum times the length of the current window (right - left + 1) is less than the threshold times the length of the current window. If it is, we move the left pointer and subtract that value from the sum to maintain the sum of elements in the window.\n\nAt each step, we update maxLength to the maximum of the current maxLength and the length of the current window (right - left + 1). This way, we store the maximum length we've found so far.\n\nAfter the loop, we return maxLength, which is the final answer.\n    ",
+    "java": "\n    ```java\npublic int findSubarrayLength(int[] nums, int threshold) {\n    int n = nums.length, left = 0, right = 0, sum = 0, maxLength = -1;\n\n    while (right < n) {\n        sum += nums[right];\n        while (sum * (right - left + 1) < threshold * (right - left + 1)) {\n            sum -= nums[left];\n            left++;\n        }\n        maxLength = Math.max(maxLength, right - left + 1);\n        right++;\n    }\n\n    return maxLength;\n}\n```\n    \n    The algorithm is a sliding window approach. We initialize left and right pointers at the beginning of the array, and a sum variable. We also initialize maxLength to -1 to handle the case where there is no valid subarray.\n\nIn the loop, we move the right pointer, adding the element at that position to the sum. We then check if the sum times the length of the current window (right - left + 1) is less than the threshold times the length of the current window. If it is, we move the left pointer and subtract that value from the sum to maintain the sum of elements in the window.\n\nAt each step, we update maxLength to the maximum of the current maxLength and the length of the current window (right - left + 1). This way, we store the maximum length we've found so far.\n\nAfter the loop, we return maxLength, which is the final answer.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

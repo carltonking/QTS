@@ -1,0 +1,24 @@
+{
+  "id": 2483,
+  "title": "Minimum Penalty for a Shop",
+  "slug": "minimum-penalty-for-a-shop",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given the customer visit log of a shop represented by a 0-indexed string customers consisting only of characters 'N' and 'Y':\n\n*   if the ith character is 'Y', it means that customers come at the ith hour\n*   whereas 'N' indicates that no customers come at the ith hour.\n\nIf the shop closes at the jth hour (0 <= j <= n), the penalty is calculated as follows:\n\n*   For every hour when the shop is open and no customers come, the penalty increases by 1.\n*   For every hour when the shop is closed and customers come, the penalty increases by 1.\n\nReturn _the earliest hour at which the shop must be closed to incur a minimum penalty._\n\nNote that if a shop closes at the jth hour, it means the shop is closed at the hour j.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_penalty(customers: str) -> int:\n    n = len(customers)\n    open_penalty, closed_penalty = 0, 0\n\n    for c in customers:\n        if c == 'N':\n            open_penalty += 1\n        else:\n            closed_penalty += 1\n\n    result = closed_penalty\n    penalty = closed_penalty\n\n    for c in customers:\n        if c == 'N':\n            penalty -= 1\n        else:\n            penalty += 1\n\n        result = min(result, penalty)\n\n    return result\n```\n\n    \n    The algorithm iterates through the given string and calculates two penalty values - `open_penalty` and `closed_penalty`. `open_penalty` keeps track of the penalty when the shop is open and no customers arrive, whereas `closed_penalty` keeps track of the penalty when the shop is closed and customers arrive. After initializing the result as `closed_penalty`, the algorithm iterates through the given string again, updating the penalty based on the state of the shop at each hour (open or closed). The result is updated with the minimum of the current result and the penalty. At the end, the function returns the minimum penalty.\n    ",
+    "javascript": "\n    ```javascript\nfunction min_penalty(customers) {\n    const n = customers.length;\n    let open_penalty = 0, closed_penalty = 0;\n\n    for (const c of customers) {\n        if (c === 'N')\n            open_penalty++;\n        else\n            closed_penalty++;\n    }\n\n    let result = closed_penalty;\n    let penalty = closed_penalty;\n\n    for (const c of customers) {\n        if (c === 'N')\n            penalty--;\n        else\n            penalty++;\n\n        result = Math.min(result, penalty);\n    }\n\n    return result;\n}\n```\n\n    \n    The algorithm iterates through the given string and calculates two penalty values - `open_penalty` and `closed_penalty`. `open_penalty` keeps track of the penalty when the shop is open and no customers arrive, whereas `closed_penalty` keeps track of the penalty when the shop is closed and customers arrive. After initializing the result as `closed_penalty`, the algorithm iterates through the given string again, updating the penalty based on the state of the shop at each hour (open or closed). The result is updated with the minimum of the current result and the penalty. At the end, the function returns the minimum penalty.\n    ",
+    "java": "\n    ```java\npublic int min_penalty(String customers) {\n    int n = customers.length();\n    int open_penalty = 0, closed_penalty = 0;\n\n    for (char c : customers.toCharArray()) {\n        if (c == 'N')\n            open_penalty++;\n        else\n            closed_penalty++;\n    }\n\n    int result = closed_penalty;\n    int penalty = closed_penalty;\n\n    for (int i = 0; i < n; i++) {\n        if (customers.charAt(i) == 'N')\n            penalty--;\n        else\n            penalty++;\n\n        result = Math.min(result, penalty);\n    }\n\n    return result;\n}\n```\n\n    \n    The algorithm iterates through the given string and calculates two penalty values - `open_penalty` and `closed_penalty`. `open_penalty` keeps track of the penalty when the shop is open and no customers arrive, whereas `closed_penalty` keeps track of the penalty when the shop is closed and customers arrive. After initializing the result as `closed_penalty`, the algorithm iterates through the given string again, updating the penalty based on the state of the shop at each hour (open or closed). The result is updated with the minimum of the current result and the penalty. At the end, the function returns the minimum penalty.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

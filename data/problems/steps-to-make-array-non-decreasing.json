@@ -1,0 +1,24 @@
+{
+  "id": 2289,
+  "title": "Steps to Make Array Non-decreasing",
+  "slug": "steps-to-make-array-non-decreasing",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums. In one step, remove all elements nums[i] where nums[i - 1] > nums[i] for all 0 < i < nums.length.\n\nReturn _the number of steps performed until_ nums _becomes a non-decreasing array_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_operations(nums):\n    n = len(nums)\n    even, odd = 0, 0\n\n    for i in range(n):\n        if i % 2 == 0 and nums[i] % 2 != 0:\n            even += 1\n        elif i % 2 != 0 and nums[i] % 2 == 0:\n            odd += 1\n\n    return min(even, odd)\n```\n    \n    To make the array alternating, we need even numbers at even indices and odd numbers at odd indices. We loop through the array and check if the number meets the condition. If an even index has an odd number, we increment the `even` counter. If an odd index has an even number, we increment the `odd` counter. Finally, we return the minimum of these two counters, as that represents the minimum number of operations required to make the array alternating.\n    ",
+    "javascript": "\n    ```javascript\nfunction minOperations(nums) {\n    const n = nums.length;\n    let even = 0, odd = 0;\n\n    for (let i = 0; i < n; i++) {\n        if (i % 2 == 0 && nums[i] % 2 != 0) {\n            even++;\n        } else if (i % 2 != 0 && nums[i] % 2 == 0) {\n            odd++;\n        }\n    }\n\n    return Math.min(even, odd);\n}\n```\n    \n    To make the array alternating, we need even numbers at even indices and odd numbers at odd indices. We loop through the array and check if the number meets the condition. If an even index has an odd number, we increment the `even` counter. If an odd index has an even number, we increment the `odd` counter. Finally, we return the minimum of these two counters, as that represents the minimum number of operations required to make the array alternating.\n    ",
+    "java": "\n    ```java\npublic int minOperations(int[] nums) {\n    int n = nums.length;\n    int even = 0, odd = 0;\n\n    for (int i = 0; i < n; ++i) {\n        if (i % 2 == 0 && nums[i] % 2 != 0) {\n            even++;\n        } else if (i % 2 != 0 && nums[i] % 2 == 0) {\n            odd++;\n        }\n    }\n\n    return Math.min(even, odd);\n}\n```\n    \n    To make the array alternating, we need even numbers at even indices and odd numbers at odd indices. We loop through the array and check if the number meets the condition. If an even index has an odd number, we increment the `even` counter. If an odd index has an even number, we increment the `odd` counter. Finally, we return the minimum of these two counters, as that represents the minimum number of operations required to make the array alternating.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

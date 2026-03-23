@@ -1,0 +1,24 @@
+{
+  "id": 2107,
+  "title": "Number of Unique Flavors After Sharing K Candies",
+  "slug": "number-of-unique-flavors-after-sharing-k-candies",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array candies, where candies[i] represents the flavor of the ith candy. Your mom wants you to share these candies with your little sister by giving her k consecutive candies, but you want to keep as many flavors of candies as possible.\n\nReturn _the maximum number of unique flavors of candy you can keep after sharing_ _with your sister._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_different_binary_string(nums):\n    return \"\".join(\"1\" if nums[i][i] == \"0\" else \"0\" for i in range(len(nums)))\n```\n    \n    The algorithm iterates through the array of strings `nums` and creates a new binary string `result` by following this rule for each character at position i: if the character in the original string at position i is '0', add '1' to the result; otherwise, add '0'. This way, the resulting string will differ from every binary string in the input array in at least one position.\n    ",
+    "javascript": "\n    ```javascript\nfunction findDifferentBinaryString(nums) {\n    let result = \"\";\n    for (let i = 0; i < nums.length; i++) {\n        result += nums[i][i] === '0' ? '1' : '0';\n    }\n    return result;\n}\n```\n    \n    The algorithm iterates through the array of strings `nums` and creates a new binary string `result` by following this rule for each character at position i: if the character in the original string at position i is '0', add '1' to the result; otherwise, add '0'. This way, the resulting string will differ from every binary string in the input array in at least one position.\n    ",
+    "java": "\n    ```java\npublic String findDifferentBinaryString(String[] nums) {\n    StringBuilder result = new StringBuilder();\n    for (int i = 0; i < nums.length; i++) {\n        result.append(nums[i].charAt(i) == '0' ? '1' : '0');\n    }\n    return result.toString();\n}\n```\n    \n    The algorithm iterates through the array of strings `nums` and creates a new binary string `result` by following this rule for each character at position i: if the character in the original string at position i is '0', add '1' to the result; otherwise, add '0'. This way, the resulting string will differ from every binary string in the input array in at least one position.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

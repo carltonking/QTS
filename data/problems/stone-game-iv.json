@@ -1,0 +1,24 @@
+{
+  "id": 1510,
+  "title": "Stone Game IV",
+  "slug": "stone-game-iv",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Alice and Bob take turns playing a game, with Alice starting first.\n\nInitially, there are n stones in a pile. On each player's turn, that player makes a _move_ consisting of removing any non-zero square number of stones in the pile.\n\nAlso, if a player cannot make a move, he/she loses the game.\n\nGiven a positive integer n, return true if and only if Alice wins the game otherwise return false, assuming both players play optimally.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_lucky(arr):\n    freq = {}\n\n    for n in arr:\n        if n in freq:\n            freq[n] += 1\n        else:\n            freq[n] = 1\n\n    lucky = -1\n    for key, value in freq.items():\n        if key == value:\n            lucky = max(lucky, key)\n\n    return lucky\n```\n    \n    The algorithm starts by initializing an empty hash map called `freq` to store the frequencies of each integer in the array. Then, it iterates over the array and updates the frequencies in the hash map accordingly.\n\nAfter populating the hash map, the algorithm initializes a variable `lucky` with a value of -1. It then iterates over the key-value pairs in the hash map, checking if the key (the integer from the array) is equal to its value (the frequency). If an integer in the array has a frequency equal to its value, the algorithm updates the `lucky` variable to be the maximum of its current value and the integer in question.\n\nFinally, the `lucky` variable is returned as the largest lucky integer in the array. If no lucky integer is present, the initial value of -1 will be returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction findLucky(arr) {\n    let freq = {};\n\n    for (let n of arr) {\n        if (n in freq) {\n            freq[n]++;\n        } else {\n            freq[n] = 1;\n        }\n    }\n\n    let lucky = -1;\n    for (let key in freq) {\n        let value = freq[key];\n        if (parseInt(key) === value) {\n            lucky = Math.max(lucky, key);\n        }\n    }\n\n    return lucky;\n}\n```\n    \n    The algorithm starts by initializing an empty hash map called `freq` to store the frequencies of each integer in the array. Then, it iterates over the array and updates the frequencies in the hash map accordingly.\n\nAfter populating the hash map, the algorithm initializes a variable `lucky` with a value of -1. It then iterates over the key-value pairs in the hash map, checking if the key (the integer from the array) is equal to its value (the frequency). If an integer in the array has a frequency equal to its value, the algorithm updates the `lucky` variable to be the maximum of its current value and the integer in question.\n\nFinally, the `lucky` variable is returned as the largest lucky integer in the array. If no lucky integer is present, the initial value of -1 will be returned.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\n\npublic int findLucky(int[] arr) {\n    HashMap<Integer, Integer> freq = new HashMap<>();\n\n    for (int n : arr) {\n        freq.put(n, freq.getOrDefault(n, 0) + 1);\n    }\n\n    int lucky = -1;\n    for (int key : freq.keySet()) {\n        if (key == freq.get(key)) {\n            lucky = Math.max(lucky, key);\n        }\n    }\n\n    return lucky;\n}\n```\n    \n    The algorithm starts by initializing an empty hash map called `freq` to store the frequencies of each integer in the array. Then, it iterates over the array and updates the frequencies in the hash map accordingly.\n\nAfter populating the hash map, the algorithm initializes a variable `lucky` with a value of -1. It then iterates over the key-value pairs in the hash map, checking if the key (the integer from the array) is equal to its value (the frequency). If an integer in the array has a frequency equal to its value, the algorithm updates the `lucky` variable to be the maximum of its current value and the integer in question.\n\nFinally, the `lucky` variable is returned as the largest lucky integer in the array. If no lucky integer is present, the initial value of -1 will be returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

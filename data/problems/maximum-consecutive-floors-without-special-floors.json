@@ -1,0 +1,24 @@
+{
+  "id": 2274,
+  "title": "Maximum Consecutive Floors Without Special Floors",
+  "slug": "maximum-consecutive-floors-without-special-floors",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Alice manages a company and has rented some floors of a building as office space. Alice has decided some of these floors should be special floors, used for relaxation only.\n\nYou are given two integers bottom and top, which denote that Alice has rented all the floors from bottom to top (inclusive). You are also given the integer array special, where special[i] denotes a special floor that Alice has designated for relaxation.\n\nReturn _the maximum number of consecutive floors without a special floor_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef final_value(nums, original):\n    while original in nums:\n        original += 1\n    return original\n```\n    \n    The algorithm is pretty straightforward for all implementations. Declare function `finalValue` that accepts an array of integers `nums` and an integer `original` as input arguments.\n\nThen, execute a while loop which continues until `original` is not found in the `nums` array. Inside the while loop, increment the value of the `original` by 1 (+1) for each iteration.\n\nOnce the loop ends, return the final value of `original`.\n\nNote that the algorithm is almost the same for each programming language, with only minor syntax adjustments needed.\n    ",
+    "javascript": "\n    ```javascript\nfunction finalValue(nums, original) {\n    while (nums.includes(original)) {\n        original++;\n    }\n    return original;\n}\n```\n    \n    The algorithm is pretty straightforward for all implementations. Declare function `finalValue` that accepts an array of integers `nums` and an integer `original` as input arguments.\n\nThen, execute a while loop which continues until `original` is not found in the `nums` array. Inside the while loop, increment the value of the `original` by 1 (+1) for each iteration.\n\nOnce the loop ends, return the final value of `original`.\n\nNote that the algorithm is almost the same for each programming language, with only minor syntax adjustments needed.\n    ",
+    "java": "\n    ```java\nint finalValue(int[] nums, int original) {\n    boolean found = true;\n    while (found) {\n        found = false;\n        for (int num : nums) {\n            if (num == original) {\n                original++;\n                found = true;\n                break;\n            }\n        }\n    }\n    return original;\n}\n```\n    \n    The algorithm is pretty straightforward for all implementations. Declare function `finalValue` that accepts an array of integers `nums` and an integer `original` as input arguments.\n\nThen, execute a while loop which continues until `original` is not found in the `nums` array. Inside the while loop, increment the value of the `original` by 1 (+1) for each iteration.\n\nOnce the loop ends, return the final value of `original`.\n\nNote that the algorithm is almost the same for each programming language, with only minor syntax adjustments needed.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

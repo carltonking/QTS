@@ -1,0 +1,24 @@
+{
+  "id": 1542,
+  "title": "Find Longest Awesome Substring",
+  "slug": "find-longest-awesome-substring",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a string s. An awesome substring is a non-empty substring of s such that we can make any number of swaps in order to make it a palindrome.\n\nReturn _the length of the maximum length awesome substring of_ s.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_power(s: str) -> int:\n    max_power = current_power = 1\n\n    for i in range(1, len(s)):\n        if s[i] == s[i-1]:\n            current_power += 1\n        else:\n            max_power = max(max_power, current_power)\n            current_power = 1\n\n    return max(max_power, current_power)\n```\n    \n    The given algorithm iterates through the input string `s` and compares the current character with the previous character. If the current character is equal to the previous one, it increments the `currentPower` value. If not, it compares the `maxPower` and `currentPower` values, assigning the maximum value to `maxPower` and resetting the `currentPower` to 1. Once the string has been iterated through, the max power is the maximum of `maxPower` and `currentPower`. This algorithm works in O(n) time complexity, where n is the length of the input string.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxPower(s) {\n    let maxPower = 0, currentPower = 1;\n\n    for (let i = 1; i < s.length; i++) {\n        if (s[i] === s[i-1]) {\n            currentPower++;\n        } else {\n            maxPower = Math.max(maxPower, currentPower);\n            currentPower = 1;\n        }\n    }\n\n    return Math.max(maxPower, currentPower);\n}\n```\n    \n    The given algorithm iterates through the input string `s` and compares the current character with the previous character. If the current character is equal to the previous one, it increments the `currentPower` value. If not, it compares the `maxPower` and `currentPower` values, assigning the maximum value to `maxPower` and resetting the `currentPower` to 1. Once the string has been iterated through, the max power is the maximum of `maxPower` and `currentPower`. This algorithm works in O(n) time complexity, where n is the length of the input string.\n    ",
+    "java": "\n    ```java\npublic int maxPower(String s) {\n    int maxPower = 0, currentPower = 1;\n\n    for (int i = 1; i < s.length(); i++) {\n        if (s.charAt(i) == s.charAt(i-1)) {\n            currentPower++;\n        } else {\n            maxPower = Math.max(maxPower, currentPower);\n            currentPower = 1;\n        }\n    }\n\n    return Math.max(maxPower, currentPower);\n}\n```\n    \n    The given algorithm iterates through the input string `s` and compares the current character with the previous character. If the current character is equal to the previous one, it increments the `currentPower` value. If not, it compares the `maxPower` and `currentPower` values, assigning the maximum value to `maxPower` and resetting the `currentPower` to 1. Once the string has been iterated through, the max power is the maximum of `maxPower` and `currentPower`. This algorithm works in O(n) time complexity, where n is the length of the input string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

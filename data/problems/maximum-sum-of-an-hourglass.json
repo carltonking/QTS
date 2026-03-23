@@ -1,0 +1,24 @@
+{
+  "id": 2428,
+  "title": "Maximum Sum of an Hourglass",
+  "slug": "maximum-sum-of-an-hourglass",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an m x n integer matrix grid.\n\nWe define an hourglass as a part of the matrix with the following form:\n\nReturn _the maximum sum of the elements of an hourglass_.\n\nNote that an hourglass cannot be rotated and must be entirely contained within the matrix.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_hourglass_sum(grid):\n    m, n = len(grid), len(grid[0])\n    max_sum = float('-inf')\n    for i in range(1, m - 1):\n        for j in range(1, n - 1):\n            sum = grid[i-1][j-1] + grid[i-1][j] + grid[i-1][j+1] \\\n                  + grid[i][j] \\\n                  + grid[i+1][j-1] + grid[i+1][j] + grid[i+1][j+1]\n            max_sum = max(max_sum, sum)\n    return max_sum\n```\n\n    \n    The problem requires us to find the maximum sum of hourglasses in the given grid.\n\nWe first find the dimensions of the grid, m and n. We initialize maxSum as the smallest integer value possible (-inf for Python).\n\nSince the hourglass shape should be entirely contained within the grid, we start our traversal from (1,1), i.e., one cell shifted right and down from the top-left corner of the grid, continuing until (m-2, n-2). Both these indices are included in the traversal.\n\nIn the nested for loop, we calculate the hourglass sum for each cell by adding the values of its hourglass pattern: three cells horizontally from the cell above it, the cell itself, and three cells horizontally from the cell below it. We then compare the calculated sum with the current maxSum, keeping the larger value as the new maxSum.\n\nFinally, we return the maxSum after traversing the entire grid.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxHourglassSum(grid) {\n    let m = grid.length, n = grid[0].length;\n    let maxSum = -Infinity;\n    for(let i = 1; i < m - 1; ++i) {\n        for(let j = 1; j < n - 1; ++j) {\n            let sum = grid[i-1][j-1] + grid[i-1][j] + grid[i-1][j+1]\n                      + grid[i][j]\n                      + grid[i+1][j-1] + grid[i+1][j] + grid[i+1][j+1];\n            maxSum = Math.max(maxSum, sum);\n        }\n    }\n    return maxSum;\n}\n```\n\n    \n    The problem requires us to find the maximum sum of hourglasses in the given grid.\n\nWe first find the dimensions of the grid, m and n. We initialize maxSum as the smallest integer value possible (-inf for Python).\n\nSince the hourglass shape should be entirely contained within the grid, we start our traversal from (1,1), i.e., one cell shifted right and down from the top-left corner of the grid, continuing until (m-2, n-2). Both these indices are included in the traversal.\n\nIn the nested for loop, we calculate the hourglass sum for each cell by adding the values of its hourglass pattern: three cells horizontally from the cell above it, the cell itself, and three cells horizontally from the cell below it. We then compare the calculated sum with the current maxSum, keeping the larger value as the new maxSum.\n\nFinally, we return the maxSum after traversing the entire grid.\n    ",
+    "java": "\n    ```java\npublic int maxHourglassSum(int[][] grid) {\n    int m = grid.length, n = grid[0].length;\n    int maxSum = Integer.MIN_VALUE;\n    for(int i = 1; i < m - 1; ++i) {\n        for(int j = 1; j < n - 1; ++j) {\n            int sum = grid[i-1][j-1] + grid[i-1][j] + grid[i-1][j+1]\n                      + grid[i][j]\n                      + grid[i+1][j-1] + grid[i+1][j] + grid[i+1][j+1];\n            maxSum = Math.max(maxSum, sum);\n        }\n    }\n    return maxSum;\n}\n```\n\n    \n    The problem requires us to find the maximum sum of hourglasses in the given grid.\n\nWe first find the dimensions of the grid, m and n. We initialize maxSum as the smallest integer value possible (-inf for Python).\n\nSince the hourglass shape should be entirely contained within the grid, we start our traversal from (1,1), i.e., one cell shifted right and down from the top-left corner of the grid, continuing until (m-2, n-2). Both these indices are included in the traversal.\n\nIn the nested for loop, we calculate the hourglass sum for each cell by adding the values of its hourglass pattern: three cells horizontally from the cell above it, the cell itself, and three cells horizontally from the cell below it. We then compare the calculated sum with the current maxSum, keeping the larger value as the new maxSum.\n\nFinally, we return the maxSum after traversing the entire grid.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

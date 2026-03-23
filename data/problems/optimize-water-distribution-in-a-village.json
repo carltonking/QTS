@@ -1,0 +1,24 @@
+{
+  "id": 1168,
+  "title": "Optimize Water Distribution in a Village",
+  "slug": "optimize-water-distribution-in-a-village",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "There are n houses in a village. We want to supply water for all the houses by building wells and laying pipes.\n\nFor each house i, we can either build a well inside it directly with cost wells[i - 1] (note the -1 due to 0-indexing), or pipe in water from another well to it. The costs to lay pipes between houses are given by the array pipes where each pipes[j] = [house1j, house2j, costj] represents the cost to connect house1j and house2j together using a pipe. Connections are bidirectional, and there could be multiple valid connections between the same two houses with different costs.\n\nReturn _the minimum total cost to supply water to all houses_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef duplicateZeros(arr):\n    n = len(arr)\n    i = 0\n    while i < n - 1:\n        if arr[i] == 0:\n            for j in range(n - 2, i, -1):\n                arr[j + 1] = arr[j]\n            arr[i + 1] = 0\n            i += 2\n        else:\n            i += 1\n```\n    \n    The algorithm iterates through the input array from left to right. Whenever a zero is found, it shifts all the elements after that zero one position to the right, starting from the second-to-last element, up to the element that is right after the zero. Then, it sets the next array index (i+1) to zero, effectively duplicating the zero, and increments i by one to skip the duplicated zero. This process repeats for each zero found in the array, until the end is reached.\n    ",
+    "javascript": "\n    ```javascript\nfunction duplicateZeros(arr) {\n    let n = arr.length;\n    for (let i = 0; i < n - 1; i++) {\n        if (arr[i] === 0) {\n            for (let j = n - 2; j > i; j--) {\n                arr[j + 1] = arr[j];\n            }\n            arr[i + 1] = 0;\n            i++;\n        }\n    }\n}\n```\n    \n    The algorithm iterates through the input array from left to right. Whenever a zero is found, it shifts all the elements after that zero one position to the right, starting from the second-to-last element, up to the element that is right after the zero. Then, it sets the next array index (i+1) to zero, effectively duplicating the zero, and increments i by one to skip the duplicated zero. This process repeats for each zero found in the array, until the end is reached.\n    ",
+    "java": "\n    ```java\npublic void duplicateZeros(int[] arr) {\n    int n = arr.length;\n    for (int i = 0; i < n - 1; i++) {\n        if (arr[i] == 0) {\n            for (int j = n - 2; j > i; j--) {\n                arr[j + 1] = arr[j];\n            }\n            arr[i + 1] = 0;\n            i++;\n        }\n    }\n}\n```\n    \n    The algorithm iterates through the input array from left to right. Whenever a zero is found, it shifts all the elements after that zero one position to the right, starting from the second-to-last element, up to the element that is right after the zero. Then, it sets the next array index (i+1) to zero, effectively duplicating the zero, and increments i by one to skip the duplicated zero. This process repeats for each zero found in the array, until the end is reached.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

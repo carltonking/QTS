@@ -1,0 +1,24 @@
+{
+  "id": 1307,
+  "title": "Verbal Arithmetic Puzzle",
+  "slug": "verbal-arithmetic-puzzle",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given an equation, represented by words on the left side and the result on the right side.\n\nYou need to check if the equation is solvable under the following rules:\n\n*   Each character is decoded as one digit (0 - 9).\n*   No two characters can map to the same digit.\n*   Each words[i] and result are decoded as one number without leading zeros.\n*   Sum of numbers on the left side (words) will equal to the number on the right side (result).\n\nReturn true _if the equation is solvable, otherwise return_ false.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef nthUglyNumber(n, a, b, c):\n    from math import gcd\n\n    ab = a * b // gcd(a, b)\n    ac = a * c // gcd(a, c)\n    bc = b * c // gcd(b, c)\n    abc = a * bc // gcd(a, bc)\n\n    left, right = 0, 2 * 10**9\n    while left < right:\n        mid = left + (right - left) // 2\n        cnt = mid // a + mid // b + mid // c - mid // ab - mid // ac - mid // bc + mid // abc\n        if cnt < n:\n            left = mid + 1\n        else:\n            right = mid\n\n    return left\n```\n    \n    We can solve this problem using binary search. First, we find the least common multiple of each pair of numbers (a, b), (a, c), and (b, c) as well as the least common multiple of all three numbers (a, b, c). Then, we use binary search to find the ugly number. In each iteration, we check the count of numbers divisible by a, b, or c in the range [0, mid] and compare it with our target index n. If the count is less than n, we search in the larger half of the search space, otherwise, we search in the smaller half. When our search range becomes [0,1] or left becomes equal to right, we have found the nth ugly number.\n    ",
+    "javascript": "\n    ```javascript\nfunction nthUglyNumber(n, a, b, c) {\n    const gcd = (x, y) => y === 0 ? x : gcd(y, x % y);\n\n    let ab = a * b / gcd(a, b);\n    let ac = a * c / gcd(a, c);\n    let bc = b * c / gcd(b, c);\n    let abc = a * (b * c / gcd(b, c)) / gcd(a, (b * c / gcd(b, c)));\n\n    let left = 0, right = 2e9;\n    while (left < right) {\n        let mid = left + Math.floor((right - left) / 2);\n        let cnt = Math.floor(mid / a) + Math.floor(mid / b) + Math.floor(mid / c) - Math.floor(mid / ab) -\n                  Math.floor(mid / ac) - Math.floor(mid / bc) + Math.floor(mid / abc);\n        if (cnt < n) {\n            left = mid + 1;\n        } else {\n            right = mid;\n        }\n    }\n    return left;\n}\n```\n    \n    We can solve this problem using binary search. First, we find the least common multiple of each pair of numbers (a, b), (a, c), and (b, c) as well as the least common multiple of all three numbers (a, b, c). Then, we use binary search to find the ugly number. In each iteration, we check the count of numbers divisible by a, b, or c in the range [0, mid] and compare it with our target index n. If the count is less than n, we search in the larger half of the search space, otherwise, we search in the smaller half. When our search range becomes [0,1] or left becomes equal to right, we have found the nth ugly number.\n    ",
+    "java": "\n    ```java\npublic int nthUglyNumber(int n, int a, int b, int c) {\n    long ab = a * b / gcd(a, b);\n    long ac = a * c / gcd(a, c);\n    long bc = b * c / gcd(b, c);\n    long abc = a * (b * c / gcd(b, c)) / gcd(a, (b * c / gcd(b, c)));\n\n    long left = 0, right = 2000000000;\n    while (left < right) {\n        long mid = left + (right - left) / 2;\n        long cnt = mid / a + mid / b + mid / c - mid / ab - mid / ac - mid / bc + mid / abc;\n        if (cnt < n) {\n            left = mid + 1;\n        } else {\n            right = mid;\n        }\n    }\n    return (int)left;\n}\n\nprivate long gcd(long a, long b) {\n    return b == 0 ? a : gcd(b, a % b);\n}\n```\n    \n    We can solve this problem using binary search. First, we find the least common multiple of each pair of numbers (a, b), (a, c), and (b, c) as well as the least common multiple of all three numbers (a, b, c). Then, we use binary search to find the ugly number. In each iteration, we check the count of numbers divisible by a, b, or c in the range [0, mid] and compare it with our target index n. If the count is less than n, we search in the larger half of the search space, otherwise, we search in the smaller half. When our search range becomes [0,1] or left becomes equal to right, we have found the nth ugly number.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

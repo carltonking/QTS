@@ -1,0 +1,24 @@
+{
+  "id": 1265,
+  "title": "Print Immutable Linked List in Reverse",
+  "slug": "print-immutable-linked-list-in-reverse",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an immutable linked list, print out all values of each node in reverse with the help of the following interface:\n\n*   ImmutableListNode: An interface of immutable linked list, you are given the head of the list.\n\nYou need to use the following functions to access the linked list (you can't access the ImmutableListNode directly):\n\n*   ImmutableListNode.printValue(): Print value of the current node.\n*   ImmutableListNode.getNext(): Return the next node.\n\nThe input is only given to initialize the linked list internally. You must solve this problem without modifying the linked list. In other words, you must operate the linked list using only the mentioned APIs.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef printLinkedListInReverse(head: 'ImmutableListNode') -> None:\n    if head is not None:\n        printLinkedListInReverse(head.getNext())\n        head.printValue()\n```\n    \n    The algorithm uses a simple recursive approach to solve the problem. Starting from the head of the linked list, it checks if the current node is not null. If the current node is not null, it calls the function recursively with the next Node.\n\nOnce the recursion reaches the last Node, the function starts returning and executing the printValue() function for each Node, starting from the last one, which effectively prints the values in reverse order.\n\nThis approach uses constant space complexity, but a recursive approach means a linear time complexity. The recursion stack can also overflow for long linked lists. If we want to solve the recursion stack issue, we can use an iterative approach by storing each Node reference in a stack, which improves space complexity but would not be constant anymore (linear space complexity).\n    ",
+    "javascript": "\n    ```javascript\nfunction printLinkedListInReverse(head) {\n    if (head !== null) {\n        printLinkedListInReverse(head.getNext());\n        head.printValue();\n    }\n}\n```\n    \n    The algorithm uses a simple recursive approach to solve the problem. Starting from the head of the linked list, it checks if the current node is not null. If the current node is not null, it calls the function recursively with the next Node.\n\nOnce the recursion reaches the last Node, the function starts returning and executing the printValue() function for each Node, starting from the last one, which effectively prints the values in reverse order.\n\nThis approach uses constant space complexity, but a recursive approach means a linear time complexity. The recursion stack can also overflow for long linked lists. If we want to solve the recursion stack issue, we can use an iterative approach by storing each Node reference in a stack, which improves space complexity but would not be constant anymore (linear space complexity).\n    ",
+    "java": "\n    ```java\npublic void printLinkedListInReverse(ImmutableListNode head) {\n    if (head != null) {\n        printLinkedListInReverse(head.getNext());\n        head.printValue();\n    }\n}\n```\n    \n    The algorithm uses a simple recursive approach to solve the problem. Starting from the head of the linked list, it checks if the current node is not null. If the current node is not null, it calls the function recursively with the next Node.\n\nOnce the recursion reaches the last Node, the function starts returning and executing the printValue() function for each Node, starting from the last one, which effectively prints the values in reverse order.\n\nThis approach uses constant space complexity, but a recursive approach means a linear time complexity. The recursion stack can also overflow for long linked lists. If we want to solve the recursion stack issue, we can use an iterative approach by storing each Node reference in a stack, which improves space complexity but would not be constant anymore (linear space complexity).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

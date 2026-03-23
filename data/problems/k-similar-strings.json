@@ -1,0 +1,24 @@
+{
+  "id": 854,
+  "title": "K-Similar Strings",
+  "slug": "k-similar-strings",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Strings s1 and s2 are k\\-similar (for some non-negative integer k) if we can swap the positions of two letters in s1 exactly k times so that the resulting string equals s2.\n\nGiven two anagrams s1 and s2, return the smallest k for which s1 and s2 are k\\-similar.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef kSimilarity(s1: str, s2: str) -> int:\n    k = 0\n    temp = list(s1)\n\n    for i in range(len(temp)):\n        if temp[i] != s2[i]:\n            j = i + 1\n            while temp[j] != s2[i] or s2[j] == temp[j]:\n                j += 1\n            temp[i], temp[j] = temp[j], temp[i]\n            k += 1\n\n    return k\n```\n    \n    The algorithm works by iterating over each character position in the strings, and checking if the characters in s1 and s2 are different at that position. If they are indeed different, we find the index j in the remaining substring of s1 such that swapping the characters at i and j would make s1 and s2 match at position i. We then perform that swap in s1 and increment the counter k. When we reach the end of the strings, the counter k contains the minimum number of swaps necessary to make s1 equal to s2.\n    ",
+    "javascript": "\n    ```javascript\nfunction kSimilarity(s1, s2) {\n    let k = 0;\n    let temp = s1.split('');\n\n    for (let i = 0; i < temp.length; i++) {\n        if (temp[i] !== s2[i]) {\n            let j = i + 1;\n            while (temp[j] !== s2[i] || s2[j] === temp[j]) {\n                j++;\n            }\n            [temp[i], temp[j]] = [temp[j], temp[i]];\n            k++;\n        }\n    }\n    return k;\n}\n```\n    \n    The algorithm works by iterating over each character position in the strings, and checking if the characters in s1 and s2 are different at that position. If they are indeed different, we find the index j in the remaining substring of s1 such that swapping the characters at i and j would make s1 and s2 match at position i. We then perform that swap in s1 and increment the counter k. When we reach the end of the strings, the counter k contains the minimum number of swaps necessary to make s1 equal to s2.\n    ",
+    "java": "\n    ```java\nint kSimilarity(String s1, String s2) {\n    int k = 0;\n    StringBuilder sb = new StringBuilder(s1);\n\n    for (int i = 0; i < sb.length(); i++) {\n        if (sb.charAt(i) != s2.charAt(i)) {\n            int j = i + 1;\n            while (sb.charAt(j) != s2.charAt(i) || s2.charAt(j) == sb.charAt(j)) {\n                j++;\n            }\n            sb.setCharAt(j, sb.charAt(i));\n            sb.setCharAt(i, s2.charAt(i));\n            k++;\n        }\n    }\n    return k;\n}\n```\n    \n    The algorithm works by iterating over each character position in the strings, and checking if the characters in s1 and s2 are different at that position. If they are indeed different, we find the index j in the remaining substring of s1 such that swapping the characters at i and j would make s1 and s2 match at position i. We then perform that swap in s1 and increment the counter k. When we reach the end of the strings, the counter k contains the minimum number of swaps necessary to make s1 equal to s2.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

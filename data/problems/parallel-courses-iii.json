@@ -1,0 +1,24 @@
+{
+  "id": 2050,
+  "title": "Parallel Courses III",
+  "slug": "parallel-courses-iii",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an integer n, which indicates that there are n courses labeled from 1 to n. You are also given a 2D integer array relations where relations[j] = [prevCoursej, nextCoursej] denotes that course prevCoursej has to be completed before course nextCoursej (prerequisite relationship). Furthermore, you are given a 0-indexed integer array time where time[i] denotes how many months it takes to complete the (i+1)th course.\n\nYou must find the minimum number of months needed to complete all the courses following these rules:\n\n*   You may start taking a course at any time if the prerequisites are met.\n*   Any number of courses can be taken at the same time.\n\nReturn _the minimum number of months needed to complete all the courses_.\n\nNote: The test cases are generated such that it is possible to complete every course (i.e., the graph is a directed acyclic graph).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_good_digit_strings(n):\n    mod = 10 ** 9 + 7\n    even_digits, prime_digits = 5, 4\n    total = 1\n    for i in range(n):\n        total = total * (even_digits if i % 2 == 0 else prime_digits) % mod\n    return total\n```\n    \n    The algorithm counts good digit strings of length n. There are 5 even digits (0, 2, 4, 6, 8) and 4 prime digits (2, 3, 5, 7). We initialize the count of good digit strings with a value of 1.\n\nWe then loop through the range [0, n). For each index i, if i is even, we multiply the total count by the number of even digits, and if i is odd, we multiply it by the number of prime digits. This takes into account all possible combinations of good digit strings.\n\nAfter iterating through the range, we return the total count modulo 1e9 + 7. This is done to keep the result within a specified range and prevent integer overflow.\n    ",
+    "javascript": "\n    ```javascript\nfunction count_good_digit_strings(n) {\n    const mod = 1e9 + 7;\n    let even_digits = 5, prime_digits = 4, total = 1;\n    for (let i = 0; i < n; ++i) {\n        total = (total * (i % 2 === 0 ? even_digits : prime_digits)) % mod;\n    }\n    return total;\n}\n```\n    \n    The algorithm counts good digit strings of length n. There are 5 even digits (0, 2, 4, 6, 8) and 4 prime digits (2, 3, 5, 7). We initialize the count of good digit strings with a value of 1.\n\nWe then loop through the range [0, n). For each index i, if i is even, we multiply the total count by the number of even digits, and if i is odd, we multiply it by the number of prime digits. This takes into account all possible combinations of good digit strings.\n\nAfter iterating through the range, we return the total count modulo 1e9 + 7. This is done to keep the result within a specified range and prevent integer overflow.\n    ",
+    "java": "\n    ```java\npublic int count_good_digit_strings(int n) {\n    final int mod = (int)1e9 + 7;\n    int even_digits = 5, prime_digits = 4;\n    long total = 1;\n    for (int i = 0; i < n; ++i) {\n        total = (total * (i % 2 == 0 ? even_digits : prime_digits)) % mod;\n    }\n    return (int)total;\n}\n```\n    \n    The algorithm counts good digit strings of length n. There are 5 even digits (0, 2, 4, 6, 8) and 4 prime digits (2, 3, 5, 7). We initialize the count of good digit strings with a value of 1.\n\nWe then loop through the range [0, n). For each index i, if i is even, we multiply the total count by the number of even digits, and if i is odd, we multiply it by the number of prime digits. This takes into account all possible combinations of good digit strings.\n\nAfter iterating through the range, we return the total count modulo 1e9 + 7. This is done to keep the result within a specified range and prevent integer overflow.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

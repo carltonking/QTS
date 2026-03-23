@@ -1,0 +1,24 @@
+{
+  "id": 1362,
+  "title": "Closest Divisors",
+  "slug": "closest-divisors",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer num, find the closest two integers in absolute difference whose product equals num + 1 or num + 2.\n\nReturn the two integers in any order.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findClosestDivisors(num):\n    for i in range(int((num + 2) ** 0.5), 0, -1):\n        if (num + 1) % i == 0:\n            return [i, (num + 1) // i]\n        if (num + 2) % i == 0:\n            return [i, (num + 2) // i]\n    return []\n```\n    \n    Start by iterating through the numbers from the square root of `num+2` and checking if the current number is a divisor for `num + 1` or `num + 2`. If any divisor is found, return it along with the corresponding quotient. Starting from the square root ensures that the absolute difference is minimized.\n    ",
+    "javascript": "\n    ```javascript\nfunction findClosestDivisors(num) {\n    for (let i = Math.floor(Math.sqrt(num + 2)); i >= 1; i--) {\n        if ((num + 1) % i === 0) return [i, (num + 1) / i];\n        if ((num + 2) % i === 0) return [i, (num + 2) / i];\n    }\n    return [];\n}\n```\n    \n    Start by iterating through the numbers from the square root of `num+2` and checking if the current number is a divisor for `num + 1` or `num + 2`. If any divisor is found, return it along with the corresponding quotient. Starting from the square root ensures that the absolute difference is minimized.\n    ",
+    "java": "\n    ```java\npublic int[] findClosestDivisors(int num) {\n    for (int i = (int)Math.sqrt(num + 2); i >= 1; i--) {\n        if ((num + 1) % i == 0) return new int[]{i, (num + 1) / i};\n        if ((num + 2) % i == 0) return new int[]{i, (num + 2) / i};\n    }\n    return new int[0];\n}\n```\n    \n    Start by iterating through the numbers from the square root of `num+2` and checking if the current number is a divisor for `num + 1` or `num + 2`. If any divisor is found, return it along with the corresponding quotient. Starting from the square root ensures that the absolute difference is minimized.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

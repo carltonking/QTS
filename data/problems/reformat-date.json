@@ -1,0 +1,24 @@
+{
+  "id": 1507,
+  "title": "Reformat Date",
+  "slug": "reformat-date",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a date string in the form Day Month Year, where:\n\n*   Day is in the set { \"1st \", \"2nd \", \"3rd \", \"4th \", ..., \"30th \", \"31st \"}.\n*   Month is in the set { \"Jan \", \"Feb \", \"Mar \", \"Apr \", \"May \", \"Jun \", \"Jul \", \"Aug \", \"Sep \", \"Oct \", \"Nov \", \"Dec \"}.\n*   Year is in the range [1900, 2100].\n\nConvert the date string to the format YYYY-MM-DD, where:\n\n*   YYYY denotes the 4 digit year.\n*   MM denotes the 2 digit month.\n*   DD denotes the 2 digit day.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef hasValidPath(grid):\n    m, n = len(grid), len(grid[0])\n    visited = [[False for _ in range(n)] for _ in range(m)]\n\n    return dfs(grid, 0, 0, m, n, visited)\n\ndef dfs(grid, x, y, m, n, visited):\n    if x < 0 or y < 0 or x >= m or y >= n or visited[x][y]:\n        return False\n    if x == m - 1 and y == n - 1:\n        return True\n    \n    visited[x][y] = True\n\n    next_x = [-1, 0, 1, 0]\n    next_y = [0, 1, 0, -1]\n\n    for i in range(4):\n        dx = x + next_x[i]\n        dy = y + next_y[i]\n\n        if dfs(grid, dx, dy, m, n, visited):\n            return True\n\n    return False\n```\n    \n    The algorithm performs a depth-first search through the grid starting from the upper-left cell (0,0), marking each visited cell in a separate grid. It iterates 4 different directions for each cell, checking boundaries, and continuing its search if a valid path is found from the next cell in the given direction.\n\nThe DFS continues until it reaches the bottom-right cell (m-1, n-1), at which point it returns true. If the algorithm cannot find a path to the bottom-right cell, it returns false.\n    ",
+    "javascript": "\n    ```javascript\nfunction hasValidPath(grid) {\n    const m = grid.length;\n    const n = grid[0].length;\n    const visited = new Array(m).fill(null).map(() => new Array(n).fill(false));\n\n    return dfs(grid, 0, 0, m, n, visited);\n}\n\nfunction dfs(grid, x, y, m, n, visited) {\n    if (x < 0 || y < 0 || x >= m || y >= n || visited[x][y]) return false;\n    if (x === m - 1 && y === n - 1) return true;\n\n    visited[x][y] = true;\n\n    const next_x = [-1, 0, 1, 0];\n    const next_y = [0, 1, 0, -1];\n\n    for (let i = 0; i < 4; i++) {\n        const dx = x + next_x[i];\n        const dy = y + next_y[i];\n\n        if (dfs(grid, dx, dy, m, n, visited)) return true;\n    }\n\n    return false;\n}\n```\n    \n    The algorithm performs a depth-first search through the grid starting from the upper-left cell (0,0), marking each visited cell in a separate grid. It iterates 4 different directions for each cell, checking boundaries, and continuing its search if a valid path is found from the next cell in the given direction.\n\nThe DFS continues until it reaches the bottom-right cell (m-1, n-1), at which point it returns true. If the algorithm cannot find a path to the bottom-right cell, it returns false.\n    ",
+    "java": "\n    ```java\npublic boolean hasValidPath(int[][] grid) {\n    int m = grid.length;\n    int n = grid[0].length;\n    boolean[][] visited = new boolean[m][n];\n\n    return dfs(grid, 0, 0, m, n, visited);\n}\n\nprivate boolean dfs(int[][] grid, int x, int y, int m, int n, boolean[][] visited) {\n    if (x < 0 || y < 0 || x >= m || y >= n || visited[x][y]) return false;\n    if (x == m - 1 && y == n - 1) return true;\n    \n    visited[x][y] = true;\n\n    int[] next_x = {-1, 0, 1, 0};\n    int[] next_y = {0, 1, 0, -1};\n\n    for (int i = 0; i < 4; i++) {\n        int dx = x + next_x[i];\n        int dy = y + next_y[i];\n\n        if (dfs(grid, dx, dy, m, n, visited)) return true;\n    }\n\n    return false;\n}\n```\n    \n    The algorithm performs a depth-first search through the grid starting from the upper-left cell (0,0), marking each visited cell in a separate grid. It iterates 4 different directions for each cell, checking boundaries, and continuing its search if a valid path is found from the next cell in the given direction.\n\nThe DFS continues until it reaches the bottom-right cell (m-1, n-1), at which point it returns true. If the algorithm cannot find a path to the bottom-right cell, it returns false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

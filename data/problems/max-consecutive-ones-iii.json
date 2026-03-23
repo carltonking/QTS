@@ -1,0 +1,24 @@
+{
+  "id": 1004,
+  "title": "Max Consecutive Ones III",
+  "slug": "max-consecutive-ones-iii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a binary array nums and an integer k, return _the maximum number of consecutive_ 1_'s in the array if you can flip at most_ k 0's.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef least_ops_express_target(x, target):\n    if x == target:\n        return 0\n    if target == 1:\n        return 1\n    if x > target:\n        return min(2 * target - 1, 2 * (x - target))\n\n    k = 0\n    p = x\n    while p < target:\n        k += 1\n        p *= x\n\n    ans = float('inf')\n    d = 1\n\n    for i in range(k - 1, -1, -1):\n        while p >= target + d * (1 - x):\n            p -= d\n            ans = min(ans, i + int(math.log2(target // d) + 1) + int(d == 1 and -1 or 0))\n        d = d * x + 1\n\n    return ans\n```\n\n    \n    1. If x is equal to the target, we don't need any operation, so we return 0.\n2. If the target is equal to 1, we need only 1 operation (+ or - x), so we return 1.\n3. If x is greater than the target, we need 2 * (target - 1) or 2 * (x - target) operations to build the target.\n4. The main idea of the algorithm is to analyze the potential range within which we can build the expression by multiplying the base x value.\n5. We use the logarithm to reduce the numbers and find the minimum number of operations to reach the target in this range.\n6. We keep updating the minimum number of operations while traversing through the loop.\n7. In the end, we return the minimum number of operations.\n    ",
+    "javascript": "\n    ```javascript\nfunction leastOpsExpressTarget(x, target) {\n    if (x === target) return 0;\n    if (target === 1) return 1;\n    if (x > target) return Math.min(2 * target - 1, 2 * (x - target));\n    \n    let k = 0;\n    let p = x;\n    while (p < target) {\n        k++;\n        p *= x;\n    }\n    \n    let ans = Infinity;\n    let d = 1;\n\n    for (let i = k - 1; i >= 0; i--) {\n        while (p >= target + d * (1 - x)) {\n            p -= d;\n            ans = Math.min(ans, i + Math.floor(Math.log2(target / d) + 1) + (d === 1 ? -1 : 0));\n        }\n        d = d * x + 1;\n    }\n\n    return ans;\n}\n```\n\n    \n    1. If x is equal to the target, we don't need any operation, so we return 0.\n2. If the target is equal to 1, we need only 1 operation (+ or - x), so we return 1.\n3. If x is greater than the target, we need 2 * (target - 1) or 2 * (x - target) operations to build the target.\n4. The main idea of the algorithm is to analyze the potential range within which we can build the expression by multiplying the base x value.\n5. We use the logarithm to reduce the numbers and find the minimum number of operations to reach the target in this range.\n6. We keep updating the minimum number of operations while traversing through the loop.\n7. In the end, we return the minimum number of operations.\n    ",
+    "java": "\n    ```java\npublic int leastOpsExpressTarget(int x, int target) {\n    if (x == target) return 0;\n    if (target == 1) return 1;\n    if (x > target) return Math.min(2 * target - 1, 2 * (x - target));\n    \n    int k = 0;\n    long p = x;\n    while (p < target) {\n        k++;\n        p *= x;\n    }\n    \n    int ans = Integer.MAX_VALUE;\n    long d = 1;\n\n    for (int i = k - 1; i >= 0; i--) {\n        while (p >= target + d * (1 - x)) {\n            p -= d;\n            ans = Math.min(ans, i + (int) (Math.log(target / d) / Math.log(2) + 1) + (int) (d == 1 ? -1 : 0));\n        }\n        d = d * x + 1;\n    }\n\n    return ans;\n}\n```\n\n    \n    1. If x is equal to the target, we don't need any operation, so we return 0.\n2. If the target is equal to 1, we need only 1 operation (+ or - x), so we return 1.\n3. If x is greater than the target, we need 2 * (target - 1) or 2 * (x - target) operations to build the target.\n4. The main idea of the algorithm is to analyze the potential range within which we can build the expression by multiplying the base x value.\n5. We use the logarithm to reduce the numbers and find the minimum number of operations to reach the target in this range.\n6. We keep updating the minimum number of operations while traversing through the loop.\n7. In the end, we return the minimum number of operations.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

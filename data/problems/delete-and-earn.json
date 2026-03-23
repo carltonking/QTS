@@ -1,0 +1,24 @@
+{
+  "id": 740,
+  "title": "Delete and Earn",
+  "slug": "delete-and-earn",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array nums. You want to maximize the number of points you get by performing the following operation any number of times:\n\n*   Pick any nums[i] and delete it to earn nums[i] points. Afterwards, you must delete every element equal to nums[i] - 1 and every element equal to nums[i] + 1.\n\nReturn _the maximum number of points you can earn by applying the above operation some number of times_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_points(nums):\n    dp = [0] * 100001\n    max_points = 0\n    for num in nums:\n        dp[num] += 1\n    for i in range(2, len(dp)):\n        dp[i] = max(dp[i - 1], dp[i - 2] + i * dp[i])\n        max_points = max(max_points, dp[i])\n    return max_points\n```\n    \n    The algorithm uses dynamic programming to determine the maximum number of points earned from the input integer array. We create a `dp` array to store counts of integer occurrences in `nums`. We then iterate through the `dp` array, and for each index `i`, calculate the maximum number of points earned by choosing to either keep or skip the current value (represented by the index). The final answer (max points) is obtained from the last index of the `dp` array.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxPoints(nums) {\n    const dp = new Array(100001).fill(0);\n    let max_points = 0;\n    for (let num of nums) {\n        dp[num]++;\n    }\n    for (let i = 2; i < dp.length; i++) {\n        dp[i] = Math.max(dp[i - 1], dp[i - 2] + i * dp[i]);\n        max_points = Math.max(max_points, dp[i]);\n    }\n    return max_points;\n}\n```\n    \n    The algorithm uses dynamic programming to determine the maximum number of points earned from the input integer array. We create a `dp` array to store counts of integer occurrences in `nums`. We then iterate through the `dp` array, and for each index `i`, calculate the maximum number of points earned by choosing to either keep or skip the current value (represented by the index). The final answer (max points) is obtained from the last index of the `dp` array.\n    ",
+    "java": "\n    ```java\npublic int maxPoints(int[] nums) {\n    int[] dp = new int[100001];\n    int max_points = 0;\n    for (int num : nums) {\n        dp[num]++;\n    }\n    for (int i = 2; i < dp.length; i++) {\n        dp[i] = Math.max(dp[i - 1], dp[i - 2] + i * dp[i]);\n        max_points = Math.max(max_points, dp[i]);\n    }\n    return max_points;\n}\n```\n    \n    The algorithm uses dynamic programming to determine the maximum number of points earned from the input integer array. We create a `dp` array to store counts of integer occurrences in `nums`. We then iterate through the `dp` array, and for each index `i`, calculate the maximum number of points earned by choosing to either keep or skip the current value (represented by the index). The final answer (max points) is obtained from the last index of the `dp` array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

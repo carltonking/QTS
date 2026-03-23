@@ -1,0 +1,24 @@
+{
+  "id": 2103,
+  "title": "Rings and Rods",
+  "slug": "rings-and-rods",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "There are n rings and each ring is either red, green, or blue. The rings are distributed across ten rods labeled from 0 to 9.\n\nYou are given a string rings of length 2n that describes the n rings that are placed onto the rods. Every two characters in rings forms a color-position pair that is used to describe each ring where:\n\n*   The first character of the ith pair denotes the ith ring's color ('R', 'G', 'B').\n*   The second character of the ith pair denotes the rod that the ith ring is placed on ('0' to '9').\n\nFor example, \"R3G2B1 \" describes n == 3 rings: a red ring placed onto the rod labeled 3, a green ring placed onto the rod labeled 2, and a blue ring placed onto the rod labeled 1.\n\nReturn _the number of rods that have all three colors of rings on them._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findFarmland(land):\n    m, n = len(land), len(land[0])\n    res = []\n    \n    for i in range(m):\n        for j in range(n):\n            if land[i][j] == 1:\n                r, c = i, j\n                while r < m and land[r][j] == 1: r += 1\n                while c < n and land[i][c] == 1: c += 1\n                for x in range(i, r):\n                    for y in range(j,c):\n                        land[x][y] = 0\n                res.append([i, j, r - 1, c - 1])\n\n    return res\n```\n\n    \n    1. Iterate over each cell (i, j) in the given land matrix.\n2. If the cell value is 1 (farmland), initiate two pointers (r and c) at the current cell.\n3. Move r downwards while the cells in the same column have value 1.\n4. Move c rightwards while the cells in the same row have value 1.\n5. Set all cells within the rectangle (i, j, r-1, c-1) to 0, and add [i, j, r-1, c-1] to the result list.\n6. Repeat steps 1-5 for each cell in the land matrix.\n7. Return the result list with coordinates for each group of farmland.\n    ",
+    "javascript": "\n    ```javascript\nfunction findFarmland(land) {\n    const m = land.length, n = land[0].length;\n    const res = [];\n\n    for (let i = 0; i < m; ++i) {\n        for (let j = 0; j < n; ++j) {\n            if (land[i][j] === 1) {\n                let r = i, c = j;\n                while (r < m && land[r][j] === 1) ++r;\n                while (c < n && land[i][c] === 1) ++c;\n                for (let x = i; x < r; ++x) {\n                    for (let y = j; y < c; ++y) {\n                        land[x][y] = 0;\n                    }\n                }\n                res.push([i, j, r - 1, c - 1]);\n            }\n        }\n    }\n\n    return res;\n}\n```\n\n    \n    1. Iterate over each cell (i, j) in the given land matrix.\n2. If the cell value is 1 (farmland), initiate two pointers (r and c) at the current cell.\n3. Move r downwards while the cells in the same column have value 1.\n4. Move c rightwards while the cells in the same row have value 1.\n5. Set all cells within the rectangle (i, j, r-1, c-1) to 0, and add [i, j, r-1, c-1] to the result list.\n6. Repeat steps 1-5 for each cell in the land matrix.\n7. Return the result list with coordinates for each group of farmland.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<List<Integer>> findFarmland(int[][] land) {\n    int m = land.length, n = land[0].length;\n    List<List<Integer>> res = new ArrayList<>();\n\n    for (int i = 0; i < m; ++i) {\n        for (int j = 0; j < n; ++j) {\n            if (land[i][j] == 1) {\n                int r = i, c = j;\n                while (r < m && land[r][j] == 1) ++r;\n                while (c < n && land[i][c] == 1) ++c;\n                for (int x = i; x < r; ++x) {\n                    for (int y = j; y < c; ++y) {\n                        land[x][y] = 0;\n                    }\n                }\n                res.add(List.of(i, j, r - 1, c - 1));\n            }\n        }\n    }\n\n    return res;\n}\n```\n\n    \n    1. Iterate over each cell (i, j) in the given land matrix.\n2. If the cell value is 1 (farmland), initiate two pointers (r and c) at the current cell.\n3. Move r downwards while the cells in the same column have value 1.\n4. Move c rightwards while the cells in the same row have value 1.\n5. Set all cells within the rectangle (i, j, r-1, c-1) to 0, and add [i, j, r-1, c-1] to the result list.\n6. Repeat steps 1-5 for each cell in the land matrix.\n7. Return the result list with coordinates for each group of farmland.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

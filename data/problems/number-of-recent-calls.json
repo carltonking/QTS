@@ -1,0 +1,24 @@
+{
+  "id": 933,
+  "title": "Number of Recent Calls",
+  "slug": "number-of-recent-calls",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You have a RecentCounter class which counts the number of recent requests within a certain time frame.\n\nImplement the RecentCounter class:\n\n*   RecentCounter() Initializes the counter with zero recent requests.\n*   int ping(int t) Adds a new request at time t, where t represents some time in milliseconds, and returns the number of requests that has happened in the past 3000 milliseconds (including the new request). Specifically, return the number of requests that have happened in the inclusive range [t - 3000, t].\n\nIt is guaranteed that every call to ping uses a strictly larger value of t than the previous call.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef increasingBST(root):\n    def inorder(node):\n        nonlocal prev\n        if not node: return\n\n        inorder(node.left)\n        prev.right = node\n        prev = node\n        node.left = None\n        inorder(node.right)\n\n    dummy = TreeNode(0)\n    prev = dummy\n    inorder(root)\n    return dummy.right\n```\n\n    \n    The algorithm uses a recursive inorder traversal of the given binary search tree. It starts by visiting the left child, if any, and then processes the root node, and finally the right child. The important part of this traversal is the processing of each node. When a node is encountered, its left pointer is set to null and its right pointer is set to the current node being processed.\n\nThe algorithm maintains a `prev` variable to keep the previous node encountered during the inorder traversal. Initially, we have a dummy node, and during the traversal, we set the right pointer of the `prev` node to the current node and update the `prev` node to the current node.\n\nFinally, after the traversal, the right child of the dummy node points to the root of the modified tree.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(val, left = null, right = null) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\nfunction increasingBST(root) {\n    function inorder(node) {\n        if (!node) return;\n\n        inorder(node.left);\n        prev.right = node;\n        prev = node;\n        node.left = null;\n        inorder(node.right);\n    }\n\n    const dummy = new TreeNode(0);\n    let prev = dummy;\n    inorder(root);\n    return dummy.right;\n}\n```\n\n    \n    The algorithm uses a recursive inorder traversal of the given binary search tree. It starts by visiting the left child, if any, and then processes the root node, and finally the right child. The important part of this traversal is the processing of each node. When a node is encountered, its left pointer is set to null and its right pointer is set to the current node being processed.\n\nThe algorithm maintains a `prev` variable to keep the previous node encountered during the inorder traversal. Initially, we have a dummy node, and during the traversal, we set the right pointer of the `prev` node to the current node and update the `prev` node to the current node.\n\nFinally, after the traversal, the right child of the dummy node points to the root of the modified tree.\n    ",
+    "java": "\n    ```java\npublic class TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n}\n\npublic TreeNode increasingBST(TreeNode root) {\n    TreeNode dummy = new TreeNode(0);\n    TreeNode prev = dummy;\n    inorder(root, prev);\n    return dummy.right;\n}\n\npublic void inorder(TreeNode node, TreeNode prev) {\n    if (node == null) return;\n\n    inorder(node.left, prev);\n    prev.right = node;\n    prev = node;\n    node.left = null;\n    inorder(node.right, prev);\n}\n```\n\n    \n    The algorithm uses a recursive inorder traversal of the given binary search tree. It starts by visiting the left child, if any, and then processes the root node, and finally the right child. The important part of this traversal is the processing of each node. When a node is encountered, its left pointer is set to null and its right pointer is set to the current node being processed.\n\nThe algorithm maintains a `prev` variable to keep the previous node encountered during the inorder traversal. Initially, we have a dummy node, and during the traversal, we set the right pointer of the `prev` node to the current node and update the `prev` node to the current node.\n\nFinally, after the traversal, the right child of the dummy node points to the root of the modified tree.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

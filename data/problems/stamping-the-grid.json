@@ -1,0 +1,24 @@
+{
+  "id": 2132,
+  "title": "Stamping the Grid",
+  "slug": "stamping-the-grid",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an m x n binary matrix grid where each cell is either 0 (empty) or 1 (occupied).\n\nYou are then given stamps of size stampHeight x stampWidth. We want to fit the stamps such that they follow the given restrictions and requirements:\n\n1.  Cover all the empty cells.\n2.  Do not cover any of the occupied cells.\n3.  We can put as many stamps as we want.\n4.  Stamps can overlap with each other.\n5.  Stamps are not allowed to be rotated.\n6.  Stamps must stay completely inside the grid.\n\nReturn true _if it is possible to fit the stamps while following the given restrictions and requirements. Otherwise, return_ false.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef construct2DArray(original, m, n):\n    if m * n != len(original): return []\n    res = [[0] * n for _ in range(m)]\n    for i in range(len(original)):\n        res[i // n][i % n] = original[i]\n    return res\n```\n    \n    1. Check if the dimensions (m * n) match the size of the input array. If not, return an empty 2D array.\n2. Create an m x n 2D array initialized with zeros.\n3. Iterate through the input array elements and assign them to the corresponding row and column of the 2D array using integer division and modulo operations. \n4. Return the constructed 2D array.\n    ",
+    "javascript": "\n    ```javascript\nfunction construct2DArray(original, m, n) {\n    if (m * n !== original.length) return [];\n    const res = new Array(m).fill(0).map(() => new Array(n).fill(0));\n    for (let i = 0; i < original.length; ++i) {\n        res[Math.floor(i / n)][i % n] = original[i];\n    }\n    return res;\n}\n```\n    \n    1. Check if the dimensions (m * n) match the size of the input array. If not, return an empty 2D array.\n2. Create an m x n 2D array initialized with zeros.\n3. Iterate through the input array elements and assign them to the corresponding row and column of the 2D array using integer division and modulo operations. \n4. Return the constructed 2D array.\n    ",
+    "java": "\n    ```java\npublic int[][] construct2DArray(int[] original, int m, int n) {\n    if (m * n != original.length) return new int[][]{};\n    int[][] res = new int[m][n];\n    for (int i = 0; i < original.length; ++i) {\n        res[i / n][i % n] = original[i];\n    }\n    return res;\n}\n```\n    \n    1. Check if the dimensions (m * n) match the size of the input array. If not, return an empty 2D array.\n2. Create an m x n 2D array initialized with zeros.\n3. Iterate through the input array elements and assign them to the corresponding row and column of the 2D array using integer division and modulo operations. \n4. Return the constructed 2D array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 6,
+  "title": "Zigzag Conversion",
+  "slug": "zigzag-conversion",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "The string \"PAYPALISHIRING \" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)\n\nP   A   H   N\nA P L S I I G\nY   I   R\n\nAnd then read line by line: \"PAHNAPLSIIGYIR \"\n\nWrite the code that will take a string and make this conversion given a number of rows:\n\nstring convert(string s, int numRows);",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef convert(s: str, numRows: int) -> str:\n    if numRows == 1 or numRows >= len(s):\n        return s\n\n    rows = [\"\"] * numRows\n    curRow = 0\n    goingDown = False\n\n    for c in s:\n        rows[curRow] += c\n        if curRow == 0 or curRow == numRows - 1:\n            goingDown = not goingDown\n        curRow += 1 if goingDown else -1\n\n    return \"\".join(rows)\n```\n    \n    1. If the number of rows is 1 or is greater than or equal to the length of the string, the string is just returned as is.\n2. Create an array called \"rows\" to contain the characters that would reside in each row of the zigzag pattern.\n3. Iterate through the string one character at a time.\n4. For each character in the string, place it into the appropriate row of the \"rows\" array.\n5. Determine whether the next character should be placed in the row above or below the current row by checking if the current row is 0 (at the top) or equal to the number of rows minus 1 (at the bottom). If at the top or the bottom, the direction will change.\n6. Update the current row index according to the direction (going up or down).\n7. After iterating through the entire string, join the rows array into a single string and return it.\n    ",
+    "javascript": "\n    ```javascript\nfunction convert(s, numRows) {\n    if (numRows === 1 || numRows >= s.length) return s;\n\n    let rows = new Array(numRows).fill(\"\");\n    let curRow = 0;\n    let goingDown = false;\n\n    for (let c of s) {\n        rows[curRow] += c;\n        if (curRow === 0 || curRow === numRows - 1) goingDown = !goingDown;\n        curRow += goingDown ? 1 : -1;\n    }\n\n    return rows.join(\"\");\n}\n```\n    \n    1. If the number of rows is 1 or is greater than or equal to the length of the string, the string is just returned as is.\n2. Create an array called \"rows\" to contain the characters that would reside in each row of the zigzag pattern.\n3. Iterate through the string one character at a time.\n4. For each character in the string, place it into the appropriate row of the \"rows\" array.\n5. Determine whether the next character should be placed in the row above or below the current row by checking if the current row is 0 (at the top) or equal to the number of rows minus 1 (at the bottom). If at the top or the bottom, the direction will change.\n6. Update the current row index according to the direction (going up or down).\n7. After iterating through the entire string, join the rows array into a single string and return it.\n    ",
+    "java": "\n    ```java\npublic class ZigzagConversion {\n    public String convert(String s, int numRows) {\n        if (numRows == 1 || numRows >= s.length()) return s;\n\n        StringBuilder[] rows = new StringBuilder[numRows];\n        for (int i = 0; i < numRows; i++) rows[i] = new StringBuilder();\n        \n        int curRow = 0;\n        boolean goingDown = false;\n\n        for (char c : s.toCharArray()) {\n            rows[curRow].append(c);\n            if (curRow == 0 || curRow == numRows - 1) goingDown = !goingDown;\n            curRow += goingDown ? 1 : -1;\n        }\n\n        StringBuilder result = new StringBuilder();\n        for (StringBuilder row : rows) result.append(row);\n        return result.toString();\n    }\n}\n```\n    \n    1. If the number of rows is 1 or is greater than or equal to the length of the string, the string is just returned as is.\n2. Create an array called \"rows\" to contain the characters that would reside in each row of the zigzag pattern.\n3. Iterate through the string one character at a time.\n4. For each character in the string, place it into the appropriate row of the \"rows\" array.\n5. Determine whether the next character should be placed in the row above or below the current row by checking if the current row is 0 (at the top) or equal to the number of rows minus 1 (at the bottom). If at the top or the bottom, the direction will change.\n6. Update the current row index according to the direction (going up or down).\n7. After iterating through the entire string, join the rows array into a single string and return it.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

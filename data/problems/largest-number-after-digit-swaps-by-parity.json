@@ -1,0 +1,24 @@
+{
+  "id": 2231,
+  "title": "Largest Number After Digit Swaps by Parity",
+  "slug": "largest-number-after-digit-swaps-by-parity",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a positive integer num. You may swap any two digits of num that have the same parity (i.e. both odd digits or both even digits).\n\nReturn _the largest possible value of_ num _after any number of swaps._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef first_palindrome(words):\n    for word in words:\n        if word == word[::-1]:\n            return word\n    return \"\"\n```\n\n    \n    The algorithm used in each function iterates through the given array of strings, and for each string, it checks if it's a palindrome by comparing it to its reversed version. If a palindrome is found, it immediately returns that string. If no palindromes are found after iterating through the entire array, an empty string is returned. Each language's implementation follows similar logic, with some differences:\n\n- C++: We use a range-based loop to iterate through the words, and the `std::reverse()` function to reverse the string.\n- Java: We use a `StringBuilder` to reverse the string, and the `equals()` method to compare the strings.\n- Python: A Pythonic approach is used with slicing to reverse the string.\n- JavaScript: We use the `split()`, `reverse()`, and `join()` methods to reverse the string.\n    ",
+    "javascript": "\n    ```javascript\nfunction firstPalindrome(words) {\n    for (const word of words) {\n        const reversedWord = word.split('').reverse().join('');\n        if (word === reversedWord) {\n            return word;\n        }\n    }\n    return \"\";\n}\n```\n\n    \n    The algorithm used in each function iterates through the given array of strings, and for each string, it checks if it's a palindrome by comparing it to its reversed version. If a palindrome is found, it immediately returns that string. If no palindromes are found after iterating through the entire array, an empty string is returned. Each language's implementation follows similar logic, with some differences:\n\n- C++: We use a range-based loop to iterate through the words, and the `std::reverse()` function to reverse the string.\n- Java: We use a `StringBuilder` to reverse the string, and the `equals()` method to compare the strings.\n- Python: A Pythonic approach is used with slicing to reverse the string.\n- JavaScript: We use the `split()`, `reverse()`, and `join()` methods to reverse the string.\n    ",
+    "java": "\n    ```java\nimport java.util.List;\n\npublic String firstPalindrome(List<String> words) {\n    for (String word : words) {\n        String reversedWord = new StringBuilder(word).reverse().toString();\n        if (word.equals(reversedWord)) {\n            return word;\n        }\n    }\n    return \"\";\n}\n```\n\n    \n    The algorithm used in each function iterates through the given array of strings, and for each string, it checks if it's a palindrome by comparing it to its reversed version. If a palindrome is found, it immediately returns that string. If no palindromes are found after iterating through the entire array, an empty string is returned. Each language's implementation follows similar logic, with some differences:\n\n- C++: We use a range-based loop to iterate through the words, and the `std::reverse()` function to reverse the string.\n- Java: We use a `StringBuilder` to reverse the string, and the `equals()` method to compare the strings.\n- Python: A Pythonic approach is used with slicing to reverse the string.\n- JavaScript: We use the `split()`, `reverse()`, and `join()` methods to reverse the string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

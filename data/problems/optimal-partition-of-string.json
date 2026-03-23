@@ -1,0 +1,24 @@
+{
+  "id": 2405,
+  "title": "Optimal Partition of String",
+  "slug": "optimal-partition-of-string",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string s, partition the string into one or more substrings such that the characters in each substring are unique. That is, no letter appears in a single substring more than once.\n\nReturn _the minimum number of substrings in such a partition._\n\nNote that each character should belong to exactly one substring in a partition.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_substrs(s: str) -> int:\n    seen = set()\n    count = 0\n    for c in s:\n        if c in seen:\n            count += 1\n            seen.clear()\n        seen.add(c)\n    return count + int(bool(seen))\n```\n    \n    The algorithm iterates through the characters of the input string `s`. It uses a set `seen` to store the unique characters encountered so far in the current substring. When a character is found that already exists in the set, we increment the `count` and clear the set. This indicates that a new unique substring should start. \n\nAt the end, if there are still characters left in the `seen` set, it means there is one last unique substring, so we add 1 to the count.\n\nThe time complexity of this algorithm is O(N) where N is the length of the input string, since we iterate through the input string once, and set operations (add, clear, etc.) take constant time on average.\n    ",
+    "javascript": "\n    ```javascript\nfunction min_substrs(s) {\n    const seen = new Set();\n    let count = 0;\n    for (const c of s) {\n        if (seen.has(c)) {\n            count++;\n            seen.clear();\n        }\n        seen.add(c);\n    }\n    return count + (seen.size > 0 ? 1 : 0);\n}\n```\n    \n    The algorithm iterates through the characters of the input string `s`. It uses a set `seen` to store the unique characters encountered so far in the current substring. When a character is found that already exists in the set, we increment the `count` and clear the set. This indicates that a new unique substring should start. \n\nAt the end, if there are still characters left in the `seen` set, it means there is one last unique substring, so we add 1 to the count.\n\nThe time complexity of this algorithm is O(N) where N is the length of the input string, since we iterate through the input string once, and set operations (add, clear, etc.) take constant time on average.\n    ",
+    "java": "\n    ```java\nimport java.util.HashSet;\n\npublic int min_substrs(String s) {\n    HashSet<Character> seen = new HashSet<>();\n    int count = 0;\n    for (char c : s.toCharArray()) {\n        if (seen.contains(c)) {\n            count++;\n            seen.clear();\n        }\n        seen.add(c);\n    }\n    return count + (seen.isEmpty() ? 0 : 1);\n}\n```\n    \n    The algorithm iterates through the characters of the input string `s`. It uses a set `seen` to store the unique characters encountered so far in the current substring. When a character is found that already exists in the set, we increment the `count` and clear the set. This indicates that a new unique substring should start. \n\nAt the end, if there are still characters left in the `seen` set, it means there is one last unique substring, so we add 1 to the count.\n\nThe time complexity of this algorithm is O(N) where N is the length of the input string, since we iterate through the input string once, and set operations (add, clear, etc.) take constant time on average.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

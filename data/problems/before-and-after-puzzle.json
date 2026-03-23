@@ -1,0 +1,24 @@
+{
+  "id": 1181,
+  "title": "Before and After Puzzle",
+  "slug": "before-and-after-puzzle",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a list of phrases, generate a list of Before and After puzzles.\n\nA _phrase_ is a string that consists of lowercase English letters and spaces only. No space appears in the start or the end of a phrase. There are no consecutive spaces in a phrase.\n\n_Before and After puzzles_ are phrases that are formed by merging two phrases where the last word of the first phrase is the same as the first word of the second phrase.\n\nReturn the Before and After puzzles that can be formed by every two phrases phrases[i] and phrases[j] where i != j. Note that the order of matching two phrases matters, we want to consider both orders.\n\nYou should return a list of distinct strings sorted lexicographically.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import defaultdict\n\ndef beforeAndAfterPuzzles(phrases):\n    first_word_map = defaultdict(set)\n    result = set()\n\n    for phrase in phrases:\n        first_word = phrase.split(' ')[0]\n        first_word_map[first_word].add(phrase)\n\n    for phrase in phrases:\n        last_word = phrase.split(' ')[-1]\n        if last_word in first_word_map:\n            for cur_phrase in first_word_map[last_word]:\n                if phrase != cur_phrase:\n                    result.add(phrase + cur_phrase[cur_phrase.index(' '):])\n\n    return sorted(list(result))\n```\n    \n    1. Create a mapping of first words to their corresponding phrases.\n2. For each phrase, check if the last word is a key in the mapping, then iterate through the phrases that have the last word as their first word.\n3. If the current phrase and the original phrase are not the same, merge the phrases to create a puzzle and add it to the result set.\n4. Convert the result set to a list/array, sort it and return it.\n    ",
+    "javascript": "\n    ```javascript\nfunction beforeAndAfterPuzzles(phrases) {\n    const firstWordMap = new Map();\n    const result = new Set();\n\n    for (const phrase of phrases) {\n        const firstWord = phrase.split(' ')[0];\n        if (!firstWordMap.has(firstWord)) {\n            firstWordMap.set(firstWord, new Set());\n        }\n        firstWordMap.get(firstWord).add(phrase);\n    }\n\n    for (const phrase of phrases) {\n        const lastWord = phrase.split(' ').pop();\n        if (firstWordMap.has(lastWord)) {\n            for (const curPhrase of firstWordMap.get(lastWord)) {\n                if (phrase !== curPhrase) {\n                    result.add(phrase + curPhrase.slice(curPhrase.indexOf(' ')));\n                }\n            }\n        }\n    }\n\n    return Array.from(result).sort();\n}\n```\n    \n    1. Create a mapping of first words to their corresponding phrases.\n2. For each phrase, check if the last word is a key in the mapping, then iterate through the phrases that have the last word as their first word.\n3. If the current phrase and the original phrase are not the same, merge the phrases to create a puzzle and add it to the result set.\n4. Convert the result set to a list/array, sort it and return it.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic List<String> beforeAndAfterPuzzles(String[] phrases) {\n    Map<String, Set<String>> firstWordMap = new HashMap<>();\n    Set<String> result = new TreeSet<>();\n\n    for (String phrase : phrases) {\n        String firstWord = phrase.substring(0, phrase.indexOf(' '));\n        firstWordMap.putIfAbsent(firstWord, new HashSet<>());\n        firstWordMap.get(firstWord).add(phrase);\n    }\n\n    for (String phrase : phrases) {\n        String lastWord = phrase.substring(phrase.lastIndexOf(' ') + 1);\n        if (firstWordMap.containsKey(lastWord)) {\n            for (String curPhrase : firstWordMap.get(lastWord)) {\n                if (!phrase.equals(curPhrase)) {\n                    result.add(phrase + curPhrase.substring(curPhrase.indexOf(' ')));\n                }\n            }\n        }\n    }\n\n    return new ArrayList<>(result);\n}\n```\n    \n    1. Create a mapping of first words to their corresponding phrases.\n2. For each phrase, check if the last word is a key in the mapping, then iterate through the phrases that have the last word as their first word.\n3. If the current phrase and the original phrase are not the same, merge the phrases to create a puzzle and add it to the result set.\n4. Convert the result set to a list/array, sort it and return it.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

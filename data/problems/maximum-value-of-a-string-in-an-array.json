@@ -1,0 +1,24 @@
+{
+  "id": 2496,
+  "title": "Maximum Value of a String in an Array",
+  "slug": "maximum-value-of-a-string-in-an-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "The value of an alphanumeric string can be defined as:\n\n*   The numeric representation of the string in base 10, if it comprises of digits only.\n*   The length of the string, otherwise.\n\nGiven an array strs of alphanumeric strings, return _the maximum value of any string in_ strs.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxValue(strs) -> int:\n    max_value = 0\n    for str in strs:\n        if str.isdigit():\n            value = int(str)\n        else:\n            value = len(str)\n        max_value = max(max_value, value)\n    return max_value\n```\n    \n    We iterate through the input array `strs`. For each string, we check whether it contains only digits or not. If it contains only digits, we find its numeric value and store it in a variable `value`. If it contains other characters (letters), we store its length in the `value` variable. In each iteration, we update the `max_value` variable with the maximum of the current `max_value` and the `value` found.\n\nFinally, we return the `max_value`.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxValue(strs) {\n    let maxValue = 0;\n    for (const str of strs) {\n        let value;\n        if (/^\\d+$/.test(str)) {\n            value = parseInt(str, 10);\n        } else {\n            value = str.length;\n        }\n        maxValue = Math.max(maxValue, value);\n    }\n    return maxValue;\n}\n```\n    \n    We iterate through the input array `strs`. For each string, we check whether it contains only digits or not. If it contains only digits, we find its numeric value and store it in a variable `value`. If it contains other characters (letters), we store its length in the `value` variable. In each iteration, we update the `max_value` variable with the maximum of the current `max_value` and the `value` found.\n\nFinally, we return the `max_value`.\n    ",
+    "java": "\n    ```java\nimport java.util.List;\n\npublic int maxValue(List<String> strs) {\n    int maxValue = 0;\n    for (String str : strs) {\n        int value;\n        if (str.chars().allMatch(Character::isDigit)) {\n            value = Integer.parseInt(str);\n        } else {\n            value = str.length();\n        }\n        maxValue = Math.max(maxValue, value);\n    }\n    return maxValue;\n}\n```\n    \n    We iterate through the input array `strs`. For each string, we check whether it contains only digits or not. If it contains only digits, we find its numeric value and store it in a variable `value`. If it contains other characters (letters), we store its length in the `value` variable. In each iteration, we update the `max_value` variable with the maximum of the current `max_value` and the `value` found.\n\nFinally, we return the `max_value`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

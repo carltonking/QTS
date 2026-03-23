@@ -1,0 +1,24 @@
+{
+  "id": 375,
+  "title": "Guess Number Higher or Lower II",
+  "slug": "guess-number-higher-or-lower-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "We are playing the Guessing Game. The game will work as follows:\n\n1.  I pick a number between 1 and n.\n2.  You guess a number.\n3.  If you guess the right number, you win the game.\n4.  If you guess the wrong number, then I will tell you whether the number I picked is higher or lower, and you will continue guessing.\n5.  Every time you guess a wrong number x, you will pay x dollars. If you run out of money, you lose the game.\n\nGiven a particular n, return _the minimum amount of money you need to guarantee a win regardless of what number I pick_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef getMoneyAmount(n: int) -> int:\n    dp = [[0] * (n + 1) for _ in range(n + 1)]\n    for i in range(n - 1, 0, -1):\n        for j in range(i + 1, n + 1):\n            min_cost = float(\"inf\")\n            for k in range(i, j):\n                cost = k + max(dp[i][k - 1], dp[k + 1][j])\n                min_cost = min(min_cost, cost)\n            dp[i][j] = min_cost\n    return dp[1][n]\n```\n    \n    The algorithm uses dynamic programming to find the minimum cost required to guarantee a win. We create a 2D array `dp` where `dp[i][j]` represents the minimum cost required to guess the correct number from numbers between i and j inclusive.\n\nWe fill in this array from the bottom right corner, and move towards the top left corner. For each value of `i` and `j`, we calculate the cost by guessing a number `k` between `i` and `j`. The cost is equal to `k + max(dp[i][k-1], dp[k+1][j])`, which means that we pay `k` and take the worst-case scenario, and we try to minimize this cost.\n\nAfter filling the `dp` array, the minimum cost required to win the game when guessing numbers from 1 to `n` is stored in `dp[1][n]`.\n    ",
+    "javascript": "\n    ```javascript\nfunction getMoneyAmount(n) {\n    const dp = Array.from(Array(n + 1), () => Array(n + 1).fill(0));\n    for (let i = n - 1; i >= 1; i--) {\n        for (let j = i + 1; j <= n; j++) {\n            let min_cost = Infinity;\n            for (let k = i; k < j; k++) {\n                const cost = k + Math.max(dp[i][k - 1], dp[k + 1][j]);\n                min_cost = Math.min(min_cost, cost);\n            }\n            dp[i][j] = min_cost;\n        }\n    }\n    return dp[1][n];\n}\n```\n    \n    The algorithm uses dynamic programming to find the minimum cost required to guarantee a win. We create a 2D array `dp` where `dp[i][j]` represents the minimum cost required to guess the correct number from numbers between i and j inclusive.\n\nWe fill in this array from the bottom right corner, and move towards the top left corner. For each value of `i` and `j`, we calculate the cost by guessing a number `k` between `i` and `j`. The cost is equal to `k + max(dp[i][k-1], dp[k+1][j])`, which means that we pay `k` and take the worst-case scenario, and we try to minimize this cost.\n\nAfter filling the `dp` array, the minimum cost required to win the game when guessing numbers from 1 to `n` is stored in `dp[1][n]`.\n    ",
+    "java": "\n    ```java\npublic int getMoneyAmount(int n) {\n    int[][] dp = new int[n + 1][n + 1];\n    for (int i = n - 1; i >= 1; i--) {\n        for (int j = i + 1; j <= n; j++) {\n            int min_cost = Integer.MAX_VALUE;\n            for (int k = i; k < j; k++) {\n                int cost = k + Math.max(dp[i][k - 1], dp[k + 1][j]);\n                min_cost = Math.min(min_cost, cost);\n            }\n            dp[i][j] = min_cost;\n        }\n    }\n    return dp[1][n];\n}\n```\n    \n    The algorithm uses dynamic programming to find the minimum cost required to guarantee a win. We create a 2D array `dp` where `dp[i][j]` represents the minimum cost required to guess the correct number from numbers between i and j inclusive.\n\nWe fill in this array from the bottom right corner, and move towards the top left corner. For each value of `i` and `j`, we calculate the cost by guessing a number `k` between `i` and `j`. The cost is equal to `k + max(dp[i][k-1], dp[k+1][j])`, which means that we pay `k` and take the worst-case scenario, and we try to minimize this cost.\n\nAfter filling the `dp` array, the minimum cost required to win the game when guessing numbers from 1 to `n` is stored in `dp[1][n]`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

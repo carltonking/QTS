@@ -1,0 +1,24 @@
+{
+  "id": 1190,
+  "title": "Reverse Substrings Between Each Pair of Parentheses",
+  "slug": "reverse-substrings-between-each-pair-of-parentheses",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a string s that consists of lower case English letters and brackets.\n\nReverse the strings in each pair of matching parentheses, starting from the innermost one.\n\nYour result should not contain any brackets.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef reverseParentheses(s: str) -> str:\n    stack = []\n    for i, c in enumerate(s):\n        if c == '(':\n            stack.append(i)\n        elif c == ')':\n            start, end = stack.pop(), i\n            # reversal of the substring\n            s = s[:start] + s[start+1:end][::-1] + s[end+1:]\n    return ''.join(c for c in s if c.isalpha())\n```\n    \n    1. Create an empty stack.\n2. Iterate over the characters in the input string.\n3. For each character, if it is an opening bracket, push the current index to the stack.\n4. If the current character is a closing bracket, pop the top element from the stack (which gives the matching opening bracket) and reverse the substring between the opening and closing brackets. Update the input string with the reversed substring.\n5. Repeat steps 3-4 until all the characters in the input string are processed.\n6. Construct the final output string by removing all the brackets.\n7. Return the final output string.\n    ",
+    "javascript": "\n    ```javascript\nfunction reverseParentheses(s) {\n    const stack = [];\n    for (let i = 0; i < s.length; i++) {\n        if (s[i] === '(') {\n            stack.push(i);\n        } else if (s[i] === ')') {\n            const start = stack.pop();\n            const end = i;\n            const substring = s.slice(start + 1, end).split('').reverse().join('');\n            s = s.slice(0, start) + substring + s.slice(end + 1);\n        }\n    }\n    let result = '';\n    for (let i = 0; i < s.length; i++) {\n        if (s[i] !== '(' && s[i] !== ')') {\n            result += s[i];\n        }\n    }\n    return result;\n}\n```\n    \n    1. Create an empty stack.\n2. Iterate over the characters in the input string.\n3. For each character, if it is an opening bracket, push the current index to the stack.\n4. If the current character is a closing bracket, pop the top element from the stack (which gives the matching opening bracket) and reverse the substring between the opening and closing brackets. Update the input string with the reversed substring.\n5. Repeat steps 3-4 until all the characters in the input string are processed.\n6. Construct the final output string by removing all the brackets.\n7. Return the final output string.\n    ",
+    "java": "\n    ```java\nimport java.util.Stack;\n\npublic String reverseParentheses(String s) {\n    Stack<Integer> stack = new Stack<>();\n    StringBuilder result = new StringBuilder(s);\n    for (int i = 0; i < s.length(); i++) {\n        if (s.charAt(i) == '(') {\n            stack.push(i);\n        } else if (s.charAt(i) == ')') {\n            int start = stack.pop();\n            int end = i;\n            result.replace(start, end + 1, new StringBuilder(s.substring(start + 1, end)).reverse().toString());\n            s = result.toString();\n            i -= 2;\n        }\n    }\n    for (int i = 0; i < result.length(); i++) {\n        if (result.charAt(i) == '(' || result.charAt(i) == ')') {\n            result.deleteCharAt(i);\n            i--;\n        }\n    }\n    return result.toString();\n}\n```\n    \n    1. Create an empty stack.\n2. Iterate over the characters in the input string.\n3. For each character, if it is an opening bracket, push the current index to the stack.\n4. If the current character is a closing bracket, pop the top element from the stack (which gives the matching opening bracket) and reverse the substring between the opening and closing brackets. Update the input string with the reversed substring.\n5. Repeat steps 3-4 until all the characters in the input string are processed.\n6. Construct the final output string by removing all the brackets.\n7. Return the final output string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

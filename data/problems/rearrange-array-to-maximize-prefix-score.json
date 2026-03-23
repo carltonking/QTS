@@ -1,0 +1,24 @@
+{
+  "id": 2587,
+  "title": "Rearrange Array to Maximize Prefix Score",
+  "slug": "rearrange-array-to-maximize-prefix-score",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums. You can rearrange the elements of nums to any order (including the given order).\n\nLet prefix be the array containing the prefix sums of nums after rearranging it. In other words, prefix[i] is the sum of the elements from 0 to i in nums after rearranging it. The score of nums is the number of positive integers in the array prefix.\n\nReturn _the maximum score you can achieve_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxScore(nums: List[int]) -> int:\n    nums.sort()\n    result, prefixSum = 0, 0\n    for i in range(len(nums)):\n        if prefixSum + nums[i] > 0:\n            result += 1\n            prefixSum += nums[i]\n    return result\n```\n    \n    We want to maximize the score of the array which is the number of positive integers in the prefix sums. Since we can reorder the elements, we should always keep the prefix sums positive. Negative numbers should be taken only after some positive numbers, otherwise we will not get to make the prefix sum positive again.\n\n1. Sort the array.\n2. Initialize the result and prefix sums to 0.\n3. Iterate through the sorted array and for each element, if adding that element to the prefix sum results in a positive number, increment the result and add the element to the prefix sum.\n\nThe reason we're sorting the array is that by doing that, we can iterate through and naturally structure the rearrangement of the array to maximize the prefix sums while remaining positive. Sorting the array also helps us to find the optimal result easily without needing to explore exhaustive rearrangements.\n\nAt the end, we'll have the maximum score.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxScore(nums) {\n    nums.sort((a, b) => a - b);\n    let result = 0, prefixSum = 0;\n    for (let i = 0; i < nums.length; ++i) {\n        if (prefixSum + nums[i] > 0) {\n            ++result;\n            prefixSum += nums[i];\n        }\n    }\n    return result;\n}\n```\n    \n    We want to maximize the score of the array which is the number of positive integers in the prefix sums. Since we can reorder the elements, we should always keep the prefix sums positive. Negative numbers should be taken only after some positive numbers, otherwise we will not get to make the prefix sum positive again.\n\n1. Sort the array.\n2. Initialize the result and prefix sums to 0.\n3. Iterate through the sorted array and for each element, if adding that element to the prefix sum results in a positive number, increment the result and add the element to the prefix sum.\n\nThe reason we're sorting the array is that by doing that, we can iterate through and naturally structure the rearrangement of the array to maximize the prefix sums while remaining positive. Sorting the array also helps us to find the optimal result easily without needing to explore exhaustive rearrangements.\n\nAt the end, we'll have the maximum score.\n    ",
+    "java": "\n    ```java\npublic int maxScore(int[] nums) {\n    Arrays.sort(nums);\n    int result = 0, prefixSum = 0;\n    for (int i = 0; i < nums.length; ++i) {\n        if (prefixSum + nums[i] > 0) {\n            ++result;\n            prefixSum += nums[i];\n        }\n    }\n    return result;\n}\n```\n    \n    We want to maximize the score of the array which is the number of positive integers in the prefix sums. Since we can reorder the elements, we should always keep the prefix sums positive. Negative numbers should be taken only after some positive numbers, otherwise we will not get to make the prefix sum positive again.\n\n1. Sort the array.\n2. Initialize the result and prefix sums to 0.\n3. Iterate through the sorted array and for each element, if adding that element to the prefix sum results in a positive number, increment the result and add the element to the prefix sum.\n\nThe reason we're sorting the array is that by doing that, we can iterate through and naturally structure the rearrangement of the array to maximize the prefix sums while remaining positive. Sorting the array also helps us to find the optimal result easily without needing to explore exhaustive rearrangements.\n\nAt the end, we'll have the maximum score.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1755,
+  "title": "Closest Subsequence Sum",
+  "slug": "closest-subsequence-sum",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an integer array nums and an integer goal.\n\nYou want to choose a subsequence of nums such that the sum of its elements is the closest possible to goal. That is, if the sum of the subsequence's elements is sum, then you want to minimize the absolute difference abs(sum - goal).\n\nReturn _the minimum possible value of_ abs(sum - goal).\n\nNote that a subsequence of an array is an array formed by removing some elements (possibly all or none) of the original array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef decrypt(code, k):\n    n = len(code)\n    result = [0] * n\n    if k == 0: return result\n    \n    for i in range(n):\n        sum = 0\n        for j in range(1, abs(k) + 1):\n            sum += code[(i + j) % n] if k > 0 else code[(i - j + n) % n]\n        result[i] = sum\n    return result\n```\n    \n    The given problem requires iterating through each element of the circular array code and, depending on the value of key k, summing up either the k next or k previous elements, and storing the sums into a new array called result. The new array represents the decrypted code.\n1. Create an array called 'result' of the same length as code and initialized with zeros in all fields. If k equals to 0, return the result immediately as all elements are already 0.\n2. Iterate through each element in code (use variable i as index). For each element, let sum be zero.\n3. Nested loop: iterate starting from j = 1 to abs(k), where abs() represents the absolute value. Add code elements to sum depending on k value:\n   - If k is greater than 0, add code[(i + j) % n].\n   - If k is less than 0, add code[(i - j + n) % n].\n4. Store sum in result array at index i.\n5. After iterating through all code elements, return the result array.\n    ",
+    "javascript": "\n    ```javascript\nfunction decrypt(code, k) {\n    const n = code.length;\n    const result = new Array(n).fill(0);\n    if (k === 0) return result;\n    \n    for (let i = 0; i < n; i++) {\n        let sum = 0;\n        for (let j = 1; j <= Math.abs(k); j++) {\n            sum += k > 0 ? code[(i + j) % n] : code[(i - j + n) % n];\n        }\n        result[i] = sum;\n    }\n    return result;\n}\n```\n    \n    The given problem requires iterating through each element of the circular array code and, depending on the value of key k, summing up either the k next or k previous elements, and storing the sums into a new array called result. The new array represents the decrypted code.\n1. Create an array called 'result' of the same length as code and initialized with zeros in all fields. If k equals to 0, return the result immediately as all elements are already 0.\n2. Iterate through each element in code (use variable i as index). For each element, let sum be zero.\n3. Nested loop: iterate starting from j = 1 to abs(k), where abs() represents the absolute value. Add code elements to sum depending on k value:\n   - If k is greater than 0, add code[(i + j) % n].\n   - If k is less than 0, add code[(i - j + n) % n].\n4. Store sum in result array at index i.\n5. After iterating through all code elements, return the result array.\n    ",
+    "java": "\n    ```java\npublic int[] decrypt(int[] code, int k) {\n    int n = code.length;\n    int[] result = new int[n];\n    if (k == 0) return result;\n    \n    for (int i = 0; i < n; i++) {\n        int sum = 0;\n        for (int j = 1; j <= Math.abs(k); j++) {\n            sum += k > 0 ? code[(i + j) % n] : code[(i - j + n) % n];\n        }\n        result[i] = sum;\n    }\n    return result;\n}\n```\n    \n    The given problem requires iterating through each element of the circular array code and, depending on the value of key k, summing up either the k next or k previous elements, and storing the sums into a new array called result. The new array represents the decrypted code.\n1. Create an array called 'result' of the same length as code and initialized with zeros in all fields. If k equals to 0, return the result immediately as all elements are already 0.\n2. Iterate through each element in code (use variable i as index). For each element, let sum be zero.\n3. Nested loop: iterate starting from j = 1 to abs(k), where abs() represents the absolute value. Add code elements to sum depending on k value:\n   - If k is greater than 0, add code[(i + j) % n].\n   - If k is less than 0, add code[(i - j + n) % n].\n4. Store sum in result array at index i.\n5. After iterating through all code elements, return the result array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

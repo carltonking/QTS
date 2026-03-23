@@ -1,0 +1,24 @@
+{
+  "id": 1822,
+  "title": "Sign of the Product of an Array",
+  "slug": "sign-of-the-product-of-an-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "There is a function signFunc(x) that returns:\n\n*   1 if x is positive.\n*   -1 if x is negative.\n*   0 if x is equal to 0.\n\nYou are given an integer array nums. Let product be the product of all values in the array nums.\n\nReturn signFunc(product).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef signFunc(x):\n    if x > 0:\n        return 1\n    elif x < 0:\n        return -1\n    else:\n        return 0\n\ndef arraySign(nums):\n    product = 1\n    for num in nums:\n        product *= signFunc(num)\n    return product\n```\n    \n    For the algorithm, we first define a function `signFunc` that returns 1 if a number is positive, -1 if it's negative, and 0 if it's 0. Then, we initialize a variable `product` with the value 1. We iterate through the array `nums` and for each number, we multiply the value of `product` by the return value of `signFunc` called with that number as its argument. Finally, we return the value of `product`.\n\nThanks to this approach, we don't compute the actual product, which may cause an overflow. Instead, we directly calculate the result using the signs of the integers in the array, making the solution efficient and safe for big arrays with large integers.\n    ",
+    "javascript": "\n    ```javascript\nfunction signFunc(x) {\n    if(x > 0) return 1;\n    if(x < 0) return -1;\n    return 0;\n}\n\nfunction arraySign(nums) {\n    let product = 1;\n    for(let i = 0; i < nums.length; i++) {\n        product *= signFunc(nums[i]);\n    }\n    return product;\n}\n```\n    \n    For the algorithm, we first define a function `signFunc` that returns 1 if a number is positive, -1 if it's negative, and 0 if it's 0. Then, we initialize a variable `product` with the value 1. We iterate through the array `nums` and for each number, we multiply the value of `product` by the return value of `signFunc` called with that number as its argument. Finally, we return the value of `product`.\n\nThanks to this approach, we don't compute the actual product, which may cause an overflow. Instead, we directly calculate the result using the signs of the integers in the array, making the solution efficient and safe for big arrays with large integers.\n    ",
+    "java": "\n    ```java\npublic int signFunc(int x) {\n    if(x > 0) return 1;\n    if(x < 0) return -1;\n    return 0;\n}\n\npublic int arraySign(int[] nums) {\n    int product = 1;\n    for(int i = 0; i < nums.length; i++) {\n        product *= signFunc(nums[i]);\n    }\n    return product;\n}\n```\n    \n    For the algorithm, we first define a function `signFunc` that returns 1 if a number is positive, -1 if it's negative, and 0 if it's 0. Then, we initialize a variable `product` with the value 1. We iterate through the array `nums` and for each number, we multiply the value of `product` by the return value of `signFunc` called with that number as its argument. Finally, we return the value of `product`.\n\nThanks to this approach, we don't compute the actual product, which may cause an overflow. Instead, we directly calculate the result using the signs of the integers in the array, making the solution efficient and safe for big arrays with large integers.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

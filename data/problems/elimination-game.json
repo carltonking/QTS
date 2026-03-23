@@ -1,0 +1,24 @@
+{
+  "id": 390,
+  "title": "Elimination Game",
+  "slug": "elimination-game",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You have a list arr of all integers in the range [1, n] sorted in a strictly increasing order. Apply the following algorithm on arr:\n\n*   Starting from left to right, remove the first number and every other number afterward until you reach the end of the list.\n*   Repeat the previous step again, but this time from right to left, remove the rightmost number and every other number from the remaining numbers.\n*   Keep repeating the steps again, alternating left to right and right to left, until a single number remains.\n\nGiven the integer n, return _the last number that remains in_ arr.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef last_remaining(n: int) -> int:\n    direction = True\n    head = 1\n    remaining = n\n    step = 1\n\n    while remaining > 1:\n        if direction or remaining % 2 == 1:\n            head += step\n        remaining //= 2\n        step *= 2\n        direction = not direction\n\n    return head\n```\n    \n    The algorithm starts with `head` pointing to the first element, and it will move `head` according to the direction flag and the current value of `remaining`. The `direction` flag alternates between `true` and `false` in each iteration, indicating whether we need to move forwards or backwards. The `remaining` variable represents the number of elements left in the list.\n\nIn each iteration, if the direction is forward (`true`) or the remaining elements are odd, we will increment `head` by the current `step`. Then, we update the remaining elements by dividing it by 2, as half elements are removed in each iteration, and the `step` doubles as the number of removed elements in the next round will also double. Finally, we toggle the `direction` flag, which means reversing the direction in which we move `head`.\n\nAt the end of the algorithm, when there is only one element remaining, the position of `head` will be the number that remains.\n    ",
+    "javascript": "\n    ```javascript\nfunction lastRemaining(n) {\n    let direction = true;\n    let head = 1, remaining = n, step = 1;\n\n    while (remaining > 1) {\n        if (direction || remaining % 2 === 1) {\n            head += step;\n        }\n        remaining = Math.floor(remaining / 2);\n        step *= 2;\n        direction = !direction;\n    }\n\n    return head;\n}\n```\n    \n    The algorithm starts with `head` pointing to the first element, and it will move `head` according to the direction flag and the current value of `remaining`. The `direction` flag alternates between `true` and `false` in each iteration, indicating whether we need to move forwards or backwards. The `remaining` variable represents the number of elements left in the list.\n\nIn each iteration, if the direction is forward (`true`) or the remaining elements are odd, we will increment `head` by the current `step`. Then, we update the remaining elements by dividing it by 2, as half elements are removed in each iteration, and the `step` doubles as the number of removed elements in the next round will also double. Finally, we toggle the `direction` flag, which means reversing the direction in which we move `head`.\n\nAt the end of the algorithm, when there is only one element remaining, the position of `head` will be the number that remains.\n    ",
+    "java": "\n    ```java\npublic int lastRemaining(int n) {\n    boolean direction = true;\n    int head = 1, remaining = n, step = 1;\n\n    while (remaining > 1) {\n        if (direction || remaining % 2 == 1) {\n            head += step;\n        }\n        remaining /= 2;\n        step *= 2;\n        direction = !direction;\n    }\n\n    return head;\n}\n```\n    \n    The algorithm starts with `head` pointing to the first element, and it will move `head` according to the direction flag and the current value of `remaining`. The `direction` flag alternates between `true` and `false` in each iteration, indicating whether we need to move forwards or backwards. The `remaining` variable represents the number of elements left in the list.\n\nIn each iteration, if the direction is forward (`true`) or the remaining elements are odd, we will increment `head` by the current `step`. Then, we update the remaining elements by dividing it by 2, as half elements are removed in each iteration, and the `step` doubles as the number of removed elements in the next round will also double. Finally, we toggle the `direction` flag, which means reversing the direction in which we move `head`.\n\nAt the end of the algorithm, when there is only one element remaining, the position of `head` will be the number that remains.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

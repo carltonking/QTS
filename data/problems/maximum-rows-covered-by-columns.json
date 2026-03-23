@@ -1,0 +1,24 @@
+{
+  "id": 2397,
+  "title": "Maximum Rows Covered by Columns",
+  "slug": "maximum-rows-covered-by-columns",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed m x n binary matrix matrix and an integer numSelect, which denotes the number of distinct columns you must select from matrix.\n\nLet us consider s = {c1, c2, ...., cnumSelect} as the set of columns selected by you. A row row is covered by s if:\n\n*   For each cell matrix[row][col] (0 <= col <= n - 1) where matrix[row][col] == 1, col is present in s or,\n*   No cell in row has a value of 1.\n\nYou need to choose numSelect columns such that the number of rows that are covered is maximized.\n\nReturn _the maximum number of rows that can be covered by a set of_ numSelect _columns._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_covered_rows(matrix, num_select):\n    m, n = len(matrix), len(matrix[0])\n    max_covered = 0\n    for i in range(1 << n):\n        if bin(i).count('1') == num_select:\n            covered = 0\n            for row in range(m):\n                for col in range(n):\n                    if matrix[row][col] == 1 and i & (1 << col):\n                        covered += 1\n                        break\n            max_covered = max(max_covered, covered)\n    return max_covered\n```\n    \n    The algorithm is a brute-force method that iterates through all possible combinations of columns (there are 2^n total combinations), as these are represented by binary numbers from 0 to 2^n-1. After selecting a column combination, that is, when the number of set bits (1s) in this combination is equal to 'num_select', the algorithm iterates through the rows and checks if that row is covered by the selected columns. The maximum number of rows covered for all column combinations is then returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxCoveredRows(matrix, numSelect) {\n    const m = matrix.length;\n    const n = matrix[0].length;\n    let maxCovered = 0;\n\n    for (let i = 0; i < (1 << n); ++i) {\n        if (i.toString(2).split('1').length - 1 === numSelect) {\n            let covered = 0;\n            for (let row = 0; row < m; ++row) {\n                for (let col = 0; col < n; ++col) {\n                    if ((matrix[row][col] === 1) && (i & (1 << col))) {\n                        covered++;\n                        break;\n                    }\n                }\n            }\n            maxCovered = Math.max(maxCovered, covered);\n        }\n    }\n    return maxCovered;\n}\n```\n    \n    The algorithm is a brute-force method that iterates through all possible combinations of columns (there are 2^n total combinations), as these are represented by binary numbers from 0 to 2^n-1. After selecting a column combination, that is, when the number of set bits (1s) in this combination is equal to 'num_select', the algorithm iterates through the rows and checks if that row is covered by the selected columns. The maximum number of rows covered for all column combinations is then returned.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic int maxCoveredRows(int[][] matrix, int numSelect) {\n    int m = matrix.length;\n    int n = matrix[0].length;\n    int maxCovered = 0;\n\n    for (int i = 0; i < (1 << n); ++i) {\n        if (Integer.bitCount(i) == numSelect) {\n            int covered = 0;\n            for (int row = 0; row < m; ++row) {\n                for (int col = 0; col < n; ++col) {\n                    if ((matrix[row][col] == 1) && ((i & (1 << col)) > 0)) {\n                        covered++;\n                        break;\n                    }\n                }\n            }\n            maxCovered = Math.max(maxCovered, covered);\n        }\n    }\n    return maxCovered;\n}\n```\n    \n    The algorithm is a brute-force method that iterates through all possible combinations of columns (there are 2^n total combinations), as these are represented by binary numbers from 0 to 2^n-1. After selecting a column combination, that is, when the number of set bits (1s) in this combination is equal to 'num_select', the algorithm iterates through the rows and checks if that row is covered by the selected columns. The maximum number of rows covered for all column combinations is then returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

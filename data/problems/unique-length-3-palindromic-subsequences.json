@@ -1,0 +1,24 @@
+{
+  "id": 1930,
+  "title": "Unique Length-3 Palindromic Subsequences",
+  "slug": "unique-length-3-palindromic-subsequences",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string s, return _the number of unique palindromes of length three that are a subsequence of_ s.\n\nNote that even if there are multiple ways to obtain the same subsequence, it is still only counted once.\n\nA palindrome is a string that reads the same forwards and backwards.\n\nA subsequence of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.\n\n*   For example, \"ace \" is a subsequence of \"abcde \".",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_consecutive_values(coins):\n    coins.sort()\n    max_value = 0    \n    for coin in coins:\n        if coin <= max_value + 1:\n            max_value += coin\n        else:\n            break\n    return max_value + 1\n```\n    \n    The algorithm to solve this problem can be described as:\n\n1. Sort the `coins` array in ascending order.\n2. Initialize a variable `maxValue` to 0.\n3. Loop through the sorted array `coins`, and for each `coin`, check if the `coin` is less than or equal to `maxValue + 1`. If true, add the `coin` value to `maxValue`.\n4. If not, break out of the loop.\n5. Return the final `maxValue + 1` as the result.\n\nThis algorithm works because by sorting the coins and accumulating them in order, we can easily track the maximum consecutive integer value that can be made without missing any integer. If we come across a coin that can't be combined with the previous coins to make a consecutive integer, we break the loop and return the maxValue so far.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxConsecutiveValues(coins) {\n    coins.sort((a, b) => a - b);\n    let maxValue = 0;\n    for (let coin of coins) {\n        if (coin <= maxValue + 1) {\n            maxValue += coin;\n        } else {\n            break;\n        }\n    }\n    return maxValue + 1;\n}\n```\n    \n    The algorithm to solve this problem can be described as:\n\n1. Sort the `coins` array in ascending order.\n2. Initialize a variable `maxValue` to 0.\n3. Loop through the sorted array `coins`, and for each `coin`, check if the `coin` is less than or equal to `maxValue + 1`. If true, add the `coin` value to `maxValue`.\n4. If not, break out of the loop.\n5. Return the final `maxValue + 1` as the result.\n\nThis algorithm works because by sorting the coins and accumulating them in order, we can easily track the maximum consecutive integer value that can be made without missing any integer. If we come across a coin that can't be combined with the previous coins to make a consecutive integer, we break the loop and return the maxValue so far.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int maxConsecutiveValues(int[] coins) {\n    Arrays.sort(coins);\n    int maxValue = 0;\n    for (int coin : coins) {\n        if (coin <= maxValue + 1) {\n            maxValue += coin;\n        } else {\n            break;\n        }\n    }\n    return maxValue + 1;\n}\n```\n    \n    The algorithm to solve this problem can be described as:\n\n1. Sort the `coins` array in ascending order.\n2. Initialize a variable `maxValue` to 0.\n3. Loop through the sorted array `coins`, and for each `coin`, check if the `coin` is less than or equal to `maxValue + 1`. If true, add the `coin` value to `maxValue`.\n4. If not, break out of the loop.\n5. Return the final `maxValue + 1` as the result.\n\nThis algorithm works because by sorting the coins and accumulating them in order, we can easily track the maximum consecutive integer value that can be made without missing any integer. If we come across a coin that can't be combined with the previous coins to make a consecutive integer, we break the loop and return the maxValue so far.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

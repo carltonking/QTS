@@ -1,0 +1,24 @@
+{
+  "id": 2194,
+  "title": "Cells in a Range on an Excel Sheet",
+  "slug": "cells-in-a-range-on-an-excel-sheet",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "A cell (r, c) of an excel sheet is represented as a string \" \" where:\n\n*   denotes the column number c of the cell. It is represented by alphabetical letters.\n    *   For example, the 1st column is denoted by 'A', the 2nd by 'B', the 3rd by 'C', and so on.\n*   is the row number r of the cell. The rth row is represented by the integer r.\n\nYou are given a string s in the format \": \", where represents the column c1, represents the row r1, represents the column c2, and represents the row r2, such that r1 <= r2 and c1 <= c2.\n\nReturn _the list of cells_ (x, y) _such that_ r1 <= x <= r2 _and_ c1 <= y <= c2. The cells should be represented as strings in the format mentioned above and be sorted in non-decreasing order first by columns and then by rows.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef cell_range(s):\n    r1 = int(s[1])\n    r2 = int(s[4])\n    c1 = ord(s[0]) - ord('A') + 1\n    c2 = ord(s[3]) - ord('A') + 1\n\n    res = []\n    for c in range(c1, c2 + 1):\n        for r in range(r1, r2 + 1):\n            res.append(chr(ord('A') + c - 1) + str(r))\n    return res\n```\n    \n    The algorithm is relatively straightforward: First, extract each cell's row and column from the input string `s` using indexed access on the input string, which works identically in all languages. The row values are parsed from a character to the integer it represents. The column values need to be zero-indexed and then shifted by 1, so subtract the ASCII value of 'A' (or 'A'.charCodeAt(0) in JavaScript) and then add 1.\n\nNext, create a nested loop to iterate over all columns (`c`) and rows (`r`). In the inner loop, push the column and row as a formatted string to the results array, reusing the method from the column extraction to create the column character for output.\n\nFinally, return the array of sorted cell strings.\n    ",
+    "javascript": "\n    ```javascript\nfunction cellRange(s) {\n    const r1 = parseInt(s[1]);\n    const r2 = parseInt(s[4]);\n    const c1 = s.charCodeAt(0) - 'A'.charCodeAt(0) + 1;\n    const c2 = s.charCodeAt(3) - 'A'.charCodeAt(0) + 1;\n\n    const res = [];\n    for (let c = c1; c <= c2; ++c) {\n        for (let r = r1; r <= r2; ++r) {\n            res.push(String.fromCharCode('A'.charCodeAt(0) + c - 1) + r.toString());\n        }\n    }\n    return res;\n}\n```\n    \n    The algorithm is relatively straightforward: First, extract each cell's row and column from the input string `s` using indexed access on the input string, which works identically in all languages. The row values are parsed from a character to the integer it represents. The column values need to be zero-indexed and then shifted by 1, so subtract the ASCII value of 'A' (or 'A'.charCodeAt(0) in JavaScript) and then add 1.\n\nNext, create a nested loop to iterate over all columns (`c`) and rows (`r`). In the inner loop, push the column and row as a formatted string to the results array, reusing the method from the column extraction to create the column character for output.\n\nFinally, return the array of sorted cell strings.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<String> cellRange(String s) {\n    int r1 = s.charAt(1) - '0';\n    int r2 = s.charAt(4) - '0';\n    int c1 = s.charAt(0) - 'A' + 1;\n    int c2 = s.charAt(3) - 'A' + 1;\n\n    List<String> res = new ArrayList<>();\n    for (int c = c1; c <= c2; ++c) {\n        for (int r = r1; r <= r2; ++r) {\n            res.add((char)('A' + c - 1) + Integer.toString(r));\n        }\n    }\n    return res;\n}\n```\n    \n    The algorithm is relatively straightforward: First, extract each cell's row and column from the input string `s` using indexed access on the input string, which works identically in all languages. The row values are parsed from a character to the integer it represents. The column values need to be zero-indexed and then shifted by 1, so subtract the ASCII value of 'A' (or 'A'.charCodeAt(0) in JavaScript) and then add 1.\n\nNext, create a nested loop to iterate over all columns (`c`) and rows (`r`). In the inner loop, push the column and row as a formatted string to the results array, reusing the method from the column extraction to create the column character for output.\n\nFinally, return the array of sorted cell strings.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

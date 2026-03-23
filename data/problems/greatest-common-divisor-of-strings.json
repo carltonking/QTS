@@ -1,0 +1,24 @@
+{
+  "id": 1071,
+  "title": "Greatest Common Divisor of Strings",
+  "slug": "greatest-common-divisor-of-strings",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "For two strings s and t, we say \"t divides s \" if and only if s = t + ... + t (i.e., t is concatenated with itself one or more times).\n\nGiven two strings str1 and str2, return _the largest string_ x _such that_ x _divides both_ str1 _and_ str2.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef prefixesDivBy5(nums):\n    result = []\n    current = 0\n    for num in nums:\n        current = ((current << 1) | num) % 5\n        result.append(current == 0)\n    return result\n```\n    \n    The problem requires to find out if the binary representation of the subarray from 0 to i is divisible by 5. To solve this, we can maintain an integer `current` that keeps track of the value of this binary representation modulo 5.\n\nIterate through the `nums` array, and, for each number in the array, update the running total `current` as follows:\n- Shift `current` one bit to the left (multiply by 2) using the bitwise left shift operator `<< 1`\n- Perform bitwise OR operation with the current number `num` to add it as the least significant bit to the binary representation\n- Compute this binary representation modulo 5\n\nAfter computing the current binary representation (modulo 5), check if it is divisible by 5. If it's divisible, then the value of `current` would be 0. Append the result (true or false) to the answer list or vector.\n\nFinally, return the resultant list of booleans.###\n\nEnd ###\n    ",
+    "javascript": "\n    ```javascript\nfunction prefixesDivBy5(nums) {\n    let result = [];\n    let current = 0;\n    for (let num of nums) {\n        current = ((current << 1) | num) % 5;\n        result.push(current === 0);\n    }\n    return result;\n}\n```\n    \n    The problem requires to find out if the binary representation of the subarray from 0 to i is divisible by 5. To solve this, we can maintain an integer `current` that keeps track of the value of this binary representation modulo 5.\n\nIterate through the `nums` array, and, for each number in the array, update the running total `current` as follows:\n- Shift `current` one bit to the left (multiply by 2) using the bitwise left shift operator `<< 1`\n- Perform bitwise OR operation with the current number `num` to add it as the least significant bit to the binary representation\n- Compute this binary representation modulo 5\n\nAfter computing the current binary representation (modulo 5), check if it is divisible by 5. If it's divisible, then the value of `current` would be 0. Append the result (true or false) to the answer list or vector.\n\nFinally, return the resultant list of booleans.###\n\nEnd ###\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<Boolean> prefixesDivBy5(int[] nums) {\n    List<Boolean> result = new ArrayList<>();\n    int current = 0;\n    for (int num : nums) {\n        current = ((current << 1) | num) % 5;\n        result.add(current == 0);\n    }\n    return result;\n}\n```\n    \n    The problem requires to find out if the binary representation of the subarray from 0 to i is divisible by 5. To solve this, we can maintain an integer `current` that keeps track of the value of this binary representation modulo 5.\n\nIterate through the `nums` array, and, for each number in the array, update the running total `current` as follows:\n- Shift `current` one bit to the left (multiply by 2) using the bitwise left shift operator `<< 1`\n- Perform bitwise OR operation with the current number `num` to add it as the least significant bit to the binary representation\n- Compute this binary representation modulo 5\n\nAfter computing the current binary representation (modulo 5), check if it is divisible by 5. If it's divisible, then the value of `current` would be 0. Append the result (true or false) to the answer list or vector.\n\nFinally, return the resultant list of booleans.###\n\nEnd ###\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

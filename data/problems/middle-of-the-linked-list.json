@@ -1,0 +1,24 @@
+{
+  "id": 876,
+  "title": "Middle of the Linked List",
+  "slug": "middle-of-the-linked-list",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given the head of a singly linked list, return _the middle node of the linked list_.\n\nIf there are two middle nodes, return the second middle node.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import Counter\n\ndef is_n_straight_hand(hand, group_size):\n    counts = Counter(hand)\n\n    for card in sorted(counts):\n        if counts[card] > 0:\n            for i in range(group_size - 1, -1, -1):\n                if counts[card + i] < counts[card]:\n                    return False\n                counts[card + i] -= counts[card]\n\n    return True\n```\n\n    \n    The algorithm uses a hashmap (Python's `Counter` class, or `Map` class in JavaScript) to count the occurrences of each card value in the hand. Then, it iterates through the card values in sorted order (using `sorted()` for Python and `sort()` for JavaScript). For each card value with positive count, it checks that it can form a group of consecutive cards of size `groupSize`. If any of these groups cannot be formed, it returns False, otherwise returns True. This approach takes advantage of the sorted order to ensure that the consecutive groups are formed in a optimal way.  \n\\\n    ",
+    "javascript": "\n    ```javascript\nfunction isNStraightHand(hand, groupSize) {\n    const counts = new Map();\n\n    for (let card of hand) {\n        counts.set(card, (counts.get(card) || 0) + 1);\n    }\n\n    for (let key of [...counts.keys()].sort((a, b) => a - b)) {\n        if (counts.get(key) > 0) {\n            for (let i = groupSize - 1; i >= 0; --i) {\n                if ((counts.get(key + i) || 0) < counts.get(key)) {\n                    return false;\n                }\n                counts.set(key + i, counts.get(key + i) - counts.get(key));\n            }\n        }\n    }\n    \n    return true;\n}\n```\n\n    \n    The algorithm uses a hashmap (Python's `Counter` class, or `Map` class in JavaScript) to count the occurrences of each card value in the hand. Then, it iterates through the card values in sorted order (using `sorted()` for Python and `sort()` for JavaScript). For each card value with positive count, it checks that it can form a group of consecutive cards of size `groupSize`. If any of these groups cannot be formed, it returns False, otherwise returns True. This approach takes advantage of the sorted order to ensure that the consecutive groups are formed in a optimal way.  \n\\\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic boolean isNStraightHand(int[] hand, int groupSize) {\n    TreeMap<Integer, Integer> counts = new TreeMap<>();\n\n    for (int card : hand) {\n        counts.put(card, counts.getOrDefault(card, 0) + 1);\n    }\n\n    for (Integer key : counts.keySet()) {\n        if (counts.get(key) > 0) {\n            for (int i = groupSize - 1; i >= 0; --i) {\n                if (counts.getOrDefault(key + i, 0) < counts.get(key)) {\n                    return false;\n                }\n                counts.put(key + i, counts.get(key + i) - counts.get(key));\n            }\n        }\n    }\n    \n    return true;\n}\n```\n\n    \n    The algorithm uses a hashmap (Python's `Counter` class, or `Map` class in JavaScript) to count the occurrences of each card value in the hand. Then, it iterates through the card values in sorted order (using `sorted()` for Python and `sort()` for JavaScript). For each card value with positive count, it checks that it can form a group of consecutive cards of size `groupSize`. If any of these groups cannot be formed, it returns False, otherwise returns True. This approach takes advantage of the sorted order to ensure that the consecutive groups are formed in a optimal way.  \n\\\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

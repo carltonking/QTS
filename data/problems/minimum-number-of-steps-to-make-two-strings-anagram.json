@@ -1,0 +1,24 @@
+{
+  "id": 1347,
+  "title": "Minimum Number of Steps to Make Two Strings Anagram",
+  "slug": "minimum-number-of-steps-to-make-two-strings-anagram",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two strings of the same length s and t. In one step you can choose any character of t and replace it with another character.\n\nReturn _the minimum number of steps_ to make t an anagram of s.\n\nAn Anagram of a string is a string that contains the same characters with a different (or the same) ordering.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minSteps(s, t):\n    s_Count = [0] * 26\n    t_Count = [0] * 26\n    for c in s: s_Count[ord(c) - ord('a')] += 1\n    for c in t: t_Count[ord(c) - ord('a')] += 1\n    res = 0\n    for i in range(26):\n        res += abs(s_Count[i] - t_Count[i])\n    return res // 2\n```\n    \n    1. Initialize two arrays, `s_Count` and `t_Count`, of length 26, both filled with zeros. These arrays will represent the character counts in strings `s` and `t`. The index represents the respective character number and the value at that index represents the count of the character.\n2. Iterate through both strings `s` and `t` and increase the count of characters in their respective count arrays.\n3. Initialize a counter `res` to zero.\n4. Iterate through the arrays `s_Count` and `t_Count` and calculate the absolute difference between the counts for each character. Add the difference to the counter variable `res`.\n5. Return half of the `res` variable (since we counted the difference two times, i.e., in both `s` and `t`).\n\nThis algorithm has a time complexity of O(n) since we iterate through both strings once and the count arrays once.\n    ",
+    "javascript": "\n    ```javascript\nfunction minSteps(s, t) {\n    const s_Count = new Array(26).fill(0);\n    const t_Count = new Array(26).fill(0);\n    for(let c of s) s_Count[c.charCodeAt(0) - 'a'.charCodeAt(0)]++;\n    for(let c of t) t_Count[c.charCodeAt(0) - 'a'.charCodeAt(0)]++;\n    let res = 0;\n    for(let i = 0; i < 26; i++) {\n        res += Math.abs(s_Count[i] - t_Count[i]);\n    }\n    return res / 2;\n}\n```\n    \n    1. Initialize two arrays, `s_Count` and `t_Count`, of length 26, both filled with zeros. These arrays will represent the character counts in strings `s` and `t`. The index represents the respective character number and the value at that index represents the count of the character.\n2. Iterate through both strings `s` and `t` and increase the count of characters in their respective count arrays.\n3. Initialize a counter `res` to zero.\n4. Iterate through the arrays `s_Count` and `t_Count` and calculate the absolute difference between the counts for each character. Add the difference to the counter variable `res`.\n5. Return half of the `res` variable (since we counted the difference two times, i.e., in both `s` and `t`).\n\nThis algorithm has a time complexity of O(n) since we iterate through both strings once and the count arrays once.\n    ",
+    "java": "\n    ```java\npublic int minSteps(String s, String t) {\n    int[] s_Count = new int[26];\n    int[] t_Count = new int[26];\n    for(char c : s.toCharArray()) s_Count[c - 'a']++;\n    for(char c : t.toCharArray()) t_Count[c - 'a']++;\n    int res = 0;\n    for(int i = 0; i < 26; i++) {\n        res += Math.abs(s_Count[i] - t_Count[i]);\n    }\n    return res / 2;\n}\n```\n    \n    1. Initialize two arrays, `s_Count` and `t_Count`, of length 26, both filled with zeros. These arrays will represent the character counts in strings `s` and `t`. The index represents the respective character number and the value at that index represents the count of the character.\n2. Iterate through both strings `s` and `t` and increase the count of characters in their respective count arrays.\n3. Initialize a counter `res` to zero.\n4. Iterate through the arrays `s_Count` and `t_Count` and calculate the absolute difference between the counts for each character. Add the difference to the counter variable `res`.\n5. Return half of the `res` variable (since we counted the difference two times, i.e., in both `s` and `t`).\n\nThis algorithm has a time complexity of O(n) since we iterate through both strings once and the count arrays once.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

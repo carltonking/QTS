@@ -1,0 +1,24 @@
+{
+  "id": 154,
+  "title": "Find Minimum in Rotated Sorted Array II",
+  "slug": "find-minimum-in-rotated-sorted-array-ii",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Suppose an array of length n sorted in ascending order is rotated between 1 and n times. For example, the array nums = [0,1,4,4,5,6,7] might become:\n\n*   [4,5,6,7,0,1,4] if it was rotated 4 times.\n*   [0,1,4,4,5,6,7] if it was rotated 7 times.\n\nNotice that rotating an array [a[0], a[1], a[2], ..., a[n-1]] 1 time results in the array [a[n-1], a[0], a[1], a[2], ..., a[n-2]].\n\nGiven the sorted rotated array nums that may contain duplicates, return _the minimum element of this array_.\n\nYou must decrease the overall operation steps as much as possible.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findMin(nums):\n    low, high = 0, len(nums) - 1\n    \n    while low < high:\n        mid = low + (high - low) // 2\n        if nums[mid] > nums[high]:\n            low = mid + 1\n        elif nums[mid] < nums[high]:\n            high = mid\n        else:\n            high -= 1\n            \n    return nums[low]\n```\n    \n    The overall algorithm is based on the binary search. We maintain two pointers low and high, initially set to the first and last indices of array nums. Then we perform the following steps until low is less than high:\n\n1. Calculate mid index.\n2. If nums[mid] is greater than nums[high], it means the minimum element lies in the right half of the array, so we set low to mid + 1.\n3. If nums[mid] is less than nums[high], it means the minimum element lies in the left half of the array, so we set high to mid.\n4. If nums[mid] is equal to nums[high], we cannot be certain in which half the minimum element lies, so we simply decrement high by 1.\n\nAt the end, the minimum element will be at index low. The solution takes O(log n) time in the average case and O(n) in the worst case.\n    ",
+    "javascript": "\n    ```javascript\nfunction findMin(nums) {\n    let low = 0, high = nums.length - 1;\n    \n    while (low < high) {\n        let mid = low + Math.floor((high - low) / 2);\n        if (nums[mid] > nums[high]) {\n            low = mid + 1;\n        } else if (nums[mid] < nums[high]) {\n            high = mid;\n        } else {\n            high--;\n        }\n    }\n    return nums[low];\n}\n```\n    \n    The overall algorithm is based on the binary search. We maintain two pointers low and high, initially set to the first and last indices of array nums. Then we perform the following steps until low is less than high:\n\n1. Calculate mid index.\n2. If nums[mid] is greater than nums[high], it means the minimum element lies in the right half of the array, so we set low to mid + 1.\n3. If nums[mid] is less than nums[high], it means the minimum element lies in the left half of the array, so we set high to mid.\n4. If nums[mid] is equal to nums[high], we cannot be certain in which half the minimum element lies, so we simply decrement high by 1.\n\nAt the end, the minimum element will be at index low. The solution takes O(log n) time in the average case and O(n) in the worst case.\n    ",
+    "java": "\n    ```java\npublic int findMin(int[] nums) {\n    int low = 0, high = nums.length - 1;\n    \n    while (low < high) {\n        int mid = low + (high - low) / 2;\n        if (nums[mid] > nums[high]) {\n            low = mid + 1;\n        } else if (nums[mid] < nums[high]) {\n            high = mid;\n        } else {\n            high--;\n        }\n    }\n    return nums[low];\n}\n```\n    \n    The overall algorithm is based on the binary search. We maintain two pointers low and high, initially set to the first and last indices of array nums. Then we perform the following steps until low is less than high:\n\n1. Calculate mid index.\n2. If nums[mid] is greater than nums[high], it means the minimum element lies in the right half of the array, so we set low to mid + 1.\n3. If nums[mid] is less than nums[high], it means the minimum element lies in the left half of the array, so we set high to mid.\n4. If nums[mid] is equal to nums[high], we cannot be certain in which half the minimum element lies, so we simply decrement high by 1.\n\nAt the end, the minimum element will be at index low. The solution takes O(log n) time in the average case and O(n) in the worst case.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

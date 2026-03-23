@@ -1,0 +1,24 @@
+{
+  "id": 899,
+  "title": "Orderly Queue",
+  "slug": "orderly-queue",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a string s and an integer k. You can choose one of the first k letters of s and append it at the end of the string..\n\nReturn _the lexicographically smallest string you could have after applying the mentioned step any number of moves_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef longest_distance(n):\n    last = -1\n    longest = 0\n    i = 0\n    while n:\n        if n & 1:\n            if last >= 0:\n                longest = max(longest, i - last)\n            last = i\n        n >>= 1\n        i += 1\n    return longest\n```\n    \n    The algorithm iterates through the bits of the integer `n` using bitwise operations. It keeps track of the position of the last encountered 1 and calculates the distance between the current 1 and the last 1, updating the longest distance if necessary. If two consecutive 1's are found, it updates the last 1's position with the current position.\n\n1. Initialize `last` to -1 and `longest` to 0.\n2. Iterate through the binary representation of `n` (by shifting n right by 1)\n   a. If the current bit is 1:\n      i. If `last` is not -1, calculate the distance between the current bit position and the last position of 1 and update `longest` with the maximum of current `longest` value and calculated distance.\n      ii. Update `last` with the current position i.\n3. Return `longest`.\n    ",
+    "javascript": "\n    ```javascript\nfunction longestDistance(n) {\n    let last = -1, longest = 0;\n    for (let i = 0; n > 0; n >>= 1, i++) {\n        if (n & 1) {\n            if (last >= 0)\n                longest = Math.max(longest, i - last);\n            last = i;\n        }\n    }\n    return longest;\n}\n```\n    \n    The algorithm iterates through the bits of the integer `n` using bitwise operations. It keeps track of the position of the last encountered 1 and calculates the distance between the current 1 and the last 1, updating the longest distance if necessary. If two consecutive 1's are found, it updates the last 1's position with the current position.\n\n1. Initialize `last` to -1 and `longest` to 0.\n2. Iterate through the binary representation of `n` (by shifting n right by 1)\n   a. If the current bit is 1:\n      i. If `last` is not -1, calculate the distance between the current bit position and the last position of 1 and update `longest` with the maximum of current `longest` value and calculated distance.\n      ii. Update `last` with the current position i.\n3. Return `longest`.\n    ",
+    "java": "\n    ```java\nint longestDistance(int n) {\n    int last = -1, longest = 0;\n    for (int i = 0; n > 0; n >>= 1, i++) {\n        if ((n & 1) == 1) {\n            if (last >= 0)\n                longest = Math.max(longest, i - last);\n            last = i;\n        }\n    }\n    return longest;\n}\n```\n    \n    The algorithm iterates through the bits of the integer `n` using bitwise operations. It keeps track of the position of the last encountered 1 and calculates the distance between the current 1 and the last 1, updating the longest distance if necessary. If two consecutive 1's are found, it updates the last 1's position with the current position.\n\n1. Initialize `last` to -1 and `longest` to 0.\n2. Iterate through the binary representation of `n` (by shifting n right by 1)\n   a. If the current bit is 1:\n      i. If `last` is not -1, calculate the distance between the current bit position and the last position of 1 and update `longest` with the maximum of current `longest` value and calculated distance.\n      ii. Update `last` with the current position i.\n3. Return `longest`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1523,
+  "title": "Count Odd Numbers in an Interval Range",
+  "slug": "count-odd-numbers-in-an-interval-range",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given two non-negative integers low and high. Return the _count of odd numbers between_ low _and_ high _(inclusive)_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_odds(low, high):\n    return (high - low) // 2 + (1 if low % 2 == 1 or high % 2 == 1 else 0)\n```\n    \n    The algorithm first calculates the total number of integer values between `low` and `high`, using the difference divided by 2. Then, it checks whether `low` or `high` is odd (remainder when divided by 2 equals 1). If either of them is odd, it means we have one more odd number to include, so we add 1 to the result. Otherwise, we don't add anything, as the range does not include an extra odd number. This algorithm is efficient and will directly provide the count of odd numbers within the range without any looping. \n    ",
+    "javascript": "\n    ```javascript\nfunction countOdds(low, high) {\n    return Math.floor((high - low) / 2) + ((low % 2 === 1 || high % 2 === 1) ? 1 : 0);\n}\n```\n    \n    The algorithm first calculates the total number of integer values between `low` and `high`, using the difference divided by 2. Then, it checks whether `low` or `high` is odd (remainder when divided by 2 equals 1). If either of them is odd, it means we have one more odd number to include, so we add 1 to the result. Otherwise, we don't add anything, as the range does not include an extra odd number. This algorithm is efficient and will directly provide the count of odd numbers within the range without any looping. \n    ",
+    "java": "\n    ```java\npublic int countOdds(int low, int high) {\n    return (high - low) / 2 + ((low % 2 == 1 || high % 2 == 1) ? 1 : 0);\n}\n```\n    \n    The algorithm first calculates the total number of integer values between `low` and `high`, using the difference divided by 2. Then, it checks whether `low` or `high` is odd (remainder when divided by 2 equals 1). If either of them is odd, it means we have one more odd number to include, so we add 1 to the result. Otherwise, we don't add anything, as the range does not include an extra odd number. This algorithm is efficient and will directly provide the count of odd numbers within the range without any looping. \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

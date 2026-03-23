@@ -1,0 +1,24 @@
+{
+  "id": 110,
+  "title": "Balanced Binary Tree",
+  "slug": "balanced-binary-tree",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a binary tree, determine if it is height-balanced.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef getHeight(node):\n    if not node:\n        return 0\n    left_height = getHeight(node.left)\n    right_height = getHeight(node.right)\n    if left_height == -1 or right_height == -1 or abs(left_height - right_height) > 1:\n        return -1\n    return 1 + max(left_height, right_height)\n\ndef isBalanced(root):\n    return getHeight(root) != -1\n```\n\n    \n    The algorithm is based on the depth-first search. In this algorithm, we define a helper function named `getHeight` which will return the height of the given subtree if it is balanced, otherwise, it will return -1.\n\nThe `getHeight` function works as follows:\n1. If the current node is null, return 0 (base case).\n2. Call the function recursively for the left subtree (leftHeight) and the right subtree (rightHeight).\n3. If either of the subtrees is not balanced or the height difference is greater than 1, return -1.\n4. Otherwise, return the maximum height of the left and right subtrees incremented by 1.\n\nThe main function `isBalanced` just calls the `getHeight` function and checks whether its result is -1 or not. If it is not -1, the binary tree is height-balanced, otherwise, it is not balanced.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(val, left = null, right = null) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\nfunction getHeight(node) {\n    if (!node) return 0;\n    let leftHeight = getHeight(node.left);\n    let rightHeight = getHeight(node.right);\n    if (leftHeight === -1 || rightHeight === -1 || Math.abs(leftHeight - rightHeight) > 1)\n        return -1;\n    return 1 + Math.max(leftHeight, rightHeight);\n}\n\nfunction isBalanced(root) {\n    return getHeight(root) !== -1;\n}\n```\n\n    \n    The algorithm is based on the depth-first search. In this algorithm, we define a helper function named `getHeight` which will return the height of the given subtree if it is balanced, otherwise, it will return -1.\n\nThe `getHeight` function works as follows:\n1. If the current node is null, return 0 (base case).\n2. Call the function recursively for the left subtree (leftHeight) and the right subtree (rightHeight).\n3. If either of the subtrees is not balanced or the height difference is greater than 1, return -1.\n4. Otherwise, return the maximum height of the left and right subtrees incremented by 1.\n\nThe main function `isBalanced` just calls the `getHeight` function and checks whether its result is -1 or not. If it is not -1, the binary tree is height-balanced, otherwise, it is not balanced.\n    ",
+    "java": "\n    ```java\nclass TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n}\n\npublic int getHeight(TreeNode node) {\n    if (node == null) return 0;\n    int leftHeight = getHeight(node.left);\n    int rightHeight = getHeight(node.right);\n    if (leftHeight == -1 || rightHeight == -1 || Math.abs(leftHeight - rightHeight) > 1)\n        return -1;\n    return 1 + Math.max(leftHeight, rightHeight);\n}\n\npublic boolean isBalanced(TreeNode root) {\n    return getHeight(root) != -1;\n}\n```\n\n    \n    The algorithm is based on the depth-first search. In this algorithm, we define a helper function named `getHeight` which will return the height of the given subtree if it is balanced, otherwise, it will return -1.\n\nThe `getHeight` function works as follows:\n1. If the current node is null, return 0 (base case).\n2. Call the function recursively for the left subtree (leftHeight) and the right subtree (rightHeight).\n3. If either of the subtrees is not balanced or the height difference is greater than 1, return -1.\n4. Otherwise, return the maximum height of the left and right subtrees incremented by 1.\n\nThe main function `isBalanced` just calls the `getHeight` function and checks whether its result is -1 or not. If it is not -1, the binary tree is height-balanced, otherwise, it is not balanced.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

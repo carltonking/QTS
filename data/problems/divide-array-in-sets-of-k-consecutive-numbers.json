@@ -1,0 +1,24 @@
+{
+  "id": 1296,
+  "title": "Divide Array in Sets of K Consecutive Numbers",
+  "slug": "divide-array-in-sets-of-k-consecutive-numbers",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of integers nums and a positive integer k, check whether it is possible to divide this array into sets of k consecutive numbers.\n\nReturn true _if it is possible_. Otherwise, return false.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeAncestor:\n\n    def __init__(self, n: int, parent: List[int]):\n        self.dp = [[0] * 20 for _ in range(n)]\n        for i in range(n):\n            self.dp[i][0] = parent[i]\n        for k in range(1, 20):\n            for i in range(n):\n                if self.dp[i][k - 1] != -1:\n                    self.dp[i][k] = self.dp[self.dp[i][k - 1]][k - 1]\n                else:\n                    self.dp[i][k] = -1\n\n    def getKthAncestor(self, node: int, k: int) -> int:\n        for i in range(20):\n            if k & (1 << i):\n                node = self.dp[node][i]\n                if node == -1:\n                    return -1\n        return node\n```\n    \n    We preprocess the parent array into a 2D dynamic programming table 'dp' with 20 levels (using binary lifting), where `dp[i][j]` represents the 2^j-th parent of the node i. To find the kth ancestor of a given node, we use a loop to check each bit of the binary representation of k. If the ith bit is set, we update the node to be the 2^i-th ancestor of the current node. We repeat this process for all bits in the binary representation of k. If at any point node becomes -1, we return -1 since the kth ancestor does not exist. Otherwise, the final value of node at the end of the process is the required kth ancestor.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeAncestor {\n    constructor(n, parent) {\n        this.dp = new Array(n).fill(0).map(() => new Array(20).fill(0));\n        for (let i = 0; i < n; i++) this.dp[i][0] = parent[i];\n        for (let k = 1; k < 20; k++)\n            for (let i = 0; i < n; i++)\n                this.dp[i][k] = this.dp[i][k - 1] === -1 ? -1 : this.dp[this.dp[i][k - 1]][k - 1];\n    }\n\n    getKthAncestor(node, k) {\n        for (let i = 0; i < 20; i++) {\n            if (k & (1 << i)) {\n                node = this.dp[node][i];\n                if (node === -1) return -1;\n            }\n        }\n        return node;\n    }\n}\n```\n    \n    We preprocess the parent array into a 2D dynamic programming table 'dp' with 20 levels (using binary lifting), where `dp[i][j]` represents the 2^j-th parent of the node i. To find the kth ancestor of a given node, we use a loop to check each bit of the binary representation of k. If the ith bit is set, we update the node to be the 2^i-th ancestor of the current node. We repeat this process for all bits in the binary representation of k. If at any point node becomes -1, we return -1 since the kth ancestor does not exist. Otherwise, the final value of node at the end of the process is the required kth ancestor.\n    ",
+    "java": "\n    ```java\nclass TreeAncestor {\n    int[][] dp;\n\n    public TreeAncestor(int n, int[] parent) {\n        dp = new int[n][20];\n        for (int i = 0; i < n; i++) dp[i][0] = parent[i];\n        for (int k = 1; k < 20; k++)\n            for (int i = 0; i < n; i++)\n                dp[i][k] = dp[i][k - 1] == -1 ? -1 : dp[dp[i][k - 1]][k - 1];\n    }\n\n    public int getKthAncestor(int node, int k) {\n        for (int i = 0; i < 20; i++) {\n            if ((k & (1 << i)) != 0) {\n                node = dp[node][i];\n                if (node == -1) return -1;\n            }\n        }\n        return node;\n    }\n}\n```\n    \n    We preprocess the parent array into a 2D dynamic programming table 'dp' with 20 levels (using binary lifting), where `dp[i][j]` represents the 2^j-th parent of the node i. To find the kth ancestor of a given node, we use a loop to check each bit of the binary representation of k. If the ith bit is set, we update the node to be the 2^i-th ancestor of the current node. We repeat this process for all bits in the binary representation of k. If at any point node becomes -1, we return -1 since the kth ancestor does not exist. Otherwise, the final value of node at the end of the process is the required kth ancestor.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

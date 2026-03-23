@@ -1,0 +1,24 @@
+{
+  "id": 377,
+  "title": "Combination Sum IV",
+  "slug": "combination-sum-iv",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of distinct integers nums and a target integer target, return _the number of possible combinations that add up to_ target.\n\nThe test cases are generated so that the answer can fit in a 32-bit integer.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef combination_sum(nums, target):\n    dp = [0] * (target + 1)\n    dp[0] = 1\n\n    for num in nums:\n        for i in range(num, target + 1):\n            dp[i] += dp[i - num]\n\n    return dp[target]\n```\n\n    \n    The basic idea is to use dynamic programming to solve this question. We create an array called \"dp\" with a length of target + 1, initializing all values to 0 except for dp[0], which is set to 1. This is because there is always one way to make a sum of 0.\n\nWe then start iterating through the given `nums` array. For each number in the `nums` array, we iterate from the `num` itself to the `target`. At each step, we add the number of ways we can make the previous sub-target (i.e., `dp[i - num]`) and store this updated count in the `dp[i]`.\n\nFinally, after iterating through all numbers and sub-targets, the value at `dp[target]` will give the number of possible combinations that add up to `target`.\n    ",
+    "javascript": "\n    ```javascript\nfunction combinationSum(nums, target) {\n    let dp = new Array(target + 1).fill(0);\n    dp[0] = 1;\n\n    for(let num of nums) {\n        for(let i = num; i <= target; i++) {\n            dp[i] += dp[i - num];\n        }\n    }\n\n    return dp[target];\n}\n```\n\n    \n    The basic idea is to use dynamic programming to solve this question. We create an array called \"dp\" with a length of target + 1, initializing all values to 0 except for dp[0], which is set to 1. This is because there is always one way to make a sum of 0.\n\nWe then start iterating through the given `nums` array. For each number in the `nums` array, we iterate from the `num` itself to the `target`. At each step, we add the number of ways we can make the previous sub-target (i.e., `dp[i - num]`) and store this updated count in the `dp[i]`.\n\nFinally, after iterating through all numbers and sub-targets, the value at `dp[target]` will give the number of possible combinations that add up to `target`.\n    ",
+    "java": "\n    ```java\npublic int combinationSum(int[] nums, int target) {\n    int[] dp = new int[target + 1];\n    dp[0] = 1;\n\n    for(int num : nums) {\n        for(int i = num; i <= target; i++) {\n            dp[i] += dp[i - num];\n        }\n    }\n\n    return dp[target];\n}\n```\n\n    \n    The basic idea is to use dynamic programming to solve this question. We create an array called \"dp\" with a length of target + 1, initializing all values to 0 except for dp[0], which is set to 1. This is because there is always one way to make a sum of 0.\n\nWe then start iterating through the given `nums` array. For each number in the `nums` array, we iterate from the `num` itself to the `target`. At each step, we add the number of ways we can make the previous sub-target (i.e., `dp[i - num]`) and store this updated count in the `dp[i]`.\n\nFinally, after iterating through all numbers and sub-targets, the value at `dp[target]` will give the number of possible combinations that add up to `target`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

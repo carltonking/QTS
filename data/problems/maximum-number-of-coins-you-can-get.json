@@ -1,0 +1,24 @@
+{
+  "id": 1561,
+  "title": "Maximum Number of Coins You Can Get",
+  "slug": "maximum-number-of-coins-you-can-get",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There are 3n piles of coins of varying size, you and your friends will take piles of coins as follows:\n\n*   In each step, you will choose any 3 piles of coins (not necessarily consecutive).\n*   Of your choice, Alice will pick the pile with the maximum number of coins.\n*   You will pick the next pile with the maximum number of coins.\n*   Your friend Bob will pick the last pile.\n*   Repeat until there are no more piles of coins.\n\nGiven an array of integers piles where piles[i] is the number of coins in the ith pile.\n\nReturn the maximum number of coins that you can have.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef arrangeWords(text: str) -> str:\n    words = text.split()\n    words[0] = words[0].lower()\n    words.sort(key=len)\n    words[0] = words[0].capitalize()\n    return ' '.join(words)\n```\n    \n    1. First, convert the first character of `text` to lowercase.\n2. Split the `text` into an array or vector of words based on the space character.\n3. Sort the words by their length using the `sort` or `stable_sort` function. The stable sort preservers the relative order of the elements with same length.\n4. Change the first character of the first word to uppercase.\n5. Join the words with a space separator and return the resulting string.\n    ",
+    "javascript": "\n    ```javascript\nfunction arrangeWords(text) {\n    const words = text.toLowerCase().split(' ').sort((a, b) => a.length - b.length);\n    words[0] = words[0].charAt(0).toUpperCase() + words[0].slice(1);\n    return words.join(' ');\n}\n```\n    \n    1. First, convert the first character of `text` to lowercase.\n2. Split the `text` into an array or vector of words based on the space character.\n3. Sort the words by their length using the `sort` or `stable_sort` function. The stable sort preservers the relative order of the elements with same length.\n4. Change the first character of the first word to uppercase.\n5. Join the words with a space separator and return the resulting string.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic class Main {\n    public static String arrangeWords(String text) {\n        String[] words = text.toLowerCase().split(\" \");\n        Arrays.sort(words, (a, b) -> a.length() - b.length());\n        words[0] = Character.toUpperCase(words[0].charAt(0)) + words[0].substring(1);\n        return String.join(\" \", words);\n    }\n}\n```\n    \n    1. First, convert the first character of `text` to lowercase.\n2. Split the `text` into an array or vector of words based on the space character.\n3. Sort the words by their length using the `sort` or `stable_sort` function. The stable sort preservers the relative order of the elements with same length.\n4. Change the first character of the first word to uppercase.\n5. Join the words with a space separator and return the resulting string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

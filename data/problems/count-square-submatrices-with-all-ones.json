@@ -1,0 +1,24 @@
+{
+  "id": 1277,
+  "title": "Count Square Submatrices with All Ones",
+  "slug": "count-square-submatrices-with-all-ones",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a m * n matrix of ones and zeros, return how many square submatrices have all ones.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef largest_multiple_of_three(digits):\n    count = [0] * 3\n    num_sum = sum(digits)\n    \n    for d in digits:\n        count[d % 3] += 1\n\n    if num_sum % 3 == 1:\n        if count[1] >= 1:\n            count[1] -= 1\n        else:\n            count[2] -= 2\n    elif num_sum % 3 == 2:\n        if count[2] >= 1:\n            count[2] -= 1\n        else:\n            count[1] -= 2\n\n    res = \"\"\n    for i in range(10):\n        res += str(i) * count[i % 3]\n    \n    if res and res[-1] == \"0\":\n        return \"0\"\n    return res[::-1]\n```\n    \n    1. Calculate the sum of all digits in the input array, and maintain a count of each digit's frequency based on its value modulo 3.\n2. If the sum modulo 3 is 1, remove either 1 element with value modulo 3 equals to 1 or remove 2 elements with value modulo 3 equals to 2.\n3. If the sum modulo 3 is 2, remove either 1 element with value modulo 3 equals to 2 or remove 2 elements with value modulo 3 equals to 1.\n4. Build the result string by iterating from 0 to 9, appending the digits remaining in 'count' array in descending order.\n5. If the result string is non-empty and its last character is '0', return \"0\" since there are no unnecessary leading zeros.\n6. Otherwise, reverse the result string and return it as the final answer.\n    ",
+    "javascript": "\n    ```javascript\nfunction largestMultipleOfThree(digits) {\n    let sum = 0, count = [0, 0, 0];\n\n    for (let d of digits) {\n        sum += d;\n        count[d % 3]++;\n    }\n\n    if (sum % 3 === 1) {\n        if (count[1] >= 1) count[1]--; \n        else count[2] -= 2;\n    }\n    else if (sum % 3 === 2) {\n        if (count[2] >= 1) count[2]--;\n        else count[1] -= 2;\n    }\n\n    let res = \"\";\n    for (let i = 0; i <= 9; ++i) {\n        let n = count[i % 3];\n        while (n--) res += i;\n    }\n\n    if (res.length !== 0 && res[res.length - 1] === '0') return \"0\";\n    return res.split(\"\").reverse().join(\"\");\n}\n```\n    \n    1. Calculate the sum of all digits in the input array, and maintain a count of each digit's frequency based on its value modulo 3.\n2. If the sum modulo 3 is 1, remove either 1 element with value modulo 3 equals to 1 or remove 2 elements with value modulo 3 equals to 2.\n3. If the sum modulo 3 is 2, remove either 1 element with value modulo 3 equals to 2 or remove 2 elements with value modulo 3 equals to 1.\n4. Build the result string by iterating from 0 to 9, appending the digits remaining in 'count' array in descending order.\n5. If the result string is non-empty and its last character is '0', return \"0\" since there are no unnecessary leading zeros.\n6. Otherwise, reverse the result string and return it as the final answer.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic String largestMultipleOfThree(int[] digits) {\n    int sum = 0, count[] = new int[3];\n    \n    for (int d : digits) {\n        sum += d;\n        count[d % 3]++;\n    }\n\n    if (sum % 3 == 1) {\n        if (count[1] >= 1) count[1]--; \n        else count[2] -= 2;\n    }\n    else if (sum % 3 == 2) {\n        if (count[2] >= 1) count[2]--;\n        else count[1] -= 2;\n    }\n\n    StringBuilder res = new StringBuilder();\n    for (int i = 0; i <= 9; ++i) {\n        int n = count[i % 3];\n        while (n-- > 0) res.append(i);\n    }\n\n    if (res.length() != 0 && res.charAt(res.length() - 1) == '0') return \"0\";\n    return res.reverse().toString();\n}\n```\n    \n    1. Calculate the sum of all digits in the input array, and maintain a count of each digit's frequency based on its value modulo 3.\n2. If the sum modulo 3 is 1, remove either 1 element with value modulo 3 equals to 1 or remove 2 elements with value modulo 3 equals to 2.\n3. If the sum modulo 3 is 2, remove either 1 element with value modulo 3 equals to 2 or remove 2 elements with value modulo 3 equals to 1.\n4. Build the result string by iterating from 0 to 9, appending the digits remaining in 'count' array in descending order.\n5. If the result string is non-empty and its last character is '0', return \"0\" since there are no unnecessary leading zeros.\n6. Otherwise, reverse the result string and return it as the final answer.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1744,
+  "title": "Can You Eat Your Favorite Candy on Your Favorite Day?",
+  "slug": "can-you-eat-your-favorite-candy-on-your-favorite-day",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a (0-indexed) array of positive integers candiesCount where candiesCount[i] represents the number of candies of the ith type you have. You are also given a 2D array queries where queries[i] = [favoriteTypei, favoriteDayi, dailyCapi].\n\nYou play a game with the following rules:\n\n*   You start eating candies on day 0.\n*   You cannot eat any candy of type i unless you have eaten all candies of type i - 1.\n*   You must eat at least one candy per day until you have eaten all the candies.\n\nConstruct a boolean array answer such that answer.length == queries.length and answer[i] is true if you can eat a candy of type favoriteTypei on day favoriteDayi without eating more than dailyCapi candies on any day, and false otherwise. Note that you can eat different types of candy on the same day, provided that you follow rule 2.\n\nReturn _the constructed array_ answer.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef num_ways(words, target):\n    n, m = len(words), len(target)\n    MOD = 10**9 + 7\n    cnt = [0] * 26\n    for word in words:\n        for ch in word:\n            cnt[ord(ch) - ord('a')] += 1\n    dp = [0] * (m + 1)\n    dp[0] = 1\n    for ch in target:\n        for i in range(m - 1, -1, -1):\n            dp[i + 1] += dp[i] * cnt[ord(ch) - ord('a')]\n            dp[i + 1] %= MOD\n    return dp[m]\n```\n    \n    First, we count the frequency of each character in the given words and store it in an array `cnt`. Then, we use dynamic programming. Initialize a `dp` array of size m+1 (where m is the length of the target string) and set `dp[0] = 1`.\n\nIterate through all characters in the target string, and for each character, iterate through the `dp` array in reverse order from m-1 to 0. Update `dp[i+1]` as: `dp[i+1] += dp[i] * cnt[ch - 'a']`, taking the modulo 1e9+7 at every step.\n\nIn the end, return `dp[m]` which contains the number of ways to form the target from the given words.\n    ",
+    "javascript": "\n    ```javascript\nfunction numWays(words, target) {\n    let n = words.length, m = target.length;\n    const MOD = 1e9 + 7;\n    let cnt = Array(26).fill(0);\n    for (let word of words) {\n        for (let ch of word) {\n            cnt[ch.charCodeAt(0) - 'a'.charCodeAt(0)]++;\n        }\n    }\n    let dp = Array(m + 1).fill(0);\n    dp[0] = 1;\n    for (let ch of target) {\n        for (let i = m - 1; i >= 0; i--) {\n            dp[i + 1] += dp[i] * cnt[ch.charCodeAt(0) - 'a'.charCodeAt(0)];\n            dp[i + 1] %= MOD;\n        }\n    }\n    return dp[m];\n}\n```\n    \n    First, we count the frequency of each character in the given words and store it in an array `cnt`. Then, we use dynamic programming. Initialize a `dp` array of size m+1 (where m is the length of the target string) and set `dp[0] = 1`.\n\nIterate through all characters in the target string, and for each character, iterate through the `dp` array in reverse order from m-1 to 0. Update `dp[i+1]` as: `dp[i+1] += dp[i] * cnt[ch - 'a']`, taking the modulo 1e9+7 at every step.\n\nIn the end, return `dp[m]` which contains the number of ways to form the target from the given words.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic int numWays(List<String> words, String target) {\n    int n = words.size(), m = target.length();\n    int MOD = 1000000007;\n    int[] cnt = new int[26];\n    for (String word : words) {\n        for (char ch : word.toCharArray()) {\n            cnt[ch - 'a']++;\n        }\n    }\n    long[] dp = new long[m + 1];\n    dp[0] = 1;\n    for (char ch : target.toCharArray()) {\n        for (int i = m - 1; i >= 0; i--) {\n            dp[i + 1] += dp[i] * cnt[ch - 'a'];\n            dp[i + 1] %= MOD;\n        }\n    }\n    return (int)dp[m];\n}\n```\n    \n    First, we count the frequency of each character in the given words and store it in an array `cnt`. Then, we use dynamic programming. Initialize a `dp` array of size m+1 (where m is the length of the target string) and set `dp[0] = 1`.\n\nIterate through all characters in the target string, and for each character, iterate through the `dp` array in reverse order from m-1 to 0. Update `dp[i+1]` as: `dp[i+1] += dp[i] * cnt[ch - 'a']`, taking the modulo 1e9+7 at every step.\n\nIn the end, return `dp[m]` which contains the number of ways to form the target from the given words.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

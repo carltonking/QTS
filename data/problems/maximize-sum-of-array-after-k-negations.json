@@ -1,0 +1,24 @@
+{
+  "id": 1005,
+  "title": "Maximize Sum Of Array After K Negations",
+  "slug": "maximize-sum-of-array-after-k-negations",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer array nums and an integer k, modify the array in the following way:\n\n*   choose an index i and replace nums[i] with -nums[i].\n\nYou should apply this process exactly k times. You may choose the same index i multiple times.\n\nReturn _the largest possible sum of the array after modifying it in this way_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_univalued(root, val=None):\n    if not root:\n        return True\n    if val is None:\n        val = root.val\n    return root.val == val and is_univalued(root.left, val) and is_univalued(root.right, val)\n```\n    \n    The algorithm first checks if the root node is null, if it is, the function returns true as an empty tree is uni-valued. If this is the first call to the function (indicated by default value for val), it sets the val to the root node's value. For all other calls, val is already set, and it only checks if the current node's value is equal to val. If it is equal, it recursively calls for the left and right sub-trees. If all calls return true, the tree is uni-valued, otherwise it's not.\n    ",
+    "javascript": "\n    ```javascript\nfunction isUnivalued(root, val = null) {\n    if (!root) return true;\n    if (val === null) val = root.val;\n    return root.val === val && isUnivalued(root.left, val) && isUnivalued(root.right, val);\n}\n```\n    \n    The algorithm first checks if the root node is null, if it is, the function returns true as an empty tree is uni-valued. If this is the first call to the function (indicated by default value for val), it sets the val to the root node's value. For all other calls, val is already set, and it only checks if the current node's value is equal to val. If it is equal, it recursively calls for the left and right sub-trees. If all calls return true, the tree is uni-valued, otherwise it's not.\n    ",
+    "java": "\n    ```java\npublic boolean isUnivalued(TreeNode root) {\n    return isUnivalued(root, -1);\n}\n\nprivate boolean isUnivalued(TreeNode root, int val) {\n    if (root == null) return true;\n    if (val == -1) val = root.val;\n    return root.val == val && isUnivalued(root.left, val) && isUnivalued(root.right, val);\n}\n```\n    \n    The algorithm first checks if the root node is null, if it is, the function returns true as an empty tree is uni-valued. If this is the first call to the function (indicated by default value for val), it sets the val to the root node's value. For all other calls, val is already set, and it only checks if the current node's value is equal to val. If it is equal, it recursively calls for the left and right sub-trees. If all calls return true, the tree is uni-valued, otherwise it's not.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

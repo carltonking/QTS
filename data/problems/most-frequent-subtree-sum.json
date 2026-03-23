@@ -1,0 +1,24 @@
+{
+  "id": 508,
+  "title": "Most Frequent Subtree Sum",
+  "slug": "most-frequent-subtree-sum",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the root of a binary tree, return the most frequent subtree sum. If there is a tie, return all the values with the highest frequency in any order.\n\nThe subtree sum of a node is defined as the sum of all the node values formed by the subtree rooted at that node (including the node itself).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import defaultdict\n\ndef helper(node, counts):\n    if not node: return 0\n    val = node.val + helper(node.left, counts) + helper(node.right, counts)\n    counts[val] += 1\n    return val\n\ndef findFrequentTreeSum(root):\n    counts = defaultdict(int)\n    helper(root, counts)\n    max_count = max(counts.values(), default=0)\n    return [s for s, c in counts.items() if c == max_count]\n```\n\n    \n    The algorithm uses a helper function to recursively calculate the subtree sum for each node. The helper function returns the subtree sum of the node it's called on, and the results are combined to calculate the subtree sum of the parent nodes. The subtree sums are stored in a dictionary or map along with their frequencies. After calculating the sums and frequencies for all nodes, the maximum frequency is found by iterating through the values of the dictionary or map. Finally, the function loops through the dictionary or map and adds the keys with the maximum frequency to the result list or array. The result is then returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction helper(root, counts) {\n    if (!root) return 0;\n    const sum = root.val + helper(root.left, counts) + helper(root.right, counts);\n    counts[sum] = (counts[sum] || 0) + 1;\n    return sum;\n}\n\nfunction findFrequentTreeSum(root) {\n    const counts = {};\n    helper(root, counts);\n    const maxCount = Math.max(...Object.values(counts));\n    return Object.keys(counts).filter(key => counts[key] === maxCount).map(Number);\n}\n```\n\n    \n    The algorithm uses a helper function to recursively calculate the subtree sum for each node. The helper function returns the subtree sum of the node it's called on, and the results are combined to calculate the subtree sum of the parent nodes. The subtree sums are stored in a dictionary or map along with their frequencies. After calculating the sums and frequencies for all nodes, the maximum frequency is found by iterating through the values of the dictionary or map. Finally, the function loops through the dictionary or map and adds the keys with the maximum frequency to the result list or array. The result is then returned.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\nimport java.util.LinkedList;\nimport java.util.List;\n\npublic int helper(TreeNode root, HashMap<Integer, Integer> counts) {\n    if (root == null) return 0;\n    int sum = root.val + helper(root.left, counts) + helper(root.right, counts);\n    counts.put(sum, counts.getOrDefault(sum, 0) + 1);\n    return sum;\n}\n\npublic int[] findFrequentTreeSum(TreeNode root) {\n    if (root == null) return new int[0];\n    HashMap<Integer, Integer> counts = new HashMap<>();\n    helper(root, counts);\n    int maxCount = 0;\n    for (int count : counts.values()) {\n        maxCount = Math.max(count, maxCount);\n    }\n    List<Integer> list = new LinkedList<>();\n    for (int key : counts.keySet()) {\n        if (counts.get(key) == maxCount) list.add(key);\n    }\n    return list.stream().mapToInt(i -> i).toArray();\n}\n```\n\n    \n    The algorithm uses a helper function to recursively calculate the subtree sum for each node. The helper function returns the subtree sum of the node it's called on, and the results are combined to calculate the subtree sum of the parent nodes. The subtree sums are stored in a dictionary or map along with their frequencies. After calculating the sums and frequencies for all nodes, the maximum frequency is found by iterating through the values of the dictionary or map. Finally, the function loops through the dictionary or map and adds the keys with the maximum frequency to the result list or array. The result is then returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

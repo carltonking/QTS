@@ -1,0 +1,24 @@
+{
+  "id": 966,
+  "title": "Vowel Spellchecker",
+  "slug": "vowel-spellchecker",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a wordlist, we want to implement a spellchecker that converts a query word into a correct word.\n\nFor a given query word, the spell checker handles two categories of spelling mistakes:\n\n*   Capitalization: If the query matches a word in the wordlist (case-insensitive), then the query word is returned with the same case as the case in the wordlist.\n    *   Example: wordlist = [ \"yellow \"], query = \"YellOw \": correct = \"yellow \"\n    *   Example: wordlist = [ \"Yellow \"], query = \"yellow \": correct = \"Yellow \"\n    *   Example: wordlist = [ \"yellow \"], query = \"yellow \": correct = \"yellow \"\n*   Vowel Errors: If after replacing the vowels ('a', 'e', 'i', 'o', 'u') of the query word with any vowel individually, it matches a word in the wordlist (case-insensitive), then the query word is returned with the same case as the match in the wordlist.\n    *   Example: wordlist = [ \"YellOw \"], query = \"yollow \": correct = \"YellOw \"\n    *   Example: wordlist = [ \"YellOw \"], query = \"yeellow \": correct = \" \" (no match)\n    *   Example: wordlist = [ \"YellOw \"], query = \"yllw \": correct = \" \" (no match)\n\nIn addition, the spell checker operates under the following precedence rules:\n\n*   When the query exactly matches a word in the wordlist (case-sensitive), you should return the same word back.\n*   When the query matches a word up to capitlization, you should return the first such match in the wordlist.\n*   When the query matches a word up to vowel errors, you should return the first such match in the wordlist.\n*   If the query has no matches in the wordlist, you should return the empty string.\n\nGiven some queries, return a list of words answer, where answer[i] is the correct word for query = queries[i].",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef num_subarrays_with_sum(nums, goal):\n    from collections import defaultdict\n    prefix_sum_count = defaultdict(int)\n    prefix_sum_count[0] = 1\n    cumulative_sum, result = 0, 0\n    \n    for num in nums:\n        cumulative_sum += num\n        result += prefix_sum_count[cumulative_sum - goal]\n        prefix_sum_count[cumulative_sum] += 1\n    \n    return result\n```\n    \n    The algorithm uses the prefix sum technique with a hash map to store the count of each prefix sum. It iterates through the given binary array, adding each element to the cumulative sum. For each cumulative sum, the algorithm checks how many prefix sums are equal to the current cumulative sum minus the given goal. The algorithm then adds this count to the result.\n\nAfter iterating through the entire array, the result will be the number of non-empty subarrays with a sum equal to the given goal.\n    ",
+    "javascript": "\n    ```javascript\nfunction numSubarraysWithSum(nums, goal) {\n    const prefixSumCount = {0: 1};\n    let sum = 0, result = 0;\n\n    for (const num of nums) {\n        sum += num;\n        result += (prefixSumCount[sum - goal] || 0);\n        prefixSumCount[sum] = (prefixSumCount[sum] || 0) + 1;\n    }\n\n    return result;\n}\n```\n    \n    The algorithm uses the prefix sum technique with a hash map to store the count of each prefix sum. It iterates through the given binary array, adding each element to the cumulative sum. For each cumulative sum, the algorithm checks how many prefix sums are equal to the current cumulative sum minus the given goal. The algorithm then adds this count to the result.\n\nAfter iterating through the entire array, the result will be the number of non-empty subarrays with a sum equal to the given goal.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\n\npublic int numSubarraysWithSum(int[] nums, int goal) {\n    HashMap<Integer, Integer> prefixSumCount = new HashMap<>();\n    prefixSumCount.put(0, 1);\n    int sum = 0, result = 0;\n    \n    for (int num : nums) {\n        sum += num;\n        result += prefixSumCount.getOrDefault(sum - goal, 0);\n        prefixSumCount.put(sum, prefixSumCount.getOrDefault(sum, 0) + 1);\n    }\n    \n    return result;\n}\n```\n    \n    The algorithm uses the prefix sum technique with a hash map to store the count of each prefix sum. It iterates through the given binary array, adding each element to the cumulative sum. For each cumulative sum, the algorithm checks how many prefix sums are equal to the current cumulative sum minus the given goal. The algorithm then adds this count to the result.\n\nAfter iterating through the entire array, the result will be the number of non-empty subarrays with a sum equal to the given goal.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

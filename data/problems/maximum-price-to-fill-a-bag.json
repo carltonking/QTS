@@ -1,0 +1,24 @@
+{
+  "id": 2548,
+  "title": "Maximum Price to Fill a Bag",
+  "slug": "maximum-price-to-fill-a-bag",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 2D integer array items where items[i] = [pricei, weighti] denotes the price and weight of the ith item, respectively.\n\nYou are also given a positive integer capacity.\n\nEach item can be divided into two items with ratios part1 and part2, where part1 + part2 == 1.\n\n*   The weight of the first item is weighti * part1 and the price of the first item is pricei * part1.\n*   Similarly, the weight of the second item is weighti * part2 and the price of the second item is pricei * part2.\n\nReturn _the maximum total price to fill a bag of capacity_ capacity _with given items_. If it is impossible to fill a bag return -1. Answers within 10-5 of the actual answer will be considered accepted.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxValue(items, capacity):\n    items.sort(key=lambda x: x[0] / x[1], reverse=True)\n\n    maxTotalPrice = 0\n    for item in items:\n        if capacity >= item[1]:\n            capacity -= item[1]\n            maxTotalPrice += item[0]\n        else:\n            maxTotalPrice += item[0] * capacity / item[1]\n            break\n\n    return maxTotalPrice\n```\n\n    \n    The solution starts by sorting the items in descending order based on their price-to-weight ratio. This effectively gives priority to items with a higher \"value density\". Then, it initializes `maxTotalPrice` to 0, representing the eventual result.\n\nThe algorithm iterates through the sorted items, and for each item, it checks if its weight is smaller than the remaining capacity of the bag. If so, it adds the whole item to the bag, and updates the bag capacity accordingly. In case the item's weight is larger than the remaining capacity, the algorithm divides the item into the largest possible part that fits the bag.\n\nFor each included item or item part, the algorithm updates the total price.\n\nOnce the algorithm has processed all items, it returns the `maxTotalPrice`.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxValue(items, capacity) {\n    items.sort((a, b) => (b[0] / b[1]) - (a[0] / a[1]));\n\n    let maxTotalPrice = 0;\n    for (const item of items) {\n        if (capacity >= item[1]) {\n            capacity -= item[1];\n            maxTotalPrice += item[0];\n        }\n        else {\n            maxTotalPrice += (item[0] * capacity / item[1]);\n            break;\n        }\n    }\n\n    return maxTotalPrice;\n}\n```\n\n    \n    The solution starts by sorting the items in descending order based on their price-to-weight ratio. This effectively gives priority to items with a higher \"value density\". Then, it initializes `maxTotalPrice` to 0, representing the eventual result.\n\nThe algorithm iterates through the sorted items, and for each item, it checks if its weight is smaller than the remaining capacity of the bag. If so, it adds the whole item to the bag, and updates the bag capacity accordingly. In case the item's weight is larger than the remaining capacity, the algorithm divides the item into the largest possible part that fits the bag.\n\nFor each included item or item part, the algorithm updates the total price.\n\nOnce the algorithm has processed all items, it returns the `maxTotalPrice`.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic double maxValue(int[][] items, int capacity) {\n    Arrays.sort(items, (a, b) -> Double.compare((double) b[0] / b[1], (double) a[0] / a[1]));\n\n    double maxTotalPrice = 0;\n    for (int[] item : items) {\n        if (capacity >= item[1]) {\n            capacity -= item[1];\n            maxTotalPrice += item[0];\n        }\n        else {\n            maxTotalPrice += (double) item[0] * capacity / item[1];\n            break;\n        }\n    }\n\n    return maxTotalPrice;\n}\n```\n\n    \n    The solution starts by sorting the items in descending order based on their price-to-weight ratio. This effectively gives priority to items with a higher \"value density\". Then, it initializes `maxTotalPrice` to 0, representing the eventual result.\n\nThe algorithm iterates through the sorted items, and for each item, it checks if its weight is smaller than the remaining capacity of the bag. If so, it adds the whole item to the bag, and updates the bag capacity accordingly. In case the item's weight is larger than the remaining capacity, the algorithm divides the item into the largest possible part that fits the bag.\n\nFor each included item or item part, the algorithm updates the total price.\n\nOnce the algorithm has processed all items, it returns the `maxTotalPrice`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 161,
+  "title": "One Edit Distance",
+  "slug": "one-edit-distance",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given two strings s and t, return true if they are both one edit distance apart, otherwise return false.\n\nA string s is said to be one distance apart from a string t if you can:\n\n*   Insert exactly one character into s to get t.\n*   Delete exactly one character from s to get t.\n*   Replace exactly one character of s with a different character to get t.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef isOneEditDistance(s: str, t: str) -> bool:\n    m, n = len(s), len(t)\n    if m > n:\n        return isOneEditDistance(t, s)\n    if n - m > 1:\n        return False\n    for i in range(m):\n        if s[i] != t[i]:\n            return s[i + (m < n):] == t[i + 1:]\n    return m + 1 == n\n```\n    \n    The algorithm first checks if the length of string `s` is greater than the length of string `t`. If true, it swaps the two strings and continues the checks. Next, the algorithm checks if the length difference between the strings is greater than 1, returning `false` if so since it's not possible to meet the one edit distance criteria in that case.\n\nThe algorithm iterates through the characters of the two strings. If it encounters a mismatched character it checks if the insertion or deletion of a character can yield the other string, and if not, it checks if the replacement of the mismatched character in string `s` can yield string `t`. If it iterates through both strings without finding a mismatch, it returns `true` if the length difference of the strings is 1 to ensure only one character has been inserted. Otherwise, it returns `false`.\n    ",
+    "javascript": "\n    ```javascript\nfunction isOneEditDistance(s, t) {\n    let m = s.length, n = t.length;\n    if (m > n) {\n        return isOneEditDistance(t, s);\n    }\n    if (n - m > 1) {\n        return false;\n    }\n    for (let i = 0; i < m; ++i) {\n        if (s[i] !== t[i]) {\n            if (m < n) {\n                return s.slice(i) === t.slice(i + 1);\n            } else {\n                return s.slice(i + 1) === t.slice(i + 1);\n            }\n        }\n    }\n    return m + 1 === n;\n}\n```\n\n    \n    The algorithm first checks if the length of string `s` is greater than the length of string `t`. If true, it swaps the two strings and continues the checks. Next, the algorithm checks if the length difference between the strings is greater than 1, returning `false` if so since it's not possible to meet the one edit distance criteria in that case.\n\nThe algorithm iterates through the characters of the two strings. If it encounters a mismatched character it checks if the insertion or deletion of a character can yield the other string, and if not, it checks if the replacement of the mismatched character in string `s` can yield string `t`. If it iterates through both strings without finding a mismatch, it returns `true` if the length difference of the strings is 1 to ensure only one character has been inserted. Otherwise, it returns `false`.\n    ",
+    "java": "\n    ```java\npublic boolean isOneEditDistance(String s, String t) {\n    int m = s.length();\n    int n = t.length();\n    if (m > n) {\n        return isOneEditDistance(t, s);\n    }\n    if (n - m > 1) {\n        return false;\n    }\n    for (int i = 0; i < m; ++i) {\n        if (s.charAt(i) != t.charAt(i)) {\n            if (m < n) {\n                return s.substring(i).equals(t.substring(i + 1));\n            } else {\n                return s.substring(i + 1).equals(t.substring(i + 1));\n            }\n        }\n    }\n    return m + 1 == n;\n}\n```\n    \n    The algorithm first checks if the length of string `s` is greater than the length of string `t`. If true, it swaps the two strings and continues the checks. Next, the algorithm checks if the length difference between the strings is greater than 1, returning `false` if so since it's not possible to meet the one edit distance criteria in that case.\n\nThe algorithm iterates through the characters of the two strings. If it encounters a mismatched character it checks if the insertion or deletion of a character can yield the other string, and if not, it checks if the replacement of the mismatched character in string `s` can yield string `t`. If it iterates through both strings without finding a mismatch, it returns `true` if the length difference of the strings is 1 to ensure only one character has been inserted. Otherwise, it returns `false`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

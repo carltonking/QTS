@@ -1,0 +1,24 @@
+{
+  "id": 1698,
+  "title": "Number of Distinct Substrings in a String",
+  "slug": "number-of-distinct-substrings-in-a-string",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string s, return _the number of distinct substrings of_ s.\n\nA substring of a string is obtained by deleting any number of characters (possibly zero) from the front of the string and any number (possibly zero) from the back of the string.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef modifyString(s: str) -> str:\n    s = list(s)\n    for i in range(len(s)):\n        if s[i] == '?':\n            for c in range(ord('a'), ord('z') + 1):\n                if (i - 1 < 0 or s[i - 1] != chr(c)) and (i + 1 >= len(s) or s[i + 1] != chr(c)):\n                    s[i] = chr(c)\n                    break\n    return ''.join(s)\n```\n\n    \n    The algorithm iterates through each character in the input string s. If it encounters the '?' character, it iterates through the lowercase English alphabet (from 'a' to 'z') and checks if any character doesn't match the adjacent characters (previous and next, if available). If such a character is found, replace the '?' with it and break the character search loop. Once done iterating through the whole string, return the modified string. This ensures that no consecutive repeating characters are there in the final string.\n    ",
+    "javascript": "\n    ```javascript\nfunction modifyString(s) {\n    s = s.split('');\n    for (let i = 0; i < s.length; i++) {\n        if (s[i] === '?') {\n            for (let c = 'a'.charCodeAt(0); c <= 'z'.charCodeAt(0); c++) {\n                if ((i - 1 < 0 || s[i - 1] !== String.fromCharCode(c)) && (i + 1 >= s.length || s[i + 1] !== String.fromCharCode(c))) {\n                    s[i] = String.fromCharCode(c);\n                    break;\n                }\n            }\n        }\n    }\n    return s.join('');\n}\n```\n\n    \n    The algorithm iterates through each character in the input string s. If it encounters the '?' character, it iterates through the lowercase English alphabet (from 'a' to 'z') and checks if any character doesn't match the adjacent characters (previous and next, if available). If such a character is found, replace the '?' with it and break the character search loop. Once done iterating through the whole string, return the modified string. This ensures that no consecutive repeating characters are there in the final string.\n    ",
+    "java": "\n    ```java\npublic String modifyString(String s) {\n    char[] result = s.toCharArray();\n    for (int i = 0; i < result.length; i++) {\n        if (result[i] == '?') {\n            for (char c = 'a'; c <= 'z'; c++) {\n                if ((i - 1 < 0 || result[i - 1] != c) && (i + 1 >= result.length || result[i + 1] != c)) {\n                    result[i] = c;\n                    break;\n                }\n            }\n        }\n    }\n    return new String(result);\n}\n```\n\n    \n    The algorithm iterates through each character in the input string s. If it encounters the '?' character, it iterates through the lowercase English alphabet (from 'a' to 'z') and checks if any character doesn't match the adjacent characters (previous and next, if available). If such a character is found, replace the '?' with it and break the character search loop. Once done iterating through the whole string, return the modified string. This ensures that no consecutive repeating characters are there in the final string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

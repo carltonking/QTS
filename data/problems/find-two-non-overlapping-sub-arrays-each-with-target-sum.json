@@ -1,0 +1,24 @@
+{
+  "id": 1477,
+  "title": "Find Two Non-overlapping Sub-arrays Each With Target Sum",
+  "slug": "find-two-non-overlapping-sub-arrays-each-with-target-sum",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array of integers arr and an integer target.\n\nYou have to find two non-overlapping sub-arrays of arr each with a sum equal target. There can be multiple answers so you have to find an answer where the sum of the lengths of the two sub-arrays is minimum.\n\nReturn _the minimum sum of the lengths_ of the two required sub-arrays, or return -1 if you cannot find such two sub-arrays.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass ProductOfNumbers:\n    def __init__(self):\n        self.products = [1]\n\n    def add(self, num: int) -> None:\n        if num == 0:\n            self.products = [1]\n        else:\n            self.products.append(self.products[-1] * num)\n\n    def getProduct(self, k: int) -> int:\n        if k >= len(self.products):\n            return 0\n        else:\n            return self.products[-1] // self.products[-k - 1]\n```\n\n    \n    The algorithm maintains a growing list or vector of the cumulative products. When a new number is added, it either clears the list and starts over if the number is 0, or it adds the product of the last element and the new number to the end of the list. When the product of the last k numbers is requested, it returns the last element of the list divided by the element at the (size - k - 1) position in the list. If the list is shorter than the requested k, it returns 0 as the product will always contain a 0 in that case. The algorithm ensures that the product of any contiguous sequence of numbers will fit into a single 32-bit integer without overflowing. The complexity is O(1) for both `add` and `getProduct` operations.\n    ",
+    "javascript": "\n    ```javascript\nclass ProductOfNumbers {\n    constructor() {\n        this.products = [1];\n    }\n\n    add(num) {\n        if (num === 0) {\n            this.products = [1];\n        } else {\n            this.products.push(this.products[this.products.length - 1] * num);\n        }\n    }\n\n    getProduct(k) {\n        if (k >= this.products.length) {\n            return 0;\n        } else {\n            return this.products[this.products.length - 1] / this.products[this.products.length - k - 1];\n        }\n    }\n}\n```\n\n    \n    The algorithm maintains a growing list or vector of the cumulative products. When a new number is added, it either clears the list and starts over if the number is 0, or it adds the product of the last element and the new number to the end of the list. When the product of the last k numbers is requested, it returns the last element of the list divided by the element at the (size - k - 1) position in the list. If the list is shorter than the requested k, it returns 0 as the product will always contain a 0 in that case. The algorithm ensures that the product of any contiguous sequence of numbers will fit into a single 32-bit integer without overflowing. The complexity is O(1) for both `add` and `getProduct` operations.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\nclass ProductOfNumbers {\n    private List<Integer> products;\n\n    public ProductOfNumbers() {\n        products = new ArrayList<>();\n        products.add(1);\n    }\n\n    public void add(int num) {\n        if (num == 0) {\n            products.clear();\n            products.add(1);\n        } else {\n            products.add(products.get(products.size() - 1) * num);\n        }\n    }\n\n    public int getProduct(int k) {\n        if (k >= products.size()) {\n            return 0;\n        } else {\n            return products.get(products.size() - 1) / products.get(products.size() - k - 1);\n        }\n    }\n}\n```\n\n    \n    The algorithm maintains a growing list or vector of the cumulative products. When a new number is added, it either clears the list and starts over if the number is 0, or it adds the product of the last element and the new number to the end of the list. When the product of the last k numbers is requested, it returns the last element of the list divided by the element at the (size - k - 1) position in the list. If the list is shorter than the requested k, it returns 0 as the product will always contain a 0 in that case. The algorithm ensures that the product of any contiguous sequence of numbers will fit into a single 32-bit integer without overflowing. The complexity is O(1) for both `add` and `getProduct` operations.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

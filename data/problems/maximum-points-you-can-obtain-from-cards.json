@@ -1,0 +1,24 @@
+{
+  "id": 1423,
+  "title": "Maximum Points You Can Obtain from Cards",
+  "slug": "maximum-points-you-can-obtain-from-cards",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There are several cards arranged in a row, and each card has an associated number of points. The points are given in the integer array cardPoints.\n\nIn one step, you can take one card from the beginning or from the end of the row. You have to take exactly k cards.\n\nYour score is the sum of the points of the cards you have taken.\n\nGiven the integer array cardPoints and the integer k, return the _maximum score_ you can obtain.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_substring_occurrences(s: str, k: int) -> int:\n    freq = {}\n    res = 0\n    for c in s:\n        freq[c] = freq.get(c, 0) + 1\n        if len(freq) <= k:\n            res = max(res, freq[c])\n    return 0 if len(freq) > k else res\n```\n\n    \n    We iterate through the given string `s`. As we iterate, we maintain a frequency map `freq` of each character seen so far. At each step, we check if the size of `freq` is less than or equal to k. If it is, we update the result with the maximum frequency seen so far.\n\nAfter the loop, if the size of freq is greater than k, we return 0; otherwise, we return the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxSubstringOccurrences(s, k) {\n    const n = s.length;\n    let res = 0;\n    const freq = new Map();\n    for (let i = 0; i < n; ++i) {\n        const c = s.charAt(i);\n        freq.set(c, (freq.get(c) || 0) + 1);\n        if (freq.size <= k) {\n            res = Math.max(res, freq.get(c));\n        }\n    }\n    return (freq.size > k) ? 0 : res;\n}\n```\n\n    \n    We iterate through the given string `s`. As we iterate, we maintain a frequency map `freq` of each character seen so far. At each step, we check if the size of `freq` is less than or equal to k. If it is, we update the result with the maximum frequency seen so far.\n\nAfter the loop, if the size of freq is greater than k, we return 0; otherwise, we return the result.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\n\npublic int maxSubstringOccurrences(String s, int k) {\n    int n = s.length(), res = 0;\n    HashMap<Character, Integer> freq = new HashMap<>();\n    for (int i = 0; i < n; ++i) {\n        freq.put(s.charAt(i), freq.getOrDefault(s.charAt(i), 0) + 1);\n        if (freq.size() <= k) {\n            res = Math.max(res, freq.get(s.charAt(i)));\n        }\n    }\n    return (freq.size() > k) ? 0 : res;\n}\n```\n\n    \n    We iterate through the given string `s`. As we iterate, we maintain a frequency map `freq` of each character seen so far. At each step, we check if the size of `freq` is less than or equal to k. If it is, we update the result with the maximum frequency seen so far.\n\nAfter the loop, if the size of freq is greater than k, we return 0; otherwise, we return the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

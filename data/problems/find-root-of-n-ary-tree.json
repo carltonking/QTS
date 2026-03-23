@@ -1,0 +1,24 @@
+{
+  "id": 1506,
+  "title": "Find Root of N-Ary Tree",
+  "slug": "find-root-of-n-ary-tree",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given all the nodes of an [N-ary tree](https://leetcode.com/explore/learn/card/n-ary-tree/) as an array of Node objects, where each node has a unique value.\n\nReturn _the root of the N-ary tree_.\n\nCustom testing:\n\nAn N-ary tree can be serialized as represented in its level order traversal where each group of children is separated by the null value (see examples).\n\nFor example, the above tree is serialized as [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14].\n\nThe testing will be done in the following way:\n\n1.  The input data should be provided as a serialization of the tree.\n2.  The driver code will construct the tree from the serialized input data and put each Node object into an array in an arbitrary order.\n3.  The driver code will pass the array to findRoot, and your function should find and return the root Node object in the array.\n4.  The driver code will take the returned Node object and serialize it. If the serialized value and the input data are the same, the test passes.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass Solution:\n    def findRoot(self, nodes: List['Node']) -> 'Node':\n        value_sum = 0\n        \n        for node in nodes:\n            value_sum += node.val\n            \n            for child in node.children:\n                value_sum -= child.val\n        \n        for node in nodes:\n            if node.val == value_sum:\n                return node\n                \n        return None\n```\n\n    \n    The solution iterates over all the nodes twice. In the first iteration, the sum of the node values is calculated, and for each child node, its value is subtracted from the sum. This will result in the root value being stored in the `value_sum`. In the second iteration, we simply iterated over the nodes to find the node with the `value_sum` and return it as a root node.\n\nThis solution has a linear time complexity O(n), and the space complexity is constant as no extra data structure is being used.\n    ",
+    "javascript": "\n    ```javascript\nclass Solution {\n    findRoot(nodes) {\n        let valueSum = 0;\n        \n        for (let node of nodes) {\n            valueSum += node.val;\n\n            for (let child of node.children) {\n                valueSum -= child.val;\n            }\n        }\n\n        for (let node of nodes) {\n            if (node.val === valueSum) {\n                return node;\n            }\n        }\n        \n        return null;\n    }\n}\n```\n\n    \n    The solution iterates over all the nodes twice. In the first iteration, the sum of the node values is calculated, and for each child node, its value is subtracted from the sum. This will result in the root value being stored in the `value_sum`. In the second iteration, we simply iterated over the nodes to find the node with the `value_sum` and return it as a root node.\n\nThis solution has a linear time complexity O(n), and the space complexity is constant as no extra data structure is being used.\n    ",
+    "java": "\n    ```java\nclass Solution {\n    public Node findRoot(List<Node> nodes) {\n        int valueSum = 0;\n        \n        for (Node node : nodes) {\n            valueSum += node.val;\n            \n            for (Node child : node.children) {\n                valueSum -= child.val;\n            }\n        }\n        \n        for (Node node : nodes) {\n            if (node.val == valueSum) {\n                return node;\n            }\n        }\n        \n        return null;\n    }\n}\n```\n\n    \n    The solution iterates over all the nodes twice. In the first iteration, the sum of the node values is calculated, and for each child node, its value is subtracted from the sum. This will result in the root value being stored in the `value_sum`. In the second iteration, we simply iterated over the nodes to find the node with the `value_sum` and return it as a root node.\n\nThis solution has a linear time complexity O(n), and the space complexity is constant as no extra data structure is being used.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

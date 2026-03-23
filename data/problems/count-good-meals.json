@@ -1,0 +1,24 @@
+{
+  "id": 1711,
+  "title": "Count Good Meals",
+  "slug": "count-good-meals",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A good meal is a meal that contains exactly two different food items with a sum of deliciousness equal to a power of two.\n\nYou can pick any two different foods to make a good meal.\n\nGiven an array of integers deliciousness where deliciousness[i] is the deliciousness of the i​​​​​​th​​​​​​​​ item of food, return _the number of different good meals you can make from this list modulo_ 109 + 7.\n\nNote that items with different indices are considered different even if they have the same deliciousness value.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef restoreMatrix(rowSum, colSum):\n    m, n = len(rowSum), len(colSum)\n    result = [[0] * n for _ in range(m)]\n\n    for i in range(m):\n        for j in range(n):\n            value = min(rowSum[i], colSum[j])\n            result[i][j] = value\n            rowSum[i] -= value\n            colSum[j] -= value\n\n    return result\n```\n    \n    The algorithm works by iterating over each position in the matrix and calculating the minimum value between the current row sum and column sum. This value is assigned to the current position in the matrix, and the row and column sums are decremented by the value. By choosing the minimum value, we ensure that we fulfill the row and column sum requirements without exceeding them. We repeat this process for each cell in the matrix.\n    ",
+    "javascript": "\n    ```javascript\nfunction restoreMatrix(rowSum, colSum) {\n    let m = rowSum.length;\n    let n = colSum.length;\n    let result = Array.from({ length: m }, () => Array(n).fill(0));\n\n    for (let i = 0; i < m; i++) {\n        for (let j = 0; j < n; j++) {\n            let value = Math.min(rowSum[i], colSum[j]);\n            result[i][j] = value;\n            rowSum[i] -= value;\n            colSum[j] -= value;\n        }\n    }\n\n    return result;\n}\n```\n\n    \n    The algorithm works by iterating over each position in the matrix and calculating the minimum value between the current row sum and column sum. This value is assigned to the current position in the matrix, and the row and column sums are decremented by the value. By choosing the minimum value, we ensure that we fulfill the row and column sum requirements without exceeding them. We repeat this process for each cell in the matrix.\n    ",
+    "java": "\n    ```java\npublic int[][] restoreMatrix(int[] rowSum, int[] colSum) {\n    int m = rowSum.length;\n    int n = colSum.length;\n    int[][] result = new int[m][n];\n\n    for (int i = 0; i < m; i++) {\n        for (int j = 0; j < n; j++) {\n            int value = Math.min(rowSum[i], colSum[j]);\n            result[i][j] = value;\n            rowSum[i] -= value;\n            colSum[j] -= value;\n        }\n    }\n\n    return result;\n}\n```\n    \n    The algorithm works by iterating over each position in the matrix and calculating the minimum value between the current row sum and column sum. This value is assigned to the current position in the matrix, and the row and column sums are decremented by the value. By choosing the minimum value, we ensure that we fulfill the row and column sum requirements without exceeding them. We repeat this process for each cell in the matrix.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

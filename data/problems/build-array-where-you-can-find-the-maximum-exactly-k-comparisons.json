@@ -1,0 +1,24 @@
+{
+  "id": 1420,
+  "title": "Build Array Where You Can Find The Maximum Exactly K Comparisons",
+  "slug": "build-array-where-you-can-find-the-maximum-exactly-k-comparisons",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given three integers n, m and k. Consider the following algorithm to find the maximum element of an array of positive integers:\n\nYou should build the array arr which has the following properties:\n\n*   arr has exactly n integers.\n*   1 <= arr[i] <= m where (0 <= i < n).\n*   After applying the mentioned algorithm to arr, the value search_cost is equal to k.\n\nReturn _the number of ways_ to build the array arr under the mentioned conditions. As the answer may grow large, the answer must be computed modulo 109 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef waysToBuildArray(n, m, k):\n    mod = 10**9 + 7\n    dp = [[0] * (k+1) for _ in range(n+1)]\n    dp[0][0] = 1\n    for i in range(1, n+1):\n        for j in range(k+1):\n            for x in range(1, m+1):\n                if j < i * (x-1):\n                    dp[i][j] = (dp[i][j] + dp[i-1][j-(i-1)*(x-1)]) % mod\n    return dp[n][k]\n```\n    \n    The goal is to find the number of ways to build an array with n elements that satisfy the given conditions.\n\nCreate an `n+1` by `k+1` 2D array named `dp`, and initializing `dp[0][0] = 1`.\n\nThen, loop through `i` (1 to n) and `j` (0 to k) and for each `i` and `j`, loop through `x` (1 to m). For each `x`, if `j < i * (x-1)`, then update `dp[i][j]` as `(dp[i][j] + dp[i-1][j-(i-1)*(x-1)])` modulo the given constant (1e9 + 7).\n\nAt the end, return `dp[n][k]` as the result.\n\nThis will give you the number of ways to build the array with n elements while satisfying the given conditions.\n    ",
+    "javascript": "\n    ```javascript\nfunction waysToBuildArray(n, m, k) {\n    const mod = 1e9 + 7;\n    const dp = Array.from({ length: n+1 }, () => Array(k+1).fill(0));\n    dp[0][0] = 1;\n    for (let i = 1; i <= n; ++i) {\n        for (let j = 0; j <= k; ++j) {\n            for (let x = 1; x <= m; ++x) {\n                if (j < i * (x-1)) {\n                    dp[i][j] = (dp[i][j] + dp[i-1][j-(i-1)*(x-1)]) % mod;\n                }\n            }\n        }\n    }\n    return dp[n][k];\n}\n```\n    \n    The goal is to find the number of ways to build an array with n elements that satisfy the given conditions.\n\nCreate an `n+1` by `k+1` 2D array named `dp`, and initializing `dp[0][0] = 1`.\n\nThen, loop through `i` (1 to n) and `j` (0 to k) and for each `i` and `j`, loop through `x` (1 to m). For each `x`, if `j < i * (x-1)`, then update `dp[i][j]` as `(dp[i][j] + dp[i-1][j-(i-1)*(x-1)])` modulo the given constant (1e9 + 7).\n\nAt the end, return `dp[n][k]` as the result.\n\nThis will give you the number of ways to build the array with n elements while satisfying the given conditions.\n    ",
+    "java": "\n    ```java\npublic int waysToBuildArray(int n, int m, int k) {\n    final int mod = 1000000007;\n    int[][] dp = new int[n+1][k+1];\n    dp[0][0] = 1;\n    for (int i = 1; i <= n; ++i) {\n        for (int j = 0; j <= k; ++j) {\n            for (int x = 1; x <= m; ++x) {\n                if (j < i * (x-1)) {\n                    dp[i][j] = (dp[i][j] + dp[i-1][j-(i-1)*(x-1)]) % mod;\n                }\n            }\n        }\n    }\n    return dp[n][k];\n}\n```\n    \n    The goal is to find the number of ways to build an array with n elements that satisfy the given conditions.\n\nCreate an `n+1` by `k+1` 2D array named `dp`, and initializing `dp[0][0] = 1`.\n\nThen, loop through `i` (1 to n) and `j` (0 to k) and for each `i` and `j`, loop through `x` (1 to m). For each `x`, if `j < i * (x-1)`, then update `dp[i][j]` as `(dp[i][j] + dp[i-1][j-(i-1)*(x-1)])` modulo the given constant (1e9 + 7).\n\nAt the end, return `dp[n][k]` as the result.\n\nThis will give you the number of ways to build the array with n elements while satisfying the given conditions.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

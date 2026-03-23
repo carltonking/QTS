@@ -1,0 +1,24 @@
+{
+  "id": 1869,
+  "title": "Longer Contiguous Segments of Ones than Zeros",
+  "slug": "longer-contiguous-segments-of-ones-than-zeros",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a binary string s, return true _if the longest contiguous segment of_ 1'_s is strictly longer than the longest contiguous segment of_ 0'_s in_ s, or return false _otherwise_.\n\n*   For example, in s = \"110100010 \" the longest continuous segment of 1s has length 2, and the longest continuous segment of 0s has length 3.\n\nNote that if there are no 0's, then the longest continuous segment of 0's is considered to have a length 0. The same applies if there is no 1's.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef checkZeroOnes(s: str) -> bool:\n    max_ones, max_zeros, current_ones, current_zeros = 0, 0, 0, 0\n    for c in s:\n        if c == '1':\n            current_ones += 1\n            current_zeros = 0\n        else:\n            current_zeros += 1\n            current_ones = 0\n        max_ones = max(max_ones, current_ones)\n        max_zeros = max(max_zeros, current_zeros)\n    return max_ones > max_zeros\n```\n    \n    We initialize 4 variables: `max_ones`, `max_zeros`, `current_ones`, and `current_zeros`. We then iterate through each character in the string. If we find `1`, we increment the `current_ones` counter and set the `current_zeros` count to 0, and if we find `0`, we increment the `current_zeros` counter and set the `current_ones` counter to 0. After each character, we update the maximum values of `max_ones` and `max_zeros` using the `max` function or `Math.max` function depending on the language. Finally, after iterating through the entire string, we compare the `max_ones` and `max_zeros` to determine if the longest continuous segment of `1`s is strictly longer than that of `0`s and return the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction checkZeroOnes(s) {\n    let max_ones = 0, max_zeros = 0, current_ones = 0, current_zeros = 0;\n    for (const c of s) {\n        if (c === '1') {\n            current_ones++;\n            current_zeros = 0;\n        } else {\n            current_zeros++;\n            current_ones = 0;\n        }\n        max_ones = Math.max(max_ones, current_ones);\n        max_zeros = Math.max(max_zeros, current_zeros);\n    }\n    return max_ones > max_zeros;\n}\n```\n    \n    We initialize 4 variables: `max_ones`, `max_zeros`, `current_ones`, and `current_zeros`. We then iterate through each character in the string. If we find `1`, we increment the `current_ones` counter and set the `current_zeros` count to 0, and if we find `0`, we increment the `current_zeros` counter and set the `current_ones` counter to 0. After each character, we update the maximum values of `max_ones` and `max_zeros` using the `max` function or `Math.max` function depending on the language. Finally, after iterating through the entire string, we compare the `max_ones` and `max_zeros` to determine if the longest continuous segment of `1`s is strictly longer than that of `0`s and return the result.\n    ",
+    "java": "\n    ```java\npublic boolean checkZeroOnes(String s) {\n    int max_ones = 0, max_zeros = 0, current_ones = 0, current_zeros = 0;\n    for (char c : s.toCharArray()) {\n        if (c == '1') {\n            current_ones++;\n            current_zeros = 0;\n        } else {\n            current_zeros++;\n            current_ones = 0;\n        }\n        max_ones = Math.max(max_ones, current_ones);\n        max_zeros = Math.max(max_zeros, current_zeros);\n    }\n    return max_ones > max_zeros;\n}\n```\n    \n    We initialize 4 variables: `max_ones`, `max_zeros`, `current_ones`, and `current_zeros`. We then iterate through each character in the string. If we find `1`, we increment the `current_ones` counter and set the `current_zeros` count to 0, and if we find `0`, we increment the `current_zeros` counter and set the `current_ones` counter to 0. After each character, we update the maximum values of `max_ones` and `max_zeros` using the `max` function or `Math.max` function depending on the language. Finally, after iterating through the entire string, we compare the `max_ones` and `max_zeros` to determine if the longest continuous segment of `1`s is strictly longer than that of `0`s and return the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

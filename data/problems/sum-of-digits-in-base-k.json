@@ -1,0 +1,24 @@
+{
+  "id": 1837,
+  "title": "Sum of Digits in Base K",
+  "slug": "sum-of-digits-in-base-k",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer n (in base 10) and a base k, return _the sum of the digits of_ n _after converting_ n _from base_ 10 _to base_ k.\n\nAfter converting, each digit should be interpreted as a base 10 number, and the sum should be returned in base 10.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sum_base(n: int, k: int) -> int:\n    s = 0\n    while n:\n        s += n % k\n        n //= k\n    return s\n```\n\n    \n    The algorithm is straightforward for converting a number from base 10 to base k and summing its digits. We use a while loop to repeatedly divide the number n by k, until n becomes 0. In each iteration, we add the remainder (n % k) to the sum, and update n by dividing it by k and taking the floor of the result. In the end, we return the sum.\n    ",
+    "javascript": "\n    ```javascript\nfunction sumBase(n, k) {\n    let sum = 0;\n    while (n > 0) {\n        sum += n % k;\n        n = Math.floor(n / k);\n    }\n    return sum;\n}\n```\n\n    \n    The algorithm is straightforward for converting a number from base 10 to base k and summing its digits. We use a while loop to repeatedly divide the number n by k, until n becomes 0. In each iteration, we add the remainder (n % k) to the sum, and update n by dividing it by k and taking the floor of the result. In the end, we return the sum.\n    ",
+    "java": "\n    ```java\npublic int sumBase(int n, int k) {\n    int sum = 0;\n    while (n > 0) {\n        sum += n % k;\n        n /= k;\n    }\n    return sum;\n}\n```\n\n    \n    The algorithm is straightforward for converting a number from base 10 to base k and summing its digits. We use a while loop to repeatedly divide the number n by k, until n becomes 0. In each iteration, we add the remainder (n % k) to the sum, and update n by dividing it by k and taking the floor of the result. In the end, we return the sum.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

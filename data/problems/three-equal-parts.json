@@ -1,0 +1,24 @@
+{
+  "id": 927,
+  "title": "Three Equal Parts",
+  "slug": "three-equal-parts",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an array arr which consists of only zeros and ones, divide the array into three non-empty parts such that all of these parts represent the same binary value.\n\nIf it is possible, return any [i, j] with i + 1 < j, such that:\n\n*   arr[0], arr[1], ..., arr[i] is the first part,\n*   arr[i + 1], arr[i + 2], ..., arr[j - 1] is the second part, and\n*   arr[j], arr[j + 1], ..., arr[arr.length - 1] is the third part.\n*   All three parts have equal binary values.\n\nIf it is not possible, return [-1, -1].\n\nNote that the entire part is used when considering what binary value it represents. For example, [1,1,0] represents 6 in decimal, not 3. Also, leading zeros are allowed, so [0,1,1] and [1,1] represent the same value.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sum_of_widths(nums):\n    MOD = 10**9 + 7\n    nums.sort()\n    c, res = 1, 0\n    n = len(nums)\n\n    for i in range(n):\n        res = (res + (nums[i] - nums[n - i - 1]) * c) % MOD\n        c = c * 2 % MOD\n\n    return res\n```\n    \n    1. Sort the given array of integers, nums, in ascending order.\n2. Initialize a variable, res, to store the final result, and another variable, c, to keep track of the power of 2.\n3. Iterate through the sorted nums array.\n4. For each element, calculate the difference between the current element and the corresponding element from the end of the array. Multiply the difference by the current value of c and add the result to res.\n5. Update the value of c by multiplying it by 2 and taking the modulo value.\n6. Continue this process until the entire nums array has been traversed.\n7. Return the final value of res modulo 10^9 + 7.\n    ",
+    "javascript": "\n    ```javascript\nfunction sumOfWidths(nums) {\n    const MOD = 1e9 + 7;\n    nums.sort((a, b) => a - b);\n    let res = 0, c = 1, n = nums.length;\n\n    for (let i = 0; i < n; i++, c = (c * 2) % MOD)\n        res = (res + (nums[i] - nums[n - i - 1]) * c) % MOD;\n\n    return res;\n}\n```\n    \n    1. Sort the given array of integers, nums, in ascending order.\n2. Initialize a variable, res, to store the final result, and another variable, c, to keep track of the power of 2.\n3. Iterate through the sorted nums array.\n4. For each element, calculate the difference between the current element and the corresponding element from the end of the array. Multiply the difference by the current value of c and add the result to res.\n5. Update the value of c by multiplying it by 2 and taking the modulo value.\n6. Continue this process until the entire nums array has been traversed.\n7. Return the final value of res modulo 10^9 + 7.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic class Solution {\n    private static final int MOD = 1000000007;\n\n    public int sumOfWidths(int[] nums) {\n        Arrays.sort(nums);\n        int n = nums.length;\n        long res = 0, c = 1;\n        \n        for (int i = 0; i < n; i++, c = c * 2 % MOD)\n            res = (res + (nums[i] - nums[n - i - 1]) * c) % MOD;\n            \n        return (int) res;\n    }\n}\n```\n    \n    1. Sort the given array of integers, nums, in ascending order.\n2. Initialize a variable, res, to store the final result, and another variable, c, to keep track of the power of 2.\n3. Iterate through the sorted nums array.\n4. For each element, calculate the difference between the current element and the corresponding element from the end of the array. Multiply the difference by the current value of c and add the result to res.\n5. Update the value of c by multiplying it by 2 and taking the modulo value.\n6. Continue this process until the entire nums array has been traversed.\n7. Return the final value of res modulo 10^9 + 7.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

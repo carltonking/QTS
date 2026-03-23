@@ -1,0 +1,24 @@
+{
+  "id": 718,
+  "title": "Maximum Length of Repeated Subarray",
+  "slug": "maximum-length-of-repeated-subarray",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given two integer arrays nums1 and nums2, return _the maximum length of a subarray that appears in both arrays_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findLength(nums1, nums2):\n    m, n = len(nums1), len(nums2)\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n    maxLength = 0\n\n    for i in range(m - 1, -1, -1):\n        for j in range(n - 1, -1, -1):\n            if nums1[i] == nums2[j]:\n                dp[i][j] = dp[i + 1][j + 1] + 1\n                maxLength = max(maxLength, dp[i][j])\n\n    return maxLength\n```\n    \n    The algorithm uses dynamic programming to store the length of the common subarray ending at the current position for both arrays. For each element in the input arrays, it checks if the elements are equal. If they are, it updates the length of their common subarray by adding 1 to the length of the common subarray found in the next positions. Finally, the maximum length found is returned.\n\nNote that the outer loop iterates from the end to the beginning, avoiding the need to initialize values in the table with special cases (like initializing with the maximum length at the beginning of the loop). This makes the code shorter and easier to understand. Each step of the iteration compares elements in the two arrays and updates the maxLength, if necessary.\n    ",
+    "javascript": "\n    ```javascript\nfunction findLength(nums1, nums2) {\n    const m = nums1.length;\n    const n = nums2.length;\n    const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));\n    let maxLength = 0;\n\n    for (let i = m - 1; i >= 0; i--) {\n        for (let j = n - 1; j >= 0; j--) {\n            if (nums1[i] === nums2[j]) {\n                dp[i][j] = dp[i + 1][j + 1] + 1;\n                maxLength = Math.max(maxLength, dp[i][j]);\n            }\n        }\n    }\n\n    return maxLength;\n}\n```\n    \n    The algorithm uses dynamic programming to store the length of the common subarray ending at the current position for both arrays. For each element in the input arrays, it checks if the elements are equal. If they are, it updates the length of their common subarray by adding 1 to the length of the common subarray found in the next positions. Finally, the maximum length found is returned.\n\nNote that the outer loop iterates from the end to the beginning, avoiding the need to initialize values in the table with special cases (like initializing with the maximum length at the beginning of the loop). This makes the code shorter and easier to understand. Each step of the iteration compares elements in the two arrays and updates the maxLength, if necessary.\n    ",
+    "java": "\n    ```java\npublic int findLength(int[] nums1, int[] nums2) {\n    int m = nums1.length;\n    int n = nums2.length;\n    int[][] dp = new int[m + 1][n + 1];\n    int maxLength = 0;\n\n    for (int i = m - 1; i >= 0; i--) {\n        for (int j = n - 1; j >= 0; j--) {\n            if (nums1[i] == nums2[j]) {\n                dp[i][j] = dp[i + 1][j + 1] + 1;\n                maxLength = Math.max(maxLength, dp[i][j]);\n            }\n        }\n    }\n\n    return maxLength;\n}\n```\n    \n    The algorithm uses dynamic programming to store the length of the common subarray ending at the current position for both arrays. For each element in the input arrays, it checks if the elements are equal. If they are, it updates the length of their common subarray by adding 1 to the length of the common subarray found in the next positions. Finally, the maximum length found is returned.\n\nNote that the outer loop iterates from the end to the beginning, avoiding the need to initialize values in the table with special cases (like initializing with the maximum length at the beginning of the loop). This makes the code shorter and easier to understand. Each step of the iteration compares elements in the two arrays and updates the maxLength, if necessary.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

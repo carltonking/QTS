@@ -1,0 +1,24 @@
+{
+  "id": 1904,
+  "title": "The Number of Full Rounds You Have Played",
+  "slug": "the-number-of-full-rounds-you-have-played",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are participating in an online chess tournament. There is a chess round that starts every 15 minutes. The first round of the day starts at 00:00, and after every 15 minutes, a new round starts.\n\n*   For example, the second round starts at 00:15, the fourth round starts at 00:45, and the seventh round starts at 01:30.\n\nYou are given two strings loginTime and logoutTime where:\n\n*   loginTime is the time you will login to the game, and\n*   logoutTime is the time you will logout from the game.\n\nIf logoutTime is earlier than loginTime, this means you have played from loginTime to midnight and from midnight to logoutTime.\n\nReturn _the number of full chess rounds you have played in the tournament_.\n\nNote: All the given times follow the 24-hour clock. That means the first round of the day starts at 00:00 and the last round of the day starts at 23:45.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef second_largest_digit(s: str) -> int:\n    largest = -1\n    second_largest = -1\n    for c in s:\n        if c.isdigit():\n            digit = int(c)\n            if digit > largest:\n                second_largest = largest\n                largest = digit\n            elif digit != largest and digit > second_largest:\n                second_largest = digit\n    return second_largest\n```\n    \n    The algorithm iterates through the string characters only once. For each character, it checks if it's a digit, and takes the following actions:\n- If the digit is larger than the current largest digit, it assigns the previous largest digit to be the second largest digit and updates the largest digit.\n- If the digit is not equal to the largest digit and larger than the current second largest digit, it updates the second largest digit.\n\nThis way, by the end of the iteration, we have the largest and second largest digits, and we return the second largest digit. Time complexity is O(n) where n is the length of the string.\n    ",
+    "javascript": "\n    ```javascript\nfunction secondLargestDigit(s) {\n    let largest = -1, secondLargest = -1;\n    for (const c of s) {\n        if (!isNaN(c)) {\n            let digit = parseInt(c);\n            if (digit > largest) {\n                secondLargest = largest;\n                largest = digit;\n            } else if (digit !== largest && digit > secondLargest) {\n                secondLargest = digit;\n            }\n        }\n    }\n    return secondLargest;\n}\n```\n    \n    The algorithm iterates through the string characters only once. For each character, it checks if it's a digit, and takes the following actions:\n- If the digit is larger than the current largest digit, it assigns the previous largest digit to be the second largest digit and updates the largest digit.\n- If the digit is not equal to the largest digit and larger than the current second largest digit, it updates the second largest digit.\n\nThis way, by the end of the iteration, we have the largest and second largest digits, and we return the second largest digit. Time complexity is O(n) where n is the length of the string.\n    ",
+    "java": "\n    ```java\npublic int secondLargestDigit(String s) {\n    int largest = -1, secondLargest = -1;\n    for (char c : s.toCharArray()) {\n        if (Character.isDigit(c)) {\n            int digit = Character.getNumericValue(c);\n            if (digit > largest) {\n                secondLargest = largest;\n                largest = digit;\n            } else if (digit != largest && digit > secondLargest) {\n                secondLargest = digit;\n            }\n        }\n    }\n    return secondLargest;\n}\n```\n    \n    The algorithm iterates through the string characters only once. For each character, it checks if it's a digit, and takes the following actions:\n- If the digit is larger than the current largest digit, it assigns the previous largest digit to be the second largest digit and updates the largest digit.\n- If the digit is not equal to the largest digit and larger than the current second largest digit, it updates the second largest digit.\n\nThis way, by the end of the iteration, we have the largest and second largest digits, and we return the second largest digit. Time complexity is O(n) where n is the length of the string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

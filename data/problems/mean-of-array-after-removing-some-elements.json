@@ -1,0 +1,24 @@
+{
+  "id": 1619,
+  "title": "Mean of Array After Removing Some Elements",
+  "slug": "mean-of-array-after-removing-some-elements",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer array arr, return _the mean of the remaining integers after removing the smallest 5% and the largest 5% of the elements._\n\nAnswers within 10-5 of the actual answer will be considered accepted.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_path_crossing(path: str) -> bool:\n    visited = {(0, 0)}\n    x, y = 0, 0\n    for dir in path:\n        if dir == 'N': y += 1\n        elif dir == 'S': y -= 1\n        elif dir == 'E': x += 1\n        elif dir == 'W': x -= 1\n        if (x, y) in visited: return True\n        visited.add((x, y))\n    return False\n```\n    \n    1. Initialize a visited set including the starting location (0,0).\n2. Iterate through each character in the `path`.\n3. Update the coordinates (x, y) as per the direction.\n4. Check if the updated location is already in the visited set, then return true.\n5. Add the updated location to the visited set.\n6. After iterating through the entire path return false if no crossing has occurred.\n    ",
+    "javascript": "\n    ```javascript\nfunction isPathCrossing(path) {\n    const visited = new Set(['0,0']);\n    let x = 0, y = 0;\n    for (const dir of path) {\n        if (dir === 'N') y++;\n        else if (dir === 'S') y--;\n        else if (dir === 'E') x++;\n        else if (dir === 'W') x--;\n        const location = `${x},${y}`;\n        if (visited.has(location)) return true;\n        visited.add(location);\n    }\n    return false;\n}\n```\n    \n    1. Initialize a visited set including the starting location (0,0).\n2. Iterate through each character in the `path`.\n3. Update the coordinates (x, y) as per the direction.\n4. Check if the updated location is already in the visited set, then return true.\n5. Add the updated location to the visited set.\n6. After iterating through the entire path return false if no crossing has occurred.\n    ",
+    "java": "\n    ```java\nimport java.util.HashSet;\nimport java.util.Set;\n\npublic boolean isPathCrossing(String path) {\n    Set<String> visited = new HashSet<>();\n    int x = 0, y = 0;\n    visited.add(x + \",\" + y);\n    for (char dir : path.toCharArray()) {\n        if (dir == 'N') y++;\n        else if (dir == 'S') y--;\n        else if (dir == 'E') x++;\n        else if (dir == 'W') x--;\n        String location = x + \",\" + y;\n        if (visited.contains(location)) return true;\n        visited.add(location);\n    }\n    return false;\n}\n```\n    \n    1. Initialize a visited set including the starting location (0,0).\n2. Iterate through each character in the `path`.\n3. Update the coordinates (x, y) as per the direction.\n4. Check if the updated location is already in the visited set, then return true.\n5. Add the updated location to the visited set.\n6. After iterating through the entire path return false if no crossing has occurred.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

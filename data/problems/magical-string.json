@@ -1,0 +1,24 @@
+{
+  "id": 481,
+  "title": "Magical String",
+  "slug": "magical-string",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A magical string s consists of only '1' and '2' and obeys the following rules:\n\n*   The string s is magical because concatenating the number of contiguous occurrences of characters '1' and '2' generates the string s itself.\n\nThe first few elements of s is s = \"1221121221221121122...... \". If we group the consecutive 1's and 2's in s, it will be \"1 22 11 2 1 22 1 22 11 2 11 22 ...... \" and the occurrences of 1's or 2's in each group are \"1 2 2 1 1 2 1 2 2 1 2 2 ...... \". You can see that the occurrence sequence is s itself.\n\nGiven an integer n, return the number of 1's in the first n number in the magical string s.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef magical_string(n: int) -> int:\n    if n == 0:\n        return 0\n    if n <= 3:\n        return 1\n\n    magic = [1, 2, 2]\n    count_ones = 1\n    index = 2\n    value = 1\n\n    while len(magic) < n:\n        for _ in range(magic[index]):\n            magic.append(value)\n            if value == 1 and len(magic) <= n:\n                count_ones += 1\n        value = 3 - value\n        index += 1\n\n    return count_ones\n```\n\n    \n    1. If n is 0, return 0. If n is 1, 2 or 3, return 1.\n2. Initialize the magic array with the first 3 elements: [1, 2, 2].\n3. Initialize count_ones to 1, index to 2, and value to 1.\n4. While the length of the magic array is less than n, loop through the following steps:\n   a. Loop from 0 to magic[index] (exclusive), pushing the current value to the magic array.\n   b. If the value is 1 and the length of the magic array is less than or equal to n, increment count_ones by 1.\n   c. Switch the value between 1 and 2 by setting value to 3 - value.\n   d. Increment the index by 1.\n5. Return the count_ones variable.\n    ",
+    "javascript": "\n    ```javascript\nfunction magicalString(n) {\n    if (n === 0) return 0;\n    if (n <= 3) return 1;\n\n    let magic = [1, 2, 2];\n    let countOnes = 1;\n    let index = 2;\n    let value = 1;\n\n    while (magic.length < n) {\n        for (let i = 0; i < magic[index]; i++) {\n            magic.push(value);\n            if (value === 1 && magic.length <= n) countOnes++;\n        }\n        value = 3 - value;\n        index++;\n    }\n\n    return countOnes;\n}\n```\n\n    \n    1. If n is 0, return 0. If n is 1, 2 or 3, return 1.\n2. Initialize the magic array with the first 3 elements: [1, 2, 2].\n3. Initialize count_ones to 1, index to 2, and value to 1.\n4. While the length of the magic array is less than n, loop through the following steps:\n   a. Loop from 0 to magic[index] (exclusive), pushing the current value to the magic array.\n   b. If the value is 1 and the length of the magic array is less than or equal to n, increment count_ones by 1.\n   c. Switch the value between 1 and 2 by setting value to 3 - value.\n   d. Increment the index by 1.\n5. Return the count_ones variable.\n    ",
+    "java": "\n    ```java\npublic int magicalString(int n) {\n    if (n == 0) return 0;\n    if (n <= 3) return 1;\n    \n    int[] magic = new int[n + 1];\n    magic[0] = 1;\n    magic[1] = 2;\n    magic[2] = 2;\n    int count_ones = 1;\n    int index = 2;\n    int value = 1;\n    \n    while (index < n) {\n        for (int i = 0; i < magic[index] && index < n; i++) {\n            magic[++index] = value;\n            if (value == 1) count_ones++;\n        }\n        value = 3 - value;\n    }\n    \n    return count_ones;\n}\n```\n\n    \n    1. If n is 0, return 0. If n is 1, 2 or 3, return 1.\n2. Initialize the magic array with the first 3 elements: [1, 2, 2].\n3. Initialize count_ones to 1, index to 2, and value to 1.\n4. While the length of the magic array is less than n, loop through the following steps:\n   a. Loop from 0 to magic[index] (exclusive), pushing the current value to the magic array.\n   b. If the value is 1 and the length of the magic array is less than or equal to n, increment count_ones by 1.\n   c. Switch the value between 1 and 2 by setting value to 3 - value.\n   d. Increment the index by 1.\n5. Return the count_ones variable.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

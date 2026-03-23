@@ -1,0 +1,24 @@
+{
+  "id": 1603,
+  "title": "Design Parking System",
+  "slug": "design-parking-system",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Design a parking system for a parking lot. The parking lot has three kinds of parking spaces: big, medium, and small, with a fixed number of slots for each size.\n\nImplement the ParkingSystem class:\n\n*   ParkingSystem(int big, int medium, int small) Initializes object of the ParkingSystem class. The number of slots for each parking space are given as part of the constructor.\n*   bool addCar(int carType) Checks whether there is a parking space of carType for the car that wants to get into the parking lot. carType can be of three kinds: big, medium, or small, which are represented by 1, 2, and 3 respectively. A car can only park in a parking space of its carType. If there is no space available, return false, else park the car in that size space and return true.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef runningSum(nums):\n    for i in range(1, len(nums)):\n        nums[i] += nums[i - 1]\n    return nums\n```\n    \n    The algorithm iterates over the input array starting from the second element (i = 1). In each iteration, it adds the (i-1)-th element to the i-th element of the array (nums[i] += nums[i-1]).\n\nThis operation computes the running sum of the array by essentially summing up every previous element with the current element. This is an in-place operation, and the modified input array is returned as output.\n\nThe time complexity of this algorithm is O(n), where n is the length of the input array, as the loop iterates once over each of the n elements in the array. The space complexity is O(1), since it only modifies the input array in-place and requires no additional memory.\n    ",
+    "javascript": "\n    ```javascript\nfunction runningSum(nums) {\n    for (let i = 1; i < nums.length; i++) {\n        nums[i] += nums[i - 1];\n    }\n    return nums;\n}\n```\n    \n    The algorithm iterates over the input array starting from the second element (i = 1). In each iteration, it adds the (i-1)-th element to the i-th element of the array (nums[i] += nums[i-1]).\n\nThis operation computes the running sum of the array by essentially summing up every previous element with the current element. This is an in-place operation, and the modified input array is returned as output.\n\nThe time complexity of this algorithm is O(n), where n is the length of the input array, as the loop iterates once over each of the n elements in the array. The space complexity is O(1), since it only modifies the input array in-place and requires no additional memory.\n    ",
+    "java": "\n    ```java\npublic int[] runningSum(int[] nums) {\n    for (int i = 1; i < nums.length; i++) {\n        nums[i] += nums[i - 1];\n    }\n    return nums;\n}\n```\n    \n    The algorithm iterates over the input array starting from the second element (i = 1). In each iteration, it adds the (i-1)-th element to the i-th element of the array (nums[i] += nums[i-1]).\n\nThis operation computes the running sum of the array by essentially summing up every previous element with the current element. This is an in-place operation, and the modified input array is returned as output.\n\nThe time complexity of this algorithm is O(n), where n is the length of the input array, as the loop iterates once over each of the n elements in the array. The space complexity is O(1), since it only modifies the input array in-place and requires no additional memory.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

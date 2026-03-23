@@ -1,0 +1,24 @@
+{
+  "id": 768,
+  "title": "Max Chunks To Make Sorted II",
+  "slug": "max-chunks-to-make-sorted-ii",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an integer array arr.\n\nWe split arr into some number of chunks (i.e., partitions), and individually sort each chunk. After concatenating them, the result should equal the sorted array.\n\nReturn _the largest number of chunks we can make to sort the array_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef partition_labels(s: str) -> list[int]:\n    last_pos = {}\n    for i, c in enumerate(s):\n        last_pos[c] = i\n\n    partitions = []\n    start, end = 0, 0\n    for i, c in enumerate(s):\n        end = max(end, last_pos[c])\n        if i == end:\n            partitions.append(end - start + 1)\n            start = i + 1\n    return partitions\n```\n\n    \n    1. Create a dictionary `lastPos` to store the last position for each character in the string.\n2. Iterate over the string, and for each character, store its last position in the `lastPos` dictionary.\n3. Create a list `partitions` to store the partition sizes.\n4. Initialize two variables `start` and `end` with value 0.\n5. Iterate over the string again:\n   a. For each character, update `end` with the maximum value between `end` and its last position from the `lastPos` dictionary.\n   b. If the current index is equal to `end`, calculate the length of the current partition, append it to `partitions`, and update `start` to the next index.\n6. Return the `partitions` list.\n    ",
+    "javascript": "\n    ```javascript\nfunction partitionLabels(s) {\n    const lastPos = {};\n    for (let i = 0; i < s.length; i++) {\n        lastPos[s[i]] = i;\n    }\n\n    const partitions = [];\n    let start = 0, end = 0;\n    for (let i = 0; i < s.length; i++) {\n        end = Math.max(end, lastPos[s[i]]);\n        if (i === end) {\n            partitions.push(end - start + 1);\n            start = i + 1;\n        }\n    }\n    return partitions;\n}\n```\n\n    \n    1. Create a dictionary `lastPos` to store the last position for each character in the string.\n2. Iterate over the string, and for each character, store its last position in the `lastPos` dictionary.\n3. Create a list `partitions` to store the partition sizes.\n4. Initialize two variables `start` and `end` with value 0.\n5. Iterate over the string again:\n   a. For each character, update `end` with the maximum value between `end` and its last position from the `lastPos` dictionary.\n   b. If the current index is equal to `end`, calculate the length of the current partition, append it to `partitions`, and update `start` to the next index.\n6. Return the `partitions` list.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.HashMap;\nimport java.util.List;\n\npublic List<Integer> partitionLabels(String s) {\n    HashMap<Character, Integer> lastPos = new HashMap<>();\n    for (int i = 0; i < s.length(); i++) {\n        lastPos.put(s.charAt(i), i);\n    }\n\n    List<Integer> partitions = new ArrayList<>();\n    int start = 0, end = 0;\n    for (int i = 0; i < s.length(); i++) {\n        end = Math.max(end, lastPos.get(s.charAt(i)));\n        if (i == end) {\n            partitions.add(end - start + 1);\n            start = i + 1;\n        }\n    }\n    return partitions;\n}\n```\n\n    \n    1. Create a dictionary `lastPos` to store the last position for each character in the string.\n2. Iterate over the string, and for each character, store its last position in the `lastPos` dictionary.\n3. Create a list `partitions` to store the partition sizes.\n4. Initialize two variables `start` and `end` with value 0.\n5. Iterate over the string again:\n   a. For each character, update `end` with the maximum value between `end` and its last position from the `lastPos` dictionary.\n   b. If the current index is equal to `end`, calculate the length of the current partition, append it to `partitions`, and update `start` to the next index.\n6. Return the `partitions` list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

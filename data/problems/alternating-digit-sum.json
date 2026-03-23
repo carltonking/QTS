@@ -1,0 +1,24 @@
+{
+  "id": 2544,
+  "title": "Alternating Digit Sum",
+  "slug": "alternating-digit-sum",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a positive integer n. Each digit of n has a sign according to the following rules:\n\n*   The most significant digit is assigned a positive sign.\n*   Each other digit has an opposite sign to its adjacent digits.\n\nReturn _the sum of all digits with their corresponding sign_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sum_of_digits(n: int) -> int:\n    total = 0\n    positive = True\n\n    while n > 0:\n        digit = n % 10\n        n //= 10\n\n        if positive:\n            total += digit\n        else:\n            total -= digit\n\n        positive = not positive\n\n    return total\n```\n    \n    The algorithm is simple and works as follows:\n1. Initialize a variable, `sum`, to store the sum of the digits with their signs, and a boolean variable, `positive`, to determine whether the current digit should have a positive or negative sign.\n2. Iterate through the digits of the input number `n` by repeatedly dividing it by 10 and checking if it's greater than 0.\n   - Note that we process the digits from the least significant digit to the most significant digit.\n3. At each iteration, get the least significant digit (`digit`) of `n` by taking the remainder of the division of `n` by 10.\n4. If `positive` is true, add the digit to the sum; otherwise, subtract it from the sum.\n5. Toggle the value of `positive` for the next iteration.\n6. Return the final value of `sum`.\n\nThe algorithm has a time complexity of O(log(n)) because it processes each digit of the input number `n`.\n    ",
+    "javascript": "\n    ```javascript\nfunction sumOfDigits(n) {\n    let sum = 0;\n    let positive = true;\n\n    while (n > 0) {\n        let digit = n % 10;\n        n = Math.floor(n / 10);\n\n        if (positive) {\n            sum += digit;\n        } else {\n            sum -= digit;\n        }\n\n        positive = !positive;\n    }\n\n    return sum;\n}\n```\n    \n    The algorithm is simple and works as follows:\n1. Initialize a variable, `sum`, to store the sum of the digits with their signs, and a boolean variable, `positive`, to determine whether the current digit should have a positive or negative sign.\n2. Iterate through the digits of the input number `n` by repeatedly dividing it by 10 and checking if it's greater than 0.\n   - Note that we process the digits from the least significant digit to the most significant digit.\n3. At each iteration, get the least significant digit (`digit`) of `n` by taking the remainder of the division of `n` by 10.\n4. If `positive` is true, add the digit to the sum; otherwise, subtract it from the sum.\n5. Toggle the value of `positive` for the next iteration.\n6. Return the final value of `sum`.\n\nThe algorithm has a time complexity of O(log(n)) because it processes each digit of the input number `n`.\n    ",
+    "java": "\n    ```java\npublic int sumOfDigits(int n) {\n    int sum = 0;\n    boolean positive = true;\n\n    while (n > 0) {\n        int digit = n % 10;\n        n /= 10;\n\n        if (positive) {\n            sum += digit;\n        } else {\n            sum -= digit;\n        }\n\n        positive = !positive;\n    }\n\n    return sum;\n}\n```\n    \n    The algorithm is simple and works as follows:\n1. Initialize a variable, `sum`, to store the sum of the digits with their signs, and a boolean variable, `positive`, to determine whether the current digit should have a positive or negative sign.\n2. Iterate through the digits of the input number `n` by repeatedly dividing it by 10 and checking if it's greater than 0.\n   - Note that we process the digits from the least significant digit to the most significant digit.\n3. At each iteration, get the least significant digit (`digit`) of `n` by taking the remainder of the division of `n` by 10.\n4. If `positive` is true, add the digit to the sum; otherwise, subtract it from the sum.\n5. Toggle the value of `positive` for the next iteration.\n6. Return the final value of `sum`.\n\nThe algorithm has a time complexity of O(log(n)) because it processes each digit of the input number `n`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

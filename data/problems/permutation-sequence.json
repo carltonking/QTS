@@ -1,0 +1,24 @@
+{
+  "id": 60,
+  "title": "Permutation Sequence",
+  "slug": "permutation-sequence",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "The set [1, 2, 3, ..., n] contains a total of n! unique permutations.\n\nBy listing and labeling all of the permutations in order, we get the following sequence for n = 3:\n\n1.  \"123 \"\n2.  \"132 \"\n3.  \"213 \"\n4.  \"231 \"\n5.  \"312 \"\n6.  \"321 \"\n\nGiven n and k, return the kth permutation sequence.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef getPermutation(n, k):\n    factorials = [1]\n    nums = list(range(1, n + 1))\n    result = []\n\n    for i in range(1, n):\n        factorials.append(factorials[-1] * i)\n\n    k -= 1\n\n    for i in range(n, 0, -1):\n        index = k // factorials[i - 1]\n        k %= factorials[i - 1]\n        result.append(str(nums.pop(index)))\n\n    return ''.join(result)\n```\n    \n    The algorithm uses factorials and a list of available numbers to construct the kth permutation. \n\nFirst, we precompute the factorials up to n using a loop.\n\nNext, we initialize an array or list of available numbers, from 1 to n.\n\nThen, we iterate from n down to 1, calculating the index of the current number in the available list to be included in the resulting permutation. We can calculate it as follows: `index = (k - 1) // factorials[i - 1]`. \n\nAfter, we update the value of k to: `k %= factorials[i - 1]`.\n\nAt each step, we append or concatenate the chosen number to the result and remove it from the list of available numbers.\n\nFinally, we return the result as a string.\n    ",
+    "javascript": "\n    ```javascript\nfunction getPermutation(n, k) {\n    const factorials = [1];\n    const nums = [...Array(n)].map((_, i) => i + 1);\n    let result = '';\n\n    for (let i = 1; i < n; i++) {\n        factorials[i] = factorials[i - 1] * i;\n    }\n\n    k--;\n\n    for (let i = n; i >= 1; i--) {\n        const index = Math.floor(k / factorials[i - 1]);\n        k %= factorials[i - 1];\n        result += nums[index];\n        nums.splice(index, 1);\n    }\n\n    return result;\n}\n```\n    \n    The algorithm uses factorials and a list of available numbers to construct the kth permutation. \n\nFirst, we precompute the factorials up to n using a loop.\n\nNext, we initialize an array or list of available numbers, from 1 to n.\n\nThen, we iterate from n down to 1, calculating the index of the current number in the available list to be included in the resulting permutation. We can calculate it as follows: `index = (k - 1) // factorials[i - 1]`. \n\nAfter, we update the value of k to: `k %= factorials[i - 1]`.\n\nAt each step, we append or concatenate the chosen number to the result and remove it from the list of available numbers.\n\nFinally, we return the result as a string.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic String getPermutation(int n, int k) {\n    List<Integer> nums = new ArrayList<>();\n    int[] factorials = new int[n];\n    StringBuilder sb = new StringBuilder();\n    int index;\n\n    factorials[0] = 1;\n    for (int i = 1; i <= n; ++i) {\n        nums.add(i);\n        factorials[i - 1] = i * factorials[i - 1];\n    }\n\n    k--;\n\n    for (int i = n; i >= 1; --i) {\n        index = k / factorials[i - 1];\n        k %= factorials[i - 1];\n        sb.append(nums.get(index));\n        nums.remove(index);\n    }\n\n    return sb.toString();\n}\n```\n    \n    The algorithm uses factorials and a list of available numbers to construct the kth permutation. \n\nFirst, we precompute the factorials up to n using a loop.\n\nNext, we initialize an array or list of available numbers, from 1 to n.\n\nThen, we iterate from n down to 1, calculating the index of the current number in the available list to be included in the resulting permutation. We can calculate it as follows: `index = (k - 1) // factorials[i - 1]`. \n\nAfter, we update the value of k to: `k %= factorials[i - 1]`.\n\nAt each step, we append or concatenate the chosen number to the result and remove it from the list of available numbers.\n\nFinally, we return the result as a string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1880,
+  "title": "Check if Word Equals Summation of Two Words",
+  "slug": "check-if-word-equals-summation-of-two-words",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "The letter value of a letter is its position in the alphabet starting from 0 (i.e. 'a' -> 0, 'b' -> 1, 'c' -> 2, etc.).\n\nThe numerical value of some string of lowercase English letters s is the concatenation of the letter values of each letter in s, which is then converted into an integer.\n\n*   For example, if s = \"acb \", we concatenate each letter's letter value, resulting in \"021 \". After converting it, we get 21.\n\nYou are given three strings firstWord, secondWord, and targetWord, each consisting of lowercase English letters 'a' through 'j' inclusive.\n\nReturn true _if the summation of the numerical values of_ firstWord _and_ secondWord _equals the numerical value of_ targetWord_, or_ false _otherwise._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef largest_merge(word1: str, word2: str) -> str:\n    merge = []\n    while word1 or word2:\n        if word1 > word2:\n            merge.append(word1[0])\n            word1 = word1[1:]\n        else:\n            merge.append(word2[0])\n            word2 = word2[1:]\n    return ''.join(merge)\n```\n    \n    The algorithm starts with two given strings, `word1` and `word2`. The goal is to create the lexicographically largest `merge` string by choosing characters from either of the input strings. The algorithm operates in a `while` loop that continues until both input strings are empty.\n\nIn each iteration of the loop, the algorithm compares the input strings lexicographically. If `word1` is lexicographically larger, it takes the first character of `word1`, appends it to the `merge` string, and removes it from the input string. If `word2` is lexicographically larger or equal, it does the same operation for `word2`.\n\nThis process continues until both input strings are empty, resulting in the lexicographically largest possible `merge` string. Then the `merge` string is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction largestMerge(word1, word2) {\n    let merge = \"\";\n    while (word1.length > 0 || word2.length > 0) {\n        if (word1.localeCompare(word2) > 0) {\n            merge += word1[0];\n            word1 = word1.slice(1);\n        } else {\n            merge += word2[0];\n            word2 = word2.slice(1);\n        }\n    }\n    return merge;\n}\n```\n    \n    The algorithm starts with two given strings, `word1` and `word2`. The goal is to create the lexicographically largest `merge` string by choosing characters from either of the input strings. The algorithm operates in a `while` loop that continues until both input strings are empty.\n\nIn each iteration of the loop, the algorithm compares the input strings lexicographically. If `word1` is lexicographically larger, it takes the first character of `word1`, appends it to the `merge` string, and removes it from the input string. If `word2` is lexicographically larger or equal, it does the same operation for `word2`.\n\nThis process continues until both input strings are empty, resulting in the lexicographically largest possible `merge` string. Then the `merge` string is returned.\n    ",
+    "java": "\n    ```java\npublic String largestMerge(String word1, String word2) {\n    StringBuilder merge = new StringBuilder();\n    while (!word1.isEmpty() || !word2.isEmpty()) {\n        if (word1.compareTo(word2) > 0) {\n            merge.append(word1.charAt(0));\n            word1 = word1.substring(1);\n        } else {\n            merge.append(word2.charAt(0));\n            word2 = word2.substring(1);\n        }\n    }\n    return merge.toString();\n}\n```\n    \n    The algorithm starts with two given strings, `word1` and `word2`. The goal is to create the lexicographically largest `merge` string by choosing characters from either of the input strings. The algorithm operates in a `while` loop that continues until both input strings are empty.\n\nIn each iteration of the loop, the algorithm compares the input strings lexicographically. If `word1` is lexicographically larger, it takes the first character of `word1`, appends it to the `merge` string, and removes it from the input string. If `word2` is lexicographically larger or equal, it does the same operation for `word2`.\n\nThis process continues until both input strings are empty, resulting in the lexicographically largest possible `merge` string. Then the `merge` string is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

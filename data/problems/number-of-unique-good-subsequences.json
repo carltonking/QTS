@@ -1,0 +1,24 @@
+{
+  "id": 1987,
+  "title": "Number of Unique Good Subsequences",
+  "slug": "number-of-unique-good-subsequences",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a binary string binary. A subsequence of binary is considered good if it is not empty and has no leading zeros (with the exception of \"0 \").\n\nFind the number of unique good subsequences of binary.\n\n*   For example, if binary = \"001 \", then all the good subsequences are [ \"0 \", \"0 \", \"1 \"], so the unique good subsequences are \"0 \" and \"1 \". Note that subsequences \"00 \", \"01 \", and \"001 \" are not good because they have leading zeros.\n\nReturn _the number of unique good subsequences of_ binary. Since the answer may be very large, return it modulo 109 + 7.\n\nA subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_good_substrings(s: str) -> int:\n    count = 0\n    for i in range(len(s) - 2):\n        if s[i] != s[i + 1] and s[i] != s[i + 2] and s[i + 1] != s[i + 2]:\n            count += 1\n    return count\n```\n    \n    The algorithm iterates through the given string `s` till the third last character. For each character, it checks if the current character and the next two characters are distinct. If they are distinct, it means we have found a good substring of length three and increase the `count`. After the iteration, the function returns the total count of good substrings found.\n    ",
+    "javascript": "\n    ```javascript\nfunction countGoodSubstrings(s) {\n    let count = 0;\n    for (let i = 0; i < s.length - 2; i++) {\n        if (s[i] !== s[i + 1] && s[i] !== s[i + 2] && s[i + 1] !== s[i + 2])\n            count++;\n    }\n    return count;\n}\n```\n    \n    The algorithm iterates through the given string `s` till the third last character. For each character, it checks if the current character and the next two characters are distinct. If they are distinct, it means we have found a good substring of length three and increase the `count`. After the iteration, the function returns the total count of good substrings found.\n    ",
+    "java": "\n    ```java\npublic int countGoodSubstrings(String s) {\n    int count = 0;\n    for (int i = 0; i < s.length() - 2; i++) {\n        if (s.charAt(i) != s.charAt(i + 1) && s.charAt(i) != s.charAt(i + 2) && s.charAt(i + 1) != s.charAt(i + 2))\n            count++;\n    }\n    return count;\n}\n```\n    \n    The algorithm iterates through the given string `s` till the third last character. For each character, it checks if the current character and the next two characters are distinct. If they are distinct, it means we have found a good substring of length three and increase the `count`. After the iteration, the function returns the total count of good substrings found.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

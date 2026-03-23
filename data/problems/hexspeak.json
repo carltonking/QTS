@@ -1,0 +1,24 @@
+{
+  "id": 1271,
+  "title": "Hexspeak",
+  "slug": "hexspeak",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "A decimal number can be converted to its Hexspeak representation by first converting it to an uppercase hexadecimal string, then replacing all occurrences of the digit '0' with the letter 'O', and the digit '1' with the letter 'I'. Such a representation is valid if and only if it consists only of the letters in the set {'A', 'B', 'C', 'D', 'E', 'F', 'I', 'O'}.\n\nGiven a string num representing a decimal integer n, _return the Hexspeak representation of_ n _if it is valid, otherwise return_ \"ERROR \".",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef to_hexspeak(num: str) -> str:\n    n = int(num)\n    hex_str = []\n    while n:\n        rem = n % 16\n        if rem == 1: hex_str.insert(0, 'I')\n        elif rem == 0: hex_str.insert(0, 'O')\n        elif rem > 9: hex_str.insert(0, chr(rem - 10 + ord('A')))\n        else: return 'ERROR'\n        n //= 16\n    return ''.join(hex_str)\n```\n    \n    The algorithm first converts the input number (given as a string) to a long integer (we'll call it `n`). We then use a loop to construct the Hexspeak representation in reverse order. In each iteration, we calculate the remainder `rem` of `n` divided by 16. If `rem` is 1, we append 'I' to the beginning of the string; if it is 0, we append 'O'; if it is greater than 9, we append the corresponding letter ('A' to 'F'); and if it is none of these, then the Hexspeak representation is invalid, and we return \"ERROR\". After processing each character, we update `n` by dividing it by 16. Finally, we return the constructed Hexspeak representation.\n\nThis algorithm runs in O(log(n)) time complexity, as each iteration of the loop reduces `n` by a factor of 16. The space complexity is also O(log(n)), as the constructed Hexspeak representation string has a length proportional to the number of hexadecimal digits in `n`.\n    ",
+    "javascript": "\n    ```javascript\nfunction toHexspeak(num) {\n    let n = BigInt(num);\n    let hex = '';\n    while (n) {\n        let rem = Number(n % 16n);\n        if (rem === 1) hex = 'I' + hex;\n        else if (rem === 0) hex = 'O' + hex;\n        else if (rem > 9) hex = String.fromCharCode(rem - 10 + 'A'.charCodeAt(0)) + hex;\n        else return 'ERROR';\n        n /= 16n;\n    }\n    return hex;\n}\n```\n    \n    The algorithm first converts the input number (given as a string) to a long integer (we'll call it `n`). We then use a loop to construct the Hexspeak representation in reverse order. In each iteration, we calculate the remainder `rem` of `n` divided by 16. If `rem` is 1, we append 'I' to the beginning of the string; if it is 0, we append 'O'; if it is greater than 9, we append the corresponding letter ('A' to 'F'); and if it is none of these, then the Hexspeak representation is invalid, and we return \"ERROR\". After processing each character, we update `n` by dividing it by 16. Finally, we return the constructed Hexspeak representation.\n\nThis algorithm runs in O(log(n)) time complexity, as each iteration of the loop reduces `n` by a factor of 16. The space complexity is also O(log(n)), as the constructed Hexspeak representation string has a length proportional to the number of hexadecimal digits in `n`.\n    ",
+    "java": "\n    ```java\npublic String toHexspeak(String num) {\n    long n = Long.parseLong(num);\n    StringBuilder hex = new StringBuilder();\n    while (n != 0) {\n        int rem = (int)(n % 16);\n        if (rem == 1) hex.insert(0, 'I');\n        else if (rem == 0) hex.insert(0, 'O');\n        else if (rem > 9) hex.insert(0, (char)(rem - 10 + 'A'));\n        else return \"ERROR\";\n        n /= 16;\n    }\n    return hex.toString();\n}\n```\n    \n    The algorithm first converts the input number (given as a string) to a long integer (we'll call it `n`). We then use a loop to construct the Hexspeak representation in reverse order. In each iteration, we calculate the remainder `rem` of `n` divided by 16. If `rem` is 1, we append 'I' to the beginning of the string; if it is 0, we append 'O'; if it is greater than 9, we append the corresponding letter ('A' to 'F'); and if it is none of these, then the Hexspeak representation is invalid, and we return \"ERROR\". After processing each character, we update `n` by dividing it by 16. Finally, we return the constructed Hexspeak representation.\n\nThis algorithm runs in O(log(n)) time complexity, as each iteration of the loop reduces `n` by a factor of 16. The space complexity is also O(log(n)), as the constructed Hexspeak representation string has a length proportional to the number of hexadecimal digits in `n`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 797,
+  "title": "All Paths From Source to Target",
+  "slug": "all-paths-from-source-to-target",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a directed acyclic graph (DAG) of n nodes labeled from 0 to n - 1, find all possible paths from node 0 to node n - 1 and return them in any order.\n\nThe graph is given as follows: graph[i] is a list of all nodes you can visit from node i (i.e., there is a directed edge from node i to node graph[i][j]).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import defaultdict\ndef numRabbits(answers):\n    count = defaultdict(int)\n    res = 0\n    for a in answers:\n        count[a] += 1\n        if count[a] == 1:\n            res += (a + 1)\n        elif count[a] > a + 1:\n            count[a] = 1\n            res += (a + 1)\n    return res\n```\n\n    \n    We are using a hashmap called `count` to store the count of rabbits with the same answer (number of rabbits with the same color). We iterate through the given `answers` array, and for each rabbit, we increment the count of its answer in the hashmap. If the count of an answer is 1, we increase the result by (answer + 1), since the rabbit has seen (answer) rabbits with its own color, including itself. If the count is greater than (answer + 1), we reset the count to 1 and increase the result by (answer + 1). This is because after (answer + 1) rabbits, a new group of the same colored rabbits should be formed. Finally, we return the result as the minimum number of rabbits that could be in the forest.\n    ",
+    "javascript": "\n    ```javascript\nfunction numRabbits(answers) {\n    let count = {};\n    let res = 0;\n    for (let a of answers) {\n        count[a] = count[a] ? count[a] + 1 : 1;\n        if (count[a] === 1) {\n            res += (a + 1);\n        } else if (count[a] > a + 1) {\n            count[a] = 1;\n            res += (a + 1);\n        }\n    }\n    return res;\n}\n```\n\n    \n    We are using a hashmap called `count` to store the count of rabbits with the same answer (number of rabbits with the same color). We iterate through the given `answers` array, and for each rabbit, we increment the count of its answer in the hashmap. If the count of an answer is 1, we increase the result by (answer + 1), since the rabbit has seen (answer) rabbits with its own color, including itself. If the count is greater than (answer + 1), we reset the count to 1 and increase the result by (answer + 1). This is because after (answer + 1) rabbits, a new group of the same colored rabbits should be formed. Finally, we return the result as the minimum number of rabbits that could be in the forest.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\npublic int numRabbits(int[] answers) {\n    HashMap<Integer, Integer> count = new HashMap<>();\n    int res = 0;\n    for (int a : answers) {\n        count.put(a, count.getOrDefault(a, 0) + 1);\n        if (count.get(a) == 1) {\n            res += (a + 1);\n        } else if (count.get(a) > a + 1) {\n            count.put(a, 1);\n            res += (a + 1);\n        }\n    }\n    return res;\n}\n```\n\n    \n    We are using a hashmap called `count` to store the count of rabbits with the same answer (number of rabbits with the same color). We iterate through the given `answers` array, and for each rabbit, we increment the count of its answer in the hashmap. If the count of an answer is 1, we increase the result by (answer + 1), since the rabbit has seen (answer) rabbits with its own color, including itself. If the count is greater than (answer + 1), we reset the count to 1 and increase the result by (answer + 1). This is because after (answer + 1) rabbits, a new group of the same colored rabbits should be formed. Finally, we return the result as the minimum number of rabbits that could be in the forest.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

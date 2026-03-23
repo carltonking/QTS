@@ -1,0 +1,24 @@
+{
+  "id": 529,
+  "title": "Minesweeper",
+  "slug": "minesweeper",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Let's play the minesweeper game ([Wikipedia](https://en.wikipedia.org/wiki/Minesweeper_(video_game)), [online game](http://minesweeperonline.com))!\n\nYou are given an m x n char matrix board representing the game board where:\n\n*   'M' represents an unrevealed mine,\n*   'E' represents an unrevealed empty square,\n*   'B' represents a revealed blank square that has no adjacent mines (i.e., above, below, left, right, and all 4 diagonals),\n*   digit ('1' to '8') represents how many mines are adjacent to this revealed square, and\n*   'X' represents a revealed mine.\n\nYou are also given an integer array click where click = [clickr, clickc] represents the next click position among all the unrevealed squares ('M' or 'E').\n\nReturn _the board after revealing this position according to the following rules_:\n\n1.  If a mine 'M' is revealed, then the game is over. You should change it to 'X'.\n2.  If an empty square 'E' with no adjacent mines is revealed, then change it to a revealed blank 'B' and all of its adjacent unrevealed squares should be revealed recursively.\n3.  If an empty square 'E' with at least one adjacent mine is revealed, then change it to a digit ('1' to '8') representing the number of adjacent mines.\n4.  Return the board when no more squares will be revealed.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom typing import List\n\ndef reveal(board: List[List[str]], row: int, col: int, directions: List[List[int]]) -> None:\n    if row < 0 or row >= len(board) or col < 0 or col >= len(board[0]) or board[row][col] != 'E':\n        return\n\n    mines = 0\n    for dir in directions:\n        newRow, newCol = row + dir[0], col + dir[1]\n        if newRow >= 0 and newRow < len(board) and newCol >= 0 and newCol < len(board[0]) and board[newRow][newCol] == 'M':\n            mines += 1\n\n    if mines > 0:\n        board[row][col] = str(mines)\n    else:\n        board[row][col] = 'B'\n        for dir in directions:\n            reveal(board, row + dir[0], col + dir[1], directions)\n\ndef updateBoard(board: List[List[str]], click: List[int]) -> List[List[str]]:\n    row, col = click\n\n    if board[row][col] == 'M':\n        board[row][col] = 'X'\n    else:\n        directions = [[1, 0], [1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1], [0, 1], [1, 1]]\n        reveal(board, row, col, directions)\n\n    return board\n```    \n    The algorithm starts by checking if the clicked cell contains a mine ('M'). If it does, the cell is updated with an 'X' to show it's been clicked. \n\nIf there's no mine, the algorithm calculates the number of adjacent mines. If there are one or more mines, the cell is updated with the number of adjacent mines. If there are 0 mines, the cell is updated with 'B' for Blank and its adjacent cells are recursively checked.\n\nThe algorithm keeps revealing the cells according to the rules until it reaches the boundary or cells that have already been revealed.\n    ",
+    "javascript": "\n        \n    The algorithm starts by checking if the clicked cell contains a mine ('M'). If it does, the cell is updated with an 'X' to show it's been clicked. \n\nIf there's no mine, the algorithm calculates the number of adjacent mines. If there are one or more mines, the cell is updated with the number of adjacent mines. If there are 0 mines, the cell is updated with 'B' for Blank and its adjacent cells are recursively checked.\n\nThe algorithm keeps revealing the cells according to the rules until it reaches the boundary or cells that have already been revealed.\n    ",
+    "java": "\n        \n    The algorithm starts by checking if the clicked cell contains a mine ('M'). If it does, the cell is updated with an 'X' to show it's been clicked. \n\nIf there's no mine, the algorithm calculates the number of adjacent mines. If there are one or more mines, the cell is updated with the number of adjacent mines. If there are 0 mines, the cell is updated with 'B' for Blank and its adjacent cells are recursively checked.\n\nThe algorithm keeps revealing the cells according to the rules until it reaches the boundary or cells that have already been revealed.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

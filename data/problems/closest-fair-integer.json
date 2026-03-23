@@ -1,0 +1,24 @@
+{
+  "id": 2417,
+  "title": "Closest Fair Integer",
+  "slug": "closest-fair-integer",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a positive integer n.\n\nWe call an integer k fair if the number of even digits in k is equal to the number of odd digits in it.\n\nReturn _the smallest fair integer that is greater than or equal to_ n.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef smallest_fair_number(n):\n    while True:\n        k = n\n        even = 0\n        odd = 0\n        while k > 0:\n            if k % 2 == 0:\n                even += 1\n            else:\n                odd += 1\n            k //= 10\n        if even == odd:\n            return n\n        n += 1\n```\n    \n    The algorithm starts from the given number `n` and check if it is fair or not. A fair number `k` is the one where the count of even digits is equal to the count of odd digits.\n\nTo check if a number is fair, we count the even and odd digits of the number `k` using a while loop. In each iteration, we check if the last digit of `k` is even or odd, increment the respective counter, and update `k` by removing the last digit. If the count of even and odd digits is equal, return the number `n`.\n\nIf the given number `n` is not fair, we increment `n` and repeat the process until we find a fair number.\n\nThis algorithm has a linear time complexity (in the worst case) as we need to find the subsequent fair numbers one by one until we find the smallest fair number satisfying the constraints.\n    ",
+    "javascript": "\n    ```javascript\nfunction smallestFairNumber(n) {\n    while (true) {\n        let k = n;\n        let even = 0, odd = 0;\n        while (k > 0) {\n            k % 2 === 0 ? even++ : odd++;\n            k = Math.floor(k / 10);\n        }\n        if (even === odd) return n;\n        n++;\n    }\n}\n```\n    \n    The algorithm starts from the given number `n` and check if it is fair or not. A fair number `k` is the one where the count of even digits is equal to the count of odd digits.\n\nTo check if a number is fair, we count the even and odd digits of the number `k` using a while loop. In each iteration, we check if the last digit of `k` is even or odd, increment the respective counter, and update `k` by removing the last digit. If the count of even and odd digits is equal, return the number `n`.\n\nIf the given number `n` is not fair, we increment `n` and repeat the process until we find a fair number.\n\nThis algorithm has a linear time complexity (in the worst case) as we need to find the subsequent fair numbers one by one until we find the smallest fair number satisfying the constraints.\n    ",
+    "java": "\n    ```java\npublic int smallestFairNumber(int n) {\n    while (true) {\n        int k = n;\n        int even = 0, odd = 0;\n        while (k > 0) {\n            k % 2 == 0 ? even++ : odd++;\n            k /= 10;\n        }\n        if (even == odd) return n;\n        n++;\n    }\n}\n```\n    \n    The algorithm starts from the given number `n` and check if it is fair or not. A fair number `k` is the one where the count of even digits is equal to the count of odd digits.\n\nTo check if a number is fair, we count the even and odd digits of the number `k` using a while loop. In each iteration, we check if the last digit of `k` is even or odd, increment the respective counter, and update `k` by removing the last digit. If the count of even and odd digits is equal, return the number `n`.\n\nIf the given number `n` is not fair, we increment `n` and repeat the process until we find a fair number.\n\nThis algorithm has a linear time complexity (in the worst case) as we need to find the subsequent fair numbers one by one until we find the smallest fair number satisfying the constraints.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2427,
+  "title": "Number of Common Factors",
+  "slug": "number-of-common-factors",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given two positive integers a and b, return _the number of common factors of_ a _and_ b.\n\nAn integer x is a common factor of a and b if x divides both a and b.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef common_factors(a: int, b: int) -> int:\n    from math import gcd\n\n    g = gcd(a, b)\n    count = 0\n    for i in range(1, int(g**0.5) + 1):\n        if g % i == 0:\n            count += 1\n            if i * i != g:\n                count += 1\n    return count\n```\n    \n    1. First, we calculate the greatest common divisor (GCD) of the input integers `a` and `b` using the Euclidean algorithm.\n2. Next, we initialize a `count` variable to store the number of common factors.\n3. Then, we iterate through the numbers from 1 to the square root of the GCD.\n   - For each number `i` that is a factor of the GCD, we increment the `count`.\n   - If the square of `i` is not equal to the GCD, we increment the `count` again because there is another factor, which is `gcd // i`.\n4. Finally, we return the `count`.\n    ",
+    "javascript": "\n    ```javascript\nfunction commonFactors(a, b) {\n    let gcd = (a, b) => b === 0 ? a : gcd(b, a % b);\n    let g = gcd(a, b);\n    let count = 0;\n    for (let i = 1; i * i <= g; i++) {\n        if (g % i === 0) {\n            count++;\n            if (i * i !== g)\n                count++;\n        }\n    }\n    return count;\n}\n```\n    \n    1. First, we calculate the greatest common divisor (GCD) of the input integers `a` and `b` using the Euclidean algorithm.\n2. Next, we initialize a `count` variable to store the number of common factors.\n3. Then, we iterate through the numbers from 1 to the square root of the GCD.\n   - For each number `i` that is a factor of the GCD, we increment the `count`.\n   - If the square of `i` is not equal to the GCD, we increment the `count` again because there is another factor, which is `gcd // i`.\n4. Finally, we return the `count`.\n    ",
+    "java": "\n    ```java\npublic int commonFactors(int a, int b) {\n    int gcd = gcd(a, b);\n    int count = 0;\n    for (int i = 1; i * i <= gcd; i++) {\n        if (gcd % i == 0) {\n            count++;\n            if (i * i != gcd)\n                count++;\n        }\n    }\n    return count;\n}\n\nprivate int gcd(int a, int b) {\n    return b == 0 ? a : gcd(b, a % b);\n}\n```\n    \n    1. First, we calculate the greatest common divisor (GCD) of the input integers `a` and `b` using the Euclidean algorithm.\n2. Next, we initialize a `count` variable to store the number of common factors.\n3. Then, we iterate through the numbers from 1 to the square root of the GCD.\n   - For each number `i` that is a factor of the GCD, we increment the `count`.\n   - If the square of `i` is not equal to the GCD, we increment the `count` again because there is another factor, which is `gcd // i`.\n4. Finally, we return the `count`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

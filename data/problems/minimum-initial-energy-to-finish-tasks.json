@@ -1,0 +1,24 @@
+{
+  "id": 1665,
+  "title": "Minimum Initial Energy to Finish Tasks",
+  "slug": "minimum-initial-energy-to-finish-tasks",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an array tasks where tasks[i] = [actuali, minimumi]:\n\n*   actuali is the actual amount of energy you spend to finish the ith task.\n*   minimumi is the minimum amount of energy you require to begin the ith task.\n\nFor example, if the task is [10, 12] and your current energy is 11, you cannot start this task. However, if your current energy is 13, you can complete this task, and your energy will be 3 after finishing it.\n\nYou can finish the tasks in any order you like.\n\nReturn _the minimum initial amount of energy you will need_ _to finish all the tasks_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minimumEffort(tasks):\n    tasks.sort(key=lambda task: task[1] - task[0], reverse=True)\n    ans, sum_energy = 0, 0\n    for task in tasks:\n        ans = max(ans, sum_energy + task[1])\n        sum_energy += task[0]\n    return ans\n```\n    \n    The main idea of this algorithm is to sort the tasks in descending order based on the difference between their `minimum` and `actual` energy requirements. By sorting in this order, we can ensure that we first finish the tasks which require more minimum energy, and the remaining tasks require less minimum energy to start. \n\nAfter sorting the tasks in the desired order, we iterate through the tasks to find the minimum initial energy required. \n\n1. Set the initial values of `ans` and `sum_energy` to 0.\n2. For each task in the sorted tasks list, calculate the maximum value between the current `ans` and the sum of `sum_energy` and the `minimum` energy required for the current task. Update the `ans` variable with this maximum value.\n3. Add the `actual` energy spent on the current task to the `sum_energy`.\n4. After iterating through all the tasks, the `ans` variable will store the minimum initial amount of energy required to finish all the tasks.\n    ",
+    "javascript": "\n    ```javascript\nfunction minimumEffort(tasks) {\n    tasks.sort((a, b) => (b[1] - b[0]) - (a[1] - a[0]));\n    let ans = 0, sum = 0;\n    for (const task of tasks) {\n        ans = Math.max(ans, sum + task[1]);\n        sum += task[0];\n    }\n    return ans;\n}\n```\n    \n    The main idea of this algorithm is to sort the tasks in descending order based on the difference between their `minimum` and `actual` energy requirements. By sorting in this order, we can ensure that we first finish the tasks which require more minimum energy, and the remaining tasks require less minimum energy to start. \n\nAfter sorting the tasks in the desired order, we iterate through the tasks to find the minimum initial energy required. \n\n1. Set the initial values of `ans` and `sum_energy` to 0.\n2. For each task in the sorted tasks list, calculate the maximum value between the current `ans` and the sum of `sum_energy` and the `minimum` energy required for the current task. Update the `ans` variable with this maximum value.\n3. Add the `actual` energy spent on the current task to the `sum_energy`.\n4. After iterating through all the tasks, the `ans` variable will store the minimum initial amount of energy required to finish all the tasks.\n    ",
+    "java": "\n    ```java\npublic int minimumEffort(int[][] tasks) {\n    Arrays.sort(tasks, (a, b) -> (b[1] - b[0]) - (a[1] - a[0]));\n    int ans = 0, sum = 0;\n    for (int[] task : tasks) {\n        ans = Math.max(ans, sum + task[1]);\n        sum += task[0];\n    }\n    return ans;\n}\n```\n    \n    The main idea of this algorithm is to sort the tasks in descending order based on the difference between their `minimum` and `actual` energy requirements. By sorting in this order, we can ensure that we first finish the tasks which require more minimum energy, and the remaining tasks require less minimum energy to start. \n\nAfter sorting the tasks in the desired order, we iterate through the tasks to find the minimum initial energy required. \n\n1. Set the initial values of `ans` and `sum_energy` to 0.\n2. For each task in the sorted tasks list, calculate the maximum value between the current `ans` and the sum of `sum_energy` and the `minimum` energy required for the current task. Update the `ans` variable with this maximum value.\n3. Add the `actual` energy spent on the current task to the `sum_energy`.\n4. After iterating through all the tasks, the `ans` variable will store the minimum initial amount of energy required to finish all the tasks.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

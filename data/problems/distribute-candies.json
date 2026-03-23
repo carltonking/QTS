@@ -1,0 +1,24 @@
+{
+  "id": 575,
+  "title": "Distribute Candies",
+  "slug": "distribute-candies",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Alice has n candies, where the ith candy is of type candyType[i]. Alice noticed that she started to gain weight, so she visited a doctor.\n\nThe doctor advised Alice to only eat n / 2 of the candies she has (n is always even). Alice likes her candies very much, and she wants to eat the maximum number of different types of candies while still following the doctor's advice.\n\nGiven the integer array candyType of length n, return _the maximum number of different types of candies she can eat if she only eats_ n / 2 _of them_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxNumberOfCandies(candyType):\n    uniqueCandies = set(candyType)\n    return min(len(uniqueCandies), len(candyType) // 2)\n```\n\n    \n    The algorithm starts by first creating a set of unique candy types using a hash set (in C++ and Java) or a set (in Python and JavaScript). The uniqueCandies set will only store each type of candy once, no matter how many times it appears in the candyType array. After creating this set, the algorithm compares the number of unique types of candies (size of the set) with half the total number of candies (n / 2). The minimum of these two values is returned as the maximum number of different types of candies Alice can eat. This is because Alice can eat at most n / 2 candies, but if there are fewer unique candies than that, she will eat all the unique types available.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxNumberOfCandies(candyType) {\n    const uniqueCandies = new Set(candyType);\n    return Math.min(uniqueCandies.size, candyType.length / 2);\n}\n```\n\n    \n    The algorithm starts by first creating a set of unique candy types using a hash set (in C++ and Java) or a set (in Python and JavaScript). The uniqueCandies set will only store each type of candy once, no matter how many times it appears in the candyType array. After creating this set, the algorithm compares the number of unique types of candies (size of the set) with half the total number of candies (n / 2). The minimum of these two values is returned as the maximum number of different types of candies Alice can eat. This is because Alice can eat at most n / 2 candies, but if there are fewer unique candies than that, she will eat all the unique types available.\n    ",
+    "java": "\n    ```java\nimport java.util.HashSet;\nimport java.util.Set;\n\npublic int maxNumberOfCandies(int[] candyType) {\n    Set<Integer> uniqueCandies = new HashSet<>();\n    for (int type : candyType) {\n        uniqueCandies.add(type);\n    }\n    return Math.min(uniqueCandies.size(), candyType.length / 2);\n}\n```\n\n    \n    The algorithm starts by first creating a set of unique candy types using a hash set (in C++ and Java) or a set (in Python and JavaScript). The uniqueCandies set will only store each type of candy once, no matter how many times it appears in the candyType array. After creating this set, the algorithm compares the number of unique types of candies (size of the set) with half the total number of candies (n / 2). The minimum of these two values is returned as the maximum number of different types of candies Alice can eat. This is because Alice can eat at most n / 2 candies, but if there are fewer unique candies than that, she will eat all the unique types available.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

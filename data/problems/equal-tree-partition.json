@@ -1,0 +1,24 @@
+{
+  "id": 663,
+  "title": "Equal Tree Partition",
+  "slug": "equal-tree-partition",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the root of a binary tree, return true _if you can partition the tree into two trees with equal sums of values after removing exactly one edge on the original tree_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def checkEqualTree(self, root: TreeNode) -> bool:\n        def _sum(node, seen):\n            if not node:\n                return 0\n            s = node.val + _sum(node.left, seen) + _sum(node.right, seen)\n            seen.add(s)\n            return s\n\n        seen = set()\n        total = _sum(root, seen)\n        return total % 2 == 0 and (total // 2) in seen\n```\n\n    \n    The algorithm does a post-order traversal of the tree and calculates the sums of the subtrees as it traverses. It stores these sums in a set (or unordered_set in C++). Then, it checks if the set contains a value equal to half the total sum of the tree. If it does, that means there is a subtree with equal sum to the other half of the tree after removing one edge (which connects the subtree to the main tree). If the total sum is odd, it is not possible to divide the tree into two equal parts and it returns false.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(val, left=null, right=null) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\nvar checkEqualTree = function(root) {\n    let seen = new Set();\n    let total = sum(root, seen);\n    if (total % 2 === 0) {\n        seen.delete(total);\n        return seen.has(total / 2)\n    }\n    return false;\n\n    function sum(node, seen) {\n        if (!node) return 0;\n        let s = node.val + sum(node.left, seen) + sum(node.right, seen)\n        seen.add(s);\n        return s;\n    }\n};\n```\n\n    \n    The algorithm does a post-order traversal of the tree and calculates the sums of the subtrees as it traverses. It stores these sums in a set (or unordered_set in C++). Then, it checks if the set contains a value equal to half the total sum of the tree. If it does, that means there is a subtree with equal sum to the other half of the tree after removing one edge (which connects the subtree to the main tree). If the total sum is odd, it is not possible to divide the tree into two equal parts and it returns false.\n    ",
+    "java": "\n    ```java\nimport java.util.HashSet;\nimport java.util.Set;\n\nclass TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n    TreeNode(int x) { val = x; }\n}\n\nclass Solution {\n    public boolean checkEqualTree(TreeNode root) {\n        Set<Integer> seen = new HashSet<>();\n        int total = sum(root, seen);\n        if (total % 2 == 0) {\n            seen.remove(total);\n            return seen.contains(total / 2);\n        }\n        return false;\n    }\n    \n    private int sum(TreeNode node, Set<Integer> seen) {\n        if (node == null) return 0;\n        int s = node.val + sum(node.left, seen) + sum(node.right, seen);\n        seen.add(s);\n        return s;\n    }\n}\n```\n\n    \n    The algorithm does a post-order traversal of the tree and calculates the sums of the subtrees as it traverses. It stores these sums in a set (or unordered_set in C++). Then, it checks if the set contains a value equal to half the total sum of the tree. If it does, that means there is a subtree with equal sum to the other half of the tree after removing one edge (which connects the subtree to the main tree). If the total sum is odd, it is not possible to divide the tree into two equal parts and it returns false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

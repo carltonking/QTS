@@ -1,0 +1,24 @@
+{
+  "id": 437,
+  "title": "Path Sum III",
+  "slug": "path-sum-iii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the root of a binary tree and an integer targetSum, return _the number of paths where the sum of the values along the path equals_ targetSum.\n\nThe path does not need to start or end at the root or a leaf, but it must go downwards (i.e., traveling only from parent nodes to child nodes).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef path_sum_helper(node, target_sum, current_sum):\n    if node is None:\n        return 0\n\n    current_sum += node.val\n    total_paths = 1 if current_sum == target_sum else 0\n    total_paths += path_sum_helper(node.left, target_sum, current_sum)\n    total_paths += path_sum_helper(node.right, target_sum, current_sum)\n    return total_paths\n\ndef path_sum(root, target_sum):\n    if root is None:\n        return 0\n\n    return path_sum_helper(root, target_sum, 0) + path_sum(root.left, target_sum) + path_sum(root.right, target_sum)\n```\n\n    \n    1. Create a recursive helper function `pathSumHelper` which takes the current node, `targetSum`, and the `currentSum` on the path.\n2. If the current node is null, return 0 as the base case.\n3. Add the value of the current node to `currentSum`.\n4. Check if the `currentSum` is equal to `targetSum`. If yes, update the number of total paths by 1.\n5. Recursively call the `pathSumHelper` function for the left and right child of the current node, and update the total paths accordingly.\n6. Return the total paths.\n7. The main function `pathSum` just calls the helper function for the root node, the left subtree and the right subtree and sums up the results.\n    ",
+    "javascript": "\n    ```javascript\nfunction pathSumHelper(node, targetSum, currentSum) {\n    if (node === null) {\n        return 0;\n    }\n\n    currentSum += node.val;\n    let totalPaths = (currentSum === targetSum) ? 1 : 0;\n    totalPaths += pathSumHelper(node.left, targetSum, currentSum);\n    totalPaths += pathSumHelper(node.right, targetSum, currentSum);\n    return totalPaths;\n}\n\nfunction pathSum(root, targetSum) {\n    if (root === null) {\n        return 0;\n    }\n\n    return pathSumHelper(root, targetSum, 0) + pathSum(root.left, targetSum) + pathSum(root.right, targetSum);\n}\n```\n\n    \n    1. Create a recursive helper function `pathSumHelper` which takes the current node, `targetSum`, and the `currentSum` on the path.\n2. If the current node is null, return 0 as the base case.\n3. Add the value of the current node to `currentSum`.\n4. Check if the `currentSum` is equal to `targetSum`. If yes, update the number of total paths by 1.\n5. Recursively call the `pathSumHelper` function for the left and right child of the current node, and update the total paths accordingly.\n6. Return the total paths.\n7. The main function `pathSum` just calls the helper function for the root node, the left subtree and the right subtree and sums up the results.\n    ",
+    "java": "\n    ```java\npublic int pathSumHelper(TreeNode node, int targetSum, int currentSum) {\n    if (node == null) {\n        return 0;\n    }\n    \n    currentSum += node.val;\n    int totalPaths = currentSum == targetSum ? 1 : 0;\n    totalPaths += pathSumHelper(node.left, targetSum, currentSum);\n    totalPaths += pathSumHelper(node.right, targetSum, currentSum);\n    return totalPaths;\n}\n\npublic int pathSum(TreeNode root, int targetSum) {\n    if (root == null) {\n        return 0;\n    }\n\n    return pathSumHelper(root, targetSum, 0) + pathSum(root.left, targetSum) + pathSum(root.right, targetSum);\n}\n```\n\n    \n    1. Create a recursive helper function `pathSumHelper` which takes the current node, `targetSum`, and the `currentSum` on the path.\n2. If the current node is null, return 0 as the base case.\n3. Add the value of the current node to `currentSum`.\n4. Check if the `currentSum` is equal to `targetSum`. If yes, update the number of total paths by 1.\n5. Recursively call the `pathSumHelper` function for the left and right child of the current node, and update the total paths accordingly.\n6. Return the total paths.\n7. The main function `pathSum` just calls the helper function for the root node, the left subtree and the right subtree and sums up the results.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 249,
+  "title": "Group Shifted Strings",
+  "slug": "group-shifted-strings",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "We can shift a string by shifting each of its letters to its successive letter.\n\n*   For example, \"abc \" can be shifted to be \"bcd \".\n\nWe can keep shifting the string to form a sequence.\n\n*   For example, we can keep shifting \"abc \" to form the sequence: \"abc \" -> \"bcd \" -> ... -> \"xyz \".\n\nGiven an array of strings strings, group all strings[i] that belong to the same shifting sequence. You may return the answer in any order.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import defaultdict\n\ndef groupStrings(strings):\n    groups = defaultdict(list)\n\n    for s in strings:\n        key = tuple((ord(c) - ord(s[0])) % 26 for c in s)\n        groups[key].append(s)\n\n    return list(groups.values())\n```\n    \n    The idea is to create a unique key for each group of strings, that depends on the relative distances between characters in a string. We iterate through the given strings and create the key for each string by taking the difference between the ASCII code of each character and that of the first character, modulo 26. We add these deltas as comma-separated elements and use them as the key in a map. Where a map is a hashmap in C++ and Java, defaultdict in Python, and Map in JavaScript. For each string, we append it to the list of strings corresponding to its group (key) in the map.\n\nAfter iterating through all the strings, we return the list of groups from the map.\n\nNote that the modulo operation and `<code>26</code>` come from the number of lowercase English letters which is 26. So, any shift greater than 25 will simply wrap around to the initial letters.\n    ",
+    "javascript": "\n    ```javascript\nfunction groupStrings(strings) {\n    const map = new Map();\n\n    for (const s of strings) {\n        let key = '';\n        for (const c of s) {\n            key += `${(c.charCodeAt(0) - s.charCodeAt(0) + 26) % 26},`;\n        }\n        if (!map.has(key)) {\n            map.set(key, []);\n        }\n        map.get(key).push(s);\n    }\n\n    return Array.from(map.values());\n}\n```\n    \n    The idea is to create a unique key for each group of strings, that depends on the relative distances between characters in a string. We iterate through the given strings and create the key for each string by taking the difference between the ASCII code of each character and that of the first character, modulo 26. We add these deltas as comma-separated elements and use them as the key in a map. Where a map is a hashmap in C++ and Java, defaultdict in Python, and Map in JavaScript. For each string, we append it to the list of strings corresponding to its group (key) in the map.\n\nAfter iterating through all the strings, we return the list of groups from the map.\n\nNote that the modulo operation and `<code>26</code>` come from the number of lowercase English letters which is 26. So, any shift greater than 25 will simply wrap around to the initial letters.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.HashMap;\nimport java.util.List;\nimport java.util.Map;\n\npublic List<List<String>> groupStrings(String[] strings) {\n    Map<String, List<String>> map = new HashMap<>();\n\n    for (String s : strings) {\n        StringBuilder key = new StringBuilder();\n        for (char c : s.toCharArray()) {\n            key.append((c - s.charAt(0) + 26) % 26).append(\",\");\n        }\n        String keyStr = key.toString();\n        map.putIfAbsent(keyStr, new ArrayList<>());\n        map.get(keyStr).add(s);\n    }\n\n    return new ArrayList<>(map.values());\n}\n```\n    \n    The idea is to create a unique key for each group of strings, that depends on the relative distances between characters in a string. We iterate through the given strings and create the key for each string by taking the difference between the ASCII code of each character and that of the first character, modulo 26. We add these deltas as comma-separated elements and use them as the key in a map. Where a map is a hashmap in C++ and Java, defaultdict in Python, and Map in JavaScript. For each string, we append it to the list of strings corresponding to its group (key) in the map.\n\nAfter iterating through all the strings, we return the list of groups from the map.\n\nNote that the modulo operation and `<code>26</code>` come from the number of lowercase English letters which is 26. So, any shift greater than 25 will simply wrap around to the initial letters.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

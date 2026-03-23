@@ -1,0 +1,24 @@
+{
+  "id": 470,
+  "title": "Implement Rand10() Using Rand7()",
+  "slug": "implement-rand10-using-rand7",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the API rand7() that generates a uniform random integer in the range [1, 7], write a function rand10() that generates a uniform random integer in the range [1, 10]. You can only call the API rand7(), and you shouldn't call any other API. Please do not use a language's built-in random API.\n\nEach test case will have one internal argument n, the number of times that your implemented function rand10() will be called while testing. Note that this is not an argument passed to rand10().",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef rand7():\n    pass  # Provided API\n\ndef rand10():\n    result = None\n    while True:\n        result = (rand7() - 1) * 7 + rand7()\n        if result <= 40:\n            break\n    return result % 10 + 1\n```\n    \n    Here's how the algorithm works:\n\n1. Call `rand7()` two times and treat the two values as (row, column) indices in a 7x7 grid (so each value is 1 to 7). This gives us 49 possible values, forming a uniform distribution.\n\n2. We actually convert the two values `a` and `b` (from 1 to 7) into a single value, `result = (a - 1) * 7 + b`. This will give us a value between 1 and 49 (inclusive).\n\n3. If the `result` is greater than 40, we reject this value (and try again) since this is larger than what we can map to the range 1 to 10. We will use the value `result` to represent the range [1, 10] by taking the modulus of 10 and adding 1 (i.e. `result % 10 + 1`).\n\n4. This way, we ensure a uniformly random value between 1 to 10. Since some values are rejected, the expected number of calls to rand7() is 2.4 (the probability of a value being accepted is 40/49, so expected calls are 2/(40/49)).\n\n5. The number of calls to rand7() is optimized in this approach, minimizing it to 2 calls on average.\n    ",
+    "javascript": "\n    ```javascript\nfunction rand7() ; // Provided API\n\nfunction rand10() {\n    let result;\n    do {\n        result = (rand7() - 1) * 7 + rand7();\n    } while (result > 40);\n    return result % 10 + 1;\n}\n```\n    \n    Here's how the algorithm works:\n\n1. Call `rand7()` two times and treat the two values as (row, column) indices in a 7x7 grid (so each value is 1 to 7). This gives us 49 possible values, forming a uniform distribution.\n\n2. We actually convert the two values `a` and `b` (from 1 to 7) into a single value, `result = (a - 1) * 7 + b`. This will give us a value between 1 and 49 (inclusive).\n\n3. If the `result` is greater than 40, we reject this value (and try again) since this is larger than what we can map to the range 1 to 10. We will use the value `result` to represent the range [1, 10] by taking the modulus of 10 and adding 1 (i.e. `result % 10 + 1`).\n\n4. This way, we ensure a uniformly random value between 1 to 10. Since some values are rejected, the expected number of calls to rand7() is 2.4 (the probability of a value being accepted is 40/49, so expected calls are 2/(40/49)).\n\n5. The number of calls to rand7() is optimized in this approach, minimizing it to 2 calls on average.\n    ",
+    "java": "\n    ```java\npublic int rand7() ; // Provided API\n\npublic int rand10() {\n    int result;\n    do {\n        result = (rand7() - 1) * 7 + rand7();\n    } while (result > 40);\n    return result % 10 + 1;\n}\n```\n    \n    Here's how the algorithm works:\n\n1. Call `rand7()` two times and treat the two values as (row, column) indices in a 7x7 grid (so each value is 1 to 7). This gives us 49 possible values, forming a uniform distribution.\n\n2. We actually convert the two values `a` and `b` (from 1 to 7) into a single value, `result = (a - 1) * 7 + b`. This will give us a value between 1 and 49 (inclusive).\n\n3. If the `result` is greater than 40, we reject this value (and try again) since this is larger than what we can map to the range 1 to 10. We will use the value `result` to represent the range [1, 10] by taking the modulus of 10 and adding 1 (i.e. `result % 10 + 1`).\n\n4. This way, we ensure a uniformly random value between 1 to 10. Since some values are rejected, the expected number of calls to rand7() is 2.4 (the probability of a value being accepted is 40/49, so expected calls are 2/(40/49)).\n\n5. The number of calls to rand7() is optimized in this approach, minimizing it to 2 calls on average.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

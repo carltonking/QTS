@@ -1,0 +1,24 @@
+{
+  "id": 792,
+  "title": "Number of Matching Subsequences",
+  "slug": "number-of-matching-subsequences",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string s and an array of strings words, return _the number of_ words[i] _that is a subsequence of_ s.\n\nA subsequence of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.\n\n*   For example, \"ace \" is a subsequence of \"abcde \".",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef search(nums, target):\n    left = 0\n    right = len(nums) - 1\n\n    while left <= right:\n        mid = left + (right - left) // 2\n\n        if nums[mid] == target:\n            return mid\n        elif nums[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n\n    return -1\n```\n\n    \n    The algorithm used in all four implementations is a Binary Search, which has a runtime complexity of O(log n). The binary search algorithm essentially divides the given sorted array in half with every iteration until the target value is found or the boundaries collapse.\n\n1. Set left and right boundaries to the first and last indices of the nums array.\n2. While the left boundary is less than or equal to the right boundary, perform the following steps:\n   1. Calculate the mid index by taking the average of the left and right boundaries (making sure to account for integer division in Python).\n   2. If the mid element matches the target, return the mid index.\n   3. If the mid element is less than the target, update the left boundary to mid + 1.\n   4. If the mid element is greater than the target, update the right boundary to mid - 1.\n3. If the while loop ends and the target is not found, return -1.\n    ",
+    "javascript": "\n    ```javascript\nfunction search(nums, target) {\n    let left = 0;\n    let right = nums.length - 1;\n\n    while (left <= right) {\n        let mid = left + Math.floor((right - left) / 2);\n\n        if (nums[mid] === target) {\n            return mid;\n        } else if (nums[mid] < target) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n        }\n    }\n\n    return -1;\n}\n```\n\n    \n    The algorithm used in all four implementations is a Binary Search, which has a runtime complexity of O(log n). The binary search algorithm essentially divides the given sorted array in half with every iteration until the target value is found or the boundaries collapse.\n\n1. Set left and right boundaries to the first and last indices of the nums array.\n2. While the left boundary is less than or equal to the right boundary, perform the following steps:\n   1. Calculate the mid index by taking the average of the left and right boundaries (making sure to account for integer division in Python).\n   2. If the mid element matches the target, return the mid index.\n   3. If the mid element is less than the target, update the left boundary to mid + 1.\n   4. If the mid element is greater than the target, update the right boundary to mid - 1.\n3. If the while loop ends and the target is not found, return -1.\n    ",
+    "java": "\n    ```java\npublic int search(int[] nums, int target) {\n    int left = 0;\n    int right = nums.length - 1;\n\n    while (left <= right) {\n        int mid = left + (right - left) / 2;\n\n        if (nums[mid] == target) {\n            return mid;\n        } else if (nums[mid] < target) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n        }\n    }\n\n    return -1;\n}\n```\n\n    \n    The algorithm used in all four implementations is a Binary Search, which has a runtime complexity of O(log n). The binary search algorithm essentially divides the given sorted array in half with every iteration until the target value is found or the boundaries collapse.\n\n1. Set left and right boundaries to the first and last indices of the nums array.\n2. While the left boundary is less than or equal to the right boundary, perform the following steps:\n   1. Calculate the mid index by taking the average of the left and right boundaries (making sure to account for integer division in Python).\n   2. If the mid element matches the target, return the mid index.\n   3. If the mid element is less than the target, update the left boundary to mid + 1.\n   4. If the mid element is greater than the target, update the right boundary to mid - 1.\n3. If the while loop ends and the target is not found, return -1.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

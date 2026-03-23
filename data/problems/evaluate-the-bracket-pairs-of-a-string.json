@@ -1,0 +1,24 @@
+{
+  "id": 1807,
+  "title": "Evaluate the Bracket Pairs of a String",
+  "slug": "evaluate-the-bracket-pairs-of-a-string",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a string s that contains some bracket pairs, with each pair containing a non-empty key.\n\n*   For example, in the string \"(name)is(age)yearsold \", there are two bracket pairs that contain the keys \"name \" and \"age \".\n\nYou know the values of a wide range of keys. This is represented by a 2D string array knowledge where each knowledge[i] = [keyi, valuei] indicates that key keyi has a value of valuei.\n\nYou are tasked to evaluate all of the bracket pairs. When you evaluate a bracket pair that contains some key keyi, you will:\n\n*   Replace keyi and the bracket pair with the key's corresponding valuei.\n*   If you do not know the value of the key, you will replace keyi and the bracket pair with a question mark \"? \" (without the quotation marks).\n\nEach key will appear at most once in your knowledge. There will not be any nested brackets in s.\n\nReturn _the resulting string after evaluating all of the bracket pairs._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minPartitions(n: str) -> int:\n    max_digit = 0\n    for c in n:\n        max_digit = max(max_digit, int(c))\n        if max_digit == 9:\n            break\n    return max_digit\n```\n    \n    The algorithm iterates through each character in the input string `n`, converting each character to its corresponding integer value and finding the maximum value among them. If the maximum value is 9, the loop breaks early as there is no need to check the remaining characters. The maximum digit value found during iteration is the minimum number of positive deci-binary numbers needed to sum up to `n`. This is because each digit in a deci-binary number can only be a 0 or a 1, and therefore, the highest digit in `n` will always be the minimum number of times a deci-binary number can be added together to form the given number `n`.\n    ",
+    "javascript": "\n    ```javascript\nfunction minPartitions(n) {\n    let max_digit = 0;\n    for (const c of n) {\n        max_digit = Math.max(max_digit, parseInt(c));\n        if (max_digit === 9) break;\n    }\n    return max_digit;\n}\n```\n    \n    The algorithm iterates through each character in the input string `n`, converting each character to its corresponding integer value and finding the maximum value among them. If the maximum value is 9, the loop breaks early as there is no need to check the remaining characters. The maximum digit value found during iteration is the minimum number of positive deci-binary numbers needed to sum up to `n`. This is because each digit in a deci-binary number can only be a 0 or a 1, and therefore, the highest digit in `n` will always be the minimum number of times a deci-binary number can be added together to form the given number `n`.\n    ",
+    "java": "\n    ```java\npublic int minPartitions(String n) {\n    int max_digit = 0;\n    for (char c : n.toCharArray()) {\n        max_digit = Math.max(max_digit, c - '0');\n        if (max_digit == 9) break;\n    }\n    return max_digit;\n}\n```\n    \n    The algorithm iterates through each character in the input string `n`, converting each character to its corresponding integer value and finding the maximum value among them. If the maximum value is 9, the loop breaks early as there is no need to check the remaining characters. The maximum digit value found during iteration is the minimum number of positive deci-binary numbers needed to sum up to `n`. This is because each digit in a deci-binary number can only be a 0 or a 1, and therefore, the highest digit in `n` will always be the minimum number of times a deci-binary number can be added together to form the given number `n`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

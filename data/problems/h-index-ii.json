@@ -1,0 +1,24 @@
+{
+  "id": 275,
+  "title": "H-Index II",
+  "slug": "h-index-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of integers citations where citations[i] is the number of citations a researcher received for their ith paper and citations is sorted in ascending order, return _the researcher's h-index_.\n\nAccording to the [definition of h-index on Wikipedia](https://en.wikipedia.org/wiki/H-index): The h-index is defined as the maximum value of h such that the given researcher has published at least h papers that have each been cited at least h times.\n\nYou must write an algorithm that runs in logarithmic time.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef hIndex(citations: List[int]) -> int:\n    n = len(citations)\n    left, right = 0, n - 1\n\n    while left <= right:\n        mid = left + (right - left) // 2\n        if citations[mid] == n - mid:\n            return n - mid\n        elif citations[mid] < n - mid:\n            left = mid + 1\n        else:\n            right = mid - 1\n\n    return n - left\n```\n    \n    The algorithm is based on binary search. The idea is to find the pivot index 'mid' such that there are 'mid' number of elements greater than or equal to 'mid'. Since the array is sorted, we can leverage binary search by comparing the middle element's value to the number of elements on its right side (which can be calculated as 'n - mid'). If the number of elements on the right side is equal to the value at mid, we found the h-index. Otherwise, if the number of elements on the right side is less than the value at mid, we move our search to the left half of the array. If the number of elements is greater than the value at mid, we move our search to the right half of the array. This process ensures logarithmic time complexity as we eliminate half of the array in each iteration. Once our search is complete (right becomes less than left), we return the final h-index as 'n - left'.\n    ",
+    "javascript": "\n    ```javascript\nfunction hIndex(citations) {\n    const n = citations.length;\n    let left = 0, right = n - 1;\n\n    while (left <= right) {\n        const mid = left + Math.floor((right - left) / 2);\n        if (citations[mid] === n - mid) {\n            return n - mid;\n        } else if (citations[mid] < n - mid) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n        }\n    }\n\n    return n - left;\n}\n```\n    \n    The algorithm is based on binary search. The idea is to find the pivot index 'mid' such that there are 'mid' number of elements greater than or equal to 'mid'. Since the array is sorted, we can leverage binary search by comparing the middle element's value to the number of elements on its right side (which can be calculated as 'n - mid'). If the number of elements on the right side is equal to the value at mid, we found the h-index. Otherwise, if the number of elements on the right side is less than the value at mid, we move our search to the left half of the array. If the number of elements is greater than the value at mid, we move our search to the right half of the array. This process ensures logarithmic time complexity as we eliminate half of the array in each iteration. Once our search is complete (right becomes less than left), we return the final h-index as 'n - left'.\n    ",
+    "java": "\n    ```java\npublic int hIndex(int[] citations) {\n    int n = citations.length;\n    int left = 0, right = n - 1;\n\n    while (left <= right) {\n        int mid = left + (right - left) / 2;\n        if (citations[mid] == n - mid) {\n            return n - mid;\n        } else if (citations[mid] < n - mid) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n        }\n    }\n\n    return n - left;\n}\n```\n    \n    The algorithm is based on binary search. The idea is to find the pivot index 'mid' such that there are 'mid' number of elements greater than or equal to 'mid'. Since the array is sorted, we can leverage binary search by comparing the middle element's value to the number of elements on its right side (which can be calculated as 'n - mid'). If the number of elements on the right side is equal to the value at mid, we found the h-index. Otherwise, if the number of elements on the right side is less than the value at mid, we move our search to the left half of the array. If the number of elements is greater than the value at mid, we move our search to the right half of the array. This process ensures logarithmic time complexity as we eliminate half of the array in each iteration. Once our search is complete (right becomes less than left), we return the final h-index as 'n - left'.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

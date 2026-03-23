@@ -1,0 +1,24 @@
+{
+  "id": 1590,
+  "title": "Make Sum Divisible by P",
+  "slug": "make-sum-divisible-by-p",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of positive integers nums, remove the smallest subarray (possibly empty) such that the sum of the remaining elements is divisible by p. It is not allowed to remove the whole array.\n\nReturn _the length of the smallest subarray that you need to remove, or_ -1 _if it's impossible_.\n\nA subarray is defined as a contiguous block of elements in the array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minSubarray(nums, p):\n    n, res, need, cur = len(nums), len(nums), 0, 0\n    for num in nums:\n        need = (need + num) % p\n    if need == 0:\n        return 0\n    last_seen = {0: -1}\n    for i, num in enumerate(nums):\n        cur = (cur + num) % p\n        last_seen[cur] = i\n        res = min(res, i - last_seen.get((cur - need + p) % p, -n))\n    return res if res < n else -1\n```\n    \n    1. First, find the remainder `need` when the sum of the array is divided by `p`.\n2. If `need` is 0, the sum is already divisible by `p`, so return 0.\n3. Otherwise, create a hashmap `last_seen` to store the last seen index of each remainder when the sum from the start of the array is divided by `p`. Initialize with 0 mapped to `-1`.\n4. Iterate through the array, updating the current remainder `cur`.\n5. For each remainder, update the last seen index in `last_seen` hashmap and calculate the minimum length subarray to remove by finding the difference between the current index and the last seen index of `cur-need+p` modulo `p`. Update the result if the calculated length is smaller.\n6. If the final result is smaller than the array length, return the result, otherwise, return -1.\n    ",
+    "javascript": "\n    ```javascript\nfunction minSubarray(nums, p) {\n    let n = nums.length, res = n, need = 0, cur = 0;\n    for (let num of nums)\n        need = (need + num) % p;\n    if (need === 0) return 0;\n    let last_seen = new Map();\n    last_seen.set(0, -1);\n    for (let i = 0; i < n; i++) {\n        cur = (cur + nums[i]) % p;\n        last_seen.set(cur, i);\n        res = Math.min(res, i - (last_seen.get((cur - need + p) % p) || -n));\n    }\n    return res < n ? res : -1;\n}\n```\n    \n    1. First, find the remainder `need` when the sum of the array is divided by `p`.\n2. If `need` is 0, the sum is already divisible by `p`, so return 0.\n3. Otherwise, create a hashmap `last_seen` to store the last seen index of each remainder when the sum from the start of the array is divided by `p`. Initialize with 0 mapped to `-1`.\n4. Iterate through the array, updating the current remainder `cur`.\n5. For each remainder, update the last seen index in `last_seen` hashmap and calculate the minimum length subarray to remove by finding the difference between the current index and the last seen index of `cur-need+p` modulo `p`. Update the result if the calculated length is smaller.\n6. If the final result is smaller than the array length, return the result, otherwise, return -1.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\n\npublic int minSubarray(int[] nums, int p) {\n    int n = nums.length, res = n, need = 0, cur = 0;\n    for (int num : nums)\n        need = (need + num) % p;\n    if (need == 0) return 0;\n    HashMap<Integer, Integer> last_seen = new HashMap<>();\n    last_seen.put(0, -1);\n    for (int i = 0; i < n; i++) {\n        cur = (cur + nums[i]) % p;\n        last_seen.put(cur, i);\n        res = Math.min(res, i - last_seen.getOrDefault((cur - need + p) % p, -n));\n    }\n    return res < n ? res : -1;\n}\n```\n    \n    1. First, find the remainder `need` when the sum of the array is divided by `p`.\n2. If `need` is 0, the sum is already divisible by `p`, so return 0.\n3. Otherwise, create a hashmap `last_seen` to store the last seen index of each remainder when the sum from the start of the array is divided by `p`. Initialize with 0 mapped to `-1`.\n4. Iterate through the array, updating the current remainder `cur`.\n5. For each remainder, update the last seen index in `last_seen` hashmap and calculate the minimum length subarray to remove by finding the difference between the current index and the last seen index of `cur-need+p` modulo `p`. Update the result if the calculated length is smaller.\n6. If the final result is smaller than the array length, return the result, otherwise, return -1.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

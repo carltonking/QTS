@@ -1,0 +1,24 @@
+{
+  "id": 1521,
+  "title": "Find a Value of a Mysterious Function Closest to Target",
+  "slug": "find-a-value-of-a-mysterious-function-closest-to-target",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Winston was given the above mysterious function func. He has an integer array arr and an integer target and he wants to find the values l and r that make the value |func(arr, l, r) - target| minimum possible.\n\nReturn _the minimum possible value_ of |func(arr, l, r) - target|.\n\nNotice that func should be called with the values l and r where 0 <= l, r < arr.length.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef closestToTarget(arr: List[int], target: int) -> int:\n    min_diff = float('inf')\n    prefix = set()\n\n    for n in arr:\n        next_prefix = set()\n        for p in prefix:\n            next_prefix.add(p & n)\n        next_prefix.add(n)\n\n        for p in next_prefix:\n            min_diff = min(min_diff, abs(p - target))\n        prefix = next_prefix\n    return min_diff\n```\n    \n    The algorithm iterates over each value `n` in the given array `arr`. For each `n`, it maintains a set `prefix` that contains all the bitwise AND results from the subsequences that end at the current index. For each value `p` in the current `prefix`, it calculates a new set `next_prefix` by applying the bitwise AND operation using the current value `n`. This way, it keeps track of all the possible bitwise AND values while iterating over the array. Then, it evaluates the difference between each of these values `p` and the target `target`, updating the `min_diff` whenever a smaller difference is found.\n    ",
+    "javascript": "\n    ```javascript\nfunction closestToTarget(arr, target) {\n    let minDiff = Infinity;\n    let prefix = new Set();\n\n    for (const n of arr) {\n        let nextPrefix = new Set();\n        for (const p of prefix) {\n            nextPrefix.add(p & n);\n        }\n        nextPrefix.add(n);\n\n        for (const p of nextPrefix) {\n            minDiff = Math.min(minDiff, Math.abs(p - target));\n        }\n        prefix = nextPrefix;\n    }\n    return minDiff;\n}\n```\n    \n    The algorithm iterates over each value `n` in the given array `arr`. For each `n`, it maintains a set `prefix` that contains all the bitwise AND results from the subsequences that end at the current index. For each value `p` in the current `prefix`, it calculates a new set `next_prefix` by applying the bitwise AND operation using the current value `n`. This way, it keeps track of all the possible bitwise AND values while iterating over the array. Then, it evaluates the difference between each of these values `p` and the target `target`, updating the `min_diff` whenever a smaller difference is found.\n    ",
+    "java": "\n    ```java\npublic int closestToTarget(int[] arr, int target) {\n    int minDiff = Integer.MAX_VALUE;\n    Set<Integer> prefix = new HashSet<>();\n\n    for (int n : arr) {\n        Set<Integer> nextPrefix = new HashSet<>();\n        for (int p : prefix) {\n            nextPrefix.add(p & n);\n        }\n        nextPrefix.add(n);\n\n        for (int p : nextPrefix) {\n            minDiff = Math.min(minDiff, Math.abs(p - target));\n        }\n        prefix = nextPrefix;\n    }\n    return minDiff;\n}\n```\n    \n    The algorithm iterates over each value `n` in the given array `arr`. For each `n`, it maintains a set `prefix` that contains all the bitwise AND results from the subsequences that end at the current index. For each value `p` in the current `prefix`, it calculates a new set `next_prefix` by applying the bitwise AND operation using the current value `n`. This way, it keeps track of all the possible bitwise AND values while iterating over the array. Then, it evaluates the difference between each of these values `p` and the target `target`, updating the `min_diff` whenever a smaller difference is found.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 239,
+  "title": "Sliding Window Maximum",
+  "slug": "sliding-window-maximum",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an array of integers nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position.\n\nReturn _the max sliding window_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import deque\n\ndef maxSlidingWindow(nums, k):\n    dq = deque()\n    result = []\n\n    for i in range(len(nums)):\n        while dq and dq[0] < i - k + 1:\n            dq.popleft()\n\n        while dq and nums[dq[-1]] < nums[i]:\n            dq.pop()\n\n        dq.append(i)\n\n        if i >= k - 1:\n            result.append(nums[dq[0]])\n\n    return result\n```\n\n    \n    1. Create an empty deque (double-ended queue) and an empty results list.\n2. Iterate through the given array.\n3. Remove the elements that are out of the current window from the front of the deque.\n4. Remove the elements that are smaller than the current element from the back of the deque.\n5. Push the current index into the deque.\n6. If the current index is greater than or equal to k-1 (window size), add the front element of deque into the results list.\n7. Return the results list after iterating through the entire array. \n\nThe deque will keep track of the indices of the maximum elements in the current window. At each step, the first element in the deque will be the index of the maximum element in the current window.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxSlidingWindow(nums, k) {\n  let result = [];\n  let dq = [];\n\n  for (let i = 0; i < nums.length; i++) {\n    while (dq.length && dq[0] < i - k + 1) {\n      dq.shift();\n    }\n\n    while (dq.length && nums[dq[dq.length - 1]] < nums[i]) {\n      dq.pop();\n    }\n\n    dq.push(i);\n\n    if (i >= k - 1) {\n      result.push(nums[dq[0]]);\n    }\n  }\n\n  return result;\n}\n```\n\n    \n    1. Create an empty deque (double-ended queue) and an empty results list.\n2. Iterate through the given array.\n3. Remove the elements that are out of the current window from the front of the deque.\n4. Remove the elements that are smaller than the current element from the back of the deque.\n5. Push the current index into the deque.\n6. If the current index is greater than or equal to k-1 (window size), add the front element of deque into the results list.\n7. Return the results list after iterating through the entire array. \n\nThe deque will keep track of the indices of the maximum elements in the current window. At each step, the first element in the deque will be the index of the maximum element in the current window.\n    ",
+    "java": "\n    ```java\nimport java.util.LinkedList;\nimport java.util.Deque;\n\npublic int[] maxSlidingWindow(int[] nums, int k) {\n    if (nums == null || nums.length == 0) return new int[0];\n    int[] result = new int[nums.length - k + 1];\n    int idx = 0;\n    Deque<Integer> deque = new LinkedList<Integer>();\n    \n    for (int i = 0; i < nums.length; i++) {\n        if (!deque.isEmpty() && deque.peekFirst() == i - k) deque.poll();\n            \n        while (!deque.isEmpty() && nums[deque.peekLast()] < nums[i]) {\n            deque.removeLast();\n        }    \n            \n        deque.offer(i);\n        if (i >= k - 1) {\n            result[idx++] = nums[deque.peek()];\n        }\n    }\n    return result;\n}\n```\n\n    \n    1. Create an empty deque (double-ended queue) and an empty results list.\n2. Iterate through the given array.\n3. Remove the elements that are out of the current window from the front of the deque.\n4. Remove the elements that are smaller than the current element from the back of the deque.\n5. Push the current index into the deque.\n6. If the current index is greater than or equal to k-1 (window size), add the front element of deque into the results list.\n7. Return the results list after iterating through the entire array. \n\nThe deque will keep track of the indices of the maximum elements in the current window. At each step, the first element in the deque will be the index of the maximum element in the current window.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

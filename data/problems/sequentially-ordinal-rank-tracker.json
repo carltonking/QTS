@@ -1,0 +1,24 @@
+{
+  "id": 2102,
+  "title": "Sequentially Ordinal Rank Tracker",
+  "slug": "sequentially-ordinal-rank-tracker",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "A scenic location is represented by its name and attractiveness score, where name is a unique string among all locations and score is an integer. Locations can be ranked from the best to the worst. The higher the score, the better the location. If the scores of two locations are equal, then the location with the lexicographically smaller name is better.\n\nYou are building a system that tracks the ranking of locations with the system initially starting with no locations. It supports:\n\n*   Adding scenic locations, one at a time.\n*   Querying the ith best location of all locations already added, where i is the number of times the system has been queried (including the current query).\n    *   For example, when the system is queried for the 4th time, it returns the 4th best location of all locations already added.\n\nNote that the test data are generated so that at any time, the number of queries does not exceed the number of locations added to the system.\n\nImplement the SORTracker class:\n\n*   SORTracker() Initializes the tracker system.\n*   void add(string name, int score) Adds a scenic location with name and score to the system.\n*   string get() Queries and returns the ith best location, where i is the number of times this method has been invoked (including this invocation).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findMiddleIndex(nums):\n    total_sum = sum(nums)\n    \n    left_sum = 0\n    for i, num in enumerate(nums):\n        total_sum -= num\n        if left_sum == total_sum:\n            return i\n        left_sum += num\n    \n    return -1\n```\n    \n    1. Calculate the total sum of the elements in the array.\n2. Initialize a variable `left_sum` to store the sum of elements on the left side of middleIndex.\n3. Iterate through the elements of the array:\n    a. Subtract the current element from the total sum.\n    b. Compare the left_sum with the total sum (which now represents the sum of the elements on the right side after excluding the current element). If they are equal, return the current index as the middleIndex.\n    c. Add the current element to the left_sum.\n4. If none of the indices satisfy the condition, return -1.\n    ",
+    "javascript": "\n    ```javascript\nfunction findMiddleIndex(nums) {\n    let total_sum = nums.reduce((acc, num) => acc + num, 0);\n\n    let left_sum = 0;\n    for (let i = 0; i < nums.length; i++) {\n        total_sum -= nums[i];\n        if (left_sum === total_sum) return i;\n        left_sum += nums[i];\n    }\n\n    return -1;\n}\n```\n    \n    1. Calculate the total sum of the elements in the array.\n2. Initialize a variable `left_sum` to store the sum of elements on the left side of middleIndex.\n3. Iterate through the elements of the array:\n    a. Subtract the current element from the total sum.\n    b. Compare the left_sum with the total sum (which now represents the sum of the elements on the right side after excluding the current element). If they are equal, return the current index as the middleIndex.\n    c. Add the current element to the left_sum.\n4. If none of the indices satisfy the condition, return -1.\n    ",
+    "java": "\n    ```java\npublic int findMiddleIndex(int[] nums) {\n    int total_sum = 0;\n    for (int num : nums) total_sum += num;\n\n    int left_sum = 0;\n    for (int i = 0; i < nums.length; i++) {\n        total_sum -= nums[i];\n        if (left_sum == total_sum) return i;\n        left_sum += nums[i];\n    }\n\n    return -1;\n}\n```\n    \n    1. Calculate the total sum of the elements in the array.\n2. Initialize a variable `left_sum` to store the sum of elements on the left side of middleIndex.\n3. Iterate through the elements of the array:\n    a. Subtract the current element from the total sum.\n    b. Compare the left_sum with the total sum (which now represents the sum of the elements on the right side after excluding the current element). If they are equal, return the current index as the middleIndex.\n    c. Add the current element to the left_sum.\n4. If none of the indices satisfy the condition, return -1.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1040,
+  "title": "Moving Stones Until Consecutive II",
+  "slug": "moving-stones-until-consecutive-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There are some stones in different positions on the X-axis. You are given an integer array stones, the positions of the stones.\n\nCall a stone an endpoint stone if it has the smallest or largest position. In one move, you pick up an endpoint stone and move it to an unoccupied position so that it is no longer an endpoint stone.\n\n*   In particular, if the stones are at say, stones = [1,2,5], you cannot move the endpoint stone at position 5, since moving it to any position (such as 0, or 3) will still keep that stone as an endpoint stone.\n\nThe game ends when you cannot make any more moves (i.e., the stones are in three consecutive positions).\n\nReturn _an integer array_ answer _of length_ 2 _where_:\n\n*   answer[0] _is the minimum number of moves you can play, and_\n*   answer[1] _is the maximum number of moves you can play_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef insertIntoMaxTree(self, root: TreeNode, val: int) -> TreeNode:\n    if root is None or val > root.val:\n        newNode = TreeNode(val)\n        newNode.left = root\n        return newNode\n    root.right = self.insertIntoMaxTree(root.right, val)\n    return root\n```\n\n    \n    The algorithm works recursively, traversing the tree along the right children until it finds the appropriate position to insert `val` as the left child of the original node. When the algorithm reaches a node where `root` is `null` or `val` is greater than `root.val`, it creates a new node with `val` and sets the newly created node's `left` child to the original `root`. If the condition is not met, the algorithm continues to traverse the tree by updating `root.right` with the call to the function `insertIntoMaxTree(root.right, val)`.\n\nThis way, we maintain the maximum tree property by making sure that the newly inserted node's value is greater than any value in its subtree.\n    ",
+    "javascript": "\n    ```javascript\nfunction insertIntoMaxTree(root, val) {\n    if (!root || val > root.val) {\n        const newNode = new TreeNode(val);\n        newNode.left = root;\n        return newNode;\n    }\n    root.right = insertIntoMaxTree(root.right, val);\n    return root;\n}\n```\n\n    \n    The algorithm works recursively, traversing the tree along the right children until it finds the appropriate position to insert `val` as the left child of the original node. When the algorithm reaches a node where `root` is `null` or `val` is greater than `root.val`, it creates a new node with `val` and sets the newly created node's `left` child to the original `root`. If the condition is not met, the algorithm continues to traverse the tree by updating `root.right` with the call to the function `insertIntoMaxTree(root.right, val)`.\n\nThis way, we maintain the maximum tree property by making sure that the newly inserted node's value is greater than any value in its subtree.\n    ",
+    "java": "\n    ```java\npublic TreeNode insertIntoMaxTree(TreeNode root, int val) {\n    if (root == null || val > root.val) {\n        TreeNode newNode = new TreeNode(val);\n        newNode.left = root;\n        return newNode;\n    }\n    root.right = insertIntoMaxTree(root.right, val);\n    return root;\n}\n```\n\n    \n    The algorithm works recursively, traversing the tree along the right children until it finds the appropriate position to insert `val` as the left child of the original node. When the algorithm reaches a node where `root` is `null` or `val` is greater than `root.val`, it creates a new node with `val` and sets the newly created node's `left` child to the original `root`. If the condition is not met, the algorithm continues to traverse the tree by updating `root.right` with the call to the function `insertIntoMaxTree(root.right, val)`.\n\nThis way, we maintain the maximum tree property by making sure that the newly inserted node's value is greater than any value in its subtree.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

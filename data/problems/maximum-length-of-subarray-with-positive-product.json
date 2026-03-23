@@ -1,0 +1,24 @@
+{
+  "id": 1567,
+  "title": "Maximum Length of Subarray With Positive Product",
+  "slug": "maximum-length-of-subarray-with-positive-product",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of integers nums, find the maximum length of a subarray where the product of all its elements is positive.\n\nA subarray of an array is a consecutive sequence of zero or more values taken out of that array.\n\nReturn _the maximum length of a subarray with positive product_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_vowels(s, k):\n    max_count = count = 0\n    for i, c in enumerate(s):\n        count += int(c in 'aeiou')\n        if i >= k:\n            count -= int(s[i - k] in 'aeiou')\n        max_count = max(max_count, count)\n    return max_count\n```\n\n    \n    1. Initialize `max_count` and `count` variables to store the maximum count of consecutive vowels and the current count of vowels within the window of size `k`.\n2. Iterate through each character in the input string `s`.\n3. For each character, check if the character is a vowel. If it's a vowel, increment the `count` variable.\n4. If the current index `i` is greater than or equal to `k`, then check if the character (`s[i - k]`) that is outside of the current `k`-sized window is a vowel. If it's a vowel, decrement the `count` variable.\n5. At each iteration, update the `max_count` variable to store the maximum value of `count`.\n6. Return the value of `max_count` after the loop.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxVowels(s, k) {\n    let max_count = 0, count = 0;\n    for (let i = 0; i < s.length; i++) {\n        count += isVowel(s[i]) ? 1 : 0;\n        if (i >= k)\n            count -= isVowel(s[i - k]) ? 1 : 0;\n        max_count = Math.max(max_count, count);\n    }\n    return max_count;\n}\n\nfunction isVowel(c) {\n    return c === 'a' || c === 'e' || c === 'i' || c === 'o' || c === 'u';\n}\n```\n\n    \n    1. Initialize `max_count` and `count` variables to store the maximum count of consecutive vowels and the current count of vowels within the window of size `k`.\n2. Iterate through each character in the input string `s`.\n3. For each character, check if the character is a vowel. If it's a vowel, increment the `count` variable.\n4. If the current index `i` is greater than or equal to `k`, then check if the character (`s[i - k]`) that is outside of the current `k`-sized window is a vowel. If it's a vowel, decrement the `count` variable.\n5. At each iteration, update the `max_count` variable to store the maximum value of `count`.\n6. Return the value of `max_count` after the loop.\n    ",
+    "java": "\n    ```java\npublic int maxVowels(String s, int k) {\n    int max_count = 0, count = 0;\n    for (int i = 0; i < s.length(); i++) {\n        count += isVowel(s.charAt(i)) ? 1 : 0;\n        if (i >= k)\n            count -= isVowel(s.charAt(i - k)) ? 1 : 0;\n        max_count = Math.max(max_count, count);\n    }\n    return max_count;\n}\n\nprivate boolean isVowel(char c) {\n    return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';\n}\n```\n\n    \n    1. Initialize `max_count` and `count` variables to store the maximum count of consecutive vowels and the current count of vowels within the window of size `k`.\n2. Iterate through each character in the input string `s`.\n3. For each character, check if the character is a vowel. If it's a vowel, increment the `count` variable.\n4. If the current index `i` is greater than or equal to `k`, then check if the character (`s[i - k]`) that is outside of the current `k`-sized window is a vowel. If it's a vowel, decrement the `count` variable.\n5. At each iteration, update the `max_count` variable to store the maximum value of `count`.\n6. Return the value of `max_count` after the loop.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

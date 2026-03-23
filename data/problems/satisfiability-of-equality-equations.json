@@ -1,0 +1,24 @@
+{
+  "id": 990,
+  "title": "Satisfiability of Equality Equations",
+  "slug": "satisfiability-of-equality-equations",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array of strings equations that represent relationships between variables where each string equations[i] is of length 4 and takes one of two different forms: \"xi==yi \" or \"xi!=yi \".Here, xi and yi are lowercase letters (not necessarily different) that represent one-letter variable names.\n\nReturn true _if it is possible to assign integers to variable names so as to satisfy all the given equations, or_ false _otherwise_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_alien_sorted(words, order):\n    alien_order = {char: i for i, char in enumerate(order)}\n\n    for i in range(1, len(words)):\n        for j in range(len(words[i - 1])):\n            if j == len(words[i]):\n                return False\n\n            if words[i - 1][j] != words[i][j]:\n                if alien_order[words[i - 1][j]] > alien_order[words[i][j]]:\n                    return False\n                break\n\n    return True\n```\n    \n    The algorithm first creates a mapping of the alien alphabet to their respective orders using a dictionary/map. Then, it loops through the given words, checking if they are sorted lexicographically. It compares each character of the adjacent words using the alien alphabet order. If any unordered pair is found, it returns false. If the loop completes, it returns true, indicating the words are sorted lexicographically in the alien language.\n    ",
+    "javascript": "\n    ```javascript\nfunction isAlienSorted(words, order) {\n    const alien_order = new Map();\n    for (let i = 0; i < 26; i++) {\n        alien_order.set(order[i], i);\n    }\n\n    for (let i = 1; i < words.length; i++) {\n        for (let j = 0; j < words[i - 1].length; j++) {\n            if (j === words[i].length) {\n                return false;\n            }\n\n            if (words[i - 1][j] !== words[i][j]) {\n                if (alien_order.get(words[i - 1][j]) > alien_order.get(words[i][j])) {\n                    return false;\n                }\n                break;\n            }\n        }\n    }\n\n    return true;\n}\n```\n    \n    The algorithm first creates a mapping of the alien alphabet to their respective orders using a dictionary/map. Then, it loops through the given words, checking if they are sorted lexicographically. It compares each character of the adjacent words using the alien alphabet order. If any unordered pair is found, it returns false. If the loop completes, it returns true, indicating the words are sorted lexicographically in the alien language.\n    ",
+    "java": "\n    ```java\npublic boolean isAlienSorted(String[] words, String order) {\n    int[] alien_order = new int[26];\n    for (int i = 0; i < 26; i++) {\n        alien_order[order.charAt(i) - 'a'] = i;\n    }\n\n    for (int i = 1; i < words.length; i++) {\n        for (int j = 0; j < words[i - 1].length(); j++) {\n            if (j == words[i].length()) {\n                return false;\n            }\n\n            if (words[i - 1].charAt(j) != words[i].charAt(j)) {\n                if (alien_order[words[i - 1].charAt(j) - 'a'] > alien_order[words[i].charAt(j) - 'a']) {\n                    return false;\n                }\n                break;\n            }\n        }\n    }\n\n    return true;\n}\n```\n    \n    The algorithm first creates a mapping of the alien alphabet to their respective orders using a dictionary/map. Then, it loops through the given words, checking if they are sorted lexicographically. It compares each character of the adjacent words using the alien alphabet order. If any unordered pair is found, it returns false. If the loop completes, it returns true, indicating the words are sorted lexicographically in the alien language.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

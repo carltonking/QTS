@@ -1,0 +1,24 @@
+{
+  "id": 2439,
+  "title": "Minimize Maximum of Array",
+  "slug": "minimize-maximum-of-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed array nums comprising of n non-negative integers.\n\nIn one operation, you must:\n\n*   Choose an integer i such that 1 <= i < n and nums[i] > 0.\n*   Decrease nums[i] by 1.\n*   Increase nums[i - 1] by 1.\n\nReturn _the minimum possible value of the maximum integer of_ nums _after performing any number of operations_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_min_maximum_value(nums):\n    result = nums[0]\n    total_sum = nums[0]\n    for i in range(1, len(nums)):\n        total_sum += nums[i]\n        result = max(result, (total_sum + i) // (i + 1))\n    return result\n```\n    \n    The algorithm iterates through the array and maintains a running sum of the elements `sum`, and the maximum value found so far `result`. For each `i`, the maximum value for any prefix array ending at `i` is calculated by taking the ceiling of the division of the running sum plus `i` by `i+1`, which represents distributing the sum among the elements up to `i+1`. This maximum value is then compared with the current `result`, and the larger one is kept. The loop ends after iterating through the whole array.\n\nFinally, the algorithm returns the calculated minimum possible maximum value `result`.\n    ",
+    "javascript": "\n    ```javascript\nfunction findMinMaximumValue(nums) {\n    let result = nums[0], sum = nums[0];\n    for (let i = 1; i < nums.length; i++) {\n        sum += nums[i];\n        result = Math.max(result, Math.floor((sum + i) / (i + 1)));\n    }\n    return result;\n}\n```\n    \n    The algorithm iterates through the array and maintains a running sum of the elements `sum`, and the maximum value found so far `result`. For each `i`, the maximum value for any prefix array ending at `i` is calculated by taking the ceiling of the division of the running sum plus `i` by `i+1`, which represents distributing the sum among the elements up to `i+1`. This maximum value is then compared with the current `result`, and the larger one is kept. The loop ends after iterating through the whole array.\n\nFinally, the algorithm returns the calculated minimum possible maximum value `result`.\n    ",
+    "java": "\n    ```java\npublic int findMinMaximumValue(int[] nums) {\n    int result = nums[0], sum = nums[0];\n    for (int i = 1; i < nums.length; i++) {\n        sum += nums[i];\n        result = Math.max(result, (sum + i) / (i + 1));\n    }\n    return result;\n}\n```\n    \n    The algorithm iterates through the array and maintains a running sum of the elements `sum`, and the maximum value found so far `result`. For each `i`, the maximum value for any prefix array ending at `i` is calculated by taking the ceiling of the division of the running sum plus `i` by `i+1`, which represents distributing the sum among the elements up to `i+1`. This maximum value is then compared with the current `result`, and the larger one is kept. The loop ends after iterating through the whole array.\n\nFinally, the algorithm returns the calculated minimum possible maximum value `result`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1122,
+  "title": "Relative Sort Array",
+  "slug": "relative-sort-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given two arrays arr1 and arr2, the elements of arr2 are distinct, and all elements in arr2 are also in arr1.\n\nSort the elements of arr1 such that the relative ordering of items in arr1 are the same as in arr2. Elements that do not appear in arr2 should be placed at the end of arr1 in ascending order.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef longest_dup_substring(s):\n    n = len(s)\n    longest_duplicate = \"\"\n    for length in range(n - 1, 0, -1):\n        for i in range(n - length + 1):\n            substring = s[i:i + length]\n            if s.find(substring, i + 1) != -1:\n                longest_duplicate = substring\n                return longest_duplicate\n    return longest_duplicate\n```\n\n    \n    The algorithm starts with defining the longest possible duplicate string length which is the length of the input string minus one. Then, we iterate through all possible substring lengths from the longest to the shortest.\n\nFor each substring length, we iterate through the input string to check if there's a duplicate substring. We obtain a substring with the starting position `i` and the current length, then find if there's another occurrence of this substring in the input string. If there's one, we return the current substring as the longest duplicate substring.\n\nIf we finish iterating through all possible substring lengths without finding any duplicate substrings, we return an empty string.\n    ",
+    "javascript": "\n    ```javascript\nfunction longestDupSubstring(s) {\n    const n = s.length;\n    let longest_duplicate = \"\";\n    for (let length = n - 1; length > 0; --length) {\n        for (let i = 0; i <= n - length; ++i) {\n            const substring = s.substring(i, i + length);\n            if (s.indexOf(substring, i + 1) !== -1) {\n                longest_duplicate = substring;\n                return longest_duplicate;\n            }\n        }\n    }\n    return longest_duplicate;\n}\n```\n\n    \n    The algorithm starts with defining the longest possible duplicate string length which is the length of the input string minus one. Then, we iterate through all possible substring lengths from the longest to the shortest.\n\nFor each substring length, we iterate through the input string to check if there's a duplicate substring. We obtain a substring with the starting position `i` and the current length, then find if there's another occurrence of this substring in the input string. If there's one, we return the current substring as the longest duplicate substring.\n\nIf we finish iterating through all possible substring lengths without finding any duplicate substrings, we return an empty string.\n    ",
+    "java": "\n    ```java\npublic String longestDupSubstring(String s) {\n    int n = s.length();\n    String longest_duplicate = \"\";\n    for (int length = n - 1; length > 0; --length) {\n        for (int i = 0; i <= n - length; ++i) {\n            String substring = s.substring(i, i + length);\n            if (s.indexOf(substring, i + 1) != -1) {\n                longest_duplicate = substring;\n                return longest_duplicate;\n            }\n        }\n    }\n    return longest_duplicate;\n}\n```\n\n    \n    The algorithm starts with defining the longest possible duplicate string length which is the length of the input string minus one. Then, we iterate through all possible substring lengths from the longest to the shortest.\n\nFor each substring length, we iterate through the input string to check if there's a duplicate substring. We obtain a substring with the starting position `i` and the current length, then find if there's another occurrence of this substring in the input string. If there's one, we return the current substring as the longest duplicate substring.\n\nIf we finish iterating through all possible substring lengths without finding any duplicate substrings, we return an empty string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

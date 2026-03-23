@@ -1,0 +1,24 @@
+{
+  "id": 2517,
+  "title": "Maximum Tastiness of Candy Basket",
+  "slug": "maximum-tastiness-of-candy-basket",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array of positive integers price where price[i] denotes the price of the ith candy and a positive integer k.\n\nThe store sells baskets of k distinct candies. The tastiness of a candy basket is the smallest absolute difference of the prices of any two candies in the basket.\n\nReturn _the maximum tastiness of a candy basket._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_tastiness(price, k):\n    price.sort()\n    max_tastiness = 0\n    for i in range(len(price) - k + 1):\n        min_diff = float('inf')\n        for j in range(i, i + k - 1):\n            min_diff = min(min_diff, price[j + 1] - price[j])\n        max_tastiness = max(max_tastiness, min_diff)\n\n    return max_tastiness\n```\n    \n    To get the maximum number of possible baskets, we can sort the array in ascending order. Next, iterate through the sorted price array and create k-sized subarrays (or baskets) starting from each candy. This approach ensures that the subarray will contain k distinct elements. Calculate the tastiness of each basket by finding the smallest absolute difference between prices of nearest candies. Keep track of the maximum tastiness while iterating through these baskets. To get the maximum tastiness, compare each calculated tastiness and return the highest one.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxTastiness(price, k) {\n    price.sort((a, b) => a - b);\n    let max_tastiness = 0;\n    for (let i = 0; i < price.length - k + 1; i++) {\n        let min_diff = Infinity;\n        for (let j = i; j < i + k - 1; j++) {\n            min_diff = Math.min(min_diff, price[j + 1] - price[j]);\n        }\n        max_tastiness = Math.max(max_tastiness, min_diff);\n    }\n\n    return max_tastiness;\n}\n```\n    \n    To get the maximum number of possible baskets, we can sort the array in ascending order. Next, iterate through the sorted price array and create k-sized subarrays (or baskets) starting from each candy. This approach ensures that the subarray will contain k distinct elements. Calculate the tastiness of each basket by finding the smallest absolute difference between prices of nearest candies. Keep track of the maximum tastiness while iterating through these baskets. To get the maximum tastiness, compare each calculated tastiness and return the highest one.\n    ",
+    "java": "\n    ```java\npublic int maxTastiness(int[] price, int k) {\n    Arrays.sort(price);\n    int max_tastiness = 0;\n    for (int i = 0; i < price.length - k + 1; i++) {\n        int min_diff = Integer.MAX_VALUE;\n        for (int j = i; j < i + k - 1; j++) {\n            min_diff = Math.min(min_diff, price[j + 1] - price[j]);\n        }\n        max_tastiness = Math.max(max_tastiness, min_diff);\n    }\n\n    return max_tastiness;\n}\n```\n    \n    To get the maximum number of possible baskets, we can sort the array in ascending order. Next, iterate through the sorted price array and create k-sized subarrays (or baskets) starting from each candy. This approach ensures that the subarray will contain k distinct elements. Calculate the tastiness of each basket by finding the smallest absolute difference between prices of nearest candies. Keep track of the maximum tastiness while iterating through these baskets. To get the maximum tastiness, compare each calculated tastiness and return the highest one.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2301,
+  "title": "Match Substring After Replacement",
+  "slug": "match-substring-after-replacement",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given two strings s and sub. You are also given a 2D character array mappings where mappings[i] = [oldi, newi] indicates that you may perform the following operation any number of times:\n\n*   Replace a character oldi of sub with newi.\n\nEach character in sub cannot be replaced more than once.\n\nReturn true _if it is possible to make_ sub _a substring of_ s _by replacing zero or more characters according to_ mappings. Otherwise, return false.\n\nA substring is a contiguous non-empty sequence of characters within a string.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_pairs(nums, k):\n    mod_count = [0] * k\n    count = 0\n\n    for num in nums:\n        mod_count[num % k] += 1\n\n    count += mod_count[0] * (mod_count[0] - 1) // 2\n\n    for i in range(1, k // 2 + 1):\n        if i != k - i:\n            count += mod_count[i] * mod_count[k-i]\n        else:\n            count += mod_count[i] * (mod_count[i] - 1) // 2\n\n    return count\n```\n\n    \n    1. Create an array `mod_count` of size k and initialize it with zeros. This array will store the frequency of each remainder when dividing the array elements by k.\n2. Iterate through the input array `nums`, calculate the remainder when dividing each element by k, and increment the corresponding element in the `mod_count` array.\n3. Calculate the pairs that have k as sum of the reminders. For this purpose:\n   a. Calculate the pairs with both elements having 0 as reminder and add it to the count.\n   b. Iterate through the possible divisors `i` of k (1 to k/2). If i is not equal to k-i, then add the product of both mod_counts to the final count. Otherwise, add the count of the valid pairs for the same reminder to the final count.\n4. Return the final count of the pairs.\n    ",
+    "javascript": "\n    ```javascript\nfunction countPairs(nums, k) {\n    const mod_count = new Array(k).fill(0);\n    let count = 0;\n\n    for (const num of nums) {\n        mod_count[num % k]++;\n    }\n    \n    count += mod_count[0] * (mod_count[0] - 1) / 2;\n\n    for (let i = 1; i <= Math.floor(k / 2); i++) {\n        if (i != k - i) {\n            count += mod_count[i] * mod_count[k-i];\n        } else {\n            count += mod_count[i] * (mod_count[i] - 1) / 2;\n        }\n    }\n\n    return count;\n}\n```\n\n    \n    1. Create an array `mod_count` of size k and initialize it with zeros. This array will store the frequency of each remainder when dividing the array elements by k.\n2. Iterate through the input array `nums`, calculate the remainder when dividing each element by k, and increment the corresponding element in the `mod_count` array.\n3. Calculate the pairs that have k as sum of the reminders. For this purpose:\n   a. Calculate the pairs with both elements having 0 as reminder and add it to the count.\n   b. Iterate through the possible divisors `i` of k (1 to k/2). If i is not equal to k-i, then add the product of both mod_counts to the final count. Otherwise, add the count of the valid pairs for the same reminder to the final count.\n4. Return the final count of the pairs.\n    ",
+    "java": "\n    ```java\npublic int countPairs(int[] nums, int k) {\n    int[] mod_count = new int[k];\n    int count = 0;\n    \n    for(int num : nums) {\n        mod_count[num % k]++;\n    }\n\n    count += mod_count[0] * (mod_count[0] - 1) / 2;\n\n    for(int i = 1; i <= k/2; i++) {\n        if (i != k - i) {\n            count += mod_count[i] * mod_count[k-i];\n        } else {\n            count += mod_count[i] * (mod_count[i] - 1) / 2;\n        }\n    }\n    return count;\n}\n```\n\n    \n    1. Create an array `mod_count` of size k and initialize it with zeros. This array will store the frequency of each remainder when dividing the array elements by k.\n2. Iterate through the input array `nums`, calculate the remainder when dividing each element by k, and increment the corresponding element in the `mod_count` array.\n3. Calculate the pairs that have k as sum of the reminders. For this purpose:\n   a. Calculate the pairs with both elements having 0 as reminder and add it to the count.\n   b. Iterate through the possible divisors `i` of k (1 to k/2). If i is not equal to k-i, then add the product of both mod_counts to the final count. Otherwise, add the count of the valid pairs for the same reminder to the final count.\n4. Return the final count of the pairs.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1219,
+  "title": "Path with Maximum Gold",
+  "slug": "path-with-maximum-gold",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "In a gold mine grid of size m x n, each cell in this mine has an integer representing the amount of gold in that cell, 0 if it is empty.\n\nReturn the maximum amount of gold you can collect under the conditions:\n\n*   Every time you are located in a cell you will collect all the gold in that cell.\n*   From your position, you can walk one step to the left, right, up, or down.\n*   You can't visit the same cell more than once.\n*   Never visit a cell with 0 gold.\n*   You can start and stop collecting gold from any position in the grid that has some gold.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef longest_wpi(hours):\n    score = 0\n    max_length = 0\n    first_occurrence = {}\n\n    for i, h in enumerate(hours):\n        score += 1 if h > 8 else -1\n        if score > 0:\n            max_length = i + 1\n        else:\n            if score not in first_occurrence:\n                first_occurrence[score] = i\n            if score - 1 in first_occurrence:\n                max_length = max(max_length, i - first_occurrence[score - 1])\n    return max_length\n```\n\n    \n    The algorithm uses a single pass over the `hours` array, keeping track of a `score` which increases by 1 for every tiring day, and decreases by 1 for every non-tiring day. Whenever the score is positive, we set maxLength to the current index plus one. If the score turns negative or remains negative, we store the index of first occurrence of the score in a hash map, and check if a score minus one is present in the map, if yes, we have an interval with more tiring days than non-tiring days, so we update maxLength if it's more than the current maxLength.\n    ",
+    "javascript": "\n    ```javascript\nfunction longestWPI(hours) {\n    let score = 0;\n    let maxLength = 0;\n    let firstOccurrence = new Map();\n\n    for (let i = 0; i < hours.length; ++i) {\n        score += hours[i] > 8 ? 1 : -1;\n        if (score > 0) maxLength = i + 1;\n        else {\n            if (!firstOccurrence.has(score))\n                firstOccurrence.set(score, i);\n            if (firstOccurrence.has(score - 1))\n                maxLength = Math.max(maxLength, i - firstOccurrence.get(score - 1));\n        }\n    }\n    return maxLength;\n}\n```\n    \n    The algorithm uses a single pass over the `hours` array, keeping track of a `score` which increases by 1 for every tiring day, and decreases by 1 for every non-tiring day. Whenever the score is positive, we set maxLength to the current index plus one. If the score turns negative or remains negative, we store the index of first occurrence of the score in a hash map, and check if a score minus one is present in the map, if yes, we have an interval with more tiring days than non-tiring days, so we update maxLength if it's more than the current maxLength.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\n\npublic int longestWPI(int[] hours) {\n    int score = 0;\n    int maxLength = 0;\n    HashMap<Integer, Integer> firstOccurrence = new HashMap<>();\n\n    for (int i = 0; i < hours.length; ++i) {\n        score += hours[i] > 8 ? 1 : -1;\n        if (score > 0) maxLength = i + 1;\n        else {\n            firstOccurrence.putIfAbsent(score, i);\n            if (firstOccurrence.containsKey(score - 1))\n                maxLength = Math.max(maxLength, i - firstOccurrence.get(score - 1));\n        }\n    }\n    return maxLength;\n}\n```\n\n    \n    The algorithm uses a single pass over the `hours` array, keeping track of a `score` which increases by 1 for every tiring day, and decreases by 1 for every non-tiring day. Whenever the score is positive, we set maxLength to the current index plus one. If the score turns negative or remains negative, we store the index of first occurrence of the score in a hash map, and check if a score minus one is present in the map, if yes, we have an interval with more tiring days than non-tiring days, so we update maxLength if it's more than the current maxLength.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

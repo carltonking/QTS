@@ -1,0 +1,24 @@
+{
+  "id": 1991,
+  "title": "Find the Middle Index in Array",
+  "slug": "find-the-middle-index-in-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a 0-indexed integer array nums, find the leftmost middleIndex (i.e., the smallest amongst all the possible ones).\n\nA middleIndex is an index where nums[0] + nums[1] + ... + nums[middleIndex-1] == nums[middleIndex+1] + nums[middleIndex+2] + ... + nums[nums.length-1].\n\nIf middleIndex == 0, the left side sum is considered to be 0. Similarly, if middleIndex == nums.length - 1, the right side sum is considered to be 0.\n\nReturn _the leftmost_ middleIndex _that satisfies the condition, or_ -1 _if there is no such index_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findMiddleIndex(nums):\n    total_sum = sum(nums)\n    left_sum = 0\n\n    for i, num in enumerate(nums):\n        if left_sum == total_sum - left_sum - num:\n            return i\n        left_sum += num\n\n    return -1\n```\n    \n    Initially, calculate the total sum of the array elements. Iterate through the array and track the left_sum at every index. If the left_sum matches the updated sum of elements (total_sum - left_sum - current_number), then the current index is the middle index. If no such index is found, return -1.\n    ",
+    "javascript": "\n    ```javascript\nfunction findMiddleIndex(nums) {\n    let totalSum = 0, leftSum = 0;\n\n    nums.forEach(num => {\n        totalSum += num;\n    });\n\n    for (let i = 0; i < nums.length; i++) {\n        if (leftSum === totalSum - leftSum - nums[i]) {\n            return i;\n        }\n        leftSum += nums[i];\n    }\n\n    return -1;\n}\n```\n    \n    Initially, calculate the total sum of the array elements. Iterate through the array and track the left_sum at every index. If the left_sum matches the updated sum of elements (total_sum - left_sum - current_number), then the current index is the middle index. If no such index is found, return -1.\n    ",
+    "java": "\n    ```java\npublic int findMiddleIndex(int[] nums) {\n    int totalSum = 0, leftSum = 0;\n\n    for (int num : nums) {\n        totalSum += num;\n    }\n\n    for (int i = 0; i < nums.length; i++) {\n        if (leftSum == totalSum - leftSum - nums[i]) {\n            return i;\n        }\n        leftSum += nums[i];\n    }\n\n    return -1;\n}\n```\n    \n    Initially, calculate the total sum of the array elements. Iterate through the array and track the left_sum at every index. If the left_sum matches the updated sum of elements (total_sum - left_sum - current_number), then the current index is the middle index. If no such index is found, return -1.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

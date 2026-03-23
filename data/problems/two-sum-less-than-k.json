@@ -1,0 +1,24 @@
+{
+  "id": 1099,
+  "title": "Two Sum Less Than K",
+  "slug": "two-sum-less-than-k",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array nums of integers and integer k, return the maximum sum such that there exists i < j with nums[i] + nums[j] = sum and sum < k. If no i, j exist satisfying this equation, return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_sum_under_k(nums, k):\n    max_sum = -1\n    for i in range(len(nums)):\n        for j in range(i + 1, len(nums)):\n            _sum = nums[i] + nums[j]\n            if _sum < k and _sum > max_sum:\n                max_sum = _sum\n    return max_sum\n```\n    \n    The algorithm contains two nested loops, iterating through all possible combinations of indices `i` and `j` (with `j > i`). For each combination of `i` and `j`, the function calculates the sum of `nums[i]` and `nums[j]`. If the sum is less than `k` and greater than the current `maxSum`, the function updates `maxSum` with the new sum. Finally, the function returns the maximum sum found during the iterations. If no suitable sum was found, the function returns `-1`.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxSumUnderK(nums, k) {\n    let maxSum = -1;\n    for (let i = 0; i < nums.length; i++) {\n        for (let j = i + 1; j < nums.length; j++) {\n            let sum = nums[i] + nums[j];\n            if (sum < k && sum > maxSum) {\n                maxSum = sum;\n            }\n        }\n    }\n    return maxSum;\n}\n```\n\n    \n    The algorithm contains two nested loops, iterating through all possible combinations of indices `i` and `j` (with `j > i`). For each combination of `i` and `j`, the function calculates the sum of `nums[i]` and `nums[j]`. If the sum is less than `k` and greater than the current `maxSum`, the function updates `maxSum` with the new sum. Finally, the function returns the maximum sum found during the iterations. If no suitable sum was found, the function returns `-1`.\n    ",
+    "java": "\n    ```java\npublic int maxSumUnderK(int[] nums, int k) {\n    int maxSum = -1;\n    for (int i = 0; i < nums.length; i++) {\n        for (int j = i + 1; j < nums.length; j++) {\n            int sum = nums[i] + nums[j];\n            if (sum < k && sum > maxSum) {\n                maxSum = sum;\n            }\n        }\n    }\n    return maxSum;\n}\n```\n    \n    The algorithm contains two nested loops, iterating through all possible combinations of indices `i` and `j` (with `j > i`). For each combination of `i` and `j`, the function calculates the sum of `nums[i]` and `nums[j]`. If the sum is less than `k` and greater than the current `maxSum`, the function updates `maxSum` with the new sum. Finally, the function returns the maximum sum found during the iterations. If no suitable sum was found, the function returns `-1`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

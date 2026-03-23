@@ -1,0 +1,24 @@
+{
+  "id": 1937,
+  "title": "Maximum Number of Points with Cost",
+  "slug": "maximum-number-of-points-with-cost",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an m x n integer matrix points (0-indexed). Starting with 0 points, you want to maximize the number of points you can get from the matrix.\n\nTo gain points, you must pick one cell in each row. Picking the cell at coordinates (r, c) will add points[r][c] to your score.\n\nHowever, you will lose points if you pick a cell too far from the cell that you picked in the previous row. For every two adjacent rows r and r + 1 (where 0 <= r < m - 1), picking cells at coordinates (r, c1) and (r + 1, c2) will subtract abs(c1 - c2) from your score.\n\nReturn _the maximum number of points you can achieve_.\n\nabs(x) is defined as:\n\n*   x for x >= 0.\n*   -x for x < 0.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxPoints(points):\n    m, n = len(points), len(points[0])\n    dp = [0] * n\n    for row in points:\n        next_dp = [0] * n\n        for c1 in range(n):\n            score = dp[c1] + row[c1] - c1\n            for c2 in range(n):\n                next_dp[c2] = max(next_dp[c2], score - row[c1] + c2)\n        dp = next_dp\n    return max(dp)\n```\n    \n    The approach used is dynamic programming. For each row, we maintain a `dp` array where `dp[c]` is the maximum score we can achieve if we pick a cell in the current row with column equals to `c`. We iterate through each row, updating the maximum score in that row as we progress.\n\nFor each cell in current row, calculate its score by adding the points and subtracting the column index `c1`. Then subtract the points and add the neighboring column index `c2`, and update the maximum score for the next row.\n\nFinally, return the maximum score among all the cells in the last row.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxPoints(points) {\n    let m = points.length, n = points[0].length;\n    let dp = new Array(n).fill(0);\n    for (const row of points) {\n        const next_dp = new Array(n).fill(0);\n        for (let c1 = 0; c1 < n; ++c1) {\n            const score = dp[c1] + row[c1] - c1;\n            for (let c2 = 0; c2 < n; ++c2) {\n                next_dp[c2] = Math.max(next_dp[c2], score - row[c1] + c2);\n            }\n        }\n        dp = next_dp;\n    }\n    return Math.max(...dp);\n}\n```\n\n    \n    The approach used is dynamic programming. For each row, we maintain a `dp` array where `dp[c]` is the maximum score we can achieve if we pick a cell in the current row with column equals to `c`. We iterate through each row, updating the maximum score in that row as we progress.\n\nFor each cell in current row, calculate its score by adding the points and subtracting the column index `c1`. Then subtract the points and add the neighboring column index `c2`, and update the maximum score for the next row.\n\nFinally, return the maximum score among all the cells in the last row.\n    ",
+    "java": "\n    ```java\npublic int maxPoints(int[][] points) {\n    int m = points.length, n = points[0].length;\n    long[] dp = new long[n];\n    for (int[] row : points) {\n        long[] next_dp = new long[n];\n        for (int c1 = 0; c1 < n; ++c1) {\n            long score = dp[c1] + row[c1] - c1;\n            for (int c2 = 0; c2 < n; ++c2) {\n                next_dp[c2] = Math.max(next_dp[c2], score - row[c1] + c2);\n            }\n        }\n        dp = next_dp;\n    }\n    long max_points = 0;\n    for (long score : dp) {\n        max_points = Math.max(max_points, score);\n    }\n    return (int) max_points;\n}\n```\n    \n    The approach used is dynamic programming. For each row, we maintain a `dp` array where `dp[c]` is the maximum score we can achieve if we pick a cell in the current row with column equals to `c`. We iterate through each row, updating the maximum score in that row as we progress.\n\nFor each cell in current row, calculate its score by adding the points and subtracting the column index `c1`. Then subtract the points and add the neighboring column index `c2`, and update the maximum score for the next row.\n\nFinally, return the maximum score among all the cells in the last row.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

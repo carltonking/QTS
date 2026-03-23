@@ -1,0 +1,24 @@
+{
+  "id": 293,
+  "title": "Flip Game",
+  "slug": "flip-game",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are playing a Flip Game with your friend.\n\nYou are given a string currentState that contains only '+' and '-'. You and your friend take turns to flip two consecutive \"++ \" into \"-- \". The game ends when a person can no longer make a move, and therefore the other person will be the winner.\n\nReturn all possible states of the string currentState after one valid move. You may return the answer in any order. If there is no valid move, return an empty list [].",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef generate_possible_next_moves(current_state):\n    result = []\n    for i in range(1, len(current_state)):\n        if current_state[i] == '+' and current_state[i - 1] == '+':\n            result.append(current_state[:i - 1] + '--' + current_state[i + 1:])\n    return result\n```\n    \n    The algorithm iterates through the `currentState` string starting from the second character to check for two consecutive `'+'` characters. When it finds a pair, it flips them to `'-'` and adds the resulting string to the `result` list. After adding the result, it flips the characters back to `'+'` to continue searching for more pairs.\n\nIn Python and JavaScript, the string concatenation is done using slicing and concatenation, while in C++ and Java, the strings are first modified and then restored to their original state after adding the modified result. The final output is a list of all the possible next moves after one valid flip.\n    ",
+    "javascript": "\n    ```javascript\nfunction generatePossibleNextMoves(currentState) {\n    const result = [];\n    for (let i = 1; i < currentState.length; i++) {\n        if (currentState[i] === '+' && currentState[i - 1] === '+') {\n            result.push(currentState.slice(0, i - 1) + '--' + currentState.slice(i + 1));\n        }\n    }\n    return result;\n}\n```\n    \n    The algorithm iterates through the `currentState` string starting from the second character to check for two consecutive `'+'` characters. When it finds a pair, it flips them to `'-'` and adds the resulting string to the `result` list. After adding the result, it flips the characters back to `'+'` to continue searching for more pairs.\n\nIn Python and JavaScript, the string concatenation is done using slicing and concatenation, while in C++ and Java, the strings are first modified and then restored to their original state after adding the modified result. The final output is a list of all the possible next moves after one valid flip.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<String> generatePossibleNextMoves(String currentState) {\n    List<String> result = new ArrayList<>();\n    for (int i = 1; i < currentState.length(); i++) {\n        if (currentState.charAt(i) == '+' && currentState.charAt(i - 1) == '+') {\n            result.add(currentState.substring(0, i - 1) + \"--\" + currentState.substring(i + 1));\n        }\n    }\n    return result;\n}\n```\n    \n    The algorithm iterates through the `currentState` string starting from the second character to check for two consecutive `'+'` characters. When it finds a pair, it flips them to `'-'` and adds the resulting string to the `result` list. After adding the result, it flips the characters back to `'+'` to continue searching for more pairs.\n\nIn Python and JavaScript, the string concatenation is done using slicing and concatenation, while in C++ and Java, the strings are first modified and then restored to their original state after adding the modified result. The final output is a list of all the possible next moves after one valid flip.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

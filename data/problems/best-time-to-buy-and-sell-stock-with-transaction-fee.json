@@ -1,0 +1,24 @@
+{
+  "id": 714,
+  "title": "Best Time to Buy and Sell Stock with Transaction Fee",
+  "slug": "best-time-to-buy-and-sell-stock-with-transaction-fee",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array prices where prices[i] is the price of a given stock on the ith day, and an integer fee representing a transaction fee.\n\nFind the maximum profit you can achieve. You may complete as many transactions as you like, but you need to pay the transaction fee for each transaction.\n\nNote: You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maxProfit(prices, fee):\n    cash, hold = 0, -prices[0]\n    for price in prices:\n        temp = cash\n        cash = max(cash, hold + price - fee)\n        hold = max(hold, temp - price)\n    return cash\n```\n    \n    The algorithm utilizes dynamic programming to solve the problem. We maintain two variables, `cash` and `hold`. `cash` represents the maximum profit we can achieve when we hold no stock (sell or not buy it), whereas `hold` represents the maximum profit we can achieve when we hold the stock (buy or not sell it).\n\n1. Initialize `cash` to 0 and `hold` to `-prices[0]`. (Initially, we assume that we buy the stock on the first day)\n2. Iterate through the `prices` array.\n3. In each iteration, we update `cash` as maximum of the current value of `cash` and `hold + price - fee`. This means that we either sell the stock at the current price (subtracting the transaction fee) or don't take any action.\n4. Similarly, update `hold` as maximum of current value of `hold` and `cash - price`. This means that we either buy the stock at the current price or don't take any action.\n5. After iterating through the entire `prices` array, return the final value of `cash` as the maximum profit.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxProfit(prices, fee) {\n    let cash = 0, hold = -prices[0];\n    for (const price of prices) {\n        let temp = cash;\n        cash = Math.max(cash, hold + price - fee);\n        hold = Math.max(hold, temp - price);\n    }\n    return cash;\n}\n```\n    \n    The algorithm utilizes dynamic programming to solve the problem. We maintain two variables, `cash` and `hold`. `cash` represents the maximum profit we can achieve when we hold no stock (sell or not buy it), whereas `hold` represents the maximum profit we can achieve when we hold the stock (buy or not sell it).\n\n1. Initialize `cash` to 0 and `hold` to `-prices[0]`. (Initially, we assume that we buy the stock on the first day)\n2. Iterate through the `prices` array.\n3. In each iteration, we update `cash` as maximum of the current value of `cash` and `hold + price - fee`. This means that we either sell the stock at the current price (subtracting the transaction fee) or don't take any action.\n4. Similarly, update `hold` as maximum of current value of `hold` and `cash - price`. This means that we either buy the stock at the current price or don't take any action.\n5. After iterating through the entire `prices` array, return the final value of `cash` as the maximum profit.\n    ",
+    "java": "\n    ```java\npublic int maxProfit(int[] prices, int fee) {\n    int cash = 0, hold = -prices[0];\n    for (int price : prices) {\n        int temp = cash;\n        cash = Math.max(cash, hold + price - fee);\n        hold = Math.max(hold, temp - price);\n    }\n    return cash;\n}\n```\n    \n    The algorithm utilizes dynamic programming to solve the problem. We maintain two variables, `cash` and `hold`. `cash` represents the maximum profit we can achieve when we hold no stock (sell or not buy it), whereas `hold` represents the maximum profit we can achieve when we hold the stock (buy or not sell it).\n\n1. Initialize `cash` to 0 and `hold` to `-prices[0]`. (Initially, we assume that we buy the stock on the first day)\n2. Iterate through the `prices` array.\n3. In each iteration, we update `cash` as maximum of the current value of `cash` and `hold + price - fee`. This means that we either sell the stock at the current price (subtracting the transaction fee) or don't take any action.\n4. Similarly, update `hold` as maximum of current value of `hold` and `cash - price`. This means that we either buy the stock at the current price or don't take any action.\n5. After iterating through the entire `prices` array, return the final value of `cash` as the maximum profit.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

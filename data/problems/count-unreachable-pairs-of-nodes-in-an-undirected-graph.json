@@ -1,0 +1,24 @@
+{
+  "id": 2316,
+  "title": "Count Unreachable Pairs of Nodes in an Undirected Graph",
+  "slug": "count-unreachable-pairs-of-nodes-in-an-undirected-graph",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer n. There is an undirected graph with n nodes, numbered from 0 to n - 1. You are given a 2D integer array edges where edges[i] = [ai, bi] denotes that there exists an undirected edge connecting nodes ai and bi.\n\nReturn _the number of pairs of different nodes that are unreachable from each other_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_hills_valleys(nums):\n    count = 0\n    for i in range(1, len(nums) - 1):\n        if (nums[i] > nums[i - 1] and nums[i] > nums[i + 1]) or (nums[i] < nums[i - 1] and nums[i] < nums[i + 1]):\n            count += 1\n    return count\n```\n\n    \n    The algorithm iterates through the array from the second element to the second-last element. For each element, it checks whether it is part of a hill or a valley. This is done by comparing the current element with its left and right neighbors. If the element is larger than both neighbors, it is part of a hill; if it is smaller than both neighbors, it is part of a valley. The count is incremented when the element is part of a hill or a valley. This process is repeated for all elements in the specified range. Finally, the count of hills and valleys is returned.\n    ",
+    "javascript": "\n    ```javascript\nfunction countHillsValleys(nums) {\n    let count = 0;\n    for (let i = 1; i < nums.length - 1; i++) {\n        if ((nums[i] > nums[i - 1] && nums[i] > nums[i + 1]) || (nums[i] < nums[i - 1] && nums[i] < nums[i + 1])) {\n            count++;\n        }\n    }\n    return count;\n}\n```\n\n    \n    The algorithm iterates through the array from the second element to the second-last element. For each element, it checks whether it is part of a hill or a valley. This is done by comparing the current element with its left and right neighbors. If the element is larger than both neighbors, it is part of a hill; if it is smaller than both neighbors, it is part of a valley. The count is incremented when the element is part of a hill or a valley. This process is repeated for all elements in the specified range. Finally, the count of hills and valleys is returned.\n    ",
+    "java": "\n    ```java\npublic int countHillsValleys(int[] nums) {\n    int count = 0;\n    for (int i = 1; i < nums.length - 1; i++) {\n        if ((nums[i] > nums[i - 1] && nums[i] > nums[i + 1]) || (nums[i] < nums[i - 1] && nums[i] < nums[i + 1])) {\n            count++;\n        }\n    }\n    return count;\n}\n```\n\n    \n    The algorithm iterates through the array from the second element to the second-last element. For each element, it checks whether it is part of a hill or a valley. This is done by comparing the current element with its left and right neighbors. If the element is larger than both neighbors, it is part of a hill; if it is smaller than both neighbors, it is part of a valley. The count is incremented when the element is part of a hill or a valley. This process is repeated for all elements in the specified range. Finally, the count of hills and valleys is returned.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

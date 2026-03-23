@@ -1,0 +1,24 @@
+{
+  "id": 1491,
+  "title": "Average Salary Excluding the Minimum and Maximum Salary",
+  "slug": "average-salary-excluding-the-minimum-and-maximum-salary",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an array of unique integers salary where salary[i] is the salary of the ith employee.\n\nReturn _the average salary of employees excluding the minimum and maximum salary_. Answers within 10-5 of the actual answer will be accepted.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_prefix_aligned(flips):\n    count = 0\n    for i in range(len(flips)):\n        if flips[i] == i + 1:\n            count += 1\n    return count\n```\n    \n    The algorithm iterates through the given `flips` list (or array) and, at each step, checks if the value of `flips[i]` is equal to the 1-indexed position (i.e., `i+1`). If the condition is true, it means that the bit is flipped at the correct position to make the binary string prefix-aligned at that step, so we increment the counter. At the end of the loop, the counter represents the total number of prefix-aligned steps in the flipping process.\n    ",
+    "javascript": "\n    ```javascript\nfunction countPrefixAligned(flips) {\n    let count = 0;\n    for (let i = 0; i < flips.length; i++) {\n        if (flips[i] === i + 1) {\n            count++;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm iterates through the given `flips` list (or array) and, at each step, checks if the value of `flips[i]` is equal to the 1-indexed position (i.e., `i+1`). If the condition is true, it means that the bit is flipped at the correct position to make the binary string prefix-aligned at that step, so we increment the counter. At the end of the loop, the counter represents the total number of prefix-aligned steps in the flipping process.\n    ",
+    "java": "\n    ```java\npublic int countPrefixAligned(int[] flips) {\n    int count = 0;\n    for (int i = 0; i < flips.length; i++) {\n        if (flips[i] == i + 1) {\n            count++;\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm iterates through the given `flips` list (or array) and, at each step, checks if the value of `flips[i]` is equal to the 1-indexed position (i.e., `i+1`). If the condition is true, it means that the bit is flipped at the correct position to make the binary string prefix-aligned at that step, so we increment the counter. At the end of the loop, the counter represents the total number of prefix-aligned steps in the flipping process.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

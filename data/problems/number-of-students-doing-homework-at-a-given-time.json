@@ -1,0 +1,24 @@
+{
+  "id": 1450,
+  "title": "Number of Students Doing Homework at a Given Time",
+  "slug": "number-of-students-doing-homework-at-a-given-time",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given two integer arrays startTime and endTime and given an integer queryTime.\n\nThe ith student started doing their homework at the time startTime[i] and finished it at time endTime[i].\n\nReturn _the number of students_ doing their homework at time queryTime. More formally, return the number of students where queryTime lays in the interval [startTime[i], endTime[i]] inclusive.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef removeLeafNodes(root, target):\n    if not root:\n        return None\n    root.left = removeLeafNodes(root.left, target)\n    root.right = removeLeafNodes(root.right, target)\n    if not root.left and not root.right and root.val == target:\n        return None\n    return root\n```\n\n    \n    We traverse the binary tree using a depth-first search (DFS) approach. We use a recursion to visit left and right children of each node.\n\n1. If the root node is null, return null.\n2. Call `removeLeafNodes` recursively and update left and right children.\n3. After updating children, check if the current node is a leaf node (i.e., both children are null) and its value equals the target. If so, delete it (return null); otherwise, return the current node.\n4. Repeat this process until deleted leaf nodes can no longer create new leaf nodes with the target value.\n    ",
+    "javascript": "\n    ```javascript\nfunction removeLeafNodes(root, target) {\n    if (!root) return null;\n    root.left = removeLeafNodes(root.left, target);\n    root.right = removeLeafNodes(root.right, target);\n    if (!root.left && !root.right && root.val === target) {\n        return null;\n    }\n    return root;\n}\n```\n\n    \n    We traverse the binary tree using a depth-first search (DFS) approach. We use a recursion to visit left and right children of each node.\n\n1. If the root node is null, return null.\n2. Call `removeLeafNodes` recursively and update left and right children.\n3. After updating children, check if the current node is a leaf node (i.e., both children are null) and its value equals the target. If so, delete it (return null); otherwise, return the current node.\n4. Repeat this process until deleted leaf nodes can no longer create new leaf nodes with the target value.\n    ",
+    "java": "\n    ```java\npublic TreeNode removeLeafNodes(TreeNode root, int target) {\n    if (root == null) return null;\n    root.left = removeLeafNodes(root.left, target);\n    root.right = removeLeafNodes(root.right, target);\n    if (root.left == null && root.right == null && root.val == target) {\n        return null;\n    }\n    return root;\n}\n```\n\n    \n    We traverse the binary tree using a depth-first search (DFS) approach. We use a recursion to visit left and right children of each node.\n\n1. If the root node is null, return null.\n2. Call `removeLeafNodes` recursively and update left and right children.\n3. After updating children, check if the current node is a leaf node (i.e., both children are null) and its value equals the target. If so, delete it (return null); otherwise, return the current node.\n4. Repeat this process until deleted leaf nodes can no longer create new leaf nodes with the target value.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

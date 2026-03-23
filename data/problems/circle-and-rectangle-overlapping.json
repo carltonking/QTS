@@ -1,0 +1,24 @@
+{
+  "id": 1401,
+  "title": "Circle and Rectangle Overlapping",
+  "slug": "circle-and-rectangle-overlapping",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a circle represented as (radius, xCenter, yCenter) and an axis-aligned rectangle represented as (x1, y1, x2, y2), where (x1, y1) are the coordinates of the bottom-left corner, and (x2, y2) are the coordinates of the top-right corner of the rectangle.\n\nReturn true _if the circle and rectangle are overlapped otherwise return_ false. In other words, check if there is any point (xi, yi) that belongs to the circle and the rectangle at the same time.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef checkOverlap(radius, xCenter, yCenter, x1, y1, x2, y2):\n    xClosest = max(x1, min(xCenter, x2))\n    yClosest = max(y1, min(yCenter, y2))\n    return (xCenter - xClosest) ** 2 + (yCenter - yClosest) ** 2 <= radius ** 2\n```\n    \n    The algorithm finds the closest point from the center of the circle to the rectangle. First, it determines the x-coordinate and y-coordinate of this point `xClosest` and `yClosest`, by finding the minimum and maximum values of x and y coordinates between the center of the circle and the bounds of the rectangle, respectively.\n\nThen, check if the distance squared between the circle's center `(xCenter, yCenter)` and the closest point `(xClosest, yClosest)` is less than or equal to the square of the radius of the circle. If it is, then the circle and the rectangle are overlapping, otherwise they are not.\n    ",
+    "javascript": "\n    ```javascript\nfunction checkOverlap(radius, xCenter, yCenter, x1, y1, x2, y2) {\n    const xClosest = Math.max(x1, Math.min(xCenter, x2));\n    const yClosest = Math.max(y1, Math.min(yCenter, y2));\n    return (xCenter - xClosest) * (xCenter - xClosest) + (yCenter - yClosest) * (yCenter - yClosest) <= radius * radius;\n}\n```\n    \n    The algorithm finds the closest point from the center of the circle to the rectangle. First, it determines the x-coordinate and y-coordinate of this point `xClosest` and `yClosest`, by finding the minimum and maximum values of x and y coordinates between the center of the circle and the bounds of the rectangle, respectively.\n\nThen, check if the distance squared between the circle's center `(xCenter, yCenter)` and the closest point `(xClosest, yClosest)` is less than or equal to the square of the radius of the circle. If it is, then the circle and the rectangle are overlapping, otherwise they are not.\n    ",
+    "java": "\n    ```java\nboolean checkOverlap(int radius, int xCenter, int yCenter, int x1, int y1, int x2, int y2) {\n    int xClosest = Math.max(x1, Math.min(xCenter, x2));\n    int yClosest = Math.max(y1, Math.min(yCenter, y2));\n    return (xCenter - xClosest) * (xCenter - xClosest) + (yCenter - yClosest) * (yCenter - yClosest) <= radius * radius;\n}\n```\n    \n    The algorithm finds the closest point from the center of the circle to the rectangle. First, it determines the x-coordinate and y-coordinate of this point `xClosest` and `yClosest`, by finding the minimum and maximum values of x and y coordinates between the center of the circle and the bounds of the rectangle, respectively.\n\nThen, check if the distance squared between the circle's center `(xCenter, yCenter)` and the closest point `(xClosest, yClosest)` is less than or equal to the square of the radius of the circle. If it is, then the circle and the rectangle are overlapping, otherwise they are not.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

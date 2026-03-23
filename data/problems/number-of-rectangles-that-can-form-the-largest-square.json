@@ -1,0 +1,24 @@
+{
+  "id": 1725,
+  "title": "Number Of Rectangles That Can Form The Largest Square",
+  "slug": "number-of-rectangles-that-can-form-the-largest-square",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an array rectangles where rectangles[i] = [li, wi] represents the ith rectangle of length li and width wi.\n\nYou can cut the ith rectangle to form a square with a side length of k if both k <= li and k <= wi. For example, if you have a rectangle [4,6], you can cut it to get a square with a side length of at most 4.\n\nLet maxLen be the side length of the largest square you can obtain from any of the given rectangles.\n\nReturn _the number of rectangles that can make a square with a side length of_ maxLen.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef numberOfSets(n, k):\n    mod = 10**9 + 7\n    dp = [[0] * (k + 1) for _ in range(n)]\n    presum = [1] * n\n    \n    for j in range(1, k + 1):\n        for i in range(n):\n            dp[i][j] = presum[i]\n            if i > 0:\n                dp[i][j] += dp[i - 1][j]\n            dp[i][j] %= mod\n            presum[i] = (presum[i] + dp[i][j - 1]) % mod\n    \n    return dp[n - 1][k]\n```\n    \n    The problem can be solved using dynamic programming. We create a 2D array `dp` of dimensions (n, k + 1), where `dp[i][j]` stores the number of ways to draw `j` non-overlapping line segments up to point `i`. We also maintain an array `presum` which is the prefix sum of the `dp` array. \n\nWe then loop through `j` from 1 to k and `i` from 0 to n-1, calculating `dp[i][j]` using the values in `presum` and `dp` arrays. To avoid recomputing values, we update the `presum` array iteratively.\n\nFinally, we return the value in `dp[n - 1][k]` which is the number of ways to draw k non-overlapping line segments up to point n-1.\n    ",
+    "javascript": "\n    ```javascript\nfunction numberOfSets(n, k) {\n    const mod = 1e9 + 7;\n    const dp = Array.from({ length: n }, () => Array(k + 1).fill(0));\n    const presum = Array(n).fill(1);\n    \n    for (let j = 1; j <= k; ++j) {\n        for (let i = 0; i < n; ++i) {\n            dp[i][j] = presum[i];\n            if (i > 0) {\n                dp[i][j] += dp[i - 1][j];\n            }\n            dp[i][j] %= mod;\n            presum[i] = (presum[i] + dp[i][j - 1]) % mod;\n        }\n    }\n\n    return dp[n - 1][k];\n}\n```\n    \n    The problem can be solved using dynamic programming. We create a 2D array `dp` of dimensions (n, k + 1), where `dp[i][j]` stores the number of ways to draw `j` non-overlapping line segments up to point `i`. We also maintain an array `presum` which is the prefix sum of the `dp` array. \n\nWe then loop through `j` from 1 to k and `i` from 0 to n-1, calculating `dp[i][j]` using the values in `presum` and `dp` arrays. To avoid recomputing values, we update the `presum` array iteratively.\n\nFinally, we return the value in `dp[n - 1][k]` which is the number of ways to draw k non-overlapping line segments up to point n-1.\n    ",
+    "java": "\n    ```java\npublic int numberOfSets(int n, int k) {\n    long mod = 1000000007;\n    long[][] dp = new long[n][k + 1];\n    long[] presum = new long[n];\n    Arrays.fill(presum, 1);\n    \n    for (int j = 1; j <= k; ++j) {\n        for (int i = 0; i < n; ++i) {\n            dp[i][j] = presum[i];\n            if (i > 0) {\n                dp[i][j] += dp[i - 1][j];\n            }\n            dp[i][j] %= mod;\n            presum[i] = (presum[i] + dp[i][j - 1]) % mod;\n        }\n    }\n    \n    return (int) dp[n - 1][k];\n}\n```\n    \n    The problem can be solved using dynamic programming. We create a 2D array `dp` of dimensions (n, k + 1), where `dp[i][j]` stores the number of ways to draw `j` non-overlapping line segments up to point `i`. We also maintain an array `presum` which is the prefix sum of the `dp` array. \n\nWe then loop through `j` from 1 to k and `i` from 0 to n-1, calculating `dp[i][j]` using the values in `presum` and `dp` arrays. To avoid recomputing values, we update the `presum` array iteratively.\n\nFinally, we return the value in `dp[n - 1][k]` which is the number of ways to draw k non-overlapping line segments up to point n-1.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

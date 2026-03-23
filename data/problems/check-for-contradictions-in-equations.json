@@ -1,0 +1,24 @@
+{
+  "id": 2307,
+  "title": "Check for Contradictions in Equations",
+  "slug": "check-for-contradictions-in-equations",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a 2D array of strings equations and an array of real numbers values, where equations[i] = [Ai, Bi] and values[i] means that Ai / Bi = values[i].\n\nDetermine if there exists a contradiction in the equations. Return true _if there is a contradiction, or_ false _otherwise_.\n\nNote:\n\n*   When checking if two numbers are equal, check that their absolute difference is less than 10-5.\n*   The testcases are generated such that there are no cases targeting precision, i.e. using double is enough to solve the problem.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom math import gcd\n\ndef modify_array(nums):\n    i = 1\n    while i < len(nums):\n        if gcd(nums[i-1], nums[i]) > 1:\n            nums.insert(i, 1)\n            i += 1\n        i += 1\n    return nums\n```\n    \n    1. Loop through the input array starting from the second element.\n2. For each element, check if it has a GCD greater than 1 with the previous element.\n3. If they have a GCD greater than 1, insert the value 1 into the array between these two elements.\n4. Move to the next element.\n5. Repeat steps 2-4 until the end of the array is reached.\n6. Return the modified array.\n\nBoth Python and JavaScript use 0-based indexing, so the index value is incremented when a new element is inserted. In C++ and Java, the element is inserted in the beginning of the vector and the index values are adjusted accordingly. This ensures that the algorithm works correctly for all languages. The `gcd` function is implemented using the Euclidean algorithm for calculating the greatest common divisor of two numbers.\n    ",
+    "javascript": "\n    ```javascript\nfunction gcd(a, b) {\n    if (b === 0) return a;\n    return gcd(b, a % b);\n}\n\nfunction modifyArray(nums) {\n    let n = nums.length;\n    for (let i = 1; i < n; ++i) {\n        if (gcd(nums[i - 1], nums[i]) > 1) {\n            nums.splice(i, 0, 1);\n            ++n;\n            ++i;\n        }\n    }\n    return nums;\n}\n```\n    \n    1. Loop through the input array starting from the second element.\n2. For each element, check if it has a GCD greater than 1 with the previous element.\n3. If they have a GCD greater than 1, insert the value 1 into the array between these two elements.\n4. Move to the next element.\n5. Repeat steps 2-4 until the end of the array is reached.\n6. Return the modified array.\n\nBoth Python and JavaScript use 0-based indexing, so the index value is incremented when a new element is inserted. In C++ and Java, the element is inserted in the beginning of the vector and the index values are adjusted accordingly. This ensures that the algorithm works correctly for all languages. The `gcd` function is implemented using the Euclidean algorithm for calculating the greatest common divisor of two numbers.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<Integer> modifyArray(List<Integer> nums) {\n    int n = nums.size();\n    for (int i = 1; i < n; ++i) {\n        if (gcd(nums.get(i - 1), nums.get(i)) > 1) {\n            nums.add(i, 1);\n            ++n;\n            ++i;\n        }\n    }\n    return nums;\n}\n\nprivate int gcd(int a, int b) {\n    if (b == 0) return a;\n    return gcd(b, a % b);\n}\n```\n    \n    1. Loop through the input array starting from the second element.\n2. For each element, check if it has a GCD greater than 1 with the previous element.\n3. If they have a GCD greater than 1, insert the value 1 into the array between these two elements.\n4. Move to the next element.\n5. Repeat steps 2-4 until the end of the array is reached.\n6. Return the modified array.\n\nBoth Python and JavaScript use 0-based indexing, so the index value is incremented when a new element is inserted. In C++ and Java, the element is inserted in the beginning of the vector and the index values are adjusted accordingly. This ensures that the algorithm works correctly for all languages. The `gcd` function is implemented using the Euclidean algorithm for calculating the greatest common divisor of two numbers.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

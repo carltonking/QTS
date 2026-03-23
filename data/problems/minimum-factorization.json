@@ -1,0 +1,24 @@
+{
+  "id": 625,
+  "title": "Minimum Factorization",
+  "slug": "minimum-factorization",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a positive integer num, return _the smallest positive integer_ x _whose multiplication of each digit equals_ num. If there is no answer or the answer is not fit in 32-bit signed integer, return 0.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef smallestFactorization(num: int) -> int:\n    if num == 1:\n        return 1\n    result = 0\n    factor = 1\n    for i in range(9, 1, -1):\n        while num % i == 0:\n            num //= i\n            result += i * factor\n            factor *= 10\n            if result > 2**31 - 1:\n                return 0\n    return result if num == 1 else 0\n```\n    \n    The algorithm iterates from 9 to 2 (in reverse order) and divides the input number `num` by the current iterating value `i`. If `num` is completely divisible by `i`, the loop updates `result` by adding the current `i * factor` and updating the `factor` by multiplying it by 10. If `result` ever goes beyond the 32-bit signed integer limit, the function returns 0. The loop continues to iterate and divide `num` until `num` becomes 1 (i.e., all factors have been found) or there are no more appropriate dividers. If `num` is 1, i.e., all factors are found, the result is returned; otherwise, the function returns 0.\n    ",
+    "javascript": "\n    ```javascript\nfunction smallestFactorization(num) {\n    if (num === 1) return 1;\n    let result = 0, factor = 1;\n    for (let i = 9; i > 1; --i) {\n        while (num % i === 0) {\n            num /= i;\n            result += i * factor;\n            factor *= 10;\n            if (result > (2**31 - 1)) return 0;\n        }\n    }\n    return num === 1 ? result : 0;\n}\n```\n    \n    The algorithm iterates from 9 to 2 (in reverse order) and divides the input number `num` by the current iterating value `i`. If `num` is completely divisible by `i`, the loop updates `result` by adding the current `i * factor` and updating the `factor` by multiplying it by 10. If `result` ever goes beyond the 32-bit signed integer limit, the function returns 0. The loop continues to iterate and divide `num` until `num` becomes 1 (i.e., all factors have been found) or there are no more appropriate dividers. If `num` is 1, i.e., all factors are found, the result is returned; otherwise, the function returns 0.\n    ",
+    "java": "\n    ```java\npublic int smallestFactorization(int num) {\n    if (num == 1) return 1;\n    long result = 0, factor = 1;\n    for (int i = 9; i > 1; --i) {\n        while (num % i == 0) {\n            num /= i;\n            result += i * factor;\n            factor *= 10;\n            if (result > Integer.MAX_VALUE) return 0;\n        }\n    }\n    return num == 1 ? (int) result : 0;\n}\n```\n    \n    The algorithm iterates from 9 to 2 (in reverse order) and divides the input number `num` by the current iterating value `i`. If `num` is completely divisible by `i`, the loop updates `result` by adding the current `i * factor` and updating the `factor` by multiplying it by 10. If `result` ever goes beyond the 32-bit signed integer limit, the function returns 0. The loop continues to iterate and divide `num` until `num` becomes 1 (i.e., all factors have been found) or there are no more appropriate dividers. If `num` is 1, i.e., all factors are found, the result is returned; otherwise, the function returns 0.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

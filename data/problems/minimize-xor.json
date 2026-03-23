@@ -1,0 +1,24 @@
+{
+  "id": 2429,
+  "title": "Minimize XOR",
+  "slug": "minimize-xor",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given two positive integers num1 and num2, find the positive integer x such that:\n\n*   x has the same number of set bits as num2, and\n*   The value x XOR num1 is minimal.\n\nNote that XOR is the bitwise XOR operation.\n\nReturn _the integer_ x. The test cases are generated such that x is uniquely determined.\n\nThe number of set bits of an integer is the number of 1's in its binary representation.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minSetXor(num1: int, num2: int) -> int:\n    set_count = bin(num2).count('1')\n    x = 0\n    for i in range(32):\n        if set_count <= 0:\n            break\n        if num2 & (1 << i):\n            x |= (1 << i)\n            set_count -= 1\n    return x ^ num1\n```\n    \n    The algorithm counts the number of set bits in num2, then iterates through each bit position in num2, adding the bit at that position to the integer x if it's set. The loop stops when the number of set bits specified in num2 is reached or all 32 bit positions are checked. Finally, the XOR of the generated x and num1 is calculated and returned as the minimal XOR value.\n    ",
+    "javascript": "\n    ```javascript\nfunction minSetXor(num1, num2) {\n    let set_count = num2.toString(2).split('1').length - 1;\n    let x = 0;\n    for (let i = 0; set_count > 0 && i < 32; i++) {\n        if ((num2 >> i) & 1) {\n            x |= (1 << i);\n            set_count--;\n        }\n    }\n    return x ^ num1;\n}\n```\n    \n    The algorithm counts the number of set bits in num2, then iterates through each bit position in num2, adding the bit at that position to the integer x if it's set. The loop stops when the number of set bits specified in num2 is reached or all 32 bit positions are checked. Finally, the XOR of the generated x and num1 is calculated and returned as the minimal XOR value.\n    ",
+    "java": "\n    ```java\npublic int minSetXor(int num1, int num2) {\n    int set_count = Integer.bitCount(num2);\n    int x = 0;\n    for (int i = 0; set_count > 0 && i < 32; i++) {\n        if ((num2 >> i) & 1) {\n            x |= (1 << i);\n            set_count--;\n        }\n    }\n    return x ^ num1;\n}\n```\n    \n    The algorithm counts the number of set bits in num2, then iterates through each bit position in num2, adding the bit at that position to the integer x if it's set. The loop stops when the number of set bits specified in num2 is reached or all 32 bit positions are checked. Finally, the XOR of the generated x and num1 is calculated and returned as the minimal XOR value.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

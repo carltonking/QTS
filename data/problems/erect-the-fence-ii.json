@@ -1,0 +1,24 @@
+{
+  "id": 1924,
+  "title": "Erect the Fence II",
+  "slug": "erect-the-fence-ii",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a 2D integer array trees where trees[i] = [xi, yi] represents the location of the ith tree in the garden.\n\nYou are asked to fence the entire garden using the minimum length of rope possible. The garden is well-fenced only if all the trees are enclosed and the rope used forms a perfect circle. A tree is considered enclosed if it is inside or on the border of the circle.\n\nMore formally, you must form a circle using the rope with a center (x, y) and radius r where all trees lie inside or on the circle and r is minimum.\n\nReturn _the center and radius of the circle as a length 3 array_ [x, y, r]_._ Answers within 10-5 of the actual answer will be accepted.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_happy_groups(batchSize, groups):\n    remainders = [0] * batchSize\n    for g in groups:\n        remainders[g % batchSize] += 1\n\n    result = remainders[0]\n    i, j = 1, batchSize - 1\n\n    while i < j:\n        result += min(remainders[i], remainders[j])\n        i += 1\n        j -= 1\n\n    if i == j:\n        result += remainders[i] // 2\n\n    return result\n```\n    \n    The solution consists of calculating the remainders of the groups' sizes when divided by the batchSize. This is done to find out how many donuts are left after serving each group. Then, for each possible remainder `i`, we try to pair it with the complement `j` such that `(i + j) % batchSize = 0`. By doing this, we can make both groups happy by rearranging the groups. This is done until `i` is equal to or greater than `j`. If `i == j` (meaning there is only one unique remainder left), then we can make them happy by dividing the group with the same remainder into half. Finally, we return the sum of happy groups found during pairing steps.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxHappyGroups(batchSize, groups) {\n    let remainders = new Array(batchSize).fill(0);\n    for (let g of groups) {\n        remainders[g % batchSize]++;\n    }\n\n    let result = remainders[0];\n    let i = 1, j = batchSize - 1;\n\n    while (i < j) {\n        result += Math.min(remainders[i], remainders[j]);\n        i++;\n        j--;\n    }\n    if (i === j) {\n        result += Math.floor(remainders[i] / 2);\n    }\n\n    return result;\n}\n```\n    \n    The solution consists of calculating the remainders of the groups' sizes when divided by the batchSize. This is done to find out how many donuts are left after serving each group. Then, for each possible remainder `i`, we try to pair it with the complement `j` such that `(i + j) % batchSize = 0`. By doing this, we can make both groups happy by rearranging the groups. This is done until `i` is equal to or greater than `j`. If `i == j` (meaning there is only one unique remainder left), then we can make them happy by dividing the group with the same remainder into half. Finally, we return the sum of happy groups found during pairing steps.\n    ",
+    "java": "\n    ```java\npublic int maxHappyGroups(int batchSize, int[] groups) {\n    int[] remainders = new int[batchSize];\n    for (int g : groups) {\n        remainders[g % batchSize]++;\n    }\n\n    int result = remainders[0];\n    int i = 1, j = batchSize - 1;\n\n    while (i < j) {\n        result += Math.min(remainders[i], remainders[j]);\n        i++;\n        j--;\n    }\n    if (i == j) {\n        result += remainders[i] / 2;\n    }\n\n    return result;\n}\n```\n    \n    The solution consists of calculating the remainders of the groups' sizes when divided by the batchSize. This is done to find out how many donuts are left after serving each group. Then, for each possible remainder `i`, we try to pair it with the complement `j` such that `(i + j) % batchSize = 0`. By doing this, we can make both groups happy by rearranging the groups. This is done until `i` is equal to or greater than `j`. If `i == j` (meaning there is only one unique remainder left), then we can make them happy by dividing the group with the same remainder into half. Finally, we return the sum of happy groups found during pairing steps.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

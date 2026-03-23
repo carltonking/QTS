@@ -1,0 +1,24 @@
+{
+  "id": 643,
+  "title": "Maximum Average Subarray I",
+  "slug": "maximum-average-subarray-i",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an integer array nums consisting of n elements, and an integer k.\n\nFind a contiguous subarray whose length is equal to k that has the maximum average value and return _this value_. Any answer with a calculation error less than 10-5 will be accepted.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findMaxAverage(nums, k):\n    n = len(nums)\n    sum_ = sum(nums[:k])\n    max_avg = sum_ / k\n    for i in range(k, n):\n        sum_ = sum_ - nums[i - k] + nums[i]\n        max_avg = max(max_avg, sum_ / k)\n    return max_avg\n```\n    \n    1. Initialize the sum with the first `k` elements of the input array.\n2. Calculate the average by dividing the sum by `k` and store it in `max_avg`.\n3. Loop through the input array from index `k` to the end.\n4. For each element, update the sum by subtracting the element at the left side of the sliding window (with `k` length) and adding the current element.\n5. Calculate the average again and update the `max_avg` if the current average is higher than the previous `max_avg`.\n6. Return `max_avg` after the loop ends.\n    ",
+    "javascript": "\n    ```javascript\nfunction findMaxAverage(nums, k) {\n    let n = nums.length;\n    let sum = 0;\n    for (let i = 0; i < k; i++) {\n        sum += nums[i];\n    }\n    let max_avg = sum / k;\n    for (let i = k; i < n; i++) {\n        sum = sum - nums[i - k] + nums[i];\n        max_avg = Math.max(max_avg, sum / k);\n    }\n    return max_avg;\n}\n```\n    \n    1. Initialize the sum with the first `k` elements of the input array.\n2. Calculate the average by dividing the sum by `k` and store it in `max_avg`.\n3. Loop through the input array from index `k` to the end.\n4. For each element, update the sum by subtracting the element at the left side of the sliding window (with `k` length) and adding the current element.\n5. Calculate the average again and update the `max_avg` if the current average is higher than the previous `max_avg`.\n6. Return `max_avg` after the loop ends.\n    ",
+    "java": "\n    ```java\npublic double findMaxAverage(int[] nums, int k) {\n    int n = nums.length;\n    double sum = 0;\n    for (int i = 0; i < k; i++) {\n        sum += nums[i];\n    }\n    double max_avg = sum / k;\n    for (int i = k; i < n; i++) {\n        sum = sum - nums[i - k] + nums[i];\n        max_avg = Math.max(max_avg, sum / k);\n    }\n    return max_avg;\n}\n```\n    \n    1. Initialize the sum with the first `k` elements of the input array.\n2. Calculate the average by dividing the sum by `k` and store it in `max_avg`.\n3. Loop through the input array from index `k` to the end.\n4. For each element, update the sum by subtracting the element at the left side of the sliding window (with `k` length) and adding the current element.\n5. Calculate the average again and update the `max_avg` if the current average is higher than the previous `max_avg`.\n6. Return `max_avg` after the loop ends.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

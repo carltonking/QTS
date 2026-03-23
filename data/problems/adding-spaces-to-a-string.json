@@ -1,0 +1,24 @@
+{
+  "id": 2109,
+  "title": "Adding Spaces to a String",
+  "slug": "adding-spaces-to-a-string",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed string s and a 0-indexed integer array spaces that describes the indices in the original string where spaces will be added. Each space should be inserted before the character at the given index.\n\n*   For example, given s = \"EnjoyYourCoffee \" and spaces = [5, 9], we place spaces before 'Y' and 'C', which are at indices 5 and 9 respectively. Thus, we obtain \"Enjoy Your Coffee \".\n\nReturn _the modified string after the spaces have been added._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import Counter\ndef recoverArray(n, sums):\n    counter = Counter(sums)\n    ans = []\n    for _ in range(n):\n        num, _ = counter.most_common(1)[0]\n        counter -= Counter([num] + [prevNum - num for prevNum in ans])\n        ans.append(num)\n    return ans\n```\n\n    \n    The algorithm first initializes a counter (multiset/map) from the input `sums` array. Then, it iterates `n` times, each time finding the highest remaining count key (sum) and removing it from the counter. It also removes the corresponding differences between this key (sum) and previously found keys (sums) from the counter. Finally, it adds the key (sum) to the result array `ans`. Since there will always be at least one correct answer, this algorithm ensures that the result array is one of the valid answers.\n    ",
+    "javascript": "\n    ```javascript\nfunction recoverArray(n, sums) {\n    const counter = new Map();\n    for (const sum of sums) {\n        counter.set(sum, (counter.get(sum) || 0) + 1);\n    }\n    const ans = [];\n    for (let i = 0; i < n; ++i) {\n        const [num, count] = [...counter.entries()].sort((a, b) => b[1] - a[1])[0];\n        counter.set(num, count - 1);\n        for (const prevNum of ans) {\n            const prevCount = counter.get(num - prevNum);\n            if (prevCount === 1) {\n                counter.delete(num - prevNum);\n            } else {\n                counter.set(num - prevNum, count - 1);\n            }\n        }\n        ans.push(num);\n    }\n    return ans;\n}\n```\n\n    \n    The algorithm first initializes a counter (multiset/map) from the input `sums` array. Then, it iterates `n` times, each time finding the highest remaining count key (sum) and removing it from the counter. It also removes the corresponding differences between this key (sum) and previously found keys (sums) from the counter. Finally, it adds the key (sum) to the result array `ans`. Since there will always be at least one correct answer, this algorithm ensures that the result array is one of the valid answers.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\nclass Solution {\n    public int[] recoverArray(int n, int[] sums) {\n        TreeMap<Integer, Integer> map = new TreeMap<>();\n        for (int sum : sums) {\n            map.put(sum, map.getOrDefault(sum, 0) + 1);\n        }\n        int[] ans = new int[n];\n        for (int i = 0; i < n; ++i) {\n            int num = map.firstKey();\n            decrement(map, num);\n            for (int prevNum : ans) {\n                decrement(map, num - prevNum);\n            }\n            ans[i] = num;\n        }\n        return ans;\n    }\n\n    private void decrement(TreeMap<Integer, Integer> map, int key) {\n        int count = map.get(key) - 1;\n        if (count == 0) {\n            map.remove(key);\n        } else {\n            map.put(key, count);\n        }\n    }\n}\n```\n\n    \n    The algorithm first initializes a counter (multiset/map) from the input `sums` array. Then, it iterates `n` times, each time finding the highest remaining count key (sum) and removing it from the counter. It also removes the corresponding differences between this key (sum) and previously found keys (sums) from the counter. Finally, it adds the key (sum) to the result array `ans`. Since there will always be at least one correct answer, this algorithm ensures that the result array is one of the valid answers.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

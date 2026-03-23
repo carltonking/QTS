@@ -1,0 +1,24 @@
+{
+  "id": 2114,
+  "title": "Maximum Number of Words Found in Sentences",
+  "slug": "maximum-number-of-words-found-in-sentences",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "A sentence is a list of words that are separated by a single space with no leading or trailing spaces.\n\nYou are given an array of strings sentences, where each sentences[i] represents a single sentence.\n\nReturn _the maximum number of words that appear in a single sentence_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_sessions(tasks, session_time):\n    sessions = []\n    tasks.sort(reverse=True)\n\n    for task in tasks:\n        added = False\n        for session_idx, session in enumerate(sessions):\n            if session + task <= session_time:\n                sessions[session_idx] += task\n                added = True\n                break\n\n        if not added:\n            sessions.append(task)\n\n    return len(sessions)\n```\n    \n    The algorithm starts by sorting the tasks array in descending order. Then, for each task in tasks, it iterates over the sessions array and tries to insert the task into the first session that has sufficient remaining time. If no session can accommodate the task, a new session is created.\n\nIn the end, the size of the sessions array is the answer, which represents the minimum number of work sessions required to finish all tasks. \n    ",
+    "javascript": "\n    ```javascript\nfunction minSessions(tasks, sessionTime) {\n    const sessions = [];\n    tasks.sort((a, b) => b - a);\n\n    for (let task of tasks) {\n        let added = false;\n        \n        for (let i = 0; i < sessions.length; i++) {\n            if (sessions[i] + task <= sessionTime) {\n                sessions[i] += task;\n                added = true;\n                break;\n            }\n        }\n\n        if (!added) {\n            sessions.push(task);\n        }\n    }\n\n    return sessions.length;\n}\n```\n    \n    The algorithm starts by sorting the tasks array in descending order. Then, for each task in tasks, it iterates over the sessions array and tries to insert the task into the first session that has sufficient remaining time. If no session can accommodate the task, a new session is created.\n\nIn the end, the size of the sessions array is the answer, which represents the minimum number of work sessions required to finish all tasks. \n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.Collections;\nimport java.util.List;\n\npublic int minSessions(int[] tasks, int sessionTime) {\n    List<Integer> sessions = new ArrayList<>();\n    List<Integer> taskList = new ArrayList<>();\n    for (int task : tasks) taskList.add(task);\n    Collections.sort(taskList, Collections.reverseOrder());\n    \n    for (int task : taskList) {\n        boolean added = false;\n        for (int i = 0; i < sessions.size(); i++) {\n            if (sessions.get(i) + task <= sessionTime) {\n                sessions.set(i, sessions.get(i) + task);\n                added = true;\n                break;\n            }\n        }\n        \n        if (!added) {\n            sessions.add(task);\n        }\n    }\n\n    return sessions.size();\n}\n```\n    \n    The algorithm starts by sorting the tasks array in descending order. Then, for each task in tasks, it iterates over the sessions array and tries to insert the task into the first session that has sufficient remaining time. If no session can accommodate the task, a new session is created.\n\nIn the end, the size of the sessions array is the answer, which represents the minimum number of work sessions required to finish all tasks. \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

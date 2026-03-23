@@ -1,0 +1,24 @@
+{
+  "id": 645,
+  "title": "Set Mismatch",
+  "slug": "set-mismatch",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You have a set of integers s, which originally contains all the numbers from 1 to n. Unfortunately, due to some error, one of the numbers in s got duplicated to another number in the set, which results in repetition of one number and loss of another number.\n\nYou are given an integer array nums representing the data status of this set after the error.\n\nFind the number that occurs twice and the number that is missing and return _them in the form of an array_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findErrorNums(nums):\n    result = []\n    for num in nums:\n        index = abs(num) - 1\n        if nums[index] > 0:\n            nums[index] = -nums[index]\n        else:\n            result.append(index + 1)\n    for i, num in enumerate(nums):\n        if num > 0:\n            result.append(i + 1)\n            break\n    return result\n```\n    \n    1. Iterate through the given array, creating and using the index as the absolute value of the current number minus one. By doing this, we visit the indices in a specific order that allows us to mark numbers we have already visited.\n2. If the value at the index is positive, we negate it. If it's negative, it means we found the duplicate number. Store the duplicate number (index + 1) in the result array.\n3. Iterate through the array again to find the first positive value. This index plus one will be the missing number, as others should have been negated in the previous steps.\n4. Add the missing number to the result array and return it.\n    ",
+    "javascript": "\n    ```javascript\nfunction findErrorNums(nums) {\n    let result = [];\n    for (let num of nums) {\n        let index = Math.abs(num) - 1;\n        if (nums[index] > 0) {\n            nums[index] = -nums[index];\n        } else {\n            result.push(index + 1);\n        }\n    }\n    for (let i = 0; i < nums.length; i++) {\n        if (nums[i] > 0) {\n            result.push(i + 1);\n            break;\n        }\n    }\n    return result;\n}\n```\n    \n    1. Iterate through the given array, creating and using the index as the absolute value of the current number minus one. By doing this, we visit the indices in a specific order that allows us to mark numbers we have already visited.\n2. If the value at the index is positive, we negate it. If it's negative, it means we found the duplicate number. Store the duplicate number (index + 1) in the result array.\n3. Iterate through the array again to find the first positive value. This index plus one will be the missing number, as others should have been negated in the previous steps.\n4. Add the missing number to the result array and return it.\n    ",
+    "java": "\n    ```java\npublic int[] findErrorNums(int[] nums) {\n    int[] result = new int[2];\n    for (int num : nums) {\n        int index = Math.abs(num) - 1;\n        if (nums[index] > 0) {\n            nums[index] = -nums[index];\n        } else {\n            result[0] = index + 1;\n        }\n    }\n    for (int i = 0; i < nums.length; i++) {\n        if (nums[i] > 0) {\n            result[1] = i + 1;\n            break;\n        }\n    }\n    return result;\n}\n```\n    \n    1. Iterate through the given array, creating and using the index as the absolute value of the current number minus one. By doing this, we visit the indices in a specific order that allows us to mark numbers we have already visited.\n2. If the value at the index is positive, we negate it. If it's negative, it means we found the duplicate number. Store the duplicate number (index + 1) in the result array.\n3. Iterate through the array again to find the first positive value. This index plus one will be the missing number, as others should have been negated in the previous steps.\n4. Add the missing number to the result array and return it.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

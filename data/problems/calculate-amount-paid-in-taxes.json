@@ -1,0 +1,24 @@
+{
+  "id": 2303,
+  "title": "Calculate Amount Paid in Taxes",
+  "slug": "calculate-amount-paid-in-taxes",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a 0-indexed 2D integer array brackets where brackets[i] = [upperi, percenti] means that the ith tax bracket has an upper bound of upperi and is taxed at a rate of percenti. The brackets are sorted by upper bound (i.e. upperi-1 < upperi for 0 < i < brackets.length).\n\nTax is calculated as follows:\n\n*   The first upper0 dollars earned are taxed at a rate of percent0.\n*   The next upper1 - upper0 dollars earned are taxed at a rate of percent1.\n*   The next upper2 - upper1 dollars earned are taxed at a rate of percent2.\n*   And so on.\n\nYou are given an integer income representing the amount of money you earned. Return _the amount of money that you have to pay in taxes._ Answers within 10-5 of the actual answer will be accepted.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef tax_amount(brackets, income):\n    tax = 0\n    prev_upper = 0\n    for upper, percent in brackets:\n        tax += (min(upper, income) - prev_upper) * (percent / 100)\n        prev_upper = upper\n        if income <= upper:\n            break\n    return tax\n```\n    \n    The algorithm loops through the tax brackets and calculates the tax for each segment. The tax amount for each segment is calculated as `(min(upper, income) - prev_upper) * percent`. We also need to keep track of the previous upper bound, which is why `prev_upper` is initialized to 0 and updated in each iteration. If the income is less than or equal to the current upper bound, we can break out of the loop as the remaining tax segments don't matter.\n\nThe time complexity of this algorithm is O(n), where n is the number of tax brackets.\n    ",
+    "javascript": "\n    ```javascript\nfunction taxAmount(brackets, income) {\n    let tax = 0;\n    let prev_upper = 0;\n    for (let bracket of brackets) {\n        let upper = bracket[0];\n        let percent = bracket[1] / 100;\n        tax += (Math.min(upper, income) - prev_upper) * percent;\n        prev_upper = upper;\n        if (income <= upper) break;\n    }\n    return tax;\n}\n```\n    \n    The algorithm loops through the tax brackets and calculates the tax for each segment. The tax amount for each segment is calculated as `(min(upper, income) - prev_upper) * percent`. We also need to keep track of the previous upper bound, which is why `prev_upper` is initialized to 0 and updated in each iteration. If the income is less than or equal to the current upper bound, we can break out of the loop as the remaining tax segments don't matter.\n\nThe time complexity of this algorithm is O(n), where n is the number of tax brackets.\n    ",
+    "java": "\n    ```java\ndouble taxAmount(int[][] brackets, int income) {\n    double tax = 0;\n    int prev_upper = 0;\n    for (int[] bracket : brackets) {\n        int upper = bracket[0];\n        double percent = bracket[1] / 100.0;\n        tax += (Math.min(upper, income) - prev_upper) * percent;\n        prev_upper = upper;\n        if (income <= upper) break;\n    }\n    return tax;\n}\n```\n    \n    The algorithm loops through the tax brackets and calculates the tax for each segment. The tax amount for each segment is calculated as `(min(upper, income) - prev_upper) * percent`. We also need to keep track of the previous upper bound, which is why `prev_upper` is initialized to 0 and updated in each iteration. If the income is less than or equal to the current upper bound, we can break out of the loop as the remaining tax segments don't matter.\n\nThe time complexity of this algorithm is O(n), where n is the number of tax brackets.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

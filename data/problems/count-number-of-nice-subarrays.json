@@ -1,0 +1,24 @@
+{
+  "id": 1248,
+  "title": "Count Number of Nice Subarrays",
+  "slug": "count-number-of-nice-subarrays",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of integers nums and an integer k. A continuous subarray is called nice if there are k odd numbers on it.\n\nReturn _the number of nice sub-arrays_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, x):\n        self.val = x\n        self.left = None\n        self.right = None\n\ndef can_win(root, x):\n    if not root:\n        return False\n    if root.val == x:\n        left_nodes = 1 + can_win(root.left, x) if root.left else 0\n        right_nodes = 1 + can_win(root.right, x) if root.right else 0\n        return left_nodes % 2 != 0 or right_nodes % 2 != 0\n    return can_win(root.left, x) or can_win(root.right, x)\n```\n    \n    The algorithm is implemented with a recursive `can_win` function which traverses the tree until it finds the node with the value x. Once the node with value x is found, the number of nodes in the left subtree and the right subtree is calculated. If either the left subtree nodes or the right subtree nodes is odd, then player 2 is guaranteed to win by choosing node y on the side with an odd number of nodes. Otherwise, the function returns false which means it's not possible for player 2 to ensure a win.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(val) {\n        this.val = val;\n        this.left = null;\n        this.right = null;\n    }\n}\n\nfunction canWin(root, x) {\n    if (!root) return false;\n    if (root.val === x) {\n        let leftNodes = 0, rightNodes = 0;\n        if (root.left) leftNodes = 1 + canWin(root.left, x);\n        if (root.right) rightNodes = 1 + canWin(root.right, x);\n        return leftNodes % 2 !== 0 || rightNodes % 2 !== 0;\n    }\n    return canWin(root.left, x) || canWin(root.right, x);\n}\n```\n    \n    The algorithm is implemented with a recursive `can_win` function which traverses the tree until it finds the node with the value x. Once the node with value x is found, the number of nodes in the left subtree and the right subtree is calculated. If either the left subtree nodes or the right subtree nodes is odd, then player 2 is guaranteed to win by choosing node y on the side with an odd number of nodes. Otherwise, the function returns false which means it's not possible for player 2 to ensure a win.\n    ",
+    "java": "\n    ```java\npublic class TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n    TreeNode(int x) { val = x; }\n}\n\npublic boolean canWin(TreeNode root, int x) {\n    if (root == null) return false;\n    if (root.val == x) {\n        int leftNodes = 0, rightNodes = 0;\n        if (root.left != null) leftNodes = 1 + canWin(root.left, x);\n        if (root.right != null) rightNodes = 1 + canWin(root.right, x);\n        return leftNodes % 2 != 0 || rightNodes % 2 != 0;\n    }\n    return canWin(root.left, x) || canWin(root.right, x);\n}\n```\n    \n    The algorithm is implemented with a recursive `can_win` function which traverses the tree until it finds the node with the value x. Once the node with value x is found, the number of nodes in the left subtree and the right subtree is calculated. If either the left subtree nodes or the right subtree nodes is odd, then player 2 is guaranteed to win by choosing node y on the side with an odd number of nodes. Otherwise, the function returns false which means it's not possible for player 2 to ensure a win.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

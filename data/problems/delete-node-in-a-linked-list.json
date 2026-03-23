@@ -1,0 +1,24 @@
+{
+  "id": 237,
+  "title": "Delete Node in a Linked List",
+  "slug": "delete-node-in-a-linked-list",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There is a singly-linked list head and we want to delete a node node in it.\n\nYou are given the node to be deleted node. You will not be given access to the first node of head.\n\nAll the values of the linked list are unique, and it is guaranteed that the given node node is not the last node in the linked list.\n\nDelete the given node. Note that by deleting the node, we do not mean removing it from memory. We mean:\n\n*   The value of the given node should not exist in the linked list.\n*   The number of nodes in the linked list should decrease by one.\n*   All the values before node should be in the same order.\n*   All the values after node should be in the same order.\n\nCustom testing:\n\n*   For the input, you should provide the entire linked list head and the node to be given node. node should not be the last node of the list and should be an actual node in the list.\n*   We will build the linked list and pass the node to your function.\n*   The output will be the entire list after calling your function.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef deleteNode(node):\n    next_node = node.next\n    node.val = next_node.val\n    node.next = next_node.next\n```\n    \n    The function takes in a node of the singly-linked list, which is the one to be deleted. Since we don't have access to the head of the list, we can't traverse the list to find the previous node.\n\nThe idea here is to replace the given node's value with the next node's value, and then update the given node's next pointer to skip the next node, effectively deleting the next node. Finally, we delete the next node if the language requires explicit memory management (e.g., C++).\n\nThis approach won't work if the node to be deleted is the tail of the list, but the problem statement guarantees that it won't be a tail node.\n    ",
+    "javascript": "\n    ```javascript\nfunction deleteNode(node) {\n    const nextNode = node.next;\n    node.val = nextNode.val;\n    node.next = nextNode.next;\n}\n```\n    \n    The function takes in a node of the singly-linked list, which is the one to be deleted. Since we don't have access to the head of the list, we can't traverse the list to find the previous node.\n\nThe idea here is to replace the given node's value with the next node's value, and then update the given node's next pointer to skip the next node, effectively deleting the next node. Finally, we delete the next node if the language requires explicit memory management (e.g., C++).\n\nThis approach won't work if the node to be deleted is the tail of the list, but the problem statement guarantees that it won't be a tail node.\n    ",
+    "java": "\n    ```java\npublic void deleteNode(ListNode node) {\n    ListNode nextNode = node.next;\n    node.val = nextNode.val;\n    node.next = nextNode.next;\n}\n```\n    \n    The function takes in a node of the singly-linked list, which is the one to be deleted. Since we don't have access to the head of the list, we can't traverse the list to find the previous node.\n\nThe idea here is to replace the given node's value with the next node's value, and then update the given node's next pointer to skip the next node, effectively deleting the next node. Finally, we delete the next node if the language requires explicit memory management (e.g., C++).\n\nThis approach won't work if the node to be deleted is the tail of the list, but the problem statement guarantees that it won't be a tail node.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

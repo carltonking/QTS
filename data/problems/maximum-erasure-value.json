@@ -1,0 +1,24 @@
+{
+  "id": 1695,
+  "title": "Maximum Erasure Value",
+  "slug": "maximum-erasure-value",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array of positive integers nums and want to erase a subarray containing unique elements. The score you get by erasing the subarray is equal to the sum of its elements.\n\nReturn _the maximum score you can get by erasing exactly one subarray._\n\nAn array b is called to be a subarray of a if it forms a contiguous subsequence of a, that is, if it is equal to a[l],a[l+1],...,a[r] for some (l,r).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom typing import List\n\ndef maxSumRangeQuery(nums: List[int], requests: List[List[int]]) -> int:\n    mod = 10**9 + 7\n    n = len(nums)\n    cnt = [0] * n\n    \n    for req in requests:\n        cnt[req[0]] += 1\n        if req[1] + 1 < n:\n            cnt[req[1] + 1] -= 1\n    \n    for i in range(1, n):\n        cnt[i] += cnt[i - 1]\n    \n    nums.sort()\n    cnt.sort()\n    \n    ans = sum(nums[i] * cnt[i] for i in range(n)) % mod\n    \n    return ans\n```\n    \n    1. Initialize an array `cnt` of the same length as `nums` and set all elements to 0.\n2. For each request `[starti, endi]`, increment `cnt[starti]` and decrement `cnt[endi + 1]` if `endi + 1` is within the bounds of the array.\n3. For each successive element in `cnt` starting from index 1, add the element at the previous index to it, thereby obtaining the prefix sum of the `cnt` array.\n4. Sort both `nums` and `cnt` in ascending order.\n5. Compute the sum by multiplying each element in `nums` with the corresponding element in `cnt`. Because the multiplication may cause overflow, this operation modulo 1e9 + 7 is taken.\n6. Return the total sum modulo 1e9 + 7.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxSumRangeQuery(nums, requests) {\n    const n = nums.length;\n    const cnt = new Array(n).fill(0);\n    const mod = 1e9 + 7;\n\n    for (const req of requests) {\n        cnt[req[0]]++;\n        if (req[1] + 1 < n) cnt[req[1] + 1]--;\n    }\n\n    for (let i = 1; i < n; i++) {\n        cnt[i] += cnt[i - 1];\n    }\n\n    nums.sort((a, b) => a - b);\n    cnt.sort((a, b) => a - b);\n\n    let ans = 0;\n    for (let i = 0; i < n; i++) {\n        ans += (BigInt(nums[i]) * BigInt(cnt[i])) % mod;\n    }\n\n    return Number(ans % mod);\n}\n```\n    \n    1. Initialize an array `cnt` of the same length as `nums` and set all elements to 0.\n2. For each request `[starti, endi]`, increment `cnt[starti]` and decrement `cnt[endi + 1]` if `endi + 1` is within the bounds of the array.\n3. For each successive element in `cnt` starting from index 1, add the element at the previous index to it, thereby obtaining the prefix sum of the `cnt` array.\n4. Sort both `nums` and `cnt` in ascending order.\n5. Compute the sum by multiplying each element in `nums` with the corresponding element in `cnt`. Because the multiplication may cause overflow, this operation modulo 1e9 + 7 is taken.\n6. Return the total sum modulo 1e9 + 7.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\nclass Solution {\n    public int maxSumRangeQuery(int[] nums, int[][] requests) {\n        int n = nums.length;\n        int[] cnt = new int[n];\n        int mod = (int) 1e9 + 7;\n\n        for (int[] req : requests) {\n            cnt[req[0]]++;\n            if (req[1] + 1 < n) cnt[req[1] + 1]--;\n        }\n\n        for (int i = 1; i < n; i++) {\n            cnt[i] += cnt[i - 1];\n        }\n\n        Arrays.sort(nums);\n        Arrays.sort(cnt);\n\n        long ans = 0;\n        for (int i = 0; i < n; i++) {\n            ans += (long) nums[i] * cnt[i];\n            ans %= mod;\n        }\n\n        return (int) ans;\n    }\n}\n```\n    \n    1. Initialize an array `cnt` of the same length as `nums` and set all elements to 0.\n2. For each request `[starti, endi]`, increment `cnt[starti]` and decrement `cnt[endi + 1]` if `endi + 1` is within the bounds of the array.\n3. For each successive element in `cnt` starting from index 1, add the element at the previous index to it, thereby obtaining the prefix sum of the `cnt` array.\n4. Sort both `nums` and `cnt` in ascending order.\n5. Compute the sum by multiplying each element in `nums` with the corresponding element in `cnt`. Because the multiplication may cause overflow, this operation modulo 1e9 + 7 is taken.\n6. Return the total sum modulo 1e9 + 7.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

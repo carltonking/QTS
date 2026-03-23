@@ -1,0 +1,24 @@
+{
+  "id": 2569,
+  "title": "Handling Sum Queries After Update",
+  "slug": "handling-sum-queries-after-update",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given two 0-indexed arrays nums1 and nums2 and a 2D array queries of queries. There are three types of queries:\n\n1.  For a query of type 1, queries[i] = [1, l, r]. Flip the values from 0 to 1 and from 1 to 0 in nums1 from index l to index r. Both l and r are 0-indexed.\n2.  For a query of type 2, queries[i] = [2, p, 0]. For every index 0 <= i < n, set nums2[i] = nums2[i] + nums1[i] * p.\n3.  For a query of type 3, queries[i] = [3, 0, 0]. Find the sum of the elements in nums2.\n\nReturn _an array containing all the answers to the third type queries._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef solve(nums1, nums2, queries):\n    res = []\n    for q in queries:\n        if q[0] == 1:\n            for i in range(q[1], q[2] + 1):\n                nums1[i] ^= 1\n        elif q[0] == 2:\n            for i in range(len(nums1)):\n                nums2[i] += nums1[i] * q[1]\n        elif q[0] == 3:\n            res.append(sum(nums2))\n    return res\n```\n\n    \n    The function goes through each query in `queries` and checks the type of the query.\n- For type 1 query, it iterates from the left index `l` to the right index `r` and flips the bits in `nums1` by XORing them with 1.\n- For type 2 query, it updates the `nums2` array by adding the multiplication of `nums1[i]` and `p` to `nums2[i]` for each i in the range of `nums1`.\n- For type 3 query, it calculates the sum of the elements in `nums2` and adds it to the `res` list.\n\nFinally, the function returns the `res` list.\n    ",
+    "javascript": "\n    ```javascript\nfunction solve(nums1, nums2, queries) {\n    const res = [];\n    for (const q of queries) {\n        if (q[0] === 1) {\n            for (let i = q[1]; i <= q[2]; i++) {\n                nums1[i] ^= 1;\n            }\n        } else if (q[0] === 2) {\n            for (let i = 0; i < nums1.length; i++) {\n                nums2[i] += nums1[i] * q[1];\n            }\n        } else if (q[0] === 3) {\n            res.push(nums2.reduce((a, b) => a + b, 0));\n        }\n    }\n    return res;\n}\n```\n\n    \n    The function goes through each query in `queries` and checks the type of the query.\n- For type 1 query, it iterates from the left index `l` to the right index `r` and flips the bits in `nums1` by XORing them with 1.\n- For type 2 query, it updates the `nums2` array by adding the multiplication of `nums1[i]` and `p` to `nums2[i]` for each i in the range of `nums1`.\n- For type 3 query, it calculates the sum of the elements in `nums2` and adds it to the `res` list.\n\nFinally, the function returns the `res` list.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<Integer> solve(int[] nums1, int[] nums2, int[][] queries) {\n    List<Integer> res = new ArrayList<>();\n    for (int[] q : queries) {\n        if (q[0] == 1) {\n            for (int i = q[1]; i <= q[2]; i++) {\n                nums1[i] ^= 1;\n            }\n        } else if (q[0] == 2) {\n            for (int i = 0; i < nums1.length; i++) {\n                nums2[i] += nums1[i] * q[1];\n            }\n        } else if (q[0] == 3) {\n            int sum = 0;\n            for (int num : nums2) {\n                sum += num;\n            }\n            res.add(sum);\n        }\n    }\n    return res;\n}\n```\n\n    \n    The function goes through each query in `queries` and checks the type of the query.\n- For type 1 query, it iterates from the left index `l` to the right index `r` and flips the bits in `nums1` by XORing them with 1.\n- For type 2 query, it updates the `nums2` array by adding the multiplication of `nums1[i]` and `p` to `nums2[i]` for each i in the range of `nums1`.\n- For type 3 query, it calculates the sum of the elements in `nums2` and adds it to the `res` list.\n\nFinally, the function returns the `res` list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

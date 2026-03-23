@@ -1,0 +1,24 @@
+{
+  "id": 2315,
+  "title": "Count Asterisks",
+  "slug": "count-asterisks",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a string s, where every two consecutive vertical bars '|' are grouped into a pair. In other words, the 1st and 2nd '|' make a pair, the 3rd and 4th '|' make a pair, and so forth.\n\nReturn _the number of_ '*' _in_ s_, excluding the_ '*' _between each pair of_ '|'.\n\nNote that each '|' will belong to exactly one pair.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_stars_except_between_pair(s: str) -> int:\n    count = 0\n    pipe_count = 0\n\n    for c in s:\n        if c == '|':\n            pipe_count += 1\n        elif c == '*' and pipe_count % 2 == 0:\n            count += 1\n\n    return count\n```\n\n    \n    The algorithm loops through the string with a simple for loop iterating on characters. It keeps track of the number of pipes encountered (pipeCount) and the total count of stars. If a pipe is encountered, increment pipeCount. If a star is encountered and pipeCount is even, increment the count. This condition (pipeCount % 2 == 0) ensures we are not considering stars between a pair of vertical bars. Finally, return the count of stars after processing the entire string.\n    ",
+    "javascript": "\n    ```javascript\nfunction countStarsExceptBetweenPair(s) {\n    let count = 0;\n    let pipeCount = 0;\n\n    for (let c of s) {\n        if (c === '|') {\n            pipeCount++;\n        } else if (c === '*' && pipeCount % 2 === 0) {\n            count++;\n        }\n    }\n\n    return count;\n}\n```\n\n    \n    The algorithm loops through the string with a simple for loop iterating on characters. It keeps track of the number of pipes encountered (pipeCount) and the total count of stars. If a pipe is encountered, increment pipeCount. If a star is encountered and pipeCount is even, increment the count. This condition (pipeCount % 2 == 0) ensures we are not considering stars between a pair of vertical bars. Finally, return the count of stars after processing the entire string.\n    ",
+    "java": "\n    ```java\npublic int countStarsExceptBetweenPair(String s) {\n    int count = 0;\n    int pipeCount = 0;\n\n    for (char c : s.toCharArray()) {\n        if (c == '|') {\n            pipeCount++;\n        } else if (c == '*' && pipeCount % 2 == 0) {\n            count++;\n        }\n    }\n\n    return count;\n}\n```\n\n    \n    The algorithm loops through the string with a simple for loop iterating on characters. It keeps track of the number of pipes encountered (pipeCount) and the total count of stars. If a pipe is encountered, increment pipeCount. If a star is encountered and pipeCount is even, increment the count. This condition (pipeCount % 2 == 0) ensures we are not considering stars between a pair of vertical bars. Finally, return the count of stars after processing the entire string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

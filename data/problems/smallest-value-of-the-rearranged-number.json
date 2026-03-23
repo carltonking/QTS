@@ -1,0 +1,24 @@
+{
+  "id": 2165,
+  "title": "Smallest Value of the Rearranged Number",
+  "slug": "smallest-value-of-the-rearranged-number",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer num. Rearrange the digits of num such that its value is minimized and it does not contain any leading zeros.\n\nReturn _the rearranged number with minimal value_.\n\nNote that the sign of the number does not change after rearranging the digits.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom typing import List, Tuple\n\ndef plates_between_candles(s: str, queries: List[Tuple[int, int]]) -> List[int]:\n    n = len(s)\n    prefix = [0] * n\n    plates = 0\n    \n    for i in range(1, n):\n        prefix[i] = prefix[i - 1]\n        if s[i] == '*' and s[i - 1] == '|':\n            plates += 1\n        prefix[i] += plates\n    \n    res = []\n    for left, right in queries:\n        res.append(prefix[right] - (prefix[left - 1] if left > 0 else 0))\n    \n    return res\n```\n    \n    1. Calculate the prefix sum of plates between candles for the entire string `s`. The `prefix` array will store this information.\n2. Loop through `s` from the second character (i.e., index 1) to the end:\n   a. Update the prefix sum for each index by adding the previous prefix sum.\n   b. If the current character is a plate '*' and the previous character is a candle '|', increment the plates counter.\n   c. Add the plates counter to the prefix sum.\n3. Initialize an empty result array to store the answers for each query.\n4. For each query, calculate the number of plates between candles in the substring by subtracting the prefix sum at index `left - 1` from the sum at index `right`. Ensure the value at `left - 1` is not negative.\n5. Add the result of each query to the result array and return it.\n    ",
+    "javascript": "\n    ```javascript\nfunction platesBetweenCandles(s, queries) {\n    const n = s.length;\n    const prefix = new Array(n).fill(0);\n    let plates = 0;\n\n    for (let i = 1; i < n; ++i) {\n        prefix[i] = prefix[i - 1];\n        if (s[i] === '*' && s[i - 1] === '|') plates++;\n        prefix[i] += plates;\n    }\n    const res = [];\n\n    for (const q of queries) {\n        const left = q[0], right = q[1];\n        res.push(prefix[right] - (left > 0 ? prefix[left - 1] : 0));\n    }\n\n    return res;\n}\n```\n    \n    1. Calculate the prefix sum of plates between candles for the entire string `s`. The `prefix` array will store this information.\n2. Loop through `s` from the second character (i.e., index 1) to the end:\n   a. Update the prefix sum for each index by adding the previous prefix sum.\n   b. If the current character is a plate '*' and the previous character is a candle '|', increment the plates counter.\n   c. Add the plates counter to the prefix sum.\n3. Initialize an empty result array to store the answers for each query.\n4. For each query, calculate the number of plates between candles in the substring by subtracting the prefix sum at index `left - 1` from the sum at index `right`. Ensure the value at `left - 1` is not negative.\n5. Add the result of each query to the result array and return it.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\nclass Solution {\n    public List<Integer> platesBetweenCandles(String s, int[][] queries) {\n        int n = s.length();\n        int[] prefix = new int[n];\n        int plates = 0;\n        for (int i = 1; i < n; ++i) {\n            prefix[i] = prefix[i - 1];\n            if (s.charAt(i) == '*' && s.charAt(i - 1) == '|') {\n                plates++;\n            }\n            prefix[i] += plates;\n        }\n        List<Integer> res = new ArrayList<>();\n        for (int[] q : queries) {\n            int left = q[0], right = q[1];\n            res.add(prefix[right] - (left > 0 ? prefix[left - 1] : 0));\n        }\n        return res;\n    }\n}\n```\n    \n    1. Calculate the prefix sum of plates between candles for the entire string `s`. The `prefix` array will store this information.\n2. Loop through `s` from the second character (i.e., index 1) to the end:\n   a. Update the prefix sum for each index by adding the previous prefix sum.\n   b. If the current character is a plate '*' and the previous character is a candle '|', increment the plates counter.\n   c. Add the plates counter to the prefix sum.\n3. Initialize an empty result array to store the answers for each query.\n4. For each query, calculate the number of plates between candles in the substring by subtracting the prefix sum at index `left - 1` from the sum at index `right`. Ensure the value at `left - 1` is not negative.\n5. Add the result of each query to the result array and return it.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

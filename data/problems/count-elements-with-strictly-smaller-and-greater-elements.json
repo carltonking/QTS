@@ -1,0 +1,24 @@
+{
+  "id": 2148,
+  "title": "Count Elements With Strictly Smaller and Greater Elements ",
+  "slug": "count-elements-with-strictly-smaller-and-greater-elements",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer array nums, return _the number of elements that have both a strictly smaller and a strictly greater element appear in_ nums.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_moves(seats, students):\n    seats.sort()\n    students.sort()\n\n    moves = 0\n    for i in range(len(seats)):\n        moves += abs(seats[i] - students[i])\n    return moves\n```\n    \n    1. Sort both the `seats` and `students` arrays in ascending order. \n   This ensures that students will be paired up with the nearest available seat.\n2. Initialize a variable `moves` to store the total number of moves.\n3. Iterate through both arrays simultaneously using a single index.\n4. In each iteration, add the absolute difference between the current seat and student position to the `moves` variable.\n5. After the iteration, return the `moves` variable for the minimum number of moves required.\n\nNote: This solution assumes that the input arrays have the same length and are non-empty.\n    ",
+    "javascript": "\n    ```javascript\nfunction minMoves(seats, students) {\n    seats.sort((a, b) => a - b);\n    students.sort((a, b) => a - b);\n\n    let moves = 0;\n    for (let i = 0; i < seats.length; i++) {\n        moves += Math.abs(seats[i] - students[i]);\n    }\n    return moves;\n}\n```\n    \n    1. Sort both the `seats` and `students` arrays in ascending order. \n   This ensures that students will be paired up with the nearest available seat.\n2. Initialize a variable `moves` to store the total number of moves.\n3. Iterate through both arrays simultaneously using a single index.\n4. In each iteration, add the absolute difference between the current seat and student position to the `moves` variable.\n5. After the iteration, return the `moves` variable for the minimum number of moves required.\n\nNote: This solution assumes that the input arrays have the same length and are non-empty.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int minMoves(int[] seats, int[] students) {\n    Arrays.sort(seats);\n    Arrays.sort(students);\n\n    int moves = 0;\n    for (int i = 0; i < seats.length; i++) {\n        moves += Math.abs(seats[i] - students[i]);\n    }\n    return moves;\n}\n```\n    \n    1. Sort both the `seats` and `students` arrays in ascending order. \n   This ensures that students will be paired up with the nearest available seat.\n2. Initialize a variable `moves` to store the total number of moves.\n3. Iterate through both arrays simultaneously using a single index.\n4. In each iteration, add the absolute difference between the current seat and student position to the `moves` variable.\n5. After the iteration, return the `moves` variable for the minimum number of moves required.\n\nNote: This solution assumes that the input arrays have the same length and are non-empty.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1182,
+  "title": "Shortest Distance to Target Color",
+  "slug": "shortest-distance-to-target-color",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array colors, in which there are three colors: 1, 2 and 3.\n\nYou are also given some queries. Each query consists of two integers i and c, return the shortest distance between the given index i and the target color c. If there is no solution return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef shortestDistance(colors, queries):\n    result = []\n    positions = [[] for _ in range(3)]\n\n    for i, color in enumerate(colors):\n        positions[color - 1].append(i)\n\n    for query in queries:\n        index_positions = positions[query[1] - 1]\n\n        if not index_positions:\n            result.append(-1)\n        else:\n            dist = float('inf')\n\n            for pos in index_positions:\n                dist = min(dist, abs(pos - query[0]))\n\n            result.append(dist)\n\n    return result\n```\n    \n    The algorithm maintains a list with 3 inner lists (named `positions`), representing the positions where each color (`1`, `2`, or `3`) appear in the input list `colors`. \n\nFor each query, we get the index positions of the target color (query[1]) from the `positions` list. If there are no index positions, we append `-1` to our `result` list. Otherwise, we calculate the distance between each target color position and the index `i` given in the query by finding the absolute difference of their indices. We keep the minimum distance found, and append it to our `result` list.\n\nFinally, we return the `result` list containing the shortest distances for each query.\n    ",
+    "javascript": "\n    ```javascript\nfunction shortestDistance(colors, queries) {\n    const result = [];\n    const positions = [[], [], []];\n\n    colors.forEach((color, i) => {\n        positions[color - 1].push(i);\n    });\n\n    queries.forEach(query => {\n        const indexPositions = positions[query[1] - 1];\n\n        if (!indexPositions.length) {\n            result.push(-1);\n        } else {\n            let dist = Infinity;\n\n            indexPositions.forEach(pos => {\n                dist = Math.min(dist, Math.abs(pos - query[0]));\n            });\n\n            result.push(dist);\n        }\n    });\n\n    return result;\n}\n```\n    \n    The algorithm maintains a list with 3 inner lists (named `positions`), representing the positions where each color (`1`, `2`, or `3`) appear in the input list `colors`. \n\nFor each query, we get the index positions of the target color (query[1]) from the `positions` list. If there are no index positions, we append `-1` to our `result` list. Otherwise, we calculate the distance between each target color position and the index `i` given in the query by finding the absolute difference of their indices. We keep the minimum distance found, and append it to our `result` list.\n\nFinally, we return the `result` list containing the shortest distances for each query.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<Integer> shortestDistance(int[] colors, int[][] queries) {\n    List<Integer> result = new ArrayList<>();\n    List<List<Integer>> positions = new ArrayList<>(3);\n\n    for (int i = 0; i < 3; i++) {\n        positions.add(new ArrayList<>());\n    }\n\n    for (int i = 0; i < colors.length; i++) {\n        positions.get(colors[i] - 1).add(i);\n    }\n\n    for (int[] query : queries) {\n        List<Integer> indexPositions = positions.get(query[1] - 1);\n\n        if (indexPositions.isEmpty()) {\n            result.add(-1);\n        } else {\n            int dist = Integer.MAX_VALUE;\n\n            for (int pos : indexPositions) {\n                dist = Math.min(dist, Math.abs(pos - query[0]));\n            }\n\n            result.add(dist);\n        }\n    }\n\n    return result;\n}\n```\n    \n    The algorithm maintains a list with 3 inner lists (named `positions`), representing the positions where each color (`1`, `2`, or `3`) appear in the input list `colors`. \n\nFor each query, we get the index positions of the target color (query[1]) from the `positions` list. If there are no index positions, we append `-1` to our `result` list. Otherwise, we calculate the distance between each target color position and the index `i` given in the query by finding the absolute difference of their indices. We keep the minimum distance found, and append it to our `result` list.\n\nFinally, we return the `result` list containing the shortest distances for each query.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

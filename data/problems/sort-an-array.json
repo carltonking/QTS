@@ -1,0 +1,24 @@
+{
+  "id": 912,
+  "title": "Sort an Array",
+  "slug": "sort-an-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of integers nums, sort the array in ascending order and return it.\n\nYou must solve the problem without using any built-in functions in O(nlog(n)) time complexity and with the smallest space complexity possible.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nimport random\nfrom bisect import bisect_left\n\nclass Solution:\n\n    def __init__(self, w: List[int]):\n        self.prefix_sum = []\n        for weight in w:\n            previous = self.prefix_sum[-1] if self.prefix_sum else 0\n            self.prefix_sum.append(previous + weight)\n\n    def pickIndex(self) -> int:\n        num = random.random() * self.prefix_sum[-1]\n        return bisect_left(self.prefix_sum, num)\n```\n    \n    The algorithm uses prefix sum to store the accumulated weights in an array (prefixSum). Then, it generates a random number (num) in the range of [0, sum(w)). To search for the index i such that prefixSum[i-1] < num <= prefixSum[i], C++ uses the `std::lower_bound` function, Python uses the `bisect_left` function, and Java and JavaScript use a while loop. This index i is the one picked according to the given probabilities, and the function returns it.\n    ",
+    "javascript": "\n    ```javascript\nclass Solution {\n    constructor(w) {\n        this.prefixSum = [];\n        this.prefixSum[0] = w[0];\n        for (let i = 1; i < w.length; i++) {\n            this.prefixSum[i] = this.prefixSum[i - 1] + w[i];\n        }\n    }\n\n    pickIndex() {\n        const num = Math.random() * this.prefixSum[this.prefixSum.length - 1];\n        let idx = 0;\n        while (num >= this.prefixSum[idx]) {\n            idx++;\n        }\n        return idx;\n    }\n}\n```\n    \n    The algorithm uses prefix sum to store the accumulated weights in an array (prefixSum). Then, it generates a random number (num) in the range of [0, sum(w)). To search for the index i such that prefixSum[i-1] < num <= prefixSum[i], C++ uses the `std::lower_bound` function, Python uses the `bisect_left` function, and Java and JavaScript use a while loop. This index i is the one picked according to the given probabilities, and the function returns it.\n    ",
+    "java": "\n    ```java\nimport java.util.Random;\n\nclass Solution {\n    private int[] prefixSum;\n    private Random random;\n    \n    public Solution(int[] w) {\n        prefixSum = new int[w.length];\n        prefixSum[0] = w[0];\n        for (int i = 1; i < w.length; i++) {\n            prefixSum[i] = prefixSum[i - 1] + w[i];\n        }\n        random = new Random();\n    }\n    \n    public int pickIndex() {\n        int num = random.nextInt(prefixSum[prefixSum.length - 1]) + 1;\n        int idx = 0;\n        while (num > prefixSum[idx]) {\n            idx++;\n        }\n        return idx;\n    }\n}\n```\n    \n    The algorithm uses prefix sum to store the accumulated weights in an array (prefixSum). Then, it generates a random number (num) in the range of [0, sum(w)). To search for the index i such that prefixSum[i-1] < num <= prefixSum[i], C++ uses the `std::lower_bound` function, Python uses the `bisect_left` function, and Java and JavaScript use a while loop. This index i is the one picked according to the given probabilities, and the function returns it.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

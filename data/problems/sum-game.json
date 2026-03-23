@@ -1,0 +1,24 @@
+{
+  "id": 1927,
+  "title": "Sum Game",
+  "slug": "sum-game",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Alice and Bob take turns playing a game, with Alice starting first.\n\nYou are given a string num of even length consisting of digits and '?' characters. On each turn, a player will do the following if there is still at least one '?' in num:\n\n1.  Choose an index i where num[i] == '?'.\n2.  Replace num[i] with any digit between '0' and '9'.\n\nThe game ends when there are no more '?' characters in num.\n\nFor Bob to win, the sum of the digits in the first half of num must be equal to the sum of the digits in the second half. For Alice to win, the sums must not be equal.\n\n*   For example, if the game ended with num = \"243801 \", then Bob wins because 2+4+3 = 8+0+1. If the game ended with num = \"243803 \", then Alice wins because 2+4+3 != 8+0+3.\n\nAssuming Alice and Bob play optimally, return true _if Alice will win and_ false _if Bob will win_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_ascending_sum(nums):\n    max_sum = current_sum = nums[0]\n\n    for i in range(1, len(nums)):\n        if nums[i] > nums[i - 1]:\n            current_sum += nums[i]\n        else:\n            max_sum = max(max_sum, current_sum)\n            current_sum = nums[i]\n\n    return max(max_sum, current_sum)\n```\n    \n    1. Initialize `maxSum` and `currentSum` as the first element of the input array.\n2. Iterate through the input array, starting from the second element.\n3. If the current element is greater than the previous element, add the current element to `currentSum`. Else, Compare and get the maximum between `maxSum` and `currentSum`, and set `currentSum` to the current element.\n4. After iteration, compare and get the maximum between `maxSum` and `currentSum` one last time, and return the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxAscendingSum(nums) {\n    let maxSum = 0, currentSum = nums[0];\n\n    for (let i = 1; i < nums.length; ++i) {\n        if (nums[i] > nums[i - 1]) {\n            currentSum += nums[i];\n        } else {\n            maxSum = Math.max(maxSum, currentSum);\n            currentSum = nums[i];\n        }\n    }\n\n    return Math.max(maxSum, currentSum);\n}\n```\n    \n    1. Initialize `maxSum` and `currentSum` as the first element of the input array.\n2. Iterate through the input array, starting from the second element.\n3. If the current element is greater than the previous element, add the current element to `currentSum`. Else, Compare and get the maximum between `maxSum` and `currentSum`, and set `currentSum` to the current element.\n4. After iteration, compare and get the maximum between `maxSum` and `currentSum` one last time, and return the result.\n    ",
+    "java": "\n    ```java\npublic int maxAscendingSum(int[] nums) {\n    int maxSum = 0, currentSum = nums[0];\n\n    for (int i = 1; i < nums.length; ++i) {\n        if (nums[i] > nums[i - 1]) {\n            currentSum += nums[i];\n        } else {\n            maxSum = Math.max(maxSum, currentSum);\n            currentSum = nums[i];\n        }\n    }\n\n    return Math.max(maxSum, currentSum);\n}\n```\n    \n    1. Initialize `maxSum` and `currentSum` as the first element of the input array.\n2. Iterate through the input array, starting from the second element.\n3. If the current element is greater than the previous element, add the current element to `currentSum`. Else, Compare and get the maximum between `maxSum` and `currentSum`, and set `currentSum` to the current element.\n4. After iteration, compare and get the maximum between `maxSum` and `currentSum` one last time, and return the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

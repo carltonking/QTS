@@ -1,0 +1,24 @@
+{
+  "id": 755,
+  "title": "Pour Water",
+  "slug": "pour-water",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an elevation map represents as an integer array heights where heights[i] representing the height of the terrain at index i. The width at each index is 1. You are also given two integers volume and k. volume units of water will fall at index k.\n\nWater first drops at the index k and rests on top of the highest terrain or water at that index. Then, it flows according to the following rules:\n\n*   If the droplet would eventually fall by moving left, then move left.\n*   Otherwise, if the droplet would eventually fall by moving right, then move right.\n*   Otherwise, rise to its current position.\n\nHere, \"eventually fall \" means that the droplet will eventually be at a lower level if it moves in that direction. Also, level means the height of the terrain plus any water in that column.\n\nWe can assume there is infinitely high terrain on the two sides out of bounds of the array. Also, there could not be partial water being spread out evenly on more than one grid block, and each unit of water has to be in exactly one block.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_moves(target: int) -> int:\n    target = abs(target)\n    step = 0\n    total = 0\n    while total < target or (total - target) % 2 != 0:\n        step += 1\n        total += step\n    return step\n```\n\n    \n    The algorithm works as follows:\n1. Make sure the target is a positive integer by taking its absolute value.\n2. Initialize the `step` and `sum` variables to 0.\n3. Keep incrementing the `step` value by 1 and add it to the `sum` until the following condition is satisfied: `(sum >= target) && ((sum - target) % 2 == 0)`\n4. Return the minimum number of steps required to reach the destination, which will be the value of `step` at the end of the loop.\n    ",
+    "javascript": "\n    ```javascript\nfunction minMoves(target) {\n    target = Math.abs(target);\n    let step = 0;\n    let sum = 0;\n    while (sum < target || (sum - target) % 2 !== 0) {\n        step++;\n        sum += step;\n    }\n    return step;\n}\n```\n\n    \n    The algorithm works as follows:\n1. Make sure the target is a positive integer by taking its absolute value.\n2. Initialize the `step` and `sum` variables to 0.\n3. Keep incrementing the `step` value by 1 and add it to the `sum` until the following condition is satisfied: `(sum >= target) && ((sum - target) % 2 == 0)`\n4. Return the minimum number of steps required to reach the destination, which will be the value of `step` at the end of the loop.\n    ",
+    "java": "\n    ```java\npublic int minMoves(int target) {\n    target = Math.abs(target);\n    int step = 0;\n    int sum = 0;\n    while (sum < target || (sum - target) % 2 != 0) {\n        step++;\n        sum += step;\n    }\n    return step;\n}\n```\n\n    \n    The algorithm works as follows:\n1. Make sure the target is a positive integer by taking its absolute value.\n2. Initialize the `step` and `sum` variables to 0.\n3. Keep incrementing the `step` value by 1 and add it to the `sum` until the following condition is satisfied: `(sum >= target) && ((sum - target) % 2 == 0)`\n4. Return the minimum number of steps required to reach the destination, which will be the value of `step` at the end of the loop.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

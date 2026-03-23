@@ -1,0 +1,24 @@
+{
+  "id": 777,
+  "title": "Swap Adjacent in LR String",
+  "slug": "swap-adjacent-in-lr-string",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "In a string composed of 'L', 'R', and 'X' characters, like \"RXXLRXRXL \", a move consists of either replacing one occurrence of \"XL \" with \"LX \", or replacing one occurrence of \"RX \" with \"XR \". Given the starting string start and the ending string end, return True if and only if there exists a sequence of moves to transform one string to the other.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef isToeplitzMatrix(matrix):\n    rows = len(matrix)\n    cols = len(matrix[0])\n    for i in range(rows - 1):\n        for j in range(cols - 1):\n            if matrix[i][j] != matrix[i+1][j+1]:\n                return False\n    return True\n```\n\n    \n    The algorithm iterates through each element in the matrix except the last row and last column. For each element, it checks if it is equal to the element on the bottom right diagonal. If any such pair of elements is not equal, the matrix is not Toeplitz and the function returns false. If every pair of elements is equal, the matrix is Toeplitz and the function returns true.\n    ",
+    "javascript": "\n    ```javascript\nfunction isToeplitzMatrix(matrix) {\n    const rows = matrix.length;\n    const cols = matrix[0].length;\n    for(let i = 0; i < rows - 1; i++) {\n        for(let j = 0; j < cols - 1; j++) {\n            if(matrix[i][j] !== matrix[i+1][j+1]) return false;\n        }\n    }\n    return true;\n}\n```\n\n    \n    The algorithm iterates through each element in the matrix except the last row and last column. For each element, it checks if it is equal to the element on the bottom right diagonal. If any such pair of elements is not equal, the matrix is not Toeplitz and the function returns false. If every pair of elements is equal, the matrix is Toeplitz and the function returns true.\n    ",
+    "java": "\n    ```java\npublic boolean isToeplitzMatrix(int[][] matrix) {\n    int rows = matrix.length;\n    int cols = matrix[0].length;\n    for(int i = 0; i < rows - 1; i++) {\n        for(int j = 0; j < cols - 1; j++) {\n            if(matrix[i][j] != matrix[i+1][j+1]) return false;\n        }\n    }\n    return true;\n}\n```\n\n    \n    The algorithm iterates through each element in the matrix except the last row and last column. For each element, it checks if it is equal to the element on the bottom right diagonal. If any such pair of elements is not equal, the matrix is not Toeplitz and the function returns false. If every pair of elements is equal, the matrix is Toeplitz and the function returns true.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

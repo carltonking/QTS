@@ -1,0 +1,24 @@
+{
+  "id": 1109,
+  "title": "Corporate Flight Bookings",
+  "slug": "corporate-flight-bookings",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There are n flights that are labeled from 1 to n.\n\nYou are given an array of flight bookings bookings, where bookings[i] = [firsti, lasti, seatsi] represents a booking for flights firsti through lasti (inclusive) with seatsi seats reserved for each flight in the range.\n\nReturn _an array_ answer _of length_ n_, where_ answer[i] _is the total number of seats reserved for flight_ i.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef corpFlightBookings(bookings, n):\n    seats = [0] * n\n    for booking in bookings:\n        seats[booking[0] - 1] += booking[2]\n        if booking[1] < n:\n            seats[booking[1]] -= booking[2]\n    for i in range(1, n):\n        seats[i] += seats[i - 1]\n    return seats\n```\n    \n    The algorithm initializes an array of `n` elements with all elements set to `0`. Then it iterates through the `bookings` array and for each booking, it adds the `seats` at the position `first_i - 1` and subtracts the `seats` at `last_i` if `last_i` is within the range of the array. This process gives us an initial array representing the change in seats for each flight. Finally, it iterates through the array adjusting the count for each flight by summing the previous flight count to get the total count. This gives the desired output with a time complexity of `O(n)` where `n` is the number of flights.\n    ",
+    "javascript": "\n    ```javascript\nfunction corpFlightBookings(bookings, n) {\n    const seats = new Array(n).fill(0);\n    for (const booking of bookings) {\n        seats[booking[0] - 1] += booking[2];\n        if (booking[1] < n) {\n            seats[booking[1]] -= booking[2];\n        }\n    }\n    for (let i = 1; i < n; ++i) {\n        seats[i] += seats[i - 1];\n    }\n    return seats;\n}\n```\n    \n    The algorithm initializes an array of `n` elements with all elements set to `0`. Then it iterates through the `bookings` array and for each booking, it adds the `seats` at the position `first_i - 1` and subtracts the `seats` at `last_i` if `last_i` is within the range of the array. This process gives us an initial array representing the change in seats for each flight. Finally, it iterates through the array adjusting the count for each flight by summing the previous flight count to get the total count. This gives the desired output with a time complexity of `O(n)` where `n` is the number of flights.\n    ",
+    "java": "\n    ```java\npublic int[] corpFlightBookings(int[][] bookings, int n) {\n    int[] seats = new int[n];\n    for (int[] booking : bookings) {\n        seats[booking[0] - 1] += booking[2];\n        if (booking[1] < n) {\n            seats[booking[1]] -= booking[2];\n        }\n    }\n    for (int i = 1; i < n; ++i) {\n        seats[i] += seats[i - 1];\n    }\n    return seats;\n}\n```\n    \n    The algorithm initializes an array of `n` elements with all elements set to `0`. Then it iterates through the `bookings` array and for each booking, it adds the `seats` at the position `first_i - 1` and subtracts the `seats` at `last_i` if `last_i` is within the range of the array. This process gives us an initial array representing the change in seats for each flight. Finally, it iterates through the array adjusting the count for each flight by summing the previous flight count to get the total count. This gives the desired output with a time complexity of `O(n)` where `n` is the number of flights.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

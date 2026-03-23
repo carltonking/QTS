@@ -1,0 +1,24 @@
+{
+  "id": 1031,
+  "title": "Maximum Sum of Two Non-Overlapping Subarrays",
+  "slug": "maximum-sum-of-two-non-overlapping-subarrays",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums and two integers firstLen and secondLen, return _the maximum sum of elements in two non-overlapping subarrays with lengths_ firstLen _and_ secondLen.\n\nThe array with length firstLen could occur before or after the array with length secondLen, but they have to be non-overlapping.\n\nA subarray is a contiguous part of an array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef add_to_array_form(num, k):\n    for i in range(len(num) - 1, -1, -1):\n        k, num[i] = divmod(num[i] + k, 10)\n        if k == 0:\n            break\n    while k:\n        k, digit = divmod(k, 10)\n        num.insert(0, digit)\n    return num\n```\n\n    \n    The algorithm processes the input digit by digit, starting from the least significant digit (the digits farthest to the right). The logic is as follows:\n\n1. Add k to the least significant digit.\n2. Iterate through the digits. For each digit:\n   a. If the digit is greater than or equal to 10, carry over the left digit by dividing the current digit by 10 and adding the result to the left neighboring digit.\n   b. Set the current digit to the remainder of the digit divided by 10.\n3. If there is any remaining carry, handle it by adding new digits to the beginning of the array.\n4. Return the modified array.\n\nThe algorithm above works for all the given programming languages since it only relies on basic arithmetic operations and list operations that are available in all languages. The main difference between implementations is the specific syntax for inserting and accessing elements in an array or list.\n    ",
+    "javascript": "\n    ```javascript\nfunction addToArrayForm(num, k) {\n    for (let i = num.length - 1; i >= 0; --i) {\n        let sum = num[i] + k % 10;\n        k = Math.floor(k / 10);\n        if (sum >= 10) {\n            sum -= 10;\n            k++;\n        }\n        num[i] = sum;\n        if (k === 0)\n            break;\n    }\n    while (k !== 0) {\n        num.unshift(k % 10);\n        k = Math.floor(k / 10);\n    }\n    return num;\n}\n```\n\n    \n    The algorithm processes the input digit by digit, starting from the least significant digit (the digits farthest to the right). The logic is as follows:\n\n1. Add k to the least significant digit.\n2. Iterate through the digits. For each digit:\n   a. If the digit is greater than or equal to 10, carry over the left digit by dividing the current digit by 10 and adding the result to the left neighboring digit.\n   b. Set the current digit to the remainder of the digit divided by 10.\n3. If there is any remaining carry, handle it by adding new digits to the beginning of the array.\n4. Return the modified array.\n\nThe algorithm above works for all the given programming languages since it only relies on basic arithmetic operations and list operations that are available in all languages. The main difference between implementations is the specific syntax for inserting and accessing elements in an array or list.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic List<Integer> addToArrayForm(int[] num, int k) {\n    List<Integer> result = new ArrayList<>();\n    int carry = k, i = num.length - 1;\n    while (i >= 0 || carry > 0) {\n        if (i >= 0) {\n            carry += num[i--];\n        }\n        result.add(carry % 10);\n        carry /= 10;\n    }\n    Collections.reverse(result);\n    return result;\n}\n```\n\n    \n    The algorithm processes the input digit by digit, starting from the least significant digit (the digits farthest to the right). The logic is as follows:\n\n1. Add k to the least significant digit.\n2. Iterate through the digits. For each digit:\n   a. If the digit is greater than or equal to 10, carry over the left digit by dividing the current digit by 10 and adding the result to the left neighboring digit.\n   b. Set the current digit to the remainder of the digit divided by 10.\n3. If there is any remaining carry, handle it by adding new digits to the beginning of the array.\n4. Return the modified array.\n\nThe algorithm above works for all the given programming languages since it only relies on basic arithmetic operations and list operations that are available in all languages. The main difference between implementations is the specific syntax for inserting and accessing elements in an array or list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

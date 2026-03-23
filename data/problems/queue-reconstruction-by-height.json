@@ -1,0 +1,24 @@
+{
+  "id": 406,
+  "title": "Queue Reconstruction by Height",
+  "slug": "queue-reconstruction-by-height",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array of people, people, which are the attributes of some people in a queue (not necessarily in order). Each people[i] = [hi, ki] represents the ith person of height hi with exactly ki other people in front who have a height greater than or equal to hi.\n\nReconstruct and return _the queue that is represented by the input array_ people. The returned queue should be formatted as an array queue, where queue[j] = [hj, kj] is the attributes of the jth person in the queue (queue[0] is the person at the front of the queue).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom typing import List\n\ndef reconstructQueue(people: List[List[int]]) -> List[List[int]]:\n    people.sort(key=lambda x: (-x[0], x[1]))\n\n    result = []\n    for p in people:\n        result.insert(p[1], p)\n    return result\n```\n\n    \n    The algorithm to solve this problem can be broken down into the following steps:\n\n1. Sort the input array of people in decreasing order of height (h). If two people have the same height, sort them in increasing order of the count of taller people in front (k).\n2. Create an empty result array.\n3. Iterate through the sorted input array, and insert each person at the index corresponding to the count of taller people in front (k) in the result array.\n\nThe time complexity of this algorithm is O(n^2) due to the insert operations, where n is the number of people in the input array. The space complexity is O(n), as we construct a new array for the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction reconstructQueue(people) {\n    people.sort((a, b) => {\n        return a[0] !== b[0] ? b[0] - a[0] : a[1] - b[1];\n    });\n\n    const result = [];\n    for (const p of people) {\n        result.splice(p[1], 0, p);\n    }\n    return result;\n}\n```\n\n    \n    The algorithm to solve this problem can be broken down into the following steps:\n\n1. Sort the input array of people in decreasing order of height (h). If two people have the same height, sort them in increasing order of the count of taller people in front (k).\n2. Create an empty result array.\n3. Iterate through the sorted input array, and insert each person at the index corresponding to the count of taller people in front (k) in the result array.\n\nThe time complexity of this algorithm is O(n^2) due to the insert operations, where n is the number of people in the input array. The space complexity is O(n), as we construct a new array for the result.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.List;\n\npublic int[][] reconstructQueue(int[][] people) {\n    Arrays.sort(people, (a, b) -> a[0] == b[0] ? a[1] - b[1] : b[0] - a[0]);\n\n    List<int[]> result = new ArrayList<>();\n    for (int[] p : people) {\n        result.add(p[1], p);\n    }\n    return result.toArray(new int[people.length][2]);\n}\n```\n\n    \n    The algorithm to solve this problem can be broken down into the following steps:\n\n1. Sort the input array of people in decreasing order of height (h). If two people have the same height, sort them in increasing order of the count of taller people in front (k).\n2. Create an empty result array.\n3. Iterate through the sorted input array, and insert each person at the index corresponding to the count of taller people in front (k) in the result array.\n\nThe time complexity of this algorithm is O(n^2) due to the insert operations, where n is the number of people in the input array. The space complexity is O(n), as we construct a new array for the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

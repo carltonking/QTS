@@ -1,0 +1,24 @@
+{
+  "id": 2110,
+  "title": "Number of Smooth Descent Periods of a Stock",
+  "slug": "number-of-smooth-descent-periods-of-a-stock",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an integer array prices representing the daily price history of a stock, where prices[i] is the stock price on the ith day.\n\nA smooth descent period of a stock consists of one or more contiguous days such that the price on each day is lower than the price on the preceding day by exactly 1. The first day of the period is exempted from this rule.\n\nReturn _the number of smooth descent periods_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef num_smooth_descent_periods(prices):\n    result = 0\n    count = 0\n    for i in range(1, len(prices)):\n        if prices[i] == prices[i - 1] - 1:\n            count += 1\n        else:\n            count = 0\n        result += count + 1\n    return result + 1\n```\n    \n    This algorithm iterates through the `prices` array, starting at index 1. At each index `i`, it checks if the current price is equal to the previous price minus 1. If this condition is true, it means that the two prices form a smooth descent pair and `count` is incremented. If the condition is not met, it means that the path is broken, so `count` is reset to 0. The result is incremented by `count + 1` at each step, and finally incremented by 1 at the end to account for the first day in the period. The time complexity is O(n), where n is the length of the prices array.\n    ",
+    "javascript": "\n    ```javascript\nfunction numSmoothDescentPeriods(prices) {\n    let result = 0;\n    let count = 0;\n    for (let i = 1; i < prices.length; ++i) {\n        if (prices[i] === prices[i - 1] - 1) {\n            ++count;\n        } else {\n            count = 0;\n        }\n        result += count + 1;\n    }\n    return result + 1;\n}\n```\n    \n    This algorithm iterates through the `prices` array, starting at index 1. At each index `i`, it checks if the current price is equal to the previous price minus 1. If this condition is true, it means that the two prices form a smooth descent pair and `count` is incremented. If the condition is not met, it means that the path is broken, so `count` is reset to 0. The result is incremented by `count + 1` at each step, and finally incremented by 1 at the end to account for the first day in the period. The time complexity is O(n), where n is the length of the prices array.\n    ",
+    "java": "\n    ```java\npublic int numSmoothDescentPeriods(int[] prices) {\n    int result = 0;\n    int count = 0;\n    for (int i = 1; i < prices.length; ++i) {\n        if (prices[i] == prices[i - 1] - 1) {\n            ++count;\n        } else {\n            count = 0;\n        }\n        result += count + 1;\n    }\n    return result + 1;\n}\n```\n    \n    This algorithm iterates through the `prices` array, starting at index 1. At each index `i`, it checks if the current price is equal to the previous price minus 1. If this condition is true, it means that the two prices form a smooth descent pair and `count` is incremented. If the condition is not met, it means that the path is broken, so `count` is reset to 0. The result is incremented by `count + 1` at each step, and finally incremented by 1 at the end to account for the first day in the period. The time complexity is O(n), where n is the length of the prices array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

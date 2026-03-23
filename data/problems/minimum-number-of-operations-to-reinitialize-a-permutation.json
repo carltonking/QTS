@@ -1,0 +1,24 @@
+{
+  "id": 1806,
+  "title": "Minimum Number of Operations to Reinitialize a Permutation",
+  "slug": "minimum-number-of-operations-to-reinitialize-a-permutation",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an even integer n​​​​​​. You initially have a permutation perm of size n​​ where perm[i] == i​ (0-indexed)​​​​.\n\nIn one operation, you will create a new array arr, and for each i:\n\n*   If i % 2 == 0, then arr[i] = perm[i / 2].\n*   If i % 2 == 1, then arr[i] = perm[n / 2 + (i - 1) / 2].\n\nYou will then assign arr​​​​ to perm.\n\nReturn _the minimum non-zero number of operations you need to perform on_ perm _to return the permutation to its initial value._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef numberOfMatches(n):\n    return n - 1\n```\n\n    \n    In this problem, there are `n` teams in a tournament, and during each round, the number of matches played equals half the number of teams remaining (since each match eliminates one team). Eventually, in each round, the number of remaining teams reduces by half until there is only one team remaining, which is the winner.\n\nSince there will always be a winner after `n-1` matches (at each match one team gets eliminated), the function simply returns `n-1` as the number of matches played in the tournament until a winner is decided, without any complex calculations.\n\nThe implementation is the same in all four programming languages, with the only difference being the syntax corresponding to each language.\n    ",
+    "javascript": "\n    ```javascript\nfunction numberOfMatches(n) {\n    return n - 1;\n}\n```\n\n    \n    In this problem, there are `n` teams in a tournament, and during each round, the number of matches played equals half the number of teams remaining (since each match eliminates one team). Eventually, in each round, the number of remaining teams reduces by half until there is only one team remaining, which is the winner.\n\nSince there will always be a winner after `n-1` matches (at each match one team gets eliminated), the function simply returns `n-1` as the number of matches played in the tournament until a winner is decided, without any complex calculations.\n\nThe implementation is the same in all four programming languages, with the only difference being the syntax corresponding to each language.\n    ",
+    "java": "\n    ```java\npublic int numberOfMatches(int n) {\n    return n - 1;\n}\n```\n\n    \n    In this problem, there are `n` teams in a tournament, and during each round, the number of matches played equals half the number of teams remaining (since each match eliminates one team). Eventually, in each round, the number of remaining teams reduces by half until there is only one team remaining, which is the winner.\n\nSince there will always be a winner after `n-1` matches (at each match one team gets eliminated), the function simply returns `n-1` as the number of matches played in the tournament until a winner is decided, without any complex calculations.\n\nThe implementation is the same in all four programming languages, with the only difference being the syntax corresponding to each language.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

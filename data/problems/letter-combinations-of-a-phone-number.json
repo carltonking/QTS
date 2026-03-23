@@ -1,0 +1,24 @@
+{
+  "id": 17,
+  "title": "Letter Combinations of a Phone Number",
+  "slug": "letter-combinations-of-a-phone-number",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. Return the answer in any order.\n\nA mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef letter_combinations(digits: str):\n    if not digits: return []\n    phone = [\"abc\", \"def\", \"ghi\", \"jkl\", \"mno\", \"pqrs\", \"tuv\", \"wxyz\"]\n    result = [\"\"]\n\n    for digit in digits:\n        temp = []\n        for s in result:\n            for c in phone[int(digit) - 2]:\n                temp.append(s + c)\n        result = temp\n\n    return result\n```\n    \n    The algorithm visits each digit from the given `digits` string one by one. For each digit, it appends all possible characters corresponding to that digit, in a breadth-first search manner. The current stage's results are saved in the `result` list (or `output` list in Java). A temporary list `temp` is used to store the combinations formed at each stage before replacing the `result` list. The phone buttons mapping is stored in the `phone` list/array.\n    ",
+    "javascript": "\n    ```javascript\nfunction letterCombinations(digits) {\n    if (digits.length === 0) return [];\n    \n    let phone = [\"abc\", \"def\", \"ghi\", \"jkl\", \"mno\", \"pqrs\", \"tuv\", \"wxyz\"];\n    let result = [\"\"];\n\n    for (let i = 0; i < digits.length; i++) {\n        let digit = digits[i];\n        let temp = [];\n\n        for (let s of result) {\n            for (let c of phone[digit - 2]) {\n                temp.push(s + c);\n            }\n        }\n\n        result = temp;\n    }\n\n    return result;\n}\n```\n    \n    The algorithm visits each digit from the given `digits` string one by one. For each digit, it appends all possible characters corresponding to that digit, in a breadth-first search manner. The current stage's results are saved in the `result` list (or `output` list in Java). A temporary list `temp` is used to store the combinations formed at each stage before replacing the `result` list. The phone buttons mapping is stored in the `phone` list/array.\n    ",
+    "java": "\n    ```java\npublic List<String> letterCombinations(String digits) {\n    LinkedList<String> output = new LinkedList<>();\n    if(digits.isEmpty()) return output;\n    \n    String[] phone = new String[] {\"abc\", \"def\", \"ghi\", \"jkl\", \"mno\", \"pqrs\", \"tuv\", \"wxyz\"};\n    output.add(\"\");\n    \n    for(char d : digits.toCharArray()){\n        while(output.peek().length() == digits.indexOf(d)){\n            String perm = output.remove();\n            for(char c : phone[d - '2'].toCharArray()){\n                output.add(perm + c);\n            }\n        }\n    }\n    \n    return output;\n}\n```\n    \n    The algorithm visits each digit from the given `digits` string one by one. For each digit, it appends all possible characters corresponding to that digit, in a breadth-first search manner. The current stage's results are saved in the `result` list (or `output` list in Java). A temporary list `temp` is used to store the combinations formed at each stage before replacing the `result` list. The phone buttons mapping is stored in the `phone` list/array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

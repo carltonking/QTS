@@ -1,0 +1,24 @@
+{
+  "id": 440,
+  "title": "K-th Smallest in Lexicographical Order",
+  "slug": "k-th-smallest-in-lexicographical-order",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given two integers n and k, return _the_ kth _lexicographically smallest integer in the range_ [1, n].",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_kth_number(n, k):\n    nums = [i for i in range(1, n + 1)]\n    nums.sort(key=lambda x: str(x))\n    return nums[k - 1]\n```\n\n    \n    First, we initialize a list or vector containing all the integers from 1 to n. \n\nThen, we sort this list lexicographically. For C++ and Java, we use a lambda function to compare the string representation of the numbers. In Python, we use a lambda function inside the sort function, and in JavaScript, we use the `localeCompare()` method to sort the integers lexicographically.\n\nFinally, we return the Kth element in the sorted list by accessing the element at index `k - 1`.\n    ",
+    "javascript": "\n    ```javascript\nfunction findKthNumber(n, k) {\n    const nums = [];\n    for (let i = 1; i <= n; i++) {\n        nums.push(i);\n    }\n    nums.sort((a, b) => String(a).localeCompare(String(b)));\n    return nums[k - 1];\n}\n```\n\n    \n    First, we initialize a list or vector containing all the integers from 1 to n. \n\nThen, we sort this list lexicographically. For C++ and Java, we use a lambda function to compare the string representation of the numbers. In Python, we use a lambda function inside the sort function, and in JavaScript, we use the `localeCompare()` method to sort the integers lexicographically.\n\nFinally, we return the Kth element in the sorted list by accessing the element at index `k - 1`.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\npublic class Solution {\n    public int findKthNumber(int n, int k) {\n        List<Integer> nums = new ArrayList<>();\n        for (int i = 1; i <= n; i++) {\n            nums.add(i);\n        }\n        nums.sort((a, b) -> String.valueOf(a).compareTo(String.valueOf(b)));\n        return nums.get(k - 1);\n    }\n}\n```\n\n    \n    First, we initialize a list or vector containing all the integers from 1 to n. \n\nThen, we sort this list lexicographically. For C++ and Java, we use a lambda function to compare the string representation of the numbers. In Python, we use a lambda function inside the sort function, and in JavaScript, we use the `localeCompare()` method to sort the integers lexicographically.\n\nFinally, we return the Kth element in the sorted list by accessing the element at index `k - 1`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2506,
+  "title": "Count Pairs Of Similar Strings",
+  "slug": "count-pairs-of-similar-strings",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a 0-indexed string array words.\n\nTwo strings are similar if they consist of the same characters.\n\n*   For example, \"abca \" and \"cba \" are similar since both consist of characters 'a', 'b', and 'c'.\n*   However, \"abacba \" and \"bcfd \" are not similar since they do not consist of the same characters.\n\nReturn _the number of pairs_ (i, j) _such that_ 0 <= i < j <= word.length - 1 _and the two strings_ words[i] _and_ words[j] _are similar_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_similar_pairs(words):\n    count = 0\n    for i in range(len(words)):\n        for j in range(i + 1, len(words)):\n            set1 = set(words[i])\n            set2 = set(words[j])\n            if set1 == set2:\n                count += 1\n    return count\n```\n\n    \n    We will use a nested loop to iterate through all pairs (i, j) such that 0 <= i < j <= words.length - 1. For each pair of words, create two sets containing the constituent characters for each string. To create the sets, use a set object initialized with the characters from the corresponding word. Compare the two sets to see if they are equal. If they are, increment a counter. After iterating through all possible pairs of words, return the counter as the total number of similar pairs.\n    ",
+    "javascript": "\n    ```javascript\nfunction countSimilarPairs(words) {\n    let count = 0;\n    for (let i = 0; i < words.length; ++i) {\n        for (let j = i + 1; j < words.length; ++j) {\n            let set1 = new Set(words[i]);\n            let set2 = new Set(words[j]);\n            if (areSetsEqual(set1, set2)) count++;\n        }\n    }\n    return count;\n\n    function areSetsEqual(set1, set2) {\n        if (set1.size !== set2.size) return false;\n        for (let item of set1) {\n            if (!set2.has(item)) return false;\n        }\n        return true;\n    }\n}\n```\n\n    \n    We will use a nested loop to iterate through all pairs (i, j) such that 0 <= i < j <= words.length - 1. For each pair of words, create two sets containing the constituent characters for each string. To create the sets, use a set object initialized with the characters from the corresponding word. Compare the two sets to see if they are equal. If they are, increment a counter. After iterating through all possible pairs of words, return the counter as the total number of similar pairs.\n    ",
+    "java": "\n    ```java\nimport java.util.HashSet;\nimport java.util.Set;\n\npublic int countSimilarPairs(String[] words) {\n    int count = 0;\n    for (int i = 0; i < words.length; ++i) {\n        for (int j = i + 1; j < words.length; ++j) {\n            Set<Character> set1 = new HashSet<>();\n            Set<Character> set2 = new HashSet<>();\n            for (char c : words[i].toCharArray()) set1.add(c);\n            for (char c : words[j].toCharArray()) set2.add(c);\n            if (set1.equals(set2)) count++;\n        }\n    }\n    return count;\n}\n```\n\n    \n    We will use a nested loop to iterate through all pairs (i, j) such that 0 <= i < j <= words.length - 1. For each pair of words, create two sets containing the constituent characters for each string. To create the sets, use a set object initialized with the characters from the corresponding word. Compare the two sets to see if they are equal. If they are, increment a counter. After iterating through all possible pairs of words, return the counter as the total number of similar pairs.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

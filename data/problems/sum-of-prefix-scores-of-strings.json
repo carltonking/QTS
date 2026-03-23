@@ -1,0 +1,24 @@
+{
+  "id": 2416,
+  "title": "Sum of Prefix Scores of Strings",
+  "slug": "sum-of-prefix-scores-of-strings",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an array words of size n consisting of non-empty strings.\n\nWe define the score of a string word as the number of strings words[i] such that word is a prefix of words[i].\n\n*   For example, if words = [ \"a \", \"ab \", \"abc \", \"cab \"], then the score of \"ab \" is 2, since \"ab \" is a prefix of both \"ab \" and \"abc \".\n\nReturn _an array_ answer _of size_ n _where_ answer[i] _is the sum of scores of every non-empty prefix of_ words[i].\n\nNote that a string is considered as a prefix of itself.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import defaultdict\n\ndef prefix_score_sum(words):\n    result = [0] * len(words)\n    prefix_count = defaultdict(int)\n    \n    for word in words:\n        prefix = \"\"\n        for c in word:\n            prefix += c\n            prefix_count[prefix] += 1\n    \n    for i, word in enumerate(words):\n        prefix = \"\"\n        for c in word:\n            prefix += c\n            result[i] += prefix_count[prefix]\n    \n    return result\n```\n    \n    The algorithm works as follows:\n1. For each word in `words`, count the number of occurrences of each of its prefixes using a dictionary/hashmap.\n2. For each word in `words`, iterate through its prefixes and sum up the counts calculated in the previous step. Store the result for each word in the `result` list/array.\n\nThe algorithm's time complexity is O(n * max_len(words)), where n is the number of words and max_len(words) is the length of the longest word. The space complexity is also O(n * max_len(words)).\n    ",
+    "javascript": "\n    ```javascript\nfunction prefixScoreSum(words) {\n    const result = new Array(words.length).fill(0);\n    const prefixCount = {};\n\n    for (const word of words) {\n        let prefix = \"\";\n        for (const c of word) {\n            prefix += c;\n            prefixCount[prefix] = (prefixCount[prefix] || 0) + 1;\n        }\n    }\n\n    for (let i = 0; i < words.length; i++) {\n        let prefix = \"\";\n        for (const c of words[i]) {\n            prefix += c;\n            result[i] += prefixCount[prefix];\n        }\n    }\n\n    return result;\n}\n```\n    \n    The algorithm works as follows:\n1. For each word in `words`, count the number of occurrences of each of its prefixes using a dictionary/hashmap.\n2. For each word in `words`, iterate through its prefixes and sum up the counts calculated in the previous step. Store the result for each word in the `result` list/array.\n\nThe algorithm's time complexity is O(n * max_len(words)), where n is the number of words and max_len(words) is the length of the longest word. The space complexity is also O(n * max_len(words)).\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.HashMap;\nimport java.util.List;\nimport java.util.Map;\n\npublic List<Integer> prefixScoreSum(List<String> words) {\n    List<Integer> result = new ArrayList<>(words.size());\n    Map<String, Integer> prefixCount = new HashMap<>();\n\n    for (String word : words) {\n        String prefix = \"\";\n        for (char c : word.toCharArray()) {\n            prefix += c;\n            prefixCount.put(prefix, prefixCount.getOrDefault(prefix, 0) + 1);\n        }\n    }\n\n    for (String word : words) {\n        String prefix = \"\";\n        int sum = 0;\n        for (char c : word.toCharArray()) {\n            prefix += c;\n            sum += prefixCount.getOrDefault(prefix, 0);\n        }\n        result.add(sum);\n    }\n\n    return result;\n}\n```\n    \n    The algorithm works as follows:\n1. For each word in `words`, count the number of occurrences of each of its prefixes using a dictionary/hashmap.\n2. For each word in `words`, iterate through its prefixes and sum up the counts calculated in the previous step. Store the result for each word in the `result` list/array.\n\nThe algorithm's time complexity is O(n * max_len(words)), where n is the number of words and max_len(words) is the length of the longest word. The space complexity is also O(n * max_len(words)).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

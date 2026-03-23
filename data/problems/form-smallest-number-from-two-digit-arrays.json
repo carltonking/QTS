@@ -1,0 +1,24 @@
+{
+  "id": 2605,
+  "title": "Form Smallest Number From Two Digit Arrays",
+  "slug": "form-smallest-number-from-two-digit-arrays",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given two arrays of unique digits nums1 and nums2, return _the smallest number that contains at least one digit from each array_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef smallest_number_with_at_least_one_digit_from_each_array(nums1, nums2):\n    min1 = min(nums1)\n    min2 = min(nums2)\n    for num1 in nums1:\n        for num2 in nums2:\n            if num1 == num2:\n                return num1\n    return min1 * 10 + min2\n```\n    \n    The algorithm works as follows:\n1. Find the smallest numbers `min1` and `min2` in each input array `nums1` and `nums2` respectively.\n2. Check if there is any identical number `num1` and `num2` in `nums1` and `nums2` respectively (`num1 == num2`). If found, return that shared number. This is because the problem states that we need the smallest number that contains at least one digit from each array, and a shared number will always be smaller than the result obtained by concatenating the smallest digits from each array (due to the unique digits constraint in the problem statement).\n3. If no shared number is found, concatenate the smallest numbers of each array (`min1 * 10 + min2`). This gives the smallest possible number containing at least one digit from each array.\n    ",
+    "javascript": "\n    ```javascript\nfunction smallestNumberWithAtLeastOneDigitFromEachArray(nums1, nums2) {\n    const min1 = Math.min(...nums1);\n    const min2 = Math.min(...nums2);\n    for (const num1 of nums1) {\n        for (const num2 of nums2) {\n            if (num1 === num2) {\n                return num1;\n            }\n        }\n    }\n    return min1 * 10 + min2;\n}\n```\n    \n    The algorithm works as follows:\n1. Find the smallest numbers `min1` and `min2` in each input array `nums1` and `nums2` respectively.\n2. Check if there is any identical number `num1` and `num2` in `nums1` and `nums2` respectively (`num1 == num2`). If found, return that shared number. This is because the problem states that we need the smallest number that contains at least one digit from each array, and a shared number will always be smaller than the result obtained by concatenating the smallest digits from each array (due to the unique digits constraint in the problem statement).\n3. If no shared number is found, concatenate the smallest numbers of each array (`min1 * 10 + min2`). This gives the smallest possible number containing at least one digit from each array.\n    ",
+    "java": "\n    ```java\npublic int smallestNumberWithAtLeastOneDigitFromEachArray(int[] nums1, int[] nums2) {\n    int min1 = Arrays.stream(nums1).min().getAsInt();\n    int min2 = Arrays.stream(nums2).min().getAsInt();\n    for (int num1 : nums1) {\n        for (int num2 : nums2) {\n            if (num1 == num2) {\n                return num1;\n            }\n        }\n    }\n    return min1 * 10 + min2;\n}\n```\n    \n    The algorithm works as follows:\n1. Find the smallest numbers `min1` and `min2` in each input array `nums1` and `nums2` respectively.\n2. Check if there is any identical number `num1` and `num2` in `nums1` and `nums2` respectively (`num1 == num2`). If found, return that shared number. This is because the problem states that we need the smallest number that contains at least one digit from each array, and a shared number will always be smaller than the result obtained by concatenating the smallest digits from each array (due to the unique digits constraint in the problem statement).\n3. If no shared number is found, concatenate the smallest numbers of each array (`min1 * 10 + min2`). This gives the smallest possible number containing at least one digit from each array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

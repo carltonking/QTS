@@ -1,0 +1,24 @@
+{
+  "id": 2295,
+  "title": "Replace Elements in an Array",
+  "slug": "replace-elements-in-an-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed array nums that consists of n distinct positive integers. Apply m operations to this array, where in the ith operation you replace the number operations[i][0] with operations[i][1].\n\nIt is guaranteed that in the ith operation:\n\n*   operations[i][0] exists in nums.\n*   operations[i][1] does not exist in nums.\n\nReturn _the array obtained after applying all the operations_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_race_time(tires, changeTime, numLaps):\n    n = len(tires)\n    times = [fi + (numLaps - 1) * ri for fi, ri in tires]\n    min_time = min(times) + (numLaps - 1) * changeTime\n    \n    for i in range(n):\n        for j in range(n):\n            if i != j:\n                min_time = min(min_time, times[i] + times[j] - tires[i][0] + (numLaps - 2) * changeTime)\n    return min_time\n```\n    \n    1. Find the time it takes each tire to finish the race (`numLaps` laps).\n2. Calculate the minimum time to finish the race using only one tire type (minimum time among all tire types) with the time penalty for every lap except the first one.\n3. Calculate the minimum time to finish the race using two different tire types. For that, iterate through every pair of distinct tires (i, j) and calculate the total time spent using i tire for the first lap and j for the rest (numLaps - 1) laps with the time penalty for every lap except the first two (same tire can be used in the second lap without waiting).\n4. Return the minimum time obtained in steps 2 and 3.\n    ",
+    "javascript": "\n    ```javascript\nfunction min_race_time(tires, changeTime, numLaps) {\n    const n = tires.length;\n    const times = tires.map(([fi, ri]) => fi + (numLaps - 1) * ri);\n    let min_time = Math.min(...times) + (numLaps - 1) * changeTime;\n\n    for (let i = 0; i < n; i++) {\n        for (let j = 0; j < n; j++) {\n            if (i != j) {\n                min_time = Math.min(min_time, times[i] + times[j] - tires[i][0] + (numLaps - 2) * changeTime);\n            }\n        }\n    }\n    return min_time;\n}\n```\n    \n    1. Find the time it takes each tire to finish the race (`numLaps` laps).\n2. Calculate the minimum time to finish the race using only one tire type (minimum time among all tire types) with the time penalty for every lap except the first one.\n3. Calculate the minimum time to finish the race using two different tire types. For that, iterate through every pair of distinct tires (i, j) and calculate the total time spent using i tire for the first lap and j for the rest (numLaps - 1) laps with the time penalty for every lap except the first two (same tire can be used in the second lap without waiting).\n4. Return the minimum time obtained in steps 2 and 3.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic int min_race_time(int[][] tires, int changeTime, int numLaps) {\n    int n = tires.length;\n    int[] times = new int[n];\n    for (int i = 0; i < n; i++)\n        times[i] = tires[i][0] + (numLaps - 1) * tires[i][1];\n    int min_time = Arrays.stream(times).min().getAsInt() + (numLaps - 1) * changeTime;\n    \n    for (int i = 0; i < n; i++)\n        for (int j = 0; j < n; j++)\n            if (i != j)\n                min_time = Math.min(min_time, times[i] + times[j] - tires[i][0] + (numLaps - 2) * changeTime);\n    return min_time;\n}\n```\n    \n    1. Find the time it takes each tire to finish the race (`numLaps` laps).\n2. Calculate the minimum time to finish the race using only one tire type (minimum time among all tire types) with the time penalty for every lap except the first one.\n3. Calculate the minimum time to finish the race using two different tire types. For that, iterate through every pair of distinct tires (i, j) and calculate the total time spent using i tire for the first lap and j for the rest (numLaps - 1) laps with the time penalty for every lap except the first two (same tire can be used in the second lap without waiting).\n4. Return the minimum time obtained in steps 2 and 3.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

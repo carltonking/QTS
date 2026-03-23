@@ -1,0 +1,24 @@
+{
+  "id": 606,
+  "title": "Construct String from Binary Tree",
+  "slug": "construct-string-from-binary-tree",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given the root of a binary tree, construct a string consisting of parenthesis and integers from a binary tree with the preorder traversal way, and return it.\n\nOmit all the empty parenthesis pairs that do not affect the one-to-one mapping relationship between the string and the original binary tree.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, x):\n        self.val = x\n        self.left = None\n        self.right = None\n\ndef tree2str(t):\n    if not t:\n        return \"\"\n    if not t.left and not t.right:\n        return str(t.val)\n    if not t.right:\n        return \"{}({})\".format(t.val, tree2str(t.left))\n    return \"{}({})({})\".format(t.val, tree2str(t.left), tree2str(t.right))\n```\n    \n    The algorithm performs a modified preorder traversal of the binary tree. During the traversal, when we encounter a non-null node, we add the value of the node followed by left and right sub-trees enclosed in parentheses if they are not null. If the right subtree is null but the left subtree is not, then only the left subtree is added in parentheses. This way, we get a unique string representing the binary tree without any redundant empty parentheses. The algorithm works for each of the languages mentioned in the same way. The traversal is performed using recursion which saves nodes' values in the string representation.\n    ",
+    "javascript": "\n    ```javascript\nfunction TreeNode(val, left, right) {\n    this.val = val;\n    this.left = left || null;\n    this.right = right || null;\n}\n\nvar tree2str = function(t) {\n    if (!t) {\n        return \"\";\n    }\n    if (!t.left && !t.right) {\n        return t.val + \"\";\n    }\n    if (!t.right) {\n        return t.val + \"(\" + tree2str(t.left) + \")\";\n    }\n    return t.val + \"(\" + tree2str(t.left) + \")(\" + tree2str(t.right) + \")\";\n};\n```\n    \n    The algorithm performs a modified preorder traversal of the binary tree. During the traversal, when we encounter a non-null node, we add the value of the node followed by left and right sub-trees enclosed in parentheses if they are not null. If the right subtree is null but the left subtree is not, then only the left subtree is added in parentheses. This way, we get a unique string representing the binary tree without any redundant empty parentheses. The algorithm works for each of the languages mentioned in the same way. The traversal is performed using recursion which saves nodes' values in the string representation.\n    ",
+    "java": "\n    ```java\nclass TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n    TreeNode(int x) { val = x; }\n}\n\nclass Solution {\n    public String tree2str(TreeNode t) {\n        if (t == null) {\n            return \"\";\n        }\n        if (t.left == null && t.right == null) {\n            return t.val + \"\";\n        }\n        if (t.right == null) {\n            return t.val + \"(\" + tree2str(t.left) + \")\";\n        }\n        return t.val + \"(\" + tree2str(t.left) + \")(\" + tree2str(t.right) + \")\";\n    }\n}\n```\n    \n    The algorithm performs a modified preorder traversal of the binary tree. During the traversal, when we encounter a non-null node, we add the value of the node followed by left and right sub-trees enclosed in parentheses if they are not null. If the right subtree is null but the left subtree is not, then only the left subtree is added in parentheses. This way, we get a unique string representing the binary tree without any redundant empty parentheses. The algorithm works for each of the languages mentioned in the same way. The traversal is performed using recursion which saves nodes' values in the string representation.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

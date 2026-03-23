@@ -1,0 +1,24 @@
+{
+  "id": 629,
+  "title": "K Inverse Pairs Array",
+  "slug": "k-inverse-pairs-array",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "For an integer array nums, an inverse pair is a pair of integers [i, j] where 0 <= i < j < nums.length and nums[i] > nums[j].\n\nGiven two integers n and k, return the number of different arrays consist of numbers from 1 to n such that there are exactly k inverse pairs. Since the answer can be huge, return it modulo 109 + 7.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef kInversePairs(n: int, k: int) -> int:\n    mod = 10**9 + 7\n    dp = [[0] * (k + 1) for _ in range(n + 1)]\n    for i in range(1, n + 1):\n        dp[i][0] = 1\n        for j in range(1, k + 1):\n            dp[i][j] = (dp[i][j - 1] + dp[i - 1][j]) % mod\n            if j - i >= 0:\n                dp[i][j] = (dp[i][j] - dp[i - 1][j - i] + mod) % mod\n    return dp[n][k]\n```\n    \n    We use dynamic programming to solve this problem. We create a 2D array dp where `dp[i][j]` represents the number of arrays with `i` elements having `j` inverse pairs. We initialize `dp[i][0]` to 1 for all `i`.\n\nFor each `i` and `j`, we update the value of `dp[i][j]` using the following relation:\n\n`dp[i][j] = dp[i][j - 1] + dp[i - 1][j]`\n\nIf there are enough elements (i.e., `j - i >= 0`) to form an inverse pair, we subtract the number of inverse pairs using `dp[i - 1][j - i]`. After updating the value, we ensure that the result stays within the given range by taking the modulo with 10^9 + 7.\n\nFinally, we return the value at `dp[n][k]`, which represents the number of arrays with `n` (1 to n) elements having exactly `k` inverse pairs. \n    ",
+    "javascript": "\n    ```javascript\nfunction kInversePairs(n, k) {\n    const mod = 1e9 + 7;\n    const dp = Array.from({ length: n + 1 }, () => Array(k + 1).fill(0));\n    for (let i = 1; i <= n; ++i) {\n        dp[i][0] = 1;\n        for (let j = 1; j <= k; ++j) {\n            dp[i][j] = (dp[i][j - 1] + dp[i - 1][j]) % mod;\n            if (j - i >= 0) {\n                dp[i][j] = (dp[i][j] - dp[i - 1][j - i] + mod) % mod;\n            }\n        }\n    }\n    return dp[n][k];\n}\n```\n    \n    We use dynamic programming to solve this problem. We create a 2D array dp where `dp[i][j]` represents the number of arrays with `i` elements having `j` inverse pairs. We initialize `dp[i][0]` to 1 for all `i`.\n\nFor each `i` and `j`, we update the value of `dp[i][j]` using the following relation:\n\n`dp[i][j] = dp[i][j - 1] + dp[i - 1][j]`\n\nIf there are enough elements (i.e., `j - i >= 0`) to form an inverse pair, we subtract the number of inverse pairs using `dp[i - 1][j - i]`. After updating the value, we ensure that the result stays within the given range by taking the modulo with 10^9 + 7.\n\nFinally, we return the value at `dp[n][k]`, which represents the number of arrays with `n` (1 to n) elements having exactly `k` inverse pairs. \n    ",
+    "java": "\n    ```java\npublic int kInversePairs(int n, int k) {\n    int mod = 1000000007;\n    int[][] dp = new int[n + 1][k + 1];\n    for (int i = 1; i <= n; i++) {\n        dp[i][0] = 1;\n        for (int j = 1; j <= k; j++) {\n            dp[i][j] = (dp[i][j - 1] + dp[i - 1][j]) % mod;\n            if (j - i >= 0) {\n                dp[i][j] = (dp[i][j] - dp[i - 1][j - i] + mod) % mod;\n            }\n        }\n    }\n    return dp[n][k];\n}\n```\n    \n    We use dynamic programming to solve this problem. We create a 2D array dp where `dp[i][j]` represents the number of arrays with `i` elements having `j` inverse pairs. We initialize `dp[i][0]` to 1 for all `i`.\n\nFor each `i` and `j`, we update the value of `dp[i][j]` using the following relation:\n\n`dp[i][j] = dp[i][j - 1] + dp[i - 1][j]`\n\nIf there are enough elements (i.e., `j - i >= 0`) to form an inverse pair, we subtract the number of inverse pairs using `dp[i - 1][j - i]`. After updating the value, we ensure that the result stays within the given range by taking the modulo with 10^9 + 7.\n\nFinally, we return the value at `dp[n][k]`, which represents the number of arrays with `n` (1 to n) elements having exactly `k` inverse pairs. \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

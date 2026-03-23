@@ -1,0 +1,24 @@
+{
+  "id": 1945,
+  "title": "Sum of Digits of String After Convert",
+  "slug": "sum-of-digits-of-string-after-convert",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a string s consisting of lowercase English letters, and an integer k.\n\nFirst, convert s into an integer by replacing each letter with its position in the alphabet (i.e., replace 'a' with 1, 'b' with 2, ..., 'z' with 26). Then, transform the integer by replacing it with the sum of its digits. Repeat the transform operation k times in total.\n\nFor example, if s = \"zbax \" and k = 2, then the resulting integer would be 8 by the following operations:\n\n*   Convert: \"zbax \" ➝ \"(26)(2)(1)(24) \" ➝ \"262124 \" ➝ 262124\n*   Transform #1: 262124 ➝ 2 + 6 + 2 + 1 + 2 + 4 ➝ 17\n*   Transform #2: 17 ➝ 1 + 7 ➝ 8\n\nReturn _the resulting integer after performing the operations described above_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import defaultdict\n\ndef finding_users_active_minutes(logs, k):\n    user_minutes = defaultdict(set)\n    for log in logs:\n        user_minutes[log[0]].add(log[1])\n    result = [0] * k\n    for minutes in user_minutes.values():\n        if len(minutes) <= k:\n            result[len(minutes) - 1] += 1\n    return result\n```\n\n    \n    1. Create a data structure to store the unique minutes for each user ID. In this case, we use a hash map with user IDs as keys and sets of minutes as values.\n2. Iterate through each log entry, adding the minute of the action to the user's set of minutes in the data structure.\n3. Initialize an array of size k to store the final result.\n4. Iterate through the values of the data structure, which represent sets of unique minutes for each user. If the number of unique minutes for a user is less than or equal to k, increment the corresponding value in the result array.\n5. Return the result array.\n    ",
+    "javascript": "\n    ```javascript\nfunction findingUsersActiveMinutes(logs, k) {\n    const user_minutes = new Map();\n    for (const log of logs) {\n        if (!user_minutes.has(log[0])) user_minutes.set(log[0], new Set());\n        user_minutes.get(log[0]).add(log[1]);\n    }\n    const result = new Array(k).fill(0);\n    for (const minutes of user_minutes.values()) {\n        if (minutes.size <= k) {\n            result[minutes.size - 1]++;\n        }\n    }\n    return result;\n}\n```\n\n    \n    1. Create a data structure to store the unique minutes for each user ID. In this case, we use a hash map with user IDs as keys and sets of minutes as values.\n2. Iterate through each log entry, adding the minute of the action to the user's set of minutes in the data structure.\n3. Initialize an array of size k to store the final result.\n4. Iterate through the values of the data structure, which represent sets of unique minutes for each user. If the number of unique minutes for a user is less than or equal to k, increment the corresponding value in the result array.\n5. Return the result array.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic int[] findingUsersActiveMinutes(int[][] logs, int k) {\n    Map<Integer, Set<Integer>> user_minutes = new HashMap<>();\n    for (int[] log : logs) {\n        user_minutes.computeIfAbsent(log[0], user -> new HashSet<>()).add(log[1]);\n    }\n    int[] result = new int[k];\n    for (Set<Integer> minutes : user_minutes.values()) {\n        if (minutes.size() <= k) {\n            result[minutes.size() - 1]++;\n        }\n    }\n    return result;\n}\n```\n\n    \n    1. Create a data structure to store the unique minutes for each user ID. In this case, we use a hash map with user IDs as keys and sets of minutes as values.\n2. Iterate through each log entry, adding the minute of the action to the user's set of minutes in the data structure.\n3. Initialize an array of size k to store the final result.\n4. Iterate through the values of the data structure, which represent sets of unique minutes for each user. If the number of unique minutes for a user is less than or equal to k, increment the corresponding value in the result array.\n5. Return the result array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

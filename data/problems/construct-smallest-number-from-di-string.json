@@ -1,0 +1,24 @@
+{
+  "id": 2375,
+  "title": "Construct Smallest Number From DI String",
+  "slug": "construct-smallest-number-from-di-string",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed string pattern of length n consisting of the characters 'I' meaning increasing and 'D' meaning decreasing.\n\nA 0-indexed string num of length n + 1 is created using the following conditions:\n\n*   num consists of the digits '1' to '9', where each digit is used at most once.\n*   If pattern[i] == 'I', then num[i] < num[i + 1].\n*   If pattern[i] == 'D', then num[i] > num[i + 1].\n\nReturn _the lexicographically smallest possible string_ num _that meets the conditions._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findSmallestNum(pattern: str) -> str:\n    num = \"123456789\"\n    i = 0\n    while i < len(pattern):\n        if pattern[i] == 'D':\n            j = i\n            while j < len(pattern) and pattern[j] == 'D':\n                j += 1\n            num = num[:i] + num[i:j+1][::-1] + num[j+1:]\n            i = j\n        else:\n            i += 1\n    return num[:len(pattern) + 1]\n```\n    \n    The algorithm first initializes the `num` string to contain digits from 1 to 9. It then iterates through the `pattern` string. If it encounters a `'D'` character, it finds the stretch of consecutive `'D'` characters and reverses the corresponding stretch of numbers in `num`. If the character is `'I'`, it does nothing and moves to the next index. Finally, it returns the substring of `num` from index 0 to index `pattern.length()`, which is the result according to the provided conditions.\n    ",
+    "javascript": "\n    ```javascript\nfunction findSmallestNum(pattern) {\n    let num = \"123456789\";\n    for (let i = 0; i < pattern.length; ++i) {\n        if (pattern[i] === 'D') {\n            let j = i;\n            while (j < pattern.length && pattern[j] === 'D') {\n                ++j;\n            }\n            num = num.substring(0, i) + num.substring(i, j + 1).split('').reverse().join('') + num.substring(j + 1);\n            i = j;\n        }\n    }\n    return num.substring(0, pattern.length + 1);\n}\n```\n    \n    The algorithm first initializes the `num` string to contain digits from 1 to 9. It then iterates through the `pattern` string. If it encounters a `'D'` character, it finds the stretch of consecutive `'D'` characters and reverses the corresponding stretch of numbers in `num`. If the character is `'I'`, it does nothing and moves to the next index. Finally, it returns the substring of `num` from index 0 to index `pattern.length()`, which is the result according to the provided conditions.\n    ",
+    "java": "\n    ```java\npublic String findSmallestNum(String pattern) {\n    StringBuilder num = new StringBuilder(\"123456789\");\n    for (int i = 0; i < pattern.length(); ++i) {\n        if (pattern.charAt(i) == 'D') {\n            int j = i;\n            while (j < pattern.length() && pattern.charAt(j) == 'D') {\n                ++j;\n            }\n            num = num.reverse().delete(0, pattern.length() - j + 1).reverse();\n            num = num.reverse().append(num.substring(0, pattern.length() - i), i, j + 1);\n            i = j;\n        }\n    }\n    return num.substring(0, pattern.length() + 1);\n}\n```\n    \n    The algorithm first initializes the `num` string to contain digits from 1 to 9. It then iterates through the `pattern` string. If it encounters a `'D'` character, it finds the stretch of consecutive `'D'` characters and reverses the corresponding stretch of numbers in `num`. If the character is `'I'`, it does nothing and moves to the next index. Finally, it returns the substring of `num` from index 0 to index `pattern.length()`, which is the result according to the provided conditions.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

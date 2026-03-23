@@ -1,0 +1,24 @@
+{
+  "id": 1925,
+  "title": "Count Square Sum Triples",
+  "slug": "count-square-sum-triples",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "A square triple (a,b,c) is a triple where a, b, and c are integers and a2 + b2 = c2.\n\nGiven an integer n, return _the number of square triples such that_ 1 <= a, b, c <= n.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef reverse(x):\n    rev = 0\n\n    while x != 0:\n        rev = rev * 10 + x % 10\n        x = x // 10\n\n    return rev\n\ndef count_nice_pairs(nums):\n    MOD = 1_000_000_007\n    count = {}\n    result = 0\n\n    for num in nums:\n        diff = num - reverse(num)\n        count[diff] = count.get(diff, 0) + 1\n\n    for val in count.values():\n        result = (result + ((val * (val - 1)) // 2) % MOD) % MOD\n\n    return result\n```\n    \n    1. Define a helper function 'reverse' to find the reverse of a number.\n2. Initialize a dictionary 'count' to store the difference between the number and its reverse and their count in the nums array.\n3. Initialize a result variable.\n4. Traverse the nums array, calculate the difference between num and its reverse, and update the count.\n5. Traverse the count dictionary's values, and for each value, add ((value * (value - 1)) / 2) % MOD to the current result, and take the modulus by 1e9 + 7.\n6. Return the result as the final count of nice pairs.\n    ",
+    "javascript": "\n    ```javascript\nfunction reverse(x) {\n    let rev = 0;\n    while (x !== 0) {\n        rev = rev * 10 + x % 10;\n        x = Math.floor(x / 10);\n    }\n    return rev;\n}\n\nfunction countNicePairs(nums) {\n    const MOD = 1_000_000_007;\n    const count = new Map();\n    let result = 0;\n\n    for (const num of nums) {\n        const diff = num - reverse(num);\n        count.set(diff, (count.get(diff) || 0) + 1);\n    }\n\n    for (const val of count.values()) {\n        result = (result + ((val * (val - 1)) / 2) % MOD) % MOD;\n    }\n\n    return result;\n}\n```\n    \n    1. Define a helper function 'reverse' to find the reverse of a number.\n2. Initialize a dictionary 'count' to store the difference between the number and its reverse and their count in the nums array.\n3. Initialize a result variable.\n4. Traverse the nums array, calculate the difference between num and its reverse, and update the count.\n5. Traverse the count dictionary's values, and for each value, add ((value * (value - 1)) / 2) % MOD to the current result, and take the modulus by 1e9 + 7.\n6. Return the result as the final count of nice pairs.\n    ",
+    "java": "\n    ```java\npublic int reverse(int x) {\n    int rev = 0;\n    while (x != 0) {\n        rev = rev * 10 + x % 10;\n        x = x / 10;\n    }\n    return rev;\n}\n\npublic int countNicePairs(int[] nums) {\n    final int MOD = 1_000_000_007;\n    HashMap<Integer, Integer> count = new HashMap<>();\n    int result = 0;\n\n    for (int num : nums) {\n        int diff = num - reverse(num);\n        count.put(diff, count.getOrDefault(diff, 0) + 1);\n    }\n\n    for (int val : count.values()) {\n        result = (int)((result + ((val * (val - 1L)) / 2) % MOD) % MOD);\n    }\n\n    return result;\n}\n```\n    \n    1. Define a helper function 'reverse' to find the reverse of a number.\n2. Initialize a dictionary 'count' to store the difference between the number and its reverse and their count in the nums array.\n3. Initialize a result variable.\n4. Traverse the nums array, calculate the difference between num and its reverse, and update the count.\n5. Traverse the count dictionary's values, and for each value, add ((value * (value - 1)) / 2) % MOD to the current result, and take the modulus by 1e9 + 7.\n6. Return the result as the final count of nice pairs.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

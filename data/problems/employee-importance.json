@@ -1,0 +1,24 @@
+{
+  "id": 690,
+  "title": "Employee Importance",
+  "slug": "employee-importance",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You have a data structure of employee information, including the employee's unique ID, importance value, and direct subordinates' IDs.\n\nYou are given an array of employees employees where:\n\n*   employees[i].id is the ID of the ith employee.\n*   employees[i].importance is the importance value of the ith employee.\n*   employees[i].subordinates is a list of the IDs of the direct subordinates of the ith employee.\n\nGiven an integer id that represents an employee's ID, return _the total importance value of this employee and all their direct and indirect subordinates_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass Employee:\n    def __init__(self, id: int, importance: int, subordinates: list):\n        self.id = id\n        self.importance = importance\n        self.subordinates = subordinates\n\ndef getTotalImportance(employees, id):\n    emap = {emp.id: emp for emp in employees}\n    return dfs(emap, id)\n\ndef dfs(emap, id):\n    emp = emap[id]\n    return emp.importance + sum(dfs(emap, sub_id) for sub_id in emp.subordinates)\n```\n    \n    The algorithm is quite straightforward. You just have to start from the given employee and then recursively find the importance of all direct and indirect subordinates:\n\n1. Create a hash map that associates each employee's ID with their corresponding object.\n2. Start from the given employee's ID and find the total importance using depth-first search.\n\nFor DFS:\n1. Start from the given employee (by ID).\n2. Add the importance value of their direct subordinates.\n3. Recursively apply this process to all direct subordinates (depth-first search).\n\nThe final result is the total importance value of the given employee and their direct and indirect subordinates. This algorithm will have O(N) time complexity, where N is the number of employees.\n    ",
+    "javascript": "\n    ```javascript\nclass Employee {\n    constructor(id, importance, subordinates) {\n        this.id = id;\n        this.importance = importance;\n        this.subordinates = subordinates;\n    }\n}\n\nfunction getTotalImportance(employees, id) {\n    const emap = new Map();\n    for (const emp of employees) {\n        emap.set(emp.id, emp);\n    }\n    return dfs(emap, id);\n}\n\nfunction dfs(emap, id) {\n    const emp = emap.get(id);\n    let ans = emp.importance;\n    for (const subId of emp.subordinates) {\n        ans += dfs(emap, subId);\n    }\n    return ans;\n}\n```\n    \n    The algorithm is quite straightforward. You just have to start from the given employee and then recursively find the importance of all direct and indirect subordinates:\n\n1. Create a hash map that associates each employee's ID with their corresponding object.\n2. Start from the given employee's ID and find the total importance using depth-first search.\n\nFor DFS:\n1. Start from the given employee (by ID).\n2. Add the importance value of their direct subordinates.\n3. Recursively apply this process to all direct subordinates (depth-first search).\n\nThe final result is the total importance value of the given employee and their direct and indirect subordinates. This algorithm will have O(N) time complexity, where N is the number of employees.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\nclass Employee {\n    public int id;\n    public int importance;\n    public List<Integer> subordinates;\n}\n\npublic int getTotalImportance(List<Employee> employees, int id) {\n    Map<Integer, Employee> emap = new HashMap<>();\n    for (Employee emp : employees) {\n        emap.put(emp.id, emp);\n    }\n    return dfs(emap, id);\n}\n\npublic int dfs(Map<Integer, Employee> emap, int id) {\n    int ans = emap.get(id).importance;\n    for (int subId : emap.get(id).subordinates) {\n        ans += dfs(emap, subId);\n    }\n    return ans;\n}\n```\n    \n    The algorithm is quite straightforward. You just have to start from the given employee and then recursively find the importance of all direct and indirect subordinates:\n\n1. Create a hash map that associates each employee's ID with their corresponding object.\n2. Start from the given employee's ID and find the total importance using depth-first search.\n\nFor DFS:\n1. Start from the given employee (by ID).\n2. Add the importance value of their direct subordinates.\n3. Recursively apply this process to all direct subordinates (depth-first search).\n\nThe final result is the total importance value of the given employee and their direct and indirect subordinates. This algorithm will have O(N) time complexity, where N is the number of employees.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

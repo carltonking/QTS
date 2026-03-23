@@ -1,0 +1,24 @@
+{
+  "id": 255,
+  "title": "Verify Preorder Sequence in Binary Search Tree",
+  "slug": "verify-preorder-sequence-in-binary-search-tree",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of unique integers preorder, return true _if it is the correct preorder traversal sequence of a binary search tree_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef isValidPreorder(preorder: List[int]) -> bool:\n    stack = []\n    lower_bound = float('-inf')\n    for num in preorder:\n        if num < lower_bound:\n            return False\n        while stack and num > stack[-1]:\n            lower_bound = stack.pop()\n        stack.append(num)\n    return True\n```\n    \n    The algorithm is mainly based on a stack. It processes each element in the given `preorder` array and uses the stack to keep track of nodes that are not yet part of a completed subtree.\n\nInitially, `lower_bound` is set to the minimum possible value.\n\nFor each number in the preorder array:\n\n1. If the number is less than lower_bound, it means the number is trying to be added as a right child but the value is less than the minimum possible value, hence breaks the binary search tree property. So return false.\n   \n2. If the number is greater than the top of the stack, it means the number is the right child of the last node encountered. So, we pop from the stack and set the lower_bound to the last popped value until the stack is empty or the number is smaller than the top of the stack.\n   \n3. Push the number onto the stack.\n\nIf no false case is encountered during the loop, return true as it is a valid preorder traversal sequence of a binary search tree.\n    ",
+    "javascript": "\n    ```javascript\nvar isValidPreorder = function(preorder) {\n    let stack = [];\n    let lowerBound = Number.MIN_SAFE_INTEGER;\n    for (let num of preorder) {\n        if (num < lowerBound) return false;\n        while (stack.length > 0 && num > stack[stack.length - 1]) {\n            lowerBound = stack.pop();\n        }\n        stack.push(num);\n    }\n    return true;\n};\n```\n    \n    The algorithm is mainly based on a stack. It processes each element in the given `preorder` array and uses the stack to keep track of nodes that are not yet part of a completed subtree.\n\nInitially, `lower_bound` is set to the minimum possible value.\n\nFor each number in the preorder array:\n\n1. If the number is less than lower_bound, it means the number is trying to be added as a right child but the value is less than the minimum possible value, hence breaks the binary search tree property. So return false.\n   \n2. If the number is greater than the top of the stack, it means the number is the right child of the last node encountered. So, we pop from the stack and set the lower_bound to the last popped value until the stack is empty or the number is smaller than the top of the stack.\n   \n3. Push the number onto the stack.\n\nIf no false case is encountered during the loop, return true as it is a valid preorder traversal sequence of a binary search tree.\n    ",
+    "java": "\n    ```java\npublic boolean isValidPreorder(int[] preorder) {\n    Stack<Integer> stack = new Stack<>();\n    int lowerBound = Integer.MIN_VALUE;\n    for (int num : preorder) {\n        if (num < lowerBound) return false;\n        while (!stack.isEmpty() && num > stack.peek()) {\n            lowerBound = stack.pop();\n        }\n        stack.push(num);\n    }\n    return true;\n}\n```\n    \n    The algorithm is mainly based on a stack. It processes each element in the given `preorder` array and uses the stack to keep track of nodes that are not yet part of a completed subtree.\n\nInitially, `lower_bound` is set to the minimum possible value.\n\nFor each number in the preorder array:\n\n1. If the number is less than lower_bound, it means the number is trying to be added as a right child but the value is less than the minimum possible value, hence breaks the binary search tree property. So return false.\n   \n2. If the number is greater than the top of the stack, it means the number is the right child of the last node encountered. So, we pop from the stack and set the lower_bound to the last popped value until the stack is empty or the number is smaller than the top of the stack.\n   \n3. Push the number onto the stack.\n\nIf no false case is encountered during the loop, return true as it is a valid preorder traversal sequence of a binary search tree.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

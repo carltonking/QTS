@@ -1,0 +1,24 @@
+{
+  "id": 2607,
+  "title": "Make K-Subarray Sums Equal",
+  "slug": "make-k-subarray-sums-equal",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array arr and an integer k. The array arr is circular. In other words, the first element of the array is the next element of the last element, and the last element of the array is the previous element of the first element.\n\nYou can do the following operation any number of times:\n\n*   Pick any element from arr and increase or decrease it by 1.\n\nReturn _the minimum number of operations such that the sum of each subarray of length_ k _is equal_.\n\nA subarray is a contiguous part of the array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minOperations(arr: List[int], k: int) -> int:\n    n = len(arr)\n    res = float('inf')\n    prefix = [0] * (n + 1)\n\n    for i in range(1, n + 1):\n        prefix[i] = prefix[i - 1] + arr[i - 1]\n\n    for i in range(1, n - k + 2):\n        target = (prefix[i - 1] + prefix[n] - prefix[i + k - 1] + n // k - 1) // (n // k)\n        curr_cost = 0\n        for j in range(i, i + k):\n            curr_cost += abs(arr[j - 1] - target)\n        res = min(res, curr_cost)\n\n    return res\n```\n    \n    1. Compute the prefix sum `prefix` of the input array `arr`.\n2. Iterate through all possible starting indices i of the subarrays with length k, and for each i:\n   a. Calculate the target value (sum of the elements of the subarray) by dividing the sum of the elements not in the current subarray by the number of remaining subarrays (n/k).\n   b. Calculate the cost (number of operations) to make the current subarray have a sum equal to the target value by adding the absolute difference of each element in the subarray and the target value.\n   c. Update the result with the minimum cost (number of operations) seen so far.\n3. Return the minimum cost (number of operations).\n    ",
+    "javascript": "\n    ```javascript\nfunction minOperations(arr, k) {\n    let n = arr.length;\n    let res = Number.MAX_SAFE_INTEGER;\n    let prefix = new Array(n + 1).fill(0);\n\n    for (let i = 1; i <= n; i++) {\n        prefix[i] = prefix[i - 1] + arr[i - 1];\n    }\n\n    for (let i = 1; i <= n - k + 1; i++) {\n        let target = Math.floor((prefix[i - 1] + prefix[n] - prefix[i + k - 1] + n / k - 1) / (n / k));\n        let curr_cost = 0;\n        for (let j = i; j < i + k; j++) {\n            curr_cost += Math.abs(arr[j - 1] - target);\n        }\n        res = Math.min(res, curr_cost);\n    }\n    return res;\n}\n```\n    \n    1. Compute the prefix sum `prefix` of the input array `arr`.\n2. Iterate through all possible starting indices i of the subarrays with length k, and for each i:\n   a. Calculate the target value (sum of the elements of the subarray) by dividing the sum of the elements not in the current subarray by the number of remaining subarrays (n/k).\n   b. Calculate the cost (number of operations) to make the current subarray have a sum equal to the target value by adding the absolute difference of each element in the subarray and the target value.\n   c. Update the result with the minimum cost (number of operations) seen so far.\n3. Return the minimum cost (number of operations).\n    ",
+    "java": "\n    ```java\npublic int minOperations(int[] arr, int k) {\n    int n = arr.length, res = Integer.MAX_VALUE;\n    int[] prefix = new int[n + 1];\n\n    for (int i = 1; i <= n; i++) {\n        prefix[i] = prefix[i - 1] + arr[i - 1];\n    }\n\n    for (int i = 1; i <= n - k + 1; i++) {\n        int target = (prefix[i - 1] + prefix[n] - prefix[i + k - 1] + n / k - 1) / (n / k);\n        int curr_cost = 0;\n        for (int j = i; j < i + k; j++) {\n            curr_cost += Math.abs(arr[j - 1] - target);\n        }\n        res = Math.min(res, curr_cost);\n    }\n    return res;\n}\n```\n    \n    1. Compute the prefix sum `prefix` of the input array `arr`.\n2. Iterate through all possible starting indices i of the subarrays with length k, and for each i:\n   a. Calculate the target value (sum of the elements of the subarray) by dividing the sum of the elements not in the current subarray by the number of remaining subarrays (n/k).\n   b. Calculate the cost (number of operations) to make the current subarray have a sum equal to the target value by adding the absolute difference of each element in the subarray and the target value.\n   c. Update the result with the minimum cost (number of operations) seen so far.\n3. Return the minimum cost (number of operations).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

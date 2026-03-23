@@ -1,0 +1,24 @@
+{
+  "id": 1668,
+  "title": "Maximum Repeating Substring",
+  "slug": "maximum-repeating-substring",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "For a string sequence, a string word is k\\-repeating if word concatenated k times is a substring of sequence. The word's maximum k\\-repeating value is the highest value k where word is k\\-repeating in sequence. If word is not a substring of sequence, word's maximum k\\-repeating value is 0.\n\nGiven strings sequence and word, return _the maximum k\\-repeating value of word in sequence_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef longestAwesomeSubstring(s):\n    n = len(s)\n    maxLen = 0\n    for i in range(n):\n        for j in range(i + 1, n + 1):\n            substr = s[i:j]\n            if isAwesome(substr):\n                maxLen = max(maxLen, j - i)\n    return maxLen\n\ndef isAwesome(s):\n    odd_count = 0\n    freq = [0] * 26\n    for c in s:\n        freq[ord(c) - ord('a')] += 1\n    for i in range(26):\n        if freq[i] % 2 == 1:\n            odd_count += 1\n    return odd_count <= 1\n```\n    \n    The algorithm starts by checking all possible substrings of the given string s. For each substring, it checks whether it's an awesome substring or not by calling the isAwesome function.\nThe isAwesome function calculates the frequency of each character in the string and counts the number of characters that have an odd frequency. If there are more than one characters with odd frequency, it returns false, otherwise, it returns true.\nFinally, the algorithm returns the length of the longest awesome substring found.\n    ",
+    "javascript": "\n    ```javascript\nfunction longestAwesomeSubstring(s) {\n    let n = s.length;\n    let maxLen = 0;\n    for (let i = 0; i < n; ++i) {\n        for (let j = i + 1; j <= n; ++j) {\n            let substr = s.substring(i, j);\n            if (isAwesome(substr)) {\n                maxLen = Math.max(maxLen, j - i);\n            }\n        }\n    }\n    return maxLen;\n}\n\nfunction isAwesome(s) {\n    let odd_count = 0;\n    let freq = new Array(26).fill(0);\n    for (let c of s) {\n        freq[c.charCodeAt(0) - 'a'.charCodeAt(0)]++;\n    }\n    for (let i = 0; i < 26; i++) {\n        if (freq[i] % 2 == 1) {\n            odd_count++;\n        }\n    }\n    return odd_count <= 1;\n}\n```\n    \n    The algorithm starts by checking all possible substrings of the given string s. For each substring, it checks whether it's an awesome substring or not by calling the isAwesome function.\nThe isAwesome function calculates the frequency of each character in the string and counts the number of characters that have an odd frequency. If there are more than one characters with odd frequency, it returns false, otherwise, it returns true.\nFinally, the algorithm returns the length of the longest awesome substring found.\n    ",
+    "java": "\n    ```java\nint longestAwesomeSubstring(String s) {\n    int n = s.length();\n    int maxLen = 0;\n    for (int i = 0; i < n; ++i) {\n        for (int j = i + 1; j <= n; ++j) {\n            String substr = s.substring(i, j);\n            if (isAwesome(substr)) {\n                maxLen = Math.max(maxLen, j - i);\n            }\n        }\n    }\n    return maxLen;\n}\n\nboolean isAwesome(String s) {\n    int odd_count = 0;\n    int[] freq = new int[26];\n    for (char c : s.toCharArray()) {\n        freq[c - 'a']++;\n    }\n    for (int i = 0; i < 26; i++) {\n        if (freq[i] % 2 == 1) {\n            odd_count++;\n        }\n    }\n    return (odd_count <= 1);\n}\n```\n    \n    The algorithm starts by checking all possible substrings of the given string s. For each substring, it checks whether it's an awesome substring or not by calling the isAwesome function.\nThe isAwesome function calculates the frequency of each character in the string and counts the number of characters that have an odd frequency. If there are more than one characters with odd frequency, it returns false, otherwise, it returns true.\nFinally, the algorithm returns the length of the longest awesome substring found.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

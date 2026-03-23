@@ -1,0 +1,24 @@
+{
+  "id": 2519,
+  "title": "Count the Number of K-Big Indices",
+  "slug": "count-the-number-of-k-big-indices",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums and a positive integer k.\n\nWe call an index i k-big if the following conditions are satisfied:\n\n*   There exist at least k different indices idx1 such that idx1 < i and nums[idx1] < nums[i].\n*   There exist at least k different indices idx2 such that idx2 > i and nums[idx2] < nums[i].\n\nReturn _the number of k-big indices_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef kBigIndices(nums, k):\n    n = len(nums)\n    left, right = [0] * n, [0] * n\n\n    for i in range(1, n):\n        if nums[i] > nums[i - 1]:\n            left[i] = left[i - 1] + 1\n\n        j = n - i - 1\n        if nums[j] < nums[j + 1]:\n            right[j] = right[j + 1] + 1\n\n    return sum(1 for i in range(n) if left[i] >= k and right[i] >= k)\n```\n    \n    The algorithm uses two extra arrays, `left` and `right`, to store the number of smaller elements from left and right sides, respectively. Iterate through the `nums` array and fill the `left` and `right` arrays according to the conditions.\n\nThen, iterate the `left` and `right` arrays simultaneously, and for each index `i`, check if both `left[i]` and `right[i]` are greater than or equal to `k`. If both conditions are satisfied, increment the `count`. Finally, return the `count`.\n\nTime complexity: O(n)\nSpace complexity: O(n)\n    ",
+    "javascript": "\n    ```javascript\nfunction kBigIndices(nums, k) {\n    const n = nums.length;\n    const left = Array(n).fill(0);\n    const right = Array(n).fill(0);\n\n    for (let i = 1; i < n; i++) {\n        if (nums[i] > nums[i - 1])\n            left[i] = left[i - 1] + 1;\n        \n        let j = n - 1 - i;\n        if (nums[j] < nums[j + 1])\n            right[j] = right[j + 1] + 1;\n    }\n\n    let count = 0;\n    for (let i = 0; i < n; i++)\n        if (left[i] >= k && right[i] >= k)\n            count++;\n\n    return count;\n}\n```\n    \n    The algorithm uses two extra arrays, `left` and `right`, to store the number of smaller elements from left and right sides, respectively. Iterate through the `nums` array and fill the `left` and `right` arrays according to the conditions.\n\nThen, iterate the `left` and `right` arrays simultaneously, and for each index `i`, check if both `left[i]` and `right[i]` are greater than or equal to `k`. If both conditions are satisfied, increment the `count`. Finally, return the `count`.\n\nTime complexity: O(n)\nSpace complexity: O(n)\n    ",
+    "java": "\n    ```java\npublic int kBigIndices(int[] nums, int k) {\n    int n = nums.length;\n    int[] left = new int[n];\n    int[] right = new int[n];\n\n    for (int i = 1; i < n; i++) {\n        if (nums[i] > nums[i - 1])\n            left[i] = left[i - 1] + 1;\n        \n        int j = n - 1 - i;\n        if (nums[j] < nums[j + 1])\n            right[j] = right[j + 1] + 1;\n    }\n\n    int count = 0;\n    for (int i = 0; i < n; i++)\n        if (left[i] >= k && right[i] >= k)\n            count++;\n\n    return count;\n}\n```\n    \n    The algorithm uses two extra arrays, `left` and `right`, to store the number of smaller elements from left and right sides, respectively. Iterate through the `nums` array and fill the `left` and `right` arrays according to the conditions.\n\nThen, iterate the `left` and `right` arrays simultaneously, and for each index `i`, check if both `left[i]` and `right[i]` are greater than or equal to `k`. If both conditions are satisfied, increment the `count`. Finally, return the `count`.\n\nTime complexity: O(n)\nSpace complexity: O(n)\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

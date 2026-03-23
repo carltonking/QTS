@@ -1,0 +1,24 @@
+{
+  "id": 1863,
+  "title": "Sum of All Subset XOR Totals",
+  "slug": "sum-of-all-subset-xor-totals",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "The XOR total of an array is defined as the bitwise XOR of all its elements, or 0 if the array is empty.\n\n*   For example, the XOR total of the array [2,5,6] is 2 XOR 5 XOR 6 = 1.\n\nGiven an array nums, return _the sum of all XOR totals for every subset of_ nums.\n\nNote: Subsets with the same elements should be counted multiple times.\n\nAn array a is a subset of an array b if a can be obtained from b by deleting some (possibly zero) elements of b.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef subsetXORSum(nums):\n    ans = 0\n    n = len(nums)\n    max_val = 1 << n\n    for i in range(1, max_val):\n        xor_total = 0\n        for j in range(n):\n            if i & (1 << j):\n                xor_total ^= nums[j]\n        ans += xor_total\n    return ans\n```\n    \n    Loop through all 2^N possible subsets of `nums`, which can be represented as binary numbers from 0 to 2^N - 1. A bit set to 1 at position i indicates that nums[i] is part of the subset. Calculate the XOR total for each of these subsets and accumulate it. Finally, return the total sum. Note that the starting position of the loop is 1 since we skip the empty subset.\n    ",
+    "javascript": "\n    ```javascript\nfunction subsetXORSum(nums) {\n    let ans = 0, n = nums.length, max_val = 1 << n;\n    for (let i = 1; i < max_val; i++) {\n        let xor_total = 0;\n        for (let j = 0; j < n; j++) {\n            if (i & (1 << j)) {\n                xor_total ^= nums[j];\n            }\n        }\n        ans += xor_total;\n    }\n    return ans;\n}\n```\n    \n    Loop through all 2^N possible subsets of `nums`, which can be represented as binary numbers from 0 to 2^N - 1. A bit set to 1 at position i indicates that nums[i] is part of the subset. Calculate the XOR total for each of these subsets and accumulate it. Finally, return the total sum. Note that the starting position of the loop is 1 since we skip the empty subset.\n    ",
+    "java": "\n    ```java\npublic int subsetXORSum(int[] nums) {\n    int ans = 0, n = nums.length, max_val = 1 << n;\n    for (int i = 1; i < max_val; i++) {\n        int xor_total = 0;\n        for (int j = 0; j < n; j++) {\n            if ((i & (1 << j)) > 0) {\n                xor_total ^= nums[j];\n            }\n        }\n        ans += xor_total;\n    }\n    return ans;\n}\n```\n    \n    Loop through all 2^N possible subsets of `nums`, which can be represented as binary numbers from 0 to 2^N - 1. A bit set to 1 at position i indicates that nums[i] is part of the subset. Calculate the XOR total for each of these subsets and accumulate it. Finally, return the total sum. Note that the starting position of the loop is 1 since we skip the empty subset.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

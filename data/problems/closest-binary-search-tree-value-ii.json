@@ -1,0 +1,24 @@
+{
+  "id": 272,
+  "title": "Closest Binary Search Tree Value II",
+  "slug": "closest-binary-search-tree-value-ii",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given the root of a binary search tree, a target value, and an integer k, return _the_ k _values in the BST that are closest to the_ target. You may return the answer in any order.\n\nYou are guaranteed to have only one unique set of k values in the BST that are closest to the target.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom heapq import heappush, heappop\n\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef closestKValues(root, target, k):\n    values = []\n    max_heap = []\n\n    def inorder_traverse(node):\n        if not node:\n            return\n        inorder_traverse(node.left)\n        heappush(max_heap, (-abs(node.val - target), node.val))\n        if len(max_heap) > k:\n            heappop(max_heap)\n        inorder_traverse(node.right)\n\n    inorder_traverse(root)\n    while max_heap:\n        _, val = heappop(max_heap)\n        values.append(val)\n    return values\n```\n    \n    The proposed algorithm is an Inorder Traversal of a Binary Search Tree, which visits the nodes in ascending order. During the traversal, we calculate the absolute difference between each node's value and the target value, and maintain a max heap with the K smallest differences. In the end, we retrieve the values from the max heap and return them in the result.\n\nThe time complexity of this algorithm is O(n) due to the traversal of the whole tree. Although the follow-up question asks about a solution with less O(n) time, the provided algorithms have not considered that case.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(val, left=null, right=null) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\nfunction closestKValues(root, target, k) {\n    const values = [];\n    const maxHeap = [];\n\n    function inorderTraversal(node) {\n        if (!node) return;\n        inorderTraversal(node.left);\n        maxHeap.push({diff: Math.abs(node.val - target), val: node.val});\n        maxHeap.sort((a, b) => b.diff - a.diff);\n        if (maxHeap.length > k) maxHeap.pop();\n        inorderTraversal(node.right);\n    }\n\n    inorderTraversal(root);\n    for (let item of maxHeap) {\n        values.push(item.val);\n    }\n    return values;\n}\n```\n    \n    The proposed algorithm is an Inorder Traversal of a Binary Search Tree, which visits the nodes in ascending order. During the traversal, we calculate the absolute difference between each node's value and the target value, and maintain a max heap with the K smallest differences. In the end, we retrieve the values from the max heap and return them in the result.\n\nThe time complexity of this algorithm is O(n) due to the traversal of the whole tree. Although the follow-up question asks about a solution with less O(n) time, the provided algorithms have not considered that case.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\nimport java.util.PriorityQueue;\n\nclass TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n}\n\npublic List<Integer> closestKValues(TreeNode root, double target, int k) {\n    PriorityQueue<int[]> maxHeap = new PriorityQueue<>((a, b) -> Double.compare(b[1], a[1]));\n    List<Integer> values = new ArrayList<>();\n\n    inorderTraversal(root, target, k, maxHeap);\n\n    while (!maxHeap.isEmpty()) {\n        values.add(maxHeap.poll()[0]);\n    }\n    return values;\n}\n\nvoid inorderTraversal(TreeNode node, double target, int k, PriorityQueue<int[]> maxHeap) {\n    if (node == null) return;\n\n    inorderTraversal(node.left, target, k, maxHeap);\n    maxHeap.offer(new int[]{node.val, Math.abs(node.val - target)});\n    if (maxHeap.size() > k) maxHeap.poll();\n    inorderTraversal(node.right, target, k, maxHeap);\n}\n```\n    \n    The proposed algorithm is an Inorder Traversal of a Binary Search Tree, which visits the nodes in ascending order. During the traversal, we calculate the absolute difference between each node's value and the target value, and maintain a max heap with the K smallest differences. In the end, we retrieve the values from the max heap and return them in the result.\n\nThe time complexity of this algorithm is O(n) due to the traversal of the whole tree. Although the follow-up question asks about a solution with less O(n) time, the provided algorithms have not considered that case.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

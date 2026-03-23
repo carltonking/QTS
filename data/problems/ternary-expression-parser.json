@@ -1,0 +1,24 @@
+{
+  "id": 439,
+  "title": "Ternary Expression Parser",
+  "slug": "ternary-expression-parser",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string expression representing arbitrarily nested ternary expressions, evaluate the expression, and return _the result of it_.\n\nYou can always assume that the given expression is valid and only contains digits, '?', ':', 'T', and 'F' where 'T' is true and 'F' is false. All the numbers in the expression are one-digit numbers (i.e., in the range [0, 9]).\n\nThe conditional expressions group right-to-left (as usual in most languages), and the result of the expression will always evaluate to either a digit, 'T' or 'F'.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef parseTernary(expression: str) -> str:\n    stack = []\n    for c in reversed(expression):\n        if stack and stack[-1] == '?':\n            stack.pop()  # Pop '?'\n            first = stack.pop()\n            stack.pop()  # Pop ':'\n            second = stack.pop()\n            stack.append(first if c == 'T' else second)\n        else:\n            stack.append(c)\n    return stack[-1]\n```\n\n    \n    The algorithm uses a stack to process the ternary expression. Iterate through the expression from the right to left, and push each character on the stack. If the stack is not empty and the top of the stack is a '?', then pop the '?' from the stack and store the next two elements (first and second). Pop the ':' from the stack and push either 'first' or 'second' on the stack based on whether the current character is 'T' or 'F'. The top element of the stack after iteration has the result of evaluating the ternary expression.\n    ",
+    "javascript": "\n    ```javascript\nfunction parseTernary(expression) {\n    const stack = [];\n    for (let i = expression.length - 1; i >= 0; i--) {\n        const c = expression[i];\n        if (stack.length && stack[stack.length - 1] === '?') {\n            stack.pop(); // Pop '?'\n            const first = stack.pop();\n            stack.pop(); // Pop ':'\n            const second = stack.pop();\n            stack.push(c === 'T' ? first : second);\n        } else {\n            stack.push(c);\n        }\n    }\n    return stack[stack.length - 1];\n}\n```\n\n    \n    The algorithm uses a stack to process the ternary expression. Iterate through the expression from the right to left, and push each character on the stack. If the stack is not empty and the top of the stack is a '?', then pop the '?' from the stack and store the next two elements (first and second). Pop the ':' from the stack and push either 'first' or 'second' on the stack based on whether the current character is 'T' or 'F'. The top element of the stack after iteration has the result of evaluating the ternary expression.\n    ",
+    "java": "\n    ```java\nimport java.util.Stack;\n\npublic String parseTernary(String expression) {\n    Stack<Character> stk = new Stack<>();\n    for (int i = expression.length() - 1; i >= 0; --i) {\n        char c = expression.charAt(i);\n        if (!stk.isEmpty() && stk.peek() == '?') {\n            stk.pop(); // Pop '?'\n            char first = stk.pop();\n            stk.pop(); // Pop ':'\n            char second = stk.pop();\n            stk.push(c == 'T' ? first : second);\n        } else {\n            stk.push(c);\n        }\n    }\n    return String.valueOf(stk.peek());\n}\n```\n\n    \n    The algorithm uses a stack to process the ternary expression. Iterate through the expression from the right to left, and push each character on the stack. If the stack is not empty and the top of the stack is a '?', then pop the '?' from the stack and store the next two elements (first and second). Pop the ':' from the stack and push either 'first' or 'second' on the stack based on whether the current character is 'T' or 'F'. The top element of the stack after iteration has the result of evaluating the ternary expression.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

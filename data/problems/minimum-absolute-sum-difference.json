@@ -1,0 +1,24 @@
+{
+  "id": 1818,
+  "title": "Minimum Absolute Sum Difference",
+  "slug": "minimum-absolute-sum-difference",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two positive integer arrays nums1 and nums2, both of length n.\n\nThe absolute sum difference of arrays nums1 and nums2 is defined as the sum of |nums1[i] - nums2[i]| for each 0 <= i < n (0-indexed).\n\nYou can replace at most one element of nums1 with any other element in nums1 to minimize the absolute sum difference.\n\nReturn the _minimum absolute sum difference after replacing at most one element in the array nums1._ Since the answer may be large, return it modulo 109 + 7.\n\n|x| is defined as:\n\n*   x if x >= 0, or\n*   -x if x < 0.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_points(s, x, y):\n    points = 0\n    s = list(s)\n    for i in range(1, len(s)):\n        if s[i] == s[i - 1]:\n            points += max(x, y)\n            s[i] = '#'\n    return points\n```\n    \n    The provided code iterates through the string, starting from the second character comparing it with the previous character. If the two consecutive characters are the same, it adds the maximum value of the given integers x and y to the points. To make sure that we don't reuse the character again, the element is altered by assigning it '#' (C++, Java, Python) or by replacing it with '#' in the string (JavaScript). The algorithm finally returns the points gained after applying the operations. The complexity of the algorithm is O(n) where n is the length of the string.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxPoints(s, x, y) {\n    let points = 0;\n    for (let i = 1; i < s.length; ++i) {\n        if (s[i] === s[i - 1]) {\n            points += Math.max(x, y);\n            s = s.substring(0, i) + '#' + s.substring(i + 1);\n        }\n    }\n    return points;\n}\n```\n    \n    The provided code iterates through the string, starting from the second character comparing it with the previous character. If the two consecutive characters are the same, it adds the maximum value of the given integers x and y to the points. To make sure that we don't reuse the character again, the element is altered by assigning it '#' (C++, Java, Python) or by replacing it with '#' in the string (JavaScript). The algorithm finally returns the points gained after applying the operations. The complexity of the algorithm is O(n) where n is the length of the string.\n    ",
+    "java": "\n    ```java\npublic int maxPoints(String s, int x, int y) {\n    int points = 0;\n    char[] c = s.toCharArray();\n    for (int i = 1; i < c.length; ++i) {\n        if (c[i] == c[i - 1]) {\n            points += Math.max(x, y);\n            c[i] = '#';\n        }\n    }\n    return points;\n}\n```\n    \n    The provided code iterates through the string, starting from the second character comparing it with the previous character. If the two consecutive characters are the same, it adds the maximum value of the given integers x and y to the points. To make sure that we don't reuse the character again, the element is altered by assigning it '#' (C++, Java, Python) or by replacing it with '#' in the string (JavaScript). The algorithm finally returns the points gained after applying the operations. The complexity of the algorithm is O(n) where n is the length of the string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

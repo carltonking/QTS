@@ -1,0 +1,24 @@
+{
+  "id": 515,
+  "title": "Find Largest Value in Each Tree Row",
+  "slug": "find-largest-value-in-each-tree-row",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the root of a binary tree, return _an array of the largest value in each row_ of the tree (0-indexed).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import deque\n\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef largestValues(root: TreeNode):\n    if not root:\n        return []\n    result = []\n    queue = deque([root])\n\n    while queue:\n        size = len(queue)\n        max_val = float('-inf')\n        for _ in range(size):\n            node = queue.popleft()\n            max_val = max(max_val, node.val)\n\n            if node.left:\n                queue.append(node.left)\n            if node.right:\n                queue.append(node.right)\n        result.append(max_val)\n\n    return result\n```\n    \n    The algorithm we used here is Breadth-First Search (BFS) traversal. We use a queue to store the nodes in each level of the tree. After we process all the nodes in the current level, we update the maxVal with the maximum element value found in that level and add it to the result array. We repeat this process until the queue is empty, which means we have processed all the nodes in the binary tree. The time and space complexity of this algorithm is O(N), where N is the number of nodes in the tree.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(val, left = null, right = null) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\nfunction largestValues(root) {\n    if (!root) return [];\n    const result = [];\n    const queue = [root];\n\n    while (queue.length) {\n        const size = queue.length;\n        let maxVal = Number.MIN_SAFE_INTEGER;\n        for (let i = 0; i < size; i++) {\n            const node = queue.shift();\n            maxVal = Math.max(maxVal, node.val);\n\n            if (node.left) queue.push(node.left);\n            if (node.right) queue.push(node.right);\n        }\n        result.push(maxVal);\n    }\n    return result;\n}\n```\n    \n    The algorithm we used here is Breadth-First Search (BFS) traversal. We use a queue to store the nodes in each level of the tree. After we process all the nodes in the current level, we update the maxVal with the maximum element value found in that level and add it to the result array. We repeat this process until the queue is empty, which means we have processed all the nodes in the binary tree. The time and space complexity of this algorithm is O(N), where N is the number of nodes in the tree.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\nclass TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n}\n\npublic List<Integer> largestValues(TreeNode root) {\n    if (root == null) return new ArrayList<>();\n    List<Integer> result = new ArrayList<>();\n    Queue<TreeNode> queue = new LinkedList<>();\n    queue.offer(root);\n\n    while (!queue.isEmpty()) {\n        int size = queue.size();\n        int max_val = Integer.MIN_VALUE;\n        for (int i = 0; i < size; i++) {\n            TreeNode node = queue.poll();\n            max_val = Math.max(max_val, node.val);\n\n            if (node.left != null) queue.offer(node.left);\n            if (node.right != null) queue.offer(node.right);\n        }\n        result.add(max_val);\n    }\n    return result;\n}\n```\n    \n    The algorithm we used here is Breadth-First Search (BFS) traversal. We use a queue to store the nodes in each level of the tree. After we process all the nodes in the current level, we update the maxVal with the maximum element value found in that level and add it to the result array. We repeat this process until the queue is empty, which means we have processed all the nodes in the binary tree. The time and space complexity of this algorithm is O(N), where N is the number of nodes in the tree.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1046,
+  "title": "Last Stone Weight",
+  "slug": "last-stone-weight",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an array of integers stones where stones[i] is the weight of the ith stone.\n\nWe are playing a game with the stones. On each turn, we choose the heaviest two stones and smash them together. Suppose the heaviest two stones have weights x and y with x <= y. The result of this smash is:\n\n*   If x == y, both stones are destroyed, and\n*   If x != y, the stone of weight x is destroyed, and the stone of weight y has new weight y - x.\n\nAt the end of the game, there is at most one stone left.\n\nReturn _the weight of the last remaining stone_. If there are no stones left, return 0.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef longestOnes(nums, k):\n    left, right, max_ones, zero_count = 0, 0, 0, 0\n    while right < len(nums):\n        if nums[right] == 0:\n            zero_count += 1\n        while zero_count > k:\n            if nums[left] == 0:\n                zero_count -= 1\n            left += 1\n        max_ones = max(max_ones, right - left + 1)\n        right += 1\n    return max_ones\n```\n\n    \n    The algorithm for this problem is a sliding window solution. We iterate through the array, and for each iteration, we check if the current element is a 0. If it is, we increment the zeroCount. If the zeroCount exceeds k, we move the left pointer of the sliding window forwards, checking if the element we are leaving is a 0, and decrementing the zeroCount accordingly. We then calculate and store the maximum consecutive 1's within the sliding window for each iteration, incrementing the right pointer of the sliding window at every step. Finally, we return the maximum consecutive 1's after iterating through the whole array. The algorithm focuses on processing the array in a single pass and adjusting window boundaries accordingly. Each language implementation follows this algorithm and uses similar variable names for convenience.\n    ",
+    "javascript": "\n    ```javascript\nfunction longestOnes(nums, k) {\n    let left = 0, right = 0, maxOnes = 0, zeroCount = 0;\n    while (right < nums.length) {\n        if (nums[right] === 0) zeroCount++;\n        while (zeroCount > k) {\n            if (nums[left] === 0) zeroCount--;\n            left++;\n        }\n        maxOnes = Math.max(maxOnes, right - left + 1);\n        right++;\n    }\n    return maxOnes;\n}\n```\n\n    \n    The algorithm for this problem is a sliding window solution. We iterate through the array, and for each iteration, we check if the current element is a 0. If it is, we increment the zeroCount. If the zeroCount exceeds k, we move the left pointer of the sliding window forwards, checking if the element we are leaving is a 0, and decrementing the zeroCount accordingly. We then calculate and store the maximum consecutive 1's within the sliding window for each iteration, incrementing the right pointer of the sliding window at every step. Finally, we return the maximum consecutive 1's after iterating through the whole array. The algorithm focuses on processing the array in a single pass and adjusting window boundaries accordingly. Each language implementation follows this algorithm and uses similar variable names for convenience.\n    ",
+    "java": "\n    ```java\npublic int longestOnes(int[] nums, int k) {\n    int left = 0, right = 0, maxOnes = 0, zeroCount = 0;\n    while (right < nums.length) {\n        if (nums[right] == 0) zeroCount++;\n        while (zeroCount > k) {\n            if (nums[left] == 0) zeroCount--;\n            left++;\n        }\n        maxOnes = Math.max(maxOnes, right - left + 1);\n        right++;\n    }\n    return maxOnes;\n}\n```\n\n    \n    The algorithm for this problem is a sliding window solution. We iterate through the array, and for each iteration, we check if the current element is a 0. If it is, we increment the zeroCount. If the zeroCount exceeds k, we move the left pointer of the sliding window forwards, checking if the element we are leaving is a 0, and decrementing the zeroCount accordingly. We then calculate and store the maximum consecutive 1's within the sliding window for each iteration, incrementing the right pointer of the sliding window at every step. Finally, we return the maximum consecutive 1's after iterating through the whole array. The algorithm focuses on processing the array in a single pass and adjusting window boundaries accordingly. Each language implementation follows this algorithm and uses similar variable names for convenience.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2579,
+  "title": "Count Total Number of Colored Cells",
+  "slug": "count-total-number-of-colored-cells",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There exists an infinitely large two-dimensional grid of uncolored unit cells. You are given a positive integer n, indicating that you must do the following routine for n minutes:\n\n*   At the first minute, color any arbitrary unit cell blue.\n*   Every minute thereafter, color blue every uncolored cell that touches a blue cell.\n\nBelow is a pictorial representation of the state of the grid after minutes 1, 2, and 3.\n\nReturn _the number of colored cells at the end of_ n _minutes_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef number_of_colored_cells(n):\n    return n * n + (n - 1) * (n - 1)\n```\n    \n    For each minute, the boundary of colored cells expands outward in a square pattern. To get the total number of colored cells, we consider two squares - the inner square formed by the cells that were colored at minute n-1, and the outer square formed by the cells that were colored at minute n. \n\nThe inner square has dimensions (n-1)x(n-1), while the outer square has dimensions nxn. The number of colored cells is the sum of the areas of these two squares.\n\nWe compute this as `n * n + (n - 1) * (n - 1)`.\n    ",
+    "javascript": "\n    ```javascript\nfunction numberOfColoredCells(n) {\n    return n * n + (n - 1) * (n - 1);\n}\n```\n    \n    For each minute, the boundary of colored cells expands outward in a square pattern. To get the total number of colored cells, we consider two squares - the inner square formed by the cells that were colored at minute n-1, and the outer square formed by the cells that were colored at minute n. \n\nThe inner square has dimensions (n-1)x(n-1), while the outer square has dimensions nxn. The number of colored cells is the sum of the areas of these two squares.\n\nWe compute this as `n * n + (n - 1) * (n - 1)`.\n    ",
+    "java": "\n    ```java\nint numberOfColoredCells(int n) {\n    return n * n + (n - 1) * (n - 1);\n}\n```\n    \n    For each minute, the boundary of colored cells expands outward in a square pattern. To get the total number of colored cells, we consider two squares - the inner square formed by the cells that were colored at minute n-1, and the outer square formed by the cells that were colored at minute n. \n\nThe inner square has dimensions (n-1)x(n-1), while the outer square has dimensions nxn. The number of colored cells is the sum of the areas of these two squares.\n\nWe compute this as `n * n + (n - 1) * (n - 1)`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

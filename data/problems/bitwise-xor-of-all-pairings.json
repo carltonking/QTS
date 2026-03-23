@@ -1,0 +1,24 @@
+{
+  "id": 2425,
+  "title": "Bitwise XOR of All Pairings",
+  "slug": "bitwise-xor-of-all-pairings",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two 0-indexed arrays, nums1 and nums2, consisting of non-negative integers. There exists another array, nums3, which contains the bitwise XOR of all pairings of integers between nums1 and nums2 (every integer in nums1 is paired with every integer in nums2 exactly once).\n\nReturn _the bitwise XOR of all integers in_ nums3.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef get_xor(nums1, nums2):\n    xor_result = 0\n    for num1 in nums1:\n        for num2 in nums2:\n            xor_result ^= (num1 ^ num2)\n    return xor_result\n```\n    \n    The algorithm iterates over each integer in `nums1` and each integer in `nums2`, and computes the XOR of their pair. The XOR result of this pair is then XORed with the overall XOR result variable `xor_result`. This loop computes the XOR result of all pairs at the end. Since the XOR operation is commutative and associative, the order of the operations and pairs does not matter.\n    ",
+    "javascript": "\n    ```javascript\nfunction getXOR(nums1, nums2) {\n    let xor_result = 0;\n    for (let num1 of nums1) {\n        for (let num2 of nums2) {\n            xor_result ^= (num1 ^ num2);\n        }\n    }\n    return xor_result;\n}\n```\n    \n    The algorithm iterates over each integer in `nums1` and each integer in `nums2`, and computes the XOR of their pair. The XOR result of this pair is then XORed with the overall XOR result variable `xor_result`. This loop computes the XOR result of all pairs at the end. Since the XOR operation is commutative and associative, the order of the operations and pairs does not matter.\n    ",
+    "java": "\n    ```java\npublic int getXOR(int[] nums1, int[] nums2) {\n    int xor_result = 0;\n    for (int num1 : nums1) {\n        for (int num2 : nums2) {\n            xor_result ^= (num1 ^ num2);\n        }\n    }\n    return xor_result;\n}\n```\n    \n    The algorithm iterates over each integer in `nums1` and each integer in `nums2`, and computes the XOR of their pair. The XOR result of this pair is then XORed with the overall XOR result variable `xor_result`. This loop computes the XOR result of all pairs at the end. Since the XOR operation is commutative and associative, the order of the operations and pairs does not matter.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

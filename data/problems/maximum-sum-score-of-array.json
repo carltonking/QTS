@@ -1,0 +1,24 @@
+{
+  "id": 2219,
+  "title": "Maximum Sum Score of Array",
+  "slug": "maximum-sum-score-of-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums of length n.\n\nThe sum score of nums at an index i where 0 <= i < n is the maximum of:\n\n*   The sum of the first i + 1 elements of nums.\n*   The sum of the last n - i elements of nums.\n\nReturn _the maximum sum score of_ nums _at any index._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_words_in_sentence(sentences):\n    max_words = 0\n    for sentence in sentences:\n        words = len(sentence.split())\n        max_words = max(max_words, words)\n    return max_words\n```\n    \n    The algorithm is simple and common across all languages.\n\n1. Initialize a variable `maxWords` to store the maximum number of words found so far, initially set to 0.\n2. Loop through the given sentences in the list/array:\n   a. For each sentence, split it into words using space as a delimiter.\n   b. Count the number of words (`words`) in the sentence.\n   c. Update `maxWords` by taking the maximum of `maxWords` and `words` count of the current sentence.\n3. Return `maxWords` after iterating through all sentences.\n\nThe algorithm has a time complexity of O(N * M), where N is the number of sentences and M is the average number of words per sentence (because string split or stream operations take O(M) time).\n    ",
+    "javascript": "\n    ```javascript\nfunction maxWordsInSentence(sentences) {\n    let maxWords = 0;\n    for (let sentence of sentences) {\n        let words = sentence.split(\" \");\n        maxWords = Math.max(maxWords, words.length);\n    }\n    return maxWords;\n}\n```\n    \n    The algorithm is simple and common across all languages.\n\n1. Initialize a variable `maxWords` to store the maximum number of words found so far, initially set to 0.\n2. Loop through the given sentences in the list/array:\n   a. For each sentence, split it into words using space as a delimiter.\n   b. Count the number of words (`words`) in the sentence.\n   c. Update `maxWords` by taking the maximum of `maxWords` and `words` count of the current sentence.\n3. Return `maxWords` after iterating through all sentences.\n\nThe algorithm has a time complexity of O(N * M), where N is the number of sentences and M is the average number of words per sentence (because string split or stream operations take O(M) time).\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\n\npublic int maxWordsInSentence(ArrayList<String> sentences) {\n    int maxWords = 0;\n    for (String sentence : sentences) {\n        String[] words = sentence.split(\" \");\n        maxWords = Math.max(maxWords, words.length);\n    }\n    return maxWords;\n}\n```\n    \n    The algorithm is simple and common across all languages.\n\n1. Initialize a variable `maxWords` to store the maximum number of words found so far, initially set to 0.\n2. Loop through the given sentences in the list/array:\n   a. For each sentence, split it into words using space as a delimiter.\n   b. Count the number of words (`words`) in the sentence.\n   c. Update `maxWords` by taking the maximum of `maxWords` and `words` count of the current sentence.\n3. Return `maxWords` after iterating through all sentences.\n\nThe algorithm has a time complexity of O(N * M), where N is the number of sentences and M is the average number of words per sentence (because string split or stream operations take O(M) time).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

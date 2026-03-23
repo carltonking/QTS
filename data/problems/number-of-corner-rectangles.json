@@ -1,0 +1,24 @@
+{
+  "id": 750,
+  "title": "Number Of Corner Rectangles",
+  "slug": "number-of-corner-rectangles",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an m x n integer matrix grid where each entry is only 0 or 1, return _the number of corner rectangles_.\n\nA corner rectangle is four distinct 1's on the grid that forms an axis-aligned rectangle. Note that only the corners need to have the value 1. Also, all four 1's used must be distinct.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef countCornerRectangles(grid):\n    count = 0\n    m = len(grid)\n    n = len(grid[0])\n    \n    for i in range(m - 1):\n        for j in range(n - 1):\n            if grid[i][j] == 1:\n                for k in range(i + 1, m):\n                    for l in range(j + 1, n):\n                        if grid[k][l] == 1 and grid[i][l] == 1 and grid[k][j] == 1:\n                            count += 1\n    return count\n```\n    \n    The algorithm iterates through each element of the grid, starting from the top-left corner to the bottom-right corner. For each element with value 1, it checks for another 1 in the same row but at a later column (forming a top corner of the rectangle) and another 1 in the same column but at a later row (forming a left corner of the rectangle). Then, it checks if the intersection point of these two corners (the bottom-right corner of the rectangle) is also 1. If all these conditions are met, it means a corner rectangle is formed, and the count is incremented. The final result is returned after iterating through all possible combinations.\n\nTime complexity: O(m^2 * n^2), where m and n are the dimensions of the grid\nSpace complexity: O(1)\n    ",
+    "javascript": "\n    ```javascript\nfunction countCornerRectangles(grid) {\n    let count = 0;\n    let m = grid.length;\n    let n = grid[0].length;\n    \n    for (let i = 0; i < m - 1; i++) {\n        for (let j = 0; j < n - 1; j++) {\n            if (grid[i][j] === 1) {\n                for (let k = i + 1; k < m; k++) {\n                    for (let l = j + 1; l < n; l++) {\n                        if (grid[k][l] === 1 && grid[i][l] === 1 && grid[k][j] === 1) {\n                            count++;\n                        }\n                    }\n                }\n            }\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm iterates through each element of the grid, starting from the top-left corner to the bottom-right corner. For each element with value 1, it checks for another 1 in the same row but at a later column (forming a top corner of the rectangle) and another 1 in the same column but at a later row (forming a left corner of the rectangle). Then, it checks if the intersection point of these two corners (the bottom-right corner of the rectangle) is also 1. If all these conditions are met, it means a corner rectangle is formed, and the count is incremented. The final result is returned after iterating through all possible combinations.\n\nTime complexity: O(m^2 * n^2), where m and n are the dimensions of the grid\nSpace complexity: O(1)\n    ",
+    "java": "\n    ```java\npublic int countCornerRectangles(int[][] grid) {\n    int count = 0;\n    int m = grid.length;\n    int n = grid[0].length;\n    \n    for (int i = 0; i < m - 1; i++) {\n        for (int j = 0; j < n - 1; j++) {\n            if (grid[i][j] == 1) {\n                for (int k = i + 1; k < m; k++) {\n                    for (int l = j + 1; l < n; l++) {\n                        if (grid[k][l] == 1 && grid[i][l] == 1 && grid[k][j] == 1) {\n                            count++;\n                        }\n                    }\n                }\n            }\n        }\n    }\n    return count;\n}\n```\n    \n    The algorithm iterates through each element of the grid, starting from the top-left corner to the bottom-right corner. For each element with value 1, it checks for another 1 in the same row but at a later column (forming a top corner of the rectangle) and another 1 in the same column but at a later row (forming a left corner of the rectangle). Then, it checks if the intersection point of these two corners (the bottom-right corner of the rectangle) is also 1. If all these conditions are met, it means a corner rectangle is formed, and the count is incremented. The final result is returned after iterating through all possible combinations.\n\nTime complexity: O(m^2 * n^2), where m and n are the dimensions of the grid\nSpace complexity: O(1)\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

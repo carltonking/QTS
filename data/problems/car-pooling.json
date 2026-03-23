@@ -1,0 +1,24 @@
+{
+  "id": 1094,
+  "title": "Car Pooling",
+  "slug": "car-pooling",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There is a car with capacity empty seats. The vehicle only drives east (i.e., it cannot turn around and drive west).\n\nYou are given the integer capacity and an array trips where trips[i] = [numPassengersi, fromi, toi] indicates that the ith trip has numPassengersi passengers and the locations to pick them up and drop them off are fromi and toi respectively. The locations are given as the number of kilometers due east from the car's initial location.\n\nReturn true _if it is possible to pick up and drop off all passengers for all the given trips, or_ false _otherwise_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef allCellsDistOrder(rows, cols, rCenter, cCenter):\n    coordinates = [[i, j] for i in range(rows) for j in range(cols)]\n\n    coordinates.sort(key=lambda x: abs(x[0] - rCenter) + abs(x[1] - cCenter))\n\n    return coordinates\n```\n    \n    1. First, we generate all the coordinate pairs (i, j) in the given rows x cols matrix and store them in a list named 'coordinates'.\n2. Next, we sort the 'coordinates' list based on the distance from the (rCenter, cCenter). We calculate the distance between two points (r1, c1) and (r2, c2) using the formula: |r1 - r2| + |c1 - c2|.\n3. Finally, we return the sorted coordinates list.\n    ",
+    "javascript": "\n    ```javascript\nfunction allCellsDistOrder(rows, cols, rCenter, cCenter) {\n    const coordinates = [];\n\n    for (let i = 0; i < rows; ++i) {\n        for (let j = 0; j < cols; ++j) {\n            coordinates.push([i, j]);\n        }\n    }\n\n    coordinates.sort((a, b) =>\n        Math.abs(a[0] - rCenter) + Math.abs(a[1] - cCenter) - Math.abs(b[0] - rCenter) - Math.abs(b[1] - cCenter)\n    );\n\n    return coordinates;\n}\n```\n    \n    1. First, we generate all the coordinate pairs (i, j) in the given rows x cols matrix and store them in a list named 'coordinates'.\n2. Next, we sort the 'coordinates' list based on the distance from the (rCenter, cCenter). We calculate the distance between two points (r1, c1) and (r2, c2) using the formula: |r1 - r2| + |c1 - c2|.\n3. Finally, we return the sorted coordinates list.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int[][] allCellsDistOrder(int rows, int cols, int rCenter, int cCenter) {\n    int[][] coordinates = new int[rows * cols][2];\n\n    int index = 0;\n    for (int i = 0; i < rows; i++) {\n        for (int j = 0; j < cols; j++) {\n            coordinates[index++] = new int[]{i, j};\n        }\n    }\n\n    Arrays.sort(coordinates, (a, b) ->\n        Math.abs(a[0] - rCenter) + Math.abs(a[1] - cCenter) - Math.abs(b[0] - rCenter) - Math.abs(b[1] - cCenter)\n    );\n\n    return coordinates;\n}\n```\n    \n    1. First, we generate all the coordinate pairs (i, j) in the given rows x cols matrix and store them in a list named 'coordinates'.\n2. Next, we sort the 'coordinates' list based on the distance from the (rCenter, cCenter). We calculate the distance between two points (r1, c1) and (r2, c2) using the formula: |r1 - r2| + |c1 - c2|.\n3. Finally, we return the sorted coordinates list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

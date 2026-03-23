@@ -1,0 +1,24 @@
+{
+  "id": 2436,
+  "title": "Minimum Split Into Subarrays With GCD Greater Than One",
+  "slug": "minimum-split-into-subarrays-with-gcd-greater-than-one",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array nums consisting of positive integers.\n\nSplit the array into one or more disjoint subarrays such that:\n\n*   Each element of the array belongs to exactly one subarray, and\n*   The GCD of the elements of each subarray is strictly greater than 1.\n\nReturn _the minimum number of subarrays that can be obtained after the split_.\n\nNote that:\n\n*   The GCD of a subarray is the largest positive integer that evenly divides all the elements of the subarray.\n*   A subarray is a contiguous part of the array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_arrays(nums):\n    def gcd(a, b):\n        return a if b == 0 else gcd(b, a % b)\n\n    total_gcd = nums[0]\n    for num in nums[1:]:\n        total_gcd = gcd(total_gcd, num)\n    \n    return 2 if total_gcd == 1 else 1\n```\n    \n    The algorithm first finds the total GCD (greatest common divisor) of all the elements in the array. If the total GCD is 1, that means the array can't be split into a single subarray and satisfy the condition of having a GCD greater than 1. In this case, the minimum number of subarrays required is 2. Otherwise, if the total GCD is greater than 1, the entire array can be considered as a single subarray meeting the condition, so the answer is 1. The gcd function is a helper function that computes the GCD of two integers using the Euclidean algorithm.\n    ",
+    "javascript": "\n    ```javascript\nfunction gcd(a, b) {\n    return (b === 0) ? a : gcd(b, a % b);\n}\n\nfunction minArrays(nums) {\n    let n = nums.length;\n    let totalGcd = nums[0];\n    for (let i = 1; i < n; ++i) {\n        totalGcd = gcd(totalGcd, nums[i]);\n    }\n    return (totalGcd === 1) ? 2 : 1;\n}\n```\n    \n    The algorithm first finds the total GCD (greatest common divisor) of all the elements in the array. If the total GCD is 1, that means the array can't be split into a single subarray and satisfy the condition of having a GCD greater than 1. In this case, the minimum number of subarrays required is 2. Otherwise, if the total GCD is greater than 1, the entire array can be considered as a single subarray meeting the condition, so the answer is 1. The gcd function is a helper function that computes the GCD of two integers using the Euclidean algorithm.\n    ",
+    "java": "\n    ```java\npublic int minArrays(int[] nums) {\n    int n = nums.length;\n    int totalGcd = nums[0];\n    for (int i = 1; i < n; ++i) {\n        totalGcd = gcd(totalGcd, nums[i]);\n    }\n    return (totalGcd == 1) ? 2 : 1;\n}\n\npublic int gcd(int a, int b) {\n    return (b == 0) ? a : gcd(b, a % b);\n}\n```\n    \n    The algorithm first finds the total GCD (greatest common divisor) of all the elements in the array. If the total GCD is 1, that means the array can't be split into a single subarray and satisfy the condition of having a GCD greater than 1. In this case, the minimum number of subarrays required is 2. Otherwise, if the total GCD is greater than 1, the entire array can be considered as a single subarray meeting the condition, so the answer is 1. The gcd function is a helper function that computes the GCD of two integers using the Euclidean algorithm.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

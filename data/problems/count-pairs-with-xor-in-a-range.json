@@ -1,0 +1,24 @@
+{
+  "id": 1803,
+  "title": "Count Pairs With XOR in a Range",
+  "slug": "count-pairs-with-xor-in-a-range",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given a (0-indexed) integer array nums and two integers low and high, return _the number of nice pairs_.\n\nA nice pair is a pair (i, j) where 0 <= i < j < nums.length and low <= (nums[i] XOR nums[j]) <= high.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef average_waiting_time(customers):\n    wait_time = 0\n    curr_time = 0\n    \n    for arrival, time in customers:\n        curr_time = max(curr_time, arrival) + time\n        wait_time += curr_time - arrival\n    \n    return wait_time / len(customers)\n```\n\n    \n    The algorithm keeps track of the current time (`curr_time`) and the total waiting time (`wait_time`). It then iterates through the customers array, for each customer the chef starts preparing the orders when he is idle i.e., the maximum of arrival time and the current time. After preparing an order, we update the waiting time by adding the difference between the current time and arrival time. Finally, we return the average waiting time calculated by dividing the total waiting time by the number of customers.\n    ",
+    "javascript": "\n    ```javascript\nfunction averageWaitingTime(customers) {\n    let waitTime = 0;\n    let currTime = 0;\n    \n    for (const customer of customers) {\n        currTime = Math.max(currTime, customer[0]) + customer[1];\n        waitTime += currTime - customer[0];\n    }\n    \n    return waitTime / customers.length;\n}\n```\n\n    \n    The algorithm keeps track of the current time (`curr_time`) and the total waiting time (`wait_time`). It then iterates through the customers array, for each customer the chef starts preparing the orders when he is idle i.e., the maximum of arrival time and the current time. After preparing an order, we update the waiting time by adding the difference between the current time and arrival time. Finally, we return the average waiting time calculated by dividing the total waiting time by the number of customers.\n    ",
+    "java": "\n    ```java\npublic double averageWaitingTime(int[][] customers) {\n    double waitTime = 0;\n    int currTime = 0;\n    \n    for (int[] customer : customers) {\n        currTime = Math.max(currTime, customer[0]) + customer[1];\n        waitTime += currTime - customer[0];\n    }\n    \n    return waitTime / customers.length;\n}\n```\n\n    \n    The algorithm keeps track of the current time (`curr_time`) and the total waiting time (`wait_time`). It then iterates through the customers array, for each customer the chef starts preparing the orders when he is idle i.e., the maximum of arrival time and the current time. After preparing an order, we update the waiting time by adding the difference between the current time and arrival time. Finally, we return the average waiting time calculated by dividing the total waiting time by the number of customers.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

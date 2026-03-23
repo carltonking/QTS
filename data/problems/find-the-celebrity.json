@@ -1,0 +1,24 @@
+{
+  "id": 277,
+  "title": "Find the Celebrity",
+  "slug": "find-the-celebrity",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Suppose you are at a party with n people labeled from 0 to n - 1 and among them, there may exist one celebrity. The definition of a celebrity is that all the other n - 1 people know the celebrity, but the celebrity does not know any of them.\n\nNow you want to find out who the celebrity is or verify that there is not one. You are only allowed to ask questions like: \"Hi, A. Do you know B? \" to get information about whether A knows B. You need to find out the celebrity (or verify there is not one) by asking as few questions as possible (in the asymptotic sense).\n\nYou are given a helper function bool knows(a, b) that tells you whether a knows b. Implement a function int findCelebrity(n). There will be exactly one celebrity if they are at the party.\n\nReturn _the celebrity's label if there is a celebrity at the party_. If there is no celebrity, return -1.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef knows(a: int, b:int) -> bool:\n    pass\n\ndef findCelebrity(n: int) -> int:\n    candidate = 0\n    for i in range(1, n):\n        if knows(candidate, i):\n            candidate = i\n    \n    for i in range(n):\n        if i != candidate and (knows(candidate, i) or not knows(i, candidate)):\n            return -1\n    return candidate\n```\n    \n    First, we select an initial candidate with a value of 0. We loop through the other people and check if the current candidate knows the current person. If the candidate knows this person, we change the candidate to the current person. The idea is to eliminate those who can't be celebrities because they know someone else.\n\nAfter the first loop, we have the final candidate. We now loop through all people to confirm that this candidate is a celebrity by checking that the candidate does not know any other person and that all other people know the candidate.\n\nIf our candidate passes both checks for all people, we have found our celebrity and return their index. If they are not a celebrity, we return -1.\n    ",
+    "javascript": "\n    ```javascript\nfunction knows(a, b) {\n    // Implementation not shown\n}\n\nfunction findCelebrity(n) {\n    let candidate = 0;\n    for (let i = 1; i < n; i++) {\n        if (knows(candidate, i)) {\n            candidate = i;\n        }\n    }\n\n    for (let i = 0; i < n; i++) {\n        if (i !== candidate && (knows(candidate, i) || !knows(i, candidate))) {\n            return -1;\n        }\n    }\n    return candidate;\n}\n```\n    \n    First, we select an initial candidate with a value of 0. We loop through the other people and check if the current candidate knows the current person. If the candidate knows this person, we change the candidate to the current person. The idea is to eliminate those who can't be celebrities because they know someone else.\n\nAfter the first loop, we have the final candidate. We now loop through all people to confirm that this candidate is a celebrity by checking that the candidate does not know any other person and that all other people know the candidate.\n\nIf our candidate passes both checks for all people, we have found our celebrity and return their index. If they are not a celebrity, we return -1.\n    ",
+    "java": "\n    ```java\npublic boolean knows(int a, int b);\n\npublic int findCelebrity(int n) {\n    int candidate = 0;\n    for (int i = 1; i < n; i++) {\n        if (knows(candidate, i)) {\n            candidate = i;\n        }\n    }\n    \n    for (int i = 0; i < n; i++) {\n        if (i != candidate && (knows(candidate, i) || !knows(i, candidate))) {\n            return -1;\n        }\n    }\n    return candidate;\n}\n```\n    \n    First, we select an initial candidate with a value of 0. We loop through the other people and check if the current candidate knows the current person. If the candidate knows this person, we change the candidate to the current person. The idea is to eliminate those who can't be celebrities because they know someone else.\n\nAfter the first loop, we have the final candidate. We now loop through all people to confirm that this candidate is a celebrity by checking that the candidate does not know any other person and that all other people know the candidate.\n\nIf our candidate passes both checks for all people, we have found our celebrity and return their index. If they are not a celebrity, we return -1.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

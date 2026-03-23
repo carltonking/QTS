@@ -1,0 +1,24 @@
+{
+  "id": 1078,
+  "title": "Occurrences After Bigram",
+  "slug": "occurrences-after-bigram",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given two strings first and second, consider occurrences in some text of the form \"first second third \", where second comes immediately after first, and third comes immediately after second.\n\nReturn _an array of all the words_ third _for each occurrence of_ \"first second third \".",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef remove_outer_parentheses(s: str) -> str:\n    result = []\n    opened = 0\n\n    for c in s:\n        if c == '(':\n            if opened > 0:\n                result.append(c)\n            opened += 1\n        elif c == ')':\n            if opened > 1:\n                result.append(c)\n            opened -= 1\n\n    return ''.join(result)\n```\n\n    \n    The algorithm is fairly simple. We will iterate through the given string `s`. For each character in the string, we will keep track of the count of open-parentheses encountered so far using the variable `opened`.\n\n- If we find an open-parenthesis `(`, and the value of `opened` is more than 0, we append it to the resulting string. Then, we increment the value of `opened`.\n- If we find a close-parenthesis `)`, and the value of `opened` is more than 1, we append it to the resulting string. Then, we decrement the value of `opened`.\n\nBy doing this, we effectively skip the outermost parentheses of each primitive valid parentheses string, as required by the problem while constructing the result string.\n    ",
+    "javascript": "\n    ```javascript\nfunction removeOuterParentheses(s) {\n    let result = \"\";\n    let opened = 0;\n\n    for (let c of s) {\n        if (c === '(' && opened++ > 0) {\n            result += c;\n        }\n        if (c === ')' && opened-- > 1) {\n            result += c;\n        }\n    }\n\n    return result;\n}\n```\n\n    \n    The algorithm is fairly simple. We will iterate through the given string `s`. For each character in the string, we will keep track of the count of open-parentheses encountered so far using the variable `opened`.\n\n- If we find an open-parenthesis `(`, and the value of `opened` is more than 0, we append it to the resulting string. Then, we increment the value of `opened`.\n- If we find a close-parenthesis `)`, and the value of `opened` is more than 1, we append it to the resulting string. Then, we decrement the value of `opened`.\n\nBy doing this, we effectively skip the outermost parentheses of each primitive valid parentheses string, as required by the problem while constructing the result string.\n    ",
+    "java": "\n    ```java\npublic String removeOuterParentheses(String s) {\n    StringBuilder result = new StringBuilder();\n    int opened = 0;\n\n    for (char c : s.toCharArray()) {\n        if (c == '(' && opened++ > 0) {\n            result.append(c);\n        }\n        if (c == ')' && opened-- > 1) {\n            result.append(c);\n        }\n    }\n    return result.toString();\n}\n```\n\n    \n    The algorithm is fairly simple. We will iterate through the given string `s`. For each character in the string, we will keep track of the count of open-parentheses encountered so far using the variable `opened`.\n\n- If we find an open-parenthesis `(`, and the value of `opened` is more than 0, we append it to the resulting string. Then, we increment the value of `opened`.\n- If we find a close-parenthesis `)`, and the value of `opened` is more than 1, we append it to the resulting string. Then, we decrement the value of `opened`.\n\nBy doing this, we effectively skip the outermost parentheses of each primitive valid parentheses string, as required by the problem while constructing the result string.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 151,
+  "title": "Reverse Words in a String",
+  "slug": "reverse-words-in-a-string",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an input string s, reverse the order of the words.\n\nA word is defined as a sequence of non-space characters. The words in s will be separated by at least one space.\n\nReturn _a string of the words in reverse order concatenated by a single space._\n\nNote that s may contain leading or trailing spaces or multiple spaces between two words. The returned string should only have a single space separating the words. Do not include any extra spaces.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef reverseWords(s):\n    words = s.split()\n    words.reverse()\n    return ' '.join(words)\n```\n    \n    The algorithm to reverse the order of the words is as follows:\n\n1. First, split the input string using spaces. In C++, we use `stringstream` and a while loop to read words, while in Java and JavaScript, we use `split` with regex to split the string based on one or more spaces. In Python, we can simply use `split()` since it splits on whitespace by default and ignores leading and trailing spaces.\n\n2. Reverse the array of words. In C++, we use the `reverse` function from the `algorithm` library. In Java, we can use `Collections.reverse()` method. In Python, we use list `reverse()` method. In JavaScript, we use the `reverse()` method on the array.\n\n3. Join the reversed array of words into a single string with a space delimiter. In C++, we concatenate words with a space but avoid adding an extra space at the end. In Java, we use `String.join()`, in Python, use `join()` on the delimiter string, and in JavaScript, use `join()` on the array.\n    ",
+    "javascript": "\n    ```javascript\nfunction reverseWords(s) {\n    return s.trim().split(/\\s+/).reverse().join(' ');\n}\n```\n    \n    The algorithm to reverse the order of the words is as follows:\n\n1. First, split the input string using spaces. In C++, we use `stringstream` and a while loop to read words, while in Java and JavaScript, we use `split` with regex to split the string based on one or more spaces. In Python, we can simply use `split()` since it splits on whitespace by default and ignores leading and trailing spaces.\n\n2. Reverse the array of words. In C++, we use the `reverse` function from the `algorithm` library. In Java, we can use `Collections.reverse()` method. In Python, we use list `reverse()` method. In JavaScript, we use the `reverse()` method on the array.\n\n3. Join the reversed array of words into a single string with a space delimiter. In C++, we concatenate words with a space but avoid adding an extra space at the end. In Java, we use `String.join()`, in Python, use `join()` on the delimiter string, and in JavaScript, use `join()` on the array.\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic String reverseWords(String s) {\n    String[] words = s.trim().split(\"\\\\s+\");\n    Collections.reverse(Arrays.asList(words));\n    return String.join(\" \", words);\n}\n```\n    \n    The algorithm to reverse the order of the words is as follows:\n\n1. First, split the input string using spaces. In C++, we use `stringstream` and a while loop to read words, while in Java and JavaScript, we use `split` with regex to split the string based on one or more spaces. In Python, we can simply use `split()` since it splits on whitespace by default and ignores leading and trailing spaces.\n\n2. Reverse the array of words. In C++, we use the `reverse` function from the `algorithm` library. In Java, we can use `Collections.reverse()` method. In Python, we use list `reverse()` method. In JavaScript, we use the `reverse()` method on the array.\n\n3. Join the reversed array of words into a single string with a space delimiter. In C++, we concatenate words with a space but avoid adding an extra space at the end. In Java, we use `String.join()`, in Python, use `join()` on the delimiter string, and in JavaScript, use `join()` on the array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

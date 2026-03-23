@@ -1,0 +1,24 @@
+{
+  "id": 1994,
+  "title": "The Number of Good Subsets",
+  "slug": "the-number-of-good-subsets",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an integer array nums. We call a subset of nums good if its product can be represented as a product of one or more distinct prime numbers.\n\n*   For example, if nums = [1, 2, 3, 4]:\n    *   [2, 3], [1, 2, 3], and [1, 3] are good subsets with products 6 = 2*3, 6 = 2*3, and 3 = 3 respectively.\n    *   [1, 4] and [4] are not good subsets with products 4 = 2*2 and 4 = 2*2 respectively.\n\nReturn _the number of different good subsets in_ nums _modulo_ 109 + 7.\n\nA subset of nums is any array that can be obtained by deleting some (possibly none or all) elements from nums. Two subsets are different if and only if the chosen indices to delete are different.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_swaps(s: str) -> int:\n    zeros, ones = 0, 0\n    for c in s:\n        if c == '0':\n            zeros += 1\n        else:\n            ones += 1\n\n    if abs(zeros - ones) > 1:\n        return -1\n\n    mismatch_count1, mismatch_count2 = 0, 0\n    for i, c in enumerate(s):\n        if i % 2 == 0:\n            if c != '0': mismatch_count1 += 1\n            if c != '1': mismatch_count2 += 1\n        else:\n            if c != '1': mismatch_count1 += 1\n            if c != '0': mismatch_count2 += 1\n\n    return min(mismatch_count1, mismatch_count2) // 2\n```\n\n    \n    1. Count the number of zeros and ones.\n2. If the absolute difference between zeros and ones is greater than 1, it's impossible to create an alternating string, return -1.\n3. Initialize two mismatch counts to count the number of mismatches assuming either that the first character is '0' or '1'.\n4. Loop through the string and increment the mismatch counts accordingly.\n5. The minimum number of swaps is the minimum of the mismatch counts divided by 2 because each swap corrects two mismatched characters.\n    ",
+    "javascript": "\n    ```javascript\nfunction minSwaps(s) {\n    let zeros = 0, ones = 0;\n    for (const c of s) {\n        if (c === '0') {\n            zeros++;\n        } else {\n            ones++;\n        }\n    }\n    \n    if (Math.abs(zeros - ones) > 1) {\n        return -1;\n    }\n\n    let mismatchCount1 = 0, mismatchCount2 = 0;\n    for (let i = 0; i < s.length; i++) {\n        if (i % 2 === 0) {\n            if (s[i] !== '0') mismatchCount1++;\n            if (s[i] !== '1') mismatchCount2++;\n        } else {\n            if (s[i] !== '1') mismatchCount1++;\n            if (s[i] !== '0') mismatchCount2++;\n}\n    }\n\n    return Math.min(mismatchCount1, mismatchCount2) / 2;\n}\n```\n\n    \n    1. Count the number of zeros and ones.\n2. If the absolute difference between zeros and ones is greater than 1, it's impossible to create an alternating string, return -1.\n3. Initialize two mismatch counts to count the number of mismatches assuming either that the first character is '0' or '1'.\n4. Loop through the string and increment the mismatch counts accordingly.\n5. The minimum number of swaps is the minimum of the mismatch counts divided by 2 because each swap corrects two mismatched characters.\n    ",
+    "java": "\n    ```java\nint minSwaps(String s) {\n    int zeros = 0, ones = 0;\n    for (char c : s.toCharArray()) {\n        if (c == '0') {\n            zeros++;\n        } else {\n            ones++;\n        }\n    }\n\n    if (Math.abs(zeros - ones) > 1) {\n        return -1;\n    }\n\n    int mismatchCount1 = 0, mismatchCount2 = 0;\n    for (int i = 0; i < s.length(); i++) {\n        if (i % 2 == 0) {\n            if (s.charAt(i) != '0') mismatchCount1++;\n            if (s.charAt(i) != '1') mismatchCount2++;\n        } else {\n            if (s.charAt(i) != '1') mismatchCount1++;\n            if (s.charAt(i) != '0') mismatchCount2++;\n        }\n    }\n\n    return Math.min(mismatchCount1, mismatchCount2) / 2;\n}\n```\n\n    \n    1. Count the number of zeros and ones.\n2. If the absolute difference between zeros and ones is greater than 1, it's impossible to create an alternating string, return -1.\n3. Initialize two mismatch counts to count the number of mismatches assuming either that the first character is '0' or '1'.\n4. Loop through the string and increment the mismatch counts accordingly.\n5. The minimum number of swaps is the minimum of the mismatch counts divided by 2 because each swap corrects two mismatched characters.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

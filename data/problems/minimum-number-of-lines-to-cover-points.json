@@ -1,0 +1,24 @@
+{
+  "id": 2152,
+  "title": "Minimum Number of Lines to Cover Points",
+  "slug": "minimum-number-of-lines-to-cover-points",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given an array points where points[i] = [xi, yi] represents a point on an X-Y plane.\n\nStraight lines are going to be added to the X-Y plane, such that every point is covered by at least one line.\n\nReturn _the minimum number of straight lines needed to cover all the points_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom math import gcd\nfrom itertools import combinations\n\ndef minStraightLines(points):\n    lines = set()\n    for p1, p2 in combinations(points, 2):\n        dy, dx = p2[1] - p1[1], p2[0] - p1[0]\n        g = gcd(dx, dy)\n        lines.add((dy // g, dx // g))\n    return len(lines)\n```\n\n    \n    The algorithm checks all possible pairs of points in the plane, and calculates the line connecting them. To avoid duplicates, we use the greatest common divisor (gcd) to normalize the lines by calculating the slope `(dx, dy) // gcd`. Then, we store these lines in a hash set. The gcd is calculated using a helper function (JavaScript) or directly using the math library (Python) or built-in functions (C++).\n\nThe algorithm does not require any specific language implementation because it is based only on the basic concept of comparing slopes and keeping a count of unique slopes. For each pair of points, the algorithm calculates the slope, normalizes it using the gcd, and stores it in the hash set. The final answer is found by taking the size of the hash set.\n    ",
+    "javascript": "\n    ```javascript\nfunction minStraightLines(points) {\n    const set = new Set();\n    const len = points.length;\n\n    function gcd(a, b) {\n        return (b === 0) ? a : gcd(b, a % b);\n    }\n\n    for (let i = 0; i < len; i++) {\n        for (let j = i + 1; j < len; j++) {\n            const deltaX = points[j][0] - points[i][0];\n            const deltaY = points[j][1] - points[i][1];\n            const g = gcd(deltaY, deltaX);\n            const hash = deltaY / g * 1000 + deltaX / g;\n            set.add(hash);\n        }\n    }\n    return set.size;\n}\n```\n\n    \n    The algorithm checks all possible pairs of points in the plane, and calculates the line connecting them. To avoid duplicates, we use the greatest common divisor (gcd) to normalize the lines by calculating the slope `(dx, dy) // gcd`. Then, we store these lines in a hash set. The gcd is calculated using a helper function (JavaScript) or directly using the math library (Python) or built-in functions (C++).\n\nThe algorithm does not require any specific language implementation because it is based only on the basic concept of comparing slopes and keeping a count of unique slopes. For each pair of points, the algorithm calculates the slope, normalizes it using the gcd, and stores it in the hash set. The final answer is found by taking the size of the hash set.\n    ",
+    "java": "\n    ```java\nimport java.util.HashSet;\nimport java.util.Set;\n\npublic int minStraightLines(int[][] points) {\n    int len = points.length;\n    Set<Integer> set = new HashSet<>();\n    for (int i = 0; i < len; i++) {\n        for (int j = i + 1; j < len; j++) {\n            int deltaX = points[j][0] - points[i][0];\n            int deltaY = points[j][1] - points[i][1];\n            int gcd = gcd(deltaX, deltaY);\n            int hash = deltaY / gcd * 1000 + deltaX / gcd;\n            set.add(hash);\n        }\n    }\n    return set.size();\n}\n\nprivate int gcd(int a, int b) {\n    return (b == 0) ? a : gcd(b, a % b);\n}\n```\n\n    \n    The algorithm checks all possible pairs of points in the plane, and calculates the line connecting them. To avoid duplicates, we use the greatest common divisor (gcd) to normalize the lines by calculating the slope `(dx, dy) // gcd`. Then, we store these lines in a hash set. The gcd is calculated using a helper function (JavaScript) or directly using the math library (Python) or built-in functions (C++).\n\nThe algorithm does not require any specific language implementation because it is based only on the basic concept of comparing slopes and keeping a count of unique slopes. For each pair of points, the algorithm calculates the slope, normalizes it using the gcd, and stores it in the hash set. The final answer is found by taking the size of the hash set.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

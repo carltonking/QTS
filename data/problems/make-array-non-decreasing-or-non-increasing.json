@@ -1,0 +1,24 @@
+{
+  "id": 2263,
+  "title": "Make Array Non-decreasing or Non-increasing",
+  "slug": "make-array-non-decreasing-or-non-increasing",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums. In one operation, you can:\n\n*   Choose an index i in the range 0 <= i < nums.length\n*   Set nums[i] to nums[i] + 1 or nums[i] - 1\n\nReturn _the minimum number of operations to make_ nums _non-decreasing or non-increasing._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_running_time(n, batteries):\n    batteries.sort(reverse=True)\n    total_time = sum(batteries[:n])\n    return total_time // n\n```\n    \n    1. Sort the batteries array in descending order, so that the largest batteries are at the beginning of the array.\n2. Calculate the total time by summing up the values of the first n elements in the sorted batteries array. This works because we pick the largest batteries to use first, thereby maximizing the amount of time the computers can run simultaneously.\n3. Divide the total time by n to get the maximum number of minutes that all the computers can run simultaneously.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxRunningTime(n, batteries) {\n    batteries.sort((a, b) => b - a);\n    let total_time = 0;\n    for (let i = 0; i < n; i++) {\n        total_time += batteries[i];\n    }\n    return Math.floor(total_time / n);\n}\n```\n    \n    1. Sort the batteries array in descending order, so that the largest batteries are at the beginning of the array.\n2. Calculate the total time by summing up the values of the first n elements in the sorted batteries array. This works because we pick the largest batteries to use first, thereby maximizing the amount of time the computers can run simultaneously.\n3. Divide the total time by n to get the maximum number of minutes that all the computers can run simultaneously.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int maxRunningTime(int n, int[] batteries) {\n    Arrays.sort(batteries);\n    int total_time = 0;\n    for (int i = batteries.length - 1; i >= batteries.length - n; --i) {\n        total_time += batteries[i];\n    }\n    return total_time / n;\n}\n```\n    \n    1. Sort the batteries array in descending order, so that the largest batteries are at the beginning of the array.\n2. Calculate the total time by summing up the values of the first n elements in the sorted batteries array. This works because we pick the largest batteries to use first, thereby maximizing the amount of time the computers can run simultaneously.\n3. Divide the total time by n to get the maximum number of minutes that all the computers can run simultaneously.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 1306,
+  "title": "Jump Game III",
+  "slug": "jump-game-iii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of non-negative integers arr, you are initially positioned at start index of the array. When you are at index i, you can jump to i + arr[i] or i - arr[i], check if you can reach to any index with value 0.\n\nNotice that you can not jump outside of the array at any time.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minimumAbsDifference(arr):\n    arr.sort()\n    min_difference = float('inf')\n    result = []\n\n    for i in range(1, len(arr)):\n        difference = arr[i] - arr[i - 1]\n        if difference < min_difference:\n            min_difference = difference\n            result = [[arr[i - 1], arr[i]]]\n        elif difference == min_difference:\n            result.append([arr[i - 1], arr[i]])\n\n    return result\n```\n    \n    1. Sort the array in ascending order.\n2. Initialize the minimum absolute difference variable `min_difference` and an empty result list.\n3. Iterate through the sorted array from the second element to the last element, calculate the difference between the current element and the previous element.\n4. If the difference is less than the current `min_difference`, update the `min_difference` variable and reset the result list with this new pair of elements.\n5. If the difference is equal to the current `min_difference`, append this pair of elements to the result list.\n6. Return the result list after processing all elements in the sorted array.\n    ",
+    "javascript": "\n    ```javascript\nfunction minimumAbsDifference(arr) {\n    arr.sort((a, b) => a - b);\n    let min_difference = Infinity;\n    let result = [];\n\n    for (let i = 1; i < arr.length; ++i) {\n        let difference = arr[i] - arr[i - 1];\n        if (difference < min_difference) {\n            min_difference = difference;\n            result = [[arr[i - 1], arr[i]]];\n        } else if (difference === min_difference) {\n            result.push([arr[i - 1], arr[i]]);\n        }\n    }\n\n    return result;\n}\n```\n    \n    1. Sort the array in ascending order.\n2. Initialize the minimum absolute difference variable `min_difference` and an empty result list.\n3. Iterate through the sorted array from the second element to the last element, calculate the difference between the current element and the previous element.\n4. If the difference is less than the current `min_difference`, update the `min_difference` variable and reset the result list with this new pair of elements.\n5. If the difference is equal to the current `min_difference`, append this pair of elements to the result list.\n6. Return the result list after processing all elements in the sorted array.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.List;\n\npublic List<List<Integer>> minimumAbsDifference(int[] arr) {\n    Arrays.sort(arr);\n    int min_difference = Integer.MAX_VALUE;\n    List<List<Integer>> result = new ArrayList<>();\n\n    for (int i = 1; i < arr.length; ++i) {\n        int difference = arr[i] - arr[i - 1];\n        if (difference < min_difference) {\n            min_difference = difference;\n            result.clear();\n            result.add(Arrays.asList(arr[i - 1], arr[i]));\n        } else if (difference == min_difference) {\n            result.add(Arrays.asList(arr[i - 1], arr[i]));\n        }\n    }\n\n    return result;\n}\n```\n    \n    1. Sort the array in ascending order.\n2. Initialize the minimum absolute difference variable `min_difference` and an empty result list.\n3. Iterate through the sorted array from the second element to the last element, calculate the difference between the current element and the previous element.\n4. If the difference is less than the current `min_difference`, update the `min_difference` variable and reset the result list with this new pair of elements.\n5. If the difference is equal to the current `min_difference`, append this pair of elements to the result list.\n6. Return the result list after processing all elements in the sorted array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

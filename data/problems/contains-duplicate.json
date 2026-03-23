@@ -1,0 +1,40 @@
+{
+  "id": 3,
+  "title": "Contains Duplicate",
+  "slug": "contains-duplicate",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Sorting"
+  ],
+  "description": "Given an integer array nums, return true if any value appears at least twice in the array.",
+  "examples": [
+    {
+      "input": "nums = [1,2,3,1]",
+      "output": "true"
+    }
+  ],
+  "constraints": [
+    "1 <= nums.length <= 10^5"
+  ],
+  "starterCode": {
+    "python": "from typing import List\nclass Solution:\n    def containsDuplicate(self, nums: List[int]) -> bool:\n        pass",
+    "javascript": "var containsDuplicate = function(nums) {\n    \n};",
+    "java": "class Solution {\n    public boolean containsDuplicate(int[] nums) {\n        \n    }\n}",
+    "cpp": "class Solution {\npublic:\n    bool containsDuplicate(vector<int>& nums) {\n        \n    }\n};"
+  },
+  "solutionCode": {
+    "python": "# Reference solution stub for Contains Duplicate\nclass Solution:\n    pass"
+  },
+  "testCases": [
+    {
+      "input": "[1,2,3,1]",
+      "expectedOutput": "true"
+    },
+    {
+      "input": "[1,2,3,4]",
+      "expectedOutput": "false"
+    }
+  ]
+}

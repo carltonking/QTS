@@ -1,0 +1,24 @@
+{
+  "id": 1884,
+  "title": "Egg Drop With 2 Eggs and N Floors",
+  "slug": "egg-drop-with-2-eggs-and-n-floors",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two identical eggs and you have access to a building with n floors labeled from 1 to n.\n\nYou know that there exists a floor f where 0 <= f <= n such that any egg dropped at a floor higher than f will break, and any egg dropped at or below floor f will not break.\n\nIn each move, you may take an unbroken egg and drop it from any floor x (where 1 <= x <= n). If the egg breaks, you can no longer use it. However, if the egg does not break, you may reuse it in future moves.\n\nReturn _the minimum number of moves that you need to determine with certainty what the value of_ f is.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_operations_to_alternate(s: str) -> int:\n    count_a, count_b = 0, 0\n    for i, c in enumerate(s):\n        if i % 2 == 0:\n            if c == '0':\n                count_a += 1\n            else:\n                count_b += 1\n        else:\n            if c == '0':\n                count_b += 1\n            else:\n                count_a += 1\n    return min(count_a, count_b)\n```\n    \n    To solve this problem, we loop through each character in the input string and count how many characters that are '0' and '1'. We should count them separately for odd and even indices. Then we compare the counts for both possible alternating patterns (starting with '0' and starting with '1') and return the minimum count.\n\n1. Initialize two variables `count_a` and `count_b` to 0.\n2. Loop through the characters in the string `s`.\n    - If the character index is even:\n        - Increment `count_a` if the character is '0'.\n        - Increment `count_b` if the character is '1'.\n    - If the character index is odd:\n        - Increment `count_a` if the character is '1'.\n        - Increment `count_b` if the character is '0'.\n3. Return the minimum of `count_a` and `count_b` as the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction minOperationsToAlternate(s) {\n    let countA = 0, countB = 0;\n    for (let i = 0; i < s.length; i++) {\n        if (i % 2 === 0) {\n            if (s[i] === '0') countA++;\n            else countB++;\n        } else {\n            if (s[i] === '0') countB++;\n            else countA++;\n        }\n    }\n    return Math.min(countA, countB);\n}\n```\n    \n    To solve this problem, we loop through each character in the input string and count how many characters that are '0' and '1'. We should count them separately for odd and even indices. Then we compare the counts for both possible alternating patterns (starting with '0' and starting with '1') and return the minimum count.\n\n1. Initialize two variables `count_a` and `count_b` to 0.\n2. Loop through the characters in the string `s`.\n    - If the character index is even:\n        - Increment `count_a` if the character is '0'.\n        - Increment `count_b` if the character is '1'.\n    - If the character index is odd:\n        - Increment `count_a` if the character is '1'.\n        - Increment `count_b` if the character is '0'.\n3. Return the minimum of `count_a` and `count_b` as the result.\n    ",
+    "java": "\n    ```java\npublic int minOperationsToAlternate(String s) {\n    int countA = 0, countB = 0;\n    for (int i = 0; i < s.length(); i++) {\n        if (i % 2 == 0) {\n            if (s.charAt(i) == '0') countA++;\n            else countB++;\n        } else {\n            if (s.charAt(i) == '0') countB++;\n            else countA++;\n        }\n    }\n    return Math.min(countA, countB);\n}\n```\n    \n    To solve this problem, we loop through each character in the input string and count how many characters that are '0' and '1'. We should count them separately for odd and even indices. Then we compare the counts for both possible alternating patterns (starting with '0' and starting with '1') and return the minimum count.\n\n1. Initialize two variables `count_a` and `count_b` to 0.\n2. Loop through the characters in the string `s`.\n    - If the character index is even:\n        - Increment `count_a` if the character is '0'.\n        - Increment `count_b` if the character is '1'.\n    - If the character index is odd:\n        - Increment `count_a` if the character is '1'.\n        - Increment `count_b` if the character is '0'.\n3. Return the minimum of `count_a` and `count_b` as the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 257,
+  "title": "Binary Tree Paths",
+  "slug": "binary-tree-paths",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given the root of a binary tree, return _all root-to-leaf paths in any order_.\n\nA leaf is a node with no children.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef binary_tree_paths(root: TreeNode):\n    if not root:\n        return []\n    if not root.left and not root.right:\n        return [str(root.val)]\n    paths = []\n    for path in binary_tree_paths(root.left):\n        paths.append(str(root.val) + \"->\" + path)\n    for path in binary_tree_paths(root.right):\n        paths.append(str(root.val) + \"->\" + path)\n    return paths\n```\n    \n    The algorithm is a simple recursive algorithm that explores depth-first each node of the binary tree. Initially, if the root is `null`, it returns an empty result. Next, if it's a leaf node, it returns the node's value as a string. If it's not a leaf node, it iteratively calls the `binary_tree_paths()` function for the left child and then the right child, appending the current node's value and a \" -> \" separator at the beginning of each path. Finally, it aggregates and returns all the resulting paths of the recursive calls. The language-specific implementations are all very similar, with only slight syntax adjustments across languages.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(val, left = null, right = null) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\nfunction binaryTreePaths(root) {\n    if (!root) {\n        return [];\n    }\n    if (!root.left && !root.right) {\n        return [`${root.val}`];\n    }\n    let paths = [];\n    for (let path of binaryTreePaths(root.left)) {\n        paths.push(`${root.val}->${path}`);\n    }\n    for (let path of binaryTreePaths(root.right)) {\n        paths.push(`${root.val}->${path}`);\n    }\n    return paths;\n}\n```\n    \n    The algorithm is a simple recursive algorithm that explores depth-first each node of the binary tree. Initially, if the root is `null`, it returns an empty result. Next, if it's a leaf node, it returns the node's value as a string. If it's not a leaf node, it iteratively calls the `binary_tree_paths()` function for the left child and then the right child, appending the current node's value and a \" -> \" separator at the beginning of each path. Finally, it aggregates and returns all the resulting paths of the recursive calls. The language-specific implementations are all very similar, with only slight syntax adjustments across languages.\n    ",
+    "java": "\n    ```java\nimport java.util.List;\nimport java.util.ArrayList;\n\nclass TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n    TreeNode() {}\n    TreeNode(int val) { this.val = val; }\n    TreeNode(int val, TreeNode left, TreeNode right) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\npublic List<String> binaryTreePaths(TreeNode root) {\n    List<String> paths = new ArrayList<>();\n    if (root == null) {\n        return paths;\n    }\n    if (root.left == null && root.right == null) {\n        paths.add(Integer.toString(root.val));\n        return paths;\n    }\n    for (String path : binaryTreePaths(root.left)) {\n      paths.add(root.val + \"->\" + path);\n    }\n    for (String path : binaryTreePaths(root.right)) {\n      paths.add(root.val + \"->\" + path);\n    }\n    return paths;\n}\n```\n    \n    The algorithm is a simple recursive algorithm that explores depth-first each node of the binary tree. Initially, if the root is `null`, it returns an empty result. Next, if it's a leaf node, it returns the node's value as a string. If it's not a leaf node, it iteratively calls the `binary_tree_paths()` function for the left child and then the right child, appending the current node's value and a \" -> \" separator at the beginning of each path. Finally, it aggregates and returns all the resulting paths of the recursive calls. The language-specific implementations are all very similar, with only slight syntax adjustments across languages.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

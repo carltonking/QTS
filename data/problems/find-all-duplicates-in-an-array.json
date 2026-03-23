@@ -1,0 +1,24 @@
+{
+  "id": 442,
+  "title": "Find All Duplicates in an Array",
+  "slug": "find-all-duplicates-in-an-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums of length n where all the integers of nums are in the range [1, n] and each integer appears once or twice, return _an array of all the integers that appears twice_.\n\nYou must write an algorithm that runs in O(n) time and uses only constant extra space.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_duplicates(nums):\n    duplicates = []\n    for i in range(len(nums)):\n        index = abs(nums[i]) - 1\n        if nums[index] < 0:\n            duplicates.append(abs(nums[i]))\n        else:\n            nums[index] *= -1\n    return duplicates\n```\n    \n    The algorithm iterates through the input array, using the array values as indices. For each index, we make the corresponding value in the array negative. If we encounter a negative value during the process, that means this index was seen before (i.e., the value was duplicated), so we add the absolute value of the duplicated number to the result.\n\nThe algorithm runs in O(n) time complexity, as there is only one iteration through the input array. It also uses constant extra space, because the input array is utilized for marking, and only the result array is created separately.\n    ",
+    "javascript": "\n    ```javascript\nfunction findDuplicates(nums) {\n    let duplicates = [];\n    for (let i = 0; i < nums.length; i++) {\n        let index = Math.abs(nums[i]) - 1;\n        if (nums[index] < 0) {\n            duplicates.push(Math.abs(nums[i]));\n        } else {\n            nums[index] *= -1;\n        }\n    }\n    return duplicates;\n}\n```\n    \n    The algorithm iterates through the input array, using the array values as indices. For each index, we make the corresponding value in the array negative. If we encounter a negative value during the process, that means this index was seen before (i.e., the value was duplicated), so we add the absolute value of the duplicated number to the result.\n\nThe algorithm runs in O(n) time complexity, as there is only one iteration through the input array. It also uses constant extra space, because the input array is utilized for marking, and only the result array is created separately.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<Integer> findDuplicates(int[] nums) {\n    List<Integer> duplicates = new ArrayList<>();\n    for (int i = 0; i < nums.length; i++) {\n        int index = Math.abs(nums[i]) - 1;\n        if (nums[index] < 0) {\n            duplicates.add(Math.abs(nums[i]));\n        } else {\n            nums[index] *= -1;\n        }\n    }\n    return duplicates;\n}\n```\n    \n    The algorithm iterates through the input array, using the array values as indices. For each index, we make the corresponding value in the array negative. If we encounter a negative value during the process, that means this index was seen before (i.e., the value was duplicated), so we add the absolute value of the duplicated number to the result.\n\nThe algorithm runs in O(n) time complexity, as there is only one iteration through the input array. It also uses constant extra space, because the input array is utilized for marking, and only the result array is created separately.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

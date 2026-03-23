@@ -1,0 +1,24 @@
+{
+  "id": 852,
+  "title": "Peak Index in a Mountain Array",
+  "slug": "peak-index-in-a-mountain-array",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "An array arr a mountain if the following properties hold:\n\n*   arr.length >= 3\n*   There exists some i with 0 < i < arr.length - 1 such that:\n    *   arr[0] < arr[1] < ... < arr[i - 1] < arr[i]\n    *   arr[i] > arr[i + 1] > ... > arr[arr.length - 1]\n\nGiven a mountain array arr, return the index i such that arr[0] < arr[1] < ... < arr[i - 1] < arr[i] > arr[i + 1] > ... > arr[arr.length - 1].\n\nYou must solve it in O(log(arr.length)) time complexity.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef numFriendRequests(ages):\n    count = [0] * 121\n    total_requests = 0\n\n    for age in ages:\n        count[age] += 1\n\n    for a in range(1, 121):\n        for b in range(1, 121):\n            if a * 0.5 + 7 >= b:\n                continue\n            if a < b:\n                continue\n            if a < b * 2:\n                total_requests += count[a] * count[b]\n                if a == b:\n                    total_requests -= count[a]\n\n    return total_requests\n```\n    \n    - First, we need to create an array `count` to keep track of the number of people for each age (1 to 120).\n- Populate the `count` array with the number of people for each age from the `ages` input.\n- For every possible age combination (a and b), we check the conditions in which a friend request should not be sent - i.e., a * 0.5 + 7 >= b, or a < b.\n- If none of these conditions are true, we can update the total_requests by adding count[a] * count[b]. However, if a == b, then we need to subtract count[a] because a person will not send a friend request to themselves.\n- Finally, we return the total number of friend requests made.\n    ",
+    "javascript": "\n    ```javascript\nfunction numFriendRequests(ages) {\n    const count = new Array(121).fill(0);\n    let total_requests = 0;\n\n    for (const age of ages) count[age]++;\n\n    for (let a = 1; a <= 120; a++) {\n        for (let b = 1; b <= 120; b++) {\n            if (a * 0.5 + 7 >= b) continue;\n            if (a < b) continue;\n            if (a < b * 2) {\n                total_requests += count[a] * count[b];\n                if (a === b) total_requests -= count[a];\n            }\n        }\n    }\n\n    return total_requests;\n}\n```\n    \n    - First, we need to create an array `count` to keep track of the number of people for each age (1 to 120).\n- Populate the `count` array with the number of people for each age from the `ages` input.\n- For every possible age combination (a and b), we check the conditions in which a friend request should not be sent - i.e., a * 0.5 + 7 >= b, or a < b.\n- If none of these conditions are true, we can update the total_requests by adding count[a] * count[b]. However, if a == b, then we need to subtract count[a] because a person will not send a friend request to themselves.\n- Finally, we return the total number of friend requests made.\n    ",
+    "java": "\n    ```java\npublic int numFriendRequests(int[] ages) {\n    int[] count = new int[121];\n    int total_requests = 0;\n\n    for (int age : ages) count[age]++;\n\n    for (int a = 1; a <= 120; a++) {\n        for (int b = 1; b <= 120; b++) {\n            if (a * 0.5 + 7 >= b) continue;\n            if (a < b) continue;\n            if (a < b * 2) {\n                total_requests += count[a] * count[b];\n                if (a == b) total_requests -= count[a];\n            }\n        }\n    }\n\n    return total_requests;\n}\n```\n    \n    - First, we need to create an array `count` to keep track of the number of people for each age (1 to 120).\n- Populate the `count` array with the number of people for each age from the `ages` input.\n- For every possible age combination (a and b), we check the conditions in which a friend request should not be sent - i.e., a * 0.5 + 7 >= b, or a < b.\n- If none of these conditions are true, we can update the total_requests by adding count[a] * count[b]. However, if a == b, then we need to subtract count[a] because a person will not send a friend request to themselves.\n- Finally, we return the total number of friend requests made.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

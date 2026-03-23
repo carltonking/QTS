@@ -1,0 +1,24 @@
+{
+  "id": 487,
+  "title": "Max Consecutive Ones II",
+  "slug": "max-consecutive-ones-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a binary array nums, return _the maximum number of consecutive_ 1_'s in the array if you can flip at most one_ 0.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findMaxConsecutiveOnes(nums: List[int]) -> int:\n    max_count, count_zeros, left = 0, 0, 0\n    for right in range(len(nums)):\n        if nums[right] == 0:\n            count_zeros += 1\n        while count_zeros > 1:\n            if nums[left] == 0:\n                count_zeros -= 1\n            left += 1\n        max_count = max(max_count, right - left + 1)\n    return max_count\n```\n    \n    We can use the sliding window technique to solve this problem. We maintain a window, and traverse through the array from the left side to the right side. When we find a 0, we increment the count of zeros in the window. If the count of zeros is greater than 1, we remove elements from the left side of the window until we have only 1 zero in the window. This way, we make sure we calculate the maximum number of consecutive ones when a single zero is flipped.\n\nFor each window, we update the maximum consecutive ones by comparing the current window size (right - left + 1) with max_count.\n\nIn the follow-up case where the input numbers come in one by one as an infinite stream, we can still use the same sliding window technique efficiently. We don't need to store all numbers, as we only need to store the current window of numbers which has at most size N (in the worst case where all numbers are 1). The time complexity is O(N) for the entire stream of numbers.\n    ",
+    "javascript": "\n    ```javascript\nfunction findMaxConsecutiveOnes(nums) {\n    let maxCount = 0, countZeros = 0, left = 0;\n    for (let right = 0; right < nums.length; ++right) {\n        if (nums[right] === 0) countZeros++;\n        while (countZeros > 1) {\n            if (nums[left++] === 0) countZeros--;\n        }\n        maxCount = Math.max(maxCount, right - left + 1);\n    }\n    return maxCount;\n}\n```\n    \n    We can use the sliding window technique to solve this problem. We maintain a window, and traverse through the array from the left side to the right side. When we find a 0, we increment the count of zeros in the window. If the count of zeros is greater than 1, we remove elements from the left side of the window until we have only 1 zero in the window. This way, we make sure we calculate the maximum number of consecutive ones when a single zero is flipped.\n\nFor each window, we update the maximum consecutive ones by comparing the current window size (right - left + 1) with max_count.\n\nIn the follow-up case where the input numbers come in one by one as an infinite stream, we can still use the same sliding window technique efficiently. We don't need to store all numbers, as we only need to store the current window of numbers which has at most size N (in the worst case where all numbers are 1). The time complexity is O(N) for the entire stream of numbers.\n    ",
+    "java": "\n    ```java\npublic int findMaxConsecutiveOnes(int[] nums) {\n    int maxCount = 0, countZeros = 0, left = 0;\n    for (int right = 0; right < nums.length; ++right) {\n        if (nums[right] == 0) countZeros++;\n        while (countZeros > 1) {\n            if (nums[left++] == 0) countZeros--;\n        }\n        maxCount = Math.max(maxCount, right - left + 1);\n    }\n    return maxCount;\n}\n```\n    \n    We can use the sliding window technique to solve this problem. We maintain a window, and traverse through the array from the left side to the right side. When we find a 0, we increment the count of zeros in the window. If the count of zeros is greater than 1, we remove elements from the left side of the window until we have only 1 zero in the window. This way, we make sure we calculate the maximum number of consecutive ones when a single zero is flipped.\n\nFor each window, we update the maximum consecutive ones by comparing the current window size (right - left + 1) with max_count.\n\nIn the follow-up case where the input numbers come in one by one as an infinite stream, we can still use the same sliding window technique efficiently. We don't need to store all numbers, as we only need to store the current window of numbers which has at most size N (in the worst case where all numbers are 1). The time complexity is O(N) for the entire stream of numbers.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

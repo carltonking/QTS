@@ -1,0 +1,24 @@
+{
+  "id": 1833,
+  "title": "Maximum Ice Cream Bars",
+  "slug": "maximum-ice-cream-bars",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "It is a sweltering summer day, and a boy wants to buy some ice cream bars.\n\nAt the store, there are n ice cream bars. You are given an array costs of length n, where costs[i] is the price of the ith ice cream bar in coins. The boy initially has coins coins to spend, and he wants to buy as many ice cream bars as possible.\n\nNote: The boy can buy the ice cream bars in any order.\n\nReturn _the maximum number of ice cream bars the boy can buy with_ coins _coins._\n\nYou must solve the problem by counting sort.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef largestAltitude(gain):\n    max_altitude, current_altitude = 0, 0\n    for i in gain:\n        current_altitude += i\n        max_altitude = max(max_altitude, current_altitude)\n    return max_altitude\n```\n    \n    The algorithm consists of iterating through the input `gain` array and keeping track of the current altitude and the maximum altitude reached:\n\n1. Initialize `max_altitude` and `current_altitude` variables to 0.\n2. For each element in the `gain` array, add the gain value to the `current_altitude`.\n3. Update the `max_altitude` if the `current_altitude` is greater than the `max_altitude`.\n4. Return the `max_altitude` after the loop.\n\nThis approach has a time complexity of O(n), where n is the length of the input array `gain`.\n    ",
+    "javascript": "\n    ```javascript\nfunction largestAltitude(gain) {\n    let max_altitude = 0, current_altitude = 0;\n    for (let i = 0; i < gain.length; i++) {\n        current_altitude += gain[i];\n        max_altitude = Math.max(max_altitude, current_altitude);\n    }\n    return max_altitude;\n}\n```\n    \n    The algorithm consists of iterating through the input `gain` array and keeping track of the current altitude and the maximum altitude reached:\n\n1. Initialize `max_altitude` and `current_altitude` variables to 0.\n2. For each element in the `gain` array, add the gain value to the `current_altitude`.\n3. Update the `max_altitude` if the `current_altitude` is greater than the `max_altitude`.\n4. Return the `max_altitude` after the loop.\n\nThis approach has a time complexity of O(n), where n is the length of the input array `gain`.\n    ",
+    "java": "\n    ```java\npublic int largestAltitude(int[] gain) {\n    int max_altitude = 0, current_altitude = 0;\n    for (int i = 0; i < gain.length; i++) {\n        current_altitude += gain[i];\n        max_altitude = Math.max(max_altitude, current_altitude);\n    }\n    return max_altitude;\n}\n```\n    \n    The algorithm consists of iterating through the input `gain` array and keeping track of the current altitude and the maximum altitude reached:\n\n1. Initialize `max_altitude` and `current_altitude` variables to 0.\n2. For each element in the `gain` array, add the gain value to the `current_altitude`.\n3. Update the `max_altitude` if the `current_altitude` is greater than the `max_altitude`.\n4. Return the `max_altitude` after the loop.\n\nThis approach has a time complexity of O(n), where n is the length of the input array `gain`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

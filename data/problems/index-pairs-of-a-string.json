@@ -1,0 +1,24 @@
+{
+  "id": 1065,
+  "title": "Index Pairs of a String",
+  "slug": "index-pairs-of-a-string",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a string text and an array of strings words, return _an array of all index pairs_ [i, j] _so that the substring_ text[i...j] _is in words_.\n\nReturn the pairs [i, j] in sorted order (i.e., sort them by their first coordinate, and in case of ties sort them by their second coordinate).",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef has_all_codes_in_range(s: str, n: int) -> bool:\n    substrings = set()\n    length = len(bin(n)) - 2\n    for i in range(len(s) - length + 1):\n        substrings.add(s[i:i + length])\n    return len(substrings) == n\n```\n\n    \n    1. Initialize an empty set called `substrings` to store unique binary substrings of length equal to the binary representation of `n`.\n2. Compute the length of the binary representation of `n` and store it in `length`.\n3. Loop through the binary string `s`, starting from index 0 to `len(s) - length`:\n   a. Extract the substring of `s` with length `length` starting at index `i`.\n   b. Add the extracted substring to the `substrings` set.\n4. Check if the size of `substrings` is equal to `n`. If it is, then all integers in the range `[1, n]` had their binary representation in `s`.\n5. Return the result (true if the size is equal to `n`, and false otherwise).\n    ",
+    "javascript": "\n    ```javascript\nfunction hasAllCodesInRange(s, n) {\n    let substrings = new Set();\n    let length = n.toString(2).length;\n    for (let i = 0; i < s.length - length + 1; ++i) {\n        substrings.add(s.substr(i, length));\n    }\n    return substrings.size == n;\n}\n```\n\n    \n    1. Initialize an empty set called `substrings` to store unique binary substrings of length equal to the binary representation of `n`.\n2. Compute the length of the binary representation of `n` and store it in `length`.\n3. Loop through the binary string `s`, starting from index 0 to `len(s) - length`:\n   a. Extract the substring of `s` with length `length` starting at index `i`.\n   b. Add the extracted substring to the `substrings` set.\n4. Check if the size of `substrings` is equal to `n`. If it is, then all integers in the range `[1, n]` had their binary representation in `s`.\n5. Return the result (true if the size is equal to `n`, and false otherwise).\n    ",
+    "java": "\n    ```java\npublic boolean hasAllCodesInRange(String s, int n) {\n    Set<String> substrings = new HashSet<>();\n    int length = Integer.toBinaryString(n).length();\n    for (int i = 0; i < s.length() - length + 1; ++i) {\n        substrings.add(s.substring(i, i + length));\n    }\n    return substrings.size() == n;\n}\n```\n\n    \n    1. Initialize an empty set called `substrings` to store unique binary substrings of length equal to the binary representation of `n`.\n2. Compute the length of the binary representation of `n` and store it in `length`.\n3. Loop through the binary string `s`, starting from index 0 to `len(s) - length`:\n   a. Extract the substring of `s` with length `length` starting at index `i`.\n   b. Add the extracted substring to the `substrings` set.\n4. Check if the size of `substrings` is equal to `n`. If it is, then all integers in the range `[1, n]` had their binary representation in `s`.\n5. Return the result (true if the size is equal to `n`, and false otherwise).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

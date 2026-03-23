@@ -1,0 +1,24 @@
+{
+  "id": 1738,
+  "title": "Find Kth Largest XOR Coordinate Value",
+  "slug": "find-kth-largest-xor-coordinate-value",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 2D matrix of size m x n, consisting of non-negative integers. You are also given an integer k.\n\nThe value of coordinate (a, b) of the matrix is the XOR of all matrix[i][j] where 0 <= i <= a < m and 0 <= j <= b < n (0-indexed).\n\nFind the kth largest value (1-indexed) of all the coordinates of matrix.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maximalNetworkRank(n, roads):\n    degree = [0] * n\n    s = set()\n    \n    for road in roads:\n        degree[road[0]] += 1\n        degree[road[1]] += 1\n        s.add(tuple(sorted(road)))\n    \n    ans = 0\n    for i in range(n):\n        for j in range(i + 1, n):\n            ans = max(ans, degree[i] + degree[j] - (1 if (i, j) in s else 0))\n    return ans\n```\n\n    \n    1. Initialize an array called `degree` of size n, which tracks the degree of each city (number of directly connected roads).\n2. Initialize a set `s` to store pairs of connected cities (by storing a string representation of the pair in JavaScript, and tuple in Python).\n3. Iterate through the given roads array and increment the degree counter for both cities, and add the pair to the set `s`.\n4. Initialize a variable `ans` to store the maximum network rank found.\n5. Iterate through all city pairs and calculate their network rank by summing their degrees and subtracting 1 if they are directly connected (detected using the set `s`).\n6. Update the `ans` variable to be the maximum of its current value and the calculated network rank for the current city pair.\n7. Return the maximum network rank found (`ans`). \n    ",
+    "javascript": "\n    ```javascript\nfunction maximalNetworkRank(n, roads) {\n    let degree = new Array(n).fill(0);\n    let s = new Set();\n    \n    for (let road of roads) {\n        degree[road[0]]++;\n        degree[road[1]]++;\n        s.add([Math.min(road[0], road[1]), Math.max(road[0], road[1])].toString());\n    }\n    \n    let ans = 0;\n    for (let i = 0; i < n; i++) {\n        for (let j = i + 1; j < n; j++) {\n            ans = Math.max(ans, degree[i] + degree[j] - (s.has([i, j].toString()) ? 1 : 0));\n        }\n    }\n    return ans;\n}\n```\n\n    \n    1. Initialize an array called `degree` of size n, which tracks the degree of each city (number of directly connected roads).\n2. Initialize a set `s` to store pairs of connected cities (by storing a string representation of the pair in JavaScript, and tuple in Python).\n3. Iterate through the given roads array and increment the degree counter for both cities, and add the pair to the set `s`.\n4. Initialize a variable `ans` to store the maximum network rank found.\n5. Iterate through all city pairs and calculate their network rank by summing their degrees and subtracting 1 if they are directly connected (detected using the set `s`).\n6. Update the `ans` variable to be the maximum of its current value and the calculated network rank for the current city pair.\n7. Return the maximum network rank found (`ans`). \n    ",
+    "java": "\n    ```java\npublic int maximalNetworkRank(int n, int[][] roads) {\n    int[] degree = new int[n];\n    Set<String> s = new HashSet<>();\n    \n    for (int[] road : roads) {\n        degree[road[0]]++;\n        degree[road[1]]++;\n        String temp = Math.min(road[0], road[1]) + \",\" + Math.max(road[0], road[1]);\n        s.add(temp);\n    }\n    \n    int ans = 0;\n    for (int i = 0; i < n; i++) {\n        for (int j = i + 1; j < n; j++) {\n            String temp = i + \",\" + j;\n            ans = Math.max(ans, degree[i] + degree[j] - (s.contains(temp) ? 1 : 0));\n        }\n    }\n    return ans;\n}\n```\n\n    \n    1. Initialize an array called `degree` of size n, which tracks the degree of each city (number of directly connected roads).\n2. Initialize a set `s` to store pairs of connected cities (by storing a string representation of the pair in JavaScript, and tuple in Python).\n3. Iterate through the given roads array and increment the degree counter for both cities, and add the pair to the set `s`.\n4. Initialize a variable `ans` to store the maximum network rank found.\n5. Iterate through all city pairs and calculate their network rank by summing their degrees and subtracting 1 if they are directly connected (detected using the set `s`).\n6. Update the `ans` variable to be the maximum of its current value and the calculated network rank for the current city pair.\n7. Return the maximum network rank found (`ans`). \n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

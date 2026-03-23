@@ -1,0 +1,24 @@
+{
+  "id": 1144,
+  "title": "Decrease Elements To Make Array Zigzag",
+  "slug": "decrease-elements-to-make-array-zigzag",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array nums of integers, a _move_ consists of choosing any element and decreasing it by 1.\n\nAn array A is a _zigzag array_ if either:\n\n*   Every even-indexed element is greater than adjacent elements, ie. A[0] > A[1] < A[2] > A[3] < A[4] > ...\n*   OR, every odd-indexed element is greater than adjacent elements, ie. A[0] < A[1] > A[2] < A[3] > A[4] < ...\n\nReturn the minimum number of moves to transform the given array nums into a zigzag array.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef movesToMakeZigzag(nums):\n    even_moves, odd_moves = 0, 0\n    for i in range(len(nums)):\n        left = nums[i - 1] if i > 0 else 1001\n        right = nums[i + 1] if i < len(nums) - 1 else 1001\n        min_value = min(left, right)\n        if nums[i] >= min_value:\n            if i % 2 == 0:\n                even_moves += nums[i] - min_value + 1\n            else:\n                odd_moves += nums[i] - min_value + 1\n    return min(even_moves, odd_moves)\n```\n    \n    The algorithm first initializes two counters: one for the number of moves for making a zigzag array starting at an even position, and another for starting at an odd position. Then, we iterate through the array and check the left and right neighbours of each element. If the current element is larger than or equal to any of its neighbours, we need to decrease it. The number of moves needed is the difference between the current element and the minimum adjacent value, plus one. Depending on the index of the element, we add the number of moves to the corresponding counter (even or odd). Finally, we return the minimum between the two counters.\n    ",
+    "javascript": "\n    ```javascript\nfunction movesToMakeZigzag(nums) {\n    let evenMoves = 0, oddMoves = 0;\n    for (let i = 0; i < nums.length; i++) {\n        let left = i > 0 ? nums[i - 1] : 1001;\n        let right = i < nums.length - 1 ? nums[i + 1] : 1001;\n        let minValue = Math.min(left, right);\n        if (nums[i] >= minValue) {\n            if (i % 2 === 0) {\n                evenMoves += nums[i] - minValue + 1;\n            } else {\n                oddMoves += nums[i] - minValue + 1;\n            }\n        }\n    }\n    return Math.min(evenMoves, oddMoves);\n}\n```\n    \n    The algorithm first initializes two counters: one for the number of moves for making a zigzag array starting at an even position, and another for starting at an odd position. Then, we iterate through the array and check the left and right neighbours of each element. If the current element is larger than or equal to any of its neighbours, we need to decrease it. The number of moves needed is the difference between the current element and the minimum adjacent value, plus one. Depending on the index of the element, we add the number of moves to the corresponding counter (even or odd). Finally, we return the minimum between the two counters.\n    ",
+    "java": "\n    ```java\npublic int movesToMakeZigzag(int[] nums) {\n    int evenMoves = 0, oddMoves = 0;\n    for (int i = 0; i < nums.length; i++) {\n        int left = i > 0 ? nums[i - 1] : 1001;\n        int right = i < nums.length - 1 ? nums[i + 1] : 1001;\n        int minValue = Math.min(left, right);\n        if (nums[i] >= minValue) {\n            if (i % 2 == 0) {\n                evenMoves += nums[i] - minValue + 1;\n            } else {\n                oddMoves += nums[i] - minValue + 1;\n            }\n        }\n    }\n    return Math.min(evenMoves, oddMoves);\n}\n```\n    \n    The algorithm first initializes two counters: one for the number of moves for making a zigzag array starting at an even position, and another for starting at an odd position. Then, we iterate through the array and check the left and right neighbours of each element. If the current element is larger than or equal to any of its neighbours, we need to decrease it. The number of moves needed is the difference between the current element and the minimum adjacent value, plus one. Depending on the index of the element, we add the number of moves to the corresponding counter (even or odd). Finally, we return the minimum between the two counters.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

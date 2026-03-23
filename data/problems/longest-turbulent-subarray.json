@@ -1,0 +1,24 @@
+{
+  "id": 978,
+  "title": "Longest Turbulent Subarray",
+  "slug": "longest-turbulent-subarray",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array arr, return _the length of a maximum size turbulent subarray of_ arr.\n\nA subarray is turbulent if the comparison sign flips between each adjacent pair of elements in the subarray.\n\nMore formally, a subarray [arr[i], arr[i + 1], ..., arr[j]] of arr is said to be turbulent if and only if:\n\n*   For i <= k < j:\n    *   arr[k] > arr[k + 1] when k is odd, and\n    *   arr[k] < arr[k + 1] when k is even.\n*   Or, for i <= k < j:\n    *   arr[k] > arr[k + 1] when k is even, and\n    *   arr[k] < arr[k + 1] when k is odd.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef valid_mountain_array(arr):\n    n, i, j = len(arr), 0, len(arr) - 1\n    while i + 1 < n and arr[i] < arr[i + 1]:\n        i += 1\n    while j > 0 and arr[j - 1] > arr[j]:\n        j -= 1\n    return i > 0 and i == j and j < n - 1\n```\n    \n    The algorithm starts with two pointers `i` and `j`. Pointer `i` is initialized to 0, and pointer `j` is initialized to the last index. We iterate through the array with pointer `i` while elements are in increasing order. Then, we iterate through the array with pointer `j` while elements are in decreasing order.\n\nFinally, we check if the pointers have moved from their initial positions (i.e., `i > 0` and `j < n - 1`). We also check if both pointers have stopped at the same index (i.e., `i == j`). If these conditions are met, it means that there is a valid mountain array, and we return `true`. Otherwise, we return `false`.\n    ",
+    "javascript": "\n    ```javascript\nfunction validMountainArray(arr) {\n    let n = arr.length, i = 0, j = n - 1;\n    while (i + 1 < n && arr[i] < arr[i + 1]) i++;\n    while (j > 0 && arr[j - 1] > arr[j]) j--;\n    return i > 0 && i === j && j < n - 1;\n}\n```\n    \n    The algorithm starts with two pointers `i` and `j`. Pointer `i` is initialized to 0, and pointer `j` is initialized to the last index. We iterate through the array with pointer `i` while elements are in increasing order. Then, we iterate through the array with pointer `j` while elements are in decreasing order.\n\nFinally, we check if the pointers have moved from their initial positions (i.e., `i > 0` and `j < n - 1`). We also check if both pointers have stopped at the same index (i.e., `i == j`). If these conditions are met, it means that there is a valid mountain array, and we return `true`. Otherwise, we return `false`.\n    ",
+    "java": "\n    ```java\nboolean validMountainArray(int[] arr) {\n    int n = arr.length, i = 0, j = n - 1;\n    while (i + 1 < n && arr[i] < arr[i + 1]) i++;\n    while (j > 0 && arr[j - 1] > arr[j]) j--;\n    return i > 0 && i == j && j < n - 1;\n}\n```\n    \n    The algorithm starts with two pointers `i` and `j`. Pointer `i` is initialized to 0, and pointer `j` is initialized to the last index. We iterate through the array with pointer `i` while elements are in increasing order. Then, we iterate through the array with pointer `j` while elements are in decreasing order.\n\nFinally, we check if the pointers have moved from their initial positions (i.e., `i > 0` and `j < n - 1`). We also check if both pointers have stopped at the same index (i.e., `i == j`). If these conditions are met, it means that there is a valid mountain array, and we return `true`. Otherwise, we return `false`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2374,
+  "title": "Node With Highest Edge Score",
+  "slug": "node-with-highest-edge-score",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a directed graph with n nodes labeled from 0 to n - 1, where each node has exactly one outgoing edge.\n\nThe graph is represented by a given 0-indexed integer array edges of length n, where edges[i] indicates that there is a directed edge from node i to node edges[i].\n\nThe edge score of a node i is defined as the sum of the labels of all the nodes that have an edge pointing to i.\n\nReturn _the node with the highest edge score_. If multiple nodes have the same edge score, return the node with the smallest index.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef highest_edge_score_node(edges: List[int]) -> int:\n    scores = [0] * len(edges)\n    for i, edge in enumerate(edges):\n        scores[edge] += i\n    return scores.index(max(scores))\n```\n    \n    1. Create an array \"scores\" with the same length as \"edges\" and fill it with zeros.\n2. Iterate through the \"edges\" array. For each index i, increment the score array value at the position of edges[i] by i.\n3. Find the index of the maximum value in the \"scores\" array and return it. In the case of a tie, the smallest index will be returned first, as required.\n    ",
+    "javascript": "\n    ```javascript\nfunction highestEdgeScoreNode(edges) {\n  const scores = new Array(edges.length).fill(0);\n  \n  for (let i = 0; i < edges.length; i++) {\n    scores[edges[i]] += i;\n  }\n  \n  let maxIndex = 0;\n  for (let i = 1; i < scores.length; i++) {\n    if (scores[i] > scores[maxIndex]) {\n      maxIndex = i;\n    }\n  }\n\n  return maxIndex;\n}\n```\n    \n    1. Create an array \"scores\" with the same length as \"edges\" and fill it with zeros.\n2. Iterate through the \"edges\" array. For each index i, increment the score array value at the position of edges[i] by i.\n3. Find the index of the maximum value in the \"scores\" array and return it. In the case of a tie, the smallest index will be returned first, as required.\n    ",
+    "java": "\n    ```java\npublic int highestEdgeScoreNode(int[] edges) {\n    int[] scores = new int[edges.length];\n   \n    for (int i = 0; i < edges.length; i++) {\n        scores[edges[i]] += i;\n    }\n    \n    int maxIndex = 0;\n    for (int i = 1; i < scores.length; i++) {\n        if (scores[i] > scores[maxIndex]) {\n            maxIndex = i;\n        }\n    }\n \n    return maxIndex;\n}\n```\n    \n    1. Create an array \"scores\" with the same length as \"edges\" and fill it with zeros.\n2. Iterate through the \"edges\" array. For each index i, increment the score array value at the position of edges[i] by i.\n3. Find the index of the maximum value in the \"scores\" array and return it. In the case of a tie, the smallest index will be returned first, as required.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

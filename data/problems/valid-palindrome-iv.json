@@ -1,0 +1,24 @@
+{
+  "id": 2330,
+  "title": "Valid Palindrome IV",
+  "slug": "valid-palindrome-iv",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed string s consisting of only lowercase English letters. In one operation, you can change any character of s to any other character.\n\nReturn true _if you can make_ s _a palindrome after performing exactly one or two operations, or return_ false _otherwise._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_beauty(flowers, new_flowers, target, full, partial):\n    beauty = sum(full if f >= target else partial * f for f in flowers)\n    flowers.sort()\n\n    for i in range(len(flowers)):\n        needed = target - flowers[i]\n        if needed <= new_flowers:\n            beauty += full - partial * flowers[i]\n            flowers[i] = target\n            new_flowers -= needed\n\n    return beauty\n```\n    \n    1. Calculate the initial beauty of the gardens using the number of flowers already planted.\n2. Sort the gardens by the number of flowers in non-descending order.\n3. For each garden (in non-descending order):\n   a. Calculate the number of flowers needed to reach the target.\n   b. If the number of needed flowers is less than or equal to the maximum number of new flowers Alice can plant, then update the beauty of the gardens, set this particular garden's number of flowers to the target, and subtract the number of needed flowers from newFlowers.\n4. Return the maximum total beauty after planting newFlowers.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxBeauty(flowers, newFlowers, target, full, partial) {\n    let beauty = flowers.reduce((acc, f) => acc + (f >= target ? full : partial * f), 0);\n    flowers.sort((a, b) => a - b);\n\n    for (let i = 0; i < flowers.length && newFlowers > 0; ++i) {\n        let needed = target - flowers[i];\n        if (needed <= newFlowers) {\n            beauty += full - partial * flowers[i];\n            flowers[i] = target;\n            newFlowers -= needed;\n        }\n    }\n\n    return beauty;\n}\n```\n    \n    1. Calculate the initial beauty of the gardens using the number of flowers already planted.\n2. Sort the gardens by the number of flowers in non-descending order.\n3. For each garden (in non-descending order):\n   a. Calculate the number of flowers needed to reach the target.\n   b. If the number of needed flowers is less than or equal to the maximum number of new flowers Alice can plant, then update the beauty of the gardens, set this particular garden's number of flowers to the target, and subtract the number of needed flowers from newFlowers.\n4. Return the maximum total beauty after planting newFlowers.\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic int maxBeauty(int[] flowers, int newFlowers, int target, int full, int partial) {\n    int beauty = 0;\n    for (int f : flowers)\n        beauty += (f >= target) ? full : partial * f;\n\n    Arrays.sort(flowers);\n\n    for (int i = 0; i < flowers.length && newFlowers > 0; ++i) {\n        int needed = target - flowers[i];\n        if (needed <= newFlowers) {\n            beauty += full - partial * flowers[i];\n            flowers[i] = target;\n            newFlowers -= needed;\n        }\n    }\n\n    return beauty;\n}\n```\n    \n    1. Calculate the initial beauty of the gardens using the number of flowers already planted.\n2. Sort the gardens by the number of flowers in non-descending order.\n3. For each garden (in non-descending order):\n   a. Calculate the number of flowers needed to reach the target.\n   b. If the number of needed flowers is less than or equal to the maximum number of new flowers Alice can plant, then update the beauty of the gardens, set this particular garden's number of flowers to the target, and subtract the number of needed flowers from newFlowers.\n4. Return the maximum total beauty after planting newFlowers.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

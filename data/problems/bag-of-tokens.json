@@ -1,0 +1,24 @@
+{
+  "id": 948,
+  "title": "Bag of Tokens",
+  "slug": "bag-of-tokens",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You have an initial power of power, an initial score of 0, and a bag of tokens where tokens[i] is the value of the ith token (0-indexed).\n\nYour goal is to maximize your total score by potentially playing each token in one of two ways:\n\n*   If your current power is at least tokens[i], you may play the ith token face up, losing tokens[i] power and gaining 1 score.\n*   If your current score is at least 1, you may play the ith token face down, gaining tokens[i] power and losing 1 score.\n\nEach token may be played at most once and in any order. You do not have to play all the tokens.\n\nReturn _the largest possible score you can achieve after playing any number of tokens_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef sortArray(nums):\n    nums.sort()\n```\n    \n    The algorithm for each language uses the built-in sorting function provided by the language's standard library to sort the given array of integers in ascending order.\n\n- In C++, the `std::sort` function from the `<algorithm>` library is used.\n- In Java, the `Arrays.sort` method from the `java.util` package is used.\n- In Python, the in-built `sort` method of the list object (nums) is used.\n- In JavaScript, the `Array.prototype.sort` method is used with a custom comparator function `(a, b) => a - b` to ensure numeric sorting instead of lexicographic sorting (the default behavior of JavaScript's sort).\n\nAll these built-in methods use efficient sorting algorithms underneath, with average-case complexity of O(n log n).\n    ",
+    "javascript": "\n    ```javascript\nfunction sortArray(nums) {\n    nums.sort((a, b) => a - b);\n}\n```\n    \n    The algorithm for each language uses the built-in sorting function provided by the language's standard library to sort the given array of integers in ascending order.\n\n- In C++, the `std::sort` function from the `<algorithm>` library is used.\n- In Java, the `Arrays.sort` method from the `java.util` package is used.\n- In Python, the in-built `sort` method of the list object (nums) is used.\n- In JavaScript, the `Array.prototype.sort` method is used with a custom comparator function `(a, b) => a - b` to ensure numeric sorting instead of lexicographic sorting (the default behavior of JavaScript's sort).\n\nAll these built-in methods use efficient sorting algorithms underneath, with average-case complexity of O(n log n).\n    ",
+    "java": "\n    ```java\nimport java.util.Arrays;\n\npublic void sortArray(int[] nums) {\n    Arrays.sort(nums);\n}\n```\n    \n    The algorithm for each language uses the built-in sorting function provided by the language's standard library to sort the given array of integers in ascending order.\n\n- In C++, the `std::sort` function from the `<algorithm>` library is used.\n- In Java, the `Arrays.sort` method from the `java.util` package is used.\n- In Python, the in-built `sort` method of the list object (nums) is used.\n- In JavaScript, the `Array.prototype.sort` method is used with a custom comparator function `(a, b) => a - b` to ensure numeric sorting instead of lexicographic sorting (the default behavior of JavaScript's sort).\n\nAll these built-in methods use efficient sorting algorithms underneath, with average-case complexity of O(n log n).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

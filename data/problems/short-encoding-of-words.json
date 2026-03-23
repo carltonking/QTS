@@ -1,0 +1,24 @@
+{
+  "id": 820,
+  "title": "Short Encoding of Words",
+  "slug": "short-encoding-of-words",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A valid encoding of an array of words is any reference string s and array of indices indices such that:\n\n*   words.length == indices.length\n*   The reference string s ends with the '#' character.\n*   For each index indices[i], the substring of s starting from indices[i] and up to (but not including) the next '#' character is equal to words[i].\n\nGiven an array of words, return _the length of the shortest reference string_ s _possible of any valid encoding of_ words_._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom typing import List\n\ndef eventualSafeNodes(graph: List[List[int]]) -> List[int]:\n    n = len(graph)\n    color = [0] * n\n    ans = []\n\n    def hasCycle(node: int, color: List[int], graph: List[List[int]]) -> bool:\n        if color[node] > 0:\n            return color[node] == 1\n        color[node] = 1\n        for neighbor in graph[node]:\n            if hasCycle(neighbor, color, graph):\n                return True\n        color[node] = 2\n        return False\n\n    for i in range(n):\n        if not hasCycle(i, color, graph):\n            ans.append(i)\n    return ans\n```\n    \n    We can use depth-first search to traverse the graph. We'll mark each node with one of the following colors:\n\n- 0 (white): The node has not been visited yet\n- 1 (gray): The node is being visited\n- 2 (black): The node and all its descendants have been visited, and it's safe\n\nThe `hasCycle` function recursively checks if a node has a cycle (found by a visit to a gray node in the path). If there's no cycle, we mark it as black and return `false`. Once we have checked all nodes, we return the nodes marked as black (safe nodes) in the graph.\n    ",
+    "javascript": "\n    ```javascript\nvar eventualSafeNodes = function(graph) {\n    const n = graph.length;\n    const color = new Array(n).fill(0);\n    const ans = [];\n\n    function hasCycle(node, color, graph) {\n        if (color[node] > 0)\n            return color[node] === 1;\n        color[node] = 1;\n        for (const neighbor of graph[node]) {\n            if (hasCycle(neighbor, color, graph))\n                return true;\n        }\n        color[node] = 2;\n        return false;\n    }\n    \n    for (let i = 0; i < n; ++i) {\n        if (!hasCycle(i, color, graph))\n            ans.push(i);\n    }\n    return ans;\n};\n```\n    \n    We can use depth-first search to traverse the graph. We'll mark each node with one of the following colors:\n\n- 0 (white): The node has not been visited yet\n- 1 (gray): The node is being visited\n- 2 (black): The node and all its descendants have been visited, and it's safe\n\nThe `hasCycle` function recursively checks if a node has a cycle (found by a visit to a gray node in the path). If there's no cycle, we mark it as black and return `false`. Once we have checked all nodes, we return the nodes marked as black (safe nodes) in the graph.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<Integer> eventualSafeNodes(int[][] graph) {\n    int n = graph.length;\n    int[] color = new int[n];\n    List<Integer> ans = new ArrayList<>();\n\n    boolean hasCycle(int node, int[] color, int[][] graph) {\n        if (color[node] > 0)\n            return color[node] == 1;\n        color[node] = 1;\n        for (int neighbor : graph[node]) {\n            if (hasCycle(neighbor, color, graph))\n                return true;\n        }\n        color[node] = 2;\n        return false;\n    }\n\n    for (int i = 0; i < n; ++i) {\n        if (!hasCycle(i, color, graph))\n            ans.add(i);\n    }\n    return ans;\n}\n```\n    \n    We can use depth-first search to traverse the graph. We'll mark each node with one of the following colors:\n\n- 0 (white): The node has not been visited yet\n- 1 (gray): The node is being visited\n- 2 (black): The node and all its descendants have been visited, and it's safe\n\nThe `hasCycle` function recursively checks if a node has a cycle (found by a visit to a gray node in the path). If there's no cycle, we mark it as black and return `false`. Once we have checked all nodes, we return the nodes marked as black (safe nodes) in the graph.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

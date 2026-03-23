@@ -1,0 +1,24 @@
+{
+  "id": 809,
+  "title": "Expressive Words",
+  "slug": "expressive-words",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Sometimes people repeat letters to represent extra feeling. For example:\n\n*   \"hello \" -> \"heeellooo \"\n*   \"hi \" -> \"hiiii \"\n\nIn these strings like \"heeellooo \", we have groups of adjacent letters that are all the same: \"h \", \"eee \", \"ll \", \"ooo \".\n\nYou are given a string s and an array of query strings words. A query word is stretchy if it can be made to be equal to s by any number of applications of the following extension operation: choose a group consisting of characters c, and add some number of characters c to the group so that the size of the group is three or more.\n\n*   For example, starting with \"hello \", we could do an extension on the group \"o \" to get \"hellooo \", but we cannot get \"helloo \" since the group \"oo \" has a size less than three. Also, we could do another extension like \"ll \" -> \"lllll \" to get \"helllllooo \". If s = \"helllllooo \", then the query word \"hello \" would be stretchy because of these two extension operations: query = \"hello \" -> \"hellooo \" -> \"helllllooo \" = s.\n\nReturn _the number of query strings that are stretchy_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef num_zeros(k):\n    x = 0\n    i = 5\n    while k // i >= 1:\n        x += k // i\n        i *= 5\n    return x\n```\n    \n    The algorithm, to find the number of non-negative integers x that have the property f(x) = k, takes advantage of the fact that trailing zeros in a factorial can be determined by counting the factors of 5 (since there will always be enough factors of 2 to pair with factors of 5 in the factorial).\n\n1. Initialize the count of non-negative integers x with the value 0.\n2. Loop through the integer multiples of 5 (i = 5, 25, 125, ...) until k / i >= 1.\n3. Inside the loop, add k // i (or k / i, floor-divided) to the count of x. This is the number of factors of 5 that create trailing zeros.\n4. Return the count of x after the loop.\n\nThis algorithm should work identically for all of the given languages: C++, Java, Python, and JavaScript.\n    ",
+    "javascript": "\n    ```javascript\nfunction num_zeros(k) {\n    let x = 0;\n    for (let i = 5; Math.floor(k / i) >= 1; i *= 5) {\n        x += Math.floor(k / i);\n    }\n    return x;\n}\n```\n    \n    The algorithm, to find the number of non-negative integers x that have the property f(x) = k, takes advantage of the fact that trailing zeros in a factorial can be determined by counting the factors of 5 (since there will always be enough factors of 2 to pair with factors of 5 in the factorial).\n\n1. Initialize the count of non-negative integers x with the value 0.\n2. Loop through the integer multiples of 5 (i = 5, 25, 125, ...) until k / i >= 1.\n3. Inside the loop, add k // i (or k / i, floor-divided) to the count of x. This is the number of factors of 5 that create trailing zeros.\n4. Return the count of x after the loop.\n\nThis algorithm should work identically for all of the given languages: C++, Java, Python, and JavaScript.\n    ",
+    "java": "\n    ```java\nint num_zeros(int k) {\n    int x = 0;\n    for (int i = 5; k / i >= 1; i *= 5) {\n        x += k / i;\n    }\n    return x;\n}\n```\n    \n    The algorithm, to find the number of non-negative integers x that have the property f(x) = k, takes advantage of the fact that trailing zeros in a factorial can be determined by counting the factors of 5 (since there will always be enough factors of 2 to pair with factors of 5 in the factorial).\n\n1. Initialize the count of non-negative integers x with the value 0.\n2. Loop through the integer multiples of 5 (i = 5, 25, 125, ...) until k / i >= 1.\n3. Inside the loop, add k // i (or k / i, floor-divided) to the count of x. This is the number of factors of 5 that create trailing zeros.\n4. Return the count of x after the loop.\n\nThis algorithm should work identically for all of the given languages: C++, Java, Python, and JavaScript.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

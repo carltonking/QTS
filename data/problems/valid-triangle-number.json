@@ -1,0 +1,24 @@
+{
+  "id": 611,
+  "title": "Valid Triangle Number",
+  "slug": "valid-triangle-number",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an integer array nums, return _the number of triplets chosen from the array that can make triangles if we take them as side lengths of a triangle_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef triangleNumber(nums: list) -> int:\n    nums.sort()\n    count = 0\n    for i in range(len(nums)):\n        for j in range(i + 1, len(nums)):\n            for k in range(j + 1, len(nums)):\n                if nums[i] + nums[j] > nums[k]:\n                    count += 1\n                else:\n                    break\n    return count\n```\n    \n    1. Sort the given array in ascending order.\n2. Iterate through the sorted array using three nested loops i, j, and k, where i < j < k. The loops go through possible triplet candidates (nums[i], nums[j], nums[k]).\n3. For each triplet, check if nums[i] + nums[j] > nums[k]. If true, it satisfies the triangle inequality property, and we increase the count.\n4. If nums[i] + nums[j] is not greater than nums[k], it means no other k value will satisfy the triangle inequality with the current i and j values. So, we break the innermost loop.\n5. Return the count, which is the number of valid triplets.\n    ",
+    "javascript": "\n    ```javascript\nfunction triangleNumber(nums) {\n    nums.sort((a, b) => a - b);\n    let count = 0;\n    for (let i = 0; i < nums.length; ++i) {\n        for (let j = i + 1; j < nums.length; ++j) {\n            for (let k = j + 1; k < nums.length; ++k) {\n                if (nums[i] + nums[j] > nums[k]) {\n                    count++;\n                }\n                else {\n                    break;\n                }\n            }\n        }\n    }\n    return count;\n}\n```\n    \n    1. Sort the given array in ascending order.\n2. Iterate through the sorted array using three nested loops i, j, and k, where i < j < k. The loops go through possible triplet candidates (nums[i], nums[j], nums[k]).\n3. For each triplet, check if nums[i] + nums[j] > nums[k]. If true, it satisfies the triangle inequality property, and we increase the count.\n4. If nums[i] + nums[j] is not greater than nums[k], it means no other k value will satisfy the triangle inequality with the current i and j values. So, we break the innermost loop.\n5. Return the count, which is the number of valid triplets.\n    ",
+    "java": "\n    ```java\npublic int triangleNumber(int[] nums) {\n    Arrays.sort(nums);\n    int count = 0;\n    for (int i = 0; i < nums.length; ++i) {\n        for (int j = i + 1; j < nums.length; ++j) {\n            for (int k = j + 1; k < nums.length; ++k) {\n                if (nums[i] + nums[j] > nums[k]) {\n                    count++;\n                }\n                else {\n                    break;\n                }\n            }\n        }\n    }\n    return count;\n}\n```\n    \n    1. Sort the given array in ascending order.\n2. Iterate through the sorted array using three nested loops i, j, and k, where i < j < k. The loops go through possible triplet candidates (nums[i], nums[j], nums[k]).\n3. For each triplet, check if nums[i] + nums[j] > nums[k]. If true, it satisfies the triangle inequality property, and we increase the count.\n4. If nums[i] + nums[j] is not greater than nums[k], it means no other k value will satisfy the triangle inequality with the current i and j values. So, we break the innermost loop.\n5. Return the count, which is the number of valid triplets.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2125,
+  "title": "Number of Laser Beams in a Bank",
+  "slug": "number-of-laser-beams-in-a-bank",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Anti-theft security devices are activated inside a bank. You are given a 0-indexed binary string array bank representing the floor plan of the bank, which is an m x n 2D matrix. bank[i] represents the ith row, consisting of '0's and '1's. '0' means the cell is empty, while'1' means the cell has a security device.\n\nThere is one laser beam between any two security devices if both conditions are met:\n\n*   The two devices are located on two different rows: r1 and r2, where r1 < r2.\n*   For each row i where r1 < i < r2, there are no security devices in the ith row.\n\nLaser beams are independent, i.e., one beam does not interfere nor join with another.\n\nReturn _the total number of laser beams in the bank_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef can_sort_using_swap(nums):\n    for i in range(1, len(nums)):\n        if nums[i] < nums[i - 1]:\n            nums[i], nums[i - 1] = nums[i - 1], nums[i]\n            if sorted(nums) == nums:\n                return True\n            nums[i], nums[i - 1] = nums[i - 1], nums[i]\n    return False\n```\n    \n    The algorithm starts iterating through the given array starting from the second element. It then checks if the current element is smaller than the previous one. If so, it swaps these two elements temporarily and checks if the resulting array is sorted. If the array is sorted, it returns true as it's possible to sort the array using the above swap method. If not, it swaps the elements back to their original positions and continues the iteration. If no swaps can sort the array, it returns false.\n    ",
+    "javascript": "\n    ```javascript\nfunction canSortUsingSwap(nums) {\n    function isSorted(arr) {\n        for (let i = 1; i < arr.length; i++) {\n            if (arr[i] < arr[i - 1]) {\n                return false;\n            }\n        }\n        return true;\n    }\n\n    for (let i = 1; i < nums.length; i++) {\n        if (nums[i] < nums[i - 1]) {\n            [nums[i], nums[i - 1]] = [nums[i - 1], nums[i]];\n            if (isSorted(nums)) {\n                return true;\n            }\n            [nums[i], nums[i - 1]] = [nums[i - 1], nums[i]];\n        }\n    }\n    return false;\n}\n```\n    \n    The algorithm starts iterating through the given array starting from the second element. It then checks if the current element is smaller than the previous one. If so, it swaps these two elements temporarily and checks if the resulting array is sorted. If the array is sorted, it returns true as it's possible to sort the array using the above swap method. If not, it swaps the elements back to their original positions and continues the iteration. If no swaps can sort the array, it returns false.\n    ",
+    "java": "\n    ```java\npublic boolean canSortUsingSwap(int[] nums) {\n    for (int i = 1; i < nums.length; i++) {\n        if (nums[i] < nums[i - 1]) {\n            int temp = nums[i];\n            nums[i] = nums[i - 1];\n            nums[i - 1] = temp;\n            if (isSorted(nums)) {\n                return true;\n            }\n            temp = nums[i];\n            nums[i] = nums[i - 1];\n            nums[i - 1] = temp;\n        }\n    }\n    return false;\n}\n\nprivate boolean isSorted(int[] nums) {\n    for (int i = 1; i < nums.length; i++) {\n        if (nums[i] < nums[i - 1]) {\n            return false;\n        }\n    }\n    return true;\n}\n```\n    \n    The algorithm starts iterating through the given array starting from the second element. It then checks if the current element is smaller than the previous one. If so, it swaps these two elements temporarily and checks if the resulting array is sorted. If the array is sorted, it returns true as it's possible to sort the array using the above swap method. If not, it swaps the elements back to their original positions and continues the iteration. If no swaps can sort the array, it returns false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

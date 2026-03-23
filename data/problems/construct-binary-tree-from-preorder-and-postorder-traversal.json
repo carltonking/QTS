@@ -1,0 +1,24 @@
+{
+  "id": 889,
+  "title": "Construct Binary Tree from Preorder and Postorder Traversal",
+  "slug": "construct-binary-tree-from-preorder-and-postorder-traversal",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given two integer arrays, preorder and postorder where preorder is the preorder traversal of a binary tree of distinct values and postorder is the postorder traversal of the same tree, reconstruct and return _the binary tree_.\n\nIf there exist multiple answers, you can return any of them.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef are_almost_equal(s, goal):\n    if s == goal:\n        return True\n    count = 0\n    index1, index2 = -1, -1\n    for i in range(len(s)):\n        if s[i] != goal[i]:\n            count += 1\n            if index1 == -1:\n                index1 = i\n            else:\n                index2 = i\n            if count > 2:\n                return False\n    return count == 2 and s[index1] == goal[index2] and s[index2] == goal[index1]\n```\n    \n    We first check if both the strings are already equal. If yes, return true. Otherwise, initialize the count of differences, and two indices index1 and index2 to -1. Iterate through the strings, if a character of s is not equal to the corresponding character of goal, increment the count and update the indices. If the count exceeds 2, return false, as swapping only 2 characters cannot make the strings equal. Finally, return true if the count is 2, and swapping the characters at index1 and index2 makes the strings equal. Else, return false.\n    ",
+    "javascript": "\n    ```javascript\nfunction areAlmostEqual(s, goal) {\n    if (s === goal) return true;\n    let count = 0;\n    let index1 = -1, index2 = -1;\n    for (let i = 0; i < s.length; i++) {\n        if (s[i] !== goal[i]) {\n            count++;\n            if (index1 === -1) index1 = i;\n            else index2 = i;\n            if (count > 2) return false;\n        }\n    }\n    return (count === 2 && s[index1] === goal[index2] && s[index2] === goal[index1]);\n}\n```\n    \n    We first check if both the strings are already equal. If yes, return true. Otherwise, initialize the count of differences, and two indices index1 and index2 to -1. Iterate through the strings, if a character of s is not equal to the corresponding character of goal, increment the count and update the indices. If the count exceeds 2, return false, as swapping only 2 characters cannot make the strings equal. Finally, return true if the count is 2, and swapping the characters at index1 and index2 makes the strings equal. Else, return false.\n    ",
+    "java": "\n    ```java\npublic boolean areAlmostEqual(String s, String goal) {\n    if (s.equals(goal)) return true;\n    int count = 0;\n    int index1 = -1, index2 = -1;\n    for (int i = 0; i < s.length(); i++) {\n        if (s.charAt(i) != goal.charAt(i)) {\n            count++;\n            if (index1 == -1) index1 = i;\n            else index2 = i;\n            if (count > 2) return false;\n        }\n    }\n    return (count == 2 && s.charAt(index1) == goal.charAt(index2) && s.charAt(index2) == goal.charAt(index1));\n}\n```\n    \n    We first check if both the strings are already equal. If yes, return true. Otherwise, initialize the count of differences, and two indices index1 and index2 to -1. Iterate through the strings, if a character of s is not equal to the corresponding character of goal, increment the count and update the indices. If the count exceeds 2, return false, as swapping only 2 characters cannot make the strings equal. Finally, return true if the count is 2, and swapping the characters at index1 and index2 makes the strings equal. Else, return false.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

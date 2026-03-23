@@ -1,0 +1,24 @@
+{
+  "id": 116,
+  "title": "Populating Next Right Pointers in Each Node",
+  "slug": "populating-next-right-pointers-in-each-node",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a perfect binary tree where all leaves are on the same level, and every parent has two children. The binary tree has the following definition:\n\nstruct Node {\n  int val;\n  Node \\*left;\n  Node \\*right;\n  Node \\*next;\n}\n\nPopulate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.\n\nInitially, all next pointers are set to NULL.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef connect(self, root: 'Node') -> 'Node':\n    if not root or not root.left:\n        return root\n    root.left.next = root.right\n    if root.next:\n        root.right.next = root.next.left\n    self.connect(root.left)\n    self.connect(root.right)\n    return root\n```\n\n    \n    The algorithm to populate the next pointers is a simple modification of the pre-order traversal of the binary tree. We start with the root, and for each node, we check if it has left and right children. If so, we set the left child's next pointer to point to the right child. If the current node's next pointer is not null, we set its right child's next pointer to the left child of its next node. Finally, we recursively call the function on the left and right children.\n    ",
+    "javascript": "\n    ```javascript\nfunction connect(root) {\n    if (root === null || root.left === null) return root;\n    root.left.next = root.right;\n    if (root.next !== null) {\n        root.right.next = root.next.left;\n    }\n    connect(root.left);\n    connect(root.right);\n    return root;\n}\n```\n\n    \n    The algorithm to populate the next pointers is a simple modification of the pre-order traversal of the binary tree. We start with the root, and for each node, we check if it has left and right children. If so, we set the left child's next pointer to point to the right child. If the current node's next pointer is not null, we set its right child's next pointer to the left child of its next node. Finally, we recursively call the function on the left and right children.\n    ",
+    "java": "\n    ```java\npublic void connect(TreeLinkNode root) {\n    if (root == null || root.left == null) return;\n    root.left.next = root.right;\n    if (root.next != null) {\n        root.right.next = root.next.left;\n    }\n    connect(root.left);\n    connect(root.right);\n}\n```\n\n    \n    The algorithm to populate the next pointers is a simple modification of the pre-order traversal of the binary tree. We start with the root, and for each node, we check if it has left and right children. If so, we set the left child's next pointer to point to the right child. If the current node's next pointer is not null, we set its right child's next pointer to the left child of its next node. Finally, we recursively call the function on the left and right children.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

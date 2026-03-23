@@ -1,0 +1,24 @@
+{
+  "id": 2309,
+  "title": "Greatest English Letter in Upper and Lower Case",
+  "slug": "greatest-english-letter-in-upper-and-lower-case",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a string of English letters s, return _the greatest English letter which occurs as both a lowercase and uppercase letter in_ s. The returned letter should be in uppercase. If no such letter exists, return _an empty string_.\n\nAn English letter b is greater than another letter a if b appears after a in the English alphabet.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef get_max_occurrences(text: str, pattern: str) -> int:\n    count = [0, 0]\n    for c in text:\n        if c == pattern[1]:\n            count[1] += count[0]\n        elif c == pattern[0]:\n            count[0] += 1\n    return count[1]\n```\n    \n    The algorithm iterates through the text string character by character. Two counters, count[0] and count[1], are used to keep track of the occurrences of pattern[0] and pattern[1], respectively. For each character encountered in the text, we check whether it is equal to pattern[0] or pattern[1]. If the character matches pattern[0], we increment counter count[0]. If the character matches pattern[1], we increment the counter count[1] by count[0], because we want to count the number of subsequences formed with the previously found matches of pattern[0]. Finally, after the iteration, the count of pattern[1] returns the maximum number of occurrences of the given pattern.\n    ",
+    "javascript": "\n    ```javascript\nfunction getMaxOccurrences(text, pattern) {\n    let count = [0, 0];\n    for (let c of text) {\n        if (c === pattern[1]) {\n            count[1] += count[0];\n        }\n        else if (c === pattern[0]) {\n            count[0] += 1;\n        }\n    }\n    return count[1];\n}\n```\n    \n    The algorithm iterates through the text string character by character. Two counters, count[0] and count[1], are used to keep track of the occurrences of pattern[0] and pattern[1], respectively. For each character encountered in the text, we check whether it is equal to pattern[0] or pattern[1]. If the character matches pattern[0], we increment counter count[0]. If the character matches pattern[1], we increment the counter count[1] by count[0], because we want to count the number of subsequences formed with the previously found matches of pattern[0]. Finally, after the iteration, the count of pattern[1] returns the maximum number of occurrences of the given pattern.\n    ",
+    "java": "\n    ```java\npublic int getMaxOccurrences(String text, String pattern) {\n    int[] count = new int[2];\n    for (char c : text.toCharArray()) {\n        if (c == pattern.charAt(1)) {\n            count[1] += count[0];\n        }\n        else if (c == pattern.charAt(0)) {\n            count[0] += 1;\n        }\n    }\n    return count[1];\n}\n```\n    \n    The algorithm iterates through the text string character by character. Two counters, count[0] and count[1], are used to keep track of the occurrences of pattern[0] and pattern[1], respectively. For each character encountered in the text, we check whether it is equal to pattern[0] or pattern[1]. If the character matches pattern[0], we increment counter count[0]. If the character matches pattern[1], we increment the counter count[1] by count[0], because we want to count the number of subsequences formed with the previously found matches of pattern[0]. Finally, after the iteration, the count of pattern[1] returns the maximum number of occurrences of the given pattern.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

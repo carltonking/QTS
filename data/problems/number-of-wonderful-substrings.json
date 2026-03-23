@@ -1,0 +1,24 @@
+{
+  "id": 1915,
+  "title": "Number of Wonderful Substrings",
+  "slug": "number-of-wonderful-substrings",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A wonderful string is a string where at most one letter appears an odd number of times.\n\n*   For example, \"ccjjc \" and \"abab \" are wonderful, but \"ab \" is not.\n\nGiven a string word that consists of the first ten lowercase English letters ('a' through 'j'), return _the number of wonderful non-empty substrings in_ word_. If the same substring appears multiple times in_ word_, then count each occurrence separately._\n\nA substring is a contiguous sequence of characters in a string.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef are_almost_equal(s1, s2):\n    diff_count = 0\n    first_diff = -1\n    second_diff = -1\n    for i in range(len(s1)):\n        if s1[i] != s2[i]:\n            diff_count += 1\n            if diff_count == 1:\n                first_diff = i\n            elif diff_count == 2:\n                second_diff = i\n            else:\n                return False\n    return diff_count == 0 or (diff_count == 2 and s1[first_diff] == s2[second_diff] and s1[second_diff] == s2[first_diff])\n```\n\n    \n    1. Initialize variables for keeping track of differences, diff_count, first_diff, and second_diff.\n2. Iterate through the characters of the strings.\n3. If the characters at the current index are not equal, increment the difference count and store the indices of the differences.\n4. If more than 2 differences are found, return false, as more than one swap would be required.\n5. If no differences are found, they are already equal, return true.\n6. If exactly 2 differences are found, those characters should be equal in the opposite strings to form an equal string after the swap. Return true if this condition is met.\n    ",
+    "javascript": "\n    ```javascript\nfunction areAlmostEqual(s1, s2) {\n    let diffCount = 0;\n    let firstDiff = -1;\n    let secondDiff = -1;\n    for (let i = 0; i < s1.length; i++) {\n        if (s1[i] !== s2[i]) {\n            diffCount++;\n            if (diffCount === 1)\n                firstDiff = i;\n            else if (diffCount === 2)\n                secondDiff = i;\n            else\n                return false;\n        }\n    }\n    return diffCount === 0 || (diffCount === 2 && s1[firstDiff] === s2[secondDiff] && s1[secondDiff] === s2[firstDiff]);\n}\n```\n    \n    1. Initialize variables for keeping track of differences, diff_count, first_diff, and second_diff.\n2. Iterate through the characters of the strings.\n3. If the characters at the current index are not equal, increment the difference count and store the indices of the differences.\n4. If more than 2 differences are found, return false, as more than one swap would be required.\n5. If no differences are found, they are already equal, return true.\n6. If exactly 2 differences are found, those characters should be equal in the opposite strings to form an equal string after the swap. Return true if this condition is met.\n    ",
+    "java": "\n    ```java\npublic boolean areAlmostEqual(String s1, String s2) {\n    int diffCount = 0;\n    int firstDiff = -1;\n    int secondDiff = -1;\n    for (int i = 0; i < s1.length(); i++) {\n        if (s1.charAt(i) != s2.charAt(i)) {\n            diffCount++;\n            if (diffCount == 1)\n                firstDiff = i;\n            else if (diffCount == 2)\n                secondDiff = i;\n            else\n                return false;\n        }\n    }\n    return diffCount == 0 || (diffCount == 2 && s1.charAt(firstDiff) == s2.charAt(secondDiff) && s1.charAt(secondDiff) == s2.charAt(firstDiff));\n}\n```\n    \n    1. Initialize variables for keeping track of differences, diff_count, first_diff, and second_diff.\n2. Iterate through the characters of the strings.\n3. If the characters at the current index are not equal, increment the difference count and store the indices of the differences.\n4. If more than 2 differences are found, return false, as more than one swap would be required.\n5. If no differences are found, they are already equal, return true.\n6. If exactly 2 differences are found, those characters should be equal in the opposite strings to form an equal string after the swap. Return true if this condition is met.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

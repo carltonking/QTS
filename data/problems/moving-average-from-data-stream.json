@@ -1,0 +1,24 @@
+{
+  "id": 346,
+  "title": "Moving Average from Data Stream",
+  "slug": "moving-average-from-data-stream",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.\n\nImplement the MovingAverage class:\n\n*   MovingAverage(int size) Initializes the object with the size of the window size.\n*   double next(int val) Returns the moving average of the last size values of the stream.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nfrom collections import deque\n\nclass MovingAverage:\n    def __init__(self, size: int):\n        self.queue = deque()\n        self.maxSize = size\n        self.sum = 0.0\n\n    def next(self, val: int) -> float:\n        if len(self.queue) == self.maxSize:\n            self.sum -= self.queue.popleft()\n        self.queue.append(val)\n        self.sum += val\n        return self.sum / len(self.queue)\n```\n    \n    The algorithm uses a queue to maintain a sliding window of the last `size` values of the stream. When a new value is added, the algorithm checks the size of the queue. If it equals `size`, the oldest value is removed from the front of the queue by updating the sum and popping it. Then, the new value is added to the back of the queue, and the sum is updated. The average is returned by dividing the sum by the number of values currently in the queue. The time complexity of the `next` function is O(1).\n    ",
+    "javascript": "\n    ```javascript\nclass MovingAverage {\n    constructor(size) {\n        this.queue = [];\n        this.maxSize = size;\n        this.sum = 0;\n    }\n\n    next(val) {\n        if (this.queue.length === this.maxSize) {\n            this.sum -= this.queue.shift();\n        }\n        this.queue.push(val);\n        this.sum += val;\n        return this.sum / this.queue.length;\n    }\n}\n```\n    \n    The algorithm uses a queue to maintain a sliding window of the last `size` values of the stream. When a new value is added, the algorithm checks the size of the queue. If it equals `size`, the oldest value is removed from the front of the queue by updating the sum and popping it. Then, the new value is added to the back of the queue, and the sum is updated. The average is returned by dividing the sum by the number of values currently in the queue. The time complexity of the `next` function is O(1).\n    ",
+    "java": "\n    ```java\nimport java.util.LinkedList;\nimport java.util.Queue;\n\nclass MovingAverage {\n    private Queue<Integer> queue;\n    private int maxSize;\n    private double sum;\n\n    public MovingAverage(int size) {\n        queue = new LinkedList<>();\n        maxSize = size;\n        sum = 0.0;\n    }\n\n    public double next(int val) {\n        if (queue.size() == maxSize) {\n            sum -= queue.remove();\n        }\n        queue.add(val);\n        sum += val;\n        return sum / queue.size();\n    }\n}\n```\n    \n    The algorithm uses a queue to maintain a sliding window of the last `size` values of the stream. When a new value is added, the algorithm checks the size of the queue. If it equals `size`, the oldest value is removed from the front of the queue by updating the sum and popping it. Then, the new value is added to the back of the queue, and the sum is updated. The average is returned by dividing the sum by the number of values currently in the queue. The time complexity of the `next` function is O(1).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

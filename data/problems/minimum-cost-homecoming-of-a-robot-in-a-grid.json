@@ -1,0 +1,24 @@
+{
+  "id": 2087,
+  "title": "Minimum Cost Homecoming of a Robot in a Grid",
+  "slug": "minimum-cost-homecoming-of-a-robot-in-a-grid",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "There is an m x n grid, where (0, 0) is the top-left cell and (m - 1, n - 1) is the bottom-right cell. You are given an integer array startPos where startPos = [startrow, startcol] indicates that initially, a robot is at the cell (startrow, startcol). You are also given an integer array homePos where homePos = [homerow, homecol] indicates that its home is at the cell (homerow, homecol).\n\nThe robot needs to go to its home. It can move one cell in four directions: left, right, up, or down, and it can not move outside the boundary. Every move incurs some cost. You are further given two 0-indexed integer arrays: rowCosts of length m and colCosts of length n.\n\n*   If the robot moves up or down into a cell whose row is r, then this move costs rowCosts[r].\n*   If the robot moves left or right into a cell whose column is c, then this move costs colCosts[c].\n\nReturn _the minimum total cost for this robot to return home_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minTotalCost(startPos, homePos, rowCosts, colCosts):\n    row_difference = abs(startPos[0] - homePos[0])\n    col_difference = abs(startPos[1] - homePos[1])\n\n    row_cost = sum(rowCosts[min(startPos[0], homePos[0]):min(startPos[0], homePos[0]) + row_difference])\n    col_cost = sum(colCosts[min(startPos[1], homePos[1]):min(startPos[1], homePos[1]) + col_difference])\n\n    return row_cost + col_cost\n```\n    \n    The algorithm tries to solve the problem by first calculating the absolute differences in rows and columns of the `startPos` and `homePos` arrays. Then, it calculates the respective costs for rows and columns by summing up the values in the `rowCosts` and `colCosts` arrays starting from the minimum row and column position of `startPos` and `homePos` up to the row and column difference. Finally, the algorithm returns the sum of the row and column costs.\n    ",
+    "javascript": "\n    ```javascript\nfunction minTotalCost(startPos, homePos, rowCosts, colCosts) {\n    const rowDifference = Math.abs(startPos[0] - homePos[0]);\n    const colDifference = Math.abs(startPos[1] - homePos[1]);\n\n    let rowCost = 0, colCost = 0;\n    for (let i = 0; i < rowDifference; i++)\n        rowCost += rowCosts[i + Math.min(startPos[0], homePos[0])];\n    for (let i = 0; i < colDifference; i++)\n        colCost += colCosts[i + Math.min(startPos[1], homePos[1])];\n\n    return rowCost + colCost;\n}\n```\n    \n    The algorithm tries to solve the problem by first calculating the absolute differences in rows and columns of the `startPos` and `homePos` arrays. Then, it calculates the respective costs for rows and columns by summing up the values in the `rowCosts` and `colCosts` arrays starting from the minimum row and column position of `startPos` and `homePos` up to the row and column difference. Finally, the algorithm returns the sum of the row and column costs.\n    ",
+    "java": "\n    ```java\npublic int minTotalCost(int[] startPos, int[] homePos, int[] rowCosts, int[] colCosts) {\n    int rowDifference = Math.abs(startPos[0] - homePos[0]);\n    int colDifference = Math.abs(startPos[1] - homePos[1]);\n\n    int rowCost = 0, colCost = 0;\n    for (int i = 0; i < rowDifference; i++)\n        rowCost += rowCosts[i + Math.min(startPos[0], homePos[0])];\n    for (int i = 0; i < colDifference; i++)\n        colCost += colCosts[i + Math.min(startPos[1], homePos[1])];\n\n    return rowCost + colCost;\n}\n```\n    \n    The algorithm tries to solve the problem by first calculating the absolute differences in rows and columns of the `startPos` and `homePos` arrays. Then, it calculates the respective costs for rows and columns by summing up the values in the `rowCosts` and `colCosts` arrays starting from the minimum row and column position of `startPos` and `homePos` up to the row and column difference. Finally, the algorithm returns the sum of the row and column costs.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

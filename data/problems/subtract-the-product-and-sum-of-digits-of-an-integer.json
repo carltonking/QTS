@@ -1,0 +1,24 @@
+{
+  "id": 1281,
+  "title": "Subtract the Product and Sum of Digits of an Integer",
+  "slug": "subtract-the-product-and-sum-of-digits-of-an-integer",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an integer number n, return the difference between the product of its digits and the sum of its digits.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef can_make_pali_queries(s, queries):\n    result = []\n    for left, right, k in queries:\n        count = [0] * 26\n        for i in range(left, right + 1):\n            count[ord(s[i]) - ord('a')] += 1\n        odd_count = sum(c % 2 for c in count)\n        result.append(odd_count // 2 <= k)\n    return result\n```\n    \n    1. Iterate through each query, and get the values of left, right, and k.\n2. Create an array count with 26 elements for each English lowercase letter.\n3. Iterate from left to right, count occurrences of each letter in the substring s[left...right].\n4. Calculate the number of odd counts of the letters.\n5. Determine if the number of odd counts divided by 2 is less than or equal to k. If true, append true to the result, otherwise append false.\n6. After all queries are processed, return the result array.\n    ",
+    "javascript": "\n    ```javascript\nfunction canMakePaliQueries(s, queries) {\n    const result = [];\n    for (const query of queries) {\n        const [left, right, k] = query;\n        const count = Array(26).fill(0);\n        for (let i = left; i <= right; i++) {\n            count[s.charCodeAt(i) - 97]++;\n        }\n        const odd_count = count.reduce((acc, val) => acc + (val % 2), 0);\n        result.push(Math.floor(odd_count / 2) <= k);\n    }\n    return result;\n}\n```\n    \n    1. Iterate through each query, and get the values of left, right, and k.\n2. Create an array count with 26 elements for each English lowercase letter.\n3. Iterate from left to right, count occurrences of each letter in the substring s[left...right].\n4. Calculate the number of odd counts of the letters.\n5. Determine if the number of odd counts divided by 2 is less than or equal to k. If true, append true to the result, otherwise append false.\n6. After all queries are processed, return the result array.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<Boolean> canMakePaliQueries(String s, int[][] queries) {\n    List<Boolean> result = new ArrayList<>();\n    for (int[] query : queries) {\n        int left = query[0], right = query[1], k = query[2];\n        int[] count = new int[26];\n        for (int i = left; i <= right; i++) {\n            count[s.charAt(i) - 'a']++;\n        }\n        int odd_count = 0;\n        for (int i = 0; i < 26; i++) {\n            odd_count += count[i] % 2;\n        }\n        result.add(odd_count / 2 <= k);\n    }\n    return result;\n}\n```\n    \n    1. Iterate through each query, and get the values of left, right, and k.\n2. Create an array count with 26 elements for each English lowercase letter.\n3. Iterate from left to right, count occurrences of each letter in the substring s[left...right].\n4. Calculate the number of odd counts of the letters.\n5. Determine if the number of odd counts divided by 2 is less than or equal to k. If true, append true to the result, otherwise append false.\n6. After all queries are processed, return the result array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

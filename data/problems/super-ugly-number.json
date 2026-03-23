@@ -1,0 +1,24 @@
+{
+  "id": 313,
+  "title": "Super Ugly Number",
+  "slug": "super-ugly-number",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A super ugly number is a positive integer whose prime factors are in the array primes.\n\nGiven an integer n and an array of integers primes, return _the_ nth _super ugly number_.\n\nThe nth super ugly number is guaranteed to fit in a 32-bit signed integer.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef nthSuperUglyNumber(n, primes):\n    ugly = [0] * n\n    ugly[0] = 1\n    indices = [0] * len(primes)\n\n    for i in range(1, n):\n        min_val = float(\"inf\")\n\n        for j in range(len(primes)):\n            min_val = min(min_val, ugly[indices[j]] * primes[j])\n\n        ugly[i] = min_val\n\n        for j in range(len(primes)):\n            if ugly[i] == ugly[indices[j]] * primes[j]:\n                indices[j] += 1\n\n    return ugly[-1]\n```\n    \n    The algorithm uses dynamic programming to find the nth super ugly number. We first create an `ugly` array of size `n`, where `ugly[i]` will store the (i+1)th super ugly number. We initialize `ugly[0]` as 1, since 1 is always a super ugly number.\n\nMaintain an `indices` array of size `primes.length`, initialized with zeros. Each element `indices[j]` represents the index of the next super ugly number to multiply by `primes[j]`.\n\nFor each `i` from 1 to n, we calculate `ugly[i]` as the minimum of `ugly[indices[j]] * primes[j]` for all `j`. Then we increment the index `indices[j]` for which the condition `ugly[i] == ugly[indices[j]] * primes[j]` holds.\n\nFinally, we return the last element of the `ugly` array, which is the nth super ugly number.\n    ",
+    "javascript": "\n    ```javascript\nfunction nthSuperUglyNumber(n, primes) {\n    let ugly = new Array(n);\n    ugly[0] = 1;\n    let indices = new Array(primes.length).fill(0);\n\n    for (let i = 1; i < n; i++) {\n        let minVal = Number.MAX_SAFE_INTEGER;\n\n        for (let j = 0; j < primes.length; j++)\n            minVal = Math.min(minVal, ugly[indices[j]] * primes[j]);\n\n        ugly[i] = minVal;\n\n        for (let j = 0; j < primes.length; j++)\n            if (ugly[i] == ugly[indices[j]] * primes[j])\n                indices[j]++;\n    }\n\n    return ugly[n - 1];\n}\n```\n    \n    The algorithm uses dynamic programming to find the nth super ugly number. We first create an `ugly` array of size `n`, where `ugly[i]` will store the (i+1)th super ugly number. We initialize `ugly[0]` as 1, since 1 is always a super ugly number.\n\nMaintain an `indices` array of size `primes.length`, initialized with zeros. Each element `indices[j]` represents the index of the next super ugly number to multiply by `primes[j]`.\n\nFor each `i` from 1 to n, we calculate `ugly[i]` as the minimum of `ugly[indices[j]] * primes[j]` for all `j`. Then we increment the index `indices[j]` for which the condition `ugly[i] == ugly[indices[j]] * primes[j]` holds.\n\nFinally, we return the last element of the `ugly` array, which is the nth super ugly number.\n    ",
+    "java": "\n    ```java\npublic int nthSuperUglyNumber(int n, int[] primes) {\n    int[] ugly = new int[n];\n    ugly[0] = 1;\n    int[] indices = new int[primes.length];\n\n    for (int i = 1; i < n; i++) {\n        int minVal = Integer.MAX_VALUE;\n\n        for (int j = 0; j < primes.length; j++)\n            minVal = Math.min(minVal, ugly[indices[j]] * primes[j]);\n\n        ugly[i] = minVal;\n\n        for (int j = 0; j < primes.length; j++)\n            if (ugly[i] == ugly[indices[j]] * primes[j])\n                indices[j]++;\n    }\n\n    return ugly[n - 1];\n}\n```\n    \n    The algorithm uses dynamic programming to find the nth super ugly number. We first create an `ugly` array of size `n`, where `ugly[i]` will store the (i+1)th super ugly number. We initialize `ugly[0]` as 1, since 1 is always a super ugly number.\n\nMaintain an `indices` array of size `primes.length`, initialized with zeros. Each element `indices[j]` represents the index of the next super ugly number to multiply by `primes[j]`.\n\nFor each `i` from 1 to n, we calculate `ugly[i]` as the minimum of `ugly[indices[j]] * primes[j]` for all `j`. Then we increment the index `indices[j]` for which the condition `ugly[i] == ugly[indices[j]] * primes[j]` holds.\n\nFinally, we return the last element of the `ugly` array, which is the nth super ugly number.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

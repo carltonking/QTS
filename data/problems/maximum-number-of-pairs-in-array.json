@@ -1,0 +1,24 @@
+{
+  "id": 2341,
+  "title": "Maximum Number of Pairs in Array",
+  "slug": "maximum-number-of-pairs-in-array",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums. In one operation, you may do the following:\n\n*   Choose two integers in nums that are equal.\n*   Remove both integers from nums, forming a pair.\n\nThe operation is done on nums as many times as possible.\n\nReturn _a 0-indexed integer array_ answer _of size_ 2 _where_ answer[0] _is the number of pairs that are formed and_ answer[1] _is the number of leftover integers in_ nums _after doing the operation as many times as possible_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef count_pairs_leftovers(nums):\n    counter = [0] * 101\n    pairs, leftovers = 0, 0\n\n    for n in nums:\n        counter[n] += 1\n\n    for count in counter:\n        pairs += count // 2\n        leftovers += count % 2\n\n    return [pairs, leftovers]\n```\n    \n    The algorithm first initializes an array or hash map (in Java) to count the occurrences of each number in the given `nums` array. Then, it iterates through the input array `nums` and increments the count of each number. \n\nAfter that, the algorithm iterates over the counter array or values (in Java, using `.values()`) and calculates the number of pairs and leftovers for each element. The number of pairs for an element is equal to the integer division of its count by 2 (`count // 2` or `count / 2`), and the number of leftovers is equal to the count modulo 2 (`count % 2`).\n\nFinally, the function returns an array containing the total number of pairs and leftovers.\n    ",
+    "javascript": "\n    ```javascript\nfunction countPairsLeftovers(nums) {\n    let counter = new Array(101).fill(0);\n    let pairs = 0, leftovers = 0;\n\n    for (let n of nums) {\n        counter[n]++;\n    }\n\n    for (let count of counter) {\n        pairs += Math.floor(count / 2);\n        leftovers += count % 2;\n    }\n\n    return [pairs, leftovers];\n}\n```\n    \n    The algorithm first initializes an array or hash map (in Java) to count the occurrences of each number in the given `nums` array. Then, it iterates through the input array `nums` and increments the count of each number. \n\nAfter that, the algorithm iterates over the counter array or values (in Java, using `.values()`) and calculates the number of pairs and leftovers for each element. The number of pairs for an element is equal to the integer division of its count by 2 (`count // 2` or `count / 2`), and the number of leftovers is equal to the count modulo 2 (`count % 2`).\n\nFinally, the function returns an array containing the total number of pairs and leftovers.\n    ",
+    "java": "\n    ```java\nimport java.util.HashMap;\n\npublic int[] countPairsLeftovers(int[] nums) {\n    HashMap<Integer, Integer> counter = new HashMap<>();\n    int pairs = 0, leftovers = 0;\n\n    for (int n : nums) {\n        counter.put(n, counter.getOrDefault(n, 0) + 1);\n    }\n\n    for (int count : counter.values()) {\n        pairs += count / 2;\n        leftovers += count % 2;\n    }\n\n    return new int[]{pairs, leftovers};\n}\n```\n    \n    The algorithm first initializes an array or hash map (in Java) to count the occurrences of each number in the given `nums` array. Then, it iterates through the input array `nums` and increments the count of each number. \n\nAfter that, the algorithm iterates over the counter array or values (in Java, using `.values()`) and calculates the number of pairs and leftovers for each element. The number of pairs for an element is equal to the integer division of its count by 2 (`count // 2` or `count / 2`), and the number of leftovers is equal to the count modulo 2 (`count % 2`).\n\nFinally, the function returns an array containing the total number of pairs and leftovers.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

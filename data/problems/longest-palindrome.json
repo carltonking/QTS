@@ -1,0 +1,24 @@
+{
+  "id": 409,
+  "title": "Longest Palindrome",
+  "slug": "longest-palindrome",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a string s which consists of lowercase or uppercase letters, return _the length of the longest palindrome_ that can be built with those letters.\n\nLetters are case sensitive, for example, \"Aa \" is not considered a palindrome here.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef longestPalindrome(s: str) -> int:\n    charCount = [0] * 128\n    result = 0\n    for c in s:\n        charCount[ord(c)] += 1\n    for count in charCount:\n        result += count // 2 * 2\n        if result % 2 == 0 and count % 2 == 1:\n            result += 1\n    return result\n```\n    \n    1. Create an array `charCount` of size 128 (to cover the ASCII range of characters) initialized with zeros.\n2. Iterate through each character in the input string `s` and increment the corresponding count in the `charCount` array.\n3. Initialize a variable `result` to store the length of the longest palindrome to be built.\n4. Iterate through the `charCount` array and for each count, add the count divided by 2 (integer division) times 2 to the `result`. This adds the number of pairs of characters that can be used in the palindrome.\n5. If the result so far is even and the count has an odd value, increment the result by 1. This accounts for the center character in an odd-length palindrome.\n6. Return the final result, which is the length of the longest palindrome that can be built.\n    ",
+    "javascript": "\n    ```javascript\nfunction longestPalindrome(s) {\n    let charCount = new Array(128).fill(0);\n    let result = 0;\n    for (let c of s)\n        charCount[c.charCodeAt(0)]++;\n    for (let count of charCount) {\n        result += Math.floor(count / 2) * 2;\n        if (result % 2 === 0 && count % 2 === 1)\n            result++;\n    }\n    return result;\n}\n```\n    \n    1. Create an array `charCount` of size 128 (to cover the ASCII range of characters) initialized with zeros.\n2. Iterate through each character in the input string `s` and increment the corresponding count in the `charCount` array.\n3. Initialize a variable `result` to store the length of the longest palindrome to be built.\n4. Iterate through the `charCount` array and for each count, add the count divided by 2 (integer division) times 2 to the `result`. This adds the number of pairs of characters that can be used in the palindrome.\n5. If the result so far is even and the count has an odd value, increment the result by 1. This accounts for the center character in an odd-length palindrome.\n6. Return the final result, which is the length of the longest palindrome that can be built.\n    ",
+    "java": "\n    ```java\npublic int longestPalindrome(String s) {\n    int[] charCount = new int[128];\n    int result = 0;\n    for (char c : s.toCharArray())\n        charCount[c]++;\n    for (int count : charCount) {\n        result += count / 2 * 2;\n        if (result % 2 == 0 && count % 2 == 1)\n            result++;\n    }\n    return result;\n}\n```\n    \n    1. Create an array `charCount` of size 128 (to cover the ASCII range of characters) initialized with zeros.\n2. Iterate through each character in the input string `s` and increment the corresponding count in the `charCount` array.\n3. Initialize a variable `result` to store the length of the longest palindrome to be built.\n4. Iterate through the `charCount` array and for each count, add the count divided by 2 (integer division) times 2 to the `result`. This adds the number of pairs of characters that can be used in the palindrome.\n5. If the result so far is even and the count has an odd value, increment the result by 1. This accounts for the center character in an odd-length palindrome.\n6. Return the final result, which is the length of the longest palindrome that can be built.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

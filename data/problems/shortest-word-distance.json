@@ -1,0 +1,24 @@
+{
+  "id": 243,
+  "title": "Shortest Word Distance",
+  "slug": "shortest-word-distance",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given an array of strings wordsDict and two different strings that already exist in the array word1 and word2, return _the shortest distance between these two words in the list_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef shortestDistance(wordsDict, word1, word2):\n    idx1, idx2, minDistance = -1, -1, float('inf')\n    for i, word in enumerate(wordsDict):\n        if word == word1:\n            idx1 = i\n        if word == word2:\n            idx2 = i\n        if idx1 != -1 and idx2 != -1:\n            minDistance = min(minDistance, abs(idx1 - idx2))\n    return minDistance\n```\n    \n    The algorithm iterates through the `wordsDict` list and uses two variables `idx1` and `idx2` to store the indices of the occurrences of `word1` and `word2`. Initially, both indices are set to `-1`. In each iteration, if `word1` or `word2` is found, the corresponding index variable will be updated to store the current index.\n\nAfter each index update, we check if both indices are not `-1`. If both indices are valid, the difference between the indices is computed, and `minDistance` is updated with the minimum value between the previously-stored minimum distance and the new distance.\n\nFinally, the algorithm returns the value of `minDistance`, which represents the shortest distance between `word1` and `word2` in the `wordsDict` list.\n    ",
+    "javascript": "\n    ```javascript\nfunction shortestDistance(wordsDict, word1, word2) {\n    let idx1 = -1, idx2 = -1, minDistance = Number.MAX_VALUE;\n    for (let i = 0; i < wordsDict.length; i++) {\n        if (wordsDict[i] === word1) idx1 = i;\n        if (wordsDict[i] === word2) idx2 = i;\n        if (idx1 !== -1 && idx2 !== -1)\n            minDistance = Math.min(minDistance, Math.abs(idx1 - idx2));\n    }\n    return minDistance;\n}\n```\n    \n    The algorithm iterates through the `wordsDict` list and uses two variables `idx1` and `idx2` to store the indices of the occurrences of `word1` and `word2`. Initially, both indices are set to `-1`. In each iteration, if `word1` or `word2` is found, the corresponding index variable will be updated to store the current index.\n\nAfter each index update, we check if both indices are not `-1`. If both indices are valid, the difference between the indices is computed, and `minDistance` is updated with the minimum value between the previously-stored minimum distance and the new distance.\n\nFinally, the algorithm returns the value of `minDistance`, which represents the shortest distance between `word1` and `word2` in the `wordsDict` list.\n    ",
+    "java": "\n    ```java\npublic int shortestDistance(String[] wordsDict, String word1, String word2) {\n    int idx1 = -1, idx2 = -1, minDistance = Integer.MAX_VALUE;\n    for (int i = 0; i < wordsDict.length; i++) {\n        if (word1.equals(wordsDict[i])) idx1 = i;\n        if (word2.equals(wordsDict[i])) idx2 = i;\n        if (idx1 != -1 && idx2 != -1)\n            minDistance = Math.min(minDistance, Math.abs(idx1 - idx2));\n    }\n    return minDistance;\n}\n```\n    \n    The algorithm iterates through the `wordsDict` list and uses two variables `idx1` and `idx2` to store the indices of the occurrences of `word1` and `word2`. Initially, both indices are set to `-1`. In each iteration, if `word1` or `word2` is found, the corresponding index variable will be updated to store the current index.\n\nAfter each index update, we check if both indices are not `-1`. If both indices are valid, the difference between the indices is computed, and `minDistance` is updated with the minimum value between the previously-stored minimum distance and the new distance.\n\nFinally, the algorithm returns the value of `minDistance`, which represents the shortest distance between `word1` and `word2` in the `wordsDict` list.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

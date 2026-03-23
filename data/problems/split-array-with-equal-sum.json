@@ -1,0 +1,24 @@
+{
+  "id": 548,
+  "title": "Split Array with Equal Sum",
+  "slug": "split-array-with-equal-sum",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given an integer array nums of length n, return true if there is a triplet (i, j, k) which satisfies the following conditions:\n\n*   0 < i, i + 1 < j, j + 1 < k < n - 1\n*   The sum of subarrays (0, i - 1), (i + 1, j - 1), (j + 1, k - 1) and (k + 1, n - 1) is equal.\n\nA subarray (l, r) represents a slice of the original array starting from the element indexed l to the element indexed r.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef find_triplet_equal_sum(nums):\n    n = len(nums)\n    prefix_sum = [0] * (n + 1)\n\n    for i in range(n):\n        prefix_sum[i + 1] = prefix_sum[i] + nums[i]\n\n    for i in range(1, n - 2):\n        for j in range(i + 2, n - 1):\n            for k in range(j + 2, n):\n                s1 = prefix_sum[i]\n                s2 = prefix_sum[j] - prefix_sum[i + 1]\n                s3 = prefix_sum[k] - prefix_sum[j + 1]\n                s4 = prefix_sum[n] - prefix_sum[k + 1]\n                if s1 == s2 == s3 == s4:\n                    return True\n    return False\n```\n    \n    The problem can be solved by calculating the prefix sum of the given `nums` array to optimize the sum calculation of subarrays. We use three nested loops to iterate through all possible values of `i`, `j`, and `k`. To check if the sum of the subarrays specified in the problem statement are equal, compare `s1`, `s2`, `s3` and `s4` which represent the sum of these subarrays, and return `true` if they are equal. If no triplet is found after iterating through all possible combinations, return `false`.\n    ",
+    "javascript": "\n    ```javascript\nfunction find_triplet_equal_sum(nums) {\n    const n = nums.length;\n    const prefix_sum = new Array(n + 1).fill(0);\n\n    for (let i = 0; i < n; ++i) {\n        prefix_sum[i + 1] = prefix_sum[i] + nums[i];\n    }\n\n    for (let i = 1; i + 2 < n; ++i) {\n        for (let j = i + 2; j + 1 < n; ++j) {\n            for (let k = j + 2; k < n; ++k) {\n                const s1 = prefix_sum[i];\n                const s2 = prefix_sum[j] - prefix_sum[i + 1];\n                const s3 = prefix_sum[k] - prefix_sum[j + 1];\n                const s4 = prefix_sum[n] - prefix_sum[k + 1];\n                if (s1 === s2 && s2 === s3 && s3 === s4) {\n                    return true;\n                }\n            }\n        }\n    }\n    return false;\n}\n```\n    \n    The problem can be solved by calculating the prefix sum of the given `nums` array to optimize the sum calculation of subarrays. We use three nested loops to iterate through all possible values of `i`, `j`, and `k`. To check if the sum of the subarrays specified in the problem statement are equal, compare `s1`, `s2`, `s3` and `s4` which represent the sum of these subarrays, and return `true` if they are equal. If no triplet is found after iterating through all possible combinations, return `false`.\n    ",
+    "java": "\n    ```java\nboolean find_triplet_equal_sum(int[] nums) {\n    int n = nums.length;\n    int[] prefix_sum = new int[n + 1];\n\n    for (int i = 0; i < n; ++i) {\n        prefix_sum[i + 1] = prefix_sum[i] + nums[i];\n    }\n\n    for (int i = 1; i + 2 < n; ++i) {\n        for (int j = i + 2; j + 1 < n; ++j) {\n            for (int k = j + 2; k < n; ++k) {\n                int s1 = prefix_sum[i];\n                int s2 = prefix_sum[j] - prefix_sum[i + 1];\n                int s3 = prefix_sum[k] - prefix_sum[j + 1];\n                int s4 = prefix_sum[n] - prefix_sum[k + 1];\n                if (s1 == s2 && s2 == s3 && s3 == s4) {\n                    return true;\n                }\n            }\n        }\n    }\n    return false;\n}\n```\n    \n    The problem can be solved by calculating the prefix sum of the given `nums` array to optimize the sum calculation of subarrays. We use three nested loops to iterate through all possible values of `i`, `j`, and `k`. To check if the sum of the subarrays specified in the problem statement are equal, compare `s1`, `s2`, `s3` and `s4` which represent the sum of these subarrays, and return `true` if they are equal. If no triplet is found after iterating through all possible combinations, return `false`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

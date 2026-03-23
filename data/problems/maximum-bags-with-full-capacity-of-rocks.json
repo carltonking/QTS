@@ -1,0 +1,24 @@
+{
+  "id": 2279,
+  "title": "Maximum Bags With Full Capacity of Rocks",
+  "slug": "maximum-bags-with-full-capacity-of-rocks",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You have n bags numbered from 0 to n - 1. You are given two 0-indexed integer arrays capacity and rocks. The ith bag can hold a maximum of capacity[i] rocks and currently contains rocks[i] rocks. You are also given an integer additionalRocks, the number of additional rocks you can place in any of the bags.\n\nReturn _the maximum number of bags that could have full capacity after placing the additional rocks in some bags._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef max_unique_even_sum(final_sum):\n    result = []\n    current = 2\n    while final_sum > 0:\n        if final_sum >= current:\n            result.append(current)\n            final_sum -= current\n            current += 2\n        else:\n            break\n    return result\n```\n    \n    1. Initialize an empty list to store the unique even integers that will form the final sum.\n2. Initialize a variable `current` with the value 2. This will be the smallest even integer that can be part of the final sum.\n3. Run a loop while the `finalSum` is greater than zero.\n4. Check if the current `finalSum` is greater than or equal to the `current` value.\n   - If yes, append the `current` value to the result list, subtract its value from `finalSum`, and increment `current` by 2.\n   - If no, break out of the loop since we cannot accommodate more numbers in the sum.\n5. Return the result list containing the unique even integers that form the given `finalSum`.\n    ",
+    "javascript": "\n    ```javascript\nfunction maxUniqueEvenSum(finalSum) {\n    let result = [];\n    let current = 2;\n    while (finalSum > 0) {\n        if (finalSum >= current) {\n            result.push(current);\n            finalSum -= current;\n            current += 2;\n        } else {\n            break;\n        }\n    }\n    return result;\n}\n```\n    \n    1. Initialize an empty list to store the unique even integers that will form the final sum.\n2. Initialize a variable `current` with the value 2. This will be the smallest even integer that can be part of the final sum.\n3. Run a loop while the `finalSum` is greater than zero.\n4. Check if the current `finalSum` is greater than or equal to the `current` value.\n   - If yes, append the `current` value to the result list, subtract its value from `finalSum`, and increment `current` by 2.\n   - If no, break out of the loop since we cannot accommodate more numbers in the sum.\n5. Return the result list containing the unique even integers that form the given `finalSum`.\n    ",
+    "java": "\n    ```java\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<Integer> maxUniqueEvenSum(int finalSum) {\n    List<Integer> result = new ArrayList<>();\n    int current = 2;\n    while (finalSum > 0) {\n        if (finalSum >= current) {\n            result.add(current);\n            finalSum -= current;\n            current += 2;\n        } else {\n            break;\n        }\n    }\n    return result;\n}\n```\n    \n    1. Initialize an empty list to store the unique even integers that will form the final sum.\n2. Initialize a variable `current` with the value 2. This will be the smallest even integer that can be part of the final sum.\n3. Run a loop while the `finalSum` is greater than zero.\n4. Check if the current `finalSum` is greater than or equal to the `current` value.\n   - If yes, append the `current` value to the result list, subtract its value from `finalSum`, and increment `current` by 2.\n   - If no, break out of the loop since we cannot accommodate more numbers in the sum.\n5. Return the result list containing the unique even integers that form the given `finalSum`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

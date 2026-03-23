@@ -1,0 +1,24 @@
+{
+  "id": 2232,
+  "title": "Minimize Result by Adding Parentheses to Expression",
+  "slug": "minimize-result-by-adding-parentheses-to-expression",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed string expression of the form \"+ \" where and represent positive integers.\n\nAdd a pair of parentheses to expression such that after the addition of parentheses, expression is a valid mathematical expression and evaluates to the smallest possible value. The left parenthesis must be added to the left of '+' and the right parenthesis must be added to the right of '+'.\n\nReturn expression _after adding a pair of parentheses such that_ expression _evaluates to the smallest possible value._ If there are multiple answers that yield the same result, return any of them.\n\nThe input has been generated such that the original value of expression, and the value of expression after adding any pair of parentheses that meets the requirements fits within a signed 32-bit integer.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef add_spaces(s: str, spaces: List[int]) -> str:\n    result = []\n    j = 0\n    for i, c in enumerate(s):\n        while j < len(spaces) and i == spaces[j]:\n            result.append(' ')\n            j += 1\n        result.append(c)\n    return ''.join(result)\n```\n    \n    The algorithm initializes an empty result string (or StringBuilder in Java for better performance). We iterate through the input string and for each character, we use a `while` loop to check if the current index `i` is in the `spaces` array (by comparing `i` to `spaces[j]` where `j` is initialized at 0). If we need to add a space before the current character, we append a space to the result string and increment `j`. The current character at index `i` of the input string is then appended to the result string. The final result string is returned after iterating through the input string. The algorithm's time complexity is O(n) where n is the length of the input string, as each character in the input string is visited once.\n    ",
+    "javascript": "\n    ```javascript\nfunction addSpaces(s, spaces) {\n    let result = \"\";\n    let j = 0;\n    for (let i = 0; i < s.length; i++) {\n        while (j < spaces.length && i === spaces[j]) {\n            result += ' ';\n            j++;\n        }\n        result += s[i];\n    }\n    return result;\n}\n```\n    \n    The algorithm initializes an empty result string (or StringBuilder in Java for better performance). We iterate through the input string and for each character, we use a `while` loop to check if the current index `i` is in the `spaces` array (by comparing `i` to `spaces[j]` where `j` is initialized at 0). If we need to add a space before the current character, we append a space to the result string and increment `j`. The current character at index `i` of the input string is then appended to the result string. The final result string is returned after iterating through the input string. The algorithm's time complexity is O(n) where n is the length of the input string, as each character in the input string is visited once.\n    ",
+    "java": "\n    ```java\npublic String addSpaces(String s, int[] spaces) {\n    StringBuilder result = new StringBuilder();\n    int j = 0;\n    for (int i = 0; i < s.length(); i++) {\n        while (j < spaces.length && i == spaces[j]) {\n            result.append(' ');\n            j++;\n        }\n        result.append(s.charAt(i));\n    }\n    return result.toString();\n}\n```\n    \n    The algorithm initializes an empty result string (or StringBuilder in Java for better performance). We iterate through the input string and for each character, we use a `while` loop to check if the current index `i` is in the `spaces` array (by comparing `i` to `spaces[j]` where `j` is initialized at 0). If we need to add a space before the current character, we append a space to the result string and increment `j`. The current character at index `i` of the input string is then appended to the result string. The final result string is returned after iterating through the input string. The algorithm's time complexity is O(n) where n is the length of the input string, as each character in the input string is visited once.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

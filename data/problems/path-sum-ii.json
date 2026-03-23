@@ -1,0 +1,24 @@
+{
+  "id": 113,
+  "title": "Path Sum II",
+  "slug": "path-sum-ii",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given the root of a binary tree and an integer targetSum, return _all root-to-leaf paths where the sum of the node values in the path equals_ targetSum_. Each path should be returned as a list of the node values, not node references_.\n\nA root-to-leaf path is a path starting from the root and ending at any leaf node. A leaf is a node with no children.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef pathSum(root, targetSum):\n    def helper(root, targetSum, current, ans):\n        if not root:\n            return\n        current.append(root.val)\n        if not root.left and not root.right and targetSum == root.val:\n            ans.append(current[:])\n        helper(root.left, targetSum - root.val, current, ans)\n        helper(root.right, targetSum - root.val, current, ans)\n        current.pop()\n\n    ans = []\n    helper(root, targetSum, [], ans)\n    return ans\n```\n    \n    This algorithm does a Depth First Search (DFS) traversal of the given binary tree. At each recursive call(level), the value of the current node is subtracted from the targetSum. When a leaf node is reached, the targetSum is compared with the current node value. If they are equal, then the current path of nodes is added to the result vector (ans). After traversal finishes, ans is returned which contains all the paths with the required sum.\n    ",
+    "javascript": "\n    ```javascript\nclass TreeNode {\n    constructor(val, left = null, right = null) {\n        this.val = val;\n        this.left = left;\n        this.right = right;\n    }\n}\n\nfunction pathSum(root, targetSum) {\n    const ans = [];\n    const helper = (root, targetSum, current) => {\n        if (!root) return;\n        current.push(root.val);\n        if (!root.left && !root.right && targetSum === root.val) {\n            ans.push([...current]);\n        }\n        helper(root.left, targetSum - root.val, current);\n        helper(root.right, targetSum - root.val, current);\n        current.pop();\n    };\n\n    helper(root, targetSum, []);\n    return ans;\n}\n```\n    \n    This algorithm does a Depth First Search (DFS) traversal of the given binary tree. At each recursive call(level), the value of the current node is subtracted from the targetSum. When a leaf node is reached, the targetSum is compared with the current node value. If they are equal, then the current path of nodes is added to the result vector (ans). After traversal finishes, ans is returned which contains all the paths with the required sum.\n    ",
+    "java": "\n    ```java\nimport java.util.List;\nimport java.util.ArrayList;\n\npublic class TreeNode {\n    int val;\n    TreeNode left;\n    TreeNode right;\n    TreeNode(int x) { val = x; }\n}\n\npublic List<List<Integer>> pathSum(TreeNode root, int targetSum) {\n    List<List<Integer>> ans = new ArrayList<>();\n    List<Integer> current = new ArrayList<>();\n    helper(root, targetSum, current, ans);\n    return ans;\n}\n\nprivate void helper(TreeNode root, int targetSum, List<Integer> current, List<List<Integer>> ans) {\n    if (root == null) return;\n    current.add(root.val);\n    if (root.left == null && root.right == null && targetSum == root.val) {\n        ans.add(new ArrayList<>(current));\n    }\n    helper(root.left, targetSum - root.val, current, ans);\n    helper(root.right, targetSum - root.val, current, ans);\n    current.remove(current.size() - 1);\n}\n```\n    \n    This algorithm does a Depth First Search (DFS) traversal of the given binary tree. At each recursive call(level), the value of the current node is subtracted from the targetSum. When a leaf node is reached, the targetSum is compared with the current node value. If they are equal, then the current path of nodes is added to the result vector (ans). After traversal finishes, ans is returned which contains all the paths with the required sum.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

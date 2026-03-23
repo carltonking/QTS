@@ -1,0 +1,24 @@
+{
+  "id": 2567,
+  "title": "Minimum Score by Changing Two Elements",
+  "slug": "minimum-score-by-changing-two-elements",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums.\n\n*   The low score of nums is the minimum value of |nums[i] - nums[j]| over all 0 <= i < j < nums.length.\n*   The high score of nums is the maximum value of |nums[i] - nums[j]| over all 0 <= i < j < nums.length.\n*   The score of nums is the sum of the high and low scores of nums.\n\nTo minimize the score of nums, we can change the value of at most two elements of nums.\n\nReturn _the minimum possible score after changing the value of at most two elements o_f nums.\n\nNote that |x| denotes the absolute value of x.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_score_after_change(nums):\n    n = len(nums)\n    first_min, second_min, last_max, second_last_max = nums[0], nums[1], nums[-1], nums[-2]\n\n    for i in range(1, n - 1):\n        first_min = min(first_min, nums[i])\n        second_min = min(second_min, nums[i + 1])\n        last_max = max(last_max, nums[i])\n        second_last_max = max(second_last_max, nums[i - 1])\n\n    low = min(min(first_min, last_max), min(second_min, second_last_max))\n    high = max(max(first_min, last_max), max(second_min, second_last_max))\n\n    return high - low\n```\n    \n    First, we find the first and second minimum values 'first_min' and 'second_min' and the last and second last max values 'last_max' and 'second_last_max' in the array. Then, we calculate the low score by taking the minimum of the minimum values of both pairs. The high score is calculated by taking the maximum of the maximum values of both pairs. Finally, we return the difference of the high and low scores as the minimal possible score after changing at most two elements in the array.\n    ",
+    "javascript": "\n    ```javascript\nconst minScoreAfterChange = (nums) => {\n    const n = nums.length;\n    let first_min = nums[0], second_min = nums[1], last_max = nums[n - 1], second_last_max = nums[n - 2];\n\n    for (let i = 1; i < n - 1; i++) {\n        first_min = Math.min(first_min, nums[i]);\n        second_min = Math.min(second_min, nums[i + 1]);\n        last_max = Math.max(last_max, nums[i]);\n        second_last_max = Math.max(second_last_max, nums[i - 1]);\n    }\n\n    const low = Math.min(Math.min(first_min, last_max), Math.min(second_min, second_last_max));\n    const high = Math.max(Math.max(first_min, last_max), Math.max(second_min, second_last_max));\n\n    return high - low;\n}\n```\n    \n    First, we find the first and second minimum values 'first_min' and 'second_min' and the last and second last max values 'last_max' and 'second_last_max' in the array. Then, we calculate the low score by taking the minimum of the minimum values of both pairs. The high score is calculated by taking the maximum of the maximum values of both pairs. Finally, we return the difference of the high and low scores as the minimal possible score after changing at most two elements in the array.\n    ",
+    "java": "\n    ```java\npublic int minScoreAfterChange(int[] nums) {\n    int n = nums.length;\n    int first_min = nums[0], second_min = nums[1], last_max = nums[n - 1], second_last_max = nums[n - 2];\n\n    for (int i = 1; i < n - 1; i++) {\n        first_min = Math.min(first_min, nums[i]);\n        second_min = Math.min(second_min, nums[i + 1]);\n        last_max = Math.max(last_max, nums[i]);\n        second_last_max = Math.max(second_last_max, nums[i - 1]);\n    }\n\n    int low = Math.min(Math.min(first_min, last_max), Math.min(second_min, second_last_max));\n    int high = Math.max(Math.max(first_min, last_max), Math.max(second_min, second_last_max));\n\n    return high - low;\n}\n```\n    \n    First, we find the first and second minimum values 'first_min' and 'second_min' and the last and second last max values 'last_max' and 'second_last_max' in the array. Then, we calculate the low score by taking the minimum of the minimum values of both pairs. The high score is calculated by taking the maximum of the maximum values of both pairs. Finally, we return the difference of the high and low scores as the minimal possible score after changing at most two elements in the array.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

@@ -1,0 +1,24 @@
+{
+  "id": 2328,
+  "title": "Number of Increasing Paths in a Grid",
+  "slug": "number-of-increasing-paths-in-a-grid",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "You are given an m x n integer matrix grid, where you can move from a cell to any adjacent cell in all 4 directions.\n\nReturn _the number of strictly increasing paths in the grid such that you can start from any cell and end at any cell._ Since the answer may be very large, return it modulo 109 + 7.\n\nTwo paths are considered different if they do not have exactly the same sequence of visited cells.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef add_parentheses(expression: str) -> str:\n    return f\"({expression})\"\n```\n\n    \n    The algorithm simply takes input expression and adds an opening parenthesis at the beginning of the expression, and a closing parenthesis at the end of the expression. Since the expression is in the form of \"<num1>+<num2>\", adding parenthesis around the whole expression does not change the value. Thus, it returns the smallest possible value as originally asked.\n    ",
+    "javascript": "\n    ```javascript\nfunction addParentheses(expression) {\n    return \"(\" + expression + \")\";\n}\n```\n\n    \n    The algorithm simply takes input expression and adds an opening parenthesis at the beginning of the expression, and a closing parenthesis at the end of the expression. Since the expression is in the form of \"<num1>+<num2>\", adding parenthesis around the whole expression does not change the value. Thus, it returns the smallest possible value as originally asked.\n    ",
+    "java": "\n    ```java\npublic String addParentheses(String expression) {\n    return \"(\" + expression + \")\";\n}\n```\n\n    \n    The algorithm simply takes input expression and adds an opening parenthesis at the beginning of the expression, and a closing parenthesis at the end of the expression. Since the expression is in the form of \"<num1>+<num2>\", adding parenthesis around the whole expression does not change the value. Thus, it returns the smallest possible value as originally asked.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

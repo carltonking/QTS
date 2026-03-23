@@ -1,0 +1,24 @@
+{
+  "id": 1119,
+  "title": "Remove Vowels from a String",
+  "slug": "remove-vowels-from-a-string",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given a string s, remove the vowels 'a', 'e', 'i', 'o', and 'u' from it, and return the new string.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef is_robot_bounded(instructions: str) -> bool:\n    x, y, dir = 0, 0, 0\n    moves = [(0, 1), (1, 0), (0, -1), (-1, 0)]\n\n    for c in instructions:\n        if c == 'G':\n            x += moves[dir][0]\n            y += moves[dir][1]\n        elif c == 'L':\n            dir = (dir + 3) % 4\n        else:\n            dir = (dir + 1) % 4\n\n    return (x == 0 and y == 0) or dir != 0\n```\n    \n    1. Initialize (x, y) as the robot's initial position and direction as dir (0: north, 1: east, 2: south, 3: west).\n2. Declare an array moves, which represents the movement in the x and y directions when going straight.\n3. Iterate through instructions:\n    - If the instruction is 'G', update x and y based on the current direction.\n    - If the instruction is 'L', update dir as (dir + 3) % 4 to turn left (counter-clockwise).\n    - If the instruction is 'R', update dir as (dir + 1) % 4 to turn right (clockwise).\n4. If the robot reaches the starting position (0,0) or its direction is not north (dir != 0), then it stays in a circle. Otherwise, it doesn't.\n    ",
+    "javascript": "\n    ```javascript\nfunction isRobotBounded(instructions) {\n    let x = 0, y = 0, dir = 0;\n    const moves = [[0, 1], [1, 0], [0, -1], [-1, 0]];\n\n    for (const c of instructions) {\n        if (c === 'G') {\n            x += moves[dir][0];\n            y += moves[dir][1];\n        } else if (c === 'L') {\n            dir = (dir + 3) % 4;\n        } else {\n            dir = (dir + 1) % 4;\n        }\n    }\n\n    return (x === 0 && y === 0) || dir !== 0;\n}\n```\n    \n    1. Initialize (x, y) as the robot's initial position and direction as dir (0: north, 1: east, 2: south, 3: west).\n2. Declare an array moves, which represents the movement in the x and y directions when going straight.\n3. Iterate through instructions:\n    - If the instruction is 'G', update x and y based on the current direction.\n    - If the instruction is 'L', update dir as (dir + 3) % 4 to turn left (counter-clockwise).\n    - If the instruction is 'R', update dir as (dir + 1) % 4 to turn right (clockwise).\n4. If the robot reaches the starting position (0,0) or its direction is not north (dir != 0), then it stays in a circle. Otherwise, it doesn't.\n    ",
+    "java": "\n    ```java\npublic boolean isRobotBounded(String instructions) {\n    int x = 0, y = 0, dir = 0;\n    int[][] moves = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};\n\n    for (char c : instructions.toCharArray()) {\n        if (c == 'G') {\n            x += moves[dir][0];\n            y += moves[dir][1];\n        } else if (c == 'L') {\n            dir = (dir + 3) % 4;\n        } else {\n            dir = (dir + 1) % 4;\n        }\n    }\n\n    return (x == 0 && y == 0) || dir != 0;\n}\n```\n    \n    1. Initialize (x, y) as the robot's initial position and direction as dir (0: north, 1: east, 2: south, 3: west).\n2. Declare an array moves, which represents the movement in the x and y directions when going straight.\n3. Iterate through instructions:\n    - If the instruction is 'G', update x and y based on the current direction.\n    - If the instruction is 'L', update dir as (dir + 3) % 4 to turn left (counter-clockwise).\n    - If the instruction is 'R', update dir as (dir + 1) % 4 to turn right (clockwise).\n4. If the robot reaches the starting position (0,0) or its direction is not north (dir != 0), then it stays in a circle. Otherwise, it doesn't.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

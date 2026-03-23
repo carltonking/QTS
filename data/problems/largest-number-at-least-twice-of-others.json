@@ -1,0 +1,24 @@
+{
+  "id": 747,
+  "title": "Largest Number At Least Twice of Others",
+  "slug": "largest-number-at-least-twice-of-others",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "You are given an integer array nums where the largest integer is unique.\n\nDetermine whether the largest element in the array is at least twice as much as every other number in the array. If it is, return _the index of the largest element, or return_ -1 _otherwise_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef minCostClimbingStairs(cost):\n    for i in range(2, len(cost)):\n        cost[i] += min(cost[i-1], cost[i-2])\n    return min(cost[-1], cost[-2])\n```\n    \n    The algorithm is based on dynamic programming. We loop through the array starting from index 2 (since we can start from step 0 or 1 without any cost), and at each step, we add the minimum of the costs of the previous two steps to the current step. We do this to find the optimal path at each step, which eventually leads to the minimum cost to reach the top. After processing the whole array, we return the minimum of the costs of the last two steps as the result.\n    ",
+    "javascript": "\n    ```javascript\nfunction minCostClimbingStairs(cost) {\n    for(let i=2; i<cost.length; i++)\n        cost[i] += Math.min(cost[i-1], cost[i-2]);\n    return Math.min(cost[cost.length-1], cost[cost.length-2]);\n}\n```\n    \n    The algorithm is based on dynamic programming. We loop through the array starting from index 2 (since we can start from step 0 or 1 without any cost), and at each step, we add the minimum of the costs of the previous two steps to the current step. We do this to find the optimal path at each step, which eventually leads to the minimum cost to reach the top. After processing the whole array, we return the minimum of the costs of the last two steps as the result.\n    ",
+    "java": "\n    ```java\npublic int minCostClimbingStairs(int[] cost) {\n    for(int i=2; i<cost.length; i++)\n        cost[i] += Math.min(cost[i-1], cost[i-2]);\n    return Math.min(cost[cost.length-1], cost[cost.length-2]);\n}\n```\n    \n    The algorithm is based on dynamic programming. We loop through the array starting from index 2 (since we can start from step 0 or 1 without any cost), and at each step, we add the minimum of the costs of the previous two steps to the current step. We do this to find the optimal path at each step, which eventually leads to the minimum cost to reach the top. After processing the whole array, we return the minimum of the costs of the last two steps as the result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

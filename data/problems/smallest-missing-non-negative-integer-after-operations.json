@@ -1,0 +1,24 @@
+{
+  "id": 2598,
+  "title": "Smallest Missing Non-negative Integer After Operations",
+  "slug": "smallest-missing-non-negative-integer-after-operations",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given a 0-indexed integer array nums and an integer value.\n\nIn one operation, you can add or subtract value from any element of nums.\n\n*   For example, if nums = [1,2,3] and value = 2, you can choose to subtract value from nums[0] to make nums = [-1,2,3].\n\nThe MEX (minimum excluded) of an array is the smallest missing non-negative integer in it.\n\n*   For example, the MEX of [-1,2,3] is 0 while the MEX of [1,0,3] is 2.\n\nReturn _the maximum MEX of_ nums _after applying the mentioned operation any number of times_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef maximum_mex(nums: List[int], value: int) -> int:\n    st = set(nums)\n\n    for i in range(100001):\n        if i not in st:\n            st.add(i + value)\n\n    mex = 0\n    while mex in st:\n        mex += 1\n    \n    return mex\n```\n    \n    The algorithm starts by transforming the input array into a set `st` to remove duplicates and have faster membership testing. Then, it iterates through the range [0, 100000] (inclusive), checking for each number `i` if it is not in the set `st`. If `i` is not in `st`, it adds `i + value` to the set. This way, we simulate the addition or subtraction of the `value` from the elements of the initial array.\n\nAfter processing the range, the algorithm initializes a variable `mex` to zero and keeps incrementing it while it is present in the set `st`. When the mex is no longer in the set, it means it's the maximum MEX value achievable, and the function returns it.\n    ",
+    "javascript": "\n    ```javascript\nfunction maximum_mex(nums, value) {\n    let st = new Set(nums);\n\n    for (let i = 0; i <= 100000; i++) {\n        if (!st.has(i))\n            st.add(i + value);\n    }\n\n    let mex = 0;\n    while (st.has(mex))\n        mex++;\n    \n    return mex;\n}\n```\n    \n    The algorithm starts by transforming the input array into a set `st` to remove duplicates and have faster membership testing. Then, it iterates through the range [0, 100000] (inclusive), checking for each number `i` if it is not in the set `st`. If `i` is not in `st`, it adds `i + value` to the set. This way, we simulate the addition or subtraction of the `value` from the elements of the initial array.\n\nAfter processing the range, the algorithm initializes a variable `mex` to zero and keeps incrementing it while it is present in the set `st`. When the mex is no longer in the set, it means it's the maximum MEX value achievable, and the function returns it.\n    ",
+    "java": "\n    ```java\nint maximum_mex(int[] nums, int value) {\n    HashSet<Integer> st = new HashSet<>();\n\n    for (int num : nums)\n        st.add(num);\n\n    for (int i = 0; i <= 100000; i++) {\n        if (!st.contains(i))\n            st.add(i + value);\n    }\n\n    int mex = 0;\n    while (st.contains(mex))\n        mex++;\n    \n    return mex;\n}\n```\n    \n    The algorithm starts by transforming the input array into a set `st` to remove duplicates and have faster membership testing. Then, it iterates through the range [0, 100000] (inclusive), checking for each number `i` if it is not in the set `st`. If `i` is not in `st`, it adds `i + value` to the set. This way, we simulate the addition or subtraction of the `value` from the elements of the initial array.\n\nAfter processing the range, the algorithm initializes a variable `mex` to zero and keeps incrementing it while it is present in the set `st`. When the mex is no longer in the set, it means it's the maximum MEX value achievable, and the function returns it.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

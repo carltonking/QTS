@@ -1,0 +1,24 @@
+{
+  "id": 1015,
+  "title": "Smallest Integer Divisible by K",
+  "slug": "smallest-integer-divisible-by-k",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a positive integer k, you need to find the length of the smallest positive integer n such that n is divisible by k, and n only contains the digit 1.\n\nReturn _the length of_ n. If there is no such n, return -1.\n\nNote: n may not fit in a 64-bit signed integer.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef smallestRepunitDivByK(k: int) -> int:\n    if k % 2 == 0 or k % 5 == 0:\n        return -1\n    n = 0\n    for i in range(1, k + 1):\n        n = (n * 10 + 1) % k\n        if n == 0:\n            return i\n    return -1\n```\n    \n    The algorithm starts by checking if k is divisible by 2 or 5. If it is, we return -1, because no number consisting of only the digit 1 can be divisible by 2 or 5. Then, we initialize a variable `n` to 0. We loop from 1 to k, and at each iteration, we multiply the current `n` by 10, add 1, and take the remainder when divided by k. If the remainder becomes 0, we return the current iteration index, since this indicates that we've found the smallest number consisting of only the digit 1 that is divisible by k. If after the loop, we haven't found such a number, we return -1.\n    ",
+    "javascript": "\n    ```javascript\nfunction smallestRepunitDivByK(k) {\n    if (k % 2 === 0 || k % 5 === 0) return -1;\n    let n = 0;\n    for (let i = 1; i <= k; i++) {\n        n = (n * 10 + 1) % k;\n        if (n === 0) return i;\n    }\n    return -1;\n}\n```\n    \n    The algorithm starts by checking if k is divisible by 2 or 5. If it is, we return -1, because no number consisting of only the digit 1 can be divisible by 2 or 5. Then, we initialize a variable `n` to 0. We loop from 1 to k, and at each iteration, we multiply the current `n` by 10, add 1, and take the remainder when divided by k. If the remainder becomes 0, we return the current iteration index, since this indicates that we've found the smallest number consisting of only the digit 1 that is divisible by k. If after the loop, we haven't found such a number, we return -1.\n    ",
+    "java": "\n    ```java\npublic int smallestRepunitDivByK(int k) {\n    if (k % 2 == 0 || k % 5 == 0) return -1;\n    int n = 0;\n    for (int i = 1; i <= k; i++) {\n        n = (n * 10 + 1) % k;\n        if (n == 0) return i;\n    }\n    return -1;\n}\n```\n    \n    The algorithm starts by checking if k is divisible by 2 or 5. If it is, we return -1, because no number consisting of only the digit 1 can be divisible by 2 or 5. Then, we initialize a variable `n` to 0. We loop from 1 to k, and at each iteration, we multiply the current `n` by 10, add 1, and take the remainder when divided by k. If the remainder becomes 0, we return the current iteration index, since this indicates that we've found the smallest number consisting of only the digit 1 that is divisible by k. If after the loop, we haven't found such a number, we return -1.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

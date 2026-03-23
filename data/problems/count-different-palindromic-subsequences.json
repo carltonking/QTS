@@ -1,0 +1,24 @@
+{
+  "id": 730,
+  "title": "Count Different Palindromic Subsequences",
+  "slug": "count-different-palindromic-subsequences",
+  "difficulty": "Hard",
+  "tags": [],
+  "description": "Given a string s, return _the number of different non-empty palindromic subsequences in_ s. Since the answer may be very large, return it modulo 109 + 7.\n\nA subsequence of a string is obtained by deleting zero or more characters from the string.\n\nA sequence is palindromic if it is equal to the sequence reversed.\n\nTwo sequences a1, a2, ... and b1, b2, ... are different if there is some i for which ai != bi.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef countPalindromicSubsequences(s: str) -> int:\n    n = len(s)\n    MOD = 1000000007\n    dp = [[0] * (n + 1) for _ in range(4)]\n\n    for i in range(n - 1, -1, -1):\n        for j in range(i + 1, n + 1):\n            c = ord(s[i]) - ord('a')\n            dp[c][j] = sum(dp[k][j - 1] for k in range(4)) - dp[c][i] + 2\n            dp[c][j] = (dp[c][j] + MOD) % MOD\n\n    return sum(dp[c][n] for c in range(4)) % MOD\n```\n\n    \n    The algorithm uses dynamic programming. The state of `dp[i][j]` stores the number of different non-empty palindromic subsequences of `s` with characters from index `i` to `j - 1`, and only considering the character `s[i]`. Iterating over the string from the back, the algorithm checks the current character into its corresponding bucket, and updates the current bucket's values based on the previous state.\n\nThis algorithm has a time complexity of O(N^2), where N is the length of the string. The space complexity is O(N), as the algorithm only stores palindromic subsequences for each character from 'a' to 'd'.\n    ",
+    "javascript": "\n    ```javascript\nfunction countPalindromicSubsequences(s) {\n    const n = s.length;\n    const MOD = 1000000007;\n    const dp = Array.from({ length: 4 }, () => Array(n + 1).fill(0));\n\n    for (let i = n - 1; i >= 0; i--) {\n        for (let j = i + 1; j <= n; j++) {\n            const c = s.charCodeAt(i) - 97;\n            dp[c][j] = dp[0][j - 1] + dp[1][j - 1] + dp[2][j - 1] + dp[3][j - 1] - dp[c][i] + 2;\n            dp[c][j] = (dp[c][j] + MOD) % MOD;\n        }\n    }\n\n    return (dp[0][n] + dp[1][n] + dp[2][n] + dp[3][n]) % MOD;\n}\n```\n\n    \n    The algorithm uses dynamic programming. The state of `dp[i][j]` stores the number of different non-empty palindromic subsequences of `s` with characters from index `i` to `j - 1`, and only considering the character `s[i]`. Iterating over the string from the back, the algorithm checks the current character into its corresponding bucket, and updates the current bucket's values based on the previous state.\n\nThis algorithm has a time complexity of O(N^2), where N is the length of the string. The space complexity is O(N), as the algorithm only stores palindromic subsequences for each character from 'a' to 'd'.\n    ",
+    "java": "\n    ```java\npublic int countPalindromicSubsequences(String S) {\n    int n = S.length();\n    int mod = 1000000007;\n    int[][] dp = new int[4][n + 1];\n\n    for (int i = n - 1; i >= 0; i--) {\n        for (int j = i + 1; j <= n; j++) {\n            int c = S.charAt(i) - 'a';\n            dp[c][j] = dp[0][j - 1] + dp[1][j - 1] + dp[2][j - 1] + dp[3][j - 1] - dp[c][i] + 2;\n            if (dp[c][j] < 0) dp[c][j] += mod;\n        }\n    }\n\n    return (dp[0][n] + dp[1][n] + dp[2][n] + dp[3][n]) % mod;\n}\n```\n\n    \n    The algorithm uses dynamic programming. The state of `dp[i][j]` stores the number of different non-empty palindromic subsequences of `s` with characters from index `i` to `j - 1`, and only considering the character `s[i]`. Iterating over the string from the back, the algorithm checks the current character into its corresponding bucket, and updates the current bucket's values based on the previous state.\n\nThis algorithm has a time complexity of O(N^2), where N is the length of the string. The space complexity is O(N), as the algorithm only stores palindromic subsequences for each character from 'a' to 'd'.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

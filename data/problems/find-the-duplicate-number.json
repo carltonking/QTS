@@ -1,0 +1,24 @@
+{
+  "id": 287,
+  "title": "Find the Duplicate Number",
+  "slug": "find-the-duplicate-number",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive.\n\nThere is only one repeated number in nums, return _this repeated number_.\n\nYou must solve the problem without modifying the array nums and uses only constant extra space.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef findDuplicate(nums):\n    slow = nums[0]\n    fast = nums[0]\n\n    while True:\n        slow = nums[slow]\n        fast = nums[nums[fast]]\n        if slow == fast:\n            break\n\n    slow = nums[0]\n\n    while slow != fast:\n        slow = nums[slow]\n        fast = nums[fast]\n\n    return slow\n```\n\n    \n    The algorithm is based on Floyd's Tortoise and Hare (Cycle Detection) algorithm. We treat the given array as a linked list where the value at each index is treated as the pointer to the next node in the list.\n\n1. Initialize two pointers, `slow` and `fast`, both initially pointing to the first element of the array.\n2. Loop through the array, updating `slow` to point to the next element and `fast` to point to the element after the next element, until they meet.\n3. Reset `slow` to the first element of the array and keep `fast` at the meeting point.\n4. Loop through the array, updating `slow` and `fast` to point to the next element until they meet again. This meeting point is the duplicate number.\n\nThis algorithm has a time complexity of O(n) and a space complexity of O(1).\n    ",
+    "javascript": "\n    ```javascript\nfunction findDuplicate(nums) {\n    let slow = nums[0];\n    let fast = nums[0];\n\n    do {\n        slow = nums[slow];\n        fast = nums[nums[fast]];\n    } while (slow !== fast);\n\n    slow = nums[0];\n\n    while (slow !== fast) {\n        slow = nums[slow];\n        fast = nums[fast];\n    }\n\n    return slow;\n}\n```\n\n    \n    The algorithm is based on Floyd's Tortoise and Hare (Cycle Detection) algorithm. We treat the given array as a linked list where the value at each index is treated as the pointer to the next node in the list.\n\n1. Initialize two pointers, `slow` and `fast`, both initially pointing to the first element of the array.\n2. Loop through the array, updating `slow` to point to the next element and `fast` to point to the element after the next element, until they meet.\n3. Reset `slow` to the first element of the array and keep `fast` at the meeting point.\n4. Loop through the array, updating `slow` and `fast` to point to the next element until they meet again. This meeting point is the duplicate number.\n\nThis algorithm has a time complexity of O(n) and a space complexity of O(1).\n    ",
+    "java": "\n    ```java\npublic int findDuplicate(int[] nums) {\n    int slow = nums[0];\n    int fast = nums[0];\n\n    do {\n        slow = nums[slow];\n        fast = nums[nums[fast]];\n    } while (slow != fast);\n\n    slow = nums[0];\n\n    while (slow != fast) {\n        slow = nums[slow];\n        fast = nums[fast];\n    }\n\n    return slow;\n}\n```\n\n    \n    The algorithm is based on Floyd's Tortoise and Hare (Cycle Detection) algorithm. We treat the given array as a linked list where the value at each index is treated as the pointer to the next node in the list.\n\n1. Initialize two pointers, `slow` and `fast`, both initially pointing to the first element of the array.\n2. Loop through the array, updating `slow` to point to the next element and `fast` to point to the element after the next element, until they meet.\n3. Reset `slow` to the first element of the array and keep `fast` at the meeting point.\n4. Loop through the array, updating `slow` and `fast` to point to the next element until they meet again. This meeting point is the duplicate number.\n\nThis algorithm has a time complexity of O(n) and a space complexity of O(1).\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

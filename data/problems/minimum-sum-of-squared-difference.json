@@ -1,0 +1,24 @@
+{
+  "id": 2333,
+  "title": "Minimum Sum of Squared Difference",
+  "slug": "minimum-sum-of-squared-difference",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "You are given two positive 0-indexed integer arrays nums1 and nums2, both of length n.\n\nThe sum of squared difference of arrays nums1 and nums2 is defined as the sum of (nums1[i] - nums2[i])2 for each 0 <= i < n.\n\nYou are also given two positive integers k1 and k2. You can modify any of the elements of nums1 by +1 or -1 at most k1 times. Similarly, you can modify any of the elements of nums2 by +1 or -1 at most k2 times.\n\nReturn _the minimum sum of squared difference after modifying array_ nums1 _at most_ k1 _times and modifying array_ nums2 _at most_ k2 _times_.\n\nNote: You are allowed to modify the array elements to become negative integers.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef min_sum_of_squared_difference(nums1, nums2, k1, k2):\n    res = 0\n    for i in range(len(nums1)):\n        diff = abs(nums1[i] - nums2[i])\n        steps = min(k1 + k2, diff)\n        diff -= steps\n        k1 -= min(k1, steps)\n        res += diff * diff\n    return res\n```\n    \n    The main algorithm consists of looping through both arrays and calculating the element-wise difference between the elements of `nums1` and `nums2`. \n\nFor each difference, we first calculate the minimum between the sum of `k1` and `k2` operations and the absolute difference. Then, we subtract these steps from the actual difference and update the remaining number of modifications for `k1`.\n\nFinally, we add the square of the resulting difference to the final result. At the end of the loop, we should have calculated the minimum sum of squares difference with the given constraints, and the function returns this result.\n    ",
+    "javascript": "\n    ```javascript\nfunction minSumOfSquaredDifference(nums1, nums2, k1, k2) {\n    let res = 0;\n    for (let i = 0; i < nums1.length; ++i) {\n        let diff = Math.abs(nums1[i] - nums2[i]);\n        let steps = Math.min(k1 + k2, diff);\n        diff -= steps;\n        k1 -= Math.min(k1, steps);\n        res += diff * diff;\n    }\n    return res;\n}\n```\n    \n    The main algorithm consists of looping through both arrays and calculating the element-wise difference between the elements of `nums1` and `nums2`. \n\nFor each difference, we first calculate the minimum between the sum of `k1` and `k2` operations and the absolute difference. Then, we subtract these steps from the actual difference and update the remaining number of modifications for `k1`.\n\nFinally, we add the square of the resulting difference to the final result. At the end of the loop, we should have calculated the minimum sum of squares difference with the given constraints, and the function returns this result.\n    ",
+    "java": "\n    ```java\nint minSumOfSquaredDifference(int[] nums1, int[] nums2, int k1, int k2) {\n    long res = 0;\n    for (int i = 0; i < nums1.length; ++i) {\n        int diff = Math.abs(nums1[i] - nums2[i]);\n        int steps = Math.min(k1 + k2, diff);\n        diff -= steps;\n        k1 -= Math.min(k1, steps);\n        res += (long)diff * diff;\n    }\n    return (int)res;\n}\n```\n    \n    The main algorithm consists of looping through both arrays and calculating the element-wise difference between the elements of `nums1` and `nums2`. \n\nFor each difference, we first calculate the minimum between the sum of `k1` and `k2` operations and the absolute difference. Then, we subtract these steps from the actual difference and update the remaining number of modifications for `k1`.\n\nFinally, we add the square of the resulting difference to the final result. At the end of the loop, we should have calculated the minimum sum of squares difference with the given constraints, and the function returns this result.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

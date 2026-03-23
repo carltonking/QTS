@@ -1,0 +1,24 @@
+{
+  "id": 1400,
+  "title": "Construct K Palindrome Strings",
+  "slug": "construct-k-palindrome-strings",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "Given a string s and an integer k, return true _if you can use all the characters in_ s _to construct_ k _palindrome strings or_ false _otherwise_.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef tictactoe(moves):\n    grid = [[0] * 3 for _ in range(3)]\n    player = 1\n    for move in moves:\n        r, c = move\n        grid[r][c] = player\n        if (all(grid[i][c] == player for i in range(3)) or\n            all(grid[r][i] == player for i in range(3)) or\n            (r == c and all(grid[i][i] == player for i in range(3))) or\n            (r + c == 2 and all(grid[i][2 - i] == player for i in range(3)))):\n            return 'A' if player == 1 else 'B'\n        player = 3 - player\n    \n    return 'Draw' if len(moves) == 9 else 'Pending'\n```\n\n    \n    1. Initialize an empty `grid` and set the first player to be `1` (representing A) to track players.\n2. Iterate through each move in `moves`.\n3. In each iteration, apply the corresponding player's move on the grid.\n4. Check if the current move created 3 in a row, 3 in a column, or 3 on either diagonal. If so, the current player wins and return \"A\" or \"B\" corresponding to the player.\n5. If no winner is found after processing all moves, return \"Draw\" if there are 9 moves, else return \"Pending\".\n    ",
+    "javascript": "\n    ```javascript\nfunction tictactoe(moves) {\n    const grid = Array.from({ length: 3 }, () => new Array(3).fill(0));\n    let player = 1;\n    for (const move of moves) {\n        const [row, col] = move;\n        grid[row][col] = player;\n        if ((Array(3).fill().every((_, i) => grid[i][col] === player)) ||\n            (Array(3).fill().every((_, i) => grid[row][i] === player)) ||\n            (row === col && Array(3).fill().every((_, i) => grid[i][i] === player)) ||\n            (row + col === 2 && Array(3).fill().every((_, i) => grid[i][2 - i] === player))) {\n            return player === 1 ? \"A\" : \"B\";\n        }\n        player = 3 - player;\n    }\n    return moves.length === 9 ? \"Draw\" : \"Pending\";\n}\n```\n\n    \n    1. Initialize an empty `grid` and set the first player to be `1` (representing A) to track players.\n2. Iterate through each move in `moves`.\n3. In each iteration, apply the corresponding player's move on the grid.\n4. Check if the current move created 3 in a row, 3 in a column, or 3 on either diagonal. If so, the current player wins and return \"A\" or \"B\" corresponding to the player.\n5. If no winner is found after processing all moves, return \"Draw\" if there are 9 moves, else return \"Pending\".\n    ",
+    "java": "\n    ```java\nimport java.util.*;\n\npublic String tictactoe(int[][] moves) {\n    int[][] grid = new int[3][3];\n    int player = 1;\n    for (int[] move : moves) {\n        grid[move[0]][move[1]] = player;\n        if ((grid[0][move[1]] == player && grid[1][move[1]] == player && grid[2][move[1]] == player) ||\n            (grid[move[0]][0] == player && grid[move[0]][1] == player && grid[move[0]][2] == player) ||\n            (move[0] == move[1] && grid[0][0] == player && grid[1][1] == player && grid[2][2] == player) ||\n            (move[0] + move[1] == 2 && grid[0][2] == player && grid[1][1] == player && grid[2][0] == player)) {\n            return player == 1 ? \"A\" : \"B\";\n        }\n        player = 3 - player;\n    }\n    return moves.length == 9 ? \"Draw\" : \"Pending\";\n}\n```\n\n    \n    1. Initialize an empty `grid` and set the first player to be `1` (representing A) to track players.\n2. Iterate through each move in `moves`.\n3. In each iteration, apply the corresponding player's move on the grid.\n4. Check if the current move created 3 in a row, 3 in a column, or 3 on either diagonal. If so, the current player wins and return \"A\" or \"B\" corresponding to the player.\n5. If no winner is found after processing all moves, return \"Draw\" if there are 9 moves, else return \"Pending\".\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

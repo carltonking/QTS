@@ -1,0 +1,24 @@
+{
+  "id": 1886,
+  "title": "Determine Whether Matrix Can Be Obtained By Rotation",
+  "slug": "determine-whether-matrix-can-be-obtained-by-rotation",
+  "difficulty": "Easy",
+  "tags": [],
+  "description": "Given two n x n binary matrices mat and target, return true _if it is possible to make_ mat _equal to_ target _by rotating_ mat _in 90-degree increments, or_ false _otherwise._",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\nimport heapq\n\ndef minimumSize(nums, maxOperations):\n    pq = [-num for num in nums] # Negative numbers to simulate max heap\n    heapq.heapify(pq)\n    while maxOperations > 0:\n        maxBalls = -heapq.heappop(pq)\n        heapq.heappush(pq, -maxBalls // 2)\n        heapq.heappush(pq, -(maxBalls - (maxBalls // 2)))\n        maxOperations -= 1\n    return -pq[0]\n```\n    \n    The algorithm is based on using a priority queue (max heap) to store the number of balls in each bag. In each operation, we remove the largest (or maximum) number of balls from the queue, divide this number by 2, and push both divided parts back into the queue. This operation is performed for given `maxOperations` times, and then we return the maximum number of balls in the bag (i.e., the top of the max heap). \n\nSince the priority queue maintains the order of elements, prioritizing the maximum number of balls, we can efficiently divide the balls in the largest bag in each operation, eventually minimizing the penalty after `maxOperations`.\n    ",
+    "javascript": "\n    ```javascript\nfunction minimumSize(nums, maxOperations) {\n    const pq = new PriorityQueue((a, b) => b - a);\n    for (const num of nums) {\n        pq.offer(num);\n    }\n    while (maxOperations > 0) {\n        const maxBalls = pq.poll();\n        pq.offer(Math.floor(maxBalls / 2));\n        pq.offer(maxBalls - Math.floor(maxBalls / 2));\n        maxOperations--;\n    }\n    return pq.peek();\n}\n\nclass PriorityQueue {\n    constructor(comparator = (a, b) => a - b) {\n        this._heap = [];\n        this._comparator = comparator;\n    }\n    size() {\n        return this._heap.length;\n    }\n    isEmpty() {\n        return this.size() == 0;\n    }\n    peek() {\n        return this._heap[0];\n    }\n    // Rest of the PriorityQueue implementation\n}\n```\n    \n    The algorithm is based on using a priority queue (max heap) to store the number of balls in each bag. In each operation, we remove the largest (or maximum) number of balls from the queue, divide this number by 2, and push both divided parts back into the queue. This operation is performed for given `maxOperations` times, and then we return the maximum number of balls in the bag (i.e., the top of the max heap). \n\nSince the priority queue maintains the order of elements, prioritizing the maximum number of balls, we can efficiently divide the balls in the largest bag in each operation, eventually minimizing the penalty after `maxOperations`.\n    ",
+    "java": "\n    ```java\nimport java.util.PriorityQueue;\n\npublic int minimumSize(int[] nums, int maxOperations) {\n    PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);\n    for (int num : nums) {\n        pq.offer(num);\n    }\n    while (maxOperations > 0) {\n        int maxBalls = pq.poll();\n        pq.offer(maxBalls / 2);\n        pq.offer(maxBalls - (maxBalls / 2));\n        maxOperations--;\n    }\n    return pq.peek();\n}\n```\n    \n    The algorithm is based on using a priority queue (max heap) to store the number of balls in each bag. In each operation, we remove the largest (or maximum) number of balls from the queue, divide this number by 2, and push both divided parts back into the queue. This operation is performed for given `maxOperations` times, and then we return the maximum number of balls in the bag (i.e., the top of the max heap). \n\nSince the priority queue maintains the order of elements, prioritizing the maximum number of balls, we can efficiently divide the balls in the largest bag in each operation, eventually minimizing the penalty after `maxOperations`.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}

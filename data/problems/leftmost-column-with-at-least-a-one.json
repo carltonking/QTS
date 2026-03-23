@@ -1,0 +1,24 @@
+{
+  "id": 1428,
+  "title": "Leftmost Column with at Least a One",
+  "slug": "leftmost-column-with-at-least-a-one",
+  "difficulty": "Medium",
+  "tags": [],
+  "description": "A row-sorted binary matrix means that all elements are 0 or 1 and each row of the matrix is sorted in non-decreasing order.\n\nGiven a row-sorted binary matrix binaryMatrix, return _the index (0-indexed) of the leftmost column with a 1 in it_. If such an index does not exist, return -1.\n\nYou can't access the Binary Matrix directly. You may only access the matrix using a BinaryMatrix interface:\n\n*   BinaryMatrix.get(row, col) returns the element of the matrix at index (row, col) (0-indexed).\n*   BinaryMatrix.dimensions() returns the dimensions of the matrix as a list of 2 elements [rows, cols], which means the matrix is rows x cols.\n\nSubmissions making more than 1000 calls to BinaryMatrix.get will be judged _Wrong Answer_. Also, any solutions that attempt to circumvent the judge will result in disqualification.\n\nFor custom testing purposes, the input will be the entire binary matrix mat. You will not have access to the binary matrix directly.",
+  "examples": [],
+  "constraints": [],
+  "starterCode": {
+    "python": "",
+    "javascript": "",
+    "java": "",
+    "cpp": ""
+  },
+  "solutionCode": {
+    "python": "\n    ```python\ndef canReach(arr: List[int], start: int) -> bool:\n    if 0 <= start < len(arr) and arr[start] >= 0:\n        if arr[start] == 0:\n            return True\n        \n        jump = arr[start]\n        arr[start] = -arr[start]\n        return canReach(arr, start + jump) or canReach(arr, start - jump)\n    return False\n```\n    \n    The algorithm uses a depth-first search approach. At each index `i`, it checks if it's within the bounds of the array and if the value at the current index is non-negative.\n\nIf the current value is 0, it returns true because the goal is reached.\nIf not, it marks the current position as visited by negating the value and then checks if it can reach 0 with the available jump choices, `i + arr[i]` or `i - arr[i]`.\n\nThe function returns false if no valid path was found that reaches the 0 value.\n    ",
+    "javascript": "\n    ```javascript\nfunction canReach(arr, start) {\n    if (start >= 0 && start < arr.length && arr[start] >= 0) {\n        if (arr[start] === 0)\n            return true;\n\n        let jump = arr[start];\n        arr[start] = -arr[start];\n        return canReach(arr, start + jump) || canReach(arr, start - jump);\n    }\n    return false;\n}\n```\n    \n    The algorithm uses a depth-first search approach. At each index `i`, it checks if it's within the bounds of the array and if the value at the current index is non-negative.\n\nIf the current value is 0, it returns true because the goal is reached.\nIf not, it marks the current position as visited by negating the value and then checks if it can reach 0 with the available jump choices, `i + arr[i]` or `i - arr[i]`.\n\nThe function returns false if no valid path was found that reaches the 0 value.\n    ",
+    "java": "\n    ```java\nboolean canReach(int[] arr, int start) {\n    if (start >= 0 && start < arr.length && arr[start] >= 0) {\n        if (arr[start] == 0)\n            return true;\n\n        arr[start] = -arr[start];\n        return canReach(arr, start + arr[start]) || canReach(arr, start - arr[start]);\n    }\n    return false;\n}\n```\n    \n    The algorithm uses a depth-first search approach. At each index `i`, it checks if it's within the bounds of the array and if the value at the current index is non-negative.\n\nIf the current value is 0, it returns true because the goal is reached.\nIf not, it marks the current position as visited by negating the value and then checks if it can reach 0 with the available jump choices, `i + arr[i]` or `i - arr[i]`.\n\nThe function returns false if no valid path was found that reaches the 0 value.\n    ",
+    "cpp": ""
+  },
+  "testCases": [],
+  "acceptanceRate": 0
+}
