@@ -1,6 +1,6 @@
-export type Category = 'MATH' | 'PROBABILITY' | 'FINANCE';
-export type Difficulty = 'EASY' | 'MEDIUM' | 'HARD';
-export type AttemptResult = 'CORRECT' | 'INCORRECT' | 'PARTIAL';
+export type Category = "MATH" | "PROBABILITY" | "FINANCE";
+export type AttemptResult = "CORRECT" | "INCORRECT" | "PARTIAL";
+export type Difficulty = "EASY" | "MEDIUM" | "HARD";
 
 export interface Question {
   id: string;

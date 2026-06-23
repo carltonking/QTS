@@ -1,19 +1,19 @@
-import { useEffect, useRef, useState } from 'react';
-import './math.css';
-import { generateProblem } from './MathEngine';
-import { ConfigView } from './ConfigView';
-import { GameView } from './GameView';
-import { LeaderboardView } from './LeaderboardView';
-import { ResultsView } from './ResultsView';
-import type { Problem, SessionConfig, SessionResult } from './types';
+import { useEffect, useRef, useState } from "react";
+import "./math.css";
+import { useLocalStorage } from "../../shared/hooks/useLocalStorage";
+import { useSyncToBackend } from "../../shared/hooks/useSyncToBackend";
+import { STORAGE_KEYS } from "../../shared/constants";
+import { generateProblem } from "./MathEngine";
+import { ConfigView } from "./ConfigView";
+import { GameView } from "./GameView";
+import { LeaderboardView } from "./LeaderboardView";
+import { ResultsView } from "./ResultsView";
+import type { Problem, SessionConfig, SessionResult } from "./types";
 
-const HISTORY_KEY = 'qts_math_history';
-const LEADERBOARD_KEY = 'qts_math_leaderboard';
-
-type Screen = 'config' | 'game' | 'results' | 'leaderboard';
+type Screen = "config" | "game" | "results" | "leaderboard";
 
 const defaultConfig: SessionConfig = {
-  operations: ['ADD', 'SUB', 'MUL', 'DIV'],
+  operations: ["ADD", "SUB", "MUL", "DIV"],
   duration: 60,
   ranges: {
     ADD: [2, 99],
@@ -23,37 +23,39 @@ const defaultConfig: SessionConfig = {
   },
 };
 
-function loadJson<T>(key: string, fallback: T): T {
-  try {
-    const raw = window.localStorage.getItem(key);
-    return raw ? (JSON.parse(raw) as T) : fallback;
-  } catch {
-    return fallback;
-  }
-}
-
 function createEmptyProblem(config: SessionConfig): Problem {
   return generateProblem(config);
 }
 
 export default function MathModule() {
   const finishedRef = useRef(false);
-  const [screen, setScreen] = useState<Screen>('config');
+  const [screen, setScreen] = useState<Screen>("config");
+  const { syncMathSession } = useSyncToBackend();
   const [config, setConfig] = useState<SessionConfig>(defaultConfig);
-  const [problem, setProblem] = useState<Problem>(() => createEmptyProblem(defaultConfig));
-  const [secondsLeft, setSecondsLeft] = useState<number>(defaultConfig.duration);
+  const [problem, setProblem] = useState<Problem>(() =>
+    createEmptyProblem(defaultConfig),
+  );
+  const [secondsLeft, setSecondsLeft] = useState<number>(
+    defaultConfig.duration,
+  );
   const [correct, setCorrect] = useState(0);
   const [incorrect, setIncorrect] = useState(0);
   const [streak, setStreak] = useState(0);
   const [bestStreak, setBestStreak] = useState(0);
-  const [sessionResult, setSessionResult] = useState<SessionResult | null>(null);
-  const [history, setHistory] = useState<SessionResult[]>(() => loadJson<SessionResult[]>(HISTORY_KEY, []));
-  const [leaderboard, setLeaderboard] = useState<SessionResult[]>(() =>
-    loadJson<SessionResult[]>(LEADERBOARD_KEY, []),
+  const [sessionResult, setSessionResult] = useState<SessionResult | null>(
+    null,
+  );
+  const [history, setHistory] = useLocalStorage<SessionResult[]>(
+    STORAGE_KEYS.MATH_HISTORY,
+    [],
+  );
+  const [leaderboard, setLeaderboard] = useLocalStorage<SessionResult[]>(
+    STORAGE_KEYS.MATH_LEADERBOARD,
+    [],
   );
 
   useEffect(() => {
-    if (screen !== 'game') {
+    if (screen !== "game") {
       return;
     }
 
@@ -74,7 +76,7 @@ export default function MathModule() {
   }, [screen]);
 
   useEffect(() => {
-    if (screen === 'game' && secondsLeft === 0 && !finishedRef.current) {
+    if (screen === "game" && secondsLeft === 0 && !finishedRef.current) {
       finishedRef.current = true;
       const totalAnswered = correct + incorrect;
       const result: SessionResult = {
@@ -86,16 +88,33 @@ export default function MathModule() {
         correct,
         incorrect,
         bestStreak,
-        accuracy: totalAnswered > 0 ? Math.round((correct / totalAnswered) * 100) : 0,
+        accuracy:
+          totalAnswered > 0 ? Math.round((correct / totalAnswered) * 100) : 0,
       };
 
       const nextHistory = [...history, result];
       setHistory(nextHistory);
-      window.localStorage.setItem(HISTORY_KEY, JSON.stringify(nextHistory));
       setSessionResult(result);
-      setScreen('results');
+      setScreen("results");
+      const ops = config.operations.join(",");
+      syncMathSession(
+        ops,
+        result.correct,
+        totalAnswered,
+        config.duration,
+        totalAnswered > 0 ? Math.round((correct / totalAnswered) * 100) : 0,
+      );
     }
-  }, [bestStreak, config, correct, history, incorrect, screen, secondsLeft]);
+  }, [
+    bestStreak,
+    config,
+    correct,
+    history,
+    incorrect,
+    screen,
+    secondsLeft,
+    syncMathSession,
+  ]);
 
   const startSession = (nextConfig = config) => {
     finishedRef.current = false;
@@ -107,7 +126,7 @@ export default function MathModule() {
     setStreak(0);
     setBestStreak(0);
     setSessionResult(null);
-    setScreen('game');
+    setScreen("game");
   };
 
   const handleSubmitAnswer = (answer: number | null) => {
@@ -140,7 +159,9 @@ export default function MathModule() {
     }
 
     const savedResult = { ...sessionResult, name };
-    const nextHistory = history.map((entry) => (entry.id === savedResult.id ? savedResult : entry));
+    const nextHistory = history.map((entry) =>
+      entry.id === savedResult.id ? savedResult : entry,
+    );
     const nextLeaderboard = [...leaderboard, savedResult]
       .sort((a, b) => b.correct - a.correct || b.accuracy - a.accuracy)
       .slice(0, 10);
@@ -148,15 +169,18 @@ export default function MathModule() {
     setSessionResult(savedResult);
     setHistory(nextHistory);
     setLeaderboard(nextLeaderboard);
-    window.localStorage.setItem(HISTORY_KEY, JSON.stringify(nextHistory));
-    window.localStorage.setItem(LEADERBOARD_KEY, JSON.stringify(nextLeaderboard));
   };
 
-  if (screen === 'leaderboard') {
-    return <LeaderboardView entries={leaderboard} onBack={() => setScreen('config')} />;
+  if (screen === "leaderboard") {
+    return (
+      <LeaderboardView
+        entries={leaderboard}
+        onBack={() => setScreen("config")}
+      />
+    );
   }
 
-  if (screen === 'game') {
+  if (screen === "game") {
     return (
       <GameView
         problem={problem}
@@ -169,13 +193,13 @@ export default function MathModule() {
     );
   }
 
-  if (screen === 'results' && sessionResult) {
+  if (screen === "results" && sessionResult) {
     return (
       <ResultsView
         result={sessionResult}
         history={history}
         onRestart={() => startSession(config)}
-        onNewSession={() => setScreen('config')}
+        onNewSession={() => setScreen("config")}
         onSave={saveToLeaderboard}
       />
     );
@@ -186,7 +210,7 @@ export default function MathModule() {
       config={config}
       onConfigChange={setConfig}
       onStart={() => startSession(config)}
-      onLeaderboard={() => setScreen('leaderboard')}
+      onLeaderboard={() => setScreen("leaderboard")}
     />
   );
 }

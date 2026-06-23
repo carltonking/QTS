@@ -1,0 +1,146 @@
+.bt-module {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.bt-card {
+  display: grid;
+  gap: 1rem;
+}
+
+.bt-grid {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.bt-badge-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.bt-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.bt-subtle {
+  font-size: 0.82rem;
+  opacity: 0.7;
+  line-height: 1.55;
+}
+
+.bt-section-label {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  opacity: 0.6;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.bt-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 720px) {
+  .bt-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bt-field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.bt-field-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.8rem;
+}
+
+.bt-field-value {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.bt-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  background: var(--border-hi);
+  outline: none;
+  cursor: pointer;
+}
+
+.bt-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: var(--text-1);
+  border: 1px solid var(--bg);
+  cursor: pointer;
+}
+
+.bt-range::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: var(--text-1);
+  border: 1px solid var(--bg);
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.bt-note {
+  font-size: 0.75rem;
+  opacity: 0.55;
+  line-height: 1.5;
+}
+
+.bt-optim {
+  display: grid;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  border: 1px solid var(--border-hi);
+  padding: 0.6rem;
+}
+
+.bt-optim-warn {
+  opacity: 0.85;
+  line-height: 1.5;
+}
+
+.bt-metrics {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.bt-metrics th,
+.bt-metrics td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 0.4rem;
+  text-align: right;
+}
+
+.bt-metrics th:first-child,
+.bt-metrics td:first-child {
+  text-align: left;
+}
+
+.bt-metrics thead th {
+  opacity: 0.6;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.72rem;
+}

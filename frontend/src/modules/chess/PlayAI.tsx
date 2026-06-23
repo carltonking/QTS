@@ -1,20 +1,19 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import type { CSSProperties } from 'react';
-import { Chess, type Square } from 'chess.js';
-import { Chessboard } from 'react-chessboard';
-import { Button } from '../../shared/components/Button';
-import { Card } from '../../shared/components/Card';
-import { GameSetup, type ChessColor, type GameSetupConfig } from './GameSetup';
-import { StockfishEngine } from './StockfishEngine';
-
-const HINTS_KEY = 'qts_chess_hints';
+import { useEffect, useMemo, useRef, useState } from "react";
+import type { CSSProperties } from "react";
+import { Chess, type Square } from "chess.js";
+import { Chessboard } from "react-chessboard";
+import { Button } from "../../shared/components/Button";
+import { Card } from "../../shared/components/Card";
+import { GameSetup, type ChessColor, type GameSetupConfig } from "./GameSetup";
+import { StockfishEngine } from "./StockfishEngine";
+import { STORAGE_KEYS } from "../../shared/constants";
 
 type ActiveGame = {
   elo: number;
   color: ChessColor;
 };
 
-type PromotionPiece = 'q' | 'r' | 'b' | 'n';
+type PromotionPiece = "q" | "r" | "b" | "n";
 
 type PendingPromotion = {
   from: string;
@@ -37,35 +36,23 @@ function dotSquareStyle(): CSSProperties {
 
   return {
     backgroundImage: `url("data:image/svg+xml,${dotSvg}")`,
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: '24px 24px',
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "24px 24px",
   };
-}
-
-function movePairs(history: string[]): string[] {
-  const rows: string[] = [];
-
-  for (let index = 0; index < history.length; index += 2) {
-    const white = history[index];
-    const black = history[index + 1] ?? '';
-    rows.push(`${Math.floor(index / 2) + 1}. ${white}${black ? ` ${black}` : ''}`);
-  }
-
-  return rows;
 }
 
 function pieceGlyph(piece: string): string {
   const map: Record<string, string> = {
-    p: '♙',
-    n: '♘',
-    b: '♗',
-    r: '♖',
-    q: '♕',
-    k: '♔',
+    p: "♙",
+    n: "♘",
+    b: "♗",
+    r: "♖",
+    q: "♕",
+    k: "♔",
   };
 
-  return map[piece.toLowerCase()] ?? '';
+  return map[piece.toLowerCase()] ?? "";
 }
 
 function calculateCapturedPieces(chess: Chess) {
@@ -76,11 +63,11 @@ function calculateCapturedPieces(chess: Chess) {
   };
 
   board.forEach((piece) => {
-    if (!piece || piece.type === 'k') {
+    if (!piece || piece.type === "k") {
       return;
     }
 
-    const side = piece.color === 'w' ? 'white' : 'black';
+    const side = piece.color === "w" ? "white" : "black";
     counts[side][piece.type] += 1;
   });
 
@@ -88,55 +75,71 @@ function calculateCapturedPieces(chess: Chess) {
 
   const whiteCaptured = (Object.keys(base) as Array<keyof typeof base>)
     .map((type) => pieceGlyph(type).repeat(base[type] - counts.black[type]))
-    .join('');
+    .join("");
   const blackCaptured = (Object.keys(base) as Array<keyof typeof base>)
     .map((type) => pieceGlyph(type).repeat(base[type] - counts.white[type]))
-    .join('');
+    .join("");
 
   return { whiteCaptured, blackCaptured };
 }
 
-function statusText(chess: Chess, humanTurn: boolean, aiThinking: boolean, playerColor: ChessColor): string {
+function statusText(
+  chess: Chess,
+  humanTurn: boolean,
+  aiThinking: boolean,
+  playerColor: ChessColor,
+): string {
   if (chess.isCheckmate()) {
-    const winner = chess.turn() === 'w' ? 'BLACK' : 'WHITE';
-    return winner === playerColor ? 'CHECKMATE — YOU WIN' : 'CHECKMATE — AI WINS';
+    const winner = chess.turn() === "w" ? "BLACK" : "WHITE";
+    return winner === playerColor
+      ? "CHECKMATE — YOU WIN"
+      : "CHECKMATE — AI WINS";
   }
 
-  if (chess.isDraw() || chess.isStalemate() || chess.isInsufficientMaterial() || chess.isThreefoldRepetition()) {
-    return 'DRAW';
+  if (
+    chess.isDraw() ||
+    chess.isStalemate() ||
+    chess.isInsufficientMaterial() ||
+    chess.isThreefoldRepetition()
+  ) {
+    return "DRAW";
   }
 
   if (aiThinking) {
-    return 'AI THINKING...';
+    return "AI THINKING...";
   }
 
-  return humanTurn ? 'YOUR TURN' : 'IN PROGRESS';
+  return humanTurn ? "YOUR TURN" : "IN PROGRESS";
 }
 
 export function PlayAI() {
   const [setup, setSetup] = useState<GameSetupConfig>({
     elo: 1200,
-    color: 'WHITE',
+    color: "WHITE",
   });
   const [activeGame, setActiveGame] = useState<ActiveGame | null>(null);
-  const [position, setPosition] = useState('start');
+  const [position, setPosition] = useState("start");
   const [moveHistory, setMoveHistory] = useState<string[]>([]);
   const [selectedSquare, setSelectedSquare] = useState<string | null>(null);
   const [hintSquares, setHintSquares] = useState<string[]>([]);
   const [hintsEnabled, setHintsEnabled] = useState<boolean>(() =>
-    loadJson<boolean>(HINTS_KEY, true),
+    loadJson<boolean>(STORAGE_KEYS.CHESS_HINTS, true),
   );
   const [aiThinking, setAiThinking] = useState(false);
   const [boardWidth, setBoardWidth] = useState(520);
   const [resultText, setResultText] = useState<string | null>(null);
-  const [pendingPromotion, setPendingPromotion] = useState<PendingPromotion | null>(null);
+  const [pendingPromotion, setPendingPromotion] =
+    useState<PendingPromotion | null>(null);
   const [viewIndex, setViewIndex] = useState(0);
   const boardRef = useRef<HTMLDivElement | null>(null);
   const chessRef = useRef(new Chess());
   const engineRef = useRef<StockfishEngine | null>(null);
 
   useEffect(() => {
-    window.localStorage.setItem(HINTS_KEY, JSON.stringify(hintsEnabled));
+    window.localStorage.setItem(
+      STORAGE_KEYS.CHESS_HINTS,
+      JSON.stringify(hintsEnabled),
+    );
   }, [hintsEnabled]);
 
   useEffect(() => {
@@ -173,7 +176,10 @@ export function PlayAI() {
     }
 
     const turn = chessRef.current.turn();
-    return (activeGame.color === 'WHITE' && turn === 'w') || (activeGame.color === 'BLACK' && turn === 'b');
+    return (
+      (activeGame.color === "WHITE" && turn === "w") ||
+      (activeGame.color === "BLACK" && turn === "b")
+    );
   }, [activeGame, moveHistory]);
 
   const syncHints = (square: string | null) => {
@@ -182,7 +188,10 @@ export function PlayAI() {
       return;
     }
 
-    const moves = chessRef.current.moves({ square: square as Square, verbose: true });
+    const moves = chessRef.current.moves({
+      square: square as Square,
+      verbose: true,
+    });
     setHintSquares(moves.map((move) => move.to));
   };
 
@@ -196,11 +205,14 @@ export function PlayAI() {
   const isPromotionMove = (from: string, to: string): boolean => {
     const piece = chessRef.current.get(from as Square);
 
-    if (!piece || piece.type !== 'p') {
+    if (!piece || piece.type !== "p") {
       return false;
     }
 
-    return (piece.color === 'w' && to.endsWith('8')) || (piece.color === 'b' && to.endsWith('1'));
+    return (
+      (piece.color === "w" && to.endsWith("8")) ||
+      (piece.color === "b" && to.endsWith("1"))
+    );
   };
 
   const finishIfGameOver = () => {
@@ -235,7 +247,10 @@ export function PlayAI() {
         await engineRef.current.init();
       }
 
-      const bestMove = await engineRef.current.getBestMove(chessRef.current.fen(), activeGame.elo);
+      const bestMove = await engineRef.current.getBestMove(
+        chessRef.current.fen(),
+        activeGame.elo,
+      );
       const promotion = bestMove.slice(4, 5) || undefined;
       const move = chessRef.current.move({
         from: bestMove.slice(0, 2),
@@ -244,7 +259,7 @@ export function PlayAI() {
       });
 
       if (!move) {
-        throw new Error('Stockfish returned an invalid move');
+        throw new Error("Stockfish returned an invalid move");
       }
 
       updateView();
@@ -252,7 +267,7 @@ export function PlayAI() {
         setAiThinking(false);
       }
     } catch {
-      setResultText('ENGINE ERROR');
+      setResultText("ENGINE ERROR");
       setAiThinking(false);
     }
   };
@@ -263,8 +278,8 @@ export function PlayAI() {
     }
 
     const aiTurn =
-      (activeGame.color === 'WHITE' && chessRef.current.turn() === 'b') ||
-      (activeGame.color === 'BLACK' && chessRef.current.turn() === 'w');
+      (activeGame.color === "WHITE" && chessRef.current.turn() === "b") ||
+      (activeGame.color === "BLACK" && chessRef.current.turn() === "w");
 
     if (!aiTurn) {
       return;
@@ -279,7 +294,7 @@ export function PlayAI() {
       color: setup.color,
       elo: setup.elo,
     });
-    setPosition('start');
+    setPosition("start");
     setMoveHistory([]);
     setViewIndex(0);
     setSelectedSquare(null);
@@ -298,11 +313,15 @@ export function PlayAI() {
       return;
     }
 
-    setResultText('CHECKMATE — AI WINS');
+    setResultText("CHECKMATE — AI WINS");
     setAiThinking(false);
   };
 
-  const applyHumanMove = (from: string, to: string, promotion?: PromotionPiece) => {
+  const applyHumanMove = (
+    from: string,
+    to: string,
+    promotion?: PromotionPiece,
+  ) => {
     if (!activeGame || aiThinking || resultText) {
       return false;
     }
@@ -340,7 +359,12 @@ export function PlayAI() {
   };
 
   const handleDrop = (sourceSquare: string, targetSquare: string) => {
-    if (!playerTurn || aiThinking || resultText || viewIndex !== moveHistory.length) {
+    if (
+      !playerTurn ||
+      aiThinking ||
+      resultText ||
+      viewIndex !== moveHistory.length
+    ) {
       return false;
     }
 
@@ -348,14 +372,21 @@ export function PlayAI() {
   };
 
   const handleSquareClick = (square: string) => {
-    if (!playerTurn || aiThinking || resultText || viewIndex !== moveHistory.length) {
+    if (
+      !playerTurn ||
+      aiThinking ||
+      resultText ||
+      viewIndex !== moveHistory.length
+    ) {
       return;
     }
 
     const piece = chessRef.current.get(square as Square);
     const turn = chessRef.current.turn();
     const belongsToMover =
-      piece && ((piece.color === 'w' && turn === 'w') || (piece.color === 'b' && turn === 'b'));
+      piece &&
+      ((piece.color === "w" && turn === "w") ||
+        (piece.color === "b" && turn === "b"));
 
     if (selectedSquare) {
       if (belongsToMover) {
@@ -389,7 +420,11 @@ export function PlayAI() {
       return;
     }
 
-    const applied = applyHumanMove(pendingPromotion.from, pendingPromotion.to, promotion);
+    const applied = applyHumanMove(
+      pendingPromotion.from,
+      pendingPromotion.to,
+      promotion,
+    );
 
     if (applied) {
       setPendingPromotion(null);
@@ -413,8 +448,8 @@ export function PlayAI() {
     if (selectedSquare) {
       styles[selectedSquare] = {
         ...(styles[selectedSquare] ?? {}),
-        outline: '1px solid var(--text-1)',
-        outlineOffset: '-1px',
+        outline: "1px solid var(--text-1)",
+        outlineOffset: "-1px",
       };
     }
 
@@ -435,18 +470,21 @@ export function PlayAI() {
   const displayPosition = reviewMode ? reviewChess.fen() : position;
   const reviewRows = useMemo(
     () =>
-      Array.from({ length: Math.ceil(moveHistory.length / 2) }, (_, rowIndex) => {
-        const whiteIndex = rowIndex * 2;
-        const blackIndex = whiteIndex + 1;
+      Array.from(
+        { length: Math.ceil(moveHistory.length / 2) },
+        (_, rowIndex) => {
+          const whiteIndex = rowIndex * 2;
+          const blackIndex = whiteIndex + 1;
 
-        return {
-          moveNumber: rowIndex + 1,
-          white: moveHistory[whiteIndex] ?? '',
-          black: moveHistory[blackIndex] ?? '',
-          whiteIndex,
-          blackIndex,
-        };
-      }),
+          return {
+            moveNumber: rowIndex + 1,
+            white: moveHistory[whiteIndex] ?? "",
+            black: moveHistory[blackIndex] ?? "",
+            whiteIndex,
+            blackIndex,
+          };
+        },
+      ),
     [moveHistory],
   );
 
@@ -455,10 +493,11 @@ export function PlayAI() {
   }
 
   const captured = calculateCapturedPieces(chessRef.current);
-  const boardOrientation = activeGame.color === 'WHITE' ? 'white' : 'black';
-  const status = resultText
-    ?? (reviewMode && playerTurn
-      ? 'FINISH REVIEWING TO MAKE YOUR MOVE'
+  const boardOrientation = activeGame.color === "WHITE" ? "white" : "black";
+  const status =
+    resultText ??
+    (reviewMode && playerTurn
+      ? "FINISH REVIEWING TO MAKE YOUR MOVE"
       : statusText(chessRef.current, playerTurn, aiThinking, activeGame.color));
 
   return (
@@ -467,12 +506,17 @@ export function PlayAI() {
         <Card>
           <div className="chess-turn-banner">
             {status}
-            {aiThinking ? <span className="chess-thinking-cursor">_</span> : null}
+            {aiThinking ? (
+              <span className="chess-thinking-cursor">_</span>
+            ) : null}
           </div>
           {reviewMode ? (
             <div className="chess-review-banner">
               <span>{`REVIEWING MOVE ${viewIndex} OF ${moveHistory.length}`}</span>
-              <Button variant="ghost" onClick={() => setViewIndex(moveHistory.length)}>
+              <Button
+                variant="ghost"
+                onClick={() => setViewIndex(moveHistory.length)}
+              >
                 Back To Game
               </Button>
             </div>
@@ -484,20 +528,25 @@ export function PlayAI() {
               boardOrientation={boardOrientation}
               onPieceDrop={handleDrop}
               onSquareClick={handleSquareClick}
-              arePiecesDraggable={!reviewMode && !aiThinking && !resultText && playerTurn}
+              arePiecesDraggable={
+                !reviewMode && !aiThinking && !resultText && playerTurn
+              }
               boardWidth={boardWidth}
               customBoardStyle={{
-                border: '1px solid var(--border)',
+                border: "1px solid var(--border)",
                 borderRadius: 0,
               }}
-              customLightSquareStyle={{ backgroundColor: '#888888' }}
-              customDarkSquareStyle={{ backgroundColor: '#333333' }}
+              customLightSquareStyle={{ backgroundColor: "#888888" }}
+              customDarkSquareStyle={{ backgroundColor: "#333333" }}
               customSquareStyles={squareStyles}
             />
           </div>
           <div className="chess-board-footer">
-            <Button variant="ghost" onClick={() => setHintsEnabled((previous) => !previous)}>
-              {hintsEnabled ? 'Hints: On' : 'Hints: Off'}
+            <Button
+              variant="ghost"
+              onClick={() => setHintsEnabled((previous) => !previous)}
+            >
+              {hintsEnabled ? "Hints: On" : "Hints: Off"}
             </Button>
           </div>
         </Card>
@@ -506,10 +555,10 @@ export function PlayAI() {
           <Card className="chess-promotion-card">
             <div className="chess-chart-title">CHOOSE PROMOTION</div>
             <div className="chess-promotion-row">
-              <Button onClick={() => confirmPromotion('q')}>♛ Queen</Button>
-              <Button onClick={() => confirmPromotion('r')}>♜ Rook</Button>
-              <Button onClick={() => confirmPromotion('b')}>♝ Bishop</Button>
-              <Button onClick={() => confirmPromotion('n')}>♞ Knight</Button>
+              <Button onClick={() => confirmPromotion("q")}>♛ Queen</Button>
+              <Button onClick={() => confirmPromotion("r")}>♜ Rook</Button>
+              <Button onClick={() => confirmPromotion("b")}>♝ Bishop</Button>
+              <Button onClick={() => confirmPromotion("n")}>♞ Knight</Button>
             </div>
             <Button variant="ghost" onClick={cancelPromotion}>
               Cancel
@@ -530,15 +579,21 @@ export function PlayAI() {
           <div className="chess-stats-grid">
             <div className="chess-stat-row">
               <span className="chess-stat-label">Opponent</span>
-              <span className="chess-stat-value">OPPONENT: {activeGame.elo} ELO</span>
+              <span className="chess-stat-value">
+                OPPONENT: {activeGame.elo} ELO
+              </span>
             </div>
             <div className="chess-stat-row">
               <span className="chess-stat-label">Captured By White</span>
-              <span className="chess-stat-value">{captured.whiteCaptured || 'NONE'}</span>
+              <span className="chess-stat-value">
+                {captured.whiteCaptured || "NONE"}
+              </span>
             </div>
             <div className="chess-stat-row">
               <span className="chess-stat-label">Captured By Black</span>
-              <span className="chess-stat-value">{captured.blackCaptured || 'NONE'}</span>
+              <span className="chess-stat-value">
+                {captured.blackCaptured || "NONE"}
+              </span>
             </div>
           </div>
         </Card>
@@ -548,15 +603,26 @@ export function PlayAI() {
           <div className="chess-move-history">
             {reviewRows.length > 0 ? (
               reviewRows.map((row) => (
-                <div key={`${row.moveNumber}-${row.white}-${row.black}`} className="chess-move-row">
+                <div
+                  key={`${row.moveNumber}-${row.white}-${row.black}`}
+                  className="chess-move-row"
+                >
                   <span className="chess-move-number">{row.moveNumber}.</span>
                   <span
-                    className={viewIndex === row.whiteIndex + 1 ? 'chess-move-active' : undefined}
+                    className={
+                      viewIndex === row.whiteIndex + 1
+                        ? "chess-move-active"
+                        : undefined
+                    }
                   >
                     {row.white}
                   </span>
                   <span
-                    className={viewIndex === row.blackIndex + 1 ? 'chess-move-active' : undefined}
+                    className={
+                      viewIndex === row.blackIndex + 1
+                        ? "chess-move-active"
+                        : undefined
+                    }
                   >
                     {row.black}
                   </span>
@@ -567,12 +633,18 @@ export function PlayAI() {
             )}
           </div>
           <div className="chess-review-controls">
-            <Button variant="ghost" onClick={() => setViewIndex(0)} disabled={viewIndex === 0}>
+            <Button
+              variant="ghost"
+              onClick={() => setViewIndex(0)}
+              disabled={viewIndex === 0}
+            >
               |&lt;
             </Button>
             <Button
               variant="ghost"
-              onClick={() => setViewIndex((previous) => Math.max(0, previous - 1))}
+              onClick={() =>
+                setViewIndex((previous) => Math.max(0, previous - 1))
+              }
               disabled={viewIndex === 0}
             >
               &lt;
@@ -580,7 +652,9 @@ export function PlayAI() {
             <Button
               variant="ghost"
               onClick={() =>
-                setViewIndex((previous) => Math.min(moveHistory.length, previous + 1))
+                setViewIndex((previous) =>
+                  Math.min(moveHistory.length, previous + 1),
+                )
               }
               disabled={viewIndex === moveHistory.length}
             >
@@ -597,7 +671,11 @@ export function PlayAI() {
         </Card>
 
         <Card className="chess-control-card">
-          <Button variant="ghost" onClick={resign} disabled={Boolean(resultText)}>
+          <Button
+            variant="ghost"
+            onClick={resign}
+            disabled={Boolean(resultText)}
+          >
             Resign
           </Button>
           <Button onClick={newGame}>New Game</Button>

@@ -7,14 +7,80 @@ generator client {
   provider = "prisma-client-js"
 }
 
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+
+enum SubmissionStatus {
+  ACCEPTED
+  WRONG_ANSWER
+  TIME_LIMIT_EXCEEDED
+  RUNTIME_ERROR
+  COMPILE_ERROR
+  PENDING
+}
+
+enum ProgressStatus {
+  SOLVED
+  ATTEMPTED
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum QuantCategory {
+  MATH
+  PROBABILITY
+  FINANCE
+}
+
+enum PokerRank {
+  BRONZE
+  SILVER
+  GOLD
+  PLATINUM
+  DIAMOND
+  ELITE
+}
+
 model User {
-  id           String         @id @default(cuid())
-  email        String         @unique
-  username     String         @unique
-  passwordHash String
-  createdAt    DateTime       @default(now())
-  submissions  Submission[]
-  progress     UserProgress[]
+  id                String            @id @default(cuid())
+  email             String            @unique
+  username          String            @unique
+  passwordHash      String
+  role              UserRole          @default(USER)
+  googleId          String?           @unique
+  githubId          String?           @unique
+  avatarUrl         String?
+  createdAt         DateTime          @default(now())
+  submissions       Submission[]
+  progress          UserProgress[]
+  chessRating       ChessRating?
+  chessAttempts     ChessPuzzleAttempt[]
+  pokerProgress     PokerProgress?
+  mathSessions      MathSession[]
+  quantRatings      QuantRating[]
+  resetTokens       PasswordResetToken[]
+
+  @@map("users")
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+  @@map("password_reset_tokens")
 }
 
 model Problem {
@@ -35,6 +101,8 @@ model Problem {
   createdAt        DateTime       @default(now())
   submissions      Submission[]
   progress         UserProgress[]
+
+  @@map("problems")
 }
 
 model Submission {
@@ -50,6 +118,12 @@ model Submission {
   createdAt    DateTime         @default(now())
   user         User             @relation(fields: [userId], references: [id])
   problem      Problem          @relation(fields: [problemId], references: [id])
+
+  @@index([userId])
+  @@index([problemId])
+  @@index([status])
+  @@index([createdAt])
+  @@map("submissions")
 }
 
 model UserProgress {
@@ -62,24 +136,81 @@ model UserProgress {
   problem   Problem        @relation(fields: [problemId], references: [id])
 
   @@unique([userId, problemId])
+  @@index([status])
+  @@index([userId])
+  @@map("user_progress")
 }
 
-enum Difficulty {
-  EASY
-  MEDIUM
-  HARD
+model ChessRating {
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  rating          Float    @default(1500)
+  ratingDeviation Float    @default(350)
+  volatility      Float    @default(0.06)
+  lastPeriod      Int      @default(0)
+  puzzlesSolved   Int      @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("chess_ratings")
 }
 
-enum SubmissionStatus {
-  ACCEPTED
-  WRONG_ANSWER
-  TIME_LIMIT_EXCEEDED
-  RUNTIME_ERROR
-  COMPILE_ERROR
-  PENDING
+model ChessPuzzleAttempt {
+  id         String   @id @default(cuid())
+  userId     String
+  puzzleId   String
+  solved     Boolean
+  ratingDelta Float
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([puzzleId])
+  @@map("chess_puzzle_attempts")
 }
 
-enum ProgressStatus {
-  SOLVED
-  ATTEMPTED
+model PokerProgress {
+  id              String    @id @default(cuid())
+  userId          String    @unique
+  rank            PokerRank @default(BRONZE)
+  totalAttempts   Int       @default(0)
+  correctAttempts Int       @default(0)
+  currentStreak   Int       @default(0)
+  bestStreak      Int       @default(0)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("poker_progress")
+}
+
+model MathSession {
+  id        String   @id @default(cuid())
+  userId    String
+  operation String
+  correct   Int
+  total     Int
+  duration  Int
+  score     Int
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([createdAt])
+  @@map("math_sessions")
+}
+
+model QuantRating {
+  id        String        @id @default(cuid())
+  userId    String
+  category  QuantCategory
+  rating    Float         @default(1200)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, category])
+  @@index([userId])
+  @@map("quant_ratings")
 }

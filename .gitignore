@@ -7,3 +7,7 @@ dist/
 build/
 .next/
 out/
+.vercel
+
+# Local Netlify folder
+.netlify

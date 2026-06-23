@@ -7,10 +7,13 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",
+    "@sentry/browser": "^7.120.4",
+    "@sentry/core": "^7.120.4",
     "axios": "^1.8.4",
     "chess.js": "^1.1.0",
     "katex": "^0.16.11",
@@ -23,10 +26,13 @@
     "zustand": "^5.0.3"
   },
   "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
     "@types/react": "^18.3.20",
     "@types/react-dom": "^18.3.6",
     "@vitejs/plugin-react": "^4.4.1",
-    "tailwindcss": "^3.4.17",
+    "jsdom": "^29.1.1",
     "typescript": "^5.8.2",
     "vite": "^5.4.14",
     "vitest": "^2.1.8"

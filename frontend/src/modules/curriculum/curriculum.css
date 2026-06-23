@@ -1,0 +1,257 @@
+.cur-module {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.cur-card {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.cur-grid {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.cur-badge-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.cur-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.cur-section-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.cur-subtle {
+  font-size: 0.82rem;
+  opacity: 0.7;
+  line-height: 1.55;
+}
+
+.cur-overall {
+  display: grid;
+  gap: 0.4rem;
+  margin-top: 0.25rem;
+}
+
+.cur-overall-count {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+/* PHASE HEADER */
+.cur-phase-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--text-1);
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+}
+
+.cur-phase-head-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.cur-phase-months {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.cur-phase-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.cur-phase-head-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cur-phase-prog {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.cur-chevron {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  width: 1.2rem;
+  text-align: center;
+  opacity: 0.6;
+}
+
+/* PHASE BODY */
+.cur-phase-body {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.cur-focus {
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.cur-split {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  opacity: 0.55;
+  letter-spacing: 0.02em;
+}
+
+.cur-block-label {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  opacity: 0.6;
+  margin-top: 0.5rem;
+}
+
+.cur-list {
+  display: grid;
+  gap: 0.4rem;
+  padding-left: 1.1rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.cur-flagship {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  border-left: 2px solid var(--border-hi);
+  padding-left: 0.75rem;
+}
+
+/* GATES */
+.cur-gates {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.cur-gate {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  cursor: pointer;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.cur-gate:hover {
+  border-color: var(--border-hi);
+}
+
+.cur-gate input {
+  display: none;
+}
+
+.cur-gate-box {
+  flex: 0 0 1rem;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid var(--text-1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  margin-top: 0.1rem;
+}
+
+.cur-gate-done {
+  opacity: 0.55;
+}
+
+.cur-gate-done .cur-gate-box {
+  background: var(--text-1);
+  color: var(--bg);
+}
+
+.cur-gate-done .cur-gate-text {
+  text-decoration: line-through;
+}
+
+/* STAGES */
+.cur-stage {
+  display: grid;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.cur-stage-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.cur-stage-blurb {
+  font-size: 0.78rem;
+  opacity: 0.6;
+}
+
+.cur-course-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.cur-course-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.4rem 0.4rem;
+  vertical-align: top;
+}
+
+.cur-platform {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  opacity: 0.6;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.cur-spine td {
+  color: var(--text-1);
+  font-weight: 600;
+}
+
+.cur-milestone {
+  font-size: 0.78rem;
+  font-style: italic;
+  opacity: 0.7;
+  padding-top: 0.25rem;
+}
+
+/* WEEK ONE */
+.cur-week-list {
+  display: grid;
+  gap: 0.6rem;
+  padding-left: 1.2rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}

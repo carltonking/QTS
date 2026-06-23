@@ -1,16 +1,16 @@
-import { useEffect, useMemo, useState } from 'react';
-import { Badge } from '../../shared/components/Badge';
-import { Button } from '../../shared/components/Button';
-import { Card } from '../../shared/components/Card';
-import { CardComponent } from './CardComponent';
-import RangeChart from './RangeChart';
-import { Deck } from './engine/Deck';
-import { HandEvaluator } from './engine/HandEvaluator';
-import type { Card as PokerCard, Position, Rank } from './engine/types';
+import { useEffect, useState } from "react";
+import { Badge } from "../../shared/components/Badge";
+import { Button } from "../../shared/components/Button";
+import { Card } from "../../shared/components/Card";
+import { CardComponent } from "./CardComponent";
+import RangeChart from "./RangeChart";
+import { Deck } from "./engine/Deck";
+import { HandEvaluator } from "./engine/HandEvaluator";
+import type { Card as PokerCard, Position, Rank } from "./engine/types";
 
-type SessionMode = 'PRACTICE' | 'PLAY';
-type SimulatorSubMode = 'FULL_HAND' | 'PREFLOP' | 'FLOP' | 'POSTFLOP';
-type HeroAction = 'FOLD' | 'CALL' | 'RAISE';
+type SessionMode = "PRACTICE" | "PLAY";
+type SimulatorSubMode = "FULL_HAND" | "PREFLOP" | "FLOP" | "POSTFLOP";
+type HeroAction = "FOLD" | "CALL" | "RAISE";
 type Seat = {
   id: string;
   name: string;
@@ -29,7 +29,7 @@ type FullHandSeed = {
 
 type ScenarioData = {
   key: string;
-  street: 'PREFLOP' | 'FLOP' | 'TURN' | 'RIVER';
+  street: "PREFLOP" | "FLOP" | "TURN" | "RIVER";
   heroPosition: Position;
   heroCards: [PokerCard, PokerCard];
   communityCards: PokerCard[];
@@ -50,17 +50,23 @@ type SimulatorModeProps = {
   onScoredResult: (correct: boolean) => void;
 };
 
-const POSITIONS: Position[] = ['BTN', 'SB', 'BB', 'UTG', 'MP', 'CO'];
-const SEAT_LAYOUT = ['poker-seat-top-left', 'poker-seat-top-center', 'poker-seat-top-right', 'poker-seat-middle-left', 'poker-seat-middle-right'];
+const POSITIONS: Position[] = ["BTN", "SB", "BB", "UTG", "MP", "CO"];
+const SEAT_LAYOUT = [
+  "poker-seat-top-left",
+  "poker-seat-top-center",
+  "poker-seat-top-right",
+  "poker-seat-middle-left",
+  "poker-seat-middle-right",
+];
 const RANK_VALUE: Record<Rank, number> = {
-  '2': 2,
-  '3': 3,
-  '4': 4,
-  '5': 5,
-  '6': 6,
-  '7': 7,
-  '8': 8,
-  '9': 9,
+  "2": 2,
+  "3": 3,
+  "4": 4,
+  "5": 5,
+  "6": 6,
+  "7": 7,
+  "8": 8,
+  "9": 9,
   T: 10,
   J: 11,
   Q: 12,
@@ -87,7 +93,7 @@ function rankScore(cards: [PokerCard, PokerCard]): number {
 }
 
 function isInPosition(position: Position): boolean {
-  return position === 'BTN' || position === 'CO';
+  return position === "BTN" || position === "CO";
 }
 
 function shufflePositions(): Position[] {
@@ -109,13 +115,13 @@ function dealSeats(deck: Deck): { seats: Seat[]; heroPosition: Position } {
   const heroCards = deck.deal(2) as [PokerCard, PokerCard];
   const seats: Seat[] = [
     {
-      id: 'hero',
-      name: 'HERO',
+      id: "hero",
+      name: "HERO",
       stack: 100,
       position: heroPosition,
       holeCards: heroCards,
       isHero: true,
-      seatClass: 'poker-seat-hero',
+      seatClass: "poker-seat-hero",
     },
   ];
 
@@ -134,23 +140,31 @@ function dealSeats(deck: Deck): { seats: Seat[]; heroPosition: Position } {
   return { seats, heroPosition };
 }
 
-function buildIndependentScenario(subMode: Exclude<SimulatorSubMode, 'FULL_HAND'>): ScenarioData {
+function buildIndependentScenario(
+  subMode: Exclude<SimulatorSubMode, "FULL_HAND">,
+): ScenarioData {
   const deck = new Deck();
   deck.shuffle();
 
   const { seats, heroPosition } = dealSeats(deck);
   const heroCards = seats[0].holeCards;
   const communityCards =
-    subMode === 'PREFLOP'
+    subMode === "PREFLOP"
       ? []
-      : subMode === 'FLOP'
+      : subMode === "FLOP"
         ? deck.deal(3)
         : Math.random() > 0.5
           ? deck.deal(4)
           : deck.deal(5);
 
-  const street: ScenarioData['street'] =
-    subMode === 'PREFLOP' ? 'PREFLOP' : communityCards.length === 3 ? 'FLOP' : communityCards.length === 4 ? 'TURN' : 'RIVER';
+  const street: ScenarioData["street"] =
+    subMode === "PREFLOP"
+      ? "PREFLOP"
+      : communityCards.length === 3
+        ? "FLOP"
+        : communityCards.length === 4
+          ? "TURN"
+          : "RIVER";
 
   return resolveDecision({
     key: `independent-${subMode}-${Date.now()}-${Math.random()}`,
@@ -166,7 +180,13 @@ function createFullHandSeed(): FullHandSeed {
   const deck = new Deck();
   deck.shuffle();
   const { seats, heroPosition } = dealSeats(deck);
-  const board = deck.deal(5) as [PokerCard, PokerCard, PokerCard, PokerCard, PokerCard];
+  const board = deck.deal(5) as [
+    PokerCard,
+    PokerCard,
+    PokerCard,
+    PokerCard,
+    PokerCard,
+  ];
   return {
     seats,
     heroPosition,
@@ -174,13 +194,29 @@ function createFullHandSeed(): FullHandSeed {
   };
 }
 
-function buildFullHandScenario(seed: FullHandSeed, stageIndex: number): ScenarioData {
-  const street: ScenarioData['street'] = stageIndex === 0 ? 'PREFLOP' : stageIndex === 1 ? 'FLOP' : stageIndex === 2 ? 'TURN' : 'RIVER';
+function buildFullHandScenario(
+  seed: FullHandSeed,
+  stageIndex: number,
+): ScenarioData {
+  const street: ScenarioData["street"] =
+    stageIndex === 0
+      ? "PREFLOP"
+      : stageIndex === 1
+        ? "FLOP"
+        : stageIndex === 2
+          ? "TURN"
+          : "RIVER";
   const communityCards =
-    stageIndex === 0 ? [] : stageIndex === 1 ? seed.board.slice(0, 3) : stageIndex === 2 ? seed.board.slice(0, 4) : seed.board;
+    stageIndex === 0
+      ? []
+      : stageIndex === 1
+        ? seed.board.slice(0, 3)
+        : stageIndex === 2
+          ? seed.board.slice(0, 4)
+          : seed.board;
 
   return resolveDecision({
-    key: `full-${stageIndex}-${seed.board.map((card) => `${card.rank}${card.suit}`).join('')}`,
+    key: `full-${stageIndex}-${seed.board.map((card) => `${card.rank}${card.suit}`).join("")}`,
     street,
     heroPosition: seed.heroPosition,
     heroCards: seed.seats[0].holeCards,
@@ -189,61 +225,81 @@ function buildFullHandScenario(seed: FullHandSeed, stageIndex: number): Scenario
   });
 }
 
-function percentileFromHand(heroCards: [PokerCard, PokerCard], communityCards: PokerCard[]): number {
+function percentileFromHand(
+  heroCards: [PokerCard, PokerCard],
+  communityCards: PokerCard[],
+): number {
   if (communityCards.length === 0) {
     return rankScore(heroCards);
   }
 
   const hand = HandEvaluator.evaluate([...heroCards, ...communityCards]);
-  return Math.max(0, Math.min(100, Math.round(((7463 - hand.rank) / 7462) * 100)));
+  return Math.max(
+    0,
+    Math.min(100, Math.round(((7463 - hand.rank) / 7462) * 100)),
+  );
 }
 
-function resolveDecision(base: Omit<ScenarioData, 'potSize' | 'betSize' | 'facingRaise' | 'actionLabel' | 'correctAction' | 'explanation' | 'percentile' | 'boardTexture'>): ScenarioData {
+function resolveDecision(
+  base: Omit<
+    ScenarioData,
+    | "potSize"
+    | "betSize"
+    | "facingRaise"
+    | "actionLabel"
+    | "correctAction"
+    | "explanation"
+    | "percentile"
+    | "boardTexture"
+  >,
+): ScenarioData {
   const percentile = percentileFromHand(base.heroCards, base.communityCards);
   const street = base.street;
   const facingRaise =
-    street === 'PREFLOP' ? Math.random() > 0.4 : Math.random() > 0.2;
+    street === "PREFLOP" ? Math.random() > 0.4 : Math.random() > 0.2;
   const potSize =
-    street === 'PREFLOP'
+    street === "PREFLOP"
       ? Number((2.5 + Math.random() * 6.5).toFixed(1))
       : Number((6 + Math.random() * 28).toFixed(1));
   const betSize = facingRaise
     ? Number(
-        (
-          street === 'PREFLOP'
-            ? 2 + Math.random() * 4
-            : potSize * (Math.random() > 0.75 ? 1.2 : Math.random() > 0.4 ? 0.75 : 0.5)
+        (street === "PREFLOP"
+          ? 2 + Math.random() * 4
+          : potSize *
+            (Math.random() > 0.75 ? 1.2 : Math.random() > 0.4 ? 0.75 : 0.5)
         ).toFixed(1),
       )
     : 0;
   const texture =
-    base.communityCards.length > 0 ? HandEvaluator.classifyBoardTexture(base.communityCards).label : 'NO BOARD';
+    base.communityCards.length > 0
+      ? HandEvaluator.classifyBoardTexture(base.communityCards).label
+      : "NO BOARD";
   const actionLabel = facingRaise
-    ? street === 'PREFLOP'
+    ? street === "PREFLOP"
       ? `FACING ${betSize.toFixed(1)} BB OPEN`
       : `FACING ${betSize.toFixed(1)} BB BET`
-    : 'CHECKED TO YOU';
+    : "CHECKED TO YOU";
 
-  if (street === 'PREFLOP') {
+  if (street === "PREFLOP") {
     let correctAction: HeroAction;
 
     if (percentile >= 70) {
-      correctAction = 'RAISE';
+      correctAction = "RAISE";
     } else if (percentile >= 55) {
-      correctAction = isInPosition(base.heroPosition) ? 'RAISE' : 'CALL';
+      correctAction = isInPosition(base.heroPosition) ? "RAISE" : "CALL";
     } else if (percentile >= 40) {
-      correctAction = base.heroPosition === 'BTN' ? 'RAISE' : 'CALL';
+      correctAction = base.heroPosition === "BTN" ? "RAISE" : "CALL";
     } else {
-      correctAction = facingRaise ? 'FOLD' : 'CALL';
+      correctAction = facingRaise ? "FOLD" : "CALL";
     }
 
     const explanation = `YOUR ${percentile}TH PERCENTILE STARTING HAND FROM ${base.heroPosition} ${
-      correctAction === 'RAISE'
-        ? 'WANTS TO BUILD THE POT AND CAPTURE POSITIONAL EDGE.'
-        : correctAction === 'CALL'
-          ? 'REALIZES EQUITY BETTER AS A FLAT OR CHECK-CALL THAN AS A PURE OPEN.'
-          : 'SITS TOO LOW IN RANGE TO CONTINUE AGAINST PRESSURE PROFITABLY.'
-    } ${facingRaise ? `YOU ARE FACING ${betSize.toFixed(1)} BB INTO ${potSize.toFixed(1)} BB.` : 'NO RAISE HAS OCCURRED YET.'}`;
+      correctAction === "RAISE"
+        ? "WANTS TO BUILD THE POT AND CAPTURE POSITIONAL EDGE."
+        : correctAction === "CALL"
+          ? "REALIZES EQUITY BETTER AS A FLAT OR CHECK-CALL THAN AS A PURE OPEN."
+          : "SITS TOO LOW IN RANGE TO CONTINUE AGAINST PRESSURE PROFITABLY."
+    } ${facingRaise ? `YOU ARE FACING ${betSize.toFixed(1)} BB INTO ${potSize.toFixed(1)} BB.` : "NO RAISE HAS OCCURRED YET."}`;
 
     return {
       ...base,
@@ -261,20 +317,20 @@ function resolveDecision(base: Omit<ScenarioData, 'potSize' | 'betSize' | 'facin
   let correctAction: HeroAction;
 
   if (percentile >= 80) {
-    correctAction = 'RAISE';
+    correctAction = "RAISE";
   } else if (percentile >= 40) {
-    correctAction = !facingRaise || betSize <= potSize * 0.75 ? 'CALL' : 'FOLD';
+    correctAction = !facingRaise || betSize <= potSize * 0.75 ? "CALL" : "FOLD";
   } else {
-    correctAction = facingRaise ? 'FOLD' : 'CALL';
+    correctAction = facingRaise ? "FOLD" : "CALL";
   }
 
   const explanation = `WITH ${percentile}TH PERCENTILE SHOWDOWN VALUE ON A ${texture} BOARD, ${
-    correctAction === 'RAISE'
-      ? 'YOUR RANGE WANTS TO PRESS VALUE AND DENY EQUITY.'
-      : correctAction === 'CALL'
-        ? 'YOU HAVE ENOUGH EQUITY OR SHOWDOWN VALUE TO CONTINUE WITHOUT BLOATED AGGRESSION.'
-        : 'THIS HAND DOES NOT MEET THE DEFENSE THRESHOLD AGAINST THE PRICE OFFERED.'
-  } ${facingRaise ? `VILLAIN IS BETTING ${betSize.toFixed(1)} BB INTO ${potSize.toFixed(1)} BB.` : 'VILLAIN HAS CHECKED, SO CHECKING BACK IS FINE.'}`;
+    correctAction === "RAISE"
+      ? "YOUR RANGE WANTS TO PRESS VALUE AND DENY EQUITY."
+      : correctAction === "CALL"
+        ? "YOU HAVE ENOUGH EQUITY OR SHOWDOWN VALUE TO CONTINUE WITHOUT BLOATED AGGRESSION."
+        : "THIS HAND DOES NOT MEET THE DEFENSE THRESHOLD AGAINST THE PRICE OFFERED."
+  } ${facingRaise ? `VILLAIN IS BETTING ${betSize.toFixed(1)} BB INTO ${potSize.toFixed(1)} BB.` : "VILLAIN HAS CHECKED, SO CHECKING BACK IS FINE."}`;
 
   return {
     ...base,
@@ -289,22 +345,40 @@ function resolveDecision(base: Omit<ScenarioData, 'potSize' | 'betSize' | 'facin
   };
 }
 
-export default function SimulatorMode({ sessionMode, timeLimitSec, onScoredResult }: SimulatorModeProps) {
-  const [subMode, setSubMode] = useState<SimulatorSubMode>('FULL_HAND');
-  const [fullHandSeed, setFullHandSeed] = useState<FullHandSeed>(() => createFullHandSeed());
+export default function SimulatorMode({
+  sessionMode,
+  timeLimitSec,
+  onScoredResult,
+}: SimulatorModeProps) {
+  const [subMode, setSubMode] = useState<SimulatorSubMode>("FULL_HAND");
+  const [fullHandSeed, setFullHandSeed] = useState<FullHandSeed>(() =>
+    createFullHandSeed(),
+  );
   const [fullHandStage, setFullHandStage] = useState(0);
-  const [scenario, setScenario] = useState<ScenarioData>(() => buildFullHandScenario(fullHandSeed, 0));
-  const [selectedAction, setSelectedAction] = useState<HeroAction | 'TIMEOUT' | null>(null);
+  const [scenario, setScenario] = useState<ScenarioData>(() =>
+    buildFullHandScenario(fullHandSeed, 0),
+  );
+  const [selectedAction, setSelectedAction] = useState<
+    HeroAction | "TIMEOUT" | null
+  >(null);
   const [correctCount, setCorrectCount] = useState(0);
   const [handCount, setHandCount] = useState(0);
   const [buttonUnlocked, setButtonUnlocked] = useState(true);
   const [timeLeft, setTimeLeft] = useState<number>(timeLimitSec ?? 0);
 
-  const isCorrect = selectedAction !== null && selectedAction !== 'TIMEOUT' && selectedAction === scenario.correctAction;
-  const revealChart = selectedAction !== null && (sessionMode === 'PRACTICE' || !isCorrect);
+  const isCorrect =
+    selectedAction !== null &&
+    selectedAction !== "TIMEOUT" &&
+    selectedAction === scenario.correctAction;
+  const revealChart =
+    selectedAction !== null && (sessionMode === "PRACTICE" || !isCorrect);
 
-  const loadScenario = (mode: SimulatorSubMode, nextStage = 0, nextSeed?: FullHandSeed) => {
-    if (mode === 'FULL_HAND') {
+  const loadScenario = (
+    mode: SimulatorSubMode,
+    nextStage = 0,
+    nextSeed?: FullHandSeed,
+  ) => {
+    if (mode === "FULL_HAND") {
       const seed = nextSeed ?? createFullHandSeed();
       setFullHandSeed(seed);
       setFullHandStage(nextStage);
@@ -316,8 +390,8 @@ export default function SimulatorMode({ sessionMode, timeLimitSec, onScoredResul
   };
 
   useEffect(() => {
-    if (subMode === 'FULL_HAND') {
-      loadScenario('FULL_HAND', 0, createFullHandSeed());
+    if (subMode === "FULL_HAND") {
+      loadScenario("FULL_HAND", 0, createFullHandSeed());
     } else {
       loadScenario(subMode);
     }
@@ -326,7 +400,11 @@ export default function SimulatorMode({ sessionMode, timeLimitSec, onScoredResul
   }, [subMode]);
 
   useEffect(() => {
-    if (sessionMode !== 'PLAY' || timeLimitSec === null || selectedAction !== null) {
+    if (
+      sessionMode !== "PLAY" ||
+      timeLimitSec === null ||
+      selectedAction !== null
+    ) {
       return;
     }
 
@@ -339,7 +417,7 @@ export default function SimulatorMode({ sessionMode, timeLimitSec, onScoredResul
 
       if (remaining <= 0) {
         window.clearInterval(timer);
-        setSelectedAction('TIMEOUT');
+        setSelectedAction("TIMEOUT");
         setHandCount((current) => current + 1);
         onScoredResult(false);
         setButtonUnlocked(false);
@@ -350,7 +428,11 @@ export default function SimulatorMode({ sessionMode, timeLimitSec, onScoredResul
   }, [onScoredResult, scenario.key, selectedAction, sessionMode, timeLimitSec]);
 
   useEffect(() => {
-    if (sessionMode !== 'PLAY' || !selectedAction || selectedAction === scenario.correctAction) {
+    if (
+      sessionMode !== "PLAY" ||
+      !selectedAction ||
+      selectedAction === scenario.correctAction
+    ) {
       setButtonUnlocked(true);
       return;
     }
@@ -376,16 +458,16 @@ export default function SimulatorMode({ sessionMode, timeLimitSec, onScoredResul
     setSelectedAction(null);
     setButtonUnlocked(true);
 
-    if (subMode === 'FULL_HAND' && fullHandStage < 3) {
+    if (subMode === "FULL_HAND" && fullHandStage < 3) {
       const stage = fullHandStage + 1;
       setFullHandStage(stage);
       setScenario(buildFullHandScenario(fullHandSeed, stage));
       return;
     }
 
-    if (subMode === 'FULL_HAND') {
+    if (subMode === "FULL_HAND") {
       const seed = createFullHandSeed();
-      loadScenario('FULL_HAND', 0, seed);
+      loadScenario("FULL_HAND", 0, seed);
       return;
     }
 
@@ -393,8 +475,10 @@ export default function SimulatorMode({ sessionMode, timeLimitSec, onScoredResul
   };
 
   const accuracy = handCount > 0 ? (correctCount / handCount) * 100 : 0;
-  const callButtonLabel = scenario.facingRaise ? 'CALL' : 'CHECK / CALL';
-  const timerPercent = timeLimitSec ? Math.max(0, (timeLeft / timeLimitSec) * 100) : 100;
+  const callButtonLabel = scenario.facingRaise ? "CALL" : "CHECK / CALL";
+  const timerPercent = timeLimitSec
+    ? Math.max(0, (timeLeft / timeLimitSec) * 100)
+    : 100;
 
   return (
     <div className="poker-mode-layout">
@@ -402,27 +486,36 @@ export default function SimulatorMode({ sessionMode, timeLimitSec, onScoredResul
         <div className="poker-mode-header">
           <Badge label="Simulator" />
           <div className="poker-pill-row">
-            {(['FULL_HAND', 'PREFLOP', 'FLOP', 'POSTFLOP'] as const).map((mode) => (
-              <Button
-                key={mode}
-                variant={subMode === mode ? 'default' : 'ghost'}
-                onClick={() => setSubMode(mode)}
-              >
-                {mode.replace('_', ' ')}
-              </Button>
-            ))}
+            {(["FULL_HAND", "PREFLOP", "FLOP", "POSTFLOP"] as const).map(
+              (mode) => (
+                <Button
+                  key={mode}
+                  variant={subMode === mode ? "default" : "ghost"}
+                  onClick={() => setSubMode(mode)}
+                >
+                  {mode.replace("_", " ")}
+                </Button>
+              ),
+            )}
           </div>
         </div>
 
         <div className="poker-stats-strip">
           <span>HANDS {handCount}</span>
           <span>CORRECT {accuracy.toFixed(0)}%</span>
-          <span>{sessionMode === 'PLAY' && timeLimitSec ? `${Math.ceil(timeLeft)}S LEFT` : 'NO TIMER'}</span>
+          <span>
+            {sessionMode === "PLAY" && timeLimitSec
+              ? `${Math.ceil(timeLeft)}S LEFT`
+              : "NO TIMER"}
+          </span>
         </div>
 
-        {sessionMode === 'PLAY' && timeLimitSec ? (
+        {sessionMode === "PLAY" && timeLimitSec ? (
           <div className="poker-timer-bar">
-            <div className="poker-timer-fill" style={{ width: `${timerPercent}%` }} />
+            <div
+              className="poker-timer-fill"
+              style={{ width: `${timerPercent}%` }}
+            />
           </div>
         ) : null}
 
@@ -446,18 +539,28 @@ export default function SimulatorMode({ sessionMode, timeLimitSec, onScoredResul
                 <div className="poker-seat-meta">100 BB</div>
                 <div className="poker-seat-cards">
                   {scenario.heroCards.map((card, index) => (
-                    <CardComponent key={`hero-${index}`} card={card} size="lg" />
+                    <CardComponent
+                      key={`hero-${index}`}
+                      card={card}
+                      size="lg"
+                    />
                   ))}
                 </div>
                 <Badge label={scenario.heroPosition} size="sm" />
               </div>
 
               <div className="poker-table-center">
-                <div className="poker-pot-box">POT {scenario.potSize.toFixed(1)} BB</div>
+                <div className="poker-pot-box">
+                  POT {scenario.potSize.toFixed(1)} BB
+                </div>
                 <div className="poker-board-row">
                   {scenario.communityCards.length > 0 ? (
                     scenario.communityCards.map((card, index) => (
-                      <CardComponent key={`board-${index}`} card={card} size="md" />
+                      <CardComponent
+                        key={`board-${index}`}
+                        card={card}
+                        size="md"
+                      />
                     ))
                   ) : (
                     <div className="poker-board-empty">PREFLOP</div>
@@ -470,30 +573,64 @@ export default function SimulatorMode({ sessionMode, timeLimitSec, onScoredResul
           <div className="poker-scenario-column">
             <Card className="poker-info-card">
               <div className="poker-info-grid">
-                <div className="poker-info-row"><span>STREET</span><span>{scenario.street}</span></div>
-                <div className="poker-info-row"><span>ACTION</span><span>{scenario.actionLabel}</span></div>
-                <div className="poker-info-row"><span>BOARD</span><span>{scenario.boardTexture}</span></div>
-                <div className="poker-info-row"><span>HAND SCORE</span><span>{scenario.percentile} / 100</span></div>
+                <div className="poker-info-row">
+                  <span>STREET</span>
+                  <span>{scenario.street}</span>
+                </div>
+                <div className="poker-info-row">
+                  <span>ACTION</span>
+                  <span>{scenario.actionLabel}</span>
+                </div>
+                <div className="poker-info-row">
+                  <span>BOARD</span>
+                  <span>{scenario.boardTexture}</span>
+                </div>
+                <div className="poker-info-row">
+                  <span>HAND SCORE</span>
+                  <span>{scenario.percentile} / 100</span>
+                </div>
               </div>
             </Card>
 
             <Card className="poker-action-card">
               <div className="poker-action-grid">
-                <Button onClick={() => submit('FOLD')} disabled={selectedAction !== null}>
+                <Button
+                  onClick={() => submit("FOLD")}
+                  disabled={selectedAction !== null}
+                >
                   Fold
                 </Button>
-                <Button onClick={() => submit('CALL')} disabled={selectedAction !== null}>
+                <Button
+                  onClick={() => submit("CALL")}
+                  disabled={selectedAction !== null}
+                >
                   {callButtonLabel}
                 </Button>
-                <Button onClick={() => submit('RAISE')} disabled={selectedAction !== null}>
+                <Button
+                  onClick={() => submit("RAISE")}
+                  disabled={selectedAction !== null}
+                >
                   Raise
                 </Button>
               </div>
 
               {selectedAction ? (
-                <div className={`poker-feedback-box ${isCorrect ? 'poker-feedback-hit' : 'poker-feedback-miss'}`}>
-                  <div>{selectedAction === 'TIMEOUT' ? 'TIME EXPIRED' : isCorrect ? 'CORRECT' : 'INCORRECT'}</div>
-                  <div>CORRECT ACTION: {scenario.correctAction === 'CALL' && !scenario.facingRaise ? 'CHECK / CALL' : scenario.correctAction}</div>
+                <div
+                  className={`poker-feedback-box ${isCorrect ? "poker-feedback-hit" : "poker-feedback-miss"}`}
+                >
+                  <div>
+                    {selectedAction === "TIMEOUT"
+                      ? "TIME EXPIRED"
+                      : isCorrect
+                        ? "CORRECT"
+                        : "INCORRECT"}
+                  </div>
+                  <div>
+                    CORRECT ACTION:{" "}
+                    {scenario.correctAction === "CALL" && !scenario.facingRaise
+                      ? "CHECK / CALL"
+                      : scenario.correctAction}
+                  </div>
                 </div>
               ) : null}
 
@@ -509,7 +646,9 @@ export default function SimulatorMode({ sessionMode, timeLimitSec, onScoredResul
 
               {selectedAction ? (
                 <Button onClick={nextScenario} disabled={!buttonUnlocked}>
-                  {subMode === 'FULL_HAND' && fullHandStage < 3 ? 'Next Street' : 'Next Scenario'}
+                  {subMode === "FULL_HAND" && fullHandStage < 3
+                    ? "Next Street"
+                    : "Next Scenario"}
                 </Button>
               ) : null}
             </Card>

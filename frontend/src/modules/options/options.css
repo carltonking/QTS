@@ -1,0 +1,211 @@
+.opt-module {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.opt-card {
+  display: grid;
+  gap: 1rem;
+}
+
+.opt-grid {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.opt-badge-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.opt-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.opt-subtle {
+  font-size: 0.82rem;
+  opacity: 0.7;
+  line-height: 1.5;
+}
+
+.opt-section-label {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  opacity: 0.6;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.opt-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 720px) {
+  .opt-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* INPUTS */
+.opt-toggle-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.opt-toggle {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-2);
+  padding: 0.4rem 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.opt-toggle:hover {
+  border-color: var(--border-hi);
+  color: var(--text-1);
+}
+
+.opt-toggle-on {
+  border-color: var(--text-1);
+  color: var(--text-1);
+  background: var(--surface-2);
+}
+
+.opt-field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.opt-field-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.8rem;
+}
+
+.opt-field-label {
+  letter-spacing: 0.04em;
+}
+
+.opt-sym {
+  font-family: var(--font-mono);
+  opacity: 0.5;
+  margin-left: 0.25rem;
+}
+
+.opt-field-value {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.opt-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  background: var(--border-hi);
+  outline: none;
+  cursor: pointer;
+}
+
+.opt-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: var(--text-1);
+  border: 1px solid var(--bg);
+  cursor: pointer;
+}
+
+.opt-range::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: var(--text-1);
+  border: 1px solid var(--bg);
+  cursor: pointer;
+  border-radius: 0;
+}
+
+/* GREEKS */
+.opt-price {
+  font-family: var(--font-mono);
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.opt-greeks {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.opt-greeks td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 0.4rem;
+}
+
+.opt-greeks td:nth-child(2) {
+  text-align: right;
+  font-weight: 600;
+}
+
+.opt-greek-note {
+  opacity: 0.5;
+  font-size: 0.72rem;
+  text-align: right;
+}
+
+/* MONTE CARLO */
+.opt-mc-compare {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* IMPLIED VOL */
+.opt-iv-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.opt-iv-input {
+  border: 1px solid var(--text-1);
+  background: var(--bg);
+  color: var(--text-1);
+  padding: 0.6rem 0.8rem;
+  font-family: var(--font-mono);
+  outline: none;
+  width: 220px;
+}
+
+.opt-iv-result {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+}
+
+/* FORMULA */
+.opt-formula {
+  overflow-x: auto;
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+}

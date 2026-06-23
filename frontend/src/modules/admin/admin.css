@@ -1,0 +1,115 @@
+.admin-container {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+.admin-card {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  padding: 1.5rem;
+}
+
+.admin-title {
+  font-size: 1.2rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 1.5rem;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.admin-tab {
+  background: none;
+  border: none;
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.15s;
+}
+
+.admin-tab.active {
+  opacity: 1;
+  border-bottom: 2px solid var(--color-text);
+}
+
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.admin-stat {
+  border: 1px solid var(--color-border);
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.admin-stat-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.admin-users-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.admin-users-table th,
+.admin-users-table td {
+  border: 1px solid var(--color-border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+.admin-users-table th {
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+}
+
+.admin-role-badge {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  padding: 0.15rem 0.4rem;
+  border: 1px solid;
+}
+
+.admin-role-badge.admin {
+  border-color: #00ff00;
+  color: #00ff00;
+}
+
+.admin-role-badge.user {
+  border-color: #888;
+  color: #888;
+}
+
+.admin-action-btn {
+  background: none;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.admin-action-btn:hover {
+  background: var(--color-border);
+}

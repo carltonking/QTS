@@ -242,3 +242,32 @@
     overflow-x: auto;
   }
 }
+
+@media (max-width: 768px) {
+  .math-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .math-config-grid {
+    grid-template-columns: 1fr;
+  }
+  .math-config-operations {
+    flex-wrap: wrap;
+  }
+  .math-history-wrap {
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .math-problem {
+    font-size: 2rem;
+  }
+  .math-input {
+    width: 100%;
+  }
+  .math-stats {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}

@@ -1,6 +1,7 @@
-import { useEffect, useMemo, useState } from 'react';
-import Editor from '@monaco-editor/react';
-import { Button } from '../../../shared/components/Button';
+import { useEffect, useMemo, useState } from "react";
+import Editor from "@monaco-editor/react";
+import { Button } from "../../../shared/components/Button";
+import { getCodeDraftKey } from "../../../shared/constants";
 
 type CodeEditorProps = {
   slug: string;
@@ -10,34 +11,36 @@ type CodeEditorProps = {
 };
 
 const languageMap: Array<{ label: string; value: string; monaco: string }> = [
-  { label: 'Python', value: 'python', monaco: 'python' },
-  { label: 'JavaScript', value: 'javascript', monaco: 'javascript' },
-  { label: 'Java', value: 'java', monaco: 'java' },
-  { label: 'C++', value: 'cpp', monaco: 'cpp' },
-  { label: 'TypeScript', value: 'typescript', monaco: 'typescript' },
-  { label: 'Go', value: 'go', monaco: 'go' },
+  { label: "Python", value: "python", monaco: "python" },
+  { label: "JavaScript", value: "javascript", monaco: "javascript" },
+  { label: "Java", value: "java", monaco: "java" },
+  { label: "C++", value: "cpp", monaco: "cpp" },
+  { label: "TypeScript", value: "typescript", monaco: "typescript" },
+  { label: "Go", value: "go", monaco: "go" },
 ];
 
-function getStorageKey(slug: string, language: string) {
-  return `qts_code_${slug}_${language}`;
-}
-
-export function CodeEditor({ slug, starterCode, onRun, onSubmit }: CodeEditorProps) {
-  const [language, setLanguage] = useState('python');
+export function CodeEditor({
+  slug,
+  starterCode,
+  onRun,
+  onSubmit,
+}: CodeEditorProps) {
+  const [language, setLanguage] = useState("python");
   const [fontSize, setFontSize] = useState(14);
-  const [code, setCode] = useState('');
+  const [code, setCode] = useState("");
 
   useEffect(() => {
-    const draft = window.localStorage.getItem(getStorageKey(slug, language));
-    setCode(draft ?? starterCode[language] ?? '');
+    const draft = window.localStorage.getItem(getCodeDraftKey(slug, language));
+    setCode(draft ?? starterCode[language] ?? "");
   }, [language, slug, starterCode]);
 
   useEffect(() => {
-    window.localStorage.setItem(getStorageKey(slug, language), code);
+    window.localStorage.setItem(getCodeDraftKey(slug, language), code);
   }, [code, language, slug]);
 
   const monacoLanguage = useMemo(
-    () => languageMap.find((item) => item.value === language)?.monaco ?? 'python',
+    () =>
+      languageMap.find((item) => item.value === language)?.monaco ?? "python",
     [language],
   );
 
@@ -60,13 +63,22 @@ export function CodeEditor({ slug, starterCode, onRun, onSubmit }: CodeEditorPro
             Run
           </Button>
           <Button onClick={() => onSubmit(language, code)}>Submit</Button>
-          <Button variant="ghost" onClick={() => setCode(starterCode[language] ?? '')}>
+          <Button
+            variant="ghost"
+            onClick={() => setCode(starterCode[language] ?? "")}
+          >
             ↺
           </Button>
-          <Button variant="ghost" onClick={() => setFontSize((size) => Math.max(10, size - 1))}>
+          <Button
+            variant="ghost"
+            onClick={() => setFontSize((size) => Math.max(10, size - 1))}
+          >
             A-
           </Button>
-          <Button variant="ghost" onClick={() => setFontSize((size) => Math.min(24, size + 1))}>
+          <Button
+            variant="ghost"
+            onClick={() => setFontSize((size) => Math.min(24, size + 1))}
+          >
             A+
           </Button>
         </div>
@@ -77,24 +89,24 @@ export function CodeEditor({ slug, starterCode, onRun, onSubmit }: CodeEditorPro
         theme="qts-black"
         language={monacoLanguage}
         value={code}
-        onChange={(value) => setCode(value ?? '')}
+        onChange={(value) => setCode(value ?? "")}
         beforeMount={(monaco) => {
-          monaco.editor.defineTheme('qts-black', {
-            base: 'vs-dark',
+          monaco.editor.defineTheme("qts-black", {
+            base: "vs-dark",
             inherit: true,
             rules: [],
             colors: {
-              'editor.background': '#000000',
-              'editorLineNumber.foreground': '#888888',
-              'editorLineNumber.activeForeground': '#ffffff',
+              "editor.background": "#000000",
+              "editorLineNumber.foreground": "#888888",
+              "editorLineNumber.activeForeground": "#ffffff",
             },
           });
         }}
         options={{
-          fontFamily: 'IBM Plex Mono',
+          fontFamily: "IBM Plex Mono",
           fontSize,
           minimap: { enabled: false },
-          lineNumbers: 'on',
+          lineNumbers: "on",
           padding: { top: 16 },
           scrollBeyondLastLine: false,
         }}

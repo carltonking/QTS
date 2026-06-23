@@ -1,39 +1,51 @@
-import type { NextFunction, Request, Response } from 'express';
-import jwt from 'jsonwebtoken';
+import type { NextFunction, Request, Response } from "express";
+import jwt from "jsonwebtoken";
 
-function getJwtSecret() {
-  return process.env.JWT_SECRET || 'your-secret-key-here';
+function getJwtSecret(): string {
+  const secret = process.env.JWT_SECRET;
+  if (!secret) {
+    throw new Error("JWT_SECRET environment variable is not set");
+  }
+  return secret;
 }
 
-export function signAuthToken(payload: { id: string; email: string; username: string }) {
-  return jwt.sign(payload, getJwtSecret(), { expiresIn: '7d' });
+export function signAuthToken(payload: {
+  id: string;
+  email: string;
+  username: string;
+}) {
+  return jwt.sign(payload, getJwtSecret(), { expiresIn: "7d" });
 }
 
 export function extractUserFromAuthHeader(request: Request) {
-  const authorization = request.header('Authorization');
+  const authorization = request.header("Authorization");
 
-  if (!authorization?.startsWith('Bearer ')) {
+  if (!authorization?.startsWith("Bearer ")) {
     return null;
   }
 
-  const token = authorization.slice('Bearer '.length).trim();
+  const token = authorization.slice("Bearer ".length).trim();
 
   if (!token) {
     return null;
   }
 
   try {
-    return jwt.verify(token, getJwtSecret()) as Express.UserInfo;
+    return jwt.verify(token, getJwtSecret()) as Express.User;
   } catch {
     return null;
   }
 }
 
-export function authMiddleware(request: Request, response: Response, next: NextFunction) {
+export function authMiddleware(
+  request: Request,
+  response: Response,
+  next: NextFunction,
+) {
   const user = extractUserFromAuthHeader(request);
 
   if (!user) {
-    response.status(401).json({ error: 'Unauthorized' });
+    response.status(401).json({ error: "Unauthorized" });
     return;
   }
 

@@ -413,3 +413,38 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 768px) {
+  .poker-page {
+    padding: 0.5rem;
+  }
+  .poker-topbar-row {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .poker-mode-grid {
+    grid-template-columns: 1fr;
+  }
+  .poker-simulator {
+    grid-template-columns: 1fr;
+  }
+  .poker-range-wrap {
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .poker-rank-block {
+    flex-wrap: wrap;
+  }
+  .poker-actions {
+    flex-direction: column;
+  }
+  .poker-nav-row {
+    flex-wrap: wrap;
+  }
+  .poker-topbar-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

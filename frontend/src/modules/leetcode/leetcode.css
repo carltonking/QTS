@@ -380,3 +380,41 @@
     align-items: stretch;
   }
 }
+
+@media (max-width: 768px) {
+  .lc-workspace {
+    flex-direction: column;
+    height: auto;
+  }
+  .lc-filters {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .lc-filter-bar {
+    flex-wrap: wrap;
+  }
+  .lc-editor-toolbar {
+    flex-wrap: wrap;
+  }
+  .lc-test-results {
+    max-height: 200px;
+  }
+  .lc-problems-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .lc-problem-table {
+    font-size: 0.75rem;
+  }
+  .lc-pagination {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  .lc-editor-panel {
+    min-height: 300px;
+  }
+}

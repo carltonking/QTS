@@ -1,46 +1,41 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { Badge } from '../../shared/components/Badge';
-import { Button } from '../../shared/components/Button';
-import { Card } from '../../shared/components/Card';
-import { getDefaultUserState, selectNextQuestion, updateRating } from './AdaptiveEngine';
-import { renderLatex } from './latex';
-import { QUESTIONS } from './questions';
-import './quant.css';
-import type { AttemptResult, Question, UserState } from './types';
-
-const USER_KEY = 'qts_quant_user';
-
-function loadUserState(): UserState {
-  try {
-    const raw = window.localStorage.getItem(USER_KEY);
-    return raw ? (JSON.parse(raw) as UserState) : getDefaultUserState();
-  } catch {
-    return getDefaultUserState();
-  }
-}
-
-function saveUserState(userState: UserState) {
-  window.localStorage.setItem(USER_KEY, JSON.stringify(userState));
-}
+import { useMemo, useRef, useState } from "react";
+import { Badge } from "../../shared/components/Badge";
+import { Button } from "../../shared/components/Button";
+import { Card } from "../../shared/components/Card";
+import { useLocalStorage } from "../../shared/hooks/useLocalStorage";
+import { useSyncToBackend } from "../../shared/hooks/useSyncToBackend";
+import { STORAGE_KEYS } from "../../shared/constants";
+import {
+  getDefaultUserState,
+  selectNextQuestion,
+  updateRating,
+} from "./AdaptiveEngine";
+import { renderLatex } from "./latex";
+import { QUESTIONS } from "./questions";
+import "./quant.css";
+import type { AttemptResult, Question, UserState } from "./types";
 
 export function PracticeView() {
   const attemptedIds = useRef(new Set<string>());
-  const [userState, setUserState] = useState<UserState>(() => loadUserState());
+  const [userState, setUserState] = useLocalStorage<UserState>(
+    STORAGE_KEYS.QUANT_USER,
+    getDefaultUserState(),
+  );
+  const { syncQuantRating } = useSyncToBackend();
   const [question, setQuestion] = useState<Question>(() =>
-    selectNextQuestion(QUESTIONS, loadUserState(), attemptedIds.current),
+    selectNextQuestion(QUESTIONS, getDefaultUserState(), attemptedIds.current),
   );
   const [showHint, setShowHint] = useState(false);
-  const [answer, setAnswer] = useState('');
+  const [answer, setAnswer] = useState("");
   const [result, setResult] = useState<AttemptResult | null>(null);
-  const [ratingChange, setRatingChange] = useState('');
-
-  useEffect(() => {
-    saveUserState(userState);
-  }, [userState]);
+  const [ratingChange, setRatingChange] = useState("");
 
   const bodyHtml = useMemo(() => renderLatex(question.body), [question.body]);
   const hintHtml = useMemo(() => renderLatex(question.hint), [question.hint]);
-  const solutionHtml = useMemo(() => renderLatex(question.solution), [question.solution]);
+  const solutionHtml = useMemo(
+    () => renderLatex(question.solution),
+    [question.solution],
+  );
   const bookmarked = userState.bookmarks.includes(question.id);
 
   const toggleBookmark = () => {
@@ -76,16 +71,23 @@ export function PracticeView() {
     attemptedIds.current.add(question.id);
     setUserState(withHistory);
     setResult(mark);
-    setRatingChange(`${question.category}: ${before} → ${withHistory.ratings[question.category]}`);
+    setRatingChange(
+      `${question.category}: ${before} → ${withHistory.ratings[question.category]}`,
+    );
+    syncQuantRating(question.category, withHistory.ratings[question.category]);
   };
 
   const handleNext = () => {
-    const nextQuestion = selectNextQuestion(QUESTIONS, userState, attemptedIds.current);
+    const nextQuestion = selectNextQuestion(
+      QUESTIONS,
+      userState,
+      attemptedIds.current,
+    );
     setQuestion(nextQuestion);
     setShowHint(false);
-    setAnswer('');
+    setAnswer("");
     setResult(null);
-    setRatingChange('');
+    setRatingChange("");
   };
 
   return (
@@ -99,22 +101,31 @@ export function PracticeView() {
               <Badge label={`streak ${userState.streak}`} />
             </div>
             <Button variant="ghost" onClick={toggleBookmark}>
-              {bookmarked ? '✦ BOOKMARKED' : '★ BOOKMARK'}
+              {bookmarked ? "✦ BOOKMARKED" : "★ BOOKMARK"}
             </Button>
           </div>
 
-          <h1 className="quant-title" style={{ fontSize: '1.5rem' }}>
+          <h1 className="quant-title" style={{ fontSize: "1.5rem" }}>
             {question.title}
           </h1>
 
-          <div className="quant-body" dangerouslySetInnerHTML={{ __html: bodyHtml }} />
+          <div
+            className="quant-body"
+            dangerouslySetInnerHTML={{ __html: bodyHtml }}
+          />
 
           <div className="quant-toggle-block">
-            <Button variant="ghost" onClick={() => setShowHint((value) => !value)}>
-              {showHint ? 'Hide Hint' : 'Show Hint'}
+            <Button
+              variant="ghost"
+              onClick={() => setShowHint((value) => !value)}
+            >
+              {showHint ? "Hide Hint" : "Show Hint"}
             </Button>
             {showHint ? (
-              <div className="quant-body" dangerouslySetInnerHTML={{ __html: hintHtml }} />
+              <div
+                className="quant-body"
+                dangerouslySetInnerHTML={{ __html: hintHtml }}
+              />
             ) : null}
           </div>
 
@@ -129,15 +140,18 @@ export function PracticeView() {
           </label>
 
           <div className="quant-actions">
-            <Button onClick={() => markQuestion('CORRECT')}>Correct</Button>
-            <Button onClick={() => markQuestion('PARTIAL')}>Partial</Button>
-            <Button onClick={() => markQuestion('INCORRECT')}>Incorrect</Button>
+            <Button onClick={() => markQuestion("CORRECT")}>Correct</Button>
+            <Button onClick={() => markQuestion("PARTIAL")}>Partial</Button>
+            <Button onClick={() => markQuestion("INCORRECT")}>Incorrect</Button>
           </div>
 
           {result ? (
             <>
               <div className="quant-rating-change">{ratingChange}</div>
-              <div className="quant-body" dangerouslySetInnerHTML={{ __html: solutionHtml }} />
+              <div
+                className="quant-body"
+                dangerouslySetInnerHTML={{ __html: solutionHtml }}
+              />
               <Button onClick={handleNext}>Next Question</Button>
             </>
           ) : null}

@@ -1,22 +1,9 @@
-import axios from 'axios';
-import type { SubmissionStatus } from '@prisma/client';
+import axios from "axios";
+import type { SubmissionStatus } from "@prisma/client";
 
 export type TestCase = {
   input: string;
   expectedOutput: string;
-};
-
-export type Judge0Result = {
-  token?: string;
-  stdout?: string | null;
-  stderr?: string | null;
-  compile_output?: string | null;
-  time?: string | null;
-  memory?: number | null;
-  status?: {
-    id: number;
-    description: string;
-  };
 };
 
 export type SubmissionResult = {
@@ -45,39 +32,64 @@ export const LANGUAGE_IDS: Record<string, number> = {
   go: 60,
 };
 
-const JUDGE0_URL = process.env.JUDGE0_URL || 'http://localhost:2358';
+const JUDGE0_URL = process.env.JUDGE0_URL || "http://localhost:2358";
+
+const POLL_ATTEMPTS = 20;
+const POLL_INTERVAL_MS = 500;
+
+type Judge0BatchResponse = Array<{ token: string }>;
+
+type Judge0Result = {
+  token?: string;
+  stdout?: string | null;
+  stderr?: string | null;
+  compile_output?: string | null;
+  time?: string | null;
+  memory?: number | null;
+  status?: {
+    id: number;
+    description: string;
+  };
+};
 
 function mapStatus(statusId?: number): SubmissionStatus {
-  if (statusId === 3) return 'ACCEPTED';
-  if (statusId === 4) return 'WRONG_ANSWER';
-  if (statusId === 5) return 'TIME_LIMIT_EXCEEDED';
-  if (statusId === 6) return 'COMPILE_ERROR';
-  if (statusId === 11) return 'RUNTIME_ERROR';
-  return 'PENDING';
+  if (statusId === 3) return "ACCEPTED";
+  if (statusId === 4) return "WRONG_ANSWER";
+  if (statusId === 5) return "TIME_LIMIT_EXCEEDED";
+  if (statusId === 6) return "COMPILE_ERROR";
+  if (statusId === 11) return "RUNTIME_ERROR";
+  return "PENDING";
 }
 
-export async function submitToJudge0(
+function getLanguageId(language: string): number {
+  const id = LANGUAGE_IDS[language];
+  if (!id) throw new Error(`Unsupported language: ${language}`);
+  return id;
+}
+
+async function batchSubmit(
   code: string,
   language: string,
-  stdin: string,
-): Promise<Judge0Result> {
-  const languageId = LANGUAGE_IDS[language];
+  testCases: TestCase[],
+): Promise<string[]> {
+  const languageId = getLanguageId(language);
 
-  if (!languageId) {
-    throw new Error(`Unsupported language: ${language}`);
-  }
+  const response = await axios.post<Judge0BatchResponse>(
+    `${JUDGE0_URL}/submissions/batch?base64_encoded=false`,
+    {
+      submissions: testCases.map((testCase) => ({
+        source_code: code,
+        language_id: languageId,
+        stdin: testCase.input,
+      })),
+    },
+  );
 
-  const response = await axios.post<Judge0Result>(`${JUDGE0_URL}/submissions?base64_encoded=false&wait=false`, {
-    source_code: code,
-    language_id: languageId,
-    stdin,
-  });
-
-  return response.data;
+  return response.data.map((entry) => entry.token);
 }
 
-export async function pollResult(token: string): Promise<Judge0Result> {
-  for (let attempt = 0; attempt < 20; attempt += 1) {
+async function pollResult(token: string): Promise<Judge0Result> {
+  for (let attempt = 0; attempt < POLL_ATTEMPTS; attempt += 1) {
     const response = await axios.get<Judge0Result>(
       `${JUDGE0_URL}/submissions/${token}?base64_encoded=false`,
     );
@@ -89,10 +101,37 @@ export async function pollResult(token: string): Promise<Judge0Result> {
       return result;
     }
 
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await new Promise((resolve) => setTimeout(resolve, POLL_INTERVAL_MS));
   }
 
-  throw new Error('Judge0 polling timed out');
+  throw new Error(`Judge0 polling timed out for token: ${token}`);
+}
+
+function evaluateTest(
+  result: Judge0Result,
+  testCase: TestCase,
+): {
+  passed: boolean;
+  actualOutput: string;
+  status: SubmissionStatus;
+  errorMessage: string | null;
+  runtime: number;
+  memory: number;
+} {
+  const mappedStatus = mapStatus(result.status?.id);
+  const actualOutput = (result.stdout ?? "").trim();
+  const expectedOutput = testCase.expectedOutput.trim();
+  const passed = mappedStatus === "ACCEPTED" && actualOutput === expectedOutput;
+
+  return {
+    passed,
+    actualOutput,
+    status:
+      mappedStatus === "ACCEPTED" && !passed ? "WRONG_ANSWER" : mappedStatus,
+    errorMessage: result.stderr ?? result.compile_output ?? null,
+    runtime: Number(result.time ?? 0) * 1000,
+    memory: Number(result.memory ?? 0),
+  };
 }
 
 export async function runCode(
@@ -100,35 +139,46 @@ export async function runCode(
   language: string,
   testCases: TestCase[],
 ): Promise<SubmissionResult> {
-  const testResults: SubmissionResult['testResults'] = [];
+  if (testCases.length === 0) {
+    return {
+      status: "ACCEPTED",
+      runtime: null,
+      memory: null,
+      errorMessage: null,
+      passed: 0,
+      total: 0,
+      percentile: null,
+      testResults: [],
+    };
+  }
+
+  const tokens = await batchSubmit(code, language, testCases);
+  const judge0Results = await Promise.all(tokens.map(pollResult));
+
+  const testResults: SubmissionResult["testResults"] = [];
   let totalRuntime = 0;
   let maxMemory = 0;
 
-  for (const testCase of testCases) {
-    const submission = await submitToJudge0(code, language, testCase.input);
-    const result = await pollResult(submission.token ?? '');
-    const mappedStatus = mapStatus(result.status?.id);
-    const actualOutput = (result.stdout ?? '').trim();
-    const expectedOutput = testCase.expectedOutput.trim();
-    const passed = mappedStatus === 'ACCEPTED' && actualOutput === expectedOutput;
-    totalRuntime += Number(result.time ?? 0) * 1000;
-    maxMemory = Math.max(maxMemory, Number(result.memory ?? 0));
+  for (let i = 0; i < judge0Results.length; i++) {
+    const evaluation = evaluateTest(judge0Results[i], testCases[i]);
+    totalRuntime += evaluation.runtime;
+    maxMemory = Math.max(maxMemory, evaluation.memory);
 
-    if (!passed && mappedStatus === 'ACCEPTED') {
+    if (evaluation.status !== "ACCEPTED") {
       testResults.push({
-        input: testCase.input,
-        expectedOutput: testCase.expectedOutput,
-        actualOutput,
+        input: testCases[i].input,
+        expectedOutput: testCases[i].expectedOutput,
+        actualOutput: evaluation.actualOutput,
         passed: false,
-        status: 'WRONG_ANSWER',
+        status: evaluation.status,
       });
 
       return {
-        status: 'WRONG_ANSWER',
-        runtime: Math.round(totalRuntime),
+        status: evaluation.status,
+        runtime: Math.round(totalRuntime) || null,
         memory: maxMemory || null,
-        errorMessage: null,
-        passed: testResults.filter((entry) => entry.passed).length,
+        errorMessage: evaluation.errorMessage,
+        passed: testResults.filter((t) => t.passed).length,
         total: testCases.length,
         percentile: null,
         testResults,
@@ -136,36 +186,22 @@ export async function runCode(
     }
 
     testResults.push({
-      input: testCase.input,
-      expectedOutput: testCase.expectedOutput,
-      actualOutput,
-      passed,
-      status: passed ? 'ACCEPTED' : mappedStatus,
+      input: testCases[i].input,
+      expectedOutput: testCases[i].expectedOutput,
+      actualOutput: evaluation.actualOutput,
+      passed: true,
+      status: "ACCEPTED",
     });
-
-    if (mappedStatus !== 'ACCEPTED') {
-      return {
-        status: mappedStatus,
-        runtime: Math.round(totalRuntime) || null,
-        memory: maxMemory || null,
-        errorMessage:
-          result.stderr ?? result.compile_output ?? result.status?.description ?? 'Execution failed',
-        passed: testResults.filter((entry) => entry.passed).length,
-        total: testCases.length,
-        percentile: null,
-        testResults,
-      };
-    }
   }
 
   return {
-    status: 'ACCEPTED',
+    status: "ACCEPTED",
     runtime: Math.round(totalRuntime) || null,
     memory: maxMemory || null,
     errorMessage: null,
     passed: testCases.length,
     total: testCases.length,
-    percentile: Math.floor(Math.random() * 39) + 60,
+    percentile: null,
     testResults,
   };
 }

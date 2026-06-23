@@ -4,16 +4,22 @@
   "version": "0.1.0",
   "workspaces": [
     "frontend",
-    "backend"
+    "backend",
+    "packages/*"
   ],
   "scripts": {
     "dev": "npm run dev --workspace frontend",
     "dev:all": "concurrently \"npm run dev --workspace frontend\" \"npm run dev --workspace backend\"",
-    "build": "npm run build --workspace frontend && npm run build --workspace backend"
+    "build": "npm run build --workspace frontend && npm run build --workspace backend",
+    "prepare": "husky"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.59.4",
+    "@typescript-eslint/parser": "^8.59.4",
     "concurrently": "^9.1.2",
     "eslint": "^9.22.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.5",
     "prettier": "^3.5.3"
   }
 }
